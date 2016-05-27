@@ -36,7 +36,7 @@ var render = ( function(r) {
 
   return function(response) {
     r.render('index', {
-      title: 'Connecting 2 Services',
+      title: 'GP Details',
       gpDetails:  response
     });
   };
@@ -47,6 +47,5 @@ var getSyndicationUrl = function (req) {
       'http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/%s.json?apikey=%s',
       req.params.gpId,
       req.query.apikey);
-    console.log(url);
     return url;
 }
