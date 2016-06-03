@@ -17,8 +17,9 @@ module.exports = function(app, config) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'nunjucks');
   nunjucks.configure(config.root + '/app/views', {
-      autoescape: true,
-      express: app
+    autoescape: true,
+    express: app,
+    watch: true
   });
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
