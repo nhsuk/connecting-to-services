@@ -8,6 +8,7 @@
   {% if ENV_DEVELOPMENT %}
     <script src="http://localhost:35729/livereload.js"></script>
   {% endif %}
+  <script src="/js/analytics.js"></script>
 </head>
 <body>
   {% block content %}{% endblock %}
