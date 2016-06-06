@@ -40,8 +40,8 @@ module.exports = function (grunt) {
       },
       views: {
         files: [
-          'app/views/*.jade',
-          'app/views/**/*.jade'
+          'app/views/*.nunjucks',
+          'app/views/**/*.nunjucks'
         ],
         options: { livereload: reloadPort }
       }

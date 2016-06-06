@@ -1,0 +1,11 @@
+{% extends 'layout.nunjucks' %}
+
+{% block content %}
+  <h1>{{title}}</h1>
+  <h2>{{gpDetails.Name}}</h2>
+  <p>{{gpDetails.Address.Line1}}</p>
+  <p>{{gpDetails.Address.Line2}}</p>
+  <p>{{gpDetails.Address.Line3}}</p>
+  <p>{{gpDetails.Address.Line4}}</p>
+  <pre>{{gpDetails.Address.Postcode}}</pre>
+{% endblock %}

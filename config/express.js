@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
+var nunjucks = require('nunjucks');
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
@@ -14,7 +15,12 @@ module.exports = function(app, config) {
   app.locals.ENV_DEVELOPMENT = env == 'development';
   
   app.set('views', config.root + '/app/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'nunjucks');
+  nunjucks.configure(config.root + '/app/views', {
+    autoescape: true,
+    express: app,
+    watch: true
+  });
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
