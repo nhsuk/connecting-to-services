@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "eslint": "eslint"
+    "lint": "eslint"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
