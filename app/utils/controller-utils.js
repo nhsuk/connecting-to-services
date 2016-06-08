@@ -1,12 +1,13 @@
 const http = require('http');
+const util = require('util');
 const utils = {};
 
 module.exports = utils;
 
 utils.getSyndicationUrl = function getSyndicationUrl(req) {
   const gpId = req.params.gpId;
-  const apikey = req.query.apikey;
-  return `http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/${gpId}.json?apikey=${apikey}`;
+  const syndicationUrl = process.env.NHSCHOICES_SYNDICATION_URL;
+  return util.format(syndicationUrl, gpId);
 };
 
 utils.getGpDetails = function getGpDetails(url, callback) {
