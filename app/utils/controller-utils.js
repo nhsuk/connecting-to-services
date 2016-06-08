@@ -1,30 +1,26 @@
-var utils = {},
-  util = require('util'),
-  http = require('http');
+const http = require('http');
+const utils = {};
 
 module.exports = utils;
 
 utils.getSyndicationUrl = function getSyndicationUrl(req) {
-  var url = util.format(
-    'http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/%s.json?apikey=%s',
-    req.params.gpId,
-    req.query.apikey);
-  return url;
+  const gpId = req.params.gpId;
+  const apikey = req.query.apikey;
+  return `http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/${gpId}.json?apikey=${apikey}`;
 };
 
 utils.getGpDetails = function getGpDetails(url, callback) {
-  http.get(url, function(res) {
+  http.get(url, (res) => {
+    let body = '';
 
-    var body = '';
-
-    res.on('data', function(chunk) {
+    res.on('data', (chunk) => {
       body += chunk;
     });
 
-    res.on('end', function() {
+    res.on('end', () => {
       callback(JSON.parse(body));
     });
-  }).on('error', function(e) {
+  }).on('error', (e) => {
     console.log('Got an error: ', e);
   });
 };

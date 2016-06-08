@@ -1,31 +1,31 @@
-var path = require('path'),
-  rootPath = path.normalize(__dirname + '/..'),
-  env = process.env.NODE_ENV || 'development';
+const path = require('path');
+const rootPath = path.normalize(`${__dirname}/..`);
+const env = process.env.NODE_ENV || 'development';
 
-var config = {
+const config = {
   development: {
     root: rootPath,
     app: {
-      name: 'gp-to-services'
+      name: 'gp-to-services',
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'gp-to-services'
+      name: 'gp-to-services',
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'gp-to-services'
+      name: 'gp-to-services',
     },
-    port: process.env.PORT || 3000
-  }
+    port: process.env.PORT || 3000,
+  },
 };
 
 module.exports = config[env];
