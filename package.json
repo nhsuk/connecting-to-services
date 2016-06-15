@@ -11,7 +11,7 @@
     "test-unit": "mocha test",
     "dev-test": "npm run test-unit -- --recursive --watch",
     "test": "istanbul cover _mocha -x ./test/**",
-    "istanbul": "istanbul"
+    "check-coverage": "istanbul check-coverage --config .istanbul.yml"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
