@@ -3,5 +3,6 @@ public/components
 coverage/
 
 .sass-cache
+npm-debug.log
 .env
 .DS_Store
