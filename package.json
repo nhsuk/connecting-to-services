@@ -8,8 +8,10 @@
   "scripts": {
     "start": "node app.js",
     "lint": "eslint",
-    "test": "mocha test --reporter spec",
-    "dev-test": "mocha test --reporter spec --recursive --watch"
+    "test-unit": "mocha test",
+    "dev-test": "npm run test-unit -- --recursive --watch",
+    "test": "istanbul cover _mocha -x ./test/**",
+    "istanbul": "istanbul"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
@@ -33,6 +35,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-develop": "^0.4.0",
+    "istanbul": "^0.4.3",
     "load-grunt-tasks": "^3.2.0",
     "mocha": "^2.5.3",
     "request": "^2.60.0",
