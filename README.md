@@ -1,5 +1,7 @@
 # gp-to-services
 [![Build Status](https://travis-ci.org/nhsalpha/gp-to-services.svg?branch=master)](https://travis-ci.org/nhsalpha/gp-to-services)
+[![bitHound Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/dependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/devDependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)
 
 Connecting the user journey from GP details to services
 
