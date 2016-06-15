@@ -11,7 +11,8 @@
     "test-unit": "mocha test",
     "dev-test": "npm run test-unit -- --recursive --watch",
     "test": "istanbul cover _mocha -x ./test/**",
-    "check-coverage": "istanbul check-coverage --config .istanbul.yml"
+    "check-coverage": "istanbul check-coverage --config .istanbul.yml",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "pre-commit": [
     "lint",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.1",

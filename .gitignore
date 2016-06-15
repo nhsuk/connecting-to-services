@@ -6,3 +6,4 @@ coverage/
 npm-debug.log
 .env
 .DS_Store
+.coveralls.yml
