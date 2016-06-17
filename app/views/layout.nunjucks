@@ -8,7 +8,8 @@
   {% if ENV_DEVELOPMENT %}
     <script src="http://localhost:35729/livereload.js"></script>
   {% endif %}
-  <script src="/js/analytics.js"></script>
+  <script type="text/javascript" src="/js/tracking/google-analytics.js"></script>
+  <script type="text/javascript" src="/js/tracking/webtrends.load.js"></script>
 </head>
 <body>
   {% block content %}{% endblock %}
