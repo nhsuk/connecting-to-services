@@ -4,6 +4,7 @@ node_js:
 script:
   - npm run lint .
   - npm run test
+  - npm run coverage-report
   - npm run check-coverage
   - npm run coveralls
 after_success:

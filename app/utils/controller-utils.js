@@ -19,9 +19,16 @@ utils.getGpDetails = function getGpDetails(url, callback) {
     });
 
     res.on('end', () => {
-      callback(JSON.parse(body));
+      if (res.statusCode !== 200) {
+        callback({ statusCode: res.statusCode });
+      } else {
+        const parsedBody = JSON.parse(body);
+        parsedBody.statusCode = res.statusCode;
+        callback(parsedBody);
+      }
     });
   }).on('error', (e) => {
     console.log('Got an error: ', e);
+    callback({ statusCode: '500' });
   });
 };
