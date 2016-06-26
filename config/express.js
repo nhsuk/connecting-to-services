@@ -41,23 +41,22 @@ module.exports = (app, config) => {
     next(err);
   });
 
-  if (app.get('env') === 'development') {
-    app.use((err, req, res) => {
-      res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: err,
-        title: 'error',
-      });
-    });
-  }
-
   app.use((err, req, res) => {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
+      error: app.get('env') === 'development' ? err : {},
+      title: 'error',
+    });
+  });
+
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err,
       error: {},
       title: 'error',
     });
+    next();
   });
 };

@@ -1,9 +1,11 @@
 const controllerUtils = require('../utils/controller-utils');
 
-const render = function render(r) {
+const render = function render(r, next) {
   return (response) => {
     if (response.statusCode !== 200) {
-      r.sendStatus(response.statusCode);
+      const err = Error(`Could not get details for that GP: (${response.statusCode})`);
+      err.status = response.statusCode;
+      next(err);
     } else {
       r.render('index', {
         title: 'GP Details',
@@ -13,9 +15,9 @@ const render = function render(r) {
   };
 };
 
-function index(req, res) {
+function index(req, res, next) {
   const url = controllerUtils.getSyndicationUrl(req);
-  controllerUtils.getGpDetails(url, render(res));
+  controllerUtils.getGpDetails(url, render(res, next));
 }
 
 module.exports = {
