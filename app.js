@@ -1,3 +1,5 @@
-const server = require('./server');
+const app = require('./server.js');
 
-server.listen();
+app.listen(app.port, () => {
+  console.log(`Express server listening on port ${app.port}`);
+});
