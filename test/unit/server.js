@@ -1,6 +1,8 @@
+// eslint has problems with chai expect statements
+/* eslint-disable no-unused-expressions */
+
 const chai = require('chai');
-// eslint-disable-next-line no-unused-vars
-const should = chai.should();
+const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const nock = require('nock');
 const app = require('../../server.js');
@@ -15,8 +17,10 @@ describe('Server', () => {
     chai.request(app)
       .get('/gpdetails/12410')
       .end((err, res) => {
-        res.statusCode.should.equal(200);
-        res.text.should.contain('A GP Practice');
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res).to.be.html;
+        expect(res.text).to.contain('<h2>A GP Practice</h2>');
         done();
       });
   });
@@ -27,7 +31,8 @@ describe('Server', () => {
     chai.request(app)
       .get('/gpdetails/12410')
       .end((err, res) => {
-        res.statusCode.should.equal(404);
+        expect(res).to.have.status(404);
+        expect(res).to.be.html;
         done();
       });
   });
@@ -38,7 +43,8 @@ describe('Server', () => {
     chai.request(app)
       .get('/gpdetails/12410')
       .end((err, res) => {
-        res.statusCode.should.equal(500);
+        expect(res).to.have.status(500);
+        expect(res).to.be.html;
         done();
       });
   });
@@ -46,7 +52,8 @@ describe('Server', () => {
     chai.request(app)
       .get('/unknown')
       .end((err, res) => {
-        res.statusCode.should.equal(404);
+        expect(res).to.have.status(404);
+        expect(res).to.be.html;
         done();
       });
   });
