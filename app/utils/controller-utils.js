@@ -6,8 +6,10 @@ module.exports = utils;
 
 utils.getSyndicationUrl = function getSyndicationUrl(req) {
   const gpId = req.params.gpId;
+  const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
   const syndicationUrl = process.env.NHSCHOICES_SYNDICATION_URL;
-  return util.format(syndicationUrl, gpId);
+  const requestUrl = `${syndicationUrl}${syndicationApiKey}`;
+  return util.format(requestUrl, gpId);
 };
 
 utils.getGpDetails = function getGpDetails(url, callback) {

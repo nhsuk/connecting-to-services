@@ -5,6 +5,9 @@
   "env": {
     "NHSCHOICES_SYNDICATION_URL": {
       "required": true
+    },
+    "NHSCHOICES_SYNDICATION_APIKEY": {
+      "required": true
     }
   },
   "formation": {

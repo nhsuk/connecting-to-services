@@ -4,14 +4,18 @@ const nock = require('nock');
 
 describe('ControllerUtils (Unit)', () => {
   describe('getSyndicationUrl(), when URL is set in environment variable', () => {
-    let oldValue;
+    let oldApiKey;
+    let oldUrl;
     before('Set Syndication URL', () => {
-      oldValue = process.env.NHSCHOICES_SYNDICATION_URL;
+      oldUrl = process.env.NHSCHOICES_SYNDICATION_URL;
+      oldApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
       process.env.NHSCHOICES_SYNDICATION_URL =
-        'http://test/%s?apikey=secret';
+        'http://test/%s?apikey=';
+      process.env.NHSCHOICES_SYNDICATION_APIKEY = 'secret';
     });
     after('Unset Syndication URL', () => {
-      process.env.NHSCHOICES_SYNDICATION_URL = oldValue;
+      process.env.NHSCHOICES_SYNDICATION_APIKEY = oldApiKey;
+      process.env.NHSCHOICES_SYNDICATION_URL = oldUrl;
     });
     it('should return a url with API key for a specific gp practice', () => {
       const fakeRequest = {
