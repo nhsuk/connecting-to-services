@@ -3,7 +3,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/nhsalpha/gp-to-services/badge.svg?branch=master)](https://coveralls.io/github/nhsalpha/gp-to-services?branch=master)
 [![bitHound Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/dependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/devDependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)
-[![codecov](https://codecov.io/gh/nhsalpha/gp-to-services/branch/master/graph/badge.svg)](https://codecov.io/gh/nhsalpha/gp-to-services)
 
 Connecting the user journey from GP details to services
 
