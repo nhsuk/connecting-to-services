@@ -4,7 +4,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compress = require('compression');
-const methodOverride = require('method-override');
 const nunjucks = require('nunjucks');
 const router = require('./routes');
 
@@ -23,8 +22,6 @@ module.exports = (app, config) => {
     watch: true,
   });
 
-  // app.use(favicon(config.root + '/public/img/favicon.ico'));
-  app.use('/', router);
   app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
@@ -33,30 +30,21 @@ module.exports = (app, config) => {
   app.use(cookieParser());
   app.use(compress());
   app.use(express.static(`${config.root}/public`));
-  app.use(methodOverride());
 
+  app.use('/', router);
   app.use((req, res, next) => {
     const err = new Error('Not Found');
     err.status = 404;
     next(err);
   });
 
-  app.use((err, req, res) => {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: app.get('env') === 'development' ? err : {},
-      title: 'error',
-    });
-  });
-
+  // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
       message: err,
-      error: {},
+      error: app.get('env') === 'development' ? err : {},
       title: 'error',
     });
-    next();
   });
 };
