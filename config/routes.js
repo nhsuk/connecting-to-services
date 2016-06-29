@@ -1,10 +1,11 @@
 // eslint-disable-next-line new-cap
 const router = require('express').Router();
-const gpPracticeController = require('../app/middleware/gp-practice');
+const gpMiddleware = require('../app/middleware/gp-practice');
 
 router.get('/gpdetails/:gpId',
-  gpPracticeController.getGpUrl,
-  gpPracticeController.getGpDetails
+  gpMiddleware.getUrl,
+  gpMiddleware.getDetails,
+  gpMiddleware.render
 );
 
 module.exports = router;

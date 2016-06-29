@@ -1,18 +1,8 @@
+
 const util = require('util');
 const http = require('http');
 
-const renderGpDetails = (response, gpDetails) => {
-  response.render('index', {
-    title: 'GP Details',
-    gpDetails,
-  });
-};
-
-const renderGpNotFound = (response) => {
-  response.status(404).send('GP Not Found');
-};
-
-function getGpDetails(req, res, next) {
+function getDetails(req, res, next) {
   http.get(req.urlForGp, (response) => {
     let body = '';
     response.on('data', (chunk) => {
@@ -21,9 +11,14 @@ function getGpDetails(req, res, next) {
 
     response.on('end', () => {
       if (response.statusCode === 200) {
-        renderGpDetails(res, JSON.parse(body));
+        // Disabled since assigning to res is recommended best practice my Express
+        /* eslint-disable no-param-reassign */
+        req.gpDetails = JSON.parse(body);
+        next();
       } else if (response.statusCode === 404) {
-        renderGpNotFound(res);
+        const err = new Error('GP Not Found');
+        err.status = 404;
+        next(err);
       } else {
         next(`Error: ${response.statusCode}`);
       }
@@ -34,18 +29,24 @@ function getGpDetails(req, res, next) {
   });
 }
 
-function getGpUrl(req, res, next) {
+function render(req, res) {
+  res.render('index', {
+    title: 'GP Details',
+    gpDetails: req.gpDetails,
+  });
+}
+
+function getUrl(req, res, next) {
   const gpId = req.params.gpId;
   const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
   const syndicationUrl = process.env.NHSCHOICES_SYNDICATION_URL;
   const requestUrl = `${syndicationUrl}${syndicationApiKey}`;
-  // http://stackoverflow.com/questions/36756947/modify-res-without-mutating-argument
-  // eslint-disable-next-line no-param-reassign
   req.urlForGp = util.format(requestUrl, gpId);
   next();
 }
 
 module.exports = {
-  getGpDetails,
-  getGpUrl,
+  getDetails,
+  render,
+  getUrl,
 };
