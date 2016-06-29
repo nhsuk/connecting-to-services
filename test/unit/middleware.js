@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 const middleware = require('../../app/middleware/gp-practice');
 
 describe('Middleware', () => {
-  describe('getGpUrl(), when URL is set in environment variable', () => {
+  describe('getUrl(), when URL is set in environment variable', () => {
     let oldApiKey;
     let oldUrl;
     before('Set Syndication URL', () => {
@@ -21,7 +21,7 @@ describe('Middleware', () => {
         params: { gpId: '123456' },
       };
 
-      middleware.getGpUrl(fakeRequest, {}, () => {});
+      middleware.getUrl(fakeRequest, {}, () => {});
 
       assert.equal(
         fakeRequest.urlForGp,
