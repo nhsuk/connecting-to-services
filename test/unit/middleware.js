@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const middleware = require('../../app/middleware/gp-practice');
+const middleware = require('../../app/middleware/gp');
 
 describe('Middleware', () => {
   describe('getUrl(), when URL is set in environment variable', () => {
