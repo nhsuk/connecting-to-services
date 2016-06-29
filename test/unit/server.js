@@ -10,9 +10,11 @@ const app = require('../../server.js');
 chai.use(chaiHttp);
 
 describe('Server', () => {
+  const baseUrl = 'http://v1.syndication.nhschoices.nhs.uk';
+  const requestRoute = /\/organisations\/gppractices\/odscode\/[0-9]+.json\?apikey=[a-z]*/;
   it('should get details for a known GP', (done) => {
-    nock('http://v1.syndication.nhschoices.nhs.uk')
-      .get(/\/organisations\/gppractices\/[0-9]+.json\?apikey=[a-z]*/)
+    nock(baseUrl)
+      .get(requestRoute)
       .reply(200, '{ "Name": "A GP Practice" }');
     chai.request(app)
       .get('/gpdetails/12410')
@@ -25,8 +27,8 @@ describe('Server', () => {
       });
   });
   it('should return 404 for an unknown GP', (done) => {
-    nock('http://v1.syndication.nhschoices.nhs.uk')
-      .get(/\/organisations\/gppractices\/[0-9]+.json\?apikey=[a-z]*/)
+    nock(baseUrl)
+      .get(requestRoute)
       .reply(404);
     chai.request(app)
       .get('/gpdetails/12410')
@@ -37,8 +39,8 @@ describe('Server', () => {
       });
   });
   it('should return 500 for syndication server error', (done) => {
-    nock('http://v1.syndication.nhschoices.nhs.uk')
-      .get(/\/organisations\/gppractices\/[0-9]+.json\?apikey=[a-z]*/)
+    nock(baseUrl)
+      .get(requestRoute)
       .reply(500);
     chai.request(app)
       .get('/gpdetails/12410')

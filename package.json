@@ -30,6 +30,7 @@
   "pre-commit": [
     "lint",
     "test",
+    "coverage-report",
     "check-coverage"
   ],
   "dependencies": {
