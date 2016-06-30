@@ -41,7 +41,8 @@
     "express": "^4.13.3",
     "morgan": "^1.6.1",
     "nunjucks": "^2.4.2",
-    "require-environment-variables": "^1.1.2"
+    "require-environment-variables": "^1.1.2",
+    "xml2js": "^0.4.16"
   },
   "devDependencies": {
     "chai": "^3.5.0",

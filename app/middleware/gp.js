@@ -1,19 +1,36 @@
-
 const util = require('util');
 const http = require('http');
+const xmlParser = require('xml2js').parseString;
+
+function parseGpDetailsFromSyndicationXml(xml) {
+  let gpDetails;
+  xmlParser(xml, (err, result) => {
+    gpDetails = {
+      Name: result.Organisation.Name[0],
+      Address: {
+        Line1: result.Organisation.Address[0].Line1[0],
+        Line2: result.Organisation.Address[0].Line2[0],
+        Line3: result.Organisation.Address[0].Line3[0],
+        Line4: result.Organisation.Address[0].Line4[0],
+        Postcode: result.Organisation.Address[0].Postcode[0],
+      },
+    };
+  });
+  return gpDetails;
+}
 
 function getDetails(req, res, next) {
   http.get(req.urlForGp, (response) => {
-    let body = '';
+    let syndicationXml = '';
     response.on('data', (chunk) => {
-      body += chunk;
+      syndicationXml += chunk;
     });
 
     response.on('end', () => {
       if (response.statusCode === 200) {
         // Disabled since assigning to res is recommended best practice my Express
         /* eslint-disable no-param-reassign */
-        req.gpDetails = JSON.parse(body);
+        req.gpDetails = parseGpDetailsFromSyndicationXml(syndicationXml);
         next();
       } else if (response.statusCode === 404) {
         const err = new Error('GP Not Found');

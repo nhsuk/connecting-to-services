@@ -6,23 +6,29 @@ const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const nock = require('nock');
 const app = require('../../server.js');
+const fs = require('fs');
+const sampleResponsesDir = `${__dirname}/resources/syndication_responses`;
 
 chai.use(chaiHttp);
 
+function getSampleResponse(responseName) {
+  return fs.readFileSync(`${sampleResponsesDir}/${responseName}.xml`).toString();
+}
+
 describe('Server', () => {
   const baseUrl = 'http://v1.syndication.nhschoices.nhs.uk';
-  const requestRoute = /\/organisations\/gppractices\/odscode\/[0-9]+.json\?apikey=[a-z]*/;
+  const requestRoute = /\/organisations\/gppractices\/odscode\/[0-9]+.xml\?apikey=[a-z]*/;
   it('should get details for a known GP', (done) => {
     nock(baseUrl)
       .get(requestRoute)
-      .reply(200, '{ "Name": "A GP Practice" }');
+      .reply(200, getSampleResponse('gp_practice_by_ods_code'));
     chai.request(app)
       .get('/gpdetails/12410')
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res).to.be.html;
-        expect(res.text).to.contain('<h2>A GP Practice</h2>');
+        expect(res.text).to.contain('<h2>A Ditri</h2>');
         done();
       });
   });
