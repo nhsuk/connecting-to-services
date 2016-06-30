@@ -6,14 +6,9 @@ const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const nock = require('nock');
 const app = require('../../server.js');
-const fs = require('fs');
-const sampleResponsesDir = `${__dirname}/resources/syndication_responses`;
+const getSampleResponse = require('./getSampleResponse');
 
 chai.use(chaiHttp);
-
-function getSampleResponse(responseName) {
-  return fs.readFileSync(`${sampleResponsesDir}/${responseName}.xml`).toString();
-}
 
 describe('Server', () => {
   const baseUrl = 'http://v1.syndication.nhschoices.nhs.uk';

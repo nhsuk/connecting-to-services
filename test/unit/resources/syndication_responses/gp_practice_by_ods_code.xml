@@ -2,7 +2,7 @@
 <Organisation xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/NHSChoices.Syndication.Resources.Orgs">
   <Link xmlns="http://schemas.datacontract.org/2004/07/NHSChoices.Syndication.Resources">
     <Text></Text>
-    <Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/odscode/H85021?apikey=bbccdd</Uri>
+    <Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/odscode/H85021?apikey=secret</Uri>
   </Link>
   <Address>
     <Line1>Chesser Surgery</Line1>
@@ -49,62 +49,62 @@
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Overview</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Services</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/services?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/services?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Staff</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/staff?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/staff?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Facilities</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/facilities?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/facilities?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Core Indicators</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/indicators/core?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/indicators/core?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Treatment Indicators</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/indicators/treatment?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/indicators/treatment?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Faq</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/faq?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/faq?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Performance</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/performance?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/performance?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>profile</d2p1:Class>
       <d2p1:Text>Contact</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/contact?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/contact?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>comments</d2p1:Class>
       <d2p1:Text>Comments Before</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/commentsbefore?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/commentsbefore?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>comments</d2p1:Class>
       <d2p1:Text>Comments Since</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/commentssince?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/commentssince?apikey=secret</d2p1:Uri>
     </d2p1:Link>
     <d2p1:Link>
       <d2p1:Class>comments</d2p1:Class>
       <d2p1:Text>All Comments</d2p1:Text>
-      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/comments?apikey=bbccdd</d2p1:Uri>
+      <d2p1:Uri>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/comments?apikey=secret</d2p1:Uri>
     </d2p1:Link>
   </ProfileLinks>
   <Ratings>
