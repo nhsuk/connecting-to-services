@@ -5,6 +5,7 @@ const gpMiddleware = require('../app/middleware/gp');
 router.get('/gpdetails/:gpId',
   gpMiddleware.getUrl,
   gpMiddleware.getDetails,
+  gpMiddleware.getOpeningTimes,
   gpMiddleware.render
 );
 

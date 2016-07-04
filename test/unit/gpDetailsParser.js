@@ -8,16 +8,16 @@ describe('Utilities', () => {
     it('should get GP details from syndication response', () => {
       const syndicationXml = getSampleResponse('gp_practice_by_ods_code');
       const gpDetails = syndicationParser(syndicationXml);
-      expect(gpDetails.Name).to.equal('A Ditri');
-      expect(gpDetails.Address).to.eql(
+      expect(gpDetails.name).to.equal('A Ditri');
+      expect(gpDetails.address).to.eql(
         {
-          Line1: 'Chesser Surgery',
-          Line2: '121 Wrythe Lane',
-          Line3: 'Carshalton',
-          Line4: 'Surrey',
-          Postcode: 'SM5 2RT',
+          line1: 'Chesser Surgery',
+          line2: '121 Wrythe Lane',
+          line3: 'Carshalton',
+          line4: 'Surrey',
+          postcode: 'SM5 2RT',
         });
-      expect(gpDetails.OverviewLink).to.equal('http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview?apikey=secret');
+      expect(gpDetails.overviewLink).to.equal('http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview.xml?apikey=secret');
     });
   });
 });

@@ -1,5 +1,12 @@
-const assert = require('chai').assert;
+// const util = require('util');
+const chai = require('chai');
+const expect = chai.expect;
+const nock = require('nock');
+const getSampleResponse = require('./getSampleResponse');
 const middleware = require('../../app/middleware/gp');
+
+const daysOfTheWeek =
+  ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 describe('Middleware', () => {
   describe('getUrl(), when URL is set in environment variable', () => {
@@ -23,9 +30,52 @@ describe('Middleware', () => {
 
       middleware.getUrl(fakeRequest, {}, () => {});
 
-      assert.equal(
-        fakeRequest.urlForGp,
-        'http://test/123456?apikey=secret');
+      expect(fakeRequest.urlForGp).to.equal('http://test/123456?apikey=secret');
+    });
+  });
+  describe('getOpeningTimes', () => {
+    it('should return populated opening times for the practice', (done) => {
+      const fakeRequest = {
+        gpDetails: { overviewLink: 'http://test/test' },
+      };
+      nock('http://test')
+        .get('/test')
+        .reply(200, getSampleResponse('gp_overview'));
+
+      middleware.getOpeningTimes(fakeRequest, {}, () => {
+        expect(fakeRequest.gpDetails.openingTimes.reception).to.be.an('object');
+        expect(fakeRequest.gpDetails.openingTimes.reception).to.have.keys(daysOfTheWeek);
+        expect(fakeRequest.gpDetails.openingTimes.surgery).to.be.an('object');
+        expect(fakeRequest.gpDetails.openingTimes.surgery).to.have.keys(daysOfTheWeek);
+        done();
+      });
+    });
+    it('should handle GP overview resource page not found', (done) => {
+      const fakeRequest = {
+        gpDetails: { overviewLink: 'http://test/test' },
+      };
+      nock('http://test')
+        .get('/test')
+        .reply(404);
+
+      middleware.getOpeningTimes(fakeRequest, {}, (err) => {
+        expect(err.message).to.equal('GP Opening Times Not Found');
+        expect(err.status).to.equal(404);
+        done();
+      });
+    });
+    it('should handle server error', (done) => {
+      const fakeRequest = {
+        gpDetails: { overviewLink: 'http://test/test' },
+      };
+      nock('http://test')
+        .get('/test')
+        .reply(500);
+
+      middleware.getOpeningTimes(fakeRequest, {}, (err) => {
+        expect(err).to.equal('Error: 500');
+        done();
+      });
     });
   });
 });

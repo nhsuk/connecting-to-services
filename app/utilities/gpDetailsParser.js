@@ -20,15 +20,16 @@ const parseGpDetailsFromSyndicationXml = (xml) => {
       data: result,
     }).value;
     gpDetails = {
-      Name: result.Organisation.Name,
-      Address: {
-        Line1: result.Organisation.Address.Line1,
-        Line2: result.Organisation.Address.Line2,
-        Line3: result.Organisation.Address.Line3,
-        Line4: result.Organisation.Address.Line4,
-        Postcode: result.Organisation.Address.Postcode,
+      name: result.Organisation.Name,
+      address: {
+        line1: result.Organisation.Address.Line1,
+        line2: result.Organisation.Address.Line2,
+        line3: result.Organisation.Address.Line3,
+        line4: result.Organisation.Address.Line4,
+        postcode: result.Organisation.Address.Postcode,
       },
-      OverviewLink: overviewLink,
+      // TODO: find a better method which doesn't rely on a string match
+      overviewLink: overviewLink.replace('overview', 'overview.xml'),
     };
   });
   return gpDetails;
