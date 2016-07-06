@@ -1,10 +1,6 @@
 const xml2js = require('xml2js');
 const jsonQuery = require('json-query');
-
-function stripPrefix(name) {
-  const prefixMatch = new RegExp(/(?!xmlns)^.*:/);
-  return name.replace(prefixMatch, '');
-}
+const stripPrefix = require('./processors').stripPrefix;
 
 const parseGpDetailsFromSyndicationXml = (xml) => {
   let gpDetails;
