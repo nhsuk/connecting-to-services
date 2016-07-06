@@ -2,9 +2,7 @@ const util = require('util');
 const http = require('http');
 const gpDetailsParser = require('../utilities/gpDetailsParser');
 const gpOpeningTimesParser = require('../utilities/gpOpeningTimesParser');
-const daysOfTheWeek =
-  ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-
+const daysOfTheWeek = require('../utilities/constants').daysOfTheWeek;
 
 function getDetails(req, res, next) {
   http.get(req.urlForGp, (response) => {

@@ -2,9 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const gpOpeningTimesParser = require('../../app/utilities/gpOpeningTimesParser');
 const getSampleResponse = require('./getSampleResponse');
-
-const daysOfTheWeek =
-  ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+const daysOfTheWeek = require('../../app/utilities/constants').daysOfTheWeek;
 
 describe('Utilities', () => {
   describe('gpOpeningTimesParser', () => {

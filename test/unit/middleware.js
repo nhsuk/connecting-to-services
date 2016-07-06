@@ -4,9 +4,7 @@ const expect = chai.expect;
 const nock = require('nock');
 const getSampleResponse = require('./getSampleResponse');
 const middleware = require('../../app/middleware/gp');
-
-const daysOfTheWeek =
-  ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+const daysOfTheWeek = require('../../app/utilities/constants').daysOfTheWeek;
 
 describe('Middleware', () => {
   describe('getUrl(), when URL is set in environment variable', () => {
