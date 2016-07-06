@@ -31,11 +31,60 @@ describe('Middleware', () => {
       expect(fakeRequest.urlForGp).to.equal('http://test/123456?apikey=secret');
     });
   });
+  describe('getGpDetails', () => {
+    const fakeRequest = {
+      urlForGp: 'http://test/test',
+    };
+    it('should return populated gp details for the practice', (done) => {
+      nock('http://test')
+        .get('/test')
+        .reply(200, getSampleResponse('gp_practice_by_ods_code'));
+
+      middleware.getDetails(fakeRequest, {}, () => {
+        expect(fakeRequest.gpDetails).to.be.an('object');
+        expect(fakeRequest.gpDetails).to.have.keys(['name', 'address', 'overviewLink']);
+        expect(fakeRequest.gpDetails.address).to.have.keys(
+          ['line1', 'line2', 'line3', 'line4', 'postcode']);
+        done();
+      });
+    });
+    it('should handle GP overview resource page not found', (done) => {
+      nock('http://test')
+        .get('/test')
+        .reply(404);
+
+      middleware.getDetails(fakeRequest, {}, (err) => {
+        expect(err.message).to.equal('GP Not Found');
+        expect(err.status).to.equal(404);
+        done();
+      });
+    });
+    it('should handle server error', (done) => {
+      nock('http://test')
+        .get('/test')
+        .reply(500);
+
+      middleware.getDetails(fakeRequest, {}, (err) => {
+        expect(err).to.equal('Error: 500');
+        done();
+      });
+    });
+    it('should handle http error', (done) => {
+      nock('http://test')
+        .get('/test')
+        .replyWithError('Bad HTTP stuff happened');
+
+      middleware.getDetails(fakeRequest, {}, (err) => {
+        expect(err.message).to.equal('Bad HTTP stuff happened');
+        done();
+      });
+    });
+  });
   describe('getOpeningTimes', () => {
+    const fakeRequest = {
+      gpDetails: { overviewLink: 'http://test/test' },
+    };
     it('should return populated opening times for the practice', (done) => {
-      const fakeRequest = {
-        gpDetails: { overviewLink: 'http://test/test' },
-      };
       nock('http://test')
         .get('/test')
         .reply(200, getSampleResponse('gp_overview'));
@@ -49,9 +98,6 @@ describe('Middleware', () => {
       });
     });
     it('should handle GP overview resource page not found', (done) => {
-      const fakeRequest = {
-        gpDetails: { overviewLink: 'http://test/test' },
-      };
       nock('http://test')
         .get('/test')
         .reply(404);
@@ -63,15 +109,22 @@ describe('Middleware', () => {
       });
     });
     it('should handle server error', (done) => {
-      const fakeRequest = {
-        gpDetails: { overviewLink: 'http://test/test' },
-      };
       nock('http://test')
         .get('/test')
         .reply(500);
 
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
         expect(err).to.equal('Error: 500');
+        done();
+      });
+    });
+    it('should handle http error', (done) => {
+      nock('http://test')
+        .get('/test')
+        .replyWithError('Bad HTTP stuff happened');
+
+      middleware.getOpeningTimes(fakeRequest, {}, (err) => {
+        expect(err.message).to.equal('Bad HTTP stuff happened');
         done();
       });
     });
