@@ -1,3 +1,6 @@
+// eslint - disabled no-param-reassign since assigning to request/response
+// is recommended best practice by Express
+
 const util = require('util');
 const http = require('http');
 const gpDetailsParser = require('../utilities/gpDetailsParser');
@@ -13,8 +16,7 @@ function getDetails(req, res, next) {
 
     response.on('end', () => {
       if (response.statusCode === 200) {
-        /* Disabled since assigning to res is recommended best practice my Express */
-        /* eslint-disable no-param-reassign */
+        // eslint-disable-next-line no-param-reassign
         req.gpDetails = gpDetailsParser(syndicationXml);
         next();
       } else if (response.statusCode === 404) {
@@ -40,13 +42,11 @@ function getOpeningTimes(req, res, next) {
 
     response.on('end', () => {
       if (response.statusCode === 200) {
-        /* Disabled since assigning to res is recommended best practice my Express */
-        /* eslint-disable no-param-reassign */
+        // eslint-disable-next-line no-param-reassign
         req.gpDetails.openingTimes = {
           reception: gpOpeningTimesParser('reception', syndicationXml),
           surgery: gpOpeningTimesParser('surgery', syndicationXml),
         };
-        // console.log(util.inspect(req.gpDetails, false, null));
         next();
       } else if (response.statusCode === 404) {
         const err = new Error('GP Opening Times Not Found');
@@ -74,6 +74,7 @@ function getUrl(req, res, next) {
   const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
   const syndicationUrl = process.env.NHSCHOICES_SYNDICATION_URL;
   const requestUrl = `${syndicationUrl}${syndicationApiKey}`;
+  // eslint-disable-next-line no-param-reassign
   req.urlForGp = util.format(requestUrl, gpId);
   next();
 }

@@ -11,7 +11,6 @@ const parseGpDetailsFromSyndicationXml = (xml) => {
   };
   const xmlParser = new xml2js.Parser(options);
   xmlParser.parseString(xml, (err, result) => {
-    // console.log(util.inspect(result, false, null));
     const overviewLink = jsonQuery('Organisation.ProfileLinks.Link[Text=Overview].Uri', {
       data: result,
     }).value;

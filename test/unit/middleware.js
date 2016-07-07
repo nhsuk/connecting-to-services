@@ -1,4 +1,3 @@
-// const util = require('util');
 const chai = require('chai');
 const expect = chai.expect;
 const nock = require('nock');
@@ -41,7 +40,8 @@ describe('Middleware', () => {
         .reply(200, getSampleResponse('gp_practice_by_ods_code'));
 
       middleware.getDetails(fakeRequest, {}, () => {
-        expect(fakeRequest.gpDetails).to.be.an('object');
+        expect(typeof(fakeRequest.gpDetails)).to.not.equal('undefined');
+        expect(typeof(fakeRequest.gpDetails)).to.not.equal(null);
         expect(fakeRequest.gpDetails).to.have.keys(['name', 'address', 'overviewLink']);
         expect(fakeRequest.gpDetails.address).to.have.keys(
           ['line1', 'line2', 'line3', 'line4', 'postcode']);
@@ -72,10 +72,10 @@ describe('Middleware', () => {
     it('should handle http error', (done) => {
       nock('http://test')
         .get('/test')
-        .replyWithError('Bad HTTP stuff happened');
+        .replyWithError('Error');
 
       middleware.getDetails(fakeRequest, {}, (err) => {
-        expect(err.message).to.equal('Bad HTTP stuff happened');
+        expect(err.message).to.equal('Error');
         done();
       });
     });
@@ -90,10 +90,14 @@ describe('Middleware', () => {
         .reply(200, getSampleResponse('gp_overview'));
 
       middleware.getOpeningTimes(fakeRequest, {}, () => {
-        expect(fakeRequest.gpDetails.openingTimes.reception).to.be.an('object');
-        expect(fakeRequest.gpDetails.openingTimes.reception).to.have.keys(daysOfTheWeek);
-        expect(fakeRequest.gpDetails.openingTimes.surgery).to.be.an('object');
-        expect(fakeRequest.gpDetails.openingTimes.surgery).to.have.keys(daysOfTheWeek);
+        const receptionOpeningTimes = fakeRequest.gpDetails.openingTimes.reception;
+        const surgeryOpeningTimes = fakeRequest.gpDetails.openingTimes.surgery;
+        expect(typeof(receptionOpeningTimes)).to.not.equal('undefined');
+        expect(receptionOpeningTimes).to.not.equal(null);
+        expect(receptionOpeningTimes).to.have.keys(daysOfTheWeek);
+        expect(typeof(surgeryOpeningTimes)).to.not.equal('undefined');
+        expect(surgeryOpeningTimes).to.not.equal(null);
+        expect(surgeryOpeningTimes).to.have.keys(daysOfTheWeek);
         done();
       });
     });
@@ -121,10 +125,10 @@ describe('Middleware', () => {
     it('should handle http error', (done) => {
       nock('http://test')
         .get('/test')
-        .replyWithError('Bad HTTP stuff happened');
+        .replyWithError('Error');
 
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
-        expect(err.message).to.equal('Bad HTTP stuff happened');
+        expect(err.message).to.equal('Error');
         done();
       });
     });
