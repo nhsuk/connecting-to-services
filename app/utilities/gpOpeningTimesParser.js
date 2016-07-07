@@ -1,6 +1,6 @@
 const xml2js = require('xml2js');
 const jsonQuery = require('json-query');
-const stripPrefix = require('./processors').stripPrefix;
+const stripPrefix = require('xml2js/lib/processors').stripPrefix;
 
 const parseGpOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
   const gpOpeningTimes = {};
