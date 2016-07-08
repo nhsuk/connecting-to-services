@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">NHS Choices - A Ditri - Overview</title>
+  <id>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview</id>
+  <rights type="text">© Crown Copyright 2009</rights>
+  <updated>2014-03-26T12:56:43Z</updated>
+  <category term="Overview" />
+  <logo>http://www.nhs.uk/nhscwebservices/documents/logo1.jpg</logo>
+  <author>
+    <name>NHS Choices</name>
+    <uri>http://www.nhs.uk</uri>
+    <email>webservices@nhschoices.nhs.uk</email>
+  </author>
+  <link rel="self" type="application/xml" title="NHS Choices - A Ditri - Overview" href="http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview?apikey=bbccdd" />
+  <link rel="alternate" title="NHS Choices - A Ditri - Overview" href="http://www.nhs.uk/Services/GP/Overview/DefaultView.aspx?id=38444" />
+  <tracking xmlns="http://syndication.nhschoices.nhs.uk/services">&lt;img style="border: 0; width: 1px; height: 1px;" alt="" src="http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=/organisations%2fgppractices%2f14500%2foverview&amp;amp;wt.js=no&amp;amp;wt.cg_n=syndication"/&gt;</tracking>
+  <complete xmlns="http://purl.org/syndication/history/1.0" />
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview</id>
+    <title type="text">A Ditri - Overview</title>
+    <published>2014-03-26T12:56:43Z</published>
+    <updated>2014-03-26T12:56:43Z</updated>
+    <link rel="self" title="A Ditri - Overview" href="http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/14500/overview?apikey=bbccdd" />
+    <link rel="alternate" title="A Ditri - Overview" href="http://www.nhs.uk/Services/GP/Overview/DefaultView.aspx?id=38444" />
+    <content type="application/xml">
+      <s:overview xmlns:s="http://syndication.nhschoices.nhs.uk/services">
+        <s:name indexLetter="D">A Ditri</s:name>
+        <s:odsCode>H85021</s:odsCode>
+        <s:parentOrganisation>
+          <s:name>NHS Sutton CCG</s:name>
+          <s:uri>http://v1.syndication.nhschoices.nhs.uk/organisations/clinicalcommissioninggroups/462933?apikey=bbccdd</s:uri>
+        </s:parentOrganisation>
+        <s:address>
+          <s:addressLine>Chesser Surgery</s:addressLine>
+          <s:addressLine>121 Wrythe Lane</s:addressLine>
+          <s:addressLine>Carshalton</s:addressLine>
+          <s:addressLine>Surrey</s:addressLine>
+          <s:postcode>SM5 2RT</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>020 8644 2727</s:telephone>
+          <s:fax>020 8644 6267</s:fax>
+        </s:contact>
+        <s:website>www.chesser.biz</s:website>
+        <s:geographicCoordinates>
+          <s:longitude>-0.17728853225708</s:longitude>
+          <s:latitude>51.374927520752</s:latitude>
+        </s:geographicCoordinates>
+        <s:newPatients accepting="True">
+          <s:statusText>We are currently accepting new patients</s:statusText>
+          <s:registrationText>Please register during reception hours</s:registrationText>
+          <s:registrationFormUrl>http://www.nhs.uk/Servicedirectories/Documents/GMS1.pdf</s:registrationFormUrl>
+          <s:registrationFormText>Download registration form</s:registrationFormText>
+          <s:faqUrl>http://www.nhs.uk/Services/GP/PatientInformation/DefaultView.aspx?id=38444</s:faqUrl>
+          <s:faqText>More patient information</s:faqText>
+          <s:patientAdvice>&lt;p&gt;Need advice on how to choose a GP?&lt;br/&gt;&lt;a href="http://www.nhs.uk/choiceintheNHS/Yourchoices/GPchoice/Documents/rcgp_iyp_full_booklet_web_version.pdf"&gt;
+  View a guide by the Royal College of GPs&lt;/a&gt;&lt;/p&gt;</s:patientAdvice>
+        </s:newPatients>
+        <s:openingTimes>
+          <s:timesSessionTypes>
+            <s:timesSessionType sessionType="reception">
+              <s:daysOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Sunday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>Closed</s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Monday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Tuesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Wednesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Thursday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Friday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Saturday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>09:00</s:fromTime>
+                      <s:toTime>11:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+              </s:daysOfWeek>
+            </s:timesSessionType>
+            <s:timesSessionType sessionType="surgery">
+              <s:daysOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Sunday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>Closed</s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Monday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Tuesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:30</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Wednesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:30</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Thursday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:30</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Friday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:30</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Saturday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>09:00</s:fromTime>
+                      <s:toTime>11:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+              </s:daysOfWeek>
+            </s:timesSessionType>
+          </s:timesSessionTypes>
+          <s:outOfHours>&lt;p&gt;ring 111&lt;/p&gt;</s:outOfHours>
+          <s:lastVerifiedOn>2014-01-27 15:30:00Z</s:lastVerifiedOn>
+        </s:openingTimes>
+        <s:overviewLastUpdated>2014-03-26 12:56:43Z</s:overviewLastUpdated>
+        <s:doctors>
+          <s:doctor>Dr Anthony Ditri</s:doctor>
+          <s:doctor>Dr Jonathan Michael R Cockbain</s:doctor>
+          <s:doctor>Dr Irene Healy</s:doctor>
+          <s:doctor>Dr Amila Jahic</s:doctor>
+        </s:doctors>
+        <s:gpcounts>
+          <s:gpcount type="male">2</s:gpcount>
+          <s:gpcount type="female">2</s:gpcount>
+        </s:gpcounts>
+        <s:isEpsEnabled>true</s:isEpsEnabled>
+        <s:articles>
+          <s:article>
+            <s:articleDescription>&lt;p&gt; If you wish to view more information about this practice, including additional outcome standards, please go to the &lt;a href='http://www.myhealth.london.nhs.uk/lon/5M7/gp/H85021'&gt;myhealthlondon website&lt;/a&gt;&lt;/p&gt;</s:articleDescription>
+            <s:articleImageUrl>http://www.nhs.uk/Services/UserControls/UploadHandlers/MediaServerHandler.ashx?id=5065</s:articleImageUrl>
+            <s:articleModifiedDate>28/06/2012 04:03:00</s:articleModifiedDate>
+          </s:article>
+        </s:articles>
+        <s:overviewKeyFacts>
+          <s:keyFacts>
+            <s:keyFact>
+              <s:question>Registered list size</s:question>
+              <s:value>6757</s:value>
+              <s:text>patients</s:text>
+            </s:keyFact>
+            <s:keyFact>
+              <s:question>Friends and Family test score - GP</s:question>
+              <s:value>92%</s:value>
+              <s:text>Patients recommend this practice. 38 responses.</s:text>
+            </s:keyFact>
+          </s:keyFacts>
+          <s:moreInformation>
+            <s:url>http://www.nhs.uk/Scorecard/Pages/GpFacts.aspx</s:url>
+            <s:text>More information about this data</s:text>
+          </s:moreInformation>
+          <s:performance>
+            <s:url>http://www.nhs.uk/Services/GP/Performance/DefaultView.aspx?id=38444</s:url>
+            <s:text>More on how we perform</s:text>
+          </s:performance>
+        </s:overviewKeyFacts>
+      </s:overview>
+    </content>
+  </entry>
+</feed>

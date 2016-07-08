@@ -2,10 +2,37 @@
 
 {% block content %}
   <h1>{{title}}</h1>
-  <h2>{{gpDetails.Name}}</h2>
-  <p>{{gpDetails.Address.Line1}}</p>
-  <p>{{gpDetails.Address.Line2}}</p>
-  <p>{{gpDetails.Address.Line3}}</p>
-  <p>{{gpDetails.Address.Line4}}</p>
-  <pre>{{gpDetails.Address.Postcode}}</pre>
+  <h2>{{gpDetails.name}}</h2>
+  <p>{{gpDetails.address.line1}}</p>
+  <p>{{gpDetails.address.line2}}</p>
+  <p>{{gpDetails.address.line3}}</p>
+  <p>{{gpDetails.address.line4}}</p>
+  <pre>{{gpDetails.address.postcode}}</pre>
+  <h2>Opening Times</h2>
+  <h3>Reception</h3>
+  {% for day in daysOfTheWeek %}
+    <h4>{{day | capitalize }}</h4>
+    <ul>
+      {% for time in gpDetails.openingTimes.reception[day].times %}
+        {% if time.fromTime %}
+	  <li>{{time.fromTime}} to {{time.toTime}}</li>
+        {% else %}
+	  <li>{{time}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endfor %}
+  <h3>Surgery</h3>
+  {% for day in daysOfTheWeek %}
+    <h4>{{day | capitalize }}</h4>
+    <ul>
+      {% for time in gpDetails.openingTimes.surgery[day].times %}
+        {% if time.fromTime %}
+	  <li>{{time.fromTime}} to {{time.toTime}}</li>
+        {% else %}
+	  <li>{{time}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endfor %}
 {% endblock %}

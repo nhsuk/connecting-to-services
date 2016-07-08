@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">NHS Choices - Beech House Surgery - Overview</title>
+  <id>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/3955/overview</id>
+  <rights type="text">© Crown Copyright 2009</rights>
+  <updated>2016-03-24T13:13:12Z</updated>
+  <category term="Overview" />
+  <logo>http://www.nhs.uk/nhscwebservices/documents/logo1.jpg</logo>
+  <author>
+    <name>NHS Choices</name>
+    <uri>http://www.nhs.uk</uri>
+    <email>webservices@nhschoices.nhs.uk</email>
+  </author>
+  <link rel="self" type="application/xml" title="NHS Choices - Beech House Surgery - Overview" href="http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/3955/overview?apikey=bbccdd" />
+  <link rel="alternate" title="NHS Choices - Beech House Surgery - Overview" href="http://www.nhs.uk/Services/GP/Overview/DefaultView.aspx?id=35956" />
+  <tracking xmlns="http://syndication.nhschoices.nhs.uk/services">&lt;img style="border: 0; width: 1px; height: 1px;" alt="" src="http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=/organisations%2fgppractices%2f3955%2foverview&amp;amp;wt.js=no&amp;amp;wt.cg_n=syndication"/&gt;</tracking>
+  <complete xmlns="http://purl.org/syndication/history/1.0" />
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/3955/overview</id>
+    <title type="text">Beech House Surgery - Overview</title>
+    <published>2016-03-24T13:13:12Z</published>
+    <updated>2016-03-24T13:13:12Z</updated>
+    <link rel="self" title="Beech House Surgery - Overview" href="http://v1.syndication.nhschoices.nhs.uk/organisations/gppractices/3955/overview?apikey=bbccdd" />
+    <link rel="alternate" title="Beech House Surgery - Overview" href="http://www.nhs.uk/Services/GP/Overview/DefaultView.aspx?id=35956" />
+    <content type="application/xml">
+      <s:overview xmlns:s="http://syndication.nhschoices.nhs.uk/services">
+        <s:name indexLetter="B">Beech House Surgery</s:name>
+        <s:odsCode>B82069</s:odsCode>
+        <s:parentOrganisation>
+          <s:name>NHS Harrogate And Rural District CCG</s:name>
+          <s:uri>http://v1.syndication.nhschoices.nhs.uk/organisations/clinicalcommissioninggroups/462902?apikey=bbccdd</s:uri>
+        </s:parentOrganisation>
+        <s:photo>http://www.nhs.uk/Services/UserControls/UploadHandlers/MediaServerHandler.ashx?id=2932</s:photo>
+        <s:address>
+          <s:addressLine>1 Ash Tree Road</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG5 0UB</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 542562</s:telephone>
+          <s:fax>01423 864450</s:fax>
+          <s:email>beechhousesurgery@nhs.net</s:email>
+        </s:contact>
+        <s:website>http://www.beechhousesurgery.com</s:website>
+        <s:geographicCoordinates>
+          <s:longitude>-1.46587657928467</s:longitude>
+          <s:latitude>54.0108375549316</s:latitude>
+        </s:geographicCoordinates>
+        <s:newPatients accepting="True">
+          <s:statusText>We are currently accepting new patients</s:statusText>
+          <s:registrationText>Please register during reception hours</s:registrationText>
+          <s:registrationFormUrl>http://www.nhs.uk/Services/UserControls/UploadHandlers/MediaServerHandler.ashx?id=113576&amp;t=636029711168043285</s:registrationFormUrl>
+          <s:registrationFormText>Download registration form</s:registrationFormText>
+          <s:faqUrl>http://www.nhs.uk/Services/GP/PatientInformation/DefaultView.aspx?id=35956</s:faqUrl>
+          <s:faqText>More patient information</s:faqText>
+          <s:patientAdvice>&lt;p&gt;Need advice on how to choose a GP?&lt;br/&gt;&lt;a href="http://www.nhs.uk/choiceintheNHS/Yourchoices/GPchoice/Documents/rcgp_iyp_full_booklet_web_version.pdf"&gt;
+  View a guide by the Royal College of GPs&lt;/a&gt;&lt;/p&gt;</s:patientAdvice>
+        </s:newPatients>
+        <s:openingTimes>
+          <s:timesSessionTypes>
+            <s:timesSessionType sessionType="reception">
+              <s:daysOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Sunday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>Closed</s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Monday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>13:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Tuesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>13:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Wednesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>13:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Thursday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>13:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Friday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>13:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Saturday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>Closed</s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+              </s:daysOfWeek>
+            </s:timesSessionType>
+            <s:timesSessionType sessionType="surgery">
+              <s:daysOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Sunday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>Closed</s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Monday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>14:00</s:fromTime>
+                      <s:toTime>19:30</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Tuesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>14:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Wednesday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>14:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Thursday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>14:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Friday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>
+                      <s:fromTime>08:00</s:fromTime>
+                      <s:toTime>13:00</s:toTime>
+                    </s:timesSession>
+                    <s:timesSession>
+                      <s:fromTime>14:00</s:fromTime>
+                      <s:toTime>18:00</s:toTime>
+                    </s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+                <s:dayOfWeek>
+                  <s:dayName>Saturday</s:dayName>
+                  <s:timesSessions>
+                    <s:timesSession>Closed</s:timesSession>
+                  </s:timesSessions>
+                </s:dayOfWeek>
+              </s:daysOfWeek>
+            </s:timesSessionType>
+            <s:timesSessionType sessionType="additional">
+              <s:additionalDay>
+                <s:date>2013-12-25</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2013-12-26</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2014-01-01</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2014-04-18</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2014-04-21</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2014-05-05</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2014-05-26</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+              <s:additionalDay>
+                <s:date>2014-08-25</s:date>
+                <s:timesSessions>
+                  <s:timesSession>Closed</s:timesSession>
+                </s:timesSessions>
+              </s:additionalDay>
+            </s:timesSessionType>
+          </s:timesSessionTypes>
+          <s:outOfHours>&lt;p&gt;Please call NHS111 if you feel you need to consult a doctor when the surgery is closed. If you have a medical emergency dial '999'.&lt;/p&gt;</s:outOfHours>
+          <s:additionalInfo>Our evening appointment times - extending to 7:15pm - are held on Mondays &amp; Thursdays. In the summer we open one Saturday morning per month for Patients who are unable to attend normal surgery time appointments due to work commitments.</s:additionalInfo>
+          <s:lastVerifiedOn>2016-03-24 13:11:08Z</s:lastVerifiedOn>
+        </s:openingTimes>
+        <s:overviewLastUpdated>2016-03-24 13:13:12Z</s:overviewLastUpdated>
+        <s:facilities>All surgery facilities are on one level including our car park allowing excellent disabled access.
+We have a large private car park.</s:facilities>
+        <s:doctors>
+          <s:doctor>Dr CHARLOTTE JONES</s:doctor>
+          <s:doctor>Dr REBECCA CURTIS</s:doctor>
+          <s:doctor>Dr ANTHONY KEOGH</s:doctor>
+          <s:doctor>Dr CLAIRE KEENLESIDE</s:doctor>
+          <s:doctor>Dr AMAL RAMDEEHUL</s:doctor>
+          <s:doctor>Dr IAN MARFELL</s:doctor>
+        </s:doctors>
+        <s:gpcounts>
+          <s:gpcount type="male">3</s:gpcount>
+          <s:gpcount type="female">3</s:gpcount>
+        </s:gpcounts>
+        <s:isEpsEnabled>true</s:isEpsEnabled>
+        <s:articles>
+          <s:article>
+            <s:articleTitle>Practice Leaflet</s:articleTitle>
+            <s:articleDescription>&lt;p&gt;Our Practice Leaflet summarises our services&lt;/p&gt;</s:articleDescription>
+            <s:articleassociatedDocument>
+              <s:title>BH Practice Leaflet March 2016.pdf</s:title>
+              <s:url>http://www.nhs.uk/Services/UserControls/UploadHandlers/MediaServerHandler.ashx?id=31051</s:url>
+              <s:mimeType>application/pdf</s:mimeType>
+              <s:size>254.65 KB</s:size>
+            </s:articleassociatedDocument>
+            <s:articleModifiedDate>09/12/2013 09:04:54</s:articleModifiedDate>
+          </s:article>
+        </s:articles>
+        <s:overviewKeyFacts>
+          <s:keyFacts>
+            <s:keyFact>
+              <s:question>Registered list size</s:question>
+              <s:value>7636</s:value>
+              <s:text>patients</s:text>
+            </s:keyFact>
+            <s:keyFact>
+              <s:question>Friends and Family test score - GP</s:question>
+              <s:text>Patients recommend this practice. [Value2] responses.</s:text>
+            </s:keyFact>
+          </s:keyFacts>
+          <s:moreInformation>
+            <s:url>http://www.nhs.uk/Scorecard/Pages/GpFacts.aspx</s:url>
+            <s:text>More information about this data</s:text>
+          </s:moreInformation>
+          <s:performance>
+            <s:url>http://www.nhs.uk/Services/GP/Performance/DefaultView.aspx?id=35956</s:url>
+            <s:text>More on how we perform</s:text>
+          </s:performance>
+        </s:overviewKeyFacts>
+      </s:overview>
+    </content>
+  </entry>
+</feed>
