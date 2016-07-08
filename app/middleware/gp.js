@@ -2,12 +2,16 @@
 // is recommended best practice by Express
 
 const util = require('util');
+const assert = require('assert');
 const http = require('http');
 const gpDetailsParser = require('../utilities/gpDetailsParser');
 const gpOpeningTimesParser = require('../utilities/gpOpeningTimesParser');
 const daysOfTheWeek = require('../utilities/constants').daysOfTheWeek;
+const validUrl = require('valid-url');
 
 function getDetails(req, res, next) {
+  assert.ok(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
+
   http.get(req.urlForGp, (response) => {
     let syndicationXml = '';
     response.on('data', (chunk) => {
