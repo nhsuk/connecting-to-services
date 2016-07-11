@@ -1,5 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
+const assert = require('assert');
 const nock = require('nock');
 const getSampleResponse = require('./getSampleResponse');
 const middleware = require('../../app/middleware/gp');
@@ -31,52 +32,63 @@ describe('Middleware', () => {
     });
   });
   describe('getGpDetails', () => {
-    const fakeRequest = {
-      urlForGp: 'http://test/test',
-    };
-    it('should return populated gp details for the practice', (done) => {
-      nock('http://test')
-        .get('/test')
-        .reply(200, getSampleResponse('gp_practice_by_ods_code'));
-
-      middleware.getDetails(fakeRequest, {}, () => {
-        expect(typeof(fakeRequest.gpDetails)).to.not.equal('undefined');
-        expect(typeof(fakeRequest.gpDetails)).to.not.equal(null);
-        expect(fakeRequest.gpDetails).to.have.keys(['name', 'address', 'overviewLink']);
-        expect(fakeRequest.gpDetails.address).to.have.keys(
-          ['line1', 'line2', 'line3', 'line4', 'postcode']);
+    describe('Invalid URL', () => {
+      it('should disallow empty URLs', (done) => {
+        ['', null, undefined].forEach(
+          (url) => expect(() => { middleware.getDetails({ urlForGp: url }, {}, () => {}); })
+          .to.throw(assert.AssertionError)
+          .with.property('message', `Invalid URL: \'${url}\'`));
         done();
       });
     });
-    it('should handle GP overview resource page not found', (done) => {
-      nock('http://test')
-        .get('/test')
-        .reply(404);
+    describe('Valid URL', () => {
+      const fakeRequest = {
+        urlForGp: 'http://test/test',
+      };
+      it('should return populated gp details for the practice', (done) => {
+        nock('http://test')
+          .get('/test')
+          .reply(200, getSampleResponse('gp_practice_by_ods_code'));
 
-      middleware.getDetails(fakeRequest, {}, (err) => {
-        expect(err.message).to.equal('GP Not Found');
-        expect(err.status).to.equal(404);
-        done();
+        middleware.getDetails(fakeRequest, {}, () => {
+          expect(typeof(fakeRequest.gpDetails)).to.not.equal('undefined');
+          expect(typeof(fakeRequest.gpDetails)).to.not.equal(null);
+          expect(fakeRequest.gpDetails).to.have.keys(['name', 'address', 'overviewLink']);
+          expect(fakeRequest.gpDetails.address).to.have.keys(
+            ['line1', 'line2', 'line3', 'line4', 'postcode']);
+          done();
+        });
       });
-    });
-    it('should handle server error', (done) => {
-      nock('http://test')
-        .get('/test')
-        .reply(500);
+      it('should handle GP overview resource page not found', (done) => {
+        nock('http://test')
+          .get('/test')
+          .reply(404);
 
-      middleware.getDetails(fakeRequest, {}, (err) => {
-        expect(err).to.equal('Error: 500');
-        done();
+        middleware.getDetails(fakeRequest, {}, (err) => {
+          expect(err.message).to.equal('GP Not Found');
+          expect(err.status).to.equal(404);
+          done();
+        });
       });
-    });
-    it('should handle http error', (done) => {
-      nock('http://test')
-        .get('/test')
-        .replyWithError('Error');
+      it('should handle server error', (done) => {
+        nock('http://test')
+          .get('/test')
+          .reply(500);
 
-      middleware.getDetails(fakeRequest, {}, (err) => {
-        expect(err.message).to.equal('Error');
-        done();
+        middleware.getDetails(fakeRequest, {}, (err) => {
+          expect(err).to.equal('Error: 500');
+          done();
+        });
+      });
+      it('should handle http error', (done) => {
+        nock('http://test')
+          .get('/test')
+          .replyWithError('Error');
+
+        middleware.getDetails(fakeRequest, {}, (err) => {
+          expect(err.message).to.equal('Error');
+          done();
+        });
       });
     });
   });
