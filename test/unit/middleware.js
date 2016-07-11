@@ -2,9 +2,9 @@ const chai = require('chai');
 const expect = chai.expect;
 const assert = require('assert');
 const nock = require('nock');
-const getSampleResponse = require('./getSampleResponse');
+const getSampleResponse = require('./lib/getSampleResponse');
 const middleware = require('../../app/middleware/gp');
-const daysOfTheWeek = require('../../app/utilities/constants').daysOfTheWeek;
+const daysOfTheWeek = require('../../app/lib/constants').daysOfTheWeek;
 
 describe('Middleware', () => {
   describe('getUrl(), when URL is set in environment variable', () => {
