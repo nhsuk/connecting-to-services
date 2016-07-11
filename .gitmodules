@@ -1,0 +1,3 @@
+[submodule "env"]
+	path = env
+	url = https://gitlab.com/st3v3nhunt/env.git

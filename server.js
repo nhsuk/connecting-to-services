@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const requireEnv = require('require-environment-variables');
 
 module.exports = (() => {
-  dotenv.config();
+  dotenv.config({ path: './env/.env' });
   requireEnv(['NHSCHOICES_SYNDICATION_APIKEY']);
   requireEnv(['NHSCHOICES_SYNDICATION_URL']);
   configExpress(app, config);

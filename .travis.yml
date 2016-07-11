@@ -9,3 +9,6 @@ script:
   - npm run coveralls
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+# disable submodule updating
+git:
+  submodules: false
