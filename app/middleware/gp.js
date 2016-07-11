@@ -4,9 +4,9 @@
 const util = require('util');
 const assert = require('assert');
 const http = require('http');
-const gpDetailsParser = require('../utilities/gpDetailsParser');
-const gpOpeningTimesParser = require('../utilities/gpOpeningTimesParser');
-const daysOfTheWeek = require('../utilities/constants').daysOfTheWeek;
+const gpDetailsParser = require('../lib/gpDetailsParser');
+const gpOpeningTimesParser = require('../lib/gpOpeningTimesParser');
+const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const validUrl = require('valid-url');
 
 function getDetails(req, res, next) {

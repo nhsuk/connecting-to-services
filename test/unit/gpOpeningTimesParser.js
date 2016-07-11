@@ -1,8 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
-const gpOpeningTimesParser = require('../../app/utilities/gpOpeningTimesParser');
-const getSampleResponse = require('./getSampleResponse');
-const daysOfTheWeek = require('../../app/utilities/constants').daysOfTheWeek;
+const gpOpeningTimesParser = require('../../app/lib/gpOpeningTimesParser');
+const getSampleResponse = require('./lib/getSampleResponse');
+const daysOfTheWeek = require('../../app/lib/constants').daysOfTheWeek;
 
 describe('Utilities', () => {
   describe('gpOpeningTimesParser', () => {

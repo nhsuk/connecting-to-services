@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
-const syndicationParser = require('../../app/utilities/gpDetailsParser');
-const getSampleResponse = require('./getSampleResponse');
+const syndicationParser = require('../../app/lib/gpDetailsParser');
+const getSampleResponse = require('./lib/getSampleResponse');
 
 describe('Utilities', () => {
   describe('gpDetailsParser', () => {

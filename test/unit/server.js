@@ -6,7 +6,7 @@ const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const nock = require('nock');
 const app = require('../../server.js');
-const getSampleResponse = require('./getSampleResponse');
+const getSampleResponse = require('./lib/getSampleResponse');
 
 chai.use(chaiHttp);
 
