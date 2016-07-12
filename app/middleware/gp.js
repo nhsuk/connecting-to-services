@@ -83,7 +83,14 @@ function getUrl(req, res, next) {
   next();
 }
 
+function upperCaseGpId(req, res, next) {
+  // eslint-disable-next-line no-param-reassign
+  req.params.gpId = req.params.gpId.toUpperCase();
+  next();
+}
+
 module.exports = {
+  upperCaseGpId,
   getUrl,
   getDetails,
   getOpeningTimes,
