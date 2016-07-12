@@ -7,7 +7,7 @@ const Verror = require('verror');
 const parseGpDetailsFromSyndicationXml = (xml) => {
   assert.ok(xml, 'parameter \'xml\' undefined/empty');
   assert.equal(typeof(xml),
-    'string', 'argument \'xml\' must be a string');
+    'string', 'parameter \'xml\' must be a string');
   let gpDetails;
   const options = {
     tagNameProcessors: [stripPrefix],
