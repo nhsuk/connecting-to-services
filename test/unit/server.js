@@ -5,6 +5,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const nock = require('nock');
+const cache = require('memory-cache');
 const app = require('../../server.js');
 const getSampleResponse = require('./lib/getSampleResponse');
 
@@ -15,6 +16,8 @@ describe('Server', () => {
   const requestRoute = /\/organisations\/gppractices\/odscode\/[0-9]+.xml\?apikey=[a-z]*/;
   const requestRoute2 = /\/organisations\/gppractices\/[0-9]+\/overview.xml\?apikey=[a-z]*/;
   it('should get details for a known GP', (done) => {
+    const gpId = '12345';
+    cache.put(gpId, { supplier_name: 'EMIS' });
     nock(baseUrl)
       .get(requestRoute)
       .reply(200, getSampleResponse('gp_practice_by_ods_code'));
@@ -22,7 +25,7 @@ describe('Server', () => {
       .get(requestRoute2)
       .reply(200, getSampleResponse('gp_overview'));
     chai.request(app)
-      .get('/gpdetails/12410')
+      .get(`/gpdetails/${gpId}`)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);

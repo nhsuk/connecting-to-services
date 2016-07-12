@@ -6,6 +6,7 @@ router.get('/gpdetails/:gpId',
   gpMiddleware.upperCaseGpId,
   gpMiddleware.getUrl,
   gpMiddleware.getDetails,
+  gpMiddleware.getBookOnlineLink,
   gpMiddleware.getOpeningTimes,
   gpMiddleware.render
 );

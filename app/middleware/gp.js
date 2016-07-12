@@ -7,6 +7,7 @@ const http = require('http');
 const gpDetailsParser = require('../lib/gpDetailsParser');
 const gpOpeningTimesParser = require('../lib/gpOpeningTimesParser');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
+const cache = require('memory-cache');
 const validUrl = require('valid-url');
 
 function getDetails(req, res, next) {
@@ -89,10 +90,41 @@ function upperCaseGpId(req, res, next) {
   next();
 }
 
+function getBookOnlineLink(req, res, next) {
+  const gpId = req.params.gpId;
+  const systemSupplier = cache.get(gpId).supplier_name;
+
+  switch (systemSupplier) {
+    case 'EMIS':
+      // eslint-disable-next-line no-param-reassign
+      req.gpDetails.bookOnlineLink = 'https://patient.emisaccess.co.uk/Account/Login';
+      break;
+    case 'Informatica':
+    case 'INPS':
+      // eslint-disable-next-line no-param-reassign
+      req.gpDetails.bookOnlineLink = 'https://www.myvisiononline.co.uk/vpp/';
+      break;
+    case 'Microtest':
+      // eslint-disable-next-line no-param-reassign
+      req.gpDetails.bookOnlineLink = 'https://www.thewaiting-room.net/';
+      break;
+    case 'TPP':
+      // eslint-disable-next-line no-param-reassign
+      req.gpDetails.bookOnlineLink = `https://systmonline.tpp-uk.com/Login?PracticeId=${gpId}`;
+      break;
+    case 'NK':
+    default:
+      // eslint-disable-next-line no-param-reassign
+      req.gpDetails.bookOnlineLink = '';
+  }
+  next();
+}
+
 module.exports = {
   upperCaseGpId,
   getUrl,
   getDetails,
   getOpeningTimes,
+  getBookOnlineLink,
   render,
 };

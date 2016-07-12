@@ -3,6 +3,7 @@ const expect = chai.expect;
 const assert = require('assert');
 const nock = require('nock');
 const getSampleResponse = require('./lib/getSampleResponse');
+const cache = require('memory-cache');
 const middleware = require('../../app/middleware/gp');
 const daysOfTheWeek = require('../../app/lib/constants').daysOfTheWeek;
 
@@ -142,6 +143,100 @@ describe('Middleware', () => {
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
         expect(err.message).to.equal('Error');
         done();
+      });
+    });
+  });
+  describe('upperCaseGpId', () => {
+    it('should upper case the gpId param', () => {
+      const req = { params: { gpId: 'abc' } };
+      middleware.upperCaseGpId(req, {}, () => {});
+      expect(req.params.gpId).to.equal('ABC');
+    });
+  });
+  describe('getBookOnlineLink', () => {
+    describe('for error conditions', () => {
+      // TODO: Should this be handled globally? As part of the middleware?
+      it('should handle casing', () => {
+      });
+    });
+    // TODO: There is another set of tests to be added here for when there is
+    // a website URL
+    describe('for known self suppliers with no website URL', () => {
+      const gpId = '123456';
+      const fakeRequest = {
+        params: { gpId },
+        gpDetails: { website: '' },
+      };
+      it('add link for EMIS (I)', () => {
+        const gpSystemSupplier = 'EMIS (I)';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('');
+      });
+      it('add link for INPS (I)', () => {
+        const gpSystemSupplier = 'INPS (I)';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('');
+      });
+    });
+    describe('for known third party suppliers', () => {
+      const gpId = '123456';
+      const fakeRequest = {
+        params: { gpId },
+        gpDetails: {},
+      };
+      it('add link for EMIS', () => {
+        const gpSystemSupplier = 'EMIS';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('https://patient.emisaccess.co.uk/Account/Login');
+      });
+      it('add link for Informatica', () => {
+        const gpSystemSupplier = 'Informatica';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('https://www.myvisiononline.co.uk/vpp/');
+      });
+      it('add link for INPS', () => {
+        const gpSystemSupplier = 'INPS';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('https://www.myvisiononline.co.uk/vpp/');
+      });
+      it('add link for Microtest', () => {
+        const gpSystemSupplier = 'Microtest';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('https://www.thewaiting-room.net/');
+      });
+      it('add link for NK', () => {
+        const gpSystemSupplier = 'NK';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal('');
+      });
+      it('add link for TPP', () => {
+        const gpSystemSupplier = 'TPP';
+        cache.put(gpId, { supplier_name: gpSystemSupplier });
+        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
+
+        expect(fakeRequest.gpDetails.bookOnlineLink)
+          .to.equal(`https://systmonline.tpp-uk.com/Login?PracticeId=${gpId}`);
       });
     });
   });
