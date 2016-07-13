@@ -1,0 +1,12 @@
+  {
+    "env": {
+      "mocha": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "airbnb"
+    ],
+    "plugins": [
+      "json"
+    ]
+  }
