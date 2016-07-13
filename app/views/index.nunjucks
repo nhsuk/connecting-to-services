@@ -42,5 +42,4 @@
   {% else %}
     Sorry, online booking is not possible at this practice.
   {% endif %}
-
 {% endblock %}

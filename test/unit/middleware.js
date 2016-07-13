@@ -240,11 +240,4 @@ describe('Middleware', () => {
       });
     });
   });
-  describe('upperCaseGpId', () => {
-    it('should upper case the gpId param', () => {
-      const req = { params: { gpId: 'abc' } };
-      middleware.upperCaseGpId(req, {}, () => {});
-      expect(req.params.gpId).to.equal('ABC');
-    });
-  });
 });
