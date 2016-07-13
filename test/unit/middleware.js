@@ -154,11 +154,6 @@ describe('Middleware', () => {
     });
   });
   describe('getBookOnlineLink', () => {
-    describe('for error conditions', () => {
-      // TODO: Should this be handled globally? As part of the middleware?
-      it('should handle casing', () => {
-      });
-    });
     // TODO: There is another set of tests to be added here for when there is
     // a website URL
     describe('for known self suppliers with no website URL', () => {
