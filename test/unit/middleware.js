@@ -37,8 +37,7 @@ describe('Middleware', () => {
       it('should disallow empty URLs', (done) => {
         ['', null, undefined].forEach(
           (url) => expect(() => { middleware.getDetails({ urlForGp: url }, {}, () => {}); })
-          .to.throw(assert.AssertionError)
-          .with.property('message', `Invalid URL: \'${url}\'`));
+          .to.throw(assert.AssertionError, `Invalid URL: \'${url}\'`));
         done();
       });
     });
