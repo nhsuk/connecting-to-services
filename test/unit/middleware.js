@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const assert = require('assert');
+const AssertionError = require('assert').AssertionError;
 const nock = require('nock');
 const getSampleResponse = require('./lib/getSampleResponse');
 const cache = require('memory-cache');
@@ -8,7 +8,7 @@ const middleware = require('../../app/middleware/gp');
 const daysOfTheWeek = require('../../app/lib/constants').daysOfTheWeek;
 
 describe('Middleware', () => {
-  describe('getUrl(), when URL is set in environment variable', () => {
+  describe('getUrl', () => {
     let oldApiKey;
     let oldUrl;
     before('Set Syndication URL', () => {
@@ -37,7 +37,7 @@ describe('Middleware', () => {
       it('should disallow empty URLs', (done) => {
         ['', null, undefined].forEach(
           (url) => expect(() => { middleware.getDetails({ urlForGp: url }, {}, () => {}); })
-          .to.throw(assert.AssertionError, `Invalid URL: \'${url}\'`));
+          .to.throw(AssertionError, `Invalid URL: \'${url}\'`));
         done();
       });
     });
@@ -45,7 +45,7 @@ describe('Middleware', () => {
       const fakeRequest = {
         urlForGp: 'http://test/test',
       };
-      it('should return populated gp details for the practice', (done) => {
+      it('should return populated gp practice details', (done) => {
         nock('http://test')
           .get('/test')
           .reply(200, getSampleResponse('gp_practice_by_ods_code'));
@@ -59,34 +59,36 @@ describe('Middleware', () => {
           done();
         });
       });
-      it('should handle GP overview resource page not found', (done) => {
+      it('should handle gp not found', (done) => {
         nock('http://test')
           .get('/test')
           .reply(404);
 
         middleware.getDetails(fakeRequest, {}, (err) => {
           expect(err.message).to.equal('GP Not Found');
-          expect(err.status).to.equal(404);
+          expect(err.statusCode).to.equal(404);
           done();
         });
       });
-      it('should handle server error', (done) => {
+      it('should handle syndication HTTP error', (done) => {
         nock('http://test')
           .get('/test')
           .reply(500);
 
         middleware.getDetails(fakeRequest, {}, (err) => {
-          expect(err).to.equal('Error: 500');
+          expect(err.message).to.equal('Syndication HTTP Error');
+          expect(err.statusCode).to.equal(500);
           done();
         });
       });
-      it('should handle http error', (done) => {
+      it('should handle syndication server error', (done) => {
         nock('http://test')
           .get('/test')
-          .replyWithError('Error');
+          .replyWithError('Server Error');
 
         middleware.getDetails(fakeRequest, {}, (err) => {
-          expect(err.message).to.equal('Error');
+          expect(err.message).to.equal('Syndication Server Error: Server Error');
+          expect(err.statusCode).to.equal(500);
           done();
         });
       });
@@ -113,34 +115,36 @@ describe('Middleware', () => {
         done();
       });
     });
-    it('should handle GP overview resource page not found', (done) => {
+    it('should handle gp overview resource not found', (done) => {
       nock('http://test')
         .get('/test')
         .reply(404);
 
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
         expect(err.message).to.equal('GP Opening Times Not Found');
-        expect(err.status).to.equal(404);
+        expect(err.statusCode).to.equal(404);
         done();
       });
     });
-    it('should handle server error', (done) => {
+    it('should handle syndication http error', (done) => {
       nock('http://test')
         .get('/test')
         .reply(500);
 
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
-        expect(err).to.equal('Error: 500');
+        expect(err.message).to.equal('Syndication HTTP Error');
+        expect(err.statusCode).to.equal(500);
         done();
       });
     });
-    it('should handle http error', (done) => {
+    it('should handle syndication server error', (done) => {
       nock('http://test')
         .get('/test')
-        .replyWithError('Error');
+        .replyWithError('Server Error');
 
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
-        expect(err.message).to.equal('Error');
+        expect(err.message).to.equal('Syndication Server Error: Server Error');
+        expect(err.statusCode).to.equal(500);
         done();
       });
     });

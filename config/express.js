@@ -34,13 +34,13 @@ module.exports = (app, config) => {
   app.use('/', router);
   app.use((req, res, next) => {
     const err = new Error('Not Found');
-    err.status = 404;
+    err.statusCode = 404;
     next(err);
   });
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
-    res.status(err.status || 500);
+    res.status(err.statusCode || 500);
     res.render('error', {
       message: err,
       error: app.get('env') === 'development' ? err : {},

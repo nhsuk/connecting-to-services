@@ -9,6 +9,7 @@ const gpOpeningTimesParser = require('../lib/gpOpeningTimesParser');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const cache = require('memory-cache');
 const validUrl = require('valid-url');
+const Verror = require('verror');
 
 function getDetails(req, res, next) {
   assert.ok(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
@@ -25,16 +26,19 @@ function getDetails(req, res, next) {
         req.gpDetails = gpDetailsParser(syndicationXml);
         next();
       } else if (response.statusCode === 404) {
-        const err = new Error('GP Not Found');
-        err.status = 404;
+        const err = new Verror('GP Not Found');
+        err.statusCode = 404;
         next(err);
       } else {
-        next(`Error: ${response.statusCode}`);
+        const err = new Verror('Syndication HTTP Error');
+        err.statusCode = response.statusCode;
+        next(err);
       }
     });
   }).on('error', (e) => {
-    console.log('Got an error: ', e);
-    next(e);
+    const err = new Verror(e, 'Syndication Server Error');
+    err.statusCode = 500;
+    next(err);
   });
 }
 
@@ -54,21 +58,24 @@ function getOpeningTimes(req, res, next) {
         };
         next();
       } else if (response.statusCode === 404) {
-        const err = new Error('GP Opening Times Not Found');
-        err.status = 404;
+        const err = new Verror('GP Opening Times Not Found');
+        err.statusCode = 404;
         next(err);
       } else {
-        next(`Error: ${response.statusCode}`);
+        const err = new Verror('Syndication HTTP Error');
+        err.statusCode = response.statusCode;
+        next(err);
       }
     });
   }).on('error', (e) => {
-    console.log('Got an error: ', e);
-    next(e);
+    const err = new Verror(e, 'Syndication Server Error');
+    err.statusCode = 500;
+    next(err);
   });
 }
 function render(req, res) {
   res.render('index', {
-    title: 'GP Details',
+    title: 'GP Practice Details',
     daysOfTheWeek,
     gpDetails: req.gpDetails,
   });
