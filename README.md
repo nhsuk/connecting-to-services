@@ -20,7 +20,7 @@ the submodule, once the repo has been cloned the following commands need
 to be executed:
 
 ```
-git submodule  init
+git submodule init
 git submodule update
 ```
 
