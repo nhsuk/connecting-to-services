@@ -82,6 +82,21 @@ This is a new page.
 <h1>Results</p>
 <p>
 List of closest Pharmacies:
+
+    <ul>
+      {% for pharmacy in pharmacyList %}
+      <li>
+        <p>{{ pharmacy.content.organisationSummary.name }}</p>
+        <p>{{ pharmacy.content.organisationSummary.Distance }}</p>
+        {% for line in pharmacy.content.organisationSummary.address.addressLine %}
+          <p>{{ line }}</p>
+        {% endfor %}
+        <p>{{ pharmacy.content.organisationSummary.address.postcode }}</p>
+        <p>{{ pharmacy.content.organisationSummary.contact.telephone }}</p>
+        <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{pharmacy.content.organisationSummary.geographicCoordinates.latitude}}+{{pharmacy.content.organisationSummary.geographicCoordinates.longitude}}" target="_blank">map</a>
+      </li>
+      {% endfor %}
+    </ul>
 </p>
 </section>
 </div>
