@@ -7,6 +7,16 @@ function stomachAcheRender(req, res) {
   });
 }
 
+router.get('/search',
+  (req, res) => {
+    res.render('search', {});
+  });
+
+router.get('/results',
+  (req, res) => {
+    res.render('results', {});
+  });
+
 router.get('/gpdetails/:gpId',
   gpMiddleware.upperCaseGpId,
   gpMiddleware.getUrl,
