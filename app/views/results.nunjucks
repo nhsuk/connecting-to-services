@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-
-  <link href="https://s3-eu-west-1.amazonaws.com/static.nhs.uk/" rel="dns-prefetch">
-
+<link href="https://s3-eu-west-1.amazonaws.com/static.nhs.uk/" rel="dns-prefetch">
 
 <!--[if IE]><link rel="shortcut icon" href="https://beta.nhs.uk/assets/images/favicon.8e5829c70c4dac23302606c633ba037e.ico"><![endif]-->
 <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
@@ -18,7 +15,6 @@
 <link rel="icon" href="https://beta.nhs.uk/assets/images/favicon.a4b40af35315b24409b782d0d583d4c2.png">
 
 <title>Stomach ache - NHS.UK</title>
-
 
 <meta property="og:image" content="https://beta.nhs.uk/assets/images/opengraph-image.3c9d6b72612293dbbba71ecc0af35f14.png">
 <meta property="og:image:width" content="1200">
@@ -32,51 +28,51 @@
 <link rel="stylesheet" href="https://beta.nhs.uk/assets/stylesheets/nhsuk-print.1783192043724c0d4c282d9c39fb129d.css" media="print" type="text/css">
 
 <!--[if lt IE 9]>
-  <script src="https://beta.nhs.uk/assets/javascripts/ie.bundle.793bb30d4257410cd4a4ca032eebdd7f.js" type="text/javascript"></script>
+<script src="https://beta.nhs.uk/assets/javascripts/ie.bundle.793bb30d4257410cd4a4ca032eebdd7f.js" type="text/javascript"></script>
 <![endif]-->
 
-  </head>
+</head>
 
-  <body>
-    <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script>
+<body>
+<script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script>
 
-    <div class="skiplinks">
-      <div class="skiplinks--inner">
-        <a href="#content" class="skiplinks--link">Skip to main content</a>
-      </div>
-    </div>
+<div class="skiplinks">
+<div class="skiplinks--inner">
+<a href="#content" class="skiplinks--link">Skip to main content</a>
+</div>
+</div>
 
-    <div class="notification-banner notification-banner__js-hidden" id="global-cookies-banner" role="alert">
-  <p class="notification-banner--inner">
-    NHS.UK uses cookies to make the site simpler.
-    <a href="/help/cookies">Find out more about cookies</a>
-  </p>
+<div class="notification-banner notification-banner__js-hidden" id="global-cookies-banner" role="alert">
+<p class="notification-banner--inner">
+NHS.UK uses cookies to make the site simpler.
+<a href="/help/cookies">Find out more about cookies</a>
+</p>
 </div>
 
 
-    <div class="notification-banner notification-banner__hiviz js-feedback-banner">
-  <p class="notification-banner--inner">
-    This is a new page.
-    
-      <a href="#page-feedback" class="js-feedback-toggle">Tell us what you think</a> or go
-    
-    <a href="http://www.nhs.uk/conditions/stomach-ache-abdominal-pain/Pages/Introduction.aspx">back to NHS Choices.</a>
-  </p>
+<div class="notification-banner notification-banner__hiviz js-feedback-banner">
+<p class="notification-banner--inner">
+This is a new page.
+
+<a href="#page-feedback" class="js-feedback-toggle">Tell us what you think</a> or go
+
+<a href="http://www.nhs.uk/conditions/stomach-ache-abdominal-pain/Pages/Introduction.aspx">back to NHS Choices.</a>
+</p>
 </div>
 
 
-    <header role="banner">
-      <div class="global-header">
-  <div class="global-header--inner">
-    <a href="/" class="global-header--link" title="Go to the NHS.UK homepage">
-      <img src="https://beta.nhs.uk/assets/images/logotype-nhs-mono.ebd13fdb8c83b4caa3068588b0b838fd.png" alt="">
-    </a>
-  </div>
+<header role="banner">
+<div class="global-header">
+<div class="global-header--inner">
+<a href="/" class="global-header--link" title="Go to the NHS.UK homepage">
+<img src="https://beta.nhs.uk/assets/images/logotype-nhs-mono.ebd13fdb8c83b4caa3068588b0b838fd.png" alt="">
+</a>
+</div>
 </div>
 
-    </header>
+</header>
 
-    <main id="content" role="main" tabindex="-1" class="util-nofocus">
+<main id="content" role="main" tabindex="-1" class="util-nofocus">
 <div class="page-section">
 <div class="grid-row">
 <div class="column__two-thirds">
@@ -88,70 +84,70 @@
 List of closest Pharmacies:
 </p>
 </section>
-    </div>
-    </div>
-    </div>
-    </div>
-    </main>
+</div>
+</div>
+</div>
+</div>
+</main>
 
-    
-      <div id="page-feedback" class="util-bg-tint__yellow js-feedback-container">
-  <div class="page-section">
 
-    
+<div id="page-feedback" class="util-bg-tint__yellow js-feedback-container">
+<div class="page-section">
 
-    
-      <form action="" name="feedback-form" method="post">
-        
 
-        <label for="feedback-form-comments" class="form-label form-label__large">
-          What’s useful about this page? What’s missing?
-        </label>
-        <div class="grid-row">
-          <div class="column__two-thirds">
-            <textarea name="feedback-form-comments" id="feedback-form-comments"  rows="4"></textarea>
-          </div>
-        </div>
 
-        <button type="submit" class="button">Send feedback</button>
-        <button type="reset" class="button button__cancel">Cancel</button>
 
-        <input type="hidden" name="feedback-form-path" value="/symptoms/stomach-ache">
-        <input type="hidden" name="_csrf" value="QYLhUk9z-1xI552P-mZbDpJl-xyNPBt-xvbY">
-      </form>
-    
+<form action="" name="feedback-form" method="post">
 
-  </div>
+
+<label for="feedback-form-comments" class="form-label form-label__large">
+What’s useful about this page? What’s missing?
+</label>
+<div class="grid-row">
+<div class="column__two-thirds">
+<textarea name="feedback-form-comments" id="feedback-form-comments"  rows="4"></textarea>
+</div>
 </div>
 
-    
+<button type="submit" class="button">Send feedback</button>
+<button type="reset" class="button button__cancel">Cancel</button>
 
-    <footer role="contentinfo">
-      <div class="global-footer">
-  <div class="global-footer--inner">
+<input type="hidden" name="feedback-form-path" value="/symptoms/stomach-ache">
+<input type="hidden" name="_csrf" value="QYLhUk9z-1xI552P-mZbDpJl-xyNPBt-xvbY">
+</form>
 
-    <div>
-      <h2 class="util-visuallyhidden">Support links</h2>
-      <ul class="inline-list inline-list__slash">
-        <li class="inline-list--item">
-          <a href="/help/clinical-assurance">Clinical assurance</a>
-        </li>
-        <li class="inline-list--item">
-          <a href="/help/cookies">Cookies</a>
-        </li>
-      </ul>
-    </div>
 
-  </div>
+</div>
 </div>
 
-    </footer>
 
-    <script src="https://beta.nhs.uk/assets/javascripts/nhsuk.bundle.a641f87d5eb69ec5a4dcc58086a8578c.js" type="text/javascript"></script>
 
-  <noscript>
-    <img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs222rfg0jh2hpdaqwc2gmki_9r4q/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.23&amp;dcssip=.nhs.uk"/>
-  </noscript>
+<footer role="contentinfo">
+<div class="global-footer">
+<div class="global-footer--inner">
 
-  </body>
+<div>
+<h2 class="util-visuallyhidden">Support links</h2>
+<ul class="inline-list inline-list__slash">
+<li class="inline-list--item">
+<a href="/help/clinical-assurance">Clinical assurance</a>
+</li>
+<li class="inline-list--item">
+<a href="/help/cookies">Cookies</a>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+</footer>
+
+<script src="https://beta.nhs.uk/assets/javascripts/nhsuk.bundle.a641f87d5eb69ec5a4dcc58086a8578c.js" type="text/javascript"></script>
+
+<noscript>
+<img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs222rfg0jh2hpdaqwc2gmki_9r4q/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.23&amp;dcssip=.nhs.uk"/>
+</noscript>
+
+</body>
 </html>
