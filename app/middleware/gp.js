@@ -12,7 +12,7 @@ const validUrl = require('valid-url');
 const Verror = require('verror');
 
 function getDetails(req, res, next) {
-  assert.ok(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
+  assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
 
   http.get(req.urlForGp, (response) => {
     let syndicationXml = '';
@@ -97,33 +97,11 @@ function upperCaseGpId(req, res, next) {
   next();
 }
 
-function getBookOnlineLink(req, res, next) {
+function getBookOnlineUrl(req, res, next) {
   const gpId = req.params.gpId;
-  const systemSupplier = cache.get(gpId).supplier_name;
 
-  switch (systemSupplier) {
-    case 'EMIS':
-      // eslint-disable-next-line no-param-reassign
-      req.gpDetails.bookOnlineLink = 'https://patient.emisaccess.co.uk/Account/Login';
-      break;
-    case 'Informatica':
-    case 'INPS':
-      // eslint-disable-next-line no-param-reassign
-      req.gpDetails.bookOnlineLink = 'https://www.myvisiononline.co.uk/vpp/';
-      break;
-    case 'Microtest':
-      // eslint-disable-next-line no-param-reassign
-      req.gpDetails.bookOnlineLink = 'https://www.thewaiting-room.net/';
-      break;
-    case 'TPP':
-      // eslint-disable-next-line no-param-reassign
-      req.gpDetails.bookOnlineLink = `https://systmonline.tpp-uk.com/Login?PracticeId=${gpId}`;
-      break;
-    case 'NK':
-    default:
-      // eslint-disable-next-line no-param-reassign
-      req.gpDetails.bookOnlineLink = '';
-  }
+  // eslint-disable-next-line no-param-reassign
+  req.gpDetails.bookOnlineUrl = cache.get(gpId).book_online_url;
   next();
 }
 
@@ -132,6 +110,6 @@ module.exports = {
   getUrl,
   getDetails,
   getOpeningTimes,
-  getBookOnlineLink,
+  getBookOnlineUrl,
   render,
 };

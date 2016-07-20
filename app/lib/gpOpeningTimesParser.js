@@ -5,8 +5,8 @@ const assert = require('assert');
 const Verror = require('verror');
 
 const parseGpOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
-  assert.ok(openingTimesType, 'parameter \'openingTimesType\' undefined/empty');
-  assert.ok(xml, 'parameter \'xml\' undefined/empty');
+  assert(openingTimesType, 'parameter \'openingTimesType\' undefined/empty');
+  assert(xml, 'parameter \'xml\' undefined/empty');
   assert.equal(typeof(openingTimesType),
     'string', 'parameter \'openingTimesType\' must be a string');
   assert.equal(typeof(xml),

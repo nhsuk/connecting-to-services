@@ -156,86 +156,21 @@ describe('Middleware', () => {
       expect(req.params.gpId).to.equal('ABC');
     });
   });
-  describe('getBookOnlineLink', () => {
-    // TODO: There is another set of tests to be added here for when there is
-    // a website URL
-    describe('for known self suppliers with no website URL', () => {
-      const gpId = '123456';
-      const fakeRequest = {
-        params: { gpId },
-        gpDetails: { website: '' },
-      };
-      it('add link for EMIS (I)', () => {
-        const gpSystemSupplier = 'EMIS (I)';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('');
-      });
-      it('add link for INPS (I)', () => {
-        const gpSystemSupplier = 'INPS (I)';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('');
-      });
+  describe('getBookOnlineUrl', () => {
+    const gpId = '123456';
+    const bookOnlineUrl = 'http://web.site/';
+    before('add book_online_url to cache', () => {
+      cache.put(gpId, { book_online_url: bookOnlineUrl });
     });
-    describe('for known third party suppliers', () => {
-      const gpId = '123456';
+    it('should add bookOnlineUrl for gp requested', () => {
       const fakeRequest = {
         params: { gpId },
         gpDetails: {},
       };
-      it('add link for EMIS', () => {
-        const gpSystemSupplier = 'EMIS';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
 
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('https://patient.emisaccess.co.uk/Account/Login');
-      });
-      it('add link for Informatica', () => {
-        const gpSystemSupplier = 'Informatica';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('https://www.myvisiononline.co.uk/vpp/');
-      });
-      it('add link for INPS', () => {
-        const gpSystemSupplier = 'INPS';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('https://www.myvisiononline.co.uk/vpp/');
-      });
-      it('add link for Microtest', () => {
-        const gpSystemSupplier = 'Microtest';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('https://www.thewaiting-room.net/');
-      });
-      it('add link for NK', () => {
-        const gpSystemSupplier = 'NK';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal('');
-      });
-      it('add link for TPP', () => {
-        const gpSystemSupplier = 'TPP';
-        cache.put(gpId, { supplier_name: gpSystemSupplier });
-        middleware.getBookOnlineLink(fakeRequest, {}, () => {});
-
-        expect(fakeRequest.gpDetails.bookOnlineLink)
-          .to.equal(`https://systmonline.tpp-uk.com/Login?PracticeId=${gpId}`);
-      });
+      middleware.getBookOnlineUrl(fakeRequest, {}, () => {});
+      expect(fakeRequest.gpDetails.bookOnlineUrl)
+        .to.equal(bookOnlineUrl);
     });
   });
 });

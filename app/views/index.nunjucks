@@ -37,8 +37,8 @@
   {% endfor %}
 
   <h2>Book online</h2>
-  {% if gpDetails.bookOnlineLink %}
-    Follow this link: <a href="{{gpDetails.bookOnlineLink}}">{{gpDetails.bookOnlineLink}}</a>
+  {% if gpDetails.bookOnlineUrl %}
+    Follow this link: <a href="{{gpDetails.bookOnlineUrl}}">{{gpDetails.bookOnlineUrl}}</a>
   {% else %}
     Sorry, online booking is not possible at this practice.
   {% endif %}

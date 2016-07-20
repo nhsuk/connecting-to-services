@@ -1,2 +1,3 @@
-region_name,ccg_name,ods_code,practice_name,supplier_name,number_registered_patients,number_of_patients_enrolled_for_services,number_patient_interactions_with_online_system
-NHS ENGLAND MIDLANDS AND EAST (EAST),NHS SOUTHEND CCG,A12345,ELMSLEIGH DRIVE SURGERY,TPP,"1,211",1,64
+ods_code,book_online_url
+A12345,http://web.site/from/the/file
+E12345,
