@@ -8,14 +8,18 @@ function stomachAcheRender(req, res) {
 }
 
 router.get('/search',
-  (req, res) => {
-    res.render('search', {});
-  });
+  (req, res) => { res.render('search', {}); }
+);
 
 router.get('/results',
+  gpMiddleware.getPharmacyUrl,
+  gpMiddleware.getPharmacies,
   (req, res) => {
-    res.render('results', {});
-  });
+    console.log(req.pharmacyList[0].content.organisationSummary.address);
+    res.render('results', {
+      pharmacyList: req.pharmacyList,
+    }); }
+);
 
 router.get('/gpdetails/:gpId',
   gpMiddleware.upperCaseGpId,

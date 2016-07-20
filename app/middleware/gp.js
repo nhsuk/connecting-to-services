@@ -6,11 +6,43 @@ const assert = require('assert');
 const http = require('http');
 const gpDetailsParser = require('../lib/gpDetailsParser');
 const gpOpeningTimesParser = require('../lib/gpOpeningTimesParser');
+const pharmaciesParser = require('../lib/pharmaciesParser');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const cache = require('memory-cache');
 const validUrl = require('valid-url');
 const Verror = require('verror');
 
+function getPharmacies(req, res, next) {
+  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
+
+  console.log(req.urlForPharmacy);
+  http.get(req.urlForPharmacy, (response) => {
+    let syndicationXml = '';
+    response.on('data', (chunk) => {
+      syndicationXml += chunk;
+    });
+
+    response.on('end', () => {
+      if (response.statusCode === 200) {
+        // eslint-disable-next-line no-param-reassign
+        req.pharmacyList = pharmaciesParser(syndicationXml);
+        next();
+      } else if (response.statusCode === 404) {
+        const err = new Verror('GP Not Found');
+        err.statusCode = 404;
+        next(err);
+      } else {
+        const err = new Verror('Syndication HTTP Error');
+        err.statusCode = response.statusCode;
+        next(err);
+      }
+    });
+  }).on('error', (e) => {
+    const err = new Verror(e, 'Syndication Server Error');
+    err.statusCode = 500;
+    next(err);
+  });
+}
 function getDetails(req, res, next) {
   assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
 
@@ -91,6 +123,15 @@ function getUrl(req, res, next) {
   next();
 }
 
+function getPharmacyUrl(req, res, next) {
+  const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
+  const syndicationUrl = 'http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/HG50JL.xml?range=50&apikey=';
+  const requestUrl = `${syndicationUrl}${syndicationApiKey}`;
+  // eslint-disable-next-line no-param-reassign
+  req.urlForPharmacy = requestUrl;
+  next();
+}
+
 function upperCaseGpId(req, res, next) {
   // eslint-disable-next-line no-param-reassign
   req.params.gpId = req.params.gpId.toUpperCase();
@@ -108,7 +149,9 @@ function getBookOnlineUrl(req, res, next) {
 module.exports = {
   upperCaseGpId,
   getUrl,
+  getPharmacyUrl,
   getDetails,
+  getPharmacies,
   getOpeningTimes,
   getBookOnlineUrl,
   render,
