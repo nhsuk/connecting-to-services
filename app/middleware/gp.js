@@ -5,18 +5,15 @@ const util = require('util');
 const assert = require('assert');
 const http = require('http');
 const gpDetailsParser = require('../lib/gpDetailsParser');
-const gpOpeningTimesParser = require('../lib/gpOpeningTimesParser');
+const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const cache = require('memory-cache');
 const validUrl = require('valid-url');
 const Verror = require('verror');
 
-function getPharmacies(req, res, next) {
-  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
-
-  console.log(req.urlForPharmacy);
-  http.get(req.urlForPharmacy, (response) => {
+function getSyndicationResponseHandler(resourceType, parser, next) {
+  return (response) => {
     let syndicationXml = '';
     response.on('data', (chunk) => {
       syndicationXml += chunk;
@@ -24,11 +21,10 @@ function getPharmacies(req, res, next) {
 
     response.on('end', () => {
       if (response.statusCode === 200) {
-        // eslint-disable-next-line no-param-reassign
-        req.pharmacyList = pharmaciesParser(syndicationXml);
+        parser(syndicationXml);
         next();
       } else if (response.statusCode === 404) {
-        const err = new Verror('GP Not Found');
+        const err = new Verror(`${resourceType} Not Found`);
         err.statusCode = 404;
         next(err);
       } else {
@@ -37,12 +33,59 @@ function getPharmacies(req, res, next) {
         next(err);
       }
     });
-  }).on('error', (e) => {
-    const err = new Verror(e, 'Syndication Server Error');
-    err.statusCode = 500;
-    next(err);
+  };
+}
+
+function getSyndicationResponse(url, resourceType, parser, next) {
+  http
+    .get(url, getSyndicationResponseHandler(resourceType, parser, next))
+    .on('error', (e) => {
+      const err = new Verror(e, 'Syndication Server Error');
+      err.statusCode = 500;
+      next(err);
+    });
+}
+
+function getPharmacies(req, res, next) {
+  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
+  getSyndicationResponse(
+    req.urlForPharmacy,
+    'Pharmacy List',
+    (syndicationXml) => {
+      // eslint-disable-next-line no-param-reassign
+      req.pharmacyList = pharmaciesParser(syndicationXml);
+    },
+    next
+  );
+}
+
+function getPharmacyOpeningTimes(req, res, next) {
+  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
+  //
+  let pharmacyCount = req.pharmacyList.length;
+
+  req.pharmacyList.forEach((pharmacy) => {
+    const pharmacyId = pharmacy.id.split('/').slice(-1)[0];
+
+    getSyndicationResponse(
+      `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/${pharmacyId}/overview.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
+      'Pharmacy List',
+      (syndicationXml) => {
+        // eslint-disable-next-line no-param-reassign
+        pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
+        console.log(pharmacy.openingTimes.monday);
+      },
+      () => {
+        pharmacyCount--;
+        console.log(pharmacyCount);
+        if (pharmacyCount === 0) {
+          next();
+        }
+      }
+    );
   });
 }
+
 function getDetails(req, res, next) {
   assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
 
@@ -75,36 +118,23 @@ function getDetails(req, res, next) {
 }
 
 function getOpeningTimes(req, res, next) {
-  http.get(req.gpDetails.overviewLink, (response) => {
-    let syndicationXml = '';
-    response.on('data', (chunk) => {
-      syndicationXml += chunk;
-    });
+  assert.ok(validUrl.isUri(req.gpDetails.overviewLink),
+    `Invalid URL: '${req.gpDetails.overviewLink}'`);
 
-    response.on('end', () => {
-      if (response.statusCode === 200) {
-        // eslint-disable-next-line no-param-reassign
-        req.gpDetails.openingTimes = {
-          reception: gpOpeningTimesParser('reception', syndicationXml),
-          surgery: gpOpeningTimesParser('surgery', syndicationXml),
-        };
-        next();
-      } else if (response.statusCode === 404) {
-        const err = new Verror('GP Opening Times Not Found');
-        err.statusCode = 404;
-        next(err);
-      } else {
-        const err = new Verror('Syndication HTTP Error');
-        err.statusCode = response.statusCode;
-        next(err);
-      }
-    });
-  }).on('error', (e) => {
-    const err = new Verror(e, 'Syndication Server Error');
-    err.statusCode = 500;
-    next(err);
-  });
+  getSyndicationResponse(
+    req.gpDetails.overviewLink,
+    'GP Practice Opening Times',
+    (syndicationXml) => {
+      // eslint-disable-next-line no-param-reassign
+      req.gpDetails.openingTimes = {
+        reception: openingTimesParser('reception', syndicationXml),
+        surgery: openingTimesParser('surgery', syndicationXml),
+      };
+    },
+    next
+  );
 }
+
 function render(req, res) {
   res.render('index', {
     title: 'GP Practice Details',
@@ -152,6 +182,7 @@ module.exports = {
   getPharmacyUrl,
   getDetails,
   getPharmacies,
+  getPharmacyOpeningTimes,
   getOpeningTimes,
   getBookOnlineUrl,
   render,

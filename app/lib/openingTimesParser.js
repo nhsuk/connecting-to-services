@@ -4,7 +4,7 @@ const stripPrefix = require('xml2js/lib/processors').stripPrefix;
 const assert = require('assert');
 const Verror = require('verror');
 
-const parseGpOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
+const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
   assert(openingTimesType, 'parameter \'openingTimesType\' undefined/empty');
   assert(xml, 'parameter \'xml\' undefined/empty');
   assert.equal(typeof(openingTimesType),
@@ -14,17 +14,18 @@ const parseGpOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
   const gpOpeningTimes = {};
   const options = {
     tagNameProcessors: [stripPrefix],
-    explicitArray: false,
   };
   const xmlParser = new xml2js.Parser(options);
   xmlParser.parseString(xml, (err, result) => {
     if (err) {
-      throw new Verror(err, 'Unable to parse GP opening times XML');
+      throw new Verror(err, 'Unable to parse opening times XML');
     }
 
     let openingTimesForType = null;
     try {
-      const openingTimes = result.feed.entry.content.overview.openingTimes.timesSessionTypes;
+      const openingTimes =
+        result.feed.entry[0].content[0].overview[0].openingTimes[0].timesSessionTypes[0];
+
       openingTimesForType = jsonQuery('timesSessionType[*:isType]', {
         data: openingTimes,
         locals: {
@@ -32,20 +33,21 @@ const parseGpOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
         },
       }).value[0];
 
-      openingTimesForType.daysOfWeek.dayOfWeek.forEach((item) => {
-        const dayName = item.dayName.toLowerCase();
+      openingTimesForType.daysOfWeek[0].dayOfWeek.forEach((item) => {
+        const dayName = item.dayName[0].toLowerCase();
         gpOpeningTimes[dayName] = {};
-        const session = item.timesSessions.timesSession;
         gpOpeningTimes[dayName] = {
           times: [],
         };
-        if (Array.isArray(session)) {
-          session.forEach((s) => {
-            gpOpeningTimes[dayName].times.push(s);
-          });
-        } else {
-          gpOpeningTimes[dayName].times.push(session);
-        }
+        item.timesSessions[0].timesSession.forEach((t) => {
+          if (t.fromTime) {
+            // session details are a time range
+            gpOpeningTimes[dayName].times.push({ fromTime: t.fromTime[0], toTime: t.toTime[0] });
+          } else {
+            // session details are text (e.g. closed)
+            gpOpeningTimes[dayName].times.push(t);
+          }
+        });
       });
     } catch (e) {
       throw new Verror(e, `Unable to get '${openingTimesType}' opening times from xml`);
@@ -54,4 +56,4 @@ const parseGpOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
   return gpOpeningTimes;
 };
 
-module.exports = parseGpOpeningTimesFromSyndicationXml;
+module.exports = parseOpeningTimesFromSyndicationXml;

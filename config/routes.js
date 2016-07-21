@@ -14,11 +14,12 @@ router.get('/search',
 router.get('/results',
   gpMiddleware.getPharmacyUrl,
   gpMiddleware.getPharmacies,
+  gpMiddleware.getPharmacyOpeningTimes,
   (req, res) => {
-    console.log(req.pharmacyList[0].content.organisationSummary.address);
     res.render('results', {
       pharmacyList: req.pharmacyList,
-    }); }
+    });
+  }
 );
 
 router.get('/gpdetails/:gpId',

@@ -45,8 +45,8 @@
                 <table class="gpOpeningTimes">
                   <tbody>
                     <tr>
-                      <td>Monday to Thursday</td>
-                      <td>8.30am to 6pm</td>
+                      <td>Monday (to ???)</td>
+                      <td>{{ pharmacy.openingTimes["monday"].times[0].fromTime }}am to {{ pharmacy.openingTimes["monday"].times[0].toTime }}pm</td>
                     </tr>
                     <tr>
                       <td>Friday</td>
