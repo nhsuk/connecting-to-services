@@ -121,7 +121,7 @@ describe('Middleware', () => {
         .reply(404);
 
       middleware.getOpeningTimes(fakeRequest, {}, (err) => {
-        expect(err.message).to.equal('GP Opening Times Not Found');
+        expect(err.message).to.equal('GP Practice Opening Times Not Found');
         expect(err.statusCode).to.equal(404);
         done();
       });
