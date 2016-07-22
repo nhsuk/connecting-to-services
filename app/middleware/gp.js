@@ -154,9 +154,10 @@ function getUrl(req, res, next) {
 }
 
 function getPharmacyUrl(req, res, next) {
+  const location = req.query.location;
   const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-  const syndicationUrl = 'http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/HG50JL.xml?range=50&apikey=';
-  const requestUrl = `${syndicationUrl}${syndicationApiKey}`;
+  const requestUrl = `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/${location}.xml?range=50&apikey=${syndicationApiKey}`;
+
   // eslint-disable-next-line no-param-reassign
   req.urlForPharmacy = requestUrl;
   next();
