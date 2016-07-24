@@ -11,7 +11,7 @@ const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
     'string', 'parameter \'openingTimesType\' must be a string');
   assert.equal(typeof(xml),
     'string', 'parameter \'xml\' must be a string');
-  const gpOpeningTimes = {};
+  const openingTimes = {};
   const options = {
     tagNameProcessors: [stripPrefix],
   };
@@ -23,11 +23,11 @@ const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
 
     let openingTimesForType = null;
     try {
-      const openingTimes =
+      const allOpeningTimes =
         result.feed.entry[0].content[0].overview[0].openingTimes[0].timesSessionTypes[0];
 
       openingTimesForType = jsonQuery('timesSessionType[*:isType]', {
-        data: openingTimes,
+        data: allOpeningTimes,
         locals: {
           isType: (item) => item.$.sessionType === openingTimesType,
         },
@@ -35,17 +35,17 @@ const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
 
       openingTimesForType.daysOfWeek[0].dayOfWeek.forEach((item) => {
         const dayName = item.dayName[0].toLowerCase();
-        gpOpeningTimes[dayName] = {};
-        gpOpeningTimes[dayName] = {
+        openingTimes[dayName] = {};
+        openingTimes[dayName] = {
           times: [],
         };
         item.timesSessions[0].timesSession.forEach((t) => {
           if (t.fromTime) {
             // session details are a time range
-            gpOpeningTimes[dayName].times.push({ fromTime: t.fromTime[0], toTime: t.toTime[0] });
+            openingTimes[dayName].times.push({ fromTime: t.fromTime[0], toTime: t.toTime[0] });
           } else {
             // session details are text (e.g. closed)
-            gpOpeningTimes[dayName].times.push(t);
+            openingTimes[dayName].times.push(t);
           }
         });
       });
@@ -53,7 +53,7 @@ const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
       throw new Verror(e, `Unable to get '${openingTimesType}' opening times from xml`);
     }
   });
-  return gpOpeningTimes;
+  return openingTimes;
 };
 
 module.exports = parseOpeningTimesFromSyndicationXml;

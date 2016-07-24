@@ -4,6 +4,7 @@
 const util = require('util');
 const assert = require('assert');
 const http = require('http');
+const dateUtils = require('../lib/dateUtils.js');
 const gpDetailsParser = require('../lib/gpDetailsParser');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
@@ -71,13 +72,16 @@ function getPharmacyOpeningTimes(req, res, next) {
       `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/${pharmacyId}/overview.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
       'Pharmacy List',
       (syndicationXml) => {
-        // eslint-disable-next-line no-param-reassign
+        const now = new Date();
+        const dayOfWeek = dateUtils.getDayName(now);
+        /* eslint-disable no-param-reassign */
         pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
-        console.log(pharmacy.openingTimes.monday);
+        pharmacy.openingTimes.today = pharmacy.openingTimes[dayOfWeek].times;
+        pharmacy.openNow = dateUtils.isOpen(now, pharmacy.openingTimes.today);
+        /* eslint-enable no-param-reassign */
       },
       () => {
         pharmacyCount--;
-        console.log(pharmacyCount);
         if (pharmacyCount === 0) {
           next();
         }
@@ -135,6 +139,13 @@ function getOpeningTimes(req, res, next) {
   );
 }
 
+function renderPharmacyList(req, res) {
+  res.render('results', {
+    daysOfTheWeek,
+    pharmacyList: req.pharmacyList,
+  });
+}
+
 function render(req, res) {
   res.render('index', {
     title: 'GP Practice Details',
@@ -186,4 +197,5 @@ module.exports = {
   getOpeningTimes,
   getBookOnlineUrl,
   render,
+  renderPharmacyList,
 };

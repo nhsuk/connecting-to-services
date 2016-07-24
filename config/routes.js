@@ -15,11 +15,7 @@ router.get('/results',
   gpMiddleware.getPharmacyUrl,
   gpMiddleware.getPharmacies,
   gpMiddleware.getPharmacyOpeningTimes,
-  (req, res) => {
-    res.render('results', {
-      pharmacyList: req.pharmacyList,
-    });
-  }
+  gpMiddleware.renderPharmacyList
 );
 
 router.get('/gpdetails/:gpId',
