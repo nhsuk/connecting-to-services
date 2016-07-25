@@ -17,7 +17,11 @@
         </tr>
         <tr>
           <td></td>
-          <td><p><strong>Currently closed. Opens in 1 hour</strong><br>Open today 8am to 6pm</p></td>
+          {% if pharmacy.openNow %}
+            <td><p><strong>Currently open.</strong><br>Open today from {{ pharmacy.openingTimes["today"][0].fromTime }} to {{ pharmacy.openingTimes["today"][0].toTime }}</p></td>
+          {% else %}
+            <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
+          {% endif %}
           <td><p>
             <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{pharmacy.content.organisationSummary.geographicCoordinates.latitude}}+{{pharmacy.content.organisationSummary.geographicCoordinates.longitude}}" class="button button-secondary-cta" target="_blank">Get directions</a></p></td>
         </tr>
@@ -44,28 +48,20 @@
 
                 <table class="gpOpeningTimes">
                   <tbody>
-                    <tr>
-                      <td>Monday (to ???)</td>
-                      <td>{{ pharmacy.openingTimes["monday"].times[0].fromTime }}am to {{ pharmacy.openingTimes["monday"].times[0].toTime }}pm</td>
-                    </tr>
-                    <tr>
-                      <td>Friday</td>
-                      <td>8am to 6pm</td>
-                    </tr>
-                    <tr>
-                      <td>Saturday</td>
-                      <td>Closed</td>
-                    </tr>
-                    <tr>
-                      <td>Sunday</td>
-                      <td>Closed</td>
-                    </tr>
+                    {% for day in daysOfTheWeek %}
+                      <tr>
+                        <td>{{day | capitalize }}</td>
+                        {% if pharmacy.openingTimes[day].times[0] != 'Closed' %}
+                          <td>{{ pharmacy.openingTimes[day].times[0].fromTime }} to {{ pharmacy.openingTimes[day].times[0].toTime }}</td>
+                        {% else %}
+                          <td>Closed</td>
+                        {% endif %}
+                      </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
             </details>
-
-
           </td>
         </tr>
 

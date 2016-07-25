@@ -115,6 +115,23 @@ describe('Middleware', () => {
         done();
       });
     });
+    it('should return populated opening times for the pharmacy', (done) => {
+      const fakePharmacyRequest = {
+        pharmacyList: [{ id: '0/1' }],
+      };
+      nock('http://v1.syndication.nhschoices.nhs.uk')
+        .get(/\/organisations\/pharmacies\/1\/overview.xml\?apikey=[a-z]*/)
+        .reply(200, getSampleResponse('pharmacy_opening_times'));
+
+      middleware.getPharmacyOpeningTimes(fakePharmacyRequest, {}, () => {
+        expect(fakePharmacyRequest.pharmacyList[0].openingTimes.today[0].toTime)
+          .to.not.equal(null);
+        // TODO: if we still need this need a way to fake Date.now to prevent
+        // the test from failing depending on the time of day.
+        // expect(fakeRequest.pharmacyList[0].openNow).to.equal(false);
+        done();
+      });
+    });
     it('should handle gp overview resource not found', (done) => {
       nock('http://test')
         .get('/test')
