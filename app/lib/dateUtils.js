@@ -1,26 +1,16 @@
-const moment = require('moment');
+require('moment-timezone');
 
 function getDayName(date) {
-  const days = [
-    'sunday',
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
-  ];
-  return days[date.getDay()];
+  return date.format('dddd').toLowerCase();
 }
 
-function getTime(date, hours, minutes) {
-
-  const returnDate = date.clone();
+function getTime(date, hour, minute) {
+  const returnDate = date.clone().tz('Europe/London');
   returnDate.set({
-    'hour': hours,
-    'minute': minutes,
+    hour,
+    minute,
     second: 0,
-    millisecond: 0
+    millisecond: 0,
   });
 
   return returnDate;
@@ -45,7 +35,7 @@ function timeInRange(date, open, close) {
   }
 
   console.log([date.format(), start.format(), end.format()]);
-  return start <= date && date <= end;
+  return date.isBetween(start, end);
 }
 
 function isOpen(date, openingTimes) {

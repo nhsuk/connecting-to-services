@@ -12,6 +12,7 @@ const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const cache = require('memory-cache');
 const validUrl = require('valid-url');
 const Verror = require('verror');
+const moment = require('moment');
 
 function getSyndicationResponseHandler(resourceType, parser, next) {
   return (response) => {
@@ -72,7 +73,7 @@ function getPharmacyOpeningTimes(req, res, next) {
       `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/${pharmacyId}/overview.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
       'Pharmacy List',
       (syndicationXml) => {
-        const now = new Date();
+        const now = moment();
         const dayOfWeek = dateUtils.getDayName(now);
         /* eslint-disable no-param-reassign */
         pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
