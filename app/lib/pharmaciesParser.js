@@ -3,6 +3,15 @@ const stripPrefix = require('xml2js/lib/processors').stripPrefix;
 const assert = require('assert');
 const Verror = require('verror');
 
+function convertKmsToMiles(pharmacies) {
+  pharmacies.forEach((pharmacy) => {
+    const distanceInKms = pharmacy.content.organisationSummary.Distance;
+    const distanceInMiles = distanceInKms / 1.6;
+    // eslint-disable-next-line no-param-reassign
+    pharmacy.content.organisationSummary.Distance = distanceInMiles;
+  });
+}
+
 const parsePharmacyListFromSyndicationXml = (xml) => {
   assert(xml, 'parameter \'xml\' undefined/empty');
   assert.equal(typeof(xml),
@@ -20,6 +29,7 @@ const parsePharmacyListFromSyndicationXml = (xml) => {
     }
     pharmacyList = result.feed.entry;
   });
+  convertKmsToMiles(pharmacyList);
   return pharmacyList;
 };
 
