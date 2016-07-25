@@ -29,8 +29,9 @@ const parsePharmacyListFromSyndicationXml = (xml) => {
     }
     pharmacyList = result.feed.entry;
   });
-  convertKmsToMiles(pharmacyList);
-  return pharmacyList;
+  const firstPharmacies = pharmacyList.slice(0, 5);
+  convertKmsToMiles(firstPharmacies);
+  return firstPharmacies;
 };
 
 module.exports = parsePharmacyListFromSyndicationXml;
