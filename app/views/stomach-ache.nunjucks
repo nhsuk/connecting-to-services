@@ -25,13 +25,16 @@
 
                 <h2>Treating stomach ache at home</h2>
 
-                <p>Speak to your pharmacist about medicine to help with:</p>
+                <p>Speak to a pharmacist about medicine to help with:</p>
 
                 <ul>
                   <li>feeling bloated (trapped wind)</li>
                   <li>indigestion (burning pain or discomfort after eating)</li>
                   <li>constipation (can’t poo)</li>
                 </ul>
+                
+                <a href="search" class="button">Find your nearest pharmacy</a>
+
 
                 <p>There are also things you can do yourself to <a href="http://www.nhs.uk/Conditions/Indigestion/Pages/Treatment.aspx">
                   help ease indigestion</a> and <a href="http://www.nhs.uk/Conditions/Constipation/Pages/Treatment.aspx">
@@ -64,10 +67,6 @@
                   <li>you bleed from your bottom</li>
                   <li>your diarrhoea lasts longer than a few days</li>
                 </ul>
-
-          <div class="service-search">
-            <a href="/search">See someone to help you</a> 
-          </div>
               </section>
 
             </div>
