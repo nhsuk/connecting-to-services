@@ -17,10 +17,14 @@
         </tr>
         <tr>
           <td></td>
-          {% if pharmacy.openNow %}
-            <td><p><strong>Currently open.</strong><br>Open today from {{ pharmacy.openingTimes["today"][0].fromTime }} to {{ pharmacy.openingTimes["today"][0].toTime }}</p></td>
+          {% if pharmacy.openingTimes %}
+            {% if pharmacy.openNow %}
+              <td><p><strong>Currently open.</strong><br>Open today from {{ pharmacy.openingTimes["today"][0].fromTime }} to {{ pharmacy.openingTimes["today"][0].toTime }}</p></td>
+            {% else %}
+              <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
+            {% endif %}
           {% else %}
-            <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
+              <td><p><strong>Opening times not known.</strong></p></td>
           {% endif %}
           <td><p>
             <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{pharmacy.content.organisationSummary.geographicCoordinates.latitude}}+{{pharmacy.content.organisationSummary.geographicCoordinates.longitude}}" class="button button-secondary-cta" target="_blank">Get directions</a></p></td>
@@ -44,22 +48,23 @@
                 Telephone {{ pharmacy.content.organisationSummary.contact.telephone }}
                 </p>
 
-                <p><strong>Opening times</strong></p>
-
-                <table class="gpOpeningTimes">
-                  <tbody>
-                    {% for day in daysOfTheWeek %}
-                      <tr>
-                        <td>{{day | capitalize }}</td>
-                        {% if pharmacy.openingTimes[day].times[0] != 'Closed' %}
-                          <td>{{ pharmacy.openingTimes[day].times[0].fromTime }} to {{ pharmacy.openingTimes[day].times[0].toTime }}</td>
-                        {% else %}
-                          <td>Closed</td>
-                        {% endif %}
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
+                {% if pharmacy.openingTimes %}
+                  <p><strong>Opening times</strong></p>
+                  <table class="gpOpeningTimes">
+                    <tbody>
+                      {% for day in daysOfTheWeek %}
+                        <tr>
+                          <td>{{day | capitalize }}</td>
+                          {% if pharmacy.openingTimes[day].times[0] != 'Closed' %}
+                            <td>{{ pharmacy.openingTimes[day].times[0].fromTime }} to {{ pharmacy.openingTimes[day].times[0].toTime }}</td>
+                          {% else %}
+                            <td>Closed</td>
+                          {% endif %}
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                {% endif %}
               </div>
             </details>
           </td>
