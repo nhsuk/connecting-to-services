@@ -1,4 +1,4 @@
-{% include "./includes/header.nunjucks" %}
+{% include "./includes/beta-header.nunjucks" %}
     <main id="content" role="main" tabindex="-1" class="util-nofocus">
 
     <article role="article">
@@ -13,8 +13,6 @@
 
         </div>
       </div>
-
-
 
       <div class="page-section">
         <div class="grid-row">
@@ -32,9 +30,8 @@
                   <li>indigestion (burning pain or discomfort after eating)</li>
                   <li>constipation (can’t poo)</li>
                 </ul>
-                
-                <a href="search" class="button">Find your nearest pharmacy</a>
 
+                <a href="search" class="button">Find your nearest pharmacy</a>
 
                 <p>There are also things you can do yourself to <a href="http://www.nhs.uk/Conditions/Indigestion/Pages/Treatment.aspx">
                   help ease indigestion</a> and <a href="http://www.nhs.uk/Conditions/Constipation/Pages/Treatment.aspx">
