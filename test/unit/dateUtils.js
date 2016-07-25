@@ -1,16 +1,23 @@
 const chai = require('chai');
 const expect = chai.expect;
 const dateUtils = require('../../app/lib/dateUtils.js');
+const moment = require('moment');
 
 describe('dateUtils', () => {
   describe('timeInRange', () => {
     describe('GMT date', () => {
+      it('now test', () => {
+        // const m = moment('2016-07-25T13:30:00+01:00');
+        const m = moment();
+        expect(dateUtils.timeInRange(m, '09:00', '17:30')).to.equal(true);
+        expect(dateUtils.timeInRange(m, '16:00', '17:30')).to.equal(false);
+      });
       it('should return true if time is in range', () => {
         const inRange = dateUtils.timeInRange(
-          new Date('December 13, 2014 09:05:00'),
+          moment('2016-07-25T11:30:00+01:00'),
           '09:00',
           '17:30');
-        expect(inRange).to.equal(true);
+        expect(inRange).to.equal(false);
       });
       it('should return false if time is below range', () => {
         const inRange = dateUtils.timeInRange(
@@ -54,8 +61,6 @@ describe('dateUtils', () => {
       });
     });
     it('should handle opening times which span transitions to/from BST');
-  });
-  describe('getDayName', () => {
   });
   describe('getDayName', () => {
     it('should return day name', () => {
