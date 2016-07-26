@@ -1,6 +1,7 @@
 {% include "./includes/header.nunjucks" %}
 
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
+<a href="/stomach-ache" class="back-to-previous">Back</a>
 <div class="page-section">
   <div class="grid-row">
     <div class="column__two-thirds">
