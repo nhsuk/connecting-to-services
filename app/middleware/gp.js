@@ -148,6 +148,7 @@ function getOpeningTimes(req, res, next) {
 function renderPharmacyList(req, res) {
   res.render('results', {
     daysOfTheWeek,
+    location: req.query.location,
     pharmacyList: req.pharmacyList,
   });
 }
