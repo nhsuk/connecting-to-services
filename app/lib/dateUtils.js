@@ -35,7 +35,7 @@ function timeInRange(date, open, close) {
   }
 
   console.log([date.format(), start.format(), end.format()]);
-  return date.isBetween(start, end);
+  return date.isBetween(start, end, null, '[]');
 }
 
 function isOpen(date, openingTimes) {

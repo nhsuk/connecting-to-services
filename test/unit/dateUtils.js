@@ -38,7 +38,12 @@ describe('dateUtils', () => {
           .to.equal(true);
       });
     });
+    it('time ranges should be inclusive', () => {
+      expect(dateUtils.timeInRange(moment('2016-07-26T18:00:00+01:00'), '09:00', '18:00'))
+      .to.equal(true);
+    });
     it('should handle opening times which span transitions to/from BST');
+    it('should handle opening times in the early hours of the morning for all night pharmacies');
   });
   describe('getDayName', () => {
     it('should return day name', () => {
