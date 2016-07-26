@@ -27,11 +27,15 @@ function timeInRange(date, open, close) {
   const openTime = getTimeFromString(open);
   const closeTime = getTimeFromString(close);
 
-  const start = getTime(date, openTime.hours, openTime.minutes);
+  let start = getTime(date, openTime.hours, openTime.minutes);
   let end = getTime(date, closeTime.hours, closeTime.minutes);
 
   if (end < start) {
-    end = end.add(1, 'day');
+    if (date.isSameOrBefore(end)) {
+      start = start.subtract(1, 'day');
+    } else {
+      end = end.add(1, 'day');
+    }
   }
 
   console.log([date.format(), start.format(), end.format()]);

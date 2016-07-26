@@ -43,7 +43,13 @@ describe('dateUtils', () => {
       .to.equal(true);
     });
     it('should handle opening times which span transitions to/from BST');
-    it('should handle opening times in the early hours of the morning for all night pharmacies');
+    it('should handle reference time after midnight', () => {
+      const inRange = dateUtils.timeInRange(
+        moment('2016-07-25T00:30:00+01:00'),
+        '09:00',
+        '01:00');
+      expect(inRange).to.equal(true);
+    });
   });
   describe('getDayName', () => {
     it('should return day name', () => {
