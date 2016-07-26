@@ -74,11 +74,17 @@ function getPharmacyOpeningTimes(req, res, next) {
       (syndicationXml) => {
         const now = new Date();
         const dayOfWeek = dateUtils.getDayName(now);
-        /* eslint-disable no-param-reassign */
-        pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
-        pharmacy.openingTimes.today = pharmacy.openingTimes[dayOfWeek].times;
-        pharmacy.openNow = dateUtils.isOpen(now, pharmacy.openingTimes.today);
-        /* eslint-enable no-param-reassign */
+        try {
+          /* eslint-disable no-param-reassign */
+          pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
+          pharmacy.openingTimes.today = pharmacy.openingTimes[dayOfWeek].times;
+          pharmacy.openNow = dateUtils.isOpen(now, pharmacy.openingTimes.today);
+          /* eslint-enable no-param-reassign */
+        } catch (e) {
+          // intentionally left empty to allow pharmacies without any opening time
+          // to be displayed without crashing the app
+          console.log(e);
+        }
       },
       () => {
         pharmacyCount--;
