@@ -1,23 +1,19 @@
+require('moment-timezone');
+
 function getDayName(date) {
-  const days = [
-    'sunday',
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
-  ];
-  return days[date.getDay()];
+  return date.format('dddd').toLowerCase();
 }
 
-function getTime(date, hours, minutes) {
-  return new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate(),
-    hours,
-    minutes).getTime();
+function getTime(date, hour, minute) {
+  const returnDate = date.clone().tz('Europe/London');
+  returnDate.set({
+    hour,
+    minute,
+    second: 0,
+    millisecond: 0,
+  });
+
+  return returnDate;
 }
 
 function getTimeFromString(timeString) {
@@ -31,15 +27,15 @@ function timeInRange(date, open, close) {
   const openTime = getTimeFromString(open);
   const closeTime = getTimeFromString(close);
 
-  const ref = date.getTime();
   const start = getTime(date, openTime.hours, openTime.minutes);
   let end = getTime(date, closeTime.hours, closeTime.minutes);
 
   if (end < start) {
-    end = new Date(end).getTime() + 86400000;
+    end = end.add(1, 'day');
   }
 
-  return start <= ref && ref <= end;
+  console.log([date.format(), start.format(), end.format()]);
+  return date.isBetween(start, end);
 }
 
 function isOpen(date, openingTimes) {

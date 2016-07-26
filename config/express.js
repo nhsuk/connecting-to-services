@@ -40,6 +40,7 @@ module.exports = (app, config) => {
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
+    console.log(err);
     res.status(err.statusCode || 500);
     res.render('error', {
       message: err,
