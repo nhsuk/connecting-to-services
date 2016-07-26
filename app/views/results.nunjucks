@@ -80,7 +80,7 @@
   <div class="column-third">
     <p>Showing only services open today.</p>
     <p>Do you want to see all services, open and closed? <a href="">Click here</a>.</p>
-    <p>Alternatively, <a href="http://fierce-reef-62491.herokuapp.com/?search=BD10+9RY">find and contact your GP</a>.
+    <p>Alternatively, <a href="http://fierce-reef-62491.herokuapp.com/?search={{ location }}">find and contact your GP</a>.
     </p></div>
 </div>
 
