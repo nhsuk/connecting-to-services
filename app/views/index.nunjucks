@@ -1,45 +1,16 @@
-{% extends 'layout.nunjucks' %}
+{% include "./includes/header.nunjucks" %}
 
-{% block content %}
-  <h1>{{title}}</h1>
-  <h2>{{gpDetails.name}}</h2>
-  <p>{{gpDetails.address.line1}}</p>
-  <p>{{gpDetails.address.line2}}</p>
-  <p>{{gpDetails.address.line3}}</p>
-  <p>{{gpDetails.address.line4}}</p>
-  <pre>{{gpDetails.address.postcode}}</pre>
-  <h2>Opening Times</h2>
-  <h3>Reception</h3>
-  {% for day in daysOfTheWeek %}
-    <h4>{{day | capitalize }}</h4>
-    <ul>
-      {% for time in gpDetails.openingTimes.reception[day].times %}
-        {% if time.fromTime %}
-	  <li>{{time.fromTime}} to {{time.toTime}}</li>
-        {% else %}
-	  <li>{{time}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  {% endfor %}
-  <h3>Surgery</h3>
-  {% for day in daysOfTheWeek %}
-    <h4>{{day | capitalize }}</h4>
-    <ul>
-      {% for time in gpDetails.openingTimes.surgery[day].times %}
-        {% if time.fromTime %}
-	  <li>{{time.fromTime}} to {{time.toTime}}</li>
-        {% else %}
-	  <li>{{time}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  {% endfor %}
+<main id="content" role="main">
+  <h1 class="heading-large">NHS.UK Connecting to Services prototypes</h1>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3>Research prototypes</h3>
 
-  <h2>Book online</h2>
-  {% if gpDetails.bookOnlineUrl %}
-    Follow this link: <a href="{{gpDetails.bookOnlineUrl}}">{{gpDetails.bookOnlineUrl}}</a>
-  {% else %}
-    Sorry, online booking is not possible at this practice.
-  {% endif %}
-{% endblock %}
+      <ul class="list-bullet">
+        <li><a href="/stomach-ache">Start journey on Stomach Ache symptons page</a></li>
+      </ul>
+    </div>
+    </div>
+</main>
+
+{% include "./includes/footer.nunjucks" %}

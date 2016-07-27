@@ -7,6 +7,10 @@ function stomachAcheRender(req, res) {
   });
 }
 
+router.get('/',
+  (req, res) => { res.render('index', {}); }
+);
+
 router.get('/search',
   (req, res) => { res.render('search', {}); }
 );
