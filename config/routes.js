@@ -17,9 +17,12 @@ router.get('/search',
 
 router.get('/results',
   servicesMiddleware.getPharmacyUrl,
+  servicesMiddleware.getWICUrl,
   servicesMiddleware.getPharmacies,
+  servicesMiddleware.getWICs,
   servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.renderPharmacyList
+  servicesMiddleware.prepareForRender,
+  servicesMiddleware.renderServiceResults
 );
 
 router.get('/stomach-ache',

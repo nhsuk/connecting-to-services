@@ -6,6 +6,9 @@ const http = require('http');
 const dateUtils = require('../lib/dateUtils.js');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
+const wicParser = require('../lib/WICParser.js');
+const pharmacyMapper = require('../lib/pharmacyMapper');
+const wicMapper = require('../lib/wicMapper');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const cache = require('memory-cache');
 const validUrl = require('valid-url');
@@ -44,6 +47,19 @@ function getSyndicationResponse(url, resourceType, parser, next) {
       err.statusCode = 500;
       next(err);
     });
+}
+
+function getWICs(req, res, next) {
+  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
+  getSyndicationResponse(
+    req.urlForWIC,
+    'WIC List',
+    (syndicationXml) => {
+      // eslint-disable-next-line no-param-reassign
+      req.wicList = wicParser(syndicationXml);
+    },
+    next
+  );
 }
 
 function getPharmacies(req, res, next) {
@@ -113,11 +129,11 @@ function getOpeningTimes(req, res, next) {
   );
 }
 
-function renderPharmacyList(req, res) {
+function renderServiceResults(req, res) {
   res.render('results', {
     daysOfTheWeek,
     location: req.query.location,
-    pharmacyList: req.pharmacyList,
+    serviceList: req.serviceList,
   });
 }
 
@@ -127,6 +143,16 @@ function render(req, res) {
     daysOfTheWeek,
     gpDetails: req.gpDetails,
   });
+}
+
+function getWICUrl(req, res, next) {
+  const location = req.query.location;
+  const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
+  const requestUrl = `http://v1.syndication.nhschoices.nhs.uk/services/types/srv0183/postcode/${location}.xml?apikey=${syndicationApiKey}&range=100`;
+
+  // eslint-disable-next-line no-param-reassign
+  req.urlForWIC = requestUrl;
+  next();
 }
 
 function getPharmacyUrl(req, res, next) {
@@ -153,13 +179,33 @@ function getBookOnlineUrl(req, res, next) {
   next();
 }
 
+function sortByDistance(a, b) {
+  return a.distanceInKms - b.distanceInKms;
+}
+
+function prepareForRender(req, res, next) {
+  const mappedPharmacies = pharmacyMapper(req.pharmacyList);
+  const mappedWics = wicMapper(req.wicList);
+  const serviceList = mappedPharmacies.concat(mappedWics);
+  serviceList.forEach((item) => {
+    // eslint-disable-next-line no-param-reassign
+    item.distanceInMiles = item.distanceInKms / 1.6;
+  });
+  // eslint-disable-next-line no-param-reassign
+  req.serviceList = serviceList.sort(sortByDistance);
+  next();
+}
+
 module.exports = {
   upperCaseGpId,
   getPharmacyUrl,
+  getWICUrl,
   getPharmacies,
+  getWICs,
   getPharmacyOpeningTimes,
   getOpeningTimes,
   getBookOnlineUrl,
   render,
-  renderPharmacyList,
+  renderServiceResults,
+  prepareForRender,
 };
