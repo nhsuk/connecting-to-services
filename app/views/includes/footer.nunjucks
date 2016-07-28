@@ -11,6 +11,9 @@
 <li class="inline-list--item">
 <a href="/help/cookies">Cookies</a>
 </li>
+<li class="inline-list--item">
+<a href=".">{{ currentDateTime }}</a>
+</li>
 </ul>
 </div>
 

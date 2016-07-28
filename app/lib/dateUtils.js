@@ -1,7 +1,16 @@
+const moment = require('moment');
 require('moment-timezone');
 
 function getDayName(date) {
   return date.format('dddd').toLowerCase();
+}
+
+function now() {
+  return global.now || moment();
+}
+
+function setNow(datetime) {
+  global.now = datetime ? moment.tz(datetime, 'Europe/London') : datetime;
 }
 
 function getTime(date, hour, minute) {
@@ -56,5 +65,7 @@ module.exports = {
   timeInRange,
   getDayName,
   isOpen,
+  now,
+  setNow,
 };
 

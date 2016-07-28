@@ -11,6 +11,18 @@
       </ul>
     </div>
     </div>
+    <div class="column-two-thirds">
+      <h3>Change current time</h3>
+      <form action="/datetime" method="post">
+	<select name="datetime">
+	  <option value="2016-07-28 06:30">2016-07-28 06:30</option>
+	  <option value="2016-07-28 10:30">2016-07-28 10:30</option>
+	  <option value="2016-07-28 20:30">2016-07-28 20:30</option>
+	  <option value="">Reset to actual time</option>
+	</select>
+	<input type="submit" value="Submit">
+      </form>
+    </div>
 </main>
 
 {% include "./includes/footer.nunjucks" %}
