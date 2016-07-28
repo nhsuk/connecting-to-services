@@ -1,6 +1,6 @@
 // eslint-disable-next-line new-cap
 const router = require('express').Router();
-const gpMiddleware = require('../app/middleware/gp');
+const servicesMiddleware = require('../app/middleware/services');
 
 function stomachAcheRender(req, res) {
   res.render('stomach-ache', {
@@ -12,19 +12,10 @@ router.get('/search',
 );
 
 router.get('/results',
-  gpMiddleware.getPharmacyUrl,
-  gpMiddleware.getPharmacies,
-  gpMiddleware.getPharmacyOpeningTimes,
-  gpMiddleware.renderPharmacyList
-);
-
-router.get('/gpdetails/:gpId',
-  gpMiddleware.upperCaseGpId,
-  gpMiddleware.getUrl,
-  gpMiddleware.getDetails,
-  gpMiddleware.getBookOnlineUrl,
-  gpMiddleware.getOpeningTimes,
-  gpMiddleware.render
+  servicesMiddleware.getPharmacyUrl,
+  servicesMiddleware.getPharmacies,
+  servicesMiddleware.getPharmacyOpeningTimes,
+  servicesMiddleware.renderPharmacyList
 );
 
 router.get('/stomach-ache',
