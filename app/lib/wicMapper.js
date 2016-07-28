@@ -1,13 +1,14 @@
 function wicMapper(input) {
   const viewModels = [];
   input.forEach((item, index) => {
-    const model = {};
-    model.label = 'Walk-in centre';
-    model.name = item.content.servicesummary.serviceDeliverer.name;
-    model.distanceInKms = item.content.servicesummary.distance;
-    // coords come from the 'overview' page so require another request
-    // as does most of the rest of the data
-    // model.coors = {};
+    const model = {
+      label: 'Walk-in centre',
+      name: item.content.servicesummary.serviceDeliverer.name,
+      distanceInKms: item.content.servicesummary.distance,
+      coords: item.coords,
+      addressLine: item.address,
+      telephone: item.telephone,
+    };
     viewModels[index] = model;
   });
   return viewModels;
