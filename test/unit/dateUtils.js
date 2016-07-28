@@ -38,7 +38,18 @@ describe('dateUtils', () => {
           .to.equal(true);
       });
     });
+    it('time ranges should be inclusive', () => {
+      expect(dateUtils.timeInRange(moment('2016-07-26T18:00:00+01:00'), '09:00', '18:00'))
+      .to.equal(true);
+    });
     it('should handle opening times which span transitions to/from BST');
+    it('should handle reference time after midnight', () => {
+      const inRange = dateUtils.timeInRange(
+        moment('2016-07-25T00:30:00+01:00'),
+        '09:00',
+        '01:00');
+      expect(inRange).to.equal(true);
+    });
   });
   describe('getDayName', () => {
     it('should return day name', () => {
