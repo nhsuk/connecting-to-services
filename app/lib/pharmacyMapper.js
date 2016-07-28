@@ -2,6 +2,7 @@ function pharmacyMapper(input) {
   const viewModels = [];
   input.forEach((item, index) => {
     const model = {};
+    model.label = 'Pharmacy';
     model.name = item.content.organisationSummary.name;
     model.distanceInKms = item.content.organisationSummary.Distance;
     model.coords = {
