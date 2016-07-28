@@ -7,15 +7,22 @@ function stomachAcheRender(req, res) {
   });
 }
 
+router.get('/',
+  (req, res) => { res.render('index', {}); }
+);
+
 router.get('/search',
   (req, res) => { res.render('search', {}); }
 );
 
 router.get('/results',
   servicesMiddleware.getPharmacyUrl,
+  servicesMiddleware.getWICUrl,
   servicesMiddleware.getPharmacies,
+  servicesMiddleware.getWICs,
   servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.renderPharmacyList
+  servicesMiddleware.prepareForRender,
+  servicesMiddleware.renderServiceResults
 );
 
 router.get('/stomach-ache',

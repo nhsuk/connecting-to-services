@@ -9,17 +9,17 @@
 
     <table>
       <tbody>
-        {% for pharmacy in pharmacyList %}
+        {% for service in serviceList %}
         <tr>
           <td><span style="font-size: 18px; font-weight: 800;">{{ loop.index }}.</span></td>
-          <td><span style="font-size: 18px; font-weight: 800;">{{ pharmacy.content.organisationSummary.name }}</span></td>
-          <td>Distance: {{ pharmacy.content.organisationSummary.Distance | round(1) }} miles</td>
+          <td><span style="font-size: 18px; font-weight: 800;">{{ service.name }}</span></td>
+          <td>Distance: {{ service.distanceInMiles | round(1) }} miles</td>
         </tr>
         <tr>
           <td></td>
-          {% if pharmacy.openingTimes %}
-            {% if pharmacy.openNow %}
-              <td><p><strong>Currently open.</strong><br>Open today from {{ pharmacy.openingTimes["today"][0].fromTime }} to {{ pharmacy.openingTimes["today"][0].toTime }}</p></td>
+          {% if service.openingTimes %}
+            {% if service.openNow %}
+              <td><p><strong>Currently open.</strong><br>Open today from {{ service.openingTimes["today"][0].fromTime }} to {{ service.openingTimes["today"][0].toTime }}</p></td>
             {% else %}
               <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
             {% endif %}
@@ -27,7 +27,7 @@
               <td><p><strong>Opening times not known.</strong></p></td>
           {% endif %}
           <td><p>
-            <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{pharmacy.content.organisationSummary.geographicCoordinates.latitude}}+{{pharmacy.content.organisationSummary.geographicCoordinates.longitude}}" class="button button-secondary-cta" target="_blank">Get directions</a></p></td>
+            <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{ service.coords.latitude }}+{{ service.coords.longitude }}" class="button button-secondary-cta" target="_blank">Get directions</a></p></td>
         </tr>
 
         <tr>
@@ -35,28 +35,27 @@
           <td colspan="2">
 
             <details role="group">
-              <summary class="more-info" role="button" aria-controls="details-content-3" tabindex="0" aria-expanded="false">
-                <span>View full details</span>
+              <summary class="more-info" role="button" aria-controls="details-content-3" tabindex="0" aria-expanded="false"> <span>View full details</span>
               </summary>
               <div id="details-content-3" aria-hidden="true">
 
                 <p>
-                {% for line in pharmacy.content.organisationSummary.address.addressLine %}
+                {% for line in service.addressLine %}
                 {{ line }}
                 {% endfor %}
                 <br>
-                Telephone {{ pharmacy.content.organisationSummary.contact.telephone }}
+                Telephone {{ service.telephone }}
                 </p>
 
-                {% if pharmacy.openingTimes %}
+                {% if service.openingTimes %}
                   <p><strong>Opening times</strong></p>
                   <table class="gpOpeningTimes">
                     <tbody>
                       {% for day in daysOfTheWeek %}
                         <tr>
                           <td>{{day | capitalize }}</td>
-                          {% if pharmacy.openingTimes[day].times[0] != 'Closed' %}
-                            <td>{{ pharmacy.openingTimes[day].times[0].fromTime }} to {{ pharmacy.openingTimes[day].times[0].toTime }}</td>
+                          {% if service.openingTimes[day].times[0] != 'Closed' %}
+                            <td>{{ service.openingTimes[day].times[0].fromTime }} to {{ service.openingTimes[day].times[0].toTime }}</td>
                           {% else %}
                             <td>Closed</td>
                           {% endif %}
