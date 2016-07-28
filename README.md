@@ -1,4 +1,4 @@
-# gp-to-services
+# Connecting to services prototype
 [![Build Status](https://travis-ci.org/nhsalpha/gp-to-services.svg?branch=master)](https://travis-ci.org/nhsalpha/gp-to-services)
 [![Coverage Status](https://coveralls.io/repos/github/nhsalpha/gp-to-services/badge.svg?branch=master)](https://coveralls.io/github/nhsalpha/gp-to-services?branch=master)
 [![bitHound Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/dependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)

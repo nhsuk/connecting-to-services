@@ -1,7 +1,6 @@
 // eslint - disabled no-param-reassign since assigning to request/response
 // is recommended best practice by Express
 
-const assert = require('assert');
 const http = require('http');
 const dateUtils = require('../lib/dateUtils.js');
 const openingTimesParser = require('../lib/openingTimesParser');
@@ -10,8 +9,6 @@ const wicParser = require('../lib/WICParser.js');
 const pharmacyMapper = require('../lib/pharmacyMapper');
 const wicMapper = require('../lib/wicMapper');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
-const cache = require('memory-cache');
-const validUrl = require('valid-url');
 const Verror = require('verror');
 const moment = require('moment');
 
@@ -50,7 +47,6 @@ function getSyndicationResponse(url, resourceType, parser, next) {
 }
 
 function getWICs(req, res, next) {
-  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
   getSyndicationResponse(
     req.urlForWIC,
     'WIC List',
@@ -63,7 +59,6 @@ function getWICs(req, res, next) {
 }
 
 function getPharmacies(req, res, next) {
-  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
   getSyndicationResponse(
     req.urlForPharmacy,
     'Pharmacy List',
@@ -76,8 +71,6 @@ function getPharmacies(req, res, next) {
 }
 
 function getPharmacyOpeningTimes(req, res, next) {
-  // assert(validUrl.isUri(req.urlForGp), `Invalid URL: '${req.urlForGp}'`);
-  //
   let pharmacyCount = req.pharmacyList.length;
 
   req.pharmacyList.forEach((pharmacy) => {
@@ -111,37 +104,11 @@ function getPharmacyOpeningTimes(req, res, next) {
   });
 }
 
-function getOpeningTimes(req, res, next) {
-  assert.ok(validUrl.isUri(req.gpDetails.overviewLink),
-    `Invalid URL: '${req.gpDetails.overviewLink}'`);
-
-  getSyndicationResponse(
-    req.gpDetails.overviewLink,
-    'GP Practice Opening Times',
-    (syndicationXml) => {
-      // eslint-disable-next-line no-param-reassign
-      req.gpDetails.openingTimes = {
-        reception: openingTimesParser('reception', syndicationXml),
-        surgery: openingTimesParser('surgery', syndicationXml),
-      };
-    },
-    next
-  );
-}
-
 function renderServiceResults(req, res) {
   res.render('results', {
     daysOfTheWeek,
     location: req.query.location,
     serviceList: req.serviceList,
-  });
-}
-
-function render(req, res) {
-  res.render('index', {
-    title: 'GP Practice Details',
-    daysOfTheWeek,
-    gpDetails: req.gpDetails,
   });
 }
 
@@ -165,20 +132,6 @@ function getPharmacyUrl(req, res, next) {
   next();
 }
 
-function upperCaseGpId(req, res, next) {
-  // eslint-disable-next-line no-param-reassign
-  req.params.gpId = req.params.gpId.toUpperCase();
-  next();
-}
-
-function getBookOnlineUrl(req, res, next) {
-  const gpId = req.params.gpId;
-
-  // eslint-disable-next-line no-param-reassign
-  req.gpDetails.bookOnlineUrl = cache.get(gpId).book_online_url;
-  next();
-}
-
 function sortByDistance(a, b) {
   return a.distanceInKms - b.distanceInKms;
 }
@@ -197,15 +150,11 @@ function prepareForRender(req, res, next) {
 }
 
 module.exports = {
-  upperCaseGpId,
   getPharmacyUrl,
   getWICUrl,
   getPharmacies,
   getWICs,
   getPharmacyOpeningTimes,
-  getOpeningTimes,
-  getBookOnlineUrl,
-  render,
   renderServiceResults,
   prepareForRender,
 };
