@@ -14,3 +14,7 @@
     padding: 9px 30px 15px 30px;
   }
 }
+
+.global-header--link {
+  background-image: url("../images/logotype-nhs-colour.png");
+}
