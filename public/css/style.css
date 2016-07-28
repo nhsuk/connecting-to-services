@@ -2889,3 +2889,8 @@ a.another-gp-black:after {
   margin-bottom: 2px;
   font-weight: 400;
 }
+
+.map-button {
+  font-size: 1.3rem;
+}
+
