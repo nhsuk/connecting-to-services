@@ -25,6 +25,10 @@ router.get('/results',
   servicesMiddleware.renderServiceResults
 );
 
+router.get('/rashes',
+  (req, res) => { res.render('rashes', {}); }
+);
+
 router.get('/stomach-ache',
   stomachAcheRender
 );
