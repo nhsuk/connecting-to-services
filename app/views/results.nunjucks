@@ -30,7 +30,7 @@
               <td><p><strong>Opening times not known.</strong></p></td>
           {% endif %}
           <td><p>
-            <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{ service.coords.latitude }}+{{ service.coords.longitude }}" class="button button-secondary-cta" target="_blank">Get directions</a></p></td>
+            <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{ service.coords.latitude }}+{{ service.coords.longitude }}" class="button button-secondary-cta" target="_blank">See on map</a></p></td>
         </tr>
 
         <tr>
