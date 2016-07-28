@@ -11,6 +11,9 @@
       <tbody>
         {% for service in serviceList %}
         <tr>
+          <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
+        </tr>
+        <tr>
           <td><span style="font-size: 18px; font-weight: 800;">{{ loop.index }}.</span></td>
           <td><span style="font-size: 18px; font-weight: 800;">{{ service.name }}</span></td>
           <td>Distance: {{ service.distanceInMiles | round(1) }} miles</td>
