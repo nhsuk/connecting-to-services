@@ -1,6 +1,7 @@
 // eslint-disable-next-line new-cap
 const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
+const dateUtils = require('../app/lib/dateUtils.js');
 
 function stomachAcheRender(req, res) {
   res.render('stomach-ache', {
@@ -8,11 +9,20 @@ function stomachAcheRender(req, res) {
 }
 
 router.get('/',
-  (req, res) => { res.render('index', {}); }
+  (req, res) => {
+    res.render('index', { currentDateTime: dateUtils.nowForDisplay() });
+  }
 );
 
 router.get('/search',
   (req, res) => { res.render('search', {}); }
+);
+
+router.post('/datetime',
+  (req, res) => {
+    dateUtils.setNow(req.body.datetime);
+    res.redirect('/');
+  }
 );
 
 router.get('/results',
