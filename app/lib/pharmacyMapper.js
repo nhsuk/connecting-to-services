@@ -1,18 +1,19 @@
 function pharmacyMapper(input) {
   const viewModels = [];
   input.forEach((item, index) => {
-    const model = {};
-    model.label = 'Pharmacy';
-    model.name = item.content.organisationSummary.name;
-    model.distanceInKms = item.content.organisationSummary.Distance;
-    model.coords = {
-      latitude: item.content.organisationSummary.geographicCoordinates.latitude,
-      longitude: item.content.organisationSummary.geographicCoordinates.longitude,
+    const model = {
+      label: 'Pharmacy',
+      name: item.content.organisationSummary.name,
+      distanceInKms: item.content.organisationSummary.Distance,
+      coords: {
+        latitude: item.content.organisationSummary.geographicCoordinates.latitude,
+        longitude: item.content.organisationSummary.geographicCoordinates.longitude,
+      },
+      openingTimes: item.openingTimes,
+      openNow: item.openNow,
+      addressLine: item.content.organisationSummary.address.addressLine,
+      telephone: item.content.organisationSummary.contact.telephone,
     };
-    model.openingTimes = item.openingTimes;
-    model.openNow = item.openNow;
-    model.addressLine = item.content.organisationSummary.address.addressLine;
-    model.telephone = item.content.organisationSummary.contact.telephone;
     viewModels[index] = model;
   });
   return viewModels;

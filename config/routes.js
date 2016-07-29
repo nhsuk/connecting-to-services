@@ -21,6 +21,7 @@ router.get('/results',
   servicesMiddleware.getPharmacies,
   servicesMiddleware.getWICs,
   servicesMiddleware.getPharmacyOpeningTimes,
+  servicesMiddleware.getWICDetails,
   servicesMiddleware.prepareForRender,
   servicesMiddleware.renderServiceResults
 );

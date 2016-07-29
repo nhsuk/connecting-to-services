@@ -52,7 +52,7 @@ function getWICs(req, res, next) {
     'WIC List',
     (syndicationXml) => {
       // eslint-disable-next-line no-param-reassign
-      req.wicList = wicParser(syndicationXml);
+      req.wicList = wicParser.parseList(syndicationXml);
     },
     next
   );
@@ -68,6 +68,43 @@ function getPharmacies(req, res, next) {
     },
     next
   );
+}
+
+function getWICDetails(req, res, next) {
+  let wicCount = req.wicList.length;
+
+  req.wicList.forEach((wic) => {
+    const wicId = wic.id;
+    const wicUrl = `${wicId}.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`;
+
+    getSyndicationResponse(
+      wicUrl,
+      'wic details',
+      (syndicationXml) => {
+        try {
+          /* eslint-disable no-param-reassign */
+          const parsedWic = wicParser.parseOne(syndicationXml);
+          wic.address = parsedWic.content.service.address.addressLine;
+          wic.telephone = parsedWic.content.service.phone;
+          wic.coords = {
+            latitude: parsedWic.content.service.geographicCoordinates.latitude,
+            longitude: parsedWic.content.service.geographicCoordinates.longitude,
+          };
+          /* eslint-enable no-param-reassign */
+        } catch (e) {
+          // intentionally left empty to allow WICs without the things being
+          // mapped above to get through to the results page
+          console.error(e);
+        }
+      },
+      () => {
+        wicCount--;
+        if (wicCount === 0) {
+          next();
+        }
+      }
+    );
+  });
 }
 
 function getPharmacyOpeningTimes(req, res, next) {
@@ -155,6 +192,7 @@ module.exports = {
   getPharmacies,
   getWICs,
   getPharmacyOpeningTimes,
+  getWICDetails,
   renderServiceResults,
   prepareForRender,
 };
