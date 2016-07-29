@@ -11,6 +11,9 @@ function pharmacyMapper(input) {
       },
       openingTimes: item.openingTimes,
       openNow: item.openNow,
+      openNext: (item.openNext ?
+        `${item.openNext.day} at ${item.openNext.time.format('h:mm a')}` :
+        ''),
       addressLine: item.content.organisationSummary.address.addressLine,
       telephone: item.content.organisationSummary.contact.telephone,
     };

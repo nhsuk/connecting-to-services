@@ -31,13 +31,13 @@
         </tr>
         <tr>
           {% if service.openingTimes %}
-          {% if service.openNow %}
-          <td><p><strong>Currently open.</strong><br>Open today from {{ service.openingTimes["today"][0].fromTime }} to {{ service.openingTimes["today"][0].toTime }}</p></td>
+            {% if service.openNow %}
+              <td><p><strong>Currently open.</strong><br>Open today from {{ service.openingTimes["today"][0].fromTime }} to {{ service.openingTimes["today"][0].toTime }}</p></td>
+            {% else %}
+              <td><p><strong>Currently closed</strong><br>Next open {{ service.openNext }}</p></td>
+            {% endif %}
           {% else %}
-          <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
-          {% endif %}
-          {% else %}
-          <td><p><strong>Opening times not known.</strong></p></td>
+            <td><p><strong>Opening times not known.</strong></p></td>
           {% endif %}
         </tr>
 

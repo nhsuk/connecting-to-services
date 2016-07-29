@@ -10,7 +10,7 @@ function now() {
 }
 
 function nowForDisplay() {
-  return now().tz('Europe/London').format('dddd hh:mm');
+  return now().tz('Europe/London').format('dddd HH:mm');
 }
 
 function setNow(datetime) {
@@ -65,10 +65,45 @@ function isOpen(date, openingTimes) {
   );
 }
 
+function createDateTime(dateTime, timeString) {
+  const time = getTimeFromString(timeString);
+  return getTime(dateTime, time.hours, time.minutes).tz('Europe/London');
+}
+
+function capitalise(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getNextOpeningTime(dateTime, openingTimesForWeek) {
+  let dayCount = 0;
+  do {
+    dateTime.add(1, 'day');
+    const day = dateTime.format('dddd').toLowerCase();
+    if (openingTimesForWeek[day].times[0] !== 'Closed') {
+      return {
+        day: dayCount === 0 ? 'tomorrow' : capitalise(day),
+        time: createDateTime(dateTime, openingTimesForWeek[day].times[0].fromTime),
+      };
+    }
+    dayCount++;
+  } while (dayCount < 7);
+  return {};
+}
+
+function nextOpen(dateTime, openingTimesForWeek) {
+  const day = getDayName(dateTime);
+  const openingTime = createDateTime(dateTime, openingTimesForWeek[day].times[0].fromTime);
+
+  return (dateTime < openingTime) ?
+    { day: 'today', time: openingTime } :
+    getNextOpeningTime(dateTime, openingTimesForWeek);
+}
+
 module.exports = {
   timeInRange,
   getDayName,
   isOpen,
+  nextOpen,
   now,
   nowForDisplay,
   setNow,
