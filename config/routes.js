@@ -10,7 +10,7 @@ function stomachAcheRender(req, res) {
 
 router.get('/',
   (req, res) => {
-    res.render('index', { currentDateTime: dateUtils.now().format() });
+    res.render('index', { currentDateTime: dateUtils.nowForDisplay() });
   }
 );
 

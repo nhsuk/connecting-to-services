@@ -87,7 +87,6 @@ function getPharmacyOpeningTimes(req, res, next) {
       'Pharmacy List',
       (syndicationXml) => {
         const now = dateUtils.now();
-        console.log(now);
         const dayOfWeek = dateUtils.getDayName(now);
         try {
           /* eslint-disable no-param-reassign */
@@ -134,7 +133,7 @@ function renderServiceResults(req, res) {
     daysOfTheWeek,
     location: req.query.location,
     serviceList: req.serviceList,
-    currentDateTime: dateUtils.now().format(),
+    currentDateTime: dateUtils.nowForDisplay(),
   });
 }
 

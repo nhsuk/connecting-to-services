@@ -9,6 +9,10 @@ function now() {
   return global.now || moment();
 }
 
+function nowForDisplay() {
+  return now().tz('Europe/London').format('dddd hh:mm');
+}
+
 function setNow(datetime) {
   global.now = datetime ? moment.tz(datetime, 'Europe/London') : datetime;
 }
@@ -47,7 +51,7 @@ function timeInRange(date, open, close) {
     }
   }
 
-  console.log([date.format(), start.format(), end.format()]);
+  // console.log([date.format(), start.format(), end.format()]);
   return date.isBetween(start, end, null, '[]');
 }
 
@@ -66,6 +70,7 @@ module.exports = {
   getDayName,
   isOpen,
   now,
+  nowForDisplay,
   setNow,
 };
 
