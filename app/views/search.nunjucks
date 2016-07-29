@@ -2,21 +2,24 @@
 
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="/stomach-ache" class="back-to-previous">Back</a>
+<h1 class="heading-xlarge">Look for services to help you with your condition</h1>
 <div class="page-section">
   <div class="grid-row">
     <div class="column__two-thirds">
-      <div class="reading-width">
+      <form method="get" class="form" action="/results">
 
-        <section>
-          <p>
-          <form action="/results" method="get">
-            <label for="location">Find</label>
-            <input id="location" name="location" value="Enter postcode">
-            <input type="submit" value="submit">
-          </form>
-          </p>
-        </section>
-      </div>
+            <label class="form-label-bold" for="location">
+              Postcode
+            </label>
+            <input type="text" id="location" name="location" value="" class="form-control">
+
+            <input type="submit" value="Search" style="
+            background-color: #006647;
+            color: white;
+            border: 3px solid #003300;
+            height: 4rem;">
+
+      </form>
     </div>
   </div>
 </div>
