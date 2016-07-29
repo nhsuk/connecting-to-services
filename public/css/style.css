@@ -2894,3 +2894,6 @@ a.another-gp-black:after {
   font-size: 1.3rem;
 }
 
+.global-header--link {
+  background-image: url("../images/logotype-nhs-colour.png");
+}
