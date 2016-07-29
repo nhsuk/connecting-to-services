@@ -92,8 +92,8 @@ function getWICDetails(req, res, next) {
           };
           /* eslint-enable no-param-reassign */
         } catch (e) {
-          // intentionally left empty to allow pharmacies without any opening time
-          // to be displayed without crashing the app
+          // intentionally left empty to allow WICs without the things being
+          // mapped above to get through to the results page
           console.error(e);
         }
       },
