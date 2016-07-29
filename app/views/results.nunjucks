@@ -22,13 +22,13 @@
         <tr>
           <td></td>
           {% if service.openingTimes %}
-            {% if service.openNow %}
-              <td><p><strong>Currently open.</strong><br>Open today from {{ service.openingTimes["today"][0].fromTime }} to {{ service.openingTimes["today"][0].toTime }}</p></td>
-            {% else %}
-              <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
-            {% endif %}
+          {% if service.openNow %}
+          <td><p><strong>Currently open.</strong><br>Open today from {{ service.openingTimes["today"][0].fromTime }} to {{ service.openingTimes["today"][0].toTime }}</p></td>
           {% else %}
-              <td><p><strong>Opening times not known.</strong></p></td>
+          <td><p><strong>Currently closed</strong><br>Next open at ...</p></td>
+          {% endif %}
+          {% else %}
+          <td><p><strong>Opening times not known.</strong></p></td>
           {% endif %}
           <td><p>
             <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{ service.coords.latitude }}+{{ service.coords.longitude }}" class="button button-secondary-cta map-button" target="_blank">See on map</a></p></td>
@@ -50,21 +50,21 @@
                 </p>
 
                 {% if service.openingTimes %}
-                  <p><strong>Opening times</strong></p>
-                  <table class="gpOpeningTimes">
-                    <tbody>
-                      {% for day in daysOfTheWeek %}
-                        <tr>
-                          <td>{{day | capitalize }}</td>
-                          {% if service.openingTimes[day].times[0] != 'Closed' %}
-                            <td>{{ service.openingTimes[day].times[0].fromTime }} to {{ service.openingTimes[day].times[0].toTime }}</td>
-                          {% else %}
-                            <td>Closed</td>
-                          {% endif %}
-                        </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
+                <p><strong>Opening times</strong></p>
+                <table class="gpOpeningTimes">
+                  <tbody>
+                    {% for day in daysOfTheWeek %}
+                    <tr>
+                      <td>{{day | capitalize }}</td>
+                      {% if service.openingTimes[day].times[0] != 'Closed' %}
+                      <td>{{ service.openingTimes[day].times[0].fromTime }} to {{ service.openingTimes[day].times[0].toTime }}</td>
+                      {% else %}
+                      <td>Closed</td>
+                      {% endif %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
                 {% endif %}
               </div>
             </details>
@@ -82,7 +82,7 @@
     <p>
     <h3 class="heading-small">Would you rather seen a GP?</h3>
     <p><a href="http://fierce-reef-62491.herokuapp.com/?search={{ location }}">Find and contact your GP</a>.
-      </p>
+    </p>
     </p>
   </div>
 </div>

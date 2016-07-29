@@ -8,16 +8,16 @@
     <div class="column__two-thirds">
       <form method="get" class="form" action="/results">
 
-            <label class="form-label-bold" for="location">
-              Postcode
-            </label>
-            <input type="text" id="location" name="location" value="" class="form-control">
+        <label class="form-label-bold" for="location">
+          Postcode
+        </label>
+        <input type="text" id="location" name="location" value="" class="form-control">
 
-            <input type="submit" value="Search" style="
-            background-color: #006647;
-            color: white;
-            border: 3px solid #003300;
-            height: 4rem;">
+        <input type="submit" value="Search" style="
+        background-color: #006647;
+        color: white;
+        border: 3px solid #003300;
+        height: 4rem;">
 
       </form>
     </div>
