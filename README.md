@@ -1,10 +1,11 @@
-# Connecting to services prototype
-[![Build Status](https://travis-ci.org/nhsalpha/gp-to-services.svg?branch=master)](https://travis-ci.org/nhsalpha/gp-to-services)
-[![Coverage Status](https://coveralls.io/repos/github/nhsalpha/gp-to-services/badge.svg?branch=master)](https://coveralls.io/github/nhsalpha/gp-to-services?branch=master)
-[![bitHound Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/dependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/nhsalpha/gp-to-services/badges/devDependencies.svg)](https://www.bithound.io/github/nhsalpha/gp-to-services/master/dependencies/npm)
+# Connecting to service prototype
+[![Build Status](https://travis-ci.org/nhsalpha/connecting-to-services-hack-day.svg?branch=master)](https://travis-ci.org/nhsalpha/connecting-to-services-hack-day)
+[![Coverage Status](https://coveralls.io/repos/github/nhsalpha/connecting-to-services-hack-day/badge.svg?branch=master)](https://coveralls.io/github/nhsalpha/connecting-to-services-hack-day?branch=master)
+[![bitHound Dependencies](https://www.bithound.io/github/nhsalpha/connecting-to-services-hack-day/badges/dependencies.svg)](https://www.bithound.io/github/nhsalpha/connecting-to-services-hack-day/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/nhsalpha/connecting-to-services-hack-day/badges/devDependencies.svg)](https://www.bithound.io/github/nhsalpha/connecting-to-services-hack-day/master/dependencies/npm)
 
-Connecting the user journey from GP details to services
+Prototype to see how people react / work with the ability to connect with an
+appropriate service directly from a condition/symptom page.
 
 ## Environment variables
 
