@@ -44,9 +44,7 @@
               <div id="details-content-3" aria-hidden="true">
 
                 <p>
-                {% for line in service.addressLine %}
-                {{ line }}
-                {% endfor %}
+                {{ service.addressLine | join(", ") }}
                 <br>
                 Telephone {{ service.telephone }}
                 </p>
