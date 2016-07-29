@@ -1,0 +1,118 @@
+{% include "./includes/beta-header.nunjucks" %}
+
+<main id="content" role="main" tabindex="-1" class="util-nofocus">
+
+<article role="article">
+
+  <div class="local-header">
+    <div class="local-header--inner">
+      <h1 class="local-header--title">Headache</h1>
+
+      <div class="local-header--intro">
+        <p>Most headaches will go away on their own and aren’t a sign of something more serious.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page-section">
+    <div class="grid-row">
+
+      <div class="column__two-thirds">
+        <div class="reading-width">
+          <section>
+
+            <h2>Treating headaches at home</h2>
+
+            <p>You can simply wait until the headache goes away or take painkillers
+            like paracetamol or ibuprofen. You can buy these over the counter at a pharmacy.
+            <a href="/search" class="button">Find a pharmacy near you that’s open right now</a>
+            </p>
+            <p>Headaches can last between 30 minutes and several hours.</p>
+
+            <p>It will also help to:</p>
+            <ul>
+              <li>drink plenty of water</li>
+              <li>eat regular meals</li>
+              <li>sleep the same amount of hours every night</li>
+            </ul>
+
+            <hr>
+
+            <p>Many things cause headaches, for example:</p>
+            <ul>
+              <li>colds and flu</li>
+              <li>bad posture</li>
+              <li>stress</li>
+              <li>periods or menopause (hormone headaches)</li>
+            </ul>
+
+          </section>
+
+
+          <section class="callout callout__info">
+            <h2>See your GP if</h2>
+
+            <ul>
+              <li>you have a bad throbbing pain at the front or side of your head </li>
+              <li>you feel sick, vomit and find light or noise painful</li>
+              <li>
+                you see flashing lights when the headache starts &mdash; this might be
+                <a href="http://www.nhs.uk/Conditions/Migraine/Pages/Introduction.aspx">migraine</a>
+                or <a href="http://www.nhs.uk/conditions/cluster-headaches/Pages/Introduction.aspx">cluster headaches</a>
+              </li>
+            </ul>
+
+          </section>
+
+        </div>
+      </div>
+
+      <div class="column__one-third-right">
+        <div class="reading-width">
+
+
+          <section class="callout callout__alert callout__overlap">
+            <h2>Call 999 or go to <abbr title="Accident and Emergency">
+                A&amp;E</abbr> if you</h2>
+
+            <p>You hurt your head badly, eg from a fall or accident.</p>
+            <p>It feels like the worst pain you’ve ever had and came on suddenly.</p>
+            <p>You have a severe headache and:</p>
+            <ul>
+              <li>sudden problems speaking, remembering things</li>
+              <li>blurred vision</li>
+              <li>are feeling drowsy, confused</li>
+              <li>high fever</li>
+              <li>stiff neck</li>
+              <li>rash</li>
+              <li>redness in one of your eyes</li>
+              <li>jaw pain when chewing</li>
+            </ul>
+
+          </section>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <section class="callout callout__full-width">
+    <div class="callout--inner">
+      <h2>Call 111</h2>
+
+
+      <p>If you can’t speak to your GP or don’t know what to do next</p>
+
+    </div>
+  </section>
+
+</article>
+
+</main>
+
+{% include "./includes/footer.nunjucks" %}

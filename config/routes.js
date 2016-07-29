@@ -25,6 +25,14 @@ router.get('/results',
   servicesMiddleware.renderServiceResults
 );
 
+router.get('/head-ache',
+  (req, res) => { res.render('head-ache', {}); }
+);
+
+router.get('/rashes',
+  (req, res) => { res.render('rashes', {}); }
+);
+
 router.get('/stomach-ache',
   stomachAcheRender
 );
