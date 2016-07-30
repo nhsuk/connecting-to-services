@@ -74,7 +74,8 @@ function capitalise(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function getNextOpeningTime(dateTime, openingTimesForWeek) {
+function getNextOpeningTime(startDateTime, openingTimesForWeek) {
+  const dateTime = moment(startDateTime);
   let dayCount = 0;
   do {
     dateTime.add(1, 'day');
@@ -90,8 +91,30 @@ function getNextOpeningTime(dateTime, openingTimesForWeek) {
   return {};
 }
 
+function getNextClosingTime(startDateTime, openingTimesForWeek) {
+  const dateTime = moment(startDateTime);
+  let dayCount = 0;
+  do {
+    const day = dateTime.format('dddd').toLowerCase();
+    dateTime.add(1, 'day');
+    if (openingTimesForWeek[day].times[0] !== 'Closed') {
+      return {
+        day: dayCount === 0 ? 'tomorrow' : capitalise(day),
+        time: createDateTime(dateTime, openingTimesForWeek[day].times[0].toTime),
+      };
+    }
+    dayCount++;
+  } while (dayCount < 7);
+  return {};
+}
+
 function nextOpen(dateTime, openingTimesForWeek) {
   const day = getDayName(dateTime);
+
+  if (openingTimesForWeek[day].times[0] === 'Closed') {
+    return getNextOpeningTime(dateTime, openingTimesForWeek);
+  }
+
   const openingTime = createDateTime(dateTime, openingTimesForWeek[day].times[0].fromTime);
 
   return (dateTime < openingTime) ?
@@ -99,11 +122,20 @@ function nextOpen(dateTime, openingTimesForWeek) {
     getNextOpeningTime(dateTime, openingTimesForWeek);
 }
 
+function nextClosed(dateTime, openingTimesForWeek) {
+  const day = getDayName(dateTime);
+  const closingTime = createDateTime(dateTime, openingTimesForWeek[day].times[0].toTime);
+  return (dateTime < closingTime) ?
+    { day: 'today', time: closingTime } :
+    getNextClosingTime(dateTime, openingTimesForWeek);
+}
+
 module.exports = {
   timeInRange,
   getDayName,
   isOpen,
   nextOpen,
+  nextClosed,
   now,
   nowForDisplay,
   setNow,

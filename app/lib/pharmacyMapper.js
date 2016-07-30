@@ -1,3 +1,5 @@
+const dateUtils = require('../lib/dateUtils.js');
+
 function pharmacyMapper(input) {
   const viewModels = [];
   input.forEach((item, index) => {
@@ -11,12 +13,25 @@ function pharmacyMapper(input) {
       },
       openingTimes: item.openingTimes,
       openNow: item.openNow,
-      openNext: (item.openNext ?
-        `${item.openNext.day} at ${item.openNext.time.format('h:mm a')}` :
-        ''),
       addressLine: item.content.organisationSummary.address.addressLine,
       telephone: item.content.organisationSummary.contact.telephone,
     };
+    if (model.openNow) {
+      const closedTime = item.closedNext.time.format('h:mm a');
+      const closedDay = item.closedNext.day;
+      model.closedNext =
+            ((closedDay === 'tomorrow' && closedTime === '12:00 am')
+          || (closedDay === 'today' && closedTime === '11:59 pm')) ?
+          'Currently open, closes today at midnight' :
+          `Currently open, closes ${closedDay} at ${closedTime}`;
+    } else {
+      const timeUntilOpen = item.openNext.time.diff(dateUtils.now(), 'minutes');
+      model.openNext =
+        (timeUntilOpen <= 90) ?
+        `Currently closed, opens in ${timeUntilOpen} minutes` :
+        `Currently closed, opens ${item.openNext.day} at ${item.openNext.time.format('h:mm a')}`;
+    }
+
     viewModels[index] = model;
   });
   return viewModels;

@@ -75,12 +75,35 @@ describe('dateUtils', () => {
       });
     });
   });
+  describe('nextClosed', () => {
+    const openingTimes = {
+      monday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
+      tuesday: { times: [{ fromTime: '09:00', toTime: '01:30' }] },
+      wednesday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
+      thursday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
+      friday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
+      saturday: { times: ['Closed'] },
+      sunday: { times: ['Closed'] },
+    };
+    describe('currently open', () => {
+      it('when during todays opening time should return todays closed time', () => {
+        const date = moment('2016-07-25T11:30:00+01:00');
+        const nextClosed = dateUtils.nextClosed(date, openingTimes);
+        expect(nextClosed.day).to.equal('today');
+        expect(nextClosed.time.format()).to.equal('2016-07-25T17:30:00+01:00');
+      });
+      it('when closing time is after midnight should return tomorrows closing time', () => {
+        const date = moment('2016-07-26T11:30:00+01:00');
+        const nextClosed = dateUtils.nextClosed(date, openingTimes);
+        expect(nextClosed.day).to.equal('tomorrow');
+        expect(nextClosed.time.format()).to.equal('2016-07-27T01:30:00+01:00');
+      });
+    });
+  });
   describe('nextOpen', () => {
     const openingTimes = {
       monday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
       tuesday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
-      wednesday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
-      thursday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
       friday: { times: [{ fromTime: '09:00', toTime: '17:30' }] },
       saturday: { times: ['Closed'] },
       sunday: { times: ['Closed'] },
@@ -93,7 +116,7 @@ describe('dateUtils', () => {
         expect(nextOpen.time.format()).to.equal('2016-07-25T09:00:00+01:00');
       });
       it('when after todays closing time should return tomorrows opening time', () => {
-        const date = moment('2016-07-25T18:30:00+01:00');
+        const date = moment('2016-07-25T21:30:00+01:00');
         const nextOpen = dateUtils.nextOpen(date, openingTimes);
         expect(nextOpen.day).to.equal('tomorrow');
         expect(nextOpen.time.format()).to.equal('2016-07-26T09:00:00+01:00');
@@ -104,13 +127,11 @@ describe('dateUtils', () => {
         expect(nextOpen.day).to.equal('Monday');
         expect(nextOpen.time.format()).to.equal('2016-08-01T09:00:00+01:00');
       });
-    });
-    describe('currently open', () => {
-      it('when during todays opening times should return tomorrows opening time', () => {
-        const date = moment('2016-07-25T09:30:00+01:00');
+      it('when currently a saturday then should return mondays opening time', () => {
+        const date = moment('2016-07-30T09:30:00+01:00');
         const nextOpen = dateUtils.nextOpen(date, openingTimes);
-        expect(nextOpen.day).to.equal('tomorrow');
-        expect(nextOpen.time.format()).to.equal('2016-07-26T09:00:00+01:00');
+        expect(nextOpen.day).to.equal('Monday');
+        expect(nextOpen.time.format()).to.equal('2016-08-01T09:00:00+01:00');
       });
     });
   });
