@@ -16,6 +16,7 @@ function pharmacyMapper(input) {
       openingTimes: item.openingTimes,
       openNow: item.openNow,
       addressLine: item.content.organisationSummary.address.addressLine,
+      postcode: item.content.organisationSummary.address.postcode,
       telephone: item.content.organisationSummary.contact.telephone,
     };
     if (model.openNow) {
