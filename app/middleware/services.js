@@ -191,6 +191,8 @@ function prepareForRender(req, res, next) {
         item.addressLine.push(item.postcode);
       }
     }
+    // eslint-disable-next-line no-param-reassign
+    item.googleMapsPlace = `${item.name},${[].concat.apply([], item.addressLine)}`;
   });
   // eslint-disable-next-line no-param-reassign
   req.serviceList = serviceList.sort(sortByDistance);
