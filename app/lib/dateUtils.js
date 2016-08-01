@@ -1,3 +1,4 @@
+const daysOfTheWeek = require('./constants').daysOfTheWeek;
 const moment = require('moment');
 require('moment-timezone');
 
@@ -10,7 +11,7 @@ function now() {
 }
 
 function nowForDisplay() {
-  return now().tz('Europe/London').format('dddd hh:mm');
+  return now().tz('Europe/London').format('dddd HH:mm');
 }
 
 function setNow(datetime) {
@@ -34,6 +35,26 @@ function getTimeFromString(timeString) {
     hours: parseInt(timeString.split(':')[0], 10),
     minutes: parseInt(timeString.split(':')[1], 10),
   };
+}
+
+function formatTime(timeString) {
+  const time = getTimeFromString(timeString);
+  const formattedTime = getTime(now(), time.hours, time.minutes).format('h:mm a');
+  if (formattedTime === '12:00 am' || formattedTime === '11:59 pm') {
+    return 'midnight';
+  }
+  return formattedTime;
+}
+
+function formatOpeningTimes(openingTimes) {
+  daysOfTheWeek.forEach((day) => {
+    if (openingTimes && openingTimes[day].times[0] !== 'Closed') {
+      /* eslint-disable no-param-reassign */
+      openingTimes[day].times[0].fromTime = formatTime(openingTimes[day].times[0].fromTime);
+      openingTimes[day].times[0].toTime = formatTime(openingTimes[day].times[0].toTime);
+      /* eslint-enable no-param-reassign */
+    }
+  });
 }
 
 function timeInRange(date, open, close) {
@@ -65,12 +86,80 @@ function isOpen(date, openingTimes) {
   );
 }
 
+function createDateTime(dateTime, timeString) {
+  const time = getTimeFromString(timeString);
+  return getTime(dateTime, time.hours, time.minutes).tz('Europe/London');
+}
+
+function capitalise(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getNextOpeningTime(startDateTime, openingTimesForWeek) {
+  const dateTime = moment(startDateTime);
+  let dayCount = 0;
+  do {
+    dateTime.add(1, 'day');
+    const day = dateTime.format('dddd').toLowerCase();
+    if (openingTimesForWeek[day].times[0] !== 'Closed') {
+      return {
+        day: dayCount === 0 ? 'tomorrow' : capitalise(day),
+        time: createDateTime(dateTime, openingTimesForWeek[day].times[0].fromTime),
+      };
+    }
+    dayCount++;
+  } while (dayCount < 7);
+  return {};
+}
+
+function getNextClosingTime(startDateTime, openingTimesForWeek) {
+  const dateTime = moment(startDateTime);
+  let dayCount = 0;
+  do {
+    const day = dateTime.format('dddd').toLowerCase();
+    dateTime.add(1, 'day');
+    if (openingTimesForWeek[day].times[0] !== 'Closed') {
+      return {
+        day: dayCount === 0 ? 'tomorrow' : capitalise(day),
+        time: createDateTime(dateTime, openingTimesForWeek[day].times[0].toTime),
+      };
+    }
+    dayCount++;
+  } while (dayCount < 7);
+  return {};
+}
+
+function nextOpen(dateTime, openingTimesForWeek) {
+  const day = getDayName(dateTime);
+
+  if (openingTimesForWeek[day].times[0] === 'Closed') {
+    return getNextOpeningTime(dateTime, openingTimesForWeek);
+  }
+
+  const openingTime = createDateTime(dateTime, openingTimesForWeek[day].times[0].fromTime);
+
+  return (dateTime < openingTime) ?
+    { day: 'today', time: openingTime } :
+    getNextOpeningTime(dateTime, openingTimesForWeek);
+}
+
+function nextClosed(dateTime, openingTimesForWeek) {
+  const day = getDayName(dateTime);
+  const closingTime = createDateTime(dateTime, openingTimesForWeek[day].times[0].toTime);
+  return (dateTime < closingTime) ?
+    { day: 'today', time: closingTime } :
+    getNextClosingTime(dateTime, openingTimesForWeek);
+}
+
 module.exports = {
   timeInRange,
   getDayName,
   isOpen,
+  nextOpen,
+  nextClosed,
   now,
   nowForDisplay,
   setNow,
+  formatOpeningTimes,
 };
 

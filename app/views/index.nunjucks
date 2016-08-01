@@ -19,6 +19,7 @@
     <select name="datetime">
       <option value="">Select an option</option>
       <option value="2016-07-28 06:30">Thursday 06:30</option>
+      <option value="2016-07-28 08:30">Thursday 08:30</option>
       <option value="2016-07-28 10:30">Thursday 10:30</option>
       <option value="2016-07-28 20:30">Thursday 20:30</option>
       <option value="2016-07-29 20:30">Friday 20:30</option>
