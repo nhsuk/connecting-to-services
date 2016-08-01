@@ -521,7 +521,7 @@ table th.numeric {
 .button-get-started {
   font-weight: bold;
   padding-right: 3rem;
-  background-image: url("/public/images/icon-button-start.svg");
+  background-image: url("/images/icon-button-start.svg");
   background-repeat: no-repeat;
   background-position: 95% 55%;
 }
@@ -560,7 +560,7 @@ table th.numeric {
   font-size: 16px;
   font-weight: bold;
   padding-right: 2.5rem;
-  background-image: url("/public/images/icon-button-start.svg");
+  background-image: url("/images/icon-button-start.svg");
   background-repeat: no-repeat;
   background-position: 97.5% 57.5%;
 }
@@ -2897,3 +2897,15 @@ a.another-gp-black:after {
 .global-header--link {
   background-image: url("../images/logotype-nhs-colour.png");
 }
+
+table tr td p {
+  margin-bottom: 0;
+}
+
+table tr td {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: none;
+  padding: 0;
+}
+
