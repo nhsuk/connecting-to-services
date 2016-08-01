@@ -8,23 +8,23 @@ describe('dateUtils', () => {
     describe('BST date', () => {
       it('should return true if time is in range', () => {
         const inRange = dateUtils.timeInRange(
-          moment('2016-07-25T09:30:00+01:00'),
-          '09:00',
-          '17:30');
+            moment('2016-07-25T09:30:00+01:00'),
+            '09:00',
+            '17:30');
         expect(inRange).to.equal(true);
       });
       it('should return false if time is below range', () => {
         const inRange = dateUtils.timeInRange(
-          moment('2016-07-25T08:30:00+01:00'),
-          '09:00',
-          '17:30');
+            moment('2016-07-25T08:30:00+01:00'),
+            '09:00',
+            '17:30');
         expect(inRange).to.equal(false);
       });
       it('should return false if time is above the range)', () => {
         const inRange = dateUtils.timeInRange(
-          moment('2016-07-25T18:00:00+01:00'),
-          '09:00',
-          '17:30');
+            moment('2016-07-25T18:00:00+01:00'),
+            '09:00',
+            '17:30');
         expect(inRange).to.equal(false);
       });
     });
@@ -32,22 +32,22 @@ describe('dateUtils', () => {
       // Range of times to check nothing bad happens with BST adjustments
       ['00:00', '01:00', '02:30'].forEach((endTime) => {
         expect(dateUtils.timeInRange(
-          moment('2016-07-25T18:30:00+01:00'),
-          '08:00',
-          endTime))
+              moment('2016-07-25T18:30:00+01:00'),
+              '08:00',
+              endTime))
           .to.equal(true);
       });
     });
     it('time ranges should be inclusive', () => {
       expect(dateUtils.timeInRange(moment('2016-07-26T18:00:00+01:00'), '09:00', '18:00'))
-      .to.equal(true);
+        .to.equal(true);
     });
     it('should handle opening times which span transitions to/from BST');
     it('should handle reference time after midnight', () => {
       const inRange = dateUtils.timeInRange(
-        moment('2016-07-25T00:30:00+01:00'),
-        '09:00',
-        '01:00');
+          moment('2016-07-25T00:30:00+01:00'),
+          '09:00',
+          '01:00');
       expect(inRange).to.equal(true);
     });
   });
