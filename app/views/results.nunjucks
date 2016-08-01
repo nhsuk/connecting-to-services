@@ -10,17 +10,26 @@
 
     <table>
       <tbody>
-        {% for service in serviceList %}
+          {% for service in serviceList %}
         <tr>
           <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
         </tr>
         <tr>
-          <td><span style="font-size: 18px; font-weight: 800;">{{ loop.index }}.</span></td>
-          <td><span style="font-size: 18px; font-weight: 800;">{{ service.name }}</span></td>
-          <td>Distance: {{ service.distanceInMiles | round(1) }} miles</td>
+          <td><span style="font-size: 24px; font-weight: 800;">{{ service.name }}</span></td>
+          <td style="width: 33%;">Distance: {{ service.distanceInMiles | round(1) }} miles</td>
         </tr>
         <tr>
-          <td></td>
+          <td>
+                <p>
+                {{ service.addressLine | join(", ") }}
+                <br>
+                Telephone {{ service.telephone }}
+                </p>
+                </td>
+          <td><p>
+            <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{ service.coords.latitude }}+{{ service.coords.longitude }}" class="button button-secondary-cta map-button" target="_blank">See on map</a></p></td>
+        </tr>
+        <tr>
           {% if service.openingTimes %}
             {% if service.openNow %}
               <td><p><strong>Currently open.</strong><br>Open today from {{ service.openingTimes["today"][0].fromTime }} to {{ service.openingTimes["today"][0].toTime }}</p></td>
@@ -30,24 +39,15 @@
           {% else %}
               <td><p><strong>Opening times not known.</strong></p></td>
           {% endif %}
-          <td><p>
-            <a href="http://maps.google.co.uk/maps?z=12&t=m&q=loc:{{ service.coords.latitude }}+{{ service.coords.longitude }}" class="button button-secondary-cta map-button" target="_blank">See on map</a></p></td>
         </tr>
 
         <tr>
-          <td></td>
           <td colspan="2">
 
             <details role="group">
-              <summary class="more-info" role="button" aria-controls="details-content-3" tabindex="0" aria-expanded="false"> <span>View full details</span>
+              <summary class="more-info" role="button" aria-controls="details-content-3" tabindex="0" aria-expanded="false"> <span>View full opening times</span>
               </summary>
               <div id="details-content-3" aria-hidden="true">
-
-                <p>
-                {{ service.addressLine | join(", ") }}
-                <br>
-                Telephone {{ service.telephone }}
-                </p>
 
                 {% if service.openingTimes %}
                   <p><strong>Opening times</strong></p>
