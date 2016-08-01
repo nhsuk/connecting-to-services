@@ -3,6 +3,7 @@ const formatOpeningTimes = dateUtils.formatOpeningTimes;
 
 function pharmacyMapper(input) {
   const viewModels = [];
+  const now = dateUtils.now();
   input.forEach((item, index) => {
     formatOpeningTimes(item.openingTimes);
     const model = {
@@ -14,13 +15,14 @@ function pharmacyMapper(input) {
         longitude: item.content.organisationSummary.geographicCoordinates.longitude,
       },
       openingTimes: item.openingTimes,
-      openNow: item.openNow,
+      openNow: dateUtils.isOpen(now, item.openingTimes.today),
       addressLine: item.content.organisationSummary.address.addressLine,
       telephone: item.content.organisationSummary.contact.telephone,
     };
     if (model.openNow) {
-      const closedTime = item.closedNext.time.format('h:mm a');
-      const closedDay = item.closedNext.day;
+      const closedNext = dateUtils.nextClosed(now, model.openingTimes);
+      const closedTime = closedNext.time.format('h:mm a');
+      const closedDay = closedNext.day;
       model.closedNext =
             ((closedDay === 'tomorrow' && closedTime === '12:00 am')
           || (closedDay === 'today' && closedTime === '11:59 pm')) ?
@@ -29,7 +31,8 @@ function pharmacyMapper(input) {
     } else {
       // ignore services with no known opening times
       if (item.openNext) {
-        const timeUntilOpen = item.openNext.time.diff(dateUtils.now(), 'minutes');
+        const openNext = dateUtils.nextOpen(now, model.openingTimes);
+        const timeUntilOpen = openNext.time.diff(dateUtils.now(), 'minutes');
         model.openNext =
           (timeUntilOpen <= 90) ?
           `Currently closed, opens in ${timeUntilOpen} minutes` :

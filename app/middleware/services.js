@@ -122,7 +122,6 @@ function getPharmacyOpeningTimes(req, res, next) {
           /* eslint-disable no-param-reassign */
           pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
           pharmacy.openingTimes.today = pharmacy.openingTimes[dayOfWeek].times;
-          pharmacy.openNow = dateUtils.isOpen(now, pharmacy.openingTimes.today);
           if (pharmacy.openNow) {
             pharmacy.closedNext = dateUtils.nextClosed(now, pharmacy.openingTimes);
           } else {
