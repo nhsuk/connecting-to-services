@@ -47,6 +47,8 @@ function formatTime(timeString) {
 }
 
 function formatOpeningTimes(openingTimes) {
+  // This mutates the opening hours and so is done after we've finished
+  // calculating stuff based on time. Would be better not to do this.
   daysOfTheWeek.forEach((day) => {
     if (openingTimes && openingTimes[day].times[0] !== 'Closed') {
       /* eslint-disable no-param-reassign */
@@ -151,6 +153,29 @@ function nextClosed(dateTime, openingTimesForWeek) {
     getNextClosingTime(dateTime, openingTimesForWeek);
 }
 
+function getOpeningHoursMessage(openingTimes) {
+  if (openingTimes === undefined) {
+    return 'Opening times not known';
+  }
+
+  if (isOpen(now(), openingTimes.today)) {
+    const closedNext = nextClosed(now(), openingTimes);
+    const closedTime = closedNext.time.format('h:mm a');
+    const closedDay = closedNext.day;
+    return (
+      ((closedDay === 'tomorrow' && closedTime === '12:00 am')
+        || (closedDay === 'today' && closedTime === '11:59 pm')) ?
+    'Currently open, closes at midnight' :
+    `Currently open, closes ${closedDay !== 'today' ? closedDay : ''} at ${closedTime}`);
+  }
+  const openNext = nextOpen(now(), openingTimes);
+  const timeUntilOpen = openNext.time.diff(now(), 'minutes');
+  return (
+    (timeUntilOpen <= 90) ?
+    `Currently closed, opens in ${timeUntilOpen} minutes` :
+    `Currently closed, opens ${openNext.day} at ${openNext.time.format('h:mm a')}`);
+}
+
 module.exports = {
   timeInRange,
   getDayName,
@@ -161,5 +186,6 @@ module.exports = {
   nowForDisplay,
   setNow,
   formatOpeningTimes,
+  getOpeningHoursMessage,
 };
 

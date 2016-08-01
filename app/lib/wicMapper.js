@@ -1,8 +1,7 @@
 const dateUtils = require('../lib/dateUtils.js');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 
-function wicMapper(input) {
-  const viewModels = [];
+function getOpeningTimesForWeek() {
   const dailyOpeningTimes = {};
 
   daysOfTheWeek.forEach((day) => {
@@ -15,12 +14,18 @@ function wicMapper(input) {
       ],
     };
   });
-
   const now = dateUtils.now();
   const dayOfWeek = dateUtils.getDayName(now);
   dailyOpeningTimes.today = dailyOpeningTimes[dayOfWeek].times;
+  return dailyOpeningTimes;
+}
+
+function wicMapper(input) {
+  const viewModels = [];
+
 
   input.forEach((item, index) => {
+    const openingTimes = getOpeningTimesForWeek();
     const model = {
       label: 'Walk-in centre',
       name: item.content.servicesummary.serviceDeliverer.name,
@@ -28,9 +33,10 @@ function wicMapper(input) {
       coords: item.coords,
       addressLine: item.address,
       telephone: item.telephone,
-      openingTimes: dailyOpeningTimes,
-      openNow: dateUtils.isOpen(now, dailyOpeningTimes.today),
+      openingTimes,
+      openingHoursMessage: dateUtils.getOpeningHoursMessage(openingTimes),
     };
+    dateUtils.formatOpeningTimes(openingTimes);
     viewModels[index] = model;
   });
   return viewModels;
