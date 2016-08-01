@@ -23,7 +23,9 @@
                 <p>
                 {{ service.addressLine | join(", ") }}
                 <br>
-                Telephone {{ service.telephone }}
+                {% if service.telephone %}
+                  Telephone {{ service.telephone }}
+                {% endif %}
                 </p>
                 </td>
           <td><p>
