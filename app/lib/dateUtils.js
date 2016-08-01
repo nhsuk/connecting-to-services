@@ -1,3 +1,4 @@
+const daysOfTheWeek = require('./constants').daysOfTheWeek;
 const moment = require('moment');
 require('moment-timezone');
 
@@ -34,6 +35,26 @@ function getTimeFromString(timeString) {
     hours: parseInt(timeString.split(':')[0], 10),
     minutes: parseInt(timeString.split(':')[1], 10),
   };
+}
+
+function formatTime(timeString) {
+  const time = getTimeFromString(timeString);
+  const formattedTime = getTime(now(), time.hours, time.minutes).format('h:mm a');
+  if (formattedTime === '12:00 am' || formattedTime === '11:59 pm') {
+    return 'midnight';
+  }
+  return formattedTime;
+}
+
+function formatOpeningTimes(openingTimes) {
+  daysOfTheWeek.forEach((day) => {
+    if (openingTimes && openingTimes[day].times[0] !== 'Closed') {
+      /* eslint-disable no-param-reassign */
+      openingTimes[day].times[0].fromTime = formatTime(openingTimes[day].times[0].fromTime);
+      openingTimes[day].times[0].toTime = formatTime(openingTimes[day].times[0].toTime);
+      /* eslint-enable no-param-reassign */
+    }
+  });
 }
 
 function timeInRange(date, open, close) {
@@ -139,5 +160,6 @@ module.exports = {
   now,
   nowForDisplay,
   setNow,
+  formatOpeningTimes,
 };
 
