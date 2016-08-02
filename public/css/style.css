@@ -2892,6 +2892,7 @@ a.another-gp-black:after {
 
 .map-button {
   font-size: 1.3rem;
+  white-space: nowrap;
 }
 
 .global-header--link {
