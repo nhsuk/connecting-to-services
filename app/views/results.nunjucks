@@ -34,6 +34,7 @@
           <td><p><strong>{{ service.openingHoursMessage }}</strong><br></p></td>
         </tr>
 
+        {% if service.openingTimes %}
         <tr>
           <td colspan="2">
 
@@ -63,6 +64,7 @@
             </details>
           </td>
         </tr>
+        {% endif %}
 
         <tr>
           <td colspan="3"><hr></td>
