@@ -84,6 +84,7 @@ function getWICDetails(req, res, next) {
           /* eslint-disable no-param-reassign */
           const parsedWic = wicParser.parseOne(syndicationXml);
           wic.address = parsedWic.content.service.address.addressLine;
+          wic.postcode = parsedWic.content.service.address.postcode;
           wic.telephone = parsedWic.content.service.phone;
           wic.coords = {
             latitude: parsedWic.content.service.geographicCoordinates.latitude,
@@ -185,6 +186,18 @@ function prepareForRender(req, res, next) {
   serviceList.forEach((item) => {
     // eslint-disable-next-line no-param-reassign
     item.distanceInMiles = item.distanceInKms / 1.6;
+    if (item.addressLine) {
+      if (item.postcode) {
+        item.addressLine.push(item.postcode);
+      }
+    }
+    const locationQuery =
+      `q=${item.name},${[].concat.apply([], item.addressLine)}`
+      .replace(/ /g, '+');
+    const centerPoint = `ll=${item.coords.latitude},${item.coords.longitude}`;
+    const zoom = 'z=16';
+    // eslint-disable-next-line no-param-reassign
+    item.googleMapsQuery = `${locationQuery}&${centerPoint}&${zoom}`;
   });
   // eslint-disable-next-line no-param-reassign
   req.serviceList = serviceList.sort(sortByDistance);

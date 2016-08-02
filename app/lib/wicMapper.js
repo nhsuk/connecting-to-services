@@ -27,6 +27,7 @@ function wicMapper(input) {
       distanceInKms: item.content.servicesummary.distance,
       coords: item.coords,
       addressLine: item.address,
+      postcode: item.postcode,
       telephone: item.telephone,
       openingTimes: dailyOpeningTimes,
       openNow: dateUtils.isOpen(now, dailyOpeningTimes.today),
