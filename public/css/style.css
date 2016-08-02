@@ -2085,7 +2085,7 @@ body {
 @media (min-width: 641px) {
   .service-header .service-name {
     margin: 0 auto;
-    padding: 9px 30px 15px 30px;
+    padding: 9px 30px 15px 0;
   }
 }
 
