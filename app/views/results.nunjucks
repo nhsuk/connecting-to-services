@@ -31,15 +31,7 @@
                 <td><p><a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map</a></p></td>
         </tr>
         <tr>
-          {% if service.openingTimes %}
-            {% if service.openNow %}
-              <td><p><strong>{{ service.closedNext }}</strong><br></p></td>
-            {% else %}
-              <td><p><strong>{{ service.openNext }}</strong></p></td>
-            {% endif %}
-          {% else %}
-            <td><p><strong>Opening times not known.</strong></p></td>
-          {% endif %}
+          <td><p><strong>{{ service.openingHoursMessage }}</strong><br></p></td>
         </tr>
 
         <tr>
