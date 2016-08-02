@@ -191,8 +191,13 @@ function prepareForRender(req, res, next) {
         item.addressLine.push(item.postcode);
       }
     }
+    const locationQuery =
+      `q=${item.name},${[].concat.apply([], item.addressLine)}`
+      .replace(/ /g, '+');
+    const centerPoint = `ll=${item.coords.latitude},${item.coords.longitude}`;
+    const zoom = 'z=16';
     // eslint-disable-next-line no-param-reassign
-    item.googleMapsPlace = `${item.name},${[].concat.apply([], item.addressLine)}`;
+    item.googleMapsQuery = `${locationQuery}&${centerPoint}&${zoom}`;
   });
   // eslint-disable-next-line no-param-reassign
   req.serviceList = serviceList.sort(sortByDistance);
