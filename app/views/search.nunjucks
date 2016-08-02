@@ -13,7 +13,7 @@
         </label>
         <input type="text" id="location" name="location" value="" class="form-control">
 
-        <input type="submit" value="Search" style="
+        <input type="submit" value="Continue" style="
         background-color: #006647;
         color: white;
         border: 3px solid #003300;
