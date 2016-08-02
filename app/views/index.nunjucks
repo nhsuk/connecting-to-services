@@ -26,7 +26,7 @@
       <option value="2016-07-31 20:30">Sunday 20:30</option>
       <option value="">Reset to actual time</option>
     </select>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Click here to change the current date/time">
   </form>
 </div>
 </main>
