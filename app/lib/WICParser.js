@@ -20,7 +20,7 @@ const parseList = (xml) => {
     }
     wicList = result.feed.entry;
   });
-  return wicList.slice(0, 5);
+  return wicList.slice(0, 3);
 };
 
 function parseOne(xml) {

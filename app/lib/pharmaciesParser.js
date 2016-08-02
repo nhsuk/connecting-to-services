@@ -20,7 +20,7 @@ const parsePharmacyListFromSyndicationXml = (xml) => {
     }
     pharmacyList = result.feed.entry;
   });
-  return pharmacyList.slice(0, 5);
+  return pharmacyList.slice(0, 3);
 };
 
 module.exports = parsePharmacyListFromSyndicationXml;
