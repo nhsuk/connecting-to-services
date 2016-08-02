@@ -27,7 +27,7 @@
 
             <p>You can simply wait until the headache goes away or take painkillers
             like paracetamol or ibuprofen. You can buy these over the counter at a pharmacy.
-            <a href="/search" class="button">Find a pharmacy near you that’s open right now</a>
+            <a href="search" class="button" style="text-decoration:underline;">Find a pharmacy near you that’s open right now &gt;</a> 
             </p>
             <p>Headaches can last between 30 minutes and several hours.</p>
 

@@ -31,7 +31,7 @@
               <li>constipation (can’t poo)</li>
             </ul>
 
-            <a href="search" class="button">Find help near you that's open right now</a>
+            <a href="search" class="button" style="text-decoration:underline;">Find help near you that's open right now &gt;</a> 
 
             <p>There are also things you can do yourself to <a href="http://www.nhs.uk/Conditions/Indigestion/Pages/Treatment.aspx">
               help ease indigestion</a> and <a href="http://www.nhs.uk/Conditions/Constipation/Pages/Treatment.aspx">

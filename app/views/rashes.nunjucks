@@ -258,7 +258,7 @@
               </p>
               <p>
               Ask your pharmacist for a cream or lotion to treat ringworm.
-              <a href="/search" class="button">Find a pharmacy near you that’s open right now</a>
+              <a href="search" class="button" style="text-decoration:underline;">Find a pharmacy near you that’s open right now &gt;</a> 
 
               </p>
               <p>
@@ -355,8 +355,7 @@
               </p>
               <p>
               You can buy creams from your pharmacy to help clear it up.
-              <a href="/search" class="button">Find a pharmacy near you that’s open right now</a>
-
+              <a href="search" class="button" style="text-decoration:underline;">Find a pharmacy near you that’s open right now &gt;</a> 
               </p>
 
             </article>
