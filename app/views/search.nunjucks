@@ -9,7 +9,7 @@
       <form method="get" class="form" action="/results">
 
         <label class="form-label-bold" for="location">
-          Postcode
+          Please enter a postcode
         </label>
         <input type="text" id="location" name="location" value="" class="form-control">
 
