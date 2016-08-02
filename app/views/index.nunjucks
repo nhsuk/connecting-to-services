@@ -23,6 +23,7 @@
       <option value="2016-07-28 10:30">Thursday 10:30</option>
       <option value="2016-07-28 20:30">Thursday 20:30</option>
       <option value="2016-07-29 20:30">Friday 20:30</option>
+      <option value="2016-07-30 07:30">Saturday 07:30</option>
       <option value="2016-07-31 20:30">Sunday 20:30</option>
       <option value="">Reset to actual time</option>
     </select>
