@@ -75,7 +75,7 @@
   </div>
   <div class="column-third">
     <p>
-    <h3 class="heading-small">Would you rather seen a GP?</h3>
+    <h3 class="heading-small">Would you rather see a GP?</h3>
     <p><a href="http://fierce-reef-62491.herokuapp.com/?search={{ location }}">Find and contact your GP</a>.
     </p>
     </p>
