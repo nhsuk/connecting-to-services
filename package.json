@@ -10,14 +10,12 @@
     "lint": "eslint --ext .js,.json .",
     "lint-dev": "esw --watch .",
     "test": "mocha --recursive test",
-    "test-dev": "npm run test -- --watch",
-    "coverage-report": "istanbul cover _mocha -- --recursive test",
-    "check-coverage": "istanbul check-coverage --config .istanbul.yml"
+    "test-dev": "npm run test -- --watch"
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint && npm run test && npm run coverage-report && npm run check-coverage",
-      "post-rewrite": "npm run lint && npm run test && npm run coverage-report && npm run check-coverage"
+      "pre-commit": "npm run lint && npm run test",
+      "post-rewrite": "npm run lint && npm run test"
     }
   },
   "dependencies": {
