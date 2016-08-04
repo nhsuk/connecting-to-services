@@ -12,8 +12,7 @@
     "test": "mocha --recursive test",
     "test-dev": "npm run test -- --watch",
     "coverage-report": "istanbul cover _mocha -- --recursive test",
-    "check-coverage": "istanbul check-coverage --config .istanbul.yml",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "check-coverage": "istanbul check-coverage --config .istanbul.yml"
   },
   "config": {
     "ghooks": {
