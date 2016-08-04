@@ -4,8 +4,6 @@ node_js:
 script:
   - npm run lint .
   - npm run test
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
 # disable submodule updating
 git:
   submodules: false
