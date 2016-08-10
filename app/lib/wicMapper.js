@@ -1,4 +1,4 @@
-const dateUtils = require('../lib/dateUtils.js');
+const dateUtils = require('../lib/dateUtils');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 
 function getOpeningTimesForWeek() {

@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const sampleResponsesDir = `${__dirname}/resources/syndication_responses`;
 
 function getSampleResponse(responseName) {

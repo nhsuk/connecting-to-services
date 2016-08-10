@@ -5,7 +5,7 @@ const Verror = require('verror');
 
 const parsePharmacyListFromSyndicationXml = (xml) => {
   assert(xml, 'parameter \'xml\' undefined/empty');
-  assert.equal(typeof(xml),
+  assert.equal(typeof (xml),
     'string', 'parameter \'xml\' must be a string');
   let pharmacyList;
   const options = {

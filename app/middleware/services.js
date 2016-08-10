@@ -2,10 +2,10 @@
 // is recommended best practice by Express
 
 const http = require('http');
-const dateUtils = require('../lib/dateUtils.js');
+const dateUtils = require('../lib/dateUtils');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
-const wicParser = require('../lib/WICParser.js');
+const wicParser = require('../lib/WICParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
 const wicMapper = require('../lib/wicMapper');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
@@ -191,6 +191,7 @@ function prepareForRender(req, res, next) {
       }
     }
     const locationQuery =
+    // eslint-disable-next-line prefer-spread
       `q=${item.name},${[].concat.apply([], item.addressLine)}`
       .replace(/ /g, '+');
     const centerPoint = `ll=${item.coords.latitude},${item.coords.longitude}`;

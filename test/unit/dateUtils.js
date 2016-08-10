@@ -1,7 +1,8 @@
 const chai = require('chai');
-const expect = chai.expect;
-const dateUtils = require('../../app/lib/dateUtils.js');
+const dateUtils = require('../../app/lib/dateUtils');
 const moment = require('moment');
+
+const expect = chai.expect;
 
 describe('dateUtils', () => {
   describe('timeInRange', () => {
