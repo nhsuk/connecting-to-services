@@ -7,9 +7,9 @@ const Verror = require('verror');
 const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
   assert(openingTimesType, 'parameter \'openingTimesType\' undefined/empty');
   assert(xml, 'parameter \'xml\' undefined/empty');
-  assert.equal(typeof(openingTimesType),
+  assert.equal(typeof (openingTimesType),
     'string', 'parameter \'openingTimesType\' must be a string');
-  assert.equal(typeof(xml),
+  assert.equal(typeof (xml),
     'string', 'parameter \'xml\' must be a string');
   const openingTimes = {};
   const options = {

@@ -1,9 +1,10 @@
 const express = require('express');
 const config = require('./config/config');
-const app = express();
 const configExpress = require('./config/express');
 const dotenv = require('dotenv');
 const requireEnv = require('require-environment-variables');
+
+const app = express();
 
 module.exports = (() => {
   dotenv.config({ path: './env/.env' });

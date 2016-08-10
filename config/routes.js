@@ -1,7 +1,7 @@
 // eslint-disable-next-line new-cap
 const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
-const dateUtils = require('../app/lib/dateUtils.js');
+const dateUtils = require('../app/lib/dateUtils');
 
 function stomachAcheRender(req, res) {
   res.render('stomach-ache', {

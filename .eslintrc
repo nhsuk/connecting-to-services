@@ -1,12 +1,17 @@
-  {
-    "env": {
+{
+  "env": {
+    "node": true,
       "mocha": true
-    },
+  },
     "extends": [
       "eslint:recommended",
-      "airbnb"
+    "airbnb"
     ],
     "plugins": [
-      "json"
-    ]
-  }
+      "json",
+    "mocha"
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    }
+}
