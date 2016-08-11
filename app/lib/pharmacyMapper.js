@@ -22,7 +22,7 @@ function pharmacyMapper(pharmacyList) {
       model.openingHoursMessage = ot.getOpeningHoursMessage(dateUtils.now());
       // TODO: assign ot to model.openingTimes but had problems with
       // nunjucks calling, for example, service.openingTimes.getFormattedOpeningTimes()
-      // which was throwing an exception 
+      // which was throwing an exception
       model.openingTimes = ot.getFormattedOpeningTimes();
     }
 

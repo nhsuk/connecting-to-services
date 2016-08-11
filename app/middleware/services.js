@@ -1,10 +1,8 @@
 // eslint - disabled no-param-reassign since assigning to request/response
 // is recommended best practice by Express
 
-const util = require('util');
 const http = require('http');
 const dateUtils = require('../lib/dateUtils');
-const OpeningTimes = require('../lib/OpeningTimes');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const wicParser = require('../lib/WICParser');
@@ -161,7 +159,6 @@ function getPharmacyOpeningTimes(req, res, next) {
 }
 
 function renderServiceResults(req, res) {
-
   res.render('results', {
     daysOfTheWeek,
     location: req.query.location,

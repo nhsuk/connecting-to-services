@@ -1,8 +1,9 @@
 const chai = require('chai');
-const expect = chai.expect;
 const OpeningTimes = require('../../../app/lib/OpeningTimes');
-const DaysOfTheWeek = require('../../../app/lib/constants').daysOfTheWeek;
 const moment = require('moment');
+const DaysOfTheWeek = require('../../../app/lib/constants').daysOfTheWeek;
+
+const expect = chai.expect;
 const aMonday = moment('2016-07-25T00:00:00+01:00');
 
 function getMoment(day, hours, minutes) {
