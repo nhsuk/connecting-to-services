@@ -6,6 +6,7 @@
 <h1 class="heading-xlarge">Services near to '{{ location }}' for your condition</h1>
 <p class="lede">You can get immediate access to medical advice and treatment for your condition at these pharmacies and walk-in centres.</p>
 <p></p>
+<a href="/results?location={{location}}&status=open" class="back-to-previous">Show only open pharamcies</a>
 <div class="grid-row">
   <div class="column-two-thirds">
 

@@ -58,7 +58,7 @@ function getWICs(req, res, next) {
 }
 
 function getPharmacies(req, res, next) {
-  const pageCount = 2;
+  const pageCount = 10;
   let t = pageCount;
   let pharmacyList = [];
 
@@ -192,12 +192,20 @@ function sortByDistance(a, b) {
 }
 
 function prepareForRender(req, res, next) {
-  const mappedPharmacies = pharmacyMapper(req.pharmacyList);
-  // const openPharmacies = mappedPharmacies.filter(
-  //   (pharmacy) => pharmacy.openNow
-  // );
-  const mappedWics = wicMapper(req.wicList);
-  const serviceList = mappedPharmacies.concat(mappedWics);
+  const serviceLimit = 3;
+  let mappedPharmacies;
+  if (req.query.status === 'open') {
+    mappedPharmacies =
+      pharmacyMapper(req.pharmacyList)
+        .sort((p1, p2) => parseInt(p1.distanceInKms, 10) - parseInt(p2.distanceInKms, 10))
+        .filter((pharmacy) => pharmacy.openNow)
+        .slice(0, serviceLimit);
+  } else {
+    mappedPharmacies = pharmacyMapper(req.pharmacyList.slice(0, serviceLimit));
+  }
+  const mappedWics = wicMapper(req.wicList.slice(0, serviceLimit));
+  const serviceList =
+    mappedPharmacies.concat(mappedWics);
   serviceList.forEach((item) => {
     // eslint-disable-next-line no-param-reassign
     item.distanceInMiles = item.distanceInKms / 1.6;

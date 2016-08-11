@@ -7,10 +7,6 @@ class OpeningTimes {
     this.openingTimes = openingTimes;
   }
 
-  test() {
-    return 'test';
-  }
-
   getDayName(date) {
     return date.format('dddd').toLowerCase();
   }
@@ -147,7 +143,6 @@ class OpeningTimes {
         lastWeek: '[last] dddd',
         sameElse: 'DD/MM/YYYY',
       });
-      // ( datetime.isSame(closedNext, 'day') ? 'today' : 'aday' );
       return (
         ((closedDay === 'tomorrow' && closedTime === '12:00 am')
           || (closedDay === 'today' && closedTime === '11:59 pm')) ?

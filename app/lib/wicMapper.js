@@ -15,9 +15,6 @@ function getOpeningTimesForWeek() {
       ],
     };
   });
-  const now = dateUtils.now();
-  const dayOfWeek = dateUtils.getDayName(now);
-  dailyOpeningTimes.today = dailyOpeningTimes[dayOfWeek].times;
   return new OpeningTimes(dailyOpeningTimes);
 }
 
