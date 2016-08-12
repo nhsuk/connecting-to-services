@@ -75,13 +75,14 @@ class OpeningTimes {
     do {
       dateTime.add(1, 'day');
       const day = dateTime.format('dddd').toLowerCase();
+      console.log(openingTimesForWeek[day].times[0]);
       if (openingTimesForWeek[day].times[0] !== 'Closed') {
         return this
           .createDateTime(dateTime, openingTimesForWeek[day].times[0].fromTime);
       }
       dayCount++;
     } while (dayCount < 7);
-    throw new Error('Next opening time not found');
+    return undefined;
   }
 
   getNextClosingTime(startDateTime, openingTimesForWeek) {
@@ -95,7 +96,7 @@ class OpeningTimes {
       }
       dayCount++;
     } while (dayCount < 7);
-    throw new Error('Next closing time not found');
+    return undefined;
   }
 
   nextOpen(dateTime) {
@@ -150,19 +151,22 @@ class OpeningTimes {
         `Open until ${closedTime} ${closedDay}`);
     }
     const openNext = this.nextOpen(datetime);
-    const timeUntilOpen = openNext.diff(datetime, 'minutes');
-    const openDay = openNext.calendar(datetime, {
-      sameDay: '[today]',
-      nextDay: '[tomorrow]',
-      nextWeek: 'dddd',
-      lastDay: '[yesterday]',
-      lastWeek: '[last] dddd',
-      sameElse: 'DD/MM/YYYY',
-    });
-    return (
-      (timeUntilOpen <= 60) ?
-        `Opening in ${timeUntilOpen} minutes` :
-        `Closed until ${openNext.format('h:mm a')} ${openDay}`);
+    if (openNext) {
+      const timeUntilOpen = openNext.diff(datetime, 'minutes');
+      const openDay = openNext.calendar(datetime, {
+        sameDay: '[today]',
+        nextDay: '[tomorrow]',
+        nextWeek: 'dddd',
+        lastDay: '[yesterday]',
+        lastWeek: '[last] dddd',
+        sameElse: 'DD/MM/YYYY',
+      });
+      return (
+        (timeUntilOpen <= 60) ?
+          `Opening in ${timeUntilOpen} minutes` :
+          `Closed until ${openNext.format('h:mm a')} ${openDay}`);
+    }
+    return 'Opening times not known';
   }
 
   formatTime(timeString) {
