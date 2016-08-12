@@ -201,7 +201,11 @@ function prepareForRender(req, res, next) {
         .filter((pharmacy) => pharmacy.openNow)
         .slice(0, serviceLimit);
   } else {
-    mappedPharmacies = pharmacyMapper(req.pharmacyList.slice(0, serviceLimit));
+    // Alternative would be to only get 1 page of postcode results when not
+    // filtering by open status
+    mappedPharmacies = pharmacyMapper(req.pharmacyList)
+        .sort((p1, p2) => parseInt(p1.distanceInKms, 10) - parseInt(p2.distanceInKms, 10))
+        .slice(0, serviceLimit);
   }
   const mappedWics = wicMapper(req.wicList.slice(0, serviceLimit));
   const serviceList =
