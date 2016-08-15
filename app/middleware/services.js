@@ -208,8 +208,9 @@ function prepareForRender(req, res, next) {
         .slice(0, serviceLimit);
   }
   const mappedWics = wicMapper(req.wicList.slice(0, serviceLimit));
-  const serviceList =
-    mappedPharmacies.concat(mappedWics);
+  const serviceList = mappedPharmacies.concat(mappedWics);
+  const start = `saddr=${req.query.location}`;
+
   serviceList.forEach((item) => {
     // eslint-disable-next-line no-param-reassign
     item.distanceInMiles = item.distanceInKms / 1.6;
@@ -218,14 +219,13 @@ function prepareForRender(req, res, next) {
         item.addressLine.push(item.postcode);
       }
     }
-    const locationQuery =
     // eslint-disable-next-line prefer-spread
-      `q=${item.name},${[].concat.apply([], item.addressLine)}`
-      .replace(/ /g, '+');
-    const centerPoint = `ll=${item.coords.latitude},${item.coords.longitude}`;
-    const zoom = 'z=16';
+    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
+    const destination = `daddr=${fullAddress}`;
+    // Use near to help get the correct location for the start
+    const near = `near=${fullAddress}`;
     // eslint-disable-next-line no-param-reassign
-    item.googleMapsQuery = `${locationQuery}&${centerPoint}&${zoom}`;
+    item.googleMapsQuery = `${start}&${destination}&${near}`;
   });
   // eslint-disable-next-line no-param-reassign
   req.serviceList = serviceList.sort(sortByDistance);
