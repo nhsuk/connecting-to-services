@@ -33,6 +33,7 @@ router.get('/results',
   servicesMiddleware.getPharmacyOpeningTimes,
   servicesMiddleware.getWICDetails,
   servicesMiddleware.prepareForRender,
+  servicesMiddleware.getGoogleMapsInfo,
   servicesMiddleware.renderServiceResults
 );
 

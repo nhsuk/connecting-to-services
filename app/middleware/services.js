@@ -10,6 +10,9 @@ const pharmacyMapper = require('../lib/pharmacyMapper');
 const wicMapper = require('../lib/wicMapper');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const Verror = require('verror');
+const googleMapsClient = require('@google/maps').createClient({
+  key: '',
+});
 
 function getSyndicationResponseHandler(resourceType, parser, next) {
   return (response) => {
@@ -209,7 +212,8 @@ function prepareForRender(req, res, next) {
   }
   const mappedWics = wicMapper(req.wicList.slice(0, serviceLimit));
   const serviceList = mappedPharmacies.concat(mappedWics);
-  const start = `saddr=${req.query.location}`;
+  const location = req.query.location;
+  const start = `saddr=${location}`;
 
   serviceList.forEach((item) => {
     // eslint-disable-next-line no-param-reassign
@@ -232,6 +236,58 @@ function prepareForRender(req, res, next) {
   next();
 }
 
+function getGoogleMapsInfo(req, res, next) {
+  const services = req.serviceList;
+  const location = req.query.location;
+
+  // for each service get the address and add them to the query
+  const destinations = [];
+  const origins = [];
+  services.forEach((service) => {
+    destinations.push(`${service.name},${service.addressLine}`.replace(/ /g, '+'));
+    origins.push(location);
+  });
+
+  googleMapsClient.distanceMatrix({
+    origins: location,
+    destinations,
+    mode: 'transit',
+    units: 'imperial',
+  }, (err, response) => {
+    if (!err) {
+      // console.log('MAPS Response:');
+      console.log(response.json);
+      const originAddress = response.json.origin_addresses[0];
+      const rows = response.json.rows;
+      rows.forEach((row) => {
+        console.log('ROW:');
+        console.log(row);
+      });
+      // There are as many rows as there are origins
+      const originRow = response.json.rows[0];
+      // As many elements as there are destinations
+      // Which is just the one right now, needs to change
+      // to request for all X result item destinations
+      // in a single go
+      const elements = originRow.elements;
+      elements.forEach((element, index) => {
+        console.log(element);
+        console.log(index);
+        if (element.status === 'OK') {
+          // add the information to the item so it can be displayed
+          services[index].originAddress = originAddress;
+          services[index].destinationAddress = response.json.destinationAddresses[index];
+          services[index].distance = element.distance.text;
+          services[index].duration = element.duration.text;
+          console.log(element.fare);
+          services[index].fare = element.fare;
+        }
+      });
+      next();
+    }
+  });
+}
+
 module.exports = {
   getPharmacyUrl,
   getWICUrl,
@@ -239,6 +295,7 @@ module.exports = {
   getWICs,
   getPharmacyOpeningTimes,
   getWICDetails,
+  getGoogleMapsInfo,
   renderServiceResults,
   prepareForRender,
 };

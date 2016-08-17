@@ -29,6 +29,17 @@
                   Telephone {{ service.telephone }}
                 {% endif %}
                 </p>
+                <p style=" border: red; border-style: double; padding: 0.2em; margin: 0.2em; ">
+                Distance: {{ service.distance }}
+                <br/>
+                Duration: {{ service.duration }}
+                <br/>
+                Address: {{ service.originAddress }}
+                <br/>
+                Destination: {{ service.destinationAddress }}
+                <br/>
+                Fare: {{ service.fare }}
+                </p>
                 </td>
                 <td><p><a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">Get directions</a></p></td>
         </tr>
