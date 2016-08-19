@@ -1,4 +1,4 @@
-{% include "./includes/header.nunjucks" %}
+{% include "./includes/beta-header.nunjucks" %}
 
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
@@ -14,11 +14,7 @@
         </label>
         <input type="text" id="location" name="location" value="" class="form-control">
 
-        <input type="submit" value="Continue" style="
-        background-color: #006647;
-        color: white;
-        border: 3px solid #003300;
-        height: 4rem;">
+        <input type="submit" value="Continue" class="button">
 
       </form>
     </div>

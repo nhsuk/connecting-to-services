@@ -1,4 +1,4 @@
-{% include "./includes/header.nunjucks" %}
+{% include "./includes/beta-header.nunjucks" %}
 
 <main id="content" role="main">
 <h1 class="heading-large">NHS.UK Connecting to Services prototypes</h1>

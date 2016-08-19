@@ -15,7 +15,21 @@ router.get('/',
 );
 
 router.get('/search',
-  (req, res) => { res.render('search', {}); }
+  (req, res) => {
+    const query = req.query;
+
+    let viewToRender = 'find-it';
+
+    if ({}.hasOwnProperty.call(query, 'able')) {
+      if (query.able === 'true') {
+        viewToRender = 'search';
+      } else {
+        viewToRender = 'call-111';
+      }
+    }
+
+    res.render(viewToRender, {});
+  }
 );
 
 router.post('/datetime',
@@ -35,6 +49,10 @@ router.get('/results',
   servicesMiddleware.prepareForRender,
   servicesMiddleware.getGoogleMapsInfo,
   servicesMiddleware.renderServiceResults
+);
+
+router.get('/find-it',
+  (req, res) => { res.render('find-it', {}); }
 );
 
 router.get('/head-ache',

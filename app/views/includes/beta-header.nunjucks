@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="/css/beta-base.css" type="text/css">
 <link rel="stylesheet" href="/css/beta-style.css" type="text/css">
+<link rel="stylesheet" href="http://connecting-to-services-design.herokuapp.com/public/stylesheets/nhs_application.css" type="text/css">
 
 <!--[if lt IE 9]>
 <script src="https://beta.nhs.uk/assets/javascripts/ie.bundle.793bb30d4257410cd4a4ca032eebdd7f.js" type="text/javascript"></script>
@@ -49,5 +50,5 @@
 </header>
 
 <div class="service-header">
-<div class="service-name">This service is an idea we're testing. We won't use or store your details.</div>
+  <div class="service-name">This service is an idea we're testing. We won't use or store your details. The live website is at <a href="//www.nhs.uk">nhs.uk</a></div>
 </div>
