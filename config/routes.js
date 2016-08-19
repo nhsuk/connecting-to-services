@@ -3,11 +3,6 @@ const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
 const dateUtils = require('../app/lib/dateUtils');
 
-function stomachAcheRender(req, res) {
-  res.render('stomach-ache', {
-  });
-}
-
 router.get('/',
   (req, res) => {
     res.render('index', { currentDateTime: dateUtils.nowForDisplay() });
@@ -39,6 +34,20 @@ router.post('/datetime',
   }
 );
 
+// Only get open things for display
+router.get('/results-open',
+  servicesMiddleware.getPharmacyUrl,
+  servicesMiddleware.getWICUrl,
+  servicesMiddleware.getPharmacies,
+  servicesMiddleware.getWICs,
+  servicesMiddleware.getPharmacyOpeningTimes,
+  servicesMiddleware.getWICDetails,
+  servicesMiddleware.prepareOpenThingsForRender,
+  servicesMiddleware.getGoogleMapsInfo,
+  servicesMiddleware.renderServiceResults
+);
+
+// No need to get distance and duration from Google
 router.get('/results',
   servicesMiddleware.getPharmacyUrl,
   servicesMiddleware.getWICUrl,
@@ -47,24 +56,14 @@ router.get('/results',
   servicesMiddleware.getPharmacyOpeningTimes,
   servicesMiddleware.getWICDetails,
   servicesMiddleware.prepareForRender,
-  servicesMiddleware.getGoogleMapsInfo,
   servicesMiddleware.renderServiceResults
 );
 
-router.get('/find-it',
-  (req, res) => { res.render('find-it', {}); }
-);
-
-router.get('/head-ache',
-  (req, res) => { res.render('head-ache', {}); }
-);
-
-router.get('/rashes',
-  (req, res) => { res.render('rashes', {}); }
-);
-
-router.get('/stomach-ache',
-  stomachAcheRender
+router.get('/:view',
+  (req, res) => {
+    const view = req.params.view.toLowerCase();
+    res.render(view, {});
+  }
 );
 
 module.exports = router;

@@ -3,13 +3,12 @@
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="/search" class="back-to-previous">Back</a>
 
-<h1 class="heading-xlarge">Services near to '{{ location }}' for your condition</h1>
-<p class="lede">You can get immediate access to medical advice and treatment for your condition at these pharmacies and walk-in centres.</p>
+<h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
+<p class="lede">The services listed below are currently open. Other services nearby are closed.</p>
 <p></p>
 <a href="/results?location={{location}}&status=open" class="back-to-previous">Show only open pharamcies</a>
 <div class="grid-row">
   <div class="column-two-thirds">
-
     <table>
       <tbody>
           {% for service in serviceList %}
@@ -17,7 +16,7 @@
           <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
         </tr>
         <tr>
-          <td><span style="font-size: 24px; font-weight: 800;">{{ service.name }}</span></td>
+          <td><span style="font-size: 24px; font-weight: 800;"><a href="#">{{ service.name }}</a></span></td>
           <td style="width: 33%;">Distance: {{ service.distanceInMiles | round(1) }} miles</td>
         </tr>
         <tr>
@@ -33,12 +32,6 @@
                 Distance: {{ service.distance }}
                 <br/>
                 Duration: {{ service.duration }}
-                <br/>
-                Address: {{ service.originAddress }}
-                <br/>
-                Destination: {{ service.destinationAddress }}
-                <br/>
-                Fare: {{ service.fare }}
                 </p>
                 </td>
                 <td><p><a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">Get directions</a></p></td>

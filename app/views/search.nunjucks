@@ -7,7 +7,7 @@
 <div class="page-section">
   <div class="grid-row">
     <div class="column__two-thirds">
-      <form method="get" class="form" action="/results">
+      <form method="get" class="form" action="/results-open">
 
         <label class="form-label-bold" for="location">
           Please enter a postcode

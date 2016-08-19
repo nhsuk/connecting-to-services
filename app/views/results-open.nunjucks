@@ -1,0 +1,54 @@
+{% include "./includes/beta-header.nunjucks" %}
+
+<main id="content" role="main" tabindex="-1" class="util-nofocus">
+<a href="/search" class="back-to-previous">Back</a>
+
+<h1>THIS PAGE NEEDS TO SHOW ONLY THE FIRST OPEN PHARMACY AND WIC</h1>
+
+<h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+  <p class="lede">The services listed below are currently open. Other services nearby are closed.</p>
+    </div>
+    </div>
+    <table>
+      <tbody>
+          {% for service in serviceList %}
+        <tr>
+          <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
+        </tr>
+        <tr>
+          <td width="50%">
+            <span style="font-size: 24px; font-weight: 800;"><a href="#">{{ service.name }}</a></span>
+                <p>
+                {{ service.addressLine | join(", ") }}
+                <br>
+                {% if service.telephone %}
+                  Telephone {{ service.telephone }}
+                {% endif %}
+                </p>
+              <p><strong>{{ service.openingHoursMessage }}</strong><br></p>
+          </td>
+          <td width="50%">
+            Distance: {{ service.distanceInMiles | round(1) }} miles
+            <br/>
+              <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
+
+            <br/>
+            <p><strong>Estimated journey time: </strong>{{ service.duration }}</p>
+
+        </tr>
+        <tr>
+          <td colspan="3"><hr></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p><a href="results?location={{location}}" class="gotoservice-cta">View a complete list of nearby services</a></p>
+      </div>
+    </div>
+</main>
+
+{% include "./includes/footer.nunjucks" %}

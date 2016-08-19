@@ -6,13 +6,13 @@
         <h2 class="util-visuallyhidden">Support links</h2>
         <ul class="inline-list inline-list__slash">
           <li class="inline-list--item">
-            <a href="/help/clinical-assurance">Clinical assurance</a>
+            <a href="https://beta.nhs.uk/help/clinical-assurance">Clinical assurance</a>
           </li>
           <li class="inline-list--item">
-            <a href="/help/cookies">Cookies</a>
+            <a href="https://beta.nhs.uk/help/cookies">Cookies</a>
           </li>
           <li class="inline-list--item">
-            <a href=".">{{ currentDateTime }}</a>
+            <a href="#">{{ currentDateTime }}</a>
           </li>
         </ul>
       </div>

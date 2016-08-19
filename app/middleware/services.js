@@ -162,7 +162,8 @@ function getPharmacyOpeningTimes(req, res, next) {
 }
 
 function renderServiceResults(req, res) {
-  res.render('results', {
+  const path = req.path.substring(1);
+  res.render(path, {
     daysOfTheWeek,
     location: req.query.location,
     serviceList: req.serviceList,
@@ -192,6 +193,35 @@ function getPharmacyUrl(req, res, next) {
 
 function sortByDistance(a, b) {
   return a.distanceInKms - b.distanceInKms;
+}
+
+function prepareOpenThingsForRender(req, res, next) {
+  // just get open things
+  const mappedPharmacies = pharmacyMapper(req.pharmacyList);
+  const mappedWics = wicMapper(req.wicList);
+  const serviceList = mappedPharmacies.concat(mappedWics);
+  const location = req.query.location;
+  const start = `saddr=${location}`;
+
+  serviceList.forEach((item) => {
+    // eslint-disable-next-line no-param-reassign
+    item.distanceInMiles = item.distanceInKms / 1.6;
+    if (item.addressLine) {
+      if (item.postcode) {
+        item.addressLine.push(item.postcode);
+      }
+    }
+    // eslint-disable-next-line prefer-spread
+    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
+    const destination = `daddr=${fullAddress}`;
+    // Use near to help get the correct location for the start
+    const near = `near=${fullAddress}`;
+    // eslint-disable-next-line no-param-reassign
+    item.googleMapsQuery = `${start}&${destination}&${near}`;
+  });
+  // eslint-disable-next-line no-param-reassign
+  req.serviceList = serviceList.sort(sortByDistance);
+  next();
 }
 
 function prepareForRender(req, res, next) {
@@ -251,13 +281,12 @@ function getGoogleMapsInfo(req, res, next) {
   googleMapsClient.distanceMatrix({
     origins: location,
     destinations,
-    mode: 'transit',
+    // mode: 'transit',
     units: 'imperial',
   }, (err, response) => {
     if (!err) {
       // console.log('MAPS Response:');
       console.log(response.json);
-      const originAddress = response.json.origin_addresses[0];
       const rows = response.json.rows;
       rows.forEach((row) => {
         console.log('ROW:');
@@ -274,16 +303,13 @@ function getGoogleMapsInfo(req, res, next) {
         console.log(element);
         console.log(index);
         if (element.status === 'OK') {
-          // add the information to the item so it can be displayed
-          services[index].originAddress = originAddress;
-          services[index].destinationAddress = response.json.destinationAddresses[index];
           services[index].distance = element.distance.text;
           services[index].duration = element.duration.text;
-          console.log(element.fare);
-          services[index].fare = element.fare;
         }
       });
       next();
+    } else {
+      console.log(err);
     }
   });
 }
@@ -298,4 +324,5 @@ module.exports = {
   getGoogleMapsInfo,
   renderServiceResults,
   prepareForRender,
+  prepareOpenThingsForRender,
 };
