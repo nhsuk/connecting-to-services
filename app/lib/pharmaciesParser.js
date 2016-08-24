@@ -10,7 +10,6 @@ const parsePharmacyListFromSyndicationXml = (xml) => {
   let pharmacyList;
   const options = {
     tagNameProcessors: [stripPrefix],
-    ignoreAttrs: true,
     explicitArray: false,
   };
   const xmlParser = new xml2js.Parser(options);
@@ -20,7 +19,7 @@ const parsePharmacyListFromSyndicationXml = (xml) => {
     }
     pharmacyList = result.feed.entry;
   });
-  return pharmacyList.slice(0, 3);
+  return pharmacyList;
 };
 
 module.exports = parsePharmacyListFromSyndicationXml;

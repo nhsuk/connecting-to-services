@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://syndication.nhschoices.nhs.uk/services">
+  <title type="text">NHS Choices - Pharmacies Near Postcode - HG5 0JL - Within 100km</title>
+  <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/hg50jl?range=100</id>
+  <rights type="text">© Crown Copyright 2009</rights>
+  <updated>2016-08-08T08:33:34+01:00</updated>
+  <category term="Search" />
+  <logo>http://www.nhs.uk/nhscwebservices/documents/logo1.jpg</logo>
+  <author>
+    <name>NHS Choices</name>
+    <uri>http://www.nhs.uk</uri>
+    <email>webservices@nhschoices.nhs.uk</email>
+  </author>
+  <link rel="self" type="application/xml" title="NHS Choices - Pharmacies Near Postcode - HG5 0JL - Within 100km" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/HG50JL?apikey=bbccdd&amp;range=100" />
+  <link rel="first" type="application/xml" title="first" length="1000" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/HG50JL?apikey=bbccdd&amp;range=100&amp;page=1" />
+  <link rel="next" type="application/xml" title="next" length="1000" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/HG50JL?apikey=bbccdd&amp;range=100&amp;page=2" />
+  <link rel="last" type="application/xml" title="last" length="1000" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/HG50JL?apikey=bbccdd&amp;range=100&amp;page=10" />
+  <tracking xmlns="http://syndication.nhschoices.nhs.uk/services">&lt;img style="border: 0; width: 1px; height: 1px;" alt="" src="http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=/organisations%2fpharmacies%2fpostcode%2fHG50JL&amp;amp;wt.js=no&amp;amp;wt.cg_n=syndication"/&gt;</tracking>
+  <s:SearchCoords>54.0096,-1.46518</s:SearchCoords>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/34617</id>
+    <title type="text">LloydsPharmacy</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="LloydsPharmacy" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/34617?apikey=bbccdd" />
+    <link rel="alternate" title="LloydsPharmacy" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=12332" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>LloydsPharmacy</s:name>
+        <s:odsCode>FTK79</s:odsCode>
+        <s:address>
+          <s:addressLine>34 High Street</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG5 0EQ</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 865308</s:telephone>
+          <s:email>lp6640@lloydspharmacy.co.uk</s:email>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.46577370166779</s:longitude>
+          <s:latitude>54.0081405639648</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>0.167070710290067</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/28117</id>
+    <title type="text">Boots</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Boots" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/28117?apikey=bbccdd" />
+    <link rel="alternate" title="Boots" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=6423" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Boots</s:name>
+        <s:odsCode>FG011</s:odsCode>
+        <s:address>
+          <s:addressLine>22-28 Market Place</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:postcode>HG5 8AG</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 863171</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.46696317195892</s:longitude>
+          <s:latitude>54.0082015991211</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>0.191274726083375</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/26472</id>
+    <title type="text">Pr Naylor Chemist Ltd</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Pr Naylor Chemist Ltd" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/26472?apikey=bbccdd" />
+    <link rel="alternate" title="Pr Naylor Chemist Ltd" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=4931" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Pr Naylor Chemist Ltd</s:name>
+        <s:odsCode>FD891</s:odsCode>
+        <s:address>
+          <s:addressLine>40-42 Market Place</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG5 8AG</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 862117</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.46696317195892</s:longitude>
+          <s:latitude>54.0082015991211</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>0.191274726083375</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/32402</id>
+    <title type="text">Boots</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Boots" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/32402?apikey=bbccdd" />
+    <link rel="alternate" title="Boots" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=10327" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Boots</s:name>
+        <s:odsCode>FNX15</s:odsCode>
+        <s:address>
+          <s:addressLine>Nycs Store</s:addressLine>
+          <s:addressLine>Chain Lane</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:postcode>HG5 0DH</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 869889</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.45505797863007</s:longitude>
+          <s:latitude>54.0108184814453</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>0.677404072505665</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/978453</id>
+    <title type="text">Boots</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Boots" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/978453?apikey=bbccdd" />
+    <link rel="alternate" title="Boots" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=91941" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Boots</s:name>
+        <s:odsCode>FN047</s:odsCode>
+        <s:address>
+          <s:addressLine>Unit 4a St James Retail Park</s:addressLine>
+          <s:addressLine>Grimbald Crag Road</s:addressLine>
+          <s:addressLine>Knaresborough</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG5 8PZ</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 860197</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.44396793842316</s:longitude>
+          <s:latitude>54.0002403259277</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>1.73740153559827</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/27182</id>
+    <title type="text">LloydsPharmacy</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="LloydsPharmacy" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/27182?apikey=bbccdd" />
+    <link rel="alternate" title="LloydsPharmacy" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=5584" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>LloydsPharmacy</s:name>
+        <s:odsCode>FEF16</s:odsCode>
+        <s:address>
+          <s:addressLine>54 High Street</s:addressLine>
+          <s:addressLine>Starbeck</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG2 7JE</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 883164</s:telephone>
+          <s:email>lp7098@lloydspharmacy.co.uk</s:email>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.49907338619232</s:longitude>
+          <s:latitude>53.9987487792969</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>2.52986008685717</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/32785</id>
+    <title type="text">LloydsPharmacy</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="LloydsPharmacy" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/32785?apikey=bbccdd" />
+    <link rel="alternate" title="LloydsPharmacy" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=10672" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>LloydsPharmacy</s:name>
+        <s:odsCode>FPJ50</s:odsCode>
+        <s:address>
+          <s:addressLine>123 Knaresborough Road</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG2 7LY</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 884205</s:telephone>
+          <s:email>lp7075@lloydspharmacy.co.uk</s:email>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.51179242134094</s:longitude>
+          <s:latitude>53.9964447021484</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>3.38938430080158</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/28276</id>
+    <title type="text">Sainsbury's Supermarkets Ltd</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Sainsbury's Supermarkets Ltd" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/28276?apikey=bbccdd" />
+    <link rel="alternate" title="Sainsbury's Supermarkets Ltd" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=6565" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Sainsbury's Supermarkets Ltd</s:name>
+        <s:odsCode>FG619</s:odsCode>
+        <s:address>
+          <s:addressLine>J Sainsbury Store</s:addressLine>
+          <s:addressLine>Wetherby Road</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG2 8QZ</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 888519</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.49977326393127</s:longitude>
+          <s:latitude>53.9849014282227</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>3.56097903320213</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/32642</id>
+    <title type="text">Well Harrogate - Kingswood MC</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Well Harrogate - Kingswood MC" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/32642?apikey=bbccdd" />
+    <link rel="alternate" title="Well Harrogate - Kingswood MC" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=10547" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Well Harrogate - Kingswood MC</s:name>
+        <s:odsCode>FPC58</s:odsCode>
+        <s:address>
+          <s:addressLine>14 Wetherby Road</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:addressLine>North Yorkshire</s:addressLine>
+          <s:postcode>HG2 7SA</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 885658</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.51703596115112</s:longitude>
+          <s:latitude>53.9914970397949</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>3.95061783588373</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+  <entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/25921</id>
+    <title type="text">Cohens Chemist</title>
+    <updated>2016-08-08T07:33:34Z</updated>
+    <link rel="self" title="Cohens Chemist" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/25921?apikey=bbccdd" />
+    <link rel="alternate" title="Cohens Chemist" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=4443" />
+    <content type="application/xml">
+      <s:organisationSummary>
+        <s:name>Cohens Chemist</s:name>
+        <s:odsCode>FCF87</s:odsCode>
+        <s:address>
+          <s:addressLine>Mowbray Square Med Ctr</s:addressLine>
+          <s:addressLine>Myrtle Square</s:addressLine>
+          <s:addressLine>Harrogate</s:addressLine>
+          <s:postcode>HG1 5AR</s:postcode>
+        </s:address>
+        <s:contact type="General">
+          <s:telephone>01423 565025</s:telephone>
+        </s:contact>
+        <s:geographicCoordinates>
+          <s:longitude>-1.52977788448334</s:longitude>
+          <s:latitude>53.9963569641113</s:latitude>
+        </s:geographicCoordinates>
+        <s:Distance>4.48225291486214</s:Distance>
+      </s:organisationSummary>
+    </content>
+  </entry>
+</feed>
