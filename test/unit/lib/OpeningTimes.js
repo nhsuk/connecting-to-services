@@ -1,6 +1,7 @@
 const chai = require('chai');
 const OpeningTimes = require('../../../app/lib/OpeningTimes');
 const moment = require('moment');
+require('moment-timezone');
 const DaysOfTheWeek = require('../../../app/lib/constants').daysOfTheWeek;
 
 const expect = chai.expect;
@@ -8,7 +9,7 @@ const aMonday = moment('2016-07-25T00:00:00+01:00');
 
 function getMoment(day, hours, minutes) {
   const dayNumber = DaysOfTheWeek.indexOf(day);
-  const date = moment(aMonday);
+  const date = moment(aMonday).tz('Europe/London');
   date.add(dayNumber, 'days').hours(hours).minutes(minutes);
   return date;
 }
