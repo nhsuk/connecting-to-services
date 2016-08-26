@@ -8,6 +8,9 @@
     },
     "NHSCHOICES_SYNDICATION_APIKEY": {
       "required": true
+    },
+    "GOOGLE_MAPS_APIKEY": {
+      "required": true
     }
   },
   "formation": {
