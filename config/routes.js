@@ -37,11 +37,8 @@ router.post('/datetime',
 // Only get open things for display
 router.get('/results-open',
   servicesMiddleware.getPharmacyUrl,
-  servicesMiddleware.getWICUrl,
   servicesMiddleware.getPharmacies,
-  servicesMiddleware.getWICs,
   servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.getWICDetails,
   servicesMiddleware.prepareOpenThingsForRender,
   servicesMiddleware.getGoogleMapsInfo,
   servicesMiddleware.renderServiceResults
@@ -50,11 +47,8 @@ router.get('/results-open',
 // No need to get distance and duration from Google
 router.get('/results',
   servicesMiddleware.getPharmacyUrl,
-  servicesMiddleware.getWICUrl,
   servicesMiddleware.getPharmacies,
-  servicesMiddleware.getWICs,
   servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.getWICDetails,
   servicesMiddleware.prepareForRender,
   servicesMiddleware.renderServiceResults
 );

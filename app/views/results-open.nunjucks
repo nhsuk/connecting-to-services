@@ -3,8 +3,6 @@
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="/search" class="back-to-previous">Back</a>
 
-<h1>THIS PAGE NEEDS TO SHOW ONLY THE FIRST OPEN PHARMACY AND WIC</h1>
-
 <h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
   <div class="grid-row">
     <div class="column-two-thirds">

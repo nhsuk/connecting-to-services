@@ -61,17 +61,13 @@
         </ul>
 
         <p>
-          <a href="http://fierce-reef-62491.herokuapp.com/" class="gotoservice-cta">Find a GP</a>  or <a href="/call-111" class="gotoservice-cta">Call NHS 111</a>
+        <strong>Visit a GP</strong> or <a href="/call-111" class="gotoservice-cta">use NHS 111</a>
         </p>
         <p></p>
-
-
       </div>
 
       <div class="column-third nineninenine">
-
       <h2 class="heading-large">Call 999 or go to A&amp;E if you</h2>
-
         <ul class="list-bullet">
           <li>have sudden, severe stomach pain</li>
           <li>have pain when you touch your stomach</li>
@@ -82,13 +78,9 @@
           <li>are unable to pee</li>
           <li>are diabetic and vomiting</li>
         </ul>
-
         <p></p>
-
     </div>
-
 </div>
-
 </main>
 
 {% include "./includes/footer.nunjucks" %}

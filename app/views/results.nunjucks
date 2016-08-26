@@ -3,10 +3,9 @@
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="/search" class="back-to-previous">Back</a>
 
-<h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
+<h1 class="heading-xlarge">Services near to '{{ location }}' for your condition</h1>
 <p class="lede">The services listed below are currently open. Other services nearby are closed.</p>
 <p></p>
-<a href="/results?location={{location}}&status=open" class="back-to-previous">Show only open pharamcies</a>
 <div class="grid-row">
   <div class="column-two-thirds">
     <table>
@@ -27,11 +26,6 @@
                 {% if service.telephone %}
                   Telephone {{ service.telephone }}
                 {% endif %}
-                </p>
-                <p style=" border: red; border-style: double; padding: 0.2em; margin: 0.2em; ">
-                Distance: {{ service.distance }}
-                <br/>
-                Duration: {{ service.duration }}
                 </p>
                 </td>
                 <td><p><a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">Get directions</a></p></td>

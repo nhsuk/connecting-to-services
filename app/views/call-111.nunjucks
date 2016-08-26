@@ -2,7 +2,7 @@
 
 <main id="content" role="main">
 <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
-<h1 class="heading-xlarge">Please call NHS 111</h1>
+<h1 class="heading-xlarge">Call NHS 111</h1>
 <div class="grid-row">
   <div class="column-two-thirds">
 
