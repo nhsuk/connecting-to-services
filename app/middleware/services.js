@@ -79,10 +79,10 @@ function getPharmacies(req, res, next) {
 
 function getPharmacyOpeningTimes(req, res, next) {
   let pharmacyCount = req.pharmacyList.length;
-
   req.pharmacyList.forEach((pharmacy) => {
     const pharmacyId = pharmacy.id.split('/').slice(-1)[0];
 
+    // TODO: Only need to get opening times for the first 2 open pharmacies
     getSyndicationResponse(
       `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/${pharmacyId}/overview.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
       'Pharmacy List',
@@ -127,12 +127,19 @@ function getPharmacyUrl(req, res, next) {
   next();
 }
 
-function sortByDistance(a, b) {
+function sortByDistanceInKms(a, b) {
   return a.distanceInKms - b.distanceInKms;
 }
 
+function sortByDistance(a, b) {
+  return a.content.organisationSummary.Distance - b.content.organisationSummary.Distance;
+}
+
 function prepareForRender(req, res, next) {
-  const serviceList = pharmacyMapper(req.pharmacyList);
+  const tenClosestPlaces = req.pharmacyList
+        .sort(sortByDistance)
+        .slice(0, 10);
+  const serviceList = pharmacyMapper(tenClosestPlaces);
   const location = req.query.location;
   const start = `saddr=${location}`;
 
@@ -153,7 +160,7 @@ function prepareForRender(req, res, next) {
     item.googleMapsQuery = `${start}&${destination}&${near}`;
   });
   // eslint-disable-next-line no-param-reassign
-  req.serviceList = serviceList.sort(sortByDistance);
+  req.serviceList = serviceList.sort(sortByDistanceInKms);
   next();
 }
 
@@ -161,13 +168,10 @@ function prepareOpenThingsForRender(req, res, next) {
   // Only get the 2 closet OPEN pharmacies
   const serviceLimit = 2;
   const serviceList = pharmacyMapper(req.pharmacyList)
-        .sort((p1, p2) => parseInt(p1.distanceInKms, 10) - parseInt(p2.distanceInKms, 10))
+        .sort(sortByDistanceInKms)
         .filter((pharmacy) => pharmacy.openNow)
         .slice(0, serviceLimit);
-    // [TODO] Used to get all of the pharmacies - different from other method...
-    // mappedPharmacies = pharmacyMapper(req.pharmacyList)
-        // .sort((p1, p2) => parseInt(p1.distanceInKms, 10) - parseInt(p2.distanceInKms, 10))
-        // .slice(0, serviceLimit);
+
   const location = req.query.location;
   const start = `saddr=${location}`;
 
@@ -188,7 +192,7 @@ function prepareOpenThingsForRender(req, res, next) {
     item.googleMapsQuery = `${start}&${destination}&${near}`;
   });
   // eslint-disable-next-line no-param-reassign
-  req.serviceList = serviceList.sort(sortByDistance);
+  req.serviceList = serviceList.sort(sortByDistanceInKms);
   next();
 }
 
@@ -209,27 +213,17 @@ function getGoogleMapsInfo(req, res, next) {
     .distanceMatrix({
       origins: location,
       destinations,
-      // mode: 'transit',
+      // mode: 'transit', // Default is car
       units: 'imperial',
     }, (err, response) => {
       if (!err) {
-      // console.log('MAPS Response:');
+        console.log('Response from googleMaps API request:');
         console.log(response.json);
-        const rows = response.json.rows;
-        rows.forEach((row) => {
-          console.log('ROW:');
-          console.log(row);
-        });
       // There are as many rows as there are origins
         const originRow = response.json.rows[0];
       // As many elements as there are destinations
-      // Which is just the one right now, needs to change
-      // to request for all X result item destinations
-      // in a single go
         const elements = originRow.elements;
         elements.forEach((element, index) => {
-          console.log(element);
-          console.log(index);
           if (element.status === 'OK') {
             services[index].distance = element.distance.text;
             services[index].duration = element.duration.text;

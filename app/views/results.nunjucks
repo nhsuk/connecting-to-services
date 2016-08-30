@@ -3,11 +3,12 @@
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="/search" class="back-to-previous">Back</a>
 
-<h1 class="heading-xlarge">Services near to '{{ location }}' for your condition</h1>
-<p class="lede">The services listed below are currently open. Other services nearby are closed.</p>
-<p></p>
-<div class="grid-row">
-  <div class="column-two-thirds">
+<h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+  <p class="lede">Listed below are all the places nearby that could help you, showing if they are open or closed.</p>
+    </div>
+    </div>
     <table>
       <tbody>
           {% for service in serviceList %}
@@ -15,11 +16,8 @@
           <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
         </tr>
         <tr>
-          <td><span style="font-size: 24px; font-weight: 800;"><a href="#">{{ service.name }}</a></span></td>
-          <td style="width: 33%;">Distance: {{ service.distanceInMiles | round(1) }} miles</td>
-        </tr>
-        <tr>
-          <td>
+          <td width="50%">
+            <span style="font-size: 24px; font-weight: 800;"><a href="#">{{ service.name }}</a></span>
                 <p>
                 {{ service.addressLine | join(", ") }}
                 <br>
@@ -27,61 +25,28 @@
                   Telephone {{ service.telephone }}
                 {% endif %}
                 </p>
-                </td>
-                <td><p><a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">Get directions</a></p></td>
-        </tr>
-        <tr>
-          <td><p><strong>{{ service.openingHoursMessage }}</strong><br></p></td>
-        </tr>
-
-        {% if service.openingTimes %}
-        <tr>
-          <td colspan="2">
-
-            <details role="group">
-              <summary class="more-info" role="button" aria-controls="details-content-3" tabindex="0" aria-expanded="false"> <span>View full opening times</span>
-              </summary>
-              <div id="details-content-3" aria-hidden="true">
-
-                {% if service.openingTimes %}
-                <p><strong>Opening times</strong></p>
-                <table class="gpOpeningTimes">
-                  <tbody>
-                    {% for day in daysOfTheWeek %}
-                    <tr>
-                      <td>{{day | capitalize }}</td>
-                      {% if service.openingTimes[day].times[0] != 'Closed' %}
-                      <td>{{ service.openingTimes[day].times[0].fromTime }} to {{ service.openingTimes[day].times[0].toTime }}</td>
-                      {% else %}
-                      <td>Closed</td>
-                      {% endif %}
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-                {% endif %}
-              </div>
-            </details>
+              <p><strong>{{ service.openingHoursMessage }}</strong><br></p>
           </td>
-        </tr>
-        {% endif %}
+          <td width="50%">
+            Distance: {{ service.distanceInMiles | round(1) }} miles
+            <br/>
+              <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
 
+            <br/>
+            <!-- <p><strong>Estimated journey time: </strong>{{ service.duration }}</p> -->
+
+        </tr>
         <tr>
           <td colspan="3"><hr></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-  </div>
-  <div class="column-third">
-    <p>
-    <h3 class="heading-small">Would you rather see a GP?</h3>
-    <p><a href="http://fierce-reef-62491.herokuapp.com/?search={{ location }}">Find and contact your GP</a>.
-    </p>
-    </p>
-  </div>
-</div>
-
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p><a href="results?location={{location}}" class="gotoservice-cta">See all nearby places that can help, open or closed</a></p>
+      </div>
+    </div>
 </main>
 
 {% include "./includes/footer.nunjucks" %}
