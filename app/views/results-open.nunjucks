@@ -6,7 +6,7 @@
 <h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
   <div class="grid-row">
     <div class="column-two-thirds">
-  <p class="lede">The services listed below are currently open. Other services nearby are closed.</p>
+  <p class="lede">The places listed below are currently open. Other places nearby are closed.</p>
     </div>
     </div>
     <table>
