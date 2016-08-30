@@ -1,7 +1,6 @@
 <footer role="contentinfo">
   <div class="global-footer">
     <div class="global-footer--inner">
-
       <div>
         <h2 class="util-visuallyhidden">Support links</h2>
         <ul class="inline-list inline-list__slash">
@@ -12,15 +11,13 @@
             <a href="https://beta.nhs.uk/help/cookies">Cookies</a>
           </li>
           <li class="inline-list--item">
-            <a href="#">{{ currentDateTime }}</a>
+            <a href="/set-time">{{ currentDateTime }}</a>
           </li>
         </ul>
       </div>
 
     </div>
   </div>
-
 </footer>
-
 </body>
 </html>
