@@ -83,7 +83,7 @@ describe('OpeningTimes', () => {
     it('when currently open should return open message', () => {
       const date = getMoment('monday', 11, 30);
       console.log(date.format());
-      expect(openingTimes.getOpeningHoursMessage(date)).to.equal('Open until 5:30 pm today');
+      expect(openingTimes.getOpeningHoursMessage(date)).to.equal('Open today until 5:30 pm');
     });
     it('when currently closed and opening tomorrow should return closed message', () => {
       const date = getMoment('monday', 7, 0);

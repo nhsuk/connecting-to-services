@@ -148,7 +148,7 @@ class OpeningTimes {
         ((closedDay === 'tomorrow' && closedTime === '12:00 am')
           || (closedDay === 'today' && closedTime === '11:59 pm')) ?
         'Open until midnight' :
-        `Open until ${closedTime} ${closedDay}`);
+        `Open ${closedDay} until ${closedTime}`);
     }
     const openNext = this.nextOpen(datetime);
     if (openNext) {
