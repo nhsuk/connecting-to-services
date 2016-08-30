@@ -13,7 +13,7 @@ router.get('/search',
   (req, res) => {
     const query = req.query;
 
-    let viewToRender = 'find-it';
+    let viewToRender = 'search';
 
     if ({}.hasOwnProperty.call(query, 'able')) {
       if (query.able === 'true') {
