@@ -17,7 +17,7 @@
         </tr>
         <tr>
           <td width="50%">
-            <span style="font-size: 24px; font-weight: 800;"><a href="#">{{ service.name }}</a></span>
+            <span style="font-size: 24px; font-weight: 800;">{{ service.name }}</span>
                 <p>
                 {{ service.addressLine | join(", ") }}
                 <br>
