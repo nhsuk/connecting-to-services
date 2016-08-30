@@ -65,16 +65,6 @@
 
               <div class="form-item-wrapper">
                 <div class="form-group">
-                  <input type="checkbox" id="checkbox-minor-10" name="minor-10">
-                  <label class="form-control-checkbox minor" for="checkbox-minor-10">
-                    * Gender specific
-                  </label>
-                </div>
-              </div>
-
-
-              <div class="form-item-wrapper">
-                <div class="form-group">
                   <input type="checkbox" id="checkbox-minor-4" name="minor-4">
                   <label class="form-control-checkbox minor" for="checkbox-minor-4">
                     Induction loop
@@ -114,6 +104,15 @@
                   <input type="checkbox" id="checkbox-minor-8" name="minor-8">
                   <label class="form-control-checkbox minor" for="checkbox-minor-8">
                     Step free access
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-10" name="minor-10">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-10">
+                    * Gender specific
                   </label>
                 </div>
               </div>
