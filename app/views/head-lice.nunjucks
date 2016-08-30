@@ -1,0 +1,110 @@
+{% include "./includes/beta-header.nunjucks" %}
+<main id="content" role="main">
+
+  <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
+
+  <h1 class="heading-xlarge">Head lice and nits</h1>
+
+  <div class="grid-row">
+
+  <div class="column-two-thirds">
+
+  <p class="lede">Head lice and nits are very common in young children. They don’t have anything to do with dirty hair, and are usually picked up by head-to-head contact.</p>
+
+</div>
+</div>
+
+  <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+        <h2 class="heading-large">Check if it’s head lice</h2>
+        <div>
+          <div class="conditionContainer"><img class="conditionImage" src="/images/head-lice-1-600.jpg"><br>Head lice are small insects, up to 3mm long. They can be difficult to spot.</div>
+
+          <div class="conditionContainer"><img class="conditionImage" src="/images/head-lice-2-600.jpg"><br>Close up view of a louse.</div>
+
+          <div class="conditionContainer"><img class="conditionImage" src="/images/head-lice-3-600.jpg"><br>Head lice eggs (nits) are yellow, brown or white (empty shells) and attached to the hair.</div>
+        </div>
+          <p>Head lice sometimes can make your head feel:</p>
+
+          <ul class="list-bullet">
+            <li>itchy</li>
+            <li>like something is moving in your hair</li>
+          </ul>
+
+          <p>The only way to be sure someone has head lice is by finding live lice or eggs. You can do this by combing their hair with a special fine-toothed comb (detection comb). You can buy these online or at pharmacies.</p>
+
+          <h2 class="heading-large">How to get rid of head lice</h2>
+
+           <p class="alert-orange">
+             You can treat head lice without seeing your GP.
+           </p>
+
+           <p>Treat head lice as soon as you spot them. You should check everyone in the house, and treat them on the same day if they have head lice.</p>
+
+           <p>There’s no need to keep your child off school with head lice.</p>
+
+           <h3 class="heading-medium">Use lotion or spray to treat head lice</h3>
+
+           <p>You can use medicated lotions and sprays that kill head lice in all types of hair, including afro hair. You can buy these from pharmacies, supermarkets or online.</p>
+
+           <p>
+             <a href="/head-lice-find-help" class="gotoservice-cta">Find a pharmacy that can help</a>
+           </p>
+           <p></p>
+
+           <p>Head lice should die within a day. Lotions and sprays come with a comb to remove dead lice and eggs.</p>
+
+           <p>Some treatments need to be repeated after a week to kill any newly-hatched lice. Check the pack to see whether they’re okay for you or your child to use and how long they should be left in the hair.</p>
+
+           <p>If lotions or sprays don’t work, speak to your pharmacist about other treatments.</p>
+
+           <p>
+             <a href="/head-lice-find-help" class="gotoservice-cta">Find a pharmacy that can help</a>
+           </p>
+           <p></p>
+
+
+           <p>Some treatments aren’t recommended because they’re unlikely to work:</p>
+
+           <ul class="list-bullet">
+             <li>products containing permethrin</li>
+             <li>head lice “repellents”</li>
+             <li>electric head lice combs</li>
+             <li>tree and plant oil treatments, such as tea tree oil, eucalyptus oil, and lavender oil herbal remedies</li>
+           </ul>
+
+           <h3 class="heading-medium">If you don’t want to use chemicals</h3>
+
+             <p>You can buy a special fine-toothed comb (detection comb) online or from pharmacies to remove head lice and nits.</p>
+
+
+             <p>Follow the instructions on the pack, but generally you:</p>
+
+             <ul class="list-bullet">
+               <li>use the comb on wet or dry hair, although it usually works best on wet hair with conditioner</li>
+               <li>comb the whole head of hair, from the roots to the end of the hair</li>
+               <li>repeat every few days for 2 weeks</li>
+             </ul>
+
+             <h2 class="heading-large">You can’t prevent head lice</h2>
+
+             <p>There’s nothing you can do to prevent head lice. You can reduce the risk of lice spreading by avoiding head-to-head contact.</p>
+
+             <p>Don’t use medicated lotions and sprays to prevent head lice. This can irritate the scalp.</p>
+
+             <p>There’s no need for children to stay off school, or to wash laundry on a hot wash.</p>
+
+             <p><a href="http://cks.nice.org.uk/head-lice#!diagnosissub">Medical detail about head lice</a></p>
+
+        <p></p>
+
+
+      </div>
+
+</div>
+
+</main>
+
+{% include "./includes/footer.nunjucks" %}

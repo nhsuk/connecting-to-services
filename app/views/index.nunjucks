@@ -4,8 +4,15 @@
 <h1 class="heading-large">NHS.UK Connecting to Services prototypes</h1>
 <div class="grid-row">
   <div class="column-two-thirds">
+    <h3>GP pop-up testing prototypes</h3>
+    <ul class="list-bullet">
+      <li><a href="/stomach-ache">Stomach Ache</a></li>
+      <li><a href="/head-lice">Head lice</a></li>
+      <li><a href="/fungal-nail">Fungal nail</a></li>
+    </ul>
+  </div>
+  <div class="column-two-thirds">
     <h3>Research prototypes</h3>
-
     <ul class="list-bullet">
       <li><a href="/stomach-ache">Stomach Ache</a></li>
       <li><a href="/rashes">Rashes in babies and children</a></li>
