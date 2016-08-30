@@ -92,15 +92,6 @@
 
               <div class="form-item-wrapper">
                 <div class="form-group">
-                  <input type="checkbox" id="checkbox-minor-7" name="minor-7">
-                  <label class="form-control-checkbox minor" for="checkbox-minor-7">
-                    Wheelchair access
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-item-wrapper">
-                <div class="form-group">
                   <input type="checkbox" id="checkbox-minor-8" name="minor-8">
                   <label class="form-control-checkbox minor" for="checkbox-minor-8">
                     Step free access
@@ -110,22 +101,12 @@
 
               <div class="form-item-wrapper">
                 <div class="form-group">
-                  <input type="checkbox" id="checkbox-minor-10" name="minor-10">
-                  <label class="form-control-checkbox minor" for="checkbox-minor-10">
-                    * Gender specific
+                  <input type="checkbox" id="checkbox-minor-7" name="minor-7">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-7">
+                    Wheelchair access
                   </label>
                 </div>
               </div>
-
-              <div class="form-item-wrapper">
-                <div class="form-group">
-                  <input type="checkbox" id="checkbox-minor-9" name="minor-9">
-                  <label class="form-control-checkbox minor" for="checkbox-minor-9">
-                    * Translation
-                  </label>
-                </div>
-              </div>
-
 
             </div></fieldset>
         </div>
