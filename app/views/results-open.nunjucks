@@ -44,7 +44,7 @@
     </table>
     <div class="grid-row">
       <div class="column-two-thirds">
-        <p><a href="results?location={{location}}" class="gotoservice-cta">See all nearby places that can help, open or closed</a></p>
+        <p><a href="results?location={{location}}" class="gotoservice-cta button">See all nearby places that can help, open or closed</a></p>
       </div>
     </div>
 </main>
