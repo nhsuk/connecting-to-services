@@ -1,0 +1,20 @@
+{
+  "name": "connecting-to-services",
+  "version": "1.0.0",
+  "description": "Connecting To Services",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhsuk/connecting-to-services.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhsuk/connecting-to-services/issues"
+  },
+  "homepage": "https://github.com/nhsuk/connecting-to-services#readme"
+}
