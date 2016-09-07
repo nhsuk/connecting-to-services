@@ -1,0 +1,15 @@
+{
+  "name": "connecting-to-services",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
