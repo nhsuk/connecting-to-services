@@ -1,0 +1,21 @@
+{
+  "name": "connecting-to-services",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
+  "engines": {
+    "node": "6.x.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhsuk/connecting-to-services.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nhsuk/connecting-to-services/issues"
+  },
+  "homepage": "https://github.com/nhsuk/connecting-to-services#readme"
+}
