@@ -6,10 +6,11 @@
   "engines": {
     "node": "6.x.x"
   },
-  "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext .js,.json .",
+    "test": "mocha --recursive test",
+    "test-dev": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,16 @@
   "homepage": "https://github.com/nhsuk/connecting-to-services#readme",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^11.0.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-mocha": "^4.5.1",
+    "eslint-plugin-react": "^6.2.0",
+    "mocha": "^3.0.2"
   }
 }
