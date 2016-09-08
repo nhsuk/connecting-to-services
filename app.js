@@ -1,5 +1,6 @@
 // Load the http module to create an http server.
 var http = require('http');
+var port = process.env.PORT || 3000
 
 // Configure our HTTP server to respond with Hello World to all requests.
 var server = http.createServer(function (request, response) {
@@ -7,4 +8,6 @@ var server = http.createServer(function (request, response) {
   response.end("Hello World\n");
 });
 
-server.listen(80);
+server.listen(port);
+
+console.log(`Server listening on port ${port}`);
