@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/nhsuk/connecting-to-services/issues"
   },
-  "homepage": "https://github.com/nhsuk/connecting-to-services#readme"
+  "homepage": "https://github.com/nhsuk/connecting-to-services#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
