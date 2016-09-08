@@ -12,6 +12,12 @@
     "test": "mocha --recursive test",
     "test-dev": "npm run test -- --watch"
   },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "post-rewrite": "npm run lint && npm run test"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nhsuk/connecting-to-services.git"
@@ -32,6 +38,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-mocha": "^4.5.1",
     "eslint-plugin-react": "^6.2.0",
+    "ghooks": "^1.3.2",
     "mocha": "^3.0.2"
   }
 }
