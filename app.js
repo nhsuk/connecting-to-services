@@ -5,14 +5,19 @@ const app = express();
 
 app.get('/results-open', (req, res) => {
   const location = req.query.location;
-  const postcode = new Postcode(location);
 
   let message = '';
 
-  if (postcode.valid()) {
-    message = location;
+  if (!location) {
+    message = 'A valid postcode is required to progress';
   } else {
-    message = `${location} is not a valid postcode, please try again`;
+    const postcode = new Postcode(location);
+
+    if (postcode.valid()) {
+      message = location;
+    } else {
+      message = `${location} is not a valid postcode, please try again`;
+    }
   }
 
   res.send(message);
