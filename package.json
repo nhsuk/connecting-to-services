@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/nhsuk/connecting-to-services#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "postcode": "^0.2.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
