@@ -7,3 +7,6 @@ script:
   - npm run generate-coverage
   - npm run check-coverage
   - npm run upload-coverage
+# disable submodule updating
+git:
+  submodules: false

@@ -4,29 +4,38 @@ const validateLocation = require('../../lib/locationValidator');
 const expect = chai.expect;
 
 describe('Location validation', () => {
-  it('should return a message for an invalid postcode', () => {
-    const invalidPostcode = 'invalid';
-    const req = { query: { location: invalidPostcode } };
+  describe('error handling', () => {
+    let sentMessage;
+    const fakeRes = { send: (message) => { sentMessage = message; } };
 
-    validateLocation(req, {}, () => {});
+    it('should return a message for an invalid postcode', () => {
+      const invalidPostcode = 'invalid';
+      const req = { query: { location: invalidPostcode } };
 
-    expect(req.message).to.be.equal(`${invalidPostcode} is not a valid postcode, please try again`);
+      validateLocation(req, fakeRes, () => {});
+
+      expect(sentMessage)
+        .to.be
+        .equal(`${invalidPostcode} is not a valid postcode, please try again`);
+    });
+
+    it('should return a message when no location is provided', () => {
+      const req = { query: {} };
+
+      validateLocation(req, fakeRes, () => {});
+
+      expect(sentMessage).to.be.equal('A valid postcode is required to progress');
+    });
   });
 
-  it('should pass validation with a valid postcode', () => {
-    const validPostcode = 'AB12 3CD';
-    const req = { query: { location: validPostcode } };
+  describe('happy path', () => {
+    it('should pass validation with a valid postcode', () => {
+      const validPostcode = 'AB12 3CD';
+      const req = { query: { location: validPostcode } };
 
-    validateLocation(req, {}, () => {});
+      validateLocation(req, {}, () => {});
 
-    expect(req.message).to.be.equal(validPostcode);
-  });
-
-  it('should return a message when no location is provided', () => {
-    const req = { query: {} };
-
-    validateLocation(req, {}, () => {});
-
-    expect(req.message).to.be.equal('A valid postcode is required to progress');
+      expect(req.message).to.be.equal(validPostcode);
+    });
   });
 });
