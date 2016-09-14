@@ -4,6 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../app');
 const nock = require('nock');
+const getSampleResponse = require('./lib/getSampleResponse');
 
 const expect = chai.expect;
 
@@ -20,7 +21,7 @@ describe('The results-open route', () => {
 
   let originalUrl = '';
   let originalApikey = '';
-  const baseUrl = 'http://v1.syndication.nhschoices.nhs.uk';
+  const baseUrl = 'http://web.site';
   const apikey = 'secret';
 
   before('setup environment variables', () => {
@@ -39,12 +40,15 @@ describe('The results-open route', () => {
   describe('happy paths', () => {
     const validPostcode = 'AB123CD';
     const requestPath =
-      new RegExp(`/organisations/pharmacies/postcode/${validPostcode}\\?apikey=${apikey}`);
-
+      new RegExp(`/organisations/pharmacies/postcode/${validPostcode}`);
+// TODO: Need to make sure there is a test with the specifics for the api key on the query string
     it('should respond with the postcode, when it is valid', (done) => {
       nock(baseUrl)
         .get(requestPath)
-        .reply(200, {});
+        .query(true)
+        .times(10)
+        // .query({ apikey, range: 100, page: 1 })
+        .reply(200, getSampleResponse('paged_pharmacies_postcode_search'));
 
       chai.request(app)
         .get(route)
@@ -56,11 +60,14 @@ describe('The results-open route', () => {
         });
     });
 
-    it('should make a request to the syndication API with the supplied postcode', (done) => {
+    it('should make 10 requests to the syndication API with the supplied postcode', (done) => {
       const expectedAPICall =
         nock(baseUrl)
         .get(requestPath)
-        .reply(200, {});
+        .query(true)
+        .times(10)
+        // .query({ apikey, range: 100, page: 1 })
+        .reply(200, getSampleResponse('paged_pharmacies_postcode_search'));
 
       chai.request(app)
         .get(route)
