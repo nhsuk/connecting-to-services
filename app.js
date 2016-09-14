@@ -2,6 +2,9 @@ const express = require('express');
 const validateLocation = require('./lib/locationValidator');
 const render = require('./lib/renderer');
 const http = require('http');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: './env/.env' });
 
 const app = express();
 

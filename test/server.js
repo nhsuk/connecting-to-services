@@ -24,15 +24,15 @@ describe('The results-open route', () => {
   const apikey = 'secret';
 
   before('setup environment variables', () => {
-    originalUrl = process.env.NHSCHOICES_SYNDICATION_URL;
+    originalUrl = process.env.NHSCHOICES_SYNDICATION_BASEURL;
     originalApikey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
 
-    process.env.NHSCHOICES_SYNDICATION_URL = baseUrl;
+    process.env.NHSCHOICES_SYNDICATION_BASEURL = baseUrl;
     process.env.NHSCHOICES_SYNDICATION_APIKEY = apikey;
   });
 
   after('reset environemnt variables', () => {
-    process.env.NHSCHOICES_SYNDICATION_URL = originalUrl;
+    process.env.NHSCHOICES_SYNDICATION_BASEURL = originalUrl;
     process.env.NHSCHOICES_SYNDICATION_APIKEY = originalApikey;
   });
 
