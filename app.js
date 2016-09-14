@@ -3,8 +3,13 @@ const validateLocation = require('./lib/locationValidator');
 const render = require('./lib/renderer');
 const http = require('http');
 const dotenv = require('dotenv');
+const requireEnv = require('require-environment-variables');
 
 dotenv.config({ path: './env/.env' });
+requireEnv([
+  'NHSCHOICES_SYNDICATION_APIKEY',
+  'NHSCHOICES_SYNDICATION_BASEURL',
+]);
 
 const app = express();
 
