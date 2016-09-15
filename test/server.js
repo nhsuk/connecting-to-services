@@ -1,4 +1,3 @@
-// eslint has problems with chai expect statements
 /* eslint-disable no-unused-expressions */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -41,21 +40,24 @@ describe('The results-open route', () => {
     const validPostcode = 'AB123CD';
     const requestPath =
       new RegExp(`/organisations/pharmacies/postcode/${validPostcode}`);
-// TODO: Need to make sure there is a test with the specifics for the api key on the query string
-    it('should respond with the postcode, when it is valid', (done) => {
+
+    it('should respond with the top 3 results when the postcode is valid', (done) => {
+      const sampleResponse = getSampleResponse('paged_pharmacies_postcode_search');
       nock(baseUrl)
         .get(requestPath)
         .query(true)
         .times(10)
-        // .query({ apikey, range: 100, page: 1 })
-        .reply(200, getSampleResponse('paged_pharmacies_postcode_search'));
+        .reply(200, sampleResponse);
 
       chai.request(app)
         .get(route)
         .query({ location: validPostcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
-          expect(res.text).to.equal(validPostcode);
+
+          const jsonRes = JSON.parse(res.text);
+
+          expect(jsonRes.length).to.equal(3);
           done();
         });
     });
@@ -66,7 +68,6 @@ describe('The results-open route', () => {
         .get(requestPath)
         .query(true)
         .times(10)
-        // .query({ apikey, range: 100, page: 1 })
         .reply(200, getSampleResponse('paged_pharmacies_postcode_search'));
 
       chai.request(app)

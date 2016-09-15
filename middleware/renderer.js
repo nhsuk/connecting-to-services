@@ -1,5 +1,5 @@
 function render(req, res) {
-  res.send(req.message);
+  res.send(JSON.stringify(req.results.slice(0, 3)));
 }
 
 module.exports = render;

@@ -6,12 +6,19 @@ const expect = chai.expect;
 
 describe('resultsProcess', () => {
   describe('happy path', () => {
-    it('should flatten and add the results to the req', () => {
+    it('should add the top 3 results to the req', () => {
       const req = {};
-      const results = [[{ one: 'one' }],
-      [{ two: 'two' }]];
-      const flattenedResults = [{ one: 'one' },
-      { two: 'two' }];
+      const results = [
+        [{ one: 'one' }],
+        [{ two: 'two' }],
+        [{ three: 'three' }],
+        [{ four: 'four' }],
+      ];
+      const flattenedResults = [
+        { one: 'one' },
+        { two: 'two' },
+        { three: 'three' },
+      ];
 
       processResults(null, results, req, () => {});
 
