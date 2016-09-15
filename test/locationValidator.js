@@ -1,5 +1,5 @@
 const chai = require('chai');
-const validateLocation = require('../lib/locationValidator');
+const validateLocation = require('../middleware/locationValidator');
 
 const expect = chai.expect;
 
