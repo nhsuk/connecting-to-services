@@ -2,30 +2,24 @@ const http = require('http');
 const async = require('async');
 const xmlParser = require('../lib/xmlParser');
 const utils = require('../lib/resultsUtils');
+const processResults = require('../lib/resultsProcessor.js');
 
 function getData(requestUrl, page, cb) {
   const pagedRequestUrl = `${requestUrl}${page}`;
-  console.log(pagedRequestUrl);
+
   http.get(pagedRequestUrl, (res) => {
     let xml = '';
+
     res.on('data', (chunk) => {
       xml += chunk;
     });
+
     res.on('end', () => {
       // TODO: Handle responses that are not 200
       const pharmacyList = xmlParser(xml);
       cb(null, pharmacyList);
     });
   });
-}
-
-function processResults(err, results) {
-  // results is an array of results from all requests
-  results.forEach((request) => {
-    console.log(request.length);
-  });
-  console.log(results.length);
-  console.log('Finished CB');
 }
 
 function getResults(req, res, next) {
@@ -40,8 +34,7 @@ function getResults(req, res, next) {
 
   async.parallel(tenRequests,
     (err, results) => {
-      processResults(err, results);
-      next();
+      processResults(err, results, req, next);
     });
 }
 
