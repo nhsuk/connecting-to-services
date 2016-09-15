@@ -1,23 +1,12 @@
 const express = require('express');
-const validateLocation = require('./lib/locationValidator');
-const render = require('./lib/renderer');
-const http = require('http');
+const validateLocation = require('./middleware/locationValidator');
+const render = require('./middleware/renderer');
 const environment = require('./config/environment');
+const getResults = require('./middleware/getResults');
 
 environment.configure();
 
 const app = express();
-
-function getResults(req, res, next) {
-  const postcode = req.query.location;
-  const apikey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-  const baseUrl = process.env.NHSCHOICES_SYNDICATION_BASEURL;
-
-  http
-    .get(`${baseUrl}/organisations/pharmacies/postcode/${postcode}?apikey=${apikey}`, () => {
-      next();
-    });
-}
 
 app.get('/results-open',
   validateLocation,
