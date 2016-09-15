@@ -4,7 +4,7 @@ const render = require('./lib/renderer');
 const http = require('http');
 const environment = require('./config/environment');
 
-environment.validate();
+environment.configure();
 
 const app = express();
 

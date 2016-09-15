@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const requireEnv = require('require-environment-variables');
 
-function validate() {
+function configure() {
   dotenv.config({ path: './env/.env' });
   requireEnv([
     'NHSCHOICES_SYNDICATION_APIKEY',
@@ -10,5 +10,5 @@ function validate() {
 }
 
 module.exports = {
-  validate,
+  configure,
 };
