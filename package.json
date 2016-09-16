@@ -10,6 +10,7 @@
     "start": "node server.js",
     "lint": "eslint --ext .js,.json .",
     "test": "mocha --recursive test",
+    "watch-dev": "nodemon server.js",
     "watch-test": "npm run test -- --watch --reporter min",
     "generate-coverage": "istanbul cover _mocha -- --recursive --reporter mocha-lcov-reporter",
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
@@ -53,6 +54,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "mocha-lcov-reporter": "^1.2.0",
-    "nock": "^8.0.0"
+    "nock": "^8.0.0",
+    "nodemon": "^1.10.2"
   }
 }

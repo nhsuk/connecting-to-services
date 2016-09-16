@@ -10,7 +10,8 @@ describe('Result utilities', () => {
     const location = 'somewhere';
     const fakeReq = { query: { location } };
     const expectedUrl =
-      `${baseUrl}/organisations/pharmacies/postcode/${location}.xml?apikey=${apikey}&range=100&page=`;
+      `${baseUrl}/organisations/pharmacies/postcode/` +
+      `${location}.xml?apikey=${apikey}&range=100&page=`;
 
     const url = utils.generateRequestUrl(fakeReq);
 
