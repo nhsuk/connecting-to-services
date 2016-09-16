@@ -6,7 +6,7 @@ const expect = chai.expect;
 
 describe('resultsProcess', () => {
   describe('happy path', () => {
-    it('should add the top 3 results to the req', () => {
+    it('should add the top 3 open results to the req', () => {
       const req = {};
       const results = [
         [{ one: 'one' }],

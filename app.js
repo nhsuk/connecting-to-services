@@ -2,7 +2,9 @@ const express = require('express');
 const validateLocation = require('./middleware/locationValidator');
 const render = require('./middleware/renderer');
 const environment = require('./config/environment');
-const getResults = require('./middleware/getResults');
+const performSearch = require('./middleware/performSearch');
+const getDetails = require('./middleware/getDetails');
+const filterOpenOrgs = require('./middleware/filterOpenOrgs');
 
 environment.configure();
 
@@ -10,7 +12,9 @@ const app = express();
 
 app.get('/results-open',
   validateLocation,
-  getResults,
+  performSearch,
+  getDetails,
+  filterOpenOrgs,
   render
 );
 
