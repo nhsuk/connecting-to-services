@@ -3,7 +3,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../app');
 const nock = require('nock');
-const getSampleResponse = require('./lib/getSampleResponse');
+const getSampleResponse = require('./test-lib/getSampleResponse');
 
 const expect = chai.expect;
 

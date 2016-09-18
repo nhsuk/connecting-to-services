@@ -1,6 +1,6 @@
 const chai = require('chai');
-const getSampleResponse = require('./lib/getSampleResponse');
-const xmlParser = require('../lib/xmlParser');
+const getSampleResponse = require('../test-lib/getSampleResponse');
+const xmlParser = require('../../lib/xmlParser');
 const Verror = require('verror');
 
 const expect = chai.expect;

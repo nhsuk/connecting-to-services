@@ -1,5 +1,5 @@
 const chai = require('chai');
-const utils = require('../lib/resultsUtils');
+const utils = require('../../lib/resultsUtils');
 
 const expect = chai.expect;
 

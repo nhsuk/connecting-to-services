@@ -1,7 +1,7 @@
 const chai = require('chai');
-const getAllOrgsOverviews = require('./../middleware/getDetails');
+const getAllOrgsOverviews = require('../../middleware/getDetails');
 const nock = require('nock');
-const getSampleResponse = require('./lib/getSampleResponse');
+const getSampleResponse = require('../test-lib/getSampleResponse');
 
 const expect = chai.expect;
 

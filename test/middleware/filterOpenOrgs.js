@@ -1,5 +1,5 @@
 const chai = require('chai');
-const filterOpenOrgs = require('../middleware/filterOpenOrgs');
+const filterOpenOrgs = require('../../middleware/filterOpenOrgs');
 
 const expect = chai.expect;
 
