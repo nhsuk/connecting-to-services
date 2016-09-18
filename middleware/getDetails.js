@@ -22,7 +22,7 @@ function getSingleOrgOverview(requestUrl, callback) {
 function getAllOrgsOverviews(req, res, next) {
   const overviewRequests =
   req.overviewUrls
-  .slice(0, 2) // TODO: 100 requests breaks the API - need to find a way around it!
+  .slice(0, 3) // TODO: 100 requests breaks the API - need to find a way around it!
   .map(url =>
     (callback) => {
       getSingleOrgOverview(url, callback);

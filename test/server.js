@@ -2,8 +2,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../app');
-// const nock = require('nock');
-// const getSampleResponse = require('./lib/getSampleResponse');
+const nock = require('nock');
+const getSampleResponse = require('./lib/getSampleResponse');
 
 const expect = chai.expect;
 
@@ -37,57 +37,42 @@ describe('The results-open route', () => {
   });
 
   describe('happy paths', () => {
-    // const validPostcode = 'AB123CD';
-    // const postcodeSearchPath =
-    //   new RegExp(`/organisations/pharmacies/postcode/${validPostcode}`);
+    const validPostcode = 'AB123CD';
+    const postcodeSearchPath =
+      new RegExp(`/organisations/pharmacies/postcode/${validPostcode}`);
 
-    // it('should respond with the top 3 open results when the postcode is valid', (done) => {
-    //   const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-    //   const overviewResponse = getSampleResponse('single_pharmacy_overview');
+    it('should return the top 3 open results when the postcode is valid', (done) => {
+      const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
+      const overviewResponse = getSampleResponse('single_pharmacy_overview');
 
-    //   const scope = nock(baseUrl);
-    //   scope.get(postcodeSearchPath)
-    //     .query(true)
-    //     .times(10)
-    //     .reply(200, postcodeSearchResponse);
+      const postcodeSearchScope =
+        nock(baseUrl)
+        .get(postcodeSearchPath)
+        .query(true)
+        .times(10)
+        .reply(200, postcodeSearchResponse);
 
-    //   scope.get('/organisations/pharmacies/27182/overview.xml?apikey=secret')
-    //   // scope.get(/organisations\/pharmacies\/\d+\/overview\.xml/)
-    //     .query(true)
-    //     .times(2)
-    //     .reply(200, overviewResponse);
+      const overviewScope =
+      nock(/.*nhschoices.*/)
+        .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
+        .query(true)
+        .times(3)
+        .reply(200, overviewResponse);
 
-    //   chai.request(app)
-    //     .get(route)
-    //     .query({ location: validPostcode })
-    //     .end((err, res) => {
-    //       checkHtmlResponse(err, res);
+      chai.request(app)
+        .get(route)
+        .query({ location: validPostcode })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
 
-    //       const jsonRes = JSON.parse(res.text);
+          const jsonRes = JSON.parse(res.text);
 
-    //       expect(jsonRes.length).to.equal(3);
-    //       expect(scope.isDone()).to.be.true;
-    //       done();
-    //     });
-    // });
-
-    // it('should make 10 requests to the syndication API with the supplied postcode', (done) => {
-    //   const expectedAPICall =
-    //     nock(baseUrl)
-    //     .get(postcodeSearchPath)
-    //     .query(true)
-    //     .times(10)
-    //     .reply(200, getSampleResponse('paged_pharmacies_postcode_search'));
-
-    //   chai.request(app)
-    //     .get(route)
-    //     .query({ location: validPostcode })
-    //     .end((err, res) => {
-    //       checkHtmlResponse(err, res);
-    //       expect(expectedAPICall.isDone()).to.be.true;
-    //       done();
-    //     });
-    // });
+          expect(jsonRes.length).to.equal(3);
+          expect(postcodeSearchScope.isDone()).to.be.true;
+          expect(overviewScope.isDone()).to.be.true;
+          done();
+        });
+    });
   });
 
   describe('error handling', () => {

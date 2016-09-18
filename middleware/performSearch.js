@@ -3,7 +3,7 @@ const async = require('async');
 const xmlParser = require('../lib/xmlParser');
 const utils = require('../lib/resultsUtils');
 
-function getData(requestUrl, page, cb) {
+function makeApiRequest(requestUrl, page, cb) {
   const pagedRequestUrl = `${requestUrl}${page}`;
 
   http.get(pagedRequestUrl, (response) => {
@@ -27,7 +27,7 @@ function performSearch(req, res, next) {
   const tenRequests = [];
   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach((item) => {
     tenRequests.push((cb) => {
-      getData(requestUrl, item, cb);
+      makeApiRequest(requestUrl, item, cb);
     });
   });
 
