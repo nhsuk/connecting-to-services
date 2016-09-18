@@ -21,17 +21,6 @@ function getData(requestUrl, page, cb) {
   });
 }
 
-function generateOverviewRequestUrls(results) {
-  const flattenedArray = results.reduce((a, b) => a.concat(b), []);
-
-  const apikey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-  const overviewUrls = flattenedArray.map(result =>
-    `${result.id}/overview.xml?apikey=${apikey}`
- );
-
-  return overviewUrls;
-}
-
 function performSearch(req, res, next) {
   const requestUrl = utils.generateRequestUrl(req);
 
@@ -44,13 +33,12 @@ function performSearch(req, res, next) {
 
   async.parallel(tenRequests,
     (err, results) => {
-      // TODO: Just take the overview URL - for use later
       if (err) {
         next(err);
         return;
       }
 
-      const overviewUrls = generateOverviewRequestUrls(results);
+      const overviewUrls = utils.generateOverviewRequestUrls(results);
       // eslint-disable-next-line no-param-reassign
       req.overviewUrls = overviewUrls;
 
