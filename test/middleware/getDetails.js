@@ -14,7 +14,7 @@ describe('getDetails', () => {
       nock(url)
       .get('/')
       .times(2)
-      .reply(200, getSampleResponse('single_pharmacy_overview'));
+      .reply(200, getSampleResponse('org_overview'));
 
     getAllOrgsOverviews(reqWithTwoOverviewUrls, {}, null);
     // eslint-disable-next-line no-unused-expressions
