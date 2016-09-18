@@ -25,7 +25,7 @@ function generateOverviewRequestUrls(results) {
   const flattenedArray = results.reduce((a, b) => a.concat(b), []);
 
   const apikey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-  const overviewUrls = flattenedArray.map((result) =>
+  const overviewUrls = flattenedArray.map(result =>
     `${result.id}/overview.xml?apikey=${apikey}`
  );
 
