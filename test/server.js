@@ -43,7 +43,7 @@ describe('The results-open route', () => {
 
     it('should return the top 3 open results when the postcode is valid', (done) => {
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-      const overviewResponse = getSampleResponse('org_overview');
+      const overviewResponse = getSampleResponse('always_open');
 
       const postcodeSearchScope =
         nock(baseUrl)
