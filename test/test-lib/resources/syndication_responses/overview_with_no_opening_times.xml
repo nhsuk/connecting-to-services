@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title type="text">NHS Choices - Boots - Overview</title>
+<id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/30037/overview</id>
+<rights type="text">© Crown Copyright 2009</rights>
+<updated>2016-08-09T13:03:10+01:00</updated>
+<category term="Overview"/>
+<logo>http://www.nhs.uk/nhscwebservices/documents/logo1.jpg</logo>
+<author>
+    <name>NHS Choices</name>
+    <uri>http://www.nhs.uk</uri>
+    <email>webservices@nhschoices.nhs.uk</email>
+</author>
+<link rel="self" type="application/xml" title="NHS Choices - Boots - Overview" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/30037/overview?apikey=secret"/>
+<link rel="alternate" title="NHS Choices - Boots - Overview" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=8170"/>
+<tracking xmlns="http://syndication.nhschoices.nhs.uk/services">&lt;img style="border: 0; width: 1px; height: 1px;" alt="" src="http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=/organisations%2fpharmacies%2f30037%2foverview&amp;amp;wt.js=no&amp;amp;wt.cg_n=syndication"/&gt;</tracking>
+<complete xmlns="http://purl.org/syndication/history/1.0"/>
+<entry>
+    <id>http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/30037/overview</id>
+    <title type="text">Boots - Overview</title>
+    <published>2016-08-09T13:03:10+01:00</published>
+    <updated>2016-08-09T13:03:10+01:00</updated>
+    <link rel="self" title="Boots - Overview" href="http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/30037/overview?apikey=secret"/>
+    <link rel="alternate" title="Boots - Overview" href="http://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=8170"/>
+    <content type="application/xml">
+    <s:overview xmlns:s="http://syndication.nhschoices.nhs.uk/services">
+    <s:name indexLetter="B">Boots</s:name>
+    <s:odsCode>FK275</s:odsCode>
+    <s:parentOrganisation>
+        <s:name>West Yorkshire Area Team</s:name>
+        <s:uri>http://v1.syndication.nhschoices.nhs.uk/organisations/localareateams/463128?apikey=secret</s:uri>
+    </s:parentOrganisation>
+    <s:summaryText>&lt;p&gt;&lt;strong&gt;For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   &lt;a href="http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&amp;displayView=StoreLookupView&amp;langId=-1&amp;storeId=10052&amp;catalogId=11051&amp;langId=-1&amp;storeId=10052&amp;catalogId=11051"&gt;Boots store locator&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</s:summaryText>
+    <s:address>
+        <s:addressLine>19 Albion Arcade</s:addressLine>
+        <s:addressLine>Leeds</s:addressLine>
+        <s:postcode>LS1 5ET</s:postcode>
+    </s:address>
+    <s:contact type="General">
+        <s:telephone>0113 2433551</s:telephone>
+        <s:fax>0113 2420609</s:fax>
+    </s:contact>
+    <s:geographicCoordinates>
+        <s:longitude>-1.54576146602631</s:longitude>
+        <s:latitude>53.7972450256348</s:latitude>
+    </s:geographicCoordinates>
+    <s:overviewLastUpdated>2016-08-09 13:03:10Z</s:overviewLastUpdated>
+    <s:isEpsEnabled>true</s:isEpsEnabled>
+</s:overview>
+</content>
+</entry>
+</feed>

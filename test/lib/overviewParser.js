@@ -48,24 +48,28 @@ describe('overviewParser', () => {
     });
     it('should throw exception when passed invalid XML', () => {
       const syndicationXml = '<invalidxmldocument>';
+
       expect(() => { overviewParser(syndicationXml); })
         .to.throw(Verror,
           'Unable to parse overview XML: Unclosed root tag');
     });
     it('should throw exception when passed an empty xml string', () => {
       const syndicationXml = '';
+
       expect(() => { overviewParser(syndicationXml); })
         .to.throw(
           AssertionError,
           'parameter \'xml\' undefined/empty');
     });
     it('should throw exception when xml does not contain organisation opening times.', () => {
-      const syndicationXml = '<xml></xml>';
+      const syndicationXml = getSampleResponse('overview_with_no_opening_times');
+      const id = 'http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/30037/overview?apikey=secret';
+
       expect(() => { overviewParser(syndicationXml); })
         .to.throw(
           Verror,
-          'Unable to get general opening times from xml: ' +
-          'Cannot read property \'entry\' of undefined');
+          `Unable to get general opening times from xml for '${id}': ` +
+          'Cannot read property \'0\' of undefined');
     });
   });
 });
