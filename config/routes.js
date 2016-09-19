@@ -1,6 +1,7 @@
 // eslint-disable-next-line new-cap
 const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
+const urlUtils = require('../app/middleware/urlUtils');
 const dateUtils = require('../app/lib/dateUtils');
 
 router.get('/',
@@ -36,7 +37,7 @@ router.post('/datetime',
 
 // Only get open things for display
 router.get('/results-open',
-  servicesMiddleware.getPharmacyUrl,
+  urlUtils.urlForPharmacyPostcodeSearch,
   servicesMiddleware.getPharmacies,
   servicesMiddleware.getPharmacyOpeningTimes,
   servicesMiddleware.prepareOpenThingsForRender,
@@ -44,7 +45,7 @@ router.get('/results-open',
 );
 
 router.get('/results',
-  servicesMiddleware.getPharmacyUrl,
+  urlUtils.urlForPharmacyPostcodeSearch,
   servicesMiddleware.getPharmacies,
   servicesMiddleware.getPharmacyOpeningTimes,
   servicesMiddleware.prepareForRender,

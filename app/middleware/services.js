@@ -116,16 +116,6 @@ function renderServiceResults(req, res) {
   });
 }
 
-function getPharmacyUrl(req, res, next) {
-  const location = req.query.location;
-  const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-  const requestUrl = `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/postcode/${location}.xml?range=50&apikey=${syndicationApiKey}`;
-
-  // eslint-disable-next-line no-param-reassign
-  req.urlForPharmacy = requestUrl;
-  next();
-}
-
 function sortByDistanceInKms(a, b) {
   return a.distanceInKms - b.distanceInKms;
 }
@@ -196,7 +186,6 @@ function prepareOpenThingsForRender(req, res, next) {
 }
 
 module.exports = {
-  getPharmacyUrl,
   getPharmacies,
   getPharmacyOpeningTimes,
   renderServiceResults,
