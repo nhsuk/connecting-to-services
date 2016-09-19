@@ -14,6 +14,7 @@
     "watch-lint": "esw --watch .",
     "watch-test": "npm run test -- --watch --reporter min",
     "generate-coverage": "istanbul cover _mocha -- --recursive --reporter mocha-lcov-reporter",
+    "generate-full-coverage": "istanbul cover --include-all-sources _mocha -- --recursive --reporter mocha-lcov-reporter",
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
     "upload-coverage": "cat ./coverage/lcov.info | coveralls"
   },
