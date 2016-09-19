@@ -1,5 +1,5 @@
 const dateUtils = require('./dateUtils');
-const OpeningTimes = require('./OpeningTimes');
+const OpeningTimes = require('moment-opening-times');
 
 function pharmacyMapper(pharmacyList) {
   const viewModels = [];
@@ -17,7 +17,7 @@ function pharmacyMapper(pharmacyList) {
       telephone: item.content.organisationSummary.contact.telephone,
     };
     if (item.openingTimes !== undefined) {
-      const ot = new OpeningTimes(item.openingTimes);
+      const ot = new OpeningTimes(item.openingTimes, 'Europe/London');
       model.openNow = ot.isOpen(dateUtils.now());
       model.openingHoursMessage = ot.getOpeningHoursMessage(dateUtils.now());
       // TODO: assign ot to model.openingTimes but had problems with
