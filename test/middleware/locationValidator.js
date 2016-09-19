@@ -29,7 +29,15 @@ describe('Location validation', () => {
   });
 
   describe('happy path', () => {
-    it('should pass validation with a valid postcode', () => {
+    it('should pass validation with a valid outcode', () => {
+      const outcode = 'AB2';
+      const req = { query: { location: outcode } };
+
+      validateLocation(req, {}, () => {});
+
+      expect(req.message).to.be.equal(outcode);
+    });
+    it('should pass validation with a valid, full postcode', () => {
       const validPostcode = 'AB12 3CD';
       const req = { query: { location: validPostcode } };
 

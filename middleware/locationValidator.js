@@ -10,7 +10,7 @@ function validate(req, res, next) {
   } else {
     const postcode = new Postcode(location);
 
-    if (postcode.valid()) {
+    if (postcode.valid() || Postcode.validOutcode(location)) {
       message = location;
     } else {
       message = `${location} is not a valid postcode, please try again`;
