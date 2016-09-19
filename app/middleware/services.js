@@ -8,7 +8,6 @@ const pharmaciesParser = require('../lib/pharmaciesParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const Verror = require('verror');
-const googleMaps = require('@google/maps');
 
 function getSyndicationResponseHandler(resourceType, parser, next) {
   return (response) => {
@@ -196,51 +195,10 @@ function prepareOpenThingsForRender(req, res, next) {
   next();
 }
 
-function getGoogleMapsInfo(req, res, next) {
-  const services = req.serviceList;
-  const location = req.query.location;
-
-  // for each service get the address and add them to the query
-  const destinations = [];
-  const origins = [];
-  services.forEach((service) => {
-    destinations.push(`${service.name},${service.addressLine}`.replace(/ /g, '+'));
-    origins.push(location);
-  });
-
-  googleMaps
-    .createClient({ key: process.env.GOOGLE_MAPS_APIKEY })
-    .distanceMatrix({
-      origins: location,
-      destinations,
-      // mode: 'transit', // Default is car
-      units: 'imperial',
-    }, (err, response) => {
-      if (!err) {
-        console.log('Response from googleMaps API request:');
-        console.log(response.json);
-      // There are as many rows as there are origins
-        const originRow = response.json.rows[0];
-      // As many elements as there are destinations
-        const elements = originRow.elements;
-        elements.forEach((element, index) => {
-          if (element.status === 'OK') {
-            services[index].distance = element.distance.text;
-            services[index].duration = element.duration.text;
-          }
-        });
-        next();
-      } else {
-        console.log(err);
-      }
-    });
-}
-
 module.exports = {
   getPharmacyUrl,
   getPharmacies,
   getPharmacyOpeningTimes,
-  getGoogleMapsInfo,
   renderServiceResults,
   prepareForRender,
   prepareOpenThingsForRender,

@@ -40,11 +40,9 @@ router.get('/results-open',
   servicesMiddleware.getPharmacies,
   servicesMiddleware.getPharmacyOpeningTimes,
   servicesMiddleware.prepareOpenThingsForRender,
-  servicesMiddleware.getGoogleMapsInfo,
   servicesMiddleware.renderServiceResults
 );
 
-// No need to get distance and duration from Google
 router.get('/results',
   servicesMiddleware.getPharmacyUrl,
   servicesMiddleware.getPharmacies,
