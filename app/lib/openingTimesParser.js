@@ -26,6 +26,7 @@ const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
       const allOpeningTimes =
         result.feed.entry[0].content[0].overview[0].openingTimes[0].timesSessionTypes[0];
 
+
       openingTimesForType = jsonQuery('timesSessionType[*:isType]', {
         data: allOpeningTimes,
         locals: {
