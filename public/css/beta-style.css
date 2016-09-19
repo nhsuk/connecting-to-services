@@ -1,5 +1,6 @@
 .service-header {
   background-color: rgba(0, 114, 198, 0.1);
+  font-size: 18px;
 }
 
 .service-header .service-name {

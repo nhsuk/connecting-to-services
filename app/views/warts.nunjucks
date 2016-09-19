@@ -1,0 +1,116 @@
+{% include "./includes/beta-header.nunjucks" %}
+
+<main id="content" role="main">
+
+  <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
+
+
+  <h1 class="heading-xlarge">Warts and verrucas</h1>
+
+  <div class="grid-row">
+
+  <div class="column-two-thirds">
+
+  <p class="lede">Warts are small lumps that often develop on the skin of the hands and feet.</p>
+
+  <p>Verrucas are warts that usually develop on the soles of the feet.</p>
+
+</div>
+</div>
+
+  <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+        <h2 class="heading-large">Check if you have them</h2>
+
+          <div class="conditionContainer"><img class="conditionImage" src="/images/wart-1-600.jpg"><br>Warts feel firm and rough. They can appear on palms, knuckles, knees and fingers.</div>
+
+          <div class="conditionContainer"><img class="conditionImage" src="/images/wart-2-600.jpg"><br>Warts on your feet are called verrucas. They have tiny black dots under the hard skin and can be painful - like standing on a needle.</div>
+
+          <div class="conditionContainer"><img class="conditionImage" src="/images/wart-3-600.jpg"><br>Some warts are round, flat and can be yellow (plane warts). You can have many of them.</div>
+
+          <div class="conditionContainer"><img class="conditionImage" src="/images/wart-4-600.jpg"><br>Clusters of warts, spread over an area of skin (mosaic warts) are common on feet and hands.</div>
+
+
+          <h2 class="heading-large">Warts often go away on their own</h2>
+
+          <p>You don’t need to do anything about warts. They’ll usually go away
+             within 2 years.</p>
+
+           <p>Warts don’t cause you any harm. They might itch or bleed but it doesn’t
+             mean there’s a problem.</p>
+
+           <p>If you are unsure or worried about a growth on your skin you should see
+             your GP. </p>
+
+           <p class="alert-orange">
+             Warts on your vulva, penis or anus are
+               <a href="http://www.nhs.uk/Conditions/Genital_warts/Pages/Introduction.aspx">genital warts</a>
+               and need treatment. Go to a sexual health clinic or see your GP.
+           </p>
+
+           <h2 class="heading-large">Treating warts that are bothering you</h2>
+
+           <p>You can treat warts if they’re bothering you, they keep coming back or
+             they’re painful.</p>
+
+           <h3 class="heading-medium">Treatments from your pharmacy</h3>
+
+           <p>You can buy creams, plasters and sprays from pharmacies to get rid of
+             warts. These treatments can take up to 3 months, they can irritate your
+             skin and they don’t always work.</p>
+
+           <p>Ask your pharmacist for advice on what to use if you have a condition
+             such as diabetes.</p>
+
+             <p>
+               <a href="/warts-find-help" class="gotoservice-cta">Find a pharmacy that can help</a>
+             </p>
+
+             <p></p>
+             <p></p>
+
+
+           <p class="alert-orange">
+             Don’t use pharmacy treatments on your face. See your GP instead.
+           </p>
+
+           <h3 class="heading-medium">Treatment from your GP</h3>
+
+           <p>Your GP may be able to freeze warts off. If the wart is big, it may
+             take more than one session. After treatment, the wart should fall off a few
+             weeks later.</p>
+
+           <p>Check with your GP if the NHS pays for this treatment in your area.</p>
+
+           <p>If treatment hasn’t worked or you have a wart on your face, your GP might
+             refer you to a skin specialist. Other treatments include minor surgery and
+             treatment with laser or light.</p>
+
+           <h2 class="heading-large">How to stop warts spreading</h2>
+
+           <ul class="list-bullet">
+             <li>wash your hands after touching a wart</li>
+             <li>don’t bite your nails or suck your fingers with warts on</li>
+             <li>change your socks daily if you have verrucas</li>
+             <li>avoid cutting warts when shaving</li>
+             <li>don’t share towels</li>
+             <li>cover warts and verrucas with a plaster when swimming</li>
+           </ul>
+
+           <p><a href="http://cks.nice.org.uk/warts-and-verrucae#!background">
+             Medical detail about warts</a></p>
+
+
+
+        <p></p>
+
+
+      </div>
+
+</div>
+
+</main>
+
+{% include "./includes/footer.nunjucks" %}

@@ -1,9 +1,9 @@
 {
-  "name": "connecting to services prototype",
+  "name": "connecting to services",
   "scripts": {
   },
   "env": {
-    "NHSCHOICES_SYNDICATION_URL": {
+    "NHSCHOICES_SYNDICATION_BASEURL": {
       "required": true
     },
     "NHSCHOICES_SYNDICATION_APIKEY": {

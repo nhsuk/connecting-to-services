@@ -7,7 +7,7 @@ const config = {
   development: {
     root: rootPath,
     app: {
-      name: 'connecting-to-services-prototype',
+      name: 'connecting-to-services',
     },
     port: process.env.PORT || 3000,
   },
@@ -15,7 +15,7 @@ const config = {
   test: {
     root: rootPath,
     app: {
-      name: 'connecting-to-services-prototype',
+      name: 'connecting-to-services',
     },
     port: process.env.PORT || 3000,
   },
@@ -23,7 +23,7 @@ const config = {
   production: {
     root: rootPath,
     app: {
-      name: 'connecting-to-services-prototype',
+      name: 'connecting-to-services',
     },
     port: process.env.PORT || 3000,
   },

@@ -5,9 +5,7 @@ const http = require('http');
 const dateUtils = require('../lib/dateUtils');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
-const wicParser = require('../lib/WICParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
-const wicMapper = require('../lib/wicMapper');
 const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const Verror = require('verror');
 
@@ -45,18 +43,6 @@ function getSyndicationResponse(url, resourceType, parser, next) {
     });
 }
 
-function getWICs(req, res, next) {
-  getSyndicationResponse(
-    req.urlForWIC,
-    'WIC List',
-    (syndicationXml) => {
-      // eslint-disable-next-line no-param-reassign
-      req.wicList = wicParser.parseList(syndicationXml);
-    },
-    next
-  );
-}
-
 function getPharmacies(req, res, next) {
   const pageCount = 10;
   let t = pageCount;
@@ -90,50 +76,12 @@ function getPharmacies(req, res, next) {
   }
 }
 
-function getWICDetails(req, res, next) {
-  let wicCount = req.wicList.length;
-
-  req.wicList.forEach((wic) => {
-    const wicId = wic.id;
-    const wicUrl = `${wicId}.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`;
-
-    getSyndicationResponse(
-      wicUrl,
-      'wic details',
-      (syndicationXml) => {
-        try {
-          /* eslint-disable no-param-reassign */
-          const parsedWic = wicParser.parseOne(syndicationXml);
-          wic.address = parsedWic.content.service.address.addressLine;
-          wic.postcode = parsedWic.content.service.address.postcode;
-          wic.telephone = parsedWic.content.service.phone;
-          wic.coords = {
-            latitude: parsedWic.content.service.geographicCoordinates.latitude,
-            longitude: parsedWic.content.service.geographicCoordinates.longitude,
-          };
-          /* eslint-enable no-param-reassign */
-        } catch (e) {
-          // intentionally left empty to allow WICs without the things being
-          // mapped above to get through to the results page
-          console.error(e);
-        }
-      },
-      () => {
-        wicCount--;
-        if (wicCount === 0) {
-          next();
-        }
-      }
-    );
-  });
-}
-
 function getPharmacyOpeningTimes(req, res, next) {
   let pharmacyCount = req.pharmacyList.length;
-
   req.pharmacyList.forEach((pharmacy) => {
     const pharmacyId = pharmacy.id.split('/').slice(-1)[0];
 
+    // TODO: Only need to get opening times for the first 2 open pharmacies
     getSyndicationResponse(
       `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/${pharmacyId}/overview.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
       'Pharmacy List',
@@ -159,22 +107,13 @@ function getPharmacyOpeningTimes(req, res, next) {
 }
 
 function renderServiceResults(req, res) {
-  res.render('results', {
+  const path = req.path.substring(1);
+  res.render(path, {
     daysOfTheWeek,
     location: req.query.location,
     serviceList: req.serviceList,
     currentDateTime: dateUtils.nowForDisplay(),
   });
-}
-
-function getWICUrl(req, res, next) {
-  const location = req.query.location;
-  const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-  const requestUrl = `http://v1.syndication.nhschoices.nhs.uk/services/types/srv0183/postcode/${location}.xml?apikey=${syndicationApiKey}&range=100`;
-
-  // eslint-disable-next-line no-param-reassign
-  req.urlForWIC = requestUrl;
-  next();
 }
 
 function getPharmacyUrl(req, res, next) {
@@ -187,29 +126,22 @@ function getPharmacyUrl(req, res, next) {
   next();
 }
 
-function sortByDistance(a, b) {
+function sortByDistanceInKms(a, b) {
   return a.distanceInKms - b.distanceInKms;
 }
 
+function sortByDistance(a, b) {
+  return a.content.organisationSummary.Distance - b.content.organisationSummary.Distance;
+}
+
 function prepareForRender(req, res, next) {
-  const serviceLimit = 3;
-  let mappedPharmacies;
-  if (req.query.status === 'open') {
-    mappedPharmacies =
-      pharmacyMapper(req.pharmacyList)
-        .sort((p1, p2) => parseInt(p1.distanceInKms, 10) - parseInt(p2.distanceInKms, 10))
-        .filter((pharmacy) => pharmacy.openNow)
-        .slice(0, serviceLimit);
-  } else {
-    // Alternative would be to only get 1 page of postcode results when not
-    // filtering by open status
-    mappedPharmacies = pharmacyMapper(req.pharmacyList)
-        .sort((p1, p2) => parseInt(p1.distanceInKms, 10) - parseInt(p2.distanceInKms, 10))
-        .slice(0, serviceLimit);
-  }
-  const mappedWics = wicMapper(req.wicList.slice(0, serviceLimit));
-  const serviceList =
-    mappedPharmacies.concat(mappedWics);
+  const tenClosestPlaces = req.pharmacyList
+        .sort(sortByDistance)
+        .slice(0, 10);
+  const serviceList = pharmacyMapper(tenClosestPlaces);
+  const location = req.query.location;
+  const start = `saddr=${location}`;
+
   serviceList.forEach((item) => {
     // eslint-disable-next-line no-param-reassign
     item.distanceInMiles = item.distanceInKms / 1.6;
@@ -218,27 +150,56 @@ function prepareForRender(req, res, next) {
         item.addressLine.push(item.postcode);
       }
     }
-    const locationQuery =
     // eslint-disable-next-line prefer-spread
-      `q=${item.name},${[].concat.apply([], item.addressLine)}`
-      .replace(/ /g, '+');
-    const centerPoint = `ll=${item.coords.latitude},${item.coords.longitude}`;
-    const zoom = 'z=16';
+    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
+    const destination = `daddr=${fullAddress}`;
+    // Use near to help get the correct location for the start
+    const near = `near=${fullAddress}`;
     // eslint-disable-next-line no-param-reassign
-    item.googleMapsQuery = `${locationQuery}&${centerPoint}&${zoom}`;
+    item.googleMapsQuery = `${start}&${destination}&${near}`;
   });
   // eslint-disable-next-line no-param-reassign
-  req.serviceList = serviceList.sort(sortByDistance);
+  req.serviceList = serviceList.sort(sortByDistanceInKms);
+  next();
+}
+
+function prepareOpenThingsForRender(req, res, next) {
+  // Only get the 2 closet OPEN pharmacies
+  const serviceLimit = 2;
+  const serviceList = pharmacyMapper(req.pharmacyList)
+        .sort(sortByDistanceInKms)
+        .filter((pharmacy) => pharmacy.openNow)
+        .slice(0, serviceLimit);
+
+  const location = req.query.location;
+  const start = `saddr=${location}`;
+
+  serviceList.forEach((item) => {
+    // eslint-disable-next-line no-param-reassign
+    item.distanceInMiles = item.distanceInKms / 1.6;
+    if (item.addressLine) {
+      if (item.postcode) {
+        item.addressLine.push(item.postcode);
+      }
+    }
+    // eslint-disable-next-line prefer-spread
+    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
+    const destination = `daddr=${fullAddress}`;
+    // Use near to help get the correct location for the start
+    const near = `near=${fullAddress}`;
+    // eslint-disable-next-line no-param-reassign
+    item.googleMapsQuery = `${start}&${destination}&${near}`;
+  });
+  // eslint-disable-next-line no-param-reassign
+  req.serviceList = serviceList.sort(sortByDistanceInKms);
   next();
 }
 
 module.exports = {
   getPharmacyUrl,
-  getWICUrl,
   getPharmacies,
-  getWICs,
   getPharmacyOpeningTimes,
-  getWICDetails,
   renderServiceResults,
   prepareForRender,
+  prepareOpenThingsForRender,
 };

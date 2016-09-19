@@ -1,116 +1,86 @@
 {% include "./includes/beta-header.nunjucks" %}
-<main id="content" role="main" tabindex="-1" class="util-nofocus">
 
-<article role="article">
+<main id="content" role="main">
 
-  <div class="local-header">
-    <div class="local-header--inner">
-      <h1 class="local-header--title">Stomach ache</h1>
+  <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
 
-      <div class="local-header--intro">
-        <p>Most stomach aches aren’t anything serious and will go away after a few days.</p>
-      </div>
 
-    </div>
-  </div>
+  <h1 class="heading-xlarge">Stomach ache</h1>
 
-  <div class="page-section">
-    <div class="grid-row">
+  <div class="grid-row">
 
-      <div class="column__two-thirds">
-        <div class="reading-width">
-          <section>
+  <div class="column-two-thirds">
 
-            <h2>Treating stomach ache at home</h2>
+  <p class="lede">A stomach ache is a term often used to refer to cramps or a dull ache in the tummy (abdomen).</p>
 
-            <p>Speak to a pharmacist about medicine to help with:</p>
+  <p>Most stomach aches aren’t anything serious and will go away after a few days.</p>
 
-            <ul>
+</div>
+</div>
+
+  <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+        <h2 class="heading-large">Treating stomach ache at home</h2>
+
+
+          <p>There are things you can do yourself to treat stomach ache.</p>
+
+          <p>Speak to a pharmacist about medicines that can help you, or get advice about:</p>
+
+            <ul class="list-bullet">
               <li>feeling bloated (trapped wind)</li>
-              <li>indigestion (burning pain or discomfort after eating)</li>
-              <li>constipation (can’t poo)</li>
+              <li><a href="http://www.nhs.uk/Conditions/Indigestion/Pages/Treatment.aspx">indigestion</a> (burning pain or discomfort after eating)</li>
+              <li><a href="http://www.nhs.uk/Conditions/Constipation/Pages/Treatment.aspx">constipation</a> (can’t poo)</li>
             </ul>
 
-            <a href="search" class="button" style="text-decoration:underline;">Find help near you that's open right now &gt;</a> 
+          <p>If you have vomiting and diarrhoea with your stomach ache, it should stop after a few days. Try to drink a lot of fluids to avoid dehydration.</p>
 
-            <p>There are also things you can do yourself to <a href="http://www.nhs.uk/Conditions/Indigestion/Pages/Treatment.aspx">
-              help ease indigestion</a> and <a href="http://www.nhs.uk/Conditions/Constipation/Pages/Treatment.aspx">
-              constipation.</a></p>
+          <p>Painkillers like paracetamol can help with your stomach ache but won’t stop any vomiting and diarrhoea. Find out more about <a href="http://www.nhs.uk/conditions/gastroenteritis/Pages/Introduction.aspx">treating vomiting and diarrhoea</a>.</p>
 
-            <p>If you have vomiting and diarrhoea with your stomach ache, it should
-            stop after a few days. Try to drink a lot of fluids to avoid
-            dehydration.</p>
+          <p>
+            <a href="/stomach-ache-find-help" class="gotoservice-cta">Find an open pharmacy</a>
+          </p>
 
-            <p>Painkillers like paracetamol can help with your stomach ache but won’t
-            stop any vomiting and diarrhoea.</p>
+          <p></p>
 
-            <p>Find out more about <a href="http://www.nhs.uk/conditions/gastroenteritis/Pages/Introduction.aspx">
-              treating vomiting and diarrhoea.</a></p>
+          <h2 class="heading-large">If the symptoms persist or get worse</h2>
 
-          </section>
+          <p>Seek a doctor's advice if:</p>
 
+        <ul class="list-bullet">
+          <li>the pain gets much worse in a short space of time</li>
+          <li>the pain or bloating won’t go away or keeps coming back</li>
+          <li>you have other symptoms like weight loss or vomiting</li>
+          <li>there’s a change in how often you pee</li>
+          <li>you have pain when you pee</li>
+          <li>you have unusual vaginal bleeding or discharge</li>
+          <li>you bleed from your bottom</li>
+          <li>your diarrhoea lasts longer than a few days</li>
+        </ul>
 
-          <section class="callout callout__info">
-            <h2>See your GP if</h2>
-
-
-            <ul>
-              <li>the pain gets much worse in a short space of time</li>
-              <li>the pain or bloating won’t go away or keeps coming back</li>
-              <li>you have other symptoms like weight loss or vomiting</li>
-              <li>there’s a change in how often you pee</li>
-              <li>you have pain when you pee</li>
-              <li>you have unusual vaginal bleeding or discharge</li>
-              <li>you bleed from your bottom</li>
-              <li>your diarrhoea lasts longer than a few days</li>
-            </ul>
-          </section>
-
-        </div>
+        <p>
+        <strong>Visit a GP</strong> or <a href="/call-111" class="gotoservice-cta">use NHS 111</a>
+        </p>
+        <p></p>
       </div>
 
-      <div class="column__one-third-right">
-        <div class="reading-width">
-
-
-          <section class="callout callout__alert callout__overlap">
-            <h2>Call 999 or go to <abbr title="Accident and Emergency">
-                A&amp;E</abbr> if you</h2>
-
-
-            <ul>
-              <li>have sudden, severe stomach pain</li>
-              <li>have pain when you touch your stomach</li>
-              <li>are vomiting blood or a ground coffee like substance</li>
-              <li>have bloody or black, sticky poo</li>
-              <li>have collapsed</li>
-              <li>can’t breathe</li>
-              <li>are unable to pee</li>
-              <li>are diabetic and vomiting</li>
-            </ul>
-
-          </section>
-
-
-        </div>
-      </div>
-
+      <div class="column-third nineninenine">
+      <h2 class="heading-large">Call 999 or go to A&amp;E if you</h2>
+        <ul class="list-bullet">
+          <li>have sudden, severe stomach pain</li>
+          <li>have pain when you touch your stomach</li>
+          <li>are vomiting blood or a ground coffee like substance</li>
+          <li>have bloody or black, sticky poo</li>
+          <li>have collapsed</li>
+          <li>can’t breathe</li>
+          <li>are unable to pee</li>
+          <li>are diabetic and vomiting</li>
+        </ul>
+        <p></p>
     </div>
-  </div>
-
-
-  <section class="callout callout__full-width">
-    <div class="callout--inner">
-      <h2>Call 111</h2>
-
-
-      <p>If you can’t speak to your GP or don’t know what to do next</p>
-
-    </div>
-  </section>
-
-</article>
-
+</div>
 </main>
 
 {% include "./includes/footer.nunjucks" %}

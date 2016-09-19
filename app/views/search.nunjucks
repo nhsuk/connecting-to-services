@@ -1,24 +1,116 @@
-{% include "./includes/header.nunjucks" %}
+{% include "./includes/beta-header.nunjucks" %}
 
 <main id="content" role="main" tabindex="-1" class="util-nofocus">
 <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
-<h1 class="heading-xlarge">Look for services to help you with your condition</h1>
-<p class="lede">We can help you find medical advice specifically for your condition.</p>
+<h1 class="heading-xlarge">Enter a postcode</h1>
 <div class="page-section">
   <div class="grid-row">
     <div class="column__two-thirds">
-      <form method="get" class="form" action="/results">
+      <form method="get" class="form" action="/results-open">
 
-        <label class="form-label-bold" for="location">
-          Please enter a postcode
-        </label>
         <input type="text" id="location" name="location" value="" class="form-control">
+        <div class="form-item-wrapper">
+          <fieldset>
+            <legend class="form-label-bold">Are there specific access needs?</legend>
 
-        <input type="submit" value="Continue" style="
-        background-color: #006647;
-        color: white;
-        border: 3px solid #003300;
-        height: 4rem;">
+            <p class="form-label">
+            <!-- nothing -->
+            </p>
+
+            <div class="inline-form-groups">
+              <div class="form-group">
+                <input type="radio" id="yes" name="access">
+                <label class="form-control-radio" for="yes" onclick="document.getElementById('access-yes').style.display='';">
+                  Yes
+                </label>
+              </div>
+              <div class="form-group">
+                <input type="radio" id="no" name="access">
+                <label class="form-control-radio" for="no" onclick="document.getElementById('access-yes').style.display='none';">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="panel-indent" id="access-yes" style="display:none;">
+
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-1" name="minor-1">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-1">
+                    Braille translation service
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-2" name="minor-2">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-2">
+                    Disabled parking
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-3" name="minor-3">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-3">
+                    Disabled WC
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-4" name="minor-4">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-4">
+                    Induction loop
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-5" name="minor-5">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-5">
+                    RNID typetalk
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-6" name="minor-6">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-6">
+                    Signing service available
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-8" name="minor-8">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-8">
+                    Step free access
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-item-wrapper">
+                <div class="form-group">
+                  <input type="checkbox" id="checkbox-minor-7" name="minor-7">
+                  <label class="form-control-checkbox minor" for="checkbox-minor-7">
+                    Wheelchair access
+                  </label>
+                </div>
+              </div>
+
+            </div></fieldset>
+        </div>
+        <input type="submit" value="Continue" class="button">
 
       </form>
     </div>

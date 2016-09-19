@@ -3,11 +3,6 @@ const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
 const dateUtils = require('../app/lib/dateUtils');
 
-function stomachAcheRender(req, res) {
-  res.render('stomach-ache', {
-  });
-}
-
 router.get('/',
   (req, res) => {
     res.render('index', { currentDateTime: dateUtils.nowForDisplay() });
@@ -15,7 +10,21 @@ router.get('/',
 );
 
 router.get('/search',
-  (req, res) => { res.render('search', {}); }
+  (req, res) => {
+    const query = req.query;
+
+    let viewToRender = 'search';
+
+    if ({}.hasOwnProperty.call(query, 'able')) {
+      if (query.able === 'true') {
+        viewToRender = 'search';
+      } else {
+        viewToRender = 'call-111';
+      }
+    }
+
+    res.render(viewToRender, {});
+  }
 );
 
 router.post('/datetime',
@@ -25,27 +34,28 @@ router.post('/datetime',
   }
 );
 
+// Only get open things for display
+router.get('/results-open',
+  servicesMiddleware.getPharmacyUrl,
+  servicesMiddleware.getPharmacies,
+  servicesMiddleware.getPharmacyOpeningTimes,
+  servicesMiddleware.prepareOpenThingsForRender,
+  servicesMiddleware.renderServiceResults
+);
+
 router.get('/results',
   servicesMiddleware.getPharmacyUrl,
-  servicesMiddleware.getWICUrl,
   servicesMiddleware.getPharmacies,
-  servicesMiddleware.getWICs,
   servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.getWICDetails,
   servicesMiddleware.prepareForRender,
   servicesMiddleware.renderServiceResults
 );
 
-router.get('/head-ache',
-  (req, res) => { res.render('head-ache', {}); }
-);
-
-router.get('/rashes',
-  (req, res) => { res.render('rashes', {}); }
-);
-
-router.get('/stomach-ache',
-  stomachAcheRender
+router.get('/:view',
+  (req, res) => {
+    const view = req.params.view.toLowerCase();
+    res.render(view, {});
+  }
 );
 
 module.exports = router;

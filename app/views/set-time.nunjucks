@@ -1,0 +1,24 @@
+{% include "./includes/beta-header.nunjucks" %}
+
+<main id="content" role="main">
+<div class="grid-row">
+<div class="column-two-thirds">
+  <h3>Change current time</h3>
+  <form action="/datetime" method="post">
+    <select name="datetime">
+      <option value="">Select an option</option>
+      <option value="2016-07-28 06:30">Thursday 06:30</option>
+      <option value="2016-07-28 08:30">Thursday 08:30</option>
+      <option value="2016-07-28 10:30">Thursday 10:30</option>
+      <option value="2016-07-28 20:30">Thursday 20:30</option>
+      <option value="2016-07-29 20:30">Friday 20:30</option>
+      <option value="2016-07-30 07:30">Saturday 07:30</option>
+      <option value="2016-07-31 20:30">Sunday 20:30</option>
+      <option value="">Reset to actual time</option>
+    </select>
+    <input type="submit" value="Click here to change the current date/time">
+  </form>
+</div>
+</main>
+
+{% include "./includes/footer.nunjucks" %}

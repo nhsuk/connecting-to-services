@@ -6,7 +6,7 @@
 <h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
   <div class="grid-row">
     <div class="column-two-thirds">
-  <p class="lede">Listed below are all the places nearby that could help you, showing if they are open or closed.</p>
+  <p class="lede">The places listed below are currently open. Other places nearby are closed.</p>
     </div>
     </div>
     <table>
@@ -33,7 +33,7 @@
               <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
 
             <br/>
-            <!-- <p><strong>Estimated journey time: </strong>{{ service.duration }}</p> -->
+            <p><strong>Estimated journey time: </strong>{{ service.duration }}</p>
 
         </tr>
         <tr>
@@ -44,7 +44,7 @@
     </table>
     <div class="grid-row">
       <div class="column-two-thirds">
-        <p><a href="results-open?location={{location}}" class="gotoservice-cta button">See only open places nearby</a></p>
+        <p><a href="results?location={{location}}" class="gotoservice-cta button">See all nearby places that can help, open or closed</a></p>
       </div>
     </div>
 </main>

@@ -1,28 +1,23 @@
 <footer role="contentinfo">
-<div class="global-footer">
-<div class="global-footer--inner">
+  <div class="global-footer">
+    <div class="global-footer--inner">
+      <div>
+        <h2 class="util-visuallyhidden">Support links</h2>
+        <ul class="inline-list inline-list__slash">
+          <li class="inline-list--item">
+            <a href="https://beta.nhs.uk/help/clinical-assurance">Clinical assurance</a>
+          </li>
+          <li class="inline-list--item">
+            <a href="https://beta.nhs.uk/help/cookies">Cookies</a>
+          </li>
+          <li class="inline-list--item">
+            <a href="/set-time">{{ currentDateTime }}</a>
+          </li>
+        </ul>
+      </div>
 
-<div>
-<h2 class="util-visuallyhidden">Support links</h2>
-<ul class="inline-list inline-list__slash">
-<li class="inline-list--item">
-<a href="/help/clinical-assurance">Clinical assurance</a>
-</li>
-<li class="inline-list--item">
-<a href="/help/cookies">Cookies</a>
-</li>
-<li class="inline-list--item">
-<a href=".">{{ currentDateTime }}</a>
-</li>
-</ul>
-</div>
-
-</div>
-</div>
-
+    </div>
+  </div>
 </footer>
-
-<script src="https://beta.nhs.uk/assets/javascripts/nhsuk.bundle.a641f87d5eb69ec5a4dcc58086a8578c.js" type="text/javascript"></script>
-
 </body>
 </html>
