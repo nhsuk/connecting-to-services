@@ -1,12 +1,14 @@
 language: node_js
 node_js:
-  - "node"
+- node
 script:
-  - npm run lint
-  - npm run test
-  - npm run generate-coverage
-  - npm run check-coverage
-  - npm run upload-coverage
-# disable submodule updating
+- npm run lint
+- npm run test
+- npm run generate-coverage
+- npm run check-coverage
+- npm run upload-coverage
 git:
   submodules: false
+notifications:
+  slack:
+    secure: ZZ+ZysIaHUEaR5vXdZaiv+Y6YbQ0O1Sl+gEzwdmdMkDTeorBhkKmS/+64usR22o0Za649t/QOBB7n1x4hJ9Vngfbnr/1SMAGRFMuHo7MVxiSjR3dAOFhITMidFuEDfzRP8xTo+zUnIVODuTAv6MHTsoaWIC+HlFlrnosmFdiEsXXurTCLn2jjgRsTYDikb0IsO+72X1fvEJ7OYq5kwvMV6vg6j9hWTHc9fJpNEH1tZvby1H74ZQw5Gm8If6oU4KoBWAOSrVeUvqFHd4FIlNzzrnO84jgCEbOwFnoV+8UP0bM9ob9QFr5o4aGdEycNzpg32vDkTpytEVzWrcXXolvsmiKZVXwoFbSskrmlb+ih3i3OMmP49LT7mdFvRD85HG44oTWNJXzuvM8+QmGNZN7MzpNDtdO2vPzbHli8lozjzlKpKSetoy+pRVqrRLSCLdEBXyS/MIEHwmMYPFhy2RxqWseJBxnodnDV4pwPxJYgW034G+ejIosDQZHk/av4PC39bcShA48VHHSRQ+StHUx5Gi3g5MH9cuyRXwDk+vBplz8Le6hQrtCKbEiTuqnSltjh4BJrV1vaPw5lt+Vc/ePaGCB6QjKRVx7K59KtPlWeFM6+OTa70yS1VI5k2OG6fkp1LSmHt/dwLGCuXyBEUSfGkkkogr1F4jPcZyRDpJyGLo=
