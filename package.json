@@ -40,9 +40,9 @@
     "json-query": "^2.1.0",
     "moment": "^2.14.1",
     "moment-opening-times": "git+https://github.com/nhsuk/moment-opening-times.git",
-    "moment-timezone": "^0.5.4",
     "morgan": "^1.6.1",
     "nunjucks": "^2.4.2",
+    "postcode": "^0.2.5",
     "require-environment-variables": "^1.1.2",
     "verror": "^1.6.1",
     "xml2js": "^0.4.16"
@@ -50,6 +50,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "cheerio": "^0.22.0",
     "coveralls": "^2.11.9",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
@@ -64,8 +65,7 @@
     "mocha": "^3.0.2",
     "mocha-lcov-reporter": "^1.2.0",
     "nock": "^8.0.0",
-    "request": "^2.60.0",
-    "time-grunt": "^1.2.1",
-    "nodemon": "^1.10.2"
+    "nodemon": "^1.10.2",
+    "request": "^2.60.0"
   }
 }
