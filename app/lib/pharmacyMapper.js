@@ -1,4 +1,4 @@
-const dateUtils = require('./dateUtils');
+const moment = require('moment');
 const OpeningTimes = require('moment-opening-times');
 
 function pharmacyMapper(pharmacyList) {
@@ -18,8 +18,8 @@ function pharmacyMapper(pharmacyList) {
     };
     if (item.openingTimes !== undefined) {
       const ot = new OpeningTimes(item.openingTimes, 'Europe/London');
-      model.openNow = ot.isOpen(dateUtils.now());
-      model.openingHoursMessage = ot.getOpeningHoursMessage(dateUtils.now());
+      model.openNow = ot.isOpen(moment());
+      model.openingHoursMessage = ot.getOpeningHoursMessage(moment());
       // TODO: assign ot to model.openingTimes but had problems with
       // nunjucks calling, for example, service.openingTimes.getFormattedOpeningTimes()
       // which was throwing an exception

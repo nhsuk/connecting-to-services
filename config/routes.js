@@ -2,11 +2,11 @@
 const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
 const urlUtils = require('../app/middleware/urlUtils');
-const dateUtils = require('../app/lib/dateUtils');
+const validateLocation = require('../app/middleware/locationValidator');
 
 router.get('/',
   (req, res) => {
-    res.render('index', { currentDateTime: dateUtils.nowForDisplay() });
+    res.render('index');
   }
 );
 
@@ -28,15 +28,9 @@ router.get('/search',
   }
 );
 
-router.post('/datetime',
-  (req, res) => {
-    dateUtils.setNow(req.body.datetime);
-    res.redirect('/');
-  }
-);
-
 // Only get open things for display
 router.get('/results-open',
+  validateLocation,
   urlUtils.urlForPharmacyPostcodeSearch,
   servicesMiddleware.getPharmacies,
   servicesMiddleware.getPharmacyOpeningTimes,

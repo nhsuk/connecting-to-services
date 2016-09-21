@@ -2,7 +2,6 @@
 // is recommended best practice by Express
 
 const http = require('http');
-const dateUtils = require('../lib/dateUtils');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
@@ -112,7 +111,6 @@ function renderServiceResults(req, res) {
     daysOfTheWeek,
     location: req.query.location,
     serviceList: req.serviceList,
-    currentDateTime: dateUtils.nowForDisplay(),
   });
 }
 
