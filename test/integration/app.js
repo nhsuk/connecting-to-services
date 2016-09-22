@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../server');
-const getSampleResponse = require('../unit/lib/getSampleResponse');
+const getSampleResponse = require('../resources/getSampleResponse');
 
 const expect = chai.expect;
 
@@ -108,7 +108,7 @@ describe('The results routes', () => {
   describe('The results route', () => {
     it('should return 10 results', (done) => {
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-      const overviewResponse = getSampleResponse('gp_overview');
+      const overviewResponse = getSampleResponse('pharmacy_opening_times');
       const allResultsRoute = '/results';
 
       const postcodeSearchScope =

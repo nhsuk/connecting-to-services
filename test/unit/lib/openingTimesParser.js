@@ -1,8 +1,8 @@
 const Verror = require('verror');
 const AssertionError = require('assert').AssertionError;
-const openingTimesParser = require('../../app/lib/openingTimesParser');
-const getSampleResponse = require('./lib/getSampleResponse');
-const daysOfTheWeek = require('../../app/lib/constants').daysOfTheWeek;
+const openingTimesParser = require('../../../app/lib/openingTimesParser');
+const getSampleResponse = require('../../resources/getSampleResponse');
+const daysOfTheWeek = require('../../../app/lib/constants').daysOfTheWeek;
 const chai = require('chai');
 
 const expect = chai.expect;
