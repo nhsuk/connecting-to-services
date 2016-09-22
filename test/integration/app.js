@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../server');
-const getSampleResponse = require('../unit/lib/getSampleResponse');
+const getSampleResponse = require('../resources/getSampleResponse');
 
 const expect = chai.expect;
 
