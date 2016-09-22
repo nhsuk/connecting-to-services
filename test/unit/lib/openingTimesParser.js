@@ -47,6 +47,11 @@ describe('openingTimesParser', () => {
       ]);
       expect(openingTimes.sunday.times).to.eql(['Closed']);
     });
+    it('should handle missing opening times', () => {
+      const syndicationXml = getSampleResponse('pharmacy_no_opening_times');
+      const openingTimes = openingTimesParser('general', syndicationXml);
+      expect(openingTimes).to.eql({});
+    });
   });
   describe('error handling', () => {
     it('should throw exception when arguments are missing', () => {
