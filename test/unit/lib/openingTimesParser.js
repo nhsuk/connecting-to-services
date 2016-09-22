@@ -10,7 +10,7 @@ const expect = chai.expect;
 describe('openingTimesParser', () => {
   describe('happy path', () => {
     it('should get multiple slot opening times from syndication response', () => {
-      const syndicationXml = getSampleResponse('gp_overview');
+      const syndicationXml = getSampleResponse('pharmacy_overview');
       const openingTimes = openingTimesParser('reception', syndicationXml);
       expect(openingTimes).to.have.keys(daysOfTheWeek);
       expect(openingTimes.monday.times).to.eql([
@@ -24,7 +24,7 @@ describe('openingTimesParser', () => {
       expect(openingTimes.sunday.times).to.eql(['Closed']);
     });
     it('should get single slot opening times from syndication response', () => {
-      const syndicationXml = getSampleResponse('gp_overview_single_time_slot');
+      const syndicationXml = getSampleResponse('pharmacy_overview_single_time_slot');
       const openingTimes = openingTimesParser('reception', syndicationXml);
       expect(openingTimes).to.have.keys(daysOfTheWeek);
       expect(openingTimes.monday.times).to.eql([
@@ -76,7 +76,7 @@ describe('openingTimesParser', () => {
           'Unable to parse opening times XML: Unclosed root tag');
     });
     it('should throw exception when passed an unknown opening times type', () => {
-      const syndicationXml = getSampleResponse('gp_overview');
+      const syndicationXml = getSampleResponse('pharmacy_overview');
       expect(() => { openingTimesParser('unknown', syndicationXml); })
         .to.throw(
           Verror,
