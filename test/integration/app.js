@@ -108,7 +108,7 @@ describe('The results routes', () => {
   describe('The results route', () => {
     it('should return 10 results', (done) => {
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-      const overviewResponse = getSampleResponse('gp_overview');
+      const overviewResponse = getSampleResponse('pharmacy_opening_times');
       const allResultsRoute = '/results';
 
       const postcodeSearchScope =
