@@ -173,6 +173,7 @@ describe('The results routes', () => {
             const $ = cheerio.load(res.text);
 
             // Some arbitary element to suggest there are 2 results
+            expect($('p strong').first().text()).to.equal('Open until midnight');
             expect($('.map-button').length).to.equal(2);
             expect(postcodeSearchScope.isDone()).to.be.true;
             expect(overviewScope.isDone()).to.be.true;
