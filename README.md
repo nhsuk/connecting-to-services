@@ -11,13 +11,18 @@ meet their time, location and accessibility needs.
 ## Hosting
 
 There are a number of solutions employed to host the application. The version of
-the application linked to from the live website is hosted in Azure, as are the
-preview/staging environment.
-Every code branch created is automatically built and deployed via Heroku's
-[Review Apps](https://devcenter.heroku.com/articles/github-integration-review-apps)
+the application linked to from the live website is hosted in Azure, as is the
+staging environment.
 
 * [Live](http://connecting-to-services.azurewebsites.net/)
 * [Staging](http://connecting-to-services-staging.azurewebsites.net/)
+
+As the application is being developed, every branch of code has its own test
+environment automatically built and deployed via Heroku's
+[Review Apps](https://devcenter.heroku.com/articles/github-integration-review-apps)
+
+The head of `master` is also automatically built and deployed into Heroku.
+That is hosted [here](https://connecting-to-services.herokuapp.com/)
 
 ## Environment variables
 
