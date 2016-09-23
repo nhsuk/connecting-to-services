@@ -2,6 +2,7 @@
 // is recommended best practice by Express
 
 const http = require('http');
+const moment = require('moment');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
@@ -111,6 +112,7 @@ function renderServiceResults(req, res) {
     daysOfTheWeek,
     location: req.query.location,
     serviceList: req.serviceList,
+    now: moment(),
   });
 }
 
@@ -156,7 +158,9 @@ function prepareOpenThingsForRender(req, res, next) {
   const serviceLimit = 2;
   const serviceList = pharmacyMapper(req.pharmacyList)
         .sort(sortByDistanceInKms)
-        .filter((pharmacy) => pharmacy.openNow)
+        .filter((pharmacy) => (pharmacy.openingTimes ?
+           pharmacy.openingTimes.isOpen(moment()) :
+           false))
         .slice(0, serviceLimit);
 
   const location = req.query.location;
