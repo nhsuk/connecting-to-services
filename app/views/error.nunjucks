@@ -1,7 +1,16 @@
 {% extends 'layout.nunjucks' %}
 
+{% block header %}
+Ooops...an error has occured.
+{% endblock %}
+
 {% block content %}
-<h1>{{ message }}</h1>
-<h2>{{ error.status }}</h2>
-<pre>{{ error.stack }}</pre>
+<div onclick="(function myFunction() { var error = document.getElementById('error-message'); error.style.display = error.style.display == 'none' ? 'block' : 'none'; })()">
+Looks like one of the techies has pulled a sickie. Please try again or get in touch if it keeps happening.
+<div id="error-message" style="display:none;">
+  <div>{{ message }}</div>
+  <div>{{ error.status }}</div>
+  <pre>{{ error.stack }}</pre>
+</div>
+</div>
 {% endblock %}

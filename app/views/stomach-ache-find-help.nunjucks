@@ -1,50 +1,46 @@
-{% include "./includes/beta-header.nunjucks" %}
+{% extends 'layout.nunjucks' %}
 
-<main id="content" role="main">
+{% block header %}
+Find a place that can help with
+{% endblock %}
 
-<a href="javascript:window.history.back();" class="back-to-previous">Back</a>
+{% block pageTitle %}Find a place that can help with{% endblock %}
 
-<h1 class="heading-xlarge">Find a place that can help with</h1>
-
-<ul class="lede list-bullet">
+{% block pageIntro %}
+<ul>
   <li>feeling bloated (trapped wind)</li>
   <li>indigestion (burning pain or discomfort after eating)</li>
   <li>constipation (can’t poo)</li>
 </ul>
+{% endblock %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <form method="get" class="form" id="formname" action="/search">
-      <div class="form-item-wrapper">
-        <fieldset>
-          <legend class="form-label-bold">Can you get there by yourself?</legend>
+{% block content %}
+<form class="form" id="formname" method="get" action="/search">
+  <div class="form-item-wrapper">
+      <legend class="form-label-bold">Can you get there by yourself?</legend>
 
-          <p class="form-label">
-          <!-- label -->
-          </p>
+      <p class="form-label">
+      <!-- label -->
+      </p>
 
-          <div class="form-group">
-            <input type="radio" id="no" name="able" value="false">
-            <label for="no" class="form-control-radio">No</label>
-          </div>
+      <div class="form-group">
+        <input type="radio" id="no" name="able" value="false">
+        <label for="no" class="form-control-radio">No</label>
+      </div>
 
-          <div class="form-group">
-            <input type="radio" id="yes" name="able" value="true" checked>
-            <label for="yes" class="form-control-radio">Yes</label>
-          </div>
-        </fieldset></div>
-
-        <div class="form-item-wrapper">
-          <div class="form-group">
-            <input type="submit" class="button" value="Continue">
-          </div>
-        </div>
-
-        <p></p>
-        <p>If you are not looking for help, <a href="/stomach-ache">go back</a>.</p>
-    </form>
+      <div class="form-group">
+        <input type="radio" id="yes" name="able"  value="true" checked>
+        <label for="yes" class="form-control-radio">Yes</label>
+      </div>
   </div>
-</div>
-</main>
 
-{% include "./includes/footer.nunjucks" %}
+  <div class="form-item-wrapper">
+    <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+  </div>
+  <p></p>
+  <p>If you are not looking for help, <a href="/stomach-ache">go back</a>.</p>
+</form>
+
+{% endblock %}

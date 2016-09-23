@@ -1,14 +1,14 @@
-{% include "./includes/beta-header.nunjucks" %}
+{% extends 'layout.nunjucks' %}
 
-<main id="content" role="main" tabindex="-1" class="util-nofocus">
+{% block pageTitle %}All service results{% endblock %}
+
+{% block header %}Places near to '{{ location }}'{% endblock %}
+
+{% block pageIntro %}Listed below are all the places nearby that could help you, showing if they are open or closed.{% endblock %}
+
+{% block content %}
 <a href="/search" class="back-to-previous">Back</a>
 
-<h1 class="heading-xlarge">Places near to '{{ location }}'</h1>
-  <div class="grid-row">
-    <div class="column-two-thirds">
-  <p class="lede">Listed below are all the places nearby that could help you, showing if they are open or closed.</p>
-    </div>
-    </div>
     <table>
       <tbody>
           {% for service in serviceList %}
@@ -47,6 +47,5 @@
         <p><a href="results-open?location={{location}}" class="gotoservice-cta button">See only open places nearby</a></p>
       </div>
     </div>
-</main>
 
-{% include "./includes/footer.nunjucks" %}
+{% endblock %}
