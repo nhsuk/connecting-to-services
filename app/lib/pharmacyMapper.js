@@ -1,6 +1,10 @@
 const moment = require('moment');
 const OpeningTimes = require('moment-opening-times');
 
+function isEmptyObject(obj) {
+  return !Object.keys(obj).length;
+}
+
 function pharmacyMapper(pharmacyList) {
   const viewModels = [];
   pharmacyList.forEach((item, index) => {
@@ -16,7 +20,7 @@ function pharmacyMapper(pharmacyList) {
       postcode: item.content.organisationSummary.address.postcode,
       telephone: item.content.organisationSummary.contact.telephone,
     };
-    if (item.openingTimes !== undefined) {
+    if (!isEmptyObject(item.openingTimes)) {
       const ot = new OpeningTimes(item.openingTimes, 'Europe/London');
       model.openNow = ot.isOpen(moment());
       model.openingHoursMessage = ot.getOpeningHoursMessage(moment());
