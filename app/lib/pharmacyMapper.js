@@ -1,4 +1,3 @@
-const moment = require('moment');
 const OpeningTimes = require('moment-opening-times');
 
 function isEmptyObject(obj) {
@@ -21,13 +20,7 @@ function pharmacyMapper(pharmacyList) {
       telephone: item.content.organisationSummary.contact.telephone,
     };
     if (!isEmptyObject(item.openingTimes)) {
-      const ot = new OpeningTimes(item.openingTimes, 'Europe/London');
-      model.openNow = ot.isOpen(moment());
-      model.openingHoursMessage = ot.getOpeningHoursMessage(moment());
-      // TODO: assign ot to model.openingTimes but had problems with
-      // nunjucks calling, for example, service.openingTimes.getFormattedOpeningTimes()
-      // which was throwing an exception
-      model.openingTimes = ot.getFormattedOpeningTimes();
+      model.openingTimes = new OpeningTimes(item.openingTimes, 'Europe/London');
     }
 
     viewModels[index] = model;
