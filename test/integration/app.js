@@ -122,7 +122,7 @@ describe('The results routes', () => {
         nock(/.*nhschoices.*/)
           .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
           .query(true)
-          .times(10)
+          .times(100)
           .reply(200, overviewResponse);
 
       chai.request(server)
@@ -161,7 +161,7 @@ describe('The results routes', () => {
           nock(/.*nhschoices.*/)
             .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
             .query(true)
-            .times(2)
+            .times(100)
             .reply(200, overviewResponse);
 
         chai.request(server)
@@ -173,7 +173,7 @@ describe('The results routes', () => {
             const $ = cheerio.load(res.text);
 
             // Some arbitary element to suggest there are 2 results
-            expect($('p strong').first().text()).to.equal('Open until midnight');
+            expect($('p strong:contains("Open until midnight")').length).to.equal(2);
             expect($('.map-button').length).to.equal(2);
             expect(postcodeSearchScope.isDone()).to.be.true;
             expect(overviewScope.isDone()).to.be.true;
