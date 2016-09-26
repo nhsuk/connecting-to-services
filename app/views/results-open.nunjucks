@@ -1,6 +1,5 @@
 {% extends 'layout.nunjucks' %}
 
-
 {% block pageTitle %}Open service results{% endblock %}
 
 {% block header %}Places near to '{{ location }}'{% endblock %}
