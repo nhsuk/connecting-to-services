@@ -42,7 +42,7 @@ describe('The stomach ache page', () => {
 
         const $ = cheerio.load(res.text);
 
-        expect($('.heading-xlarge').text())
+        expect($('.local-header--title').text())
           .to.equal('Stomach ache');
         done();
       });
@@ -59,7 +59,7 @@ describe('The search page', () => {
 
         const $ = cheerio.load(res.text);
 
-        expect($('.heading-xlarge').text())
+        expect($('.local-header--title').text())
           .to.equal('Enter a postcode');
         done();
       });
@@ -75,7 +75,7 @@ describe('The search page', () => {
 
           const $ = cheerio.load(res.text);
 
-          expect($('.heading-xlarge').text())
+          expect($('.local-header--title').text())
             .to.equal('Call NHS 111');
           done();
         });

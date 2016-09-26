@@ -1,14 +1,11 @@
-{% include "./includes/beta-header.nunjucks" %}
+{% extends 'layout.nunjucks' %}
 
-<main id="content" role="main">
-<h1 class="heading-large">NHS.UK Connecting to Services front page</h1>
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <ul class="list-bullet">
-      <li><a href="/stomach-ache">Stomach Ache</a></li>
-    </ul>
-  </div>
-</div>
-</main>
+{% block pageTitle %}NHS.UK Connecting to Services front page{% endblock %}
 
-{% include "./includes/footer.nunjucks" %}
+{% block header %}NHS.UK Connecting to Services front page{% endblock %}
+
+{% block content %}
+<ul class="list-bullet">
+  <li><a href="/stomach-ache">Stomach Ache</a></li>
+</ul>
+{% endblock %}

@@ -1,16 +1,22 @@
-{% include "./includes/beta-header.nunjucks" %}
+{% extends 'layout.nunjucks' %}
 
-<main id="content" role="main">
-<a href="javascript:window.history.back();" class="back-to-previous">Back</a>
-<h1 class="heading-xlarge">Call NHS 111</h1>
-<div class="grid-row">
-  <div class="column-two-thirds">
+{% block pageTitle %}Call NHS 111{% endblock %}
 
-    <p class="lede">NHS 111 is the NHS non-emergency number. NHS 111 is available 24 hours a day, 365 days a year. Calls are free from landlines and mobile phones. Speak to a highly trained adviser, supported by healthcare professionals.</p>
+{% block header %}Call NHS 111{% endblock %}
 
-    <p><a href="http://www.nhs.uk/NHSEngland/AboutNHSservices/Emergencyandurgentcareservices/Pages/NHS-111.aspx" class="gotoservice-cta">More information about NHS 111</a></p>
-  </div>
-</div>
-</main>
+{% block pageIntro %}
+NHS 111 is the NHS non-emergency number. NHS 111 is available 24 hours a day, 365 days a year. Calls are free from landlines and mobile phones. Speak to a highly trained adviser, supported by healthcare professionals.
+{% endblock %}
 
-{% include "./includes/footer.nunjucks" %}
+
+{% block content %}
+<p>
+<a class="button" href="http://www.nhs.uk/NHSEngland/AboutNHSservices/Emergencyandurgentcareservices/Pages/NHS-111.aspx">More informaion about NHS 111</a>
+</p>
+<!-- <div class="form-item-wrapper"> -->
+<!--   <div class="form-group"> -->
+<!--     <input type="submit" class="button" value="More information about NHS 111"> -->
+<!--   </div> -->
+<!-- </div> -->
+<p><a href="/stomach-ache-find-help">Go back</a>.</p>
+{% endblock %}

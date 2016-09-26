@@ -1,15 +1,84 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
-    {% if ENV_DEVELOPMENT %}
-    <script src="http://localhost:35729/livereload.js"></script>
-    {% endif %}
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!--[if IE]><link rel="shortcut icon" href="/assets/images/favicon.ico"><![endif]-->
+    <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
+    <link rel="icon" href="/images/favicon.png">
+
+    <title>{% block pageTitle %}NHS.UK{% endblock %}</title>
+
+    <meta property="og:image" content="/images/opengraph-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+
+    <!--[if gt IE 8]><!--><link href="/css/nhsuk.css" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
+    <!--[if IE 6]><link href="/css/nhsuk-ie6.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="/css/nhsuk-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="/css/nhsuk-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+
+    <link rel="stylesheet" href="/css/print.css" media="print" type="text/css">
   </head>
+
   <body>
-    {% block content %}{% endblock %}
+    <div class="skiplinks">
+      <div class="skiplinks--inner">
+        <a href="#content" class="skiplinks--link">Skip to main content</a>
+      </div>
+    </div>
+
+    <div class="notification-banner notification-banner__js-hidden" id="global-cookies-banner" role="alert">
+      <p class="notification-banner--inner">
+      NHS.UK uses cookies to make the site simpler.
+      <a href="https://beta.nhs.uk/help/cookies">Find out more about cookies</a>
+      </p>
+    </div>
+
+    {% include "includes/back-to-choices.nunjucks" %}
+
+    {% block banner %}{% endblock %}
+
+    <header role="banner">
+      <div class="global-header">
+        <div class="global-header--inner">
+          <a href="/" class="global-header--link" title="Go to the NHS.UK homepage">
+            <img src="/images/logotype-nhs-mono.png" alt="">
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" role="main" tabindex="-1" class="util-nofocus">
+    <article role="article">
+      {% block article %}
+      <div class="local-header">
+        <div class="local-header--inner">
+          <h1 class="local-header--title">{% block header %}{% endblock %}</h1>
+          <div class="local-header--intro">
+            <p>{% block pageIntro %}{% endblock %}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-section">
+        {% block pageSection %}
+        <div class="reading-width">
+          {% block content %}{% endblock %}
+        </div>
+        {% endblock %}
+      </div>
+      {% endblock %}
+
+    </article>
+    </main>
+    <footer role="contentinfo">
+      {% include "includes/footer.nunjucks" %}
+    </footer>
   </body>
 </html>
