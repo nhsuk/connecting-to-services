@@ -27,6 +27,7 @@
   </head>
 
   <body>
+    <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script>
     <div class="skiplinks">
       <div class="skiplinks--inner">
         <a href="#content" class="skiplinks--link">Skip to main content</a>
@@ -80,5 +81,7 @@
     <footer role="contentinfo">
       {% include "includes/footer.nunjucks" %}
     </footer>
+
+    {% include "includes/foot.nunjucks" %}
   </body>
 </html>
