@@ -1,86 +1,70 @@
-{% include "./includes/beta-header.nunjucks" %}
+{% extends 'layout-symptoms.nunjucks' %}
 
-<main id="content" role="main">
+{% block pageTitle %}Stomach ache{% endblock %}
 
-  <a href="javascript:window.history.back();" class="back-to-previous">Back</a>
+{%block header %}Stomach ache{% endblock %}
 
+{% block pageIntro %}
+A stomach ache is a term often used to refer to cramps or a dull ache in the tummy (abdomen).
+{% endblock %}
 
-  <h1 class="heading-xlarge">Stomach ache</h1>
+{% block content %}
+<p class="lede">Most stomach aches aren’t anything serious and will go away after a few days.</p>
 
-  <div class="grid-row">
+<h2>Treating stomach ache at home</h2>
 
-  <div class="column-two-thirds">
+<p>There are things you can do yourself to treat stomach ache.</p>
 
-  <p class="lede">A stomach ache is a term often used to refer to cramps or a dull ache in the tummy (abdomen).</p>
+<p>Speak to a pharmacist about medicines that can help you, or get advice about:</P>
+<ul>
+  <li>feeling bloated (trapped wind)</li>
+  <li><a href="//www.nhs.uk/conditions/Indigestion/Pages/Introduction.aspx">indigestion</a> (burning pain or discomfort after eating)</li>
+  <li><a href="//www.nhs.uk/conditions/Constipation/Pages/Introduction.aspx">constipation</a> (can’t poo)</li>
+</ul>
 
-  <p>Most stomach aches aren’t anything serious and will go away after a few days.</p>
+<p>If you have vomiting and diarrhoea with your stomach ache, it should stop after a few days. Try to drink a lot of fluids to avoid dehydration.</p>
 
-</div>
-</div>
+<p>Painkillers like paracetamol can help with your stomach ache but won’t stop any vomiting and diarrhoea. Find out more about <a href="http://www.nhs.uk/conditions/gastroenteritis/Pages/Introduction.aspx">treating vomiting and diarrhoea</a>.</p>
 
-  <div class="grid-row">
+<p>
+<a href="stomach-ache-find-help" class="button">Find an open pharmacy</a>
+</p>
 
-      <div class="column-two-thirds">
+<h2>If the symptoms persist or get worse</h2>
 
-        <h2 class="heading-large">Treating stomach ache at home</h2>
+<p>Seek a doctor's advice if:</p>
 
+<ul>
+  <li>the pain gets much worse in a short space of time</li>
+  <li>the pain or bloating won’t go away or keeps coming back</li>
+  <li>you have other symptoms like weight loss or vomiting</li>
+  <li>there’s a change in how often you pee</li>
+  <li>you have pain when you pee</li>
+  <li>you have unusual vaginal bleeding or discharge</li>
+  <li>you bleed from your bottom</li>
+  <li>your diarrhoea lasts longer than a few days</li>
+</ul>
 
-          <p>There are things you can do yourself to treat stomach ache.</p>
+<p>
+<strong>Visit your GP</strong>
+</p>
+<p>Not registered with a GP? Need to find one? <a href="//www.nhs.uk/Service-Search/GP/LocationSearch/4">Find one</a>.</p>
 
-          <p>Speak to a pharmacist about medicines that can help you, or get advice about:</p>
+{% endblock %}
 
-            <ul class="list-bullet">
-              <li>feeling bloated (trapped wind)</li>
-              <li><a href="http://www.nhs.uk/Conditions/Indigestion/Pages/Treatment.aspx">indigestion</a> (burning pain or discomfort after eating)</li>
-              <li><a href="http://www.nhs.uk/Conditions/Constipation/Pages/Treatment.aspx">constipation</a> (can’t poo)</li>
-            </ul>
+{% block page999title %}
+Call 999 or go to <abbr title="Accident and Emergency"> A&amp;E</abbr> if you
+{% endblock %}
 
-          <p>If you have vomiting and diarrhoea with your stomach ache, it should stop after a few days. Try to drink a lot of fluids to avoid dehydration.</p>
-
-          <p>Painkillers like paracetamol can help with your stomach ache but won’t stop any vomiting and diarrhoea. Find out more about <a href="http://www.nhs.uk/conditions/gastroenteritis/Pages/Introduction.aspx">treating vomiting and diarrhoea</a>.</p>
-
-          <p>
-            <a href="/stomach-ache-find-help" class="gotoservice-cta">Find an open pharmacy</a>
-          </p>
-
-          <p></p>
-
-          <h2 class="heading-large">If the symptoms persist or get worse</h2>
-
-          <p>Seek a doctor's advice if:</p>
-
-        <ul class="list-bullet">
-          <li>the pain gets much worse in a short space of time</li>
-          <li>the pain or bloating won’t go away or keeps coming back</li>
-          <li>you have other symptoms like weight loss or vomiting</li>
-          <li>there’s a change in how often you pee</li>
-          <li>you have pain when you pee</li>
-          <li>you have unusual vaginal bleeding or discharge</li>
-          <li>you bleed from your bottom</li>
-          <li>your diarrhoea lasts longer than a few days</li>
-        </ul>
-
-        <p>
-        <strong>Visit a GP</strong> or <a href="/call-111" class="gotoservice-cta">use NHS 111</a>
-        </p>
-        <p></p>
-      </div>
-
-      <div class="column-third nineninenine">
-      <h2 class="heading-large">Call 999 or go to A&amp;E if you</h2>
-        <ul class="list-bullet">
-          <li>have sudden, severe stomach pain</li>
-          <li>have pain when you touch your stomach</li>
-          <li>are vomiting blood or a ground coffee like substance</li>
-          <li>have bloody or black, sticky poo</li>
-          <li>have collapsed</li>
-          <li>can’t breathe</li>
-          <li>are unable to pee</li>
-          <li>are diabetic and vomiting</li>
-        </ul>
-        <p></p>
-    </div>
-</div>
-</main>
-
-{% include "./includes/footer.nunjucks" %}
+{% block page999content %}
+<ul>
+  <li>have sudden, severe stomach pain</li>
+  <li>have pain when you touch your stomach</li>
+  <li>are vomiting blood or a ground coffee like substance</li>
+  <li>have bloody or black, sticky poo</li>
+  <li>have collapsed</li>
+  <li>can’t breathe</li>
+  <li>are unable to pee</li>
+  <li>are diabetic and vomiting</li>
+</ul>
+{% endblock %}
