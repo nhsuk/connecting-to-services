@@ -1,3 +1,0 @@
-[submodule "env"]
-	path = env
-	url = https://gitlab.com/nhsuk/dotenv.git
