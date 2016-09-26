@@ -27,27 +27,18 @@ That is hosted [here](https://connecting-to-services.herokuapp.com/)
 
 ## Environment variables
 
-Environment variables are loaded by
-[dotenv](https://www.npmjs.com/package/dotenv). If the value already
-exists within the environment that will be used. If not, the values in a dot
-file (`.env`) will be used.
-If there is no file, a warning will be issued when the application
-attempts to start.
+Environment variables are expected to be managed by the environment in which
+the application is being run. This is best practice as described by
+[twelve-factor](https://12factor.net/config).
 
-The `.env` file is managed via
-[git-submodule](https://git-scm.com/docs/git-submodule). In order to activate
-the submodule, once the repo has been cloned the following commands need
-to be executed:
+In order to protect the application from starting up without the required
+env vars in place [require-environment-variables](https://www.npmjs.com/package/require-environment-variables)
+is used to check all are present as part of the application start-up. If
+an env var is not found the application will fail to start and an appropriate
+message will be displayed.
 
-```
-git submodule init
-git submodule update
-```
 
-This will clone the submodule into the main repo and update it to the
-latest version. Future changes to the submodule can be pulled into the repo
-by running the update command.
+## FAQ
 
-Using submodules for managing environment variables is only used in developer
-environments. Other environments, specifically the hosting environments use
-a different mechanism for acquiring environment variables.
+* Is the application failing to start?
+> Ensure all expected environment variables are available within the environment
