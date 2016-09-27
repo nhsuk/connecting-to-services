@@ -146,7 +146,8 @@ describe('The results routes', () => {
     const openResultsRoute = '/results-open';
 
     describe('happy paths', () => {
-      it('should return the top 2 open results when the postcode is valid', (done) => {
+      it('should return the top 2 open results when the postcode is valid', function (done) {
+        this.timeout(3000); // TODO: refactor to make this unecessary
         const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
         const overviewResponse = getSampleResponse('always_open');
 
