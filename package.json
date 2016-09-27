@@ -16,7 +16,8 @@
     "generate-coverage": "istanbul cover _mocha -- --recursive --reporter mocha-lcov-reporter",
     "generate-full-coverage": "istanbul cover --include-all-sources _mocha -- --recursive --reporter mocha-lcov-reporter",
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
-    "upload-coverage": "cat ./coverage/lcov.info | coveralls"
+    "upload-coverage-codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
+    "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "config": {
     "ghooks": {
@@ -50,6 +51,7 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "cheerio": "^0.22.0",
+    "codacy-coverage": "^2.0.0",
     "coveralls": "^2.11.9",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",

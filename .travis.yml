@@ -6,7 +6,8 @@ script:
 - npm run test
 - npm run generate-coverage
 - npm run check-coverage
-- npm run upload-coverage
+- npm run upload-coverage-coveralls
+- npm run upload-coverage-codacy
 git:
   submodules: false
 notifications:
