@@ -2,7 +2,7 @@
 
 {% block pageTitle %}Open service results{% endblock %}
 
-{% block header %}Places near to '{{ location }}'{% endblock %}
+{% block header %}Pharmacies near to '{{ location }}'{% endblock %}
 
 {% block pageIntro %}The places listed below are currently open. Other places nearby are closed.{% endblock %}
 
@@ -32,7 +32,6 @@
               <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
 
             <br/>
-            <p><strong>Estimated journey time: </strong>{{ service.duration }}</p>
 
         </tr>
         <tr>
