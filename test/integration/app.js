@@ -122,7 +122,7 @@ describe('The results routes', () => {
         nock(/.*nhschoices.*/)
           .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
           .query(true)
-          .times(10)
+          .times(100)
           .reply(200, overviewResponse);
 
       chai.request(server)
@@ -146,7 +146,8 @@ describe('The results routes', () => {
     const openResultsRoute = '/results-open';
 
     describe('happy paths', () => {
-      it('should return the top 2 open results when the postcode is valid', (done) => {
+      it('should return the top 2 open results when the postcode is valid', function (done) {
+        this.timeout(3000); // TODO: refactor to make this unecessary
         const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
         const overviewResponse = getSampleResponse('always_open');
 
@@ -161,7 +162,7 @@ describe('The results routes', () => {
           nock(/.*nhschoices.*/)
             .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
             .query(true)
-            .times(2)
+            .times(100)
             .reply(200, overviewResponse);
 
         chai.request(server)
@@ -173,6 +174,7 @@ describe('The results routes', () => {
             const $ = cheerio.load(res.text);
 
             // Some arbitary element to suggest there are 2 results
+            expect($('p strong:contains("Open until midnight")').length).to.equal(2);
             expect($('.map-button').length).to.equal(2);
             expect(postcodeSearchScope.isDone()).to.be.true;
             expect(overviewScope.isDone()).to.be.true;

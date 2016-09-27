@@ -25,7 +25,7 @@
                   Telephone {{ service.telephone }}
                 {% endif %}
                 </p>
-              <p><strong>{{ service.openingHoursMessage }}</strong><br></p>
+                <p><strong>{{ service.openingTimesMessage }}</strong><br></p>
           </td>
           <td width="50%">
             Distance: {{ service.distanceInMiles | round(1) }} miles
