@@ -15,6 +15,9 @@
         <!-- label -->
       </label>
 
+      {% if errorMessage %}
+      <p style="color:red;border-style:dashed;padding:1em;">{{ errorMessage }}</p>
+      {% endif %}
       <input type="text" id="location" name="location" value="" class="form-control">
     </div>
   </div>
