@@ -25,11 +25,7 @@
                   Telephone {{ service.telephone }}
                 {% endif %}
                 </p>
-                {% if  service.openingTimes %}
-                  <p><strong>{{ service.openingTimes.getOpeningHoursMessage(now) }}</strong><br></p>
-                {% else %}
-                  <p><strong>Opening times unknown</strong><br></p>
-                {% endif %}
+                <p><strong>{{ service.openingTimesMessage }}</strong><br></p>
           </td>
           <td width="50%">
             Distance: {{ service.distanceInMiles | round(1) }} miles

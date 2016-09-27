@@ -124,66 +124,63 @@ function sortByDistance(a, b) {
   return a.content.organisationSummary.Distance - b.content.organisationSummary.Distance;
 }
 
+function getDisplayValuesMapper(location) {
+  const start = `saddr=${location}`;
+
+  return (item) => {
+    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
+    const destination = `daddr=${fullAddress}`;
+    // Use near to help get the correct location for the start
+    const near = `near=${fullAddress}`;
+
+    const returnValue = {
+      label: item.label,
+      distanceInMiles: (item.distanceInKms / 1.6),
+      googleMapsQuery: `${start}&${destination}&${near}`,
+      openingTimesMessage: item.openingTimes ?
+        item.openingTimes.getOpeningHoursMessage(moment()) :
+        'Call for opening times',
+      addressLine: item.addressLine,
+      telephone: item.telephone,
+    };
+    if (returnValue.addressLine && item.postcode) {
+      returnValue.addressLine.push(item.postcode);
+    }
+
+    return returnValue;
+  };
+}
+
 function prepareForRender(req, res, next) {
   const tenClosestPlaces = req.pharmacyList
         .sort(sortByDistance)
         .slice(0, 10);
   const serviceList = pharmacyMapper(tenClosestPlaces);
   const location = req.query.location;
-  const start = `saddr=${location}`;
 
-  serviceList.forEach((item) => {
-    // eslint-disable-next-line no-param-reassign
-    item.distanceInMiles = item.distanceInKms / 1.6;
-    if (item.addressLine) {
-      if (item.postcode) {
-        item.addressLine.push(item.postcode);
-      }
-    }
-    // eslint-disable-next-line prefer-spread
-    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
-    const destination = `daddr=${fullAddress}`;
-    // Use near to help get the correct location for the start
-    const near = `near=${fullAddress}`;
-    // eslint-disable-next-line no-param-reassign
-    item.googleMapsQuery = `${start}&${destination}&${near}`;
-  });
   // eslint-disable-next-line no-param-reassign
-  req.serviceList = serviceList.sort(sortByDistanceInKms);
+  req.serviceList =
+    serviceList
+      .map(getDisplayValuesMapper(location))
+      .sort(sortByDistanceInKms);
+
   next();
 }
 
 function prepareOpenThingsForRender(req, res, next) {
   // Only get the 2 closet OPEN pharmacies
   const serviceLimit = 2;
-  const serviceList = pharmacyMapper(req.pharmacyList)
-        .sort(sortByDistanceInKms)
-        .filter((pharmacy) => (pharmacy.openingTimes ?
-           pharmacy.openingTimes.isOpen(moment()) :
-           false))
-        .slice(0, serviceLimit);
-
   const location = req.query.location;
-  const start = `saddr=${location}`;
-
-  serviceList.forEach((item) => {
-    // eslint-disable-next-line no-param-reassign
-    item.distanceInMiles = item.distanceInKms / 1.6;
-    if (item.addressLine) {
-      if (item.postcode) {
-        item.addressLine.push(item.postcode);
-      }
-    }
-    // eslint-disable-next-line prefer-spread
-    const fullAddress = `${item.name},${item.addressLine}`.replace(/ /g, '+');
-    const destination = `daddr=${fullAddress}`;
-    // Use near to help get the correct location for the start
-    const near = `near=${fullAddress}`;
-    // eslint-disable-next-line no-param-reassign
-    item.googleMapsQuery = `${start}&${destination}&${near}`;
-  });
   // eslint-disable-next-line no-param-reassign
-  req.serviceList = serviceList.sort(sortByDistanceInKms);
+  req.serviceList =
+    pharmacyMapper(req.pharmacyList)
+      .sort(sortByDistanceInKms)
+      .filter((pharmacy) => (pharmacy.openingTimes ?
+         pharmacy.openingTimes.isOpen(moment()) :
+         false))
+      .slice(0, serviceLimit)
+      .map(getDisplayValuesMapper(location));
+
   next();
 }
 
