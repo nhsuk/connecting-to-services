@@ -14,16 +14,16 @@
     "watch-dev": "nodemon app.js",
     "watch-lint": "esw --watch .",
     "watch-test": "npm run test -- --watch --reporter min",
-    "generate-coverage": "istanbul cover _mocha -- --recursive --reporter mocha-lcov-reporter",
-    "generate-full-coverage": "istanbul cover --include-all-sources _mocha -- --recursive --reporter mocha-lcov-reporter",
+    "generate-coverage": "istanbul cover _mocha -- --recursive",
+    "generate-full-coverage": "istanbul cover --include-all-sources _mocha -- --recursive",
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
     "upload-coverage-codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint && npm run test",
-      "post-rewrite": "npm run lint && npm run test"
+      "pre-commit": "npm run lint && npm run generate-coverage && npm run check-coverage",
+      "post-rewrite": "npm run lint && npm run generate-coverage && npm run check-coverage"
     }
   },
   "repository": {
@@ -66,7 +66,6 @@
     "ghooks": "^1.3.2",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.2",
-    "mocha-lcov-reporter": "^1.2.0",
     "nock": "^8.0.0",
     "nodemon": "^1.10.2",
     "request": "^2.60.0"
