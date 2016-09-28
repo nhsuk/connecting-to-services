@@ -26,11 +26,12 @@ describe('urlUtils', () => {
     it('should set the request Url for the pharmacy postcode search', () => {
       const location = 'postcode';
       const req = { query: { location } };
+      const res = { locals: { location } };
       const expectedUrl =
         `${baseUrl}/organisations/pharmacies/postcode/` +
         `${location}.xml?range=50&apikey=${apikey}`;
 
-      urlUtils.urlForPharmacyPostcodeSearch(req, null, () => {});
+      urlUtils.urlForPharmacyPostcodeSearch(req, res, () => {});
 
       // eslint-disable-next-line no-unused-expressions
       expect(req.urlForPharmacy).is.not.null;

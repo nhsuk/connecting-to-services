@@ -1,5 +1,5 @@
 function urlForPharmacyPostcodeSearch(req, res, next) {
-  const location = req.query.location;
+  const location = res.locals.location;
   const syndicationApiKey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
   const baseUrl = process.env.NHSCHOICES_SYNDICATION_BASEURL;
   const requestUrl =
