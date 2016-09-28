@@ -31,9 +31,7 @@
             Distance: {{ service.distanceInMiles | round(1) }} miles
             <br/>
               <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
-
             <br/>
-            <!-- <p><strong>Estimated journey time: </strong>{{ service.duration }}</p> -->
 
         </tr>
         <tr>
@@ -44,7 +42,9 @@
     </table>
     <div class="grid-row">
       <div class="column-two-thirds">
-        <p><a href="results-open?location={{location}}" class="gotoservice-cta button">See only open places nearby</a></p>
+        <p>
+        <a href="{{altResults.url}}" class="gotoservice-cta button">{{altResults.message}}</a>
+        </p>
       </div>
     </div>
 
