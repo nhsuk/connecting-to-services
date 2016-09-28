@@ -83,7 +83,9 @@ function getPharmacyOpeningTimes(req, res, next) {
 
     // TODO: Only need to get opening times for the first 2 open pharmacies
     getSyndicationResponse(
-      `http://v1.syndication.nhschoices.nhs.uk/organisations/pharmacies/${pharmacyId}/overview.xml?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
+      `${process.env.NHSCHOICES_SYNDICATION_BASEURL}/organisations/pharmacies/`
+      + `${pharmacyId}/overview.xml`
+      + `?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
       'Pharmacy List',
       (syndicationXml) => {
         try {
