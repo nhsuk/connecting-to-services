@@ -119,7 +119,7 @@ describe('The results routes', () => {
           .reply(200, postcodeSearchResponse);
 
       const overviewScope =
-        nock(/.*nhschoices.*/)
+        nock(baseUrl)
           .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
           .query(true)
           .times(100)
@@ -159,7 +159,7 @@ describe('The results routes', () => {
             .reply(200, postcodeSearchResponse);
 
         const overviewScope =
-          nock(/.*nhschoices.*/)
+          nock(baseUrl)
             .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
             .query(true)
             .times(100)
