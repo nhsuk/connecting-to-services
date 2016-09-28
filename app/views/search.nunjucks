@@ -19,11 +19,11 @@
     </div>
   </div>
 
-  <div class="form-item-wrapper">
+  <div class="form-item-wrapper" style="display:inline-block;">
     <div class="form-group">
       <input type="submit" class="button" value="Continue">
+      &nbsp;
     </div>
   </div>
-  <p>If you are not looking for help, <a href="stomach-ache-find-help">go back</a>.</p>
 </form>
 {% endblock %}

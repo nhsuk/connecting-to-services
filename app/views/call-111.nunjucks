@@ -4,19 +4,10 @@
 
 {% block header %}Call NHS 111{% endblock %}
 
-{% block pageIntro %}
-NHS 111 is the NHS non-emergency number. NHS 111 is available 24 hours a day, 365 days a year. Calls are free from landlines and mobile phones. Speak to a highly trained adviser, supported by healthcare professionals.
-{% endblock %}
-
-
 {% block content %}
+<p>NHS 111 is the NHS non-emergency number. NHS 111 is available 24 hours a day, 365 days a year. Calls are free from landlines and mobile phones. Speak to a highly trained adviser, supported by healthcare professionals.</p>
 <p>
-<a class="button" href="http://www.nhs.uk/NHSEngland/AboutNHSservices/Emergencyandurgentcareservices/Pages/NHS-111.aspx">More informaion about NHS 111</a>
+<a class="button" href="http://www.nhs.uk/NHSEngland/AboutNHSservices/Emergencyandurgentcareservices/Pages/NHS-111.aspx">More information about NHS 111</a>
 </p>
-<!-- <div class="form-item-wrapper"> -->
-<!--   <div class="form-group"> -->
-<!--     <input type="submit" class="button" value="More information about NHS 111"> -->
-<!--   </div> -->
-<!-- </div> -->
-<p><a href="/stomach-ache-find-help">Go back</a>.</p>
+<!-- <p><a href="/stomach-ache-find-help">Go back</a>.</p> -->
 {% endblock %}

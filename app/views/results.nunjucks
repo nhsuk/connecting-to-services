@@ -2,7 +2,7 @@
 
 {% block pageTitle %}All service results{% endblock %}
 
-{% block header %}Places near to '{{ location }}'{% endblock %}
+{% block header %}Pharmacies near to '{{ location }}'{% endblock %}
 
 {% block pageIntro %}Listed below are all the places nearby that could help you, showing if they are open or closed.{% endblock %}
 
