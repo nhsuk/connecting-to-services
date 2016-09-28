@@ -9,5 +9,4 @@
 <p>
 <a class="button" href="http://www.nhs.uk/NHSEngland/AboutNHSservices/Emergencyandurgentcareservices/Pages/NHS-111.aspx">More information about NHS 111</a>
 </p>
-<!-- <p><a href="/stomach-ache-find-help">Go back</a>.</p> -->
 {% endblock %}

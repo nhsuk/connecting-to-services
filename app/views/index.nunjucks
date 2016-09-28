@@ -6,6 +6,6 @@
 
 {% block content %}
 <ul class="list-bullet">
-  <li><a href="/stomach-ache">Stomach Ache</a></li>
+  <li><a href="/symptoms/stomach-ache">Stomach Ache</a></li>
 </ul>
 {% endblock %}

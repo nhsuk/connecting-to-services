@@ -7,7 +7,7 @@
 {% block pageIntro %}Listed below are all the places nearby that could help you, showing if they are open or closed.{% endblock %}
 
 {% block content %}
-<a href="/search" class="back-to-previous">Back</a>
+<a href="/symptoms/stomach-ache/search" class="back-to-previous">Back</a>
 
     <table>
       <tbody>
