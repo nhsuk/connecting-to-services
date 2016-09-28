@@ -183,8 +183,7 @@ function prepareForRender(req, res, next) {
 
     serviceList =
       pharmacyMapper(tenClosestPlaces)
-        .map(getDisplayValuesMapper(location))
-        .sort(sortByDistanceInKms);
+        .map(getDisplayValuesMapper(location));
   }
   /* eslint-disable no-param-reassign */
   req.serviceList = serviceList;
