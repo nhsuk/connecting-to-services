@@ -85,6 +85,7 @@ describe('The search page', () => {
 describe('The results routes', () => {
   let originalUrl = '';
   let originalApikey = '';
+  const resultsRoute = '/results';
   const baseUrl = 'http://web.site';
   const apikey = 'secret';
   const validPostcode = 'AB123CD';
@@ -105,11 +106,10 @@ describe('The results routes', () => {
   });
 
 
-  describe('The results route', () => {
+  describe('happy paths', () => {
     it('should return 10 results', (done) => {
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
       const overviewResponse = getSampleResponse('pharmacy_opening_times');
-      const allResultsRoute = '/results';
 
       const postcodeSearchScope =
         nock(baseUrl)
@@ -126,15 +126,54 @@ describe('The results routes', () => {
           .reply(200, overviewResponse);
 
       chai.request(server)
-        .get(allResultsRoute)
+        .get(resultsRoute)
         .query({ location: validPostcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
 
           const $ = cheerio.load(res.text);
 
-          // Some arbitary element to suggest there are 2 results
+          // Some arbitary element to suggest there are 10 results
           expect($('.map-button').length).to.equal(10);
+          expect($('.gotoservice-cta').attr('href'))
+            .to.equal(`results?location=${validPostcode}&open=true`);
+          expect(postcodeSearchScope.isDone()).to.be.true;
+          expect(overviewScope.isDone()).to.be.true;
+          done();
+        });
+    });
+
+    it('should only return 2 results when filtered by open', function (done) {
+      this.timeout(3000);
+      const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
+      const overviewResponse = getSampleResponse('always_open');
+
+      const postcodeSearchScope =
+        nock(baseUrl)
+          .get(postcodeSearchPath)
+          .query(true)
+          .times(10)
+          .reply(200, postcodeSearchResponse);
+
+      const overviewScope =
+        nock(baseUrl)
+          .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
+          .query(true)
+          .times(100)
+          .reply(200, overviewResponse);
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: validPostcode, open: true })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+
+          const $ = cheerio.load(res.text);
+
+          // Some arbitary element to suggest there are 2 results
+          expect($('.map-button').length).to.equal(2);
+          expect($('.gotoservice-cta').attr('href'))
+            .to.equal(`results?location=${validPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
@@ -142,72 +181,30 @@ describe('The results routes', () => {
     });
   });
 
-  describe('open only results', () => {
-    const openResultsRoute = '/results-open';
+  describe('error handling', () => {
+    it('should validate the postcode and return an error message', (done) => {
+      const invalidPostcode = 'invalid';
+      const errorMessage =
+        `${invalidPostcode} is not a valid postcode, please try again`;
 
-    describe('happy paths', () => {
-      it('should return the top 2 open results when the postcode is valid', function (done) {
-        this.timeout(3000);
-        const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-        const overviewResponse = getSampleResponse('always_open');
-
-        const postcodeSearchScope =
-          nock(baseUrl)
-            .get(postcodeSearchPath)
-            .query(true)
-            .times(10)
-            .reply(200, postcodeSearchResponse);
-
-        const overviewScope =
-          nock(baseUrl)
-            .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
-            .query(true)
-            .times(100)
-            .reply(200, overviewResponse);
-
-        chai.request(server)
-          .get(openResultsRoute)
-          .query({ location: validPostcode })
-          .end((err, res) => {
-            checkHtmlResponse(err, res);
-
-            const $ = cheerio.load(res.text);
-
-            // Some arbitary element to suggest there are 2 results
-            expect($('p strong:contains("Open until midnight")').length).to.equal(2);
-            expect($('.map-button').length).to.equal(2);
-            expect(postcodeSearchScope.isDone()).to.be.true;
-            expect(overviewScope.isDone()).to.be.true;
-            done();
-          });
-      });
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: invalidPostcode })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+          expect(res.text).to.contain(errorMessage);
+          done();
+        });
     });
 
-    describe('error handling', () => {
-      it('should validate the postcode and return an error message', (done) => {
-        const invalidPostcode = 'invalid';
-        const errorMessage =
-          `${invalidPostcode} is not a valid postcode, please try again`;
-
-        chai.request(server)
-          .get(openResultsRoute)
-          .query({ location: invalidPostcode })
-          .end((err, res) => {
-            checkHtmlResponse(err, res);
-            expect(res.text).to.contain(errorMessage);
-            done();
-          });
-      });
-
-      it('should check a location is supplied and return an error message', (done) => {
-        chai.request(server)
-          .get(openResultsRoute)
-          .end((err, res) => {
-            checkHtmlResponse(err, res);
-            expect(res.text).to.contain('A valid postcode is required to progress');
-            done();
-          });
-      });
+    it('should check a location is supplied and return an error message', (done) => {
+      chai.request(server)
+        .get(resultsRoute)
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+          expect(res.text).to.contain('A valid postcode is required to progress');
+          done();
+        });
     });
   });
 });

@@ -115,6 +115,7 @@ function renderServiceResults(req, res) {
     location: req.query.location,
     serviceList: req.serviceList,
     now: moment(),
+    altResults: res.locals.altResults,
   });
 }
 
@@ -154,34 +155,43 @@ function getDisplayValuesMapper(location) {
 }
 
 function prepareForRender(req, res, next) {
-  const tenClosestPlaces = req.pharmacyList
-        .sort(sortByDistance)
-        .slice(0, 10);
-  const serviceList = pharmacyMapper(tenClosestPlaces);
+  const open = req.query.open || false;
   const location = req.query.location;
+  let serviceList = [];
+  let altResultsUrl = '';
+  let altResultsMessage = '';
 
-  // eslint-disable-next-line no-param-reassign
-  req.serviceList =
-    serviceList
-      .map(getDisplayValuesMapper(location))
-      .sort(sortByDistanceInKms);
+  if (open) {
+    altResultsUrl = `results?location=${location}`;
+    altResultsMessage = 'See all nearby places that can help, open or closed';
 
-  next();
-}
+    serviceList =
+      pharmacyMapper(req.pharmacyList)
+        .sort(sortByDistanceInKms)
+        .filter((pharmacy) => (pharmacy.openingTimes ?
+           pharmacy.openingTimes.isOpen(moment()) :
+           false))
+        .slice(0, 2)
+        .map(getDisplayValuesMapper(location));
+  } else {
+    altResultsUrl = `results?location=${location}&open=true`;
+    altResultsMessage = 'See only open places nearby';
 
-function prepareOpenThingsForRender(req, res, next) {
-  // Only get the 2 closet OPEN pharmacies
-  const serviceLimit = 2;
-  const location = req.query.location;
-  // eslint-disable-next-line no-param-reassign
-  req.serviceList =
-    pharmacyMapper(req.pharmacyList)
-      .sort(sortByDistanceInKms)
-      .filter((pharmacy) => (pharmacy.openingTimes ?
-         pharmacy.openingTimes.isOpen(moment()) :
-         false))
-      .slice(0, serviceLimit)
-      .map(getDisplayValuesMapper(location));
+    const tenClosestPlaces = req.pharmacyList
+          .sort(sortByDistance)
+          .slice(0, 10);
+
+    serviceList =
+      pharmacyMapper(tenClosestPlaces)
+        .map(getDisplayValuesMapper(location))
+        .sort(sortByDistanceInKms);
+  }
+  /* eslint-disable no-param-reassign */
+  req.serviceList = serviceList;
+  res.locals.altResults = {};
+  res.locals.altResults.url = altResultsUrl;
+  res.locals.altResults.message = altResultsMessage;
+  /* eslint-enable no-param-reassign */
 
   next();
 }
@@ -191,5 +201,4 @@ module.exports = {
   getPharmacyOpeningTimes,
   renderServiceResults,
   prepareForRender,
-  prepareOpenThingsForRender,
 };

@@ -28,17 +28,8 @@ router.get('/search',
   }
 );
 
-// Only get open things for display
-router.get('/results-open',
-  validateLocation,
-  urlUtils.urlForPharmacyPostcodeSearch,
-  servicesMiddleware.getPharmacies,
-  servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.prepareOpenThingsForRender,
-  servicesMiddleware.renderServiceResults
-);
-
 router.get('/results',
+  validateLocation,
   urlUtils.urlForPharmacyPostcodeSearch,
   servicesMiddleware.getPharmacies,
   servicesMiddleware.getPharmacyOpeningTimes,
