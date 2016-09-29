@@ -2,7 +2,7 @@ const Verror = require('verror');
 const AssertionError = require('assert').AssertionError;
 const openingTimesParser = require('../../../app/lib/openingTimesParser');
 const getSampleResponse = require('../../resources/getSampleResponse');
-const daysOfTheWeek = require('../../../app/lib/constants').daysOfTheWeek;
+const weekdays = require('moment').weekdays().map(d => d.toLowerCase());
 const chai = require('chai');
 
 const expect = chai.expect;
@@ -12,7 +12,7 @@ describe('openingTimesParser', () => {
     it('should get multiple slot opening times from syndication response', () => {
       const syndicationXml = getSampleResponse('pharmacy_overview');
       const openingTimes = openingTimesParser('reception', syndicationXml);
-      expect(openingTimes).to.have.keys(daysOfTheWeek);
+      expect(openingTimes).to.have.keys(weekdays);
       expect(openingTimes.monday.times).to.eql([
         { fromTime: '08:00', toTime: '13:00' },
         { fromTime: '13:00', toTime: '19:30' },
@@ -26,7 +26,7 @@ describe('openingTimesParser', () => {
     it('should get single slot opening times from syndication response', () => {
       const syndicationXml = getSampleResponse('pharmacy_overview_single_time_slot');
       const openingTimes = openingTimesParser('reception', syndicationXml);
-      expect(openingTimes).to.have.keys(daysOfTheWeek);
+      expect(openingTimes).to.have.keys(weekdays);
       expect(openingTimes.monday.times).to.eql([
         { fromTime: '08:00', toTime: '19:30' },
       ]);
@@ -38,7 +38,7 @@ describe('openingTimesParser', () => {
     it('should get single type opening times from syndication response', () => {
       const syndicationXml = getSampleResponse('pharmacy_opening_times');
       const openingTimes = openingTimesParser('general', syndicationXml);
-      expect(openingTimes).to.have.keys(daysOfTheWeek);
+      expect(openingTimes).to.have.keys(weekdays);
       expect(openingTimes.monday.times).to.eql([
         { fromTime: '09:00', toTime: '17:30' },
       ]);
