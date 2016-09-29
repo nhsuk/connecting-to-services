@@ -161,6 +161,8 @@ describe('The results page', () => {
     });
 
     it('should only return 3 results when filtered by open', function (done) {
+      // This can not be an arrow function due to the use of this.timeout
+      // https://github.com/mochajs/mocha/issues/2018
       this.timeout(3000);
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
       const overviewResponse = getSampleResponse('always_open');

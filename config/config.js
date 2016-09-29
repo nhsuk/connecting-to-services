@@ -1,32 +1,15 @@
 const path = require('path');
 
 const rootPath = path.normalize(`${__dirname}/..`);
-const env = process.env.NODE_ENV || 'development';
 
-const config = {
-  development: {
-    root: rootPath,
-    app: {
-      name: 'connecting-to-services',
-    },
-    port: process.env.PORT || 3000,
+module.exports = {
+  app: {
+    name: 'connecting-to-services',
   },
-
-  test: {
-    root: rootPath,
-    app: {
-      name: 'connecting-to-services',
-    },
-    port: process.env.PORT || 3000,
-  },
-
-  production: {
-    root: rootPath,
-    app: {
-      name: 'connecting-to-services',
-    },
-    port: process.env.PORT || 3000,
-  },
+  env: process.env.NODE_ENV || 'development',
+  root: rootPath,
+  port: process.env.PORT || 3000,
+  googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+  webtrendsId: process.env.WEBTRENDS_ANALYTICS_TRACKING_ID,
+  hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,
 };
-
-module.exports = config[env];

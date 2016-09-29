@@ -39,6 +39,18 @@ is used to check all are present as part of the application start-up. If
 an env var is not found the application will fail to start and an appropriate
 message will be displayed.
 
+Environment variables are used to set application level settings for each
+environment.
+
+| Variable                        | Description                                                               | Default                  | Required |
+|:--------------------------------|:--------------------------------------------------------------------------|:-------------------------|----------|
+| `NODE_ENV`                      | node environment                                                          | development              | | 
+| `PORT`                          | server port                                                               | 3000                     | | 
+| `GOOGLE_ANALYTICS_TRACKING_ID`  | [Google Analytics](https://www.google.co.uk/analytics) property id        |                          | |
+| `WEBTRENDS_TRACKING_ID`         | [Webtrends](https://www.webtrends.com/) tracking id                       |                          | |
+| `HOTJAR_TRACKING_ID`            | [Hotjar](https://www.hotjar.com/) tracking id                             |                          | |
+| `NHSCHOICES_SYNDICATION_BASEURL`| [NHS Digital Syndication](http://www.nhs.uk/aboutNHSChoices/professionals/syndication/Pages/Webservices.aspx) base endpoint | | y |
+| `NHSCHOICES_SYNDICATION_APIKEY` | [NHS Digital Syndication](http://www.nhs.uk/aboutNHSChoices/professionals/syndication/Pages/Webservices.aspx) API key | | y |
 
 ## FAQ
 
