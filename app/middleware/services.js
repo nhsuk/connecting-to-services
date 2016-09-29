@@ -108,8 +108,7 @@ function getPharmacyOpeningTimes(req, res, next) {
 }
 
 function renderServiceResults(req, res) {
-  const path = req.path.substring(1);
-  res.render(path);
+  res.render('results');
 }
 
 function sortByDistanceInKms(a, b) {
@@ -155,7 +154,7 @@ function prepareForRender(req, res, next) {
   let altResultsMessage = '';
 
   if (open) {
-    altResultsUrl = `results?location=${location}`;
+    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}`;
     altResultsMessage = 'See all nearby places that can help, open or closed';
 
     serviceList =
@@ -167,7 +166,7 @@ function prepareForRender(req, res, next) {
         .slice(0, 2)
         .map(getDisplayValuesMapper(location));
   } else {
-    altResultsUrl = `results?location=${location}&open=true`;
+    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
     altResultsMessage = 'See only open places nearby';
 
     const tenClosestPlaces = req.pharmacyList

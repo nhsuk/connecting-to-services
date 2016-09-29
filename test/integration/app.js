@@ -36,7 +36,7 @@ describe('The default page', () => {
 describe('The stomach ache page', () => {
   it('should contain content for stomach ache', (done) => {
     chai.request(server)
-      .get('/stomach-ache')
+      .get('/symptoms/stomach-ache')
       .end((err, res) => {
         checkHtmlResponse(err, res);
 
@@ -49,10 +49,26 @@ describe('The stomach ache page', () => {
   });
 });
 
+describe('The find help page', () => {
+  it('should contain content for finding help with stomach ache', (done) => {
+    chai.request(server)
+      .get('/symptoms/stomach-ache/find-help')
+      .end((err, res) => {
+        checkHtmlResponse(err, res);
+
+        const $ = cheerio.load(res.text);
+
+        expect($('.local-header--title').text())
+          .to.equal('Find a place that can help with');
+        done();
+      });
+  });
+});
+
 describe('The search page', () => {
   it('should provide a prompt to enter a postcode', (done) => {
     chai.request(server)
-      .get('/search')
+      .get('/symptoms/stomach-ache/search')
       .query({ able: 'true' })
       .end((err, res) => {
         checkHtmlResponse(err, res);
@@ -68,7 +84,7 @@ describe('The search page', () => {
   it('should return a call 111 page when people are not able to get there',
     (done) => {
       chai.request(server)
-        .get('/search')
+        .get('/symptoms/stomach-ache/search')
         .query({ able: 'false' })
         .end((err, res) => {
           checkHtmlResponse(err, res);
@@ -85,7 +101,7 @@ describe('The search page', () => {
 describe('The results routes', () => {
   let originalUrl = '';
   let originalApikey = '';
-  const resultsRoute = '/results';
+  const resultsRoute = '/symptoms/stomach-ache/results';
   const baseUrl = 'http://web.site';
   const apikey = 'secret';
   const validPostcode = 'AB123CD';
@@ -136,7 +152,7 @@ describe('The results routes', () => {
           // Some arbitary element to suggest there are 10 results
           expect($('.map-button').length).to.equal(10);
           expect($('.gotoservice-cta').attr('href'))
-            .to.equal(`results?location=${validPostcode}&open=true`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
@@ -173,7 +189,7 @@ describe('The results routes', () => {
           // Some arbitary element to suggest there are 2 results
           expect($('.map-button').length).to.equal(2);
           expect($('.gotoservice-cta').attr('href'))
-            .to.equal(`results?location=${validPostcode}`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();

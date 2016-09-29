@@ -10,7 +10,7 @@ router.get('/',
   }
 );
 
-router.get('/search',
+router.get('/symptoms/stomach-ache/search',
   (req, res) => {
     const query = req.query;
 
@@ -28,7 +28,7 @@ router.get('/search',
   }
 );
 
-router.get('/results',
+router.get('/symptoms/stomach-ache/results',
   validateLocation,
   urlUtils.urlForPharmacyPostcodeSearch,
   servicesMiddleware.getPharmacies,
@@ -37,10 +37,15 @@ router.get('/results',
   servicesMiddleware.renderServiceResults
 );
 
-router.get('/:view',
+router.get('/symptoms/stomach-ache/find-help',
   (req, res) => {
-    const view = req.params.view.toLowerCase();
-    res.render(view, {});
+    res.render('find-help');
+  }
+);
+
+router.get('/symptoms/stomach-ache',
+  (req, res) => {
+    res.render('stomach-ache');
   }
 );
 

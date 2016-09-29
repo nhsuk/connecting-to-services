@@ -1,8 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block header %}
-Find a place that can help with
-{% endblock %}
+{% block header %}Find a place that can help with{% endblock %}
 
 {% block pageTitle %}Find a place that can help with{% endblock %}
 
@@ -15,7 +13,7 @@ Find a place that can help with
 {% endblock %}
 
 {% block content %}
-<form class="form" id="formname" method="get" action="/search">
+<form class="form" id="formname" method="get" action="/symptoms/stomach-ache/search">
   <div class="form-item-wrapper">
       <legend class="form-label-bold">Can you get there by yourself?</legend>
 
@@ -40,7 +38,7 @@ Find a place that can help with
     </div>
   </div>
   <p></p>
-  <p>If you are not looking for help, <a href="/stomach-ache">go back</a>.</p>
+  <p>If you are not looking for help, <a href="/symptoms/stomach-ache">go back</a>.</p>
 </form>
 
 {% endblock %}
