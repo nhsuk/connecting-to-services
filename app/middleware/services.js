@@ -6,7 +6,6 @@ const moment = require('moment');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
-const daysOfTheWeek = require('../lib/constants').daysOfTheWeek;
 const Verror = require('verror');
 
 function getSyndicationResponseHandler(resourceType, parser, next) {
@@ -110,13 +109,7 @@ function getPharmacyOpeningTimes(req, res, next) {
 
 function renderServiceResults(req, res) {
   const path = req.path.substring(1);
-  res.render(path, {
-    daysOfTheWeek,
-    location: req.query.location,
-    serviceList: req.serviceList,
-    now: moment(),
-    altResults: res.locals.altResults,
-  });
+  res.render(path);
 }
 
 function sortByDistanceInKms(a, b) {
@@ -156,7 +149,7 @@ function getDisplayValuesMapper(location) {
 
 function prepareForRender(req, res, next) {
   const open = req.query.open || false;
-  const location = req.query.location;
+  const location = res.locals.location;
   let serviceList = [];
   let altResultsUrl = '';
   let altResultsMessage = '';
@@ -186,7 +179,7 @@ function prepareForRender(req, res, next) {
         .map(getDisplayValuesMapper(location));
   }
   /* eslint-disable no-param-reassign */
-  req.serviceList = serviceList;
+  res.locals.serviceList = serviceList;
   res.locals.altResults = {};
   res.locals.altResults.url = altResultsUrl;
   res.locals.altResults.message = altResultsMessage;
