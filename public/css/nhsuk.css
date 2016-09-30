@@ -92,32 +92,11 @@ html {
   box-sizing: inherit;
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-dl,
-dd,
-ol,
-ul,
-form,
-fieldset,
-legend,
-figure,
-table,
-th,
-td,
-caption,
-hr {
-  margin: 0;
-  padding: 0;
-}
+
+
+/**
+  * Start of normalize
+**/
 
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -525,6 +504,38 @@ textarea {
   /* 2 */
 }
 
+/**
+  * End of normalize
+**/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+form,
+fieldset,
+legend,
+figure,
+table,
+th,
+td,
+caption,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+
 html, body, button, input, table, td, th {
   font-family: "FS Me", Arial, sans-serif;
 }
@@ -598,6 +609,20 @@ body {
   border-color: #d81e05;
 }
 
+
+.cta {
+  padding-right: 6rem;
+  background-color: #0072c6;
+  background-image: url("images/icon-button-start.svg");
+  background-repeat: no-repeat;
+  background-position: 95% 55%;
+}
+
+
+/*
+   Form elements
+*/
+
 figure {
   margin-left: 0;
   margin-right: 0;
@@ -639,6 +664,22 @@ fieldset {
 
 textarea {
   display: block;
+}
+
+fieldset {
+  border: 0;
+  padding: 0.01em 0 0 0;
+  margin: 0;
+  min-width: 0;
+
+  body:not(:-moz-handler-blocked) & {
+    display: table-cell;
+  }
+
+legend {
+    padding: 0;
+    display: table;
+  }
 }
 
 .form-section {
@@ -898,65 +939,119 @@ textarea {
   }
 }
 
+/* START OF GDS-ESQUE RADIOS AND CHECKBOXES */
+
 .block-label {
   display: block;
-  float: none;
-  clear: left;
   position: relative;
-  background: #fff;
-  border: 1px solid #fff;
-  padding: 18px 30px 15px 54px;
+  width: auto;
+  padding: 8px 10px 9px 50px;
   margin-bottom: 10px;
   cursor: pointer;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 500px) {
   .block-label {
-    float: left;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
 }
 
 .block-label input {
   position: absolute;
-  top: 15px;
-  left: 15px;
   cursor: pointer;
-  margin: 0;
-  width: 29px;
-  height: 29px;
+  left: 0;
+  top: 0;
+  width: 38px;
+  height: 38px;
 }
 
-.block-label:hover {
-  border-color: #000;
+.js-enabled .block-label input {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
 
-.block-label:last-child, .block-label:last-of-type {
-  margin-bottom: 0;
+.js-enabled .block-label.selection-button-radio::before {
+  box-sizing: content-box;
+  content: "";
+  border: 3px solid #0072c6;
+  border-radius: 50%;
+  background: #fff;
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.inline .block-label {
-  clear: none;
+.js-enabled .block-label.selection-button-radio::after {
+  box-sizing: content-box;
+  content: "";
+  border-radius: 50%;
+  background: currentColor;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
 }
 
-@media (min-width: 641px) {
-  .inline .block-label {
-    margin-bottom: 0;
-    margin-right: 10px;
-  }
+.js-enabled .block-label.selection-button-checkbox::before {
+  box-sizing: content-box;
+  content: "";
+  border: 3px solid #0072c6;
+  background: #fff;
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.js-enabled label.selected {
-  background: #009e49;
-  border-color: #000;
+.js-enabled .block-label.selection-button-checkbox::after {
+  box-sizing: content-box;
+  content: "";
+  border: solid;
+  border-width: 0 0 5px 5px;
+  background: transparent;
+  width: 17px;
+  height: 7px;
+  position: absolute;
+  top: 11px;
+  left: 9px;
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
 }
 
-.js-enabled label.focused {
-  outline: 3px solid #ffb81c;
+.js-enabled .block-label.selection-button-radio.focused::before, .js-enabled .block-label.selection-button-checkbox.focused::before {
+  -webkit-box-shadow: 0 0 0 5px #F7E214;
+  -moz-box-shadow: 0 0 0 5px #F7E214;
+  box-shadow: 0 0 0 5px #F7E214;
 }
 
-.js-enabled .focused input:focus {
-  outline: none;
+.js-enabled .block-label.selection-button-radio.selected::after, .js-enabled .block-label.selection-button-checkbox.selected::after {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  opacity: 1;
 }
+
+/* END OF GDS-ESQUE RADIOS AND CHECKBOXES */
+
 
 img {
   border: 0;
@@ -1221,7 +1316,7 @@ a:focus {
   outline: 3px solid #ffb81c;
 }
 
-p {
+p, legend {
   font-family: "FS Me", Arial, sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -1241,6 +1336,10 @@ p {
     font-size: 20px;
     line-height: 32px;
   }
+}
+
+legend {
+  font-weight: 600;
 }
 
 table {

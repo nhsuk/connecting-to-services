@@ -5,7 +5,11 @@
 {%block header %}Stomach ache{% endblock %}
 
 {% block pageIntro %}
+<div class="local-header--intro">
+  <p>
 A stomach ache is a term often used to refer to cramps or a dull ache in the tummy (abdomen).
+  </p>
+</div>
 {% endblock %}
 
 {% block content %}

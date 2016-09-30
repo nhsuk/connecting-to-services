@@ -4,9 +4,6 @@
 
 {% block header %}Enter a postcode{% endblock %}
 
-{% block pageIntro %}
-{% endblock %}
-
 {% block content %}
 <form method="get" class="form" action="results">
   <div class="form-item-wrapper">
