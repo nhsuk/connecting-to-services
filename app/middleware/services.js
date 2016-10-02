@@ -9,8 +9,9 @@ const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
 const Verror = require('verror');
+const distance = require('geo-dist-calc');
 
-function getCommunityDentists(req, res, next) {
+function loadCommunityDentists(req, res, next) {
   const path = '/Users/neilmclaughlin/work/nhshackday/connecting-to-services/resources/community_dentists_select.csv'
   const input = fs.createReadStream(path);
   const fileContents = fs.readFileSync(path, "utf8");
@@ -97,8 +98,16 @@ function getLocationForCommunityDentists(req, res, next) {
         try {
           const json = JSON.parse(responseJson);
           /* eslint-disable no-param-reassign */
-          communityDentist.latitude = json.result.latitude;
-          communityDentist.longitude = json.result.longitude;
+          communityDentist.location = {
+            latitude: json.result.latitude,
+            longitude: json.result.longitude,
+          }
+
+          console.log(res.locals.searchLocation, communityDentist.location);
+          communityDentist.distance = distance.discal(
+            res.locals.searchLocation,
+            communityDentist.location);
+
           /* eslint-enable no-param-reassign */
         } catch (e) {
           // intentionally left empty to allow pharmacies without any opening time
@@ -186,7 +195,7 @@ function renderServiceResults(req, res) {
 }
 
 function sortByDistanceInKms(a, b) {
-  return a.distanceInKms - b.distanceInKms;
+  return a.distance.kilometers - b.distance.kilometers;
 }
 
 function sortByDistance(a, b) {
@@ -221,50 +230,49 @@ function getDisplayValuesMapper(location) {
   };
 }
 
-function prepareCommunityDentistsForRender(req, res, next) {
-
-  const location = res.locals.location;
-  let serviceList = [];
-
-  console.log(req.communityDentists);
-  res.locals.serviceList = req.communityDentists;
-
-  // console.log(res.locals.serviceList);
-
-  next();
+function getCoordinatesForSearchLocation(req, res, next) {
+  const postcode = encodeURIComponent(res.locals.location);
+  let location = {}; 
+  getHttpResponse(
+    `http://postcodes.io/postcodes/${postcode}`,
+    'Community Dentist List',
+    (responseJson) => {
+      try {
+        const json = JSON.parse(responseJson);
+        /* eslint-disable no-param-reassign */
+        location = {
+          latitude: json.result.latitude,
+          longitude: json.result.longitude,
+        }
+        /* eslint-enable no-param-reassign */
+      } catch (e) {
+        // intentionally left empty to allow pharmacies without any opening time
+        // to be displayed without crashing the app
+        console.log(e);
+      }
+    },
+    () => {
+      res.locals.searchLocation = location;
+      next();
+    });
 }
 
 function prepareForRender(req, res, next) {
-  const open = req.query.open || false;
+  const open = false;
   const location = res.locals.location;
+  const searchLocation = res.locals.searchLocation;
   let serviceList = [];
   let altResultsUrl = '';
   let altResultsMessage = '';
 
-  if (open) {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}`;
-    altResultsMessage = 'See all nearby places that can help, open or closed';
+  altResultsUrl = `/community-dentists/results?location=${location}&open=true`;
+  altResultsMessage = 'See only open places nearby';
 
-    serviceList =
-      pharmacyMapper(req.pharmacyList)
+  serviceList = req.communityDentists
         .sort(sortByDistanceInKms)
-        .filter((pharmacy) => (pharmacy.openingTimes ?
-           pharmacy.openingTimes.isOpen(moment()) :
-           false))
-        .slice(0, 2)
-        .map(getDisplayValuesMapper(location));
-  } else {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
-    altResultsMessage = 'See only open places nearby';
-
-    const tenClosestPlaces = req.pharmacyList
-          .sort(sortByDistance)
           .slice(0, 10);
 
-    serviceList =
-      pharmacyMapper(tenClosestPlaces)
-        .map(getDisplayValuesMapper(location));
-  }
+  // console.log(serviceList);
   /* eslint-disable no-param-reassign */
   res.locals.serviceList = serviceList;
   res.locals.altResults = {};
@@ -276,11 +284,11 @@ function prepareForRender(req, res, next) {
 }
 
 module.exports = {
-  getCommunityDentists,
+  loadCommunityDentists,
   getLocationForCommunityDentists,
+  getCoordinatesForSearchLocation,
   getPharmacies,
   getPharmacyOpeningTimes,
   renderServiceResults,
   prepareForRender,
-  prepareCommunityDentistsForRender,
 };

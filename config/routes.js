@@ -10,7 +10,7 @@ router.get('/',
   }
 );
 
-router.get('/symptoms/stomach-ache/search',
+router.get('/community-dentists/search',
   (req, res) => {
     const query = req.query;
 
@@ -28,10 +28,12 @@ router.get('/symptoms/stomach-ache/search',
   }
 );
 
-router.get('/community-dentists',
-  servicesMiddleware.getCommunityDentists,
+router.get('/community-dentists/results',
+  validateLocation,
+  servicesMiddleware.getCoordinatesForSearchLocation,
+  servicesMiddleware.loadCommunityDentists,
   servicesMiddleware.getLocationForCommunityDentists,
-  servicesMiddleware.prepareCommunityDentistsForRender,
+  servicesMiddleware.prepareForRender,
   servicesMiddleware.renderServiceResults
 );
 
