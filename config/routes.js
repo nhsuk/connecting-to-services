@@ -28,6 +28,13 @@ router.get('/symptoms/stomach-ache/search',
   }
 );
 
+router.get('/community-dentists',
+  servicesMiddleware.getCommunityDentists,
+  servicesMiddleware.getLocationForCommunityDentists,
+  servicesMiddleware.prepareCommunityDentistsForRender,
+  servicesMiddleware.renderServiceResults
+);
+
 router.get('/symptoms/stomach-ache/results',
   validateLocation,
   urlUtils.urlForPharmacyPostcodeSearch,

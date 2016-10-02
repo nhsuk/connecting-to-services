@@ -1,0 +1,323 @@
+V_Code,ContractNumber,ContractType,StartDate,EndDate,Name,AddressLine1,AddressLine2,AddressLine3,AddressLine4,AddressLine5,Postcode,ContractHealthBodyCode,ContractHealthBodyName
+V00043,100862/0003 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,DENTAL ACCESS CENTRE ,UPTON HOSPITAL ,ALBERT STREET ,SLOUGH ,BERKSHIRE ,SL1 2BJ ,Q69 ,Thames Valley 
+V00054,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,W Berkshire Community Hospital ,Benham Hill ,London Road ,"Thatcham , Berkshire ",RG18 3AS ,Q69 ,Thames Valley 
+V00187,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Dental Access Centre ,3 Kimbolton Road ,BEDFORD ,Bedfordshire ,,MK40 2NT ,Q58 ,Hertfordshire and the South Midlands 
+V00234,116009/0001 ,GDS Contract ,1/4/2010,,Kathcare Ltd ,Dental Surgery ,Kath Locke Community Health ,123 Moss Lane East ,MANCHESTER ,Lancashire ,M15 5DD ,Q46 ,Greater Manchester 
+V00240,101192/0002 ,GDS Contract ,1/4/2006,,Community Dental Centres Ltd ,Community Dental Centre ,Kilkenny House ,Cheddon Road ,Taunton ,Somerset ,TA2 7PH ,Q65 ,Bristol North Somerset Somerset and South Gloucestershire 
+V00311,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Blomfield Dental Practice ,Blomfield House Health Centre ,Looms Lane ,BURY ST EDMUNDS ,Suffolk ,IP33 1HE ,Q56 ,East Anglia 
+V00841,100927/0001 ,PDS Contract ,1/4/2006,,NORWICH AND NORFOLK DAC ,Norwich Community Hospital ,Bowthorpe Road ,NORWICH ,Norfolk ,,NR2 3TU ,Q56 ,East Anglia 
+V00954,185469/0029 ,PDS Contract ,1/8/2008,,King's Community Special Care Dentistry ,Community Health South London ,The Manor Health Centre ,86 Clapham Manor Street ,LONDON ,,SW4 6EB ,Q63 ,South London 
+V00957,185469/0037 ,PDS Contract ,1/8/2008,,King's Community Special Care Dentistry ,Jenner Health Centre ,Dental Surgery ,14 St Germans Road ,LONDON ,,SE23 1RJ ,Q63 ,South London 
+V00960,185469/0031 ,PDS Contract ,1/8/2008,,King's Community Special Care Dentistry ,Community Health South London N ,Mawbrey Brough Health Centre ,39 Wilcox Close ,LONDON ,,SW8 2UD ,Q63 ,South London 
+V00963,185469/0038 ,PDS Contract ,1/8/2008,,King's Community Special Care Dentistry ,Community Health South London N ,Waldron Health Centre ,Stanley Street ,LONDON ,,SE8 4BG ,Q63 ,South London 
+V00964,185469/0035 ,PDS Contract ,1/8/2008,,King's Community Special Care Dentistry ,Community Health South London N ,Whittington Centre ,11 13 Rutford Road ,LONDON ,,SW16 2DQ ,Q63 ,South London 
+V01345,149969/0005 ,PDS Contract ,1/4/2006,,Durham & Chester Le Street PCT ,Chester Le Street Community ,"Hospital , Front Street ",CHESTER LE STREET ,County Durham ,,DH3 3AT ,Q45 ,Durham Darlington and Tees 
+V01533,139890/0001 ,PDS Contract ,1/4/2007,,Hillingdon PCT Community Dental Services ,Ickenham Clinic ,Community Close ,ICKENHAM ,Middlesex ,,UB10 8RE ,Q62 ,North West London 
+V01765,187992/0013 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,The Dental Suite ,Aldershot Health Centre ,Wellington Avenue ,ALDERSHOT ,,GU11 1PA ,Q68 ,Surrey and Sussex 
+V01994,138401/0001 ,GDS Contract ,1/1/2011,,Beechwood Dental Practice Ltd ,Beechwood Community ,Health Centre ,60B Keighley Road ,HALIFAX ,West Yorkshire ,HX2 8AL ,Q52 ,West Yorkshire 
+V02159,101192/0006 ,GDS Contract ,1/4/2006,,Community Dental Centres Ltd ,Emersons Green Dental Practice ,Emerson Way ,Emersons Green ,BRISTOL ,Avon ,BS16 7AS ,Q65 ,Bristol North Somerset Somerset and South Gloucestershire 
+V02198,187992/0009 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Dental Department ,Staines Health Centre ,Knowle Green ,STAINES ,Middlesex ,TW18 1XD ,Q68 ,Surrey and Sussex 
+V02444,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,Dental Department ,Hanwell Health Centre ,20 Church Road ,LONDON ,,W7 1DR ,Q62 ,North West London 
+V02478,175420/0004 ,PDS Contract ,1/12/2012,31/3/2017,Simon Collins Community Dental Service ,7 - 8 Ambley Green ,Gillingham Business Park ,Gillingham ,Kent ,,ME8 0NJ ,Q67 ,Kent and Medway 
+V02680,129429/0019 ,PDS Contract ,1/4/2009,31/3/2019,Community Dental Service ,St Leonards Family Dental ,Practice ,St Leonards Hospital ,Nuttall Street ,London ,N1 5LZ ,Q61 ,North East London 
+V02690,129429/0017 ,PDS Contract ,1/4/2009,,Community Dental Service ,Somerford Grove Health Centre ,Somerford Grove ,LONDON ,,,N16 7TX ,Q61 ,North East London 
+V02717,101192/0006 ,GDS Contract ,1/4/2006,,Community Dental Centres Ltd ,Orchard Dental Centre ,The Orchard Medical Centre ,"MacDonald Walk , Kingswood ",BRISTOL ,Avon ,BS15 8NJ ,Q65 ,Bristol North Somerset Somerset and South Gloucestershire 
+V02751,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Ordsall Health Centre ,Belfort Drive ,SALFORD ,Lancashire ,,M5 3PP ,Q46 ,Greater Manchester 
+V02779,150231/0001 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Chapeltown Health Centre ,Spencer Place ,LEEDS ,West Yorkshire ,,LS7 4BB ,Q52 ,West Yorkshire 
+V03087,160377/0001 ,PDS Contract ,1/4/2015,31/3/2022,LEEDS COMMUNITY DENTAL SERVICES ,H M Young Offenders Institute ,York Road ,WETHERBY ,West Yorkshire ,,LS22 5ED ,Q52 ,West Yorkshire 
+V03088,150231/0020 ,PDS Contract ,1/11/2008,31/3/2017,Leeds Community Dental Services ,Dental Department ,H M Prison Wealstun ,Walton Road ,WETHERBY ,West Yorkshire ,LS23 7AZ ,Q52 ,West Yorkshire 
+V04212,118001/0009 ,GDS Contract ,17/11/2014,31/3/2017,Community Dental Service ,Dental Dept. ,H M Prison ,Holloway ,Parkhurst Road ,London ,N7 0NU ,Q61 ,North East London 
+V04214,118001/0002 ,PDS Contract ,1/7/2008,,Community Dental Service ,"Dental Dept. , H M Prison ",North Wall Gate ,Pentonville ,Caledonian Road ,LONDON ,N7 8TT ,Q61 ,North East London 
+V04809,101192/0007 ,GDS Contract ,1/4/2006,,Community Dental Centres Ltd ,Northam Dental Surgery (ADP) ,Bay View Road ,Northam ,BIDEFORD ,Devon ,EX39 1AZ ,Q66 ,Devon Cornwall and Isles of Scilly 
+V04815,185469/0032 ,PDS Contract ,1/8/2008,31/7/2018,King's Community Special Care Dentistry ,2nd Floor Akerman Health Centre ,60 Patmos Road ,LONDON ,,,SW9 6AF ,Q63 ,South London 
+V05072,156353/0003 ,PDS Contract ,1/12/2010,,Central London Community Healthcare ,Dental Surgery ,Colville Health Centre ,51 Kensington Park Road ,LONDON ,,W11 1PA ,Q62 ,North West London 
+V05676,154601/0005 ,PDS Contract ,1/4/2006,31/3/2017,Oxfordshire Priority Dental Service ,Wallingford Community Hospital ,Reading Road ,WALLINGFORD ,Oxfordshire ,,OX10 9DU ,Q69 ,Thames Valley 
+V05695,154601/0009 ,PDS Contract ,1/4/2006,31/3/2017,Oxfordshire Priority Dental Service ,Witney Community Hospital ,Welch Way ,WITNEY ,Oxfordshire ,,OX28 6JJ ,Q69 ,Thames Valley 
+V06195,100017/0000 ,GDS Contract ,1/3/2016,,Alston Dental Practice Limited ,Alston Dental Practice ,Alston Community Hospital ,ALSTON ,Cumbria ,,CA9 3QX ,Q49 ,Cumbria Northumberland Tyne and Wear 
+V06272,338761/0002 ,GDS Contract ,1/4/2006,,MR MS KHAN ,Dental Department ,Bullingdon Community Prison ,P O Box 50 ,BICESTER ,Oxfordshire ,OX25 1WD ,Q69 ,Thames Valley 
+V06530,174343/0002 ,PDS Contract ,1/4/2015,31/3/2018,Bridgewater Community Healthcare NHS Foundation Trust ,Eagle Bridge Health Centre ,Dental Clinic ,Dunwoody Way ,Crewe ,Cheshire ,CW1 3AW ,Q44 ,Cheshire Warrington and Wirral 
+V06537,174343/0004 ,PDS Contract ,1/4/2015,31/3/2018,Bridgewater Community Healthcare NHS Foundation Trust ,Weston Dental Clinic ,Earlsway ,MACCLESFIELD ,Cheshire ,,SK11 8SR ,Q44 ,Cheshire Warrington and Wirral 
+V06538,174343/0003 ,PDS Contract ,1/4/2015,31/3/2018,Bridgewater Community Healthcare NHS Foundation Trust ,Handforth Health Centre ,The Green ,Wilmslow Road ,Handforth ,WILMSLOW ,SK9 3HL ,Q44 ,Cheshire Warrington and Wirral 
+V06655,193534/0002 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Dunstable Health Centre ,Priory Gardens ,DUNSTABLE ,Bedfordshire ,,LU6 3SU ,Q58 ,Hertfordshire and the South Midlands 
+V06781,193534/0002 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Kempston Clinic ,Halsey Road ,Kempston ,BEDFORD ,Bedfordshire ,MK42 8AU ,Q58 ,Hertfordshire and the South Midlands 
+V07375,185469/0024 ,PDS Contract ,1/10/2006,,King's Community Special Care Dentistry ,Lister Primary Care Centre ,101 Peckham Road ,LONDON ,,,SE15 5LJ ,Q63 ,South London 
+V07529,149829/0002 ,PDS Contract ,1/10/2013,30/9/2023,Bexley Community Dental Services ,Lakeside Dental Practice ,Lakeside Health Centre ,Yarnton Way ,Thamesmead ,,SE2 9LH ,Q63 ,South London 
+V07683,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,London Road Health Centre ,84 - 86 London Road ,BEDFORD ,Bedfordshire ,,MK42 0NT ,Q58 ,Hertfordshire and the South Midlands 
+V07784,114650/0002 ,PDS Contract ,1/5/2007,30/4/2017,Community Dental Clinic ,Community Dental Service ,Kingsley Grove ,Grimsby ,North East Lincolnshire ,,DN33 1NL ,Q50 ,North Yorkshire and Humber 
+V07803,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Queens Park Health Centre ,23C Carlisle Road ,BEDFORD ,Bedfordshire ,,MK40 4HR ,Q58 ,Hertfordshire and the South Midlands 
+V08031,141844/0003 ,PDS Contract ,1/5/2006,,Kingston Community Dental Service ,Princess Alexandra Dental Unit ,Kingston Hospital ,Galsworthy Road ,KINGSTON UPON THAMES ,Surrey ,KT2 7QB ,Q63 ,South London 
+V08191,102261/0001 ,PDS Contract ,1/10/2014,30/9/2024,BCHC - Special Care ,S. Birmingham Community Health ,Balsall Heath Health Centre ,43 Edward Road ,Balsall Heath ,BIRMINGHAM ,B12 9LP ,Q54 ,Birmingham and The Black Country 
+V08314,127957/0001 ,PDS Contract ,1/4/2006,,Derbyshire Community Health Services ,Walton Hospital ,Salaried Primary Care Dental ,Whitecotes Lane ,CHESTERFIELD ,Derbyshire ,S40 3HW ,Q55 ,Derbyshire and Nottinghamshire 
+V08444,104523/0004 ,PDS Contract ,1/4/2011,31/3/2017,Bromley Healthcare Interest Company ,Mottingham Community ,Health Clinic ,Kimmeridge Road ,London ,,SE9 4EB ,Q63 ,South London 
+V08544,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Biggleswade Health Centre ,Saffron Road ,BIGGLESWADE ,Bedfordshire ,,SG18 8DJ ,Q58 ,Hertfordshire and the South Midlands 
+V08545,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Flitwick Clinic ,The Highlands ,Flitwick ,BEDFORD ,Bedfordshire ,MK45 1DZ ,Q58 ,Hertfordshire and the South Midlands 
+V08546,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Houghton Regis Health Centre ,Bedford Square ,Houghton Regis ,DUNSTABLE ,Bedfordshire ,LU5 5ES ,Q58 ,Hertfordshire and the South Midlands 
+V08547,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Marsh Farm ,Purley Centre ,The Moakes ,Marsh Farm ,Luton ,LU3 3SR ,Q58 ,Hertfordshire and the South Midlands 
+V08548,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Sandy Health Centre ,Northcroft ,SANDY ,Bedfordshire ,,SG19 1JQ ,Q58 ,Hertfordshire and the South Midlands 
+V08550,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,South Bedfordshire Community ,"Health , Child Welfare Clinic ",25 Bassett Road ,LEIGHTON BUZZARD ,Bedfordshire ,LU7 1AR ,Q58 ,Hertfordshire and the South Midlands 
+V08551,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Liverpool Road Health Centre ,9 Mersey Place ,Liverpool Road ,LUTON ,Bedfordshire ,LU1 1HH ,Q58 ,Hertfordshire and the South Midlands 
+V08635,187992/0025 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Dental Dept. ,Highdown Prison ,"Highdown , Highdown Lane ",SUTTON ,Surrey ,SM2 5PJ ,Q68 ,Surrey and Sussex 
+V08704,101192/0008 ,GDS Contract ,1/4/2006,,Community Dental Centres Ltd ,Oldfield Surgery ,45 Upper Oldfield Park ,BATH ,Avon ,,BA2 3HT ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V08714,121371/0007 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Emergency Dental Services ,St Richards Hospital ,Spitalfield Lane ,CHICHESTER ,West Sussex ,PO19 6SE ,Q68 ,Surrey and Sussex 
+V08735,101192/0008 ,GDS Contract ,1/4/2006,,Community Dental Centres Ltd ,Orthodontic Department ,Royal United Hospital ,Combe Park ,Bath ,Avon ,BA1 3NG ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V08798,199052/0004 ,PDS Contract ,1/8/2009,,Sutton & Merton Community Dental Services ,Dental Surgery ,Roundshaw Health Clinic ,6 Mollison Square ,WALINGTON ,Surrey ,SM6 9DF ,Q63 ,South London 
+V08847,187992/0026 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Dental Dept. ,H M Prison Coldingley ,Shaftesbury Road ,Bisley ,WOKING ,GU24 9EX ,Q68 ,Surrey and Sussex 
+V08862,157368/0003 ,PDS Contract ,1/4/2006,31/3/2017,East Lancashire Dental Service ,Howard Street Community ,"Health Centre , Howard Street ",BURNLEY ,Lancashire ,,BB11 4PQ ,Q47 ,Lancashire 
+V08940,210102/0004 ,PDS Contract ,1/4/2009,,Wirral Community Trust ,PDS Leasowe CDS NHS Wirral PCT ,Leasowe Primary Care Centre ,Hudson Road ,Leasowe ,Wirral ,CH46 2QQ ,Q44 ,Cheshire Warrington and Wirral 
+V08950,101192/0010 ,GDS Contract ,1/11/2008,,Community Dental Centres Ltd ,ADP Dental Co Limited ,Walwyn Close ,BATH ,Avon ,,BA2 1ER ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V08973,150231/0002 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Bramley Clinic ,255 Town Street ,Bramley ,LEEDS ,West Yorkshire ,LS13 3EJ ,Q52 ,West Yorkshire 
+V08979,150231/0003 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Rothwell Health Centre ,Stone Brig Lane ,Rothwell ,LEEDS ,West Yorkshire ,LS26 0UE ,Q52 ,West Yorkshire 
+V08984,150231/0007 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Morley Health Centre ,Corporation Street ,Morley ,LEEDS ,West Yorkshire ,LS27 9NB ,Q52 ,West Yorkshire 
+V08985,150231/0008 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Primary Care Centre ,For The Homeless ,68 York Street ,Leeds ,West Yorkshire ,LS9 8AA ,Q52 ,West Yorkshire 
+V09007,127957/0007 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,N H S Dental Access Centre ,10 Nelson Street ,LEICESTER ,Leicestershire ,,LE1 7BA ,Q59 ,Leicestershire and Lincolnshire 
+V09016,150231/0010 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Horsforth Clinic ,Church Lane ,Horsforth ,LEEDS ,,LS18 5JA ,Q52 ,West Yorkshire 
+V09022,150231/0013 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Seacroft Health Clinic ,Seacroft Avenue ,Leeds ,,,LS14 6PF ,Q52 ,West Yorkshire 
+V09023,150231/0014 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Woodsley Health Clinic ,Woodsley Road ,LEEDS ,,,LS6 1SB ,Q52 ,West Yorkshire 
+V09031,110752/0001 ,PDS Contract ,1/4/2006,31/3/2017,Kirklees & Calderdale PCTS ,Calderdale & Kirklees Community ,Dental Care ,Princess Royal Community Health ,Centre ,"Greenhead Road , HUDDERSFIELD ",HD1 4EW ,Q52 ,West Yorkshire 
+V09038,121371/0007 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Special Care Dentistry ,The Jubilee Dental Centre ,St Richards Hospital ,Spitalfield Lane ,Chichester ,PO19 6SE ,Q68 ,Surrey and Sussex 
+V09046,165298/0001 ,PDS Contract ,1/10/2013,30/9/2017,Plymouth Community Dental Services Limited ,Plymouth Primary Care Trust ,Nuffield Clinic ,Lipson Road ,PLYMOUTH ,Devon ,PL4 8NQ ,Q66 ,Devon Cornwall and Isles of Scilly 
+V09051,177121/0002 ,PDS Contract ,1/4/2006,31/3/2017,Gloucestershire PCT ,Community Services Clinic ,38 39 Barton Road ,TEWKESBURY ,Gloucestershire ,,GL20 5QL ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V09054,121371/0003 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,East Grinstead Dental Clinic ,St Michaels Road ,East Grinstead ,West Sussex ,,RH19 3JS ,Q68 ,Surrey and Sussex 
+V09059,121371/0001 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Haywards Heath Health Centre ,Dental Clinic ,Heath Road ,Haywards Heath ,West Sussex ,RH16 3BB ,Q68 ,Surrey and Sussex 
+V09060,187992/0015 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Special Needs Dental Clinic ,Buryfields Clinic ,Lawn Road ,GUILDFORD ,,GU2 4AX ,Q68 ,Surrey and Sussex 
+V09061,187992/0016 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Dental Access Centre ,Buryfields Clinic ,61 Buryfields ,GUILDFORD ,,GU2 4AX ,Q68 ,Surrey and Sussex 
+V09069,187992/0020 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Special Needs Dental Clinic ,Haslemere Hospital ,Church Lane ,HASLEMERE ,,GU27 2BJ ,Q68 ,Surrey and Sussex 
+V09071,100045/0000 ,PDS Contract ,1/4/2016,31/3/2017,REVIVE DENTAL CARE LIMITED ,Community Dental Services ,Kingsgate ,Wellington Road North ,Stockport ,Cheshire ,SK4 1LW ,Q46 ,Greater Manchester 
+V09076,121371/0005 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Lancing Dental Clinic ,Health Centre ,Penstone Park ,Lancing ,West Sussex ,BN15 9AG ,Q68 ,Surrey and Sussex 
+V09078,121371/0006 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Littlehampton Dental Clinic ,Health Centre ,Fitzalan Road ,Littlehampton ,West Sussex ,BN17 5HG ,Q68 ,Surrey and Sussex 
+V09080,121371/0010 ,GDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Central Clinic ,Stoke Abbott Road ,WORTHING ,West Sussex ,,BN11 1HE ,Q68 ,Surrey and Sussex 
+V09115,177121/0002 ,PDS Contract ,1/4/2006,31/3/2017,Gloucestershire PCT ,Community Dental Clinic ,Delancey Hospital ,Charlton Lane ,Cheltenham ,Gloucestershire ,GL53 9DU ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V09129,104531/0001 ,PDS Contract ,1/4/2006,31/3/2017,Torbay Care Trust ,South Devon Community Dental ,Castle Circus Health Centre ,Abbey Road ,TORQUAY ,Devon ,TQ2 5YH ,Q66 ,Devon Cornwall and Isles of Scilly 
+V09160,150231/0016 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Armley Moor Health Centre ,93 Town Street ,"Armley ,","Leeds, ",West Yorkshire ,LS12 3HD ,Q52 ,West Yorkshire 
+V09186,100226/0001 ,PDS Contract ,1/4/2006,31/3/2018,WILTSHIRE DENTAL ACCESS CENTRES ,DAC - Chippenham ,Chippenham Community Hospital ,Rowden Hill ,CHIPPENHAM ,Wiltshire ,SN15 2AJ ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V09218,187992/0022 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Healthcare Suite ,HMP Send ,Ripley Road ,Send ,WOKING ,GU23 7LJ ,Q68 ,Surrey and Sussex 
+V09219,187992/0012 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Woking Community Hospital ,Heathside Road ,WOKING ,Surrey ,,GU22 7HS ,Q68 ,Surrey and Sussex 
+V09251,127353/0001 ,PDS Contract ,1/4/2006,31/3/2017,Croydon Community Dental Service ,Thornton Heath Health Centre ,61A Gillett Road ,THORNTON HEATH ,Surrey ,,CR7 8RL ,Q63 ,South London 
+V09265,110671/0002 ,PDS Contract ,1/5/2006,31/3/2017,Wandsworth Primary Care Trust ,Wandsworth Community Health ,Doddington Health Clinic ,311 Battersea Park Road ,LONDON ,,SW11 4LU ,Q63 ,South London 
+V09268,199052/0001 ,PDS Contract ,1/8/2009,,Sutton & Merton Community Dental Services ,The Health Centre ,411A Green Wrythe Lane ,CARSHALTON ,Surrey ,,SM5 1JL ,Q63 ,South London 
+V09269,199052/0002 ,PDS Contract ,1/8/2009,31/7/2019,Sutton & Merton Community Dental Services ,Dental Surgery ,Morden Road Clinic ,254 Morden Road ,LONDON ,,SW19 3DA ,Q63 ,South London 
+V09273,199052/0006 ,PDS Contract ,1/8/2009,,Sutton & Merton Community Dental Services ,Dental Surgery ,Wilson Hospital ,Cranmer Road ,MITCHAM ,Surrey ,CR4 4TP ,Q63 ,South London 
+V09275,199052/0003 ,PDS Contract ,1/8/2009,,Sutton & Merton Community Dental Services ,Dental Surgery ,The Patrick Doody Clinic ,Pelham Road ,LONDON ,,SW19 1NX ,Q63 ,South London 
+V09287,187992/0008 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Dental Surgery ,Goldsworth Park Health Centre ,Goldsworth Park ,Woking ,Surrey ,GU21 3LG ,Q68 ,Surrey and Sussex 
+V09297,127957/0007 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Charnwood & NW Leicester PCT ,Woodgate ,LOUGHBOROUGH ,Leicestershire ,,LE11 2TZ ,Q59 ,Leicestershire and Lincolnshire 
+V09316,105945/0001 ,PDS Contract ,6/10/2014,31/3/2017,Cumbria Partnership NHS FT - Allerdale & Copeland - Special ,Workington Community Hospital ,Park Lane ,WORKINGTON ,Cumbria ,,CA14 2RW ,Q49 ,Cumbria Northumberland Tyne and Wear 
+V09321,175862/0001 ,PDS Contract ,1/4/2006,,North Cumbria PCTDS ,Eden Valley Primary Care Trust ,Mary Hewetson Community Hospital ,Crosthwaite Road ,KESWICK ,Cumbria ,CA12 5PH ,Q49 ,Cumbria Northumberland Tyne and Wear 
+V09324,123390/0001 ,PDS Contract ,1/4/2006,31/3/2018,Wiltshire & Swindon OOH Dental Service ,Dental OOHs - Chippenham ,Chippenham Community Hospital ,Rowden Hill ,Chippenham ,Wiltshire ,SN15 2AJ ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V09342,146870/0002 ,PDS Contract ,1/4/2014,30/11/2016,Lincolnshire Community Health Services NHS Trust ,Skegness Health Clinic ,Cecil Avenue ,SKEGNESS ,Lincolnshire ,,PE25 2BX ,Q59 ,Leicestershire and Lincolnshire 
+V09343,127337/0001 ,PDS Contract ,13/9/2010,30/11/2016,1A Dental Practice Ltd ,Johnson Community Hospital ,Spalding Road ,Pinchbeck ,Lincolnshire ,,PE11 3DT ,Q59 ,Leicestershire and Lincolnshire 
+V09348,146870/0002 ,PDS Contract ,1/4/2014,30/11/2016,Lincolnshire Community Health Services NHS Trust ,Grantham Health Clinic ,St Catherines Road ,GRANTHAM ,Lincolnshire ,,NG31 6TT ,Q59 ,Leicestershire and Lincolnshire 
+V09349,146870/0002 ,PDS Contract ,1/4/2014,30/11/2016,Lincolnshire Community Health Services NHS Trust ,Louth County Hospital ,High Holme Road ,LOUTH ,Lincolnshire ,,LN11 0EU ,Q59 ,Leicestershire and Lincolnshire 
+V09351,146870/0002 ,PDS Contract ,1/4/2014,30/11/2016,Lincolnshire Community Health Services NHS Trust ,Gainsborough Health Centre ,Hickman Street ,GAINSBOROUGH ,Lincolnshire ,,DN21 2DZ ,Q59 ,Leicestershire and Lincolnshire 
+V09352,146870/0002 ,PDS Contract ,1/4/2014,30/11/2016,Lincolnshire Community Health Services NHS Trust ,North Hykeham Health Centre ,Moor Lane ,North Hykeham ,LINCOLN ,Lincolnshire ,LN6 9BA ,Q59 ,Leicestershire and Lincolnshire 
+V09366,146870/0002 ,PDS Contract ,1/4/2014,30/11/2016,Lincolnshire Community Health Services NHS Trust ,Boston Health Clinic ,Lincoln Lane ,Boston ,Lincolnshire ,,PE21 8RU ,Q59 ,Leicestershire and Lincolnshire 
+V09421,174343/0013 ,PDS Contract ,1/7/2015,30/6/2018,Bridgewater Community Healthcare NHS Foundation Trust ,Dental Department ,Ashfields Primary Care Centre ,Middlewich Road ,SANDBACH ,Cheshire ,CW11 1EQ ,Q44 ,Cheshire Warrington and Wirral 
+V09423,187992/0003 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Tattenham Health Centre ,Tattenham Crescent ,EPSOM ,Surrey ,,KT18 5NU ,Q68 ,Surrey and Sussex 
+V09425,187992/0006 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Epsom Health Clinic ,Church Street ,EPSOM ,Surrey ,,KT17 4PH ,Q68 ,Surrey and Sussex 
+V09434,187992/0004 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Emberbrook Dental Clinic ,14 Raphael Drive ,THAMES DITTON ,Surrey ,,KT7 0BL ,Q68 ,Surrey and Sussex 
+V09437,187992/0005 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Leatherhead Hospital ,Poplar Road ,LEATHERHEAD ,Surrey ,,KT22 8SD ,Q68 ,Surrey and Sussex 
+V09446,127213/0005 ,PDS Contract ,1/4/2015,31/3/2018,Wirral Community NHS Trust ,OPD 3 Primary Care Dental ,Countess of Chester Hospital ,Countess of Chester Health Park ,Liverpool Road ,CHESTER ,CH2 1UL ,Q44 ,Cheshire Warrington and Wirral 
+V09455,167126/0001 ,PDS Contract ,1/4/2006,,Warndon Dental Clinic ,Community Dental Services ,Warndon Clinic ,Cranham Drive ,WORCESTER ,Worcestershire ,WR4 9PA ,Q53 ,Arden Herefordshire and Worcestershire 
+V09456,184462/0001 ,PDS Contract ,1/4/2006,,Princess of Wales Community Hospital ,Princess of Wales Hospital ,Comunity Dental Clinic ,Stourbridge Road ,BROMSGROVE ,Worcestershire ,B61 0BB ,Q53 ,Arden Herefordshire and Worcestershire 
+V09460,184314/0001 ,PDS Contract ,1/4/2006,,HMP Brockhill ,Community Dental Department ,H M Prison ,Brockhill Lane ,REDDITCH ,Worcestershire ,B97 6RD ,Q53 ,Arden Herefordshire and Worcestershire 
+V09465,191914/0001 ,PDS Contract ,1/4/2006,,Evesham Community Dental Clinic ,Evesham Community Hospital ,Waterside ,EVESHAM ,Worcestershire ,,WR11 1JT ,Q53 ,Arden Herefordshire and Worcestershire 
+V09488,127957/0001 ,PDS Contract ,1/4/2006,,Derbyshire Community Health Services ,Tollbar House ,1 Derby Road ,ILKESTON ,Derbyshire ,,DE7 5FE ,Q55 ,Derbyshire and Nottinghamshire 
+V09508,141844/0003 ,PDS Contract ,1/5/2006,,Kingston Community Dental Service ,Oak Hill Health Centre ,Oak Hill Road ,SURBITON ,Surrey ,,KT6 6EN ,Q63 ,South London 
+V09509,102873/0002 ,PDS Contract ,1/5/2006,,Richmond & Twickenham PCT ,Richmond & Twickenham ,Hampton Community Health Centre ,Tangley Park Road ,HAMPTON ,Middlesex ,TW12 3YH ,Q63 ,South London 
+V09511,102873/0001 ,PDS Contract ,1/5/2006,31/3/2017,Richmond & Twickenham PCT ,Community Dental Service ,Teddington Clinic ,18 Queens Road ,TEDDINGTON ,Middlesex ,TW11 0LR ,Q63 ,South London 
+V09542,182303/0001 ,PDS Contract ,1/7/2012,30/6/2022,NHS Waltham Forest ,Hainault Health Centre ,Community Dental Service ,Manford Way ,CHIGWELL ,Essex ,IG7 4DF ,Q61 ,North East London 
+V09547,148954/0001 ,PDS Contract ,1/4/2006,31/3/2018,Wiltshire & Swindon CDS ,Community Dental Department ,Health Centre ,Colemans Close ,CALNE ,Wiltshire ,SN11 8NQ ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V09556,127213/0004 ,PDS Contract ,1/4/2015,31/3/2018,Wirral Community NHS Trust ,Dene Drive Primary Care Centre ,Dental Department ,Dene Drive ,Winsford ,Cheshire ,CW7 1AT ,Q44 ,Cheshire Warrington and Wirral 
+V09559,153052/0001 ,GDS Contract ,1/8/2012,,Dentalcare (Southern) Limited ,Community Dental Department ,Health Clinic ,The Halve ,TROWBRIDGE ,Wiltshire ,BA14 8SA ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V09588,150231/0017 ,PDS Contract ,1/7/2006,31/3/2017,Leeds Community Dental Services ,Middleton Community Health Centr ,Middleton Park Avenue ,LEEDS ,West Yorkshire ,,LS10 4HT ,Q52 ,West Yorkshire 
+V09598,129429/0007 ,PDS Contract ,1/12/2006,,Community Dental Service ,Steels Lane Health Centre ,384 - 388 Commercial Road ,LONDON ,,,E1 0LR ,Q61 ,North East London 
+V09603,129429/0008 ,PDS Contract ,1/12/2006,,Community Dental Service ,Spitalfields Health Centre ,9 - 11 Brick Lane ,LONDON ,,,E1 6PU ,Q61 ,North East London 
+V09617,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,London Borough Of Hounslow ,The Thelma Golding Centre ,92 Bath Road ,HOUNSLOW ,Middlesex ,TW3 3EL ,Q62 ,North West London 
+V09618,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,London Borough Of Hounslow ,Heston Health Clinic ,Cranford Lane ,HOUNSLOW ,Middlesex ,TW5 9ER ,Q62 ,North West London 
+V09624,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,Dental Department ,Featherstone Road Health Clinic ,Hartington Road ,SOUTHALL ,Middlesex ,UB2 5BQ ,Q62 ,North West London 
+V09634,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,Dental Department ,Acton Health Centre ,35 - 61 Church Road ,LONDON ,,W3 8QE ,Q62 ,North West London 
+V09637,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,Bedfont Health Clinic ,Imperial Road ,FELTHAM ,Middlesex ,,TW14 8AG ,Q62 ,North West London 
+V09638,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,Brentford Health Centre ,Boston Manor Road ,BRENTFORD ,Middlesex ,,TW8 8DS ,Q62 ,North West London 
+V09651,156353/0001 ,PDS Contract ,8/7/2010,,Central London Community Healthcare ,St Charles Centre ,For Health & Wellbeing ,Exmoor Street ,LONDON ,,W10 6DZ ,Q62 ,North West London 
+V09666,156353/0002 ,PDS Contract ,13/7/2010,,Central London Community Healthcare ,Violet Melchett Clinic ,30 Flood Walk ,LONDON ,,,SW3 5RR ,Q62 ,North West London 
+V09670,137960/0001 ,PDS Contract ,1/4/2011,31/3/2017,Community Specialist Dentistry ,The George Eliot Hospital N H S ,Lewis House ,College Street ,NUNEATON ,Warwickshire ,CV10 7DJ ,Q53 ,Arden Herefordshire and Worcestershire 
+V09703,141046/0001 ,PDS Contract ,1/2/2011,31/1/2021,Newham Community Dental Service ,The Appleby Centre ,63 Appleby Road ,LONDON ,,,E16 1LQ ,Q61 ,North East London 
+V09725,117404/0004 ,PDS Contract ,1/5/2013,,Barnet Community Dental Services ,Torrington Clinic ,16 Torrington Park ,LONDON ,,,N12 9SS ,Q61 ,North East London 
+V09729,117404/0001 ,PDS Contract ,1/5/2013,,Barnet Community Dental Services ,Vale Drive Primary Care Centre ,Vale Drive ,BARNET ,Hertfordshire ,,EN5 2ED ,Q61 ,North East London 
+V09799,164941/0002 ,PDS Contract ,1/4/2006,31/3/2018,Avon SPCDS ,Community Dental Service ,Bristol Dental Hospital ,Lower Maudlin Street ,BRISTOL ,Avon ,BS1 2LY ,Q65 ,Bristol North Somerset Somerset and South Gloucestershire 
+V09800,164941/0002 ,PDS Contract ,1/4/2006,31/3/2018,Avon SPCDS ,Community Dental Service ,Royal United Hospital ,Combe Park ,Bath ,,BA1 3NG ,Q65 ,Bristol North Somerset Somerset and South Gloucestershire 
+V09809,177490/0001 ,PDS Contract ,1/10/2006,,Manchester PCTDS ,Mancunian Community Health N H S ,Withington School Dental Clinic ,535 Wilmslow Road ,MANCHESTER ,Lancashire ,M20 4BA ,Q46 ,Greater Manchester 
+V09810,137189/0002 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Community Dental Department ,Guisborough General Hospital ,Northgate ,GUISBOROUGH ,Cleveland ,TS14 6HZ ,Q45 ,Durham Darlington and Tees 
+V09811,137189/0003 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Eston Dental Clinic ,Fabian Road ,Eston ,Middlesbrough ,,TS6 9RQ ,Q45 ,Durham Darlington and Tees 
+V09812,137189/0004 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Dental Clinic ,Caroline Street Health Centre ,HARTLEPOOL ,Cleveland ,,TS26 9LE ,Q45 ,Durham Darlington and Tees 
+V09813,137189/0001 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Hardwick Dental Clinic ,Hardwick Health Centre ,Hardwick Road ,STOCKTON ON TEES ,Cleveland ,TS19 8JX ,Q45 ,Durham Darlington and Tees 
+V09814,137189/0001 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Dental Clinic ,Thornaby Medical Centre ,Trenchard Avenue ,Thornaby ,STOCKTON ON TEES ,TS17 0EE ,Q45 ,Durham Darlington and Tees 
+V09815,137189/0001 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Dental Clinic ,Lawson Street ,Health Centre ,STOCKTON ON TEES ,Cleveland ,TS18 1HX ,Q45 ,Durham Darlington and Tees 
+V09845,109525/0005 ,PDS Contract ,1/4/2015,31/3/2018,Liverpool Dental Directorate ,Community Dental Clinic ,Hartington Road ,Family Health Clinic ,Hartington Road ,Liverpool ,L8 0SG ,Q48 ,Merseyside 
+V09867,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Mobile Dental Unit (North) ,Kempston Dental Clinic ,Halsey Road ,Kempston ,Bedford ,MK42 8AU ,Q58 ,Hertfordshire and the South Midlands 
+V09869,193534/0004 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Out of Hours Dental Services ,(London Road) ,London Road Health Centre ,84 - 86 London Road ,BEDFORD ,MK42 0NT ,Q58 ,Hertfordshire and the South Midlands 
+V09872,193534/0004 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Out of Hours Dental Service ,(Houghton Regis) ,Houghton Regis Dental Clinic ,Tithe Farm Road ,"Houghton Regis , DUNSTABLE ",LU5 5ES ,Q58 ,Hertfordshire and the South Midlands 
+V09882,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Charter House ,Parkway ,WELWYN GARDEN CITY ,Hertfordshire ,,AL8 6JL ,Q58 ,Hertfordshire and the South Midlands 
+V09883,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,North Hertfordshire And Stevenag ,Health Centre ,Bedford Road ,HITCHIN ,Hertfordshire ,SG5 1HF ,Q58 ,Hertfordshire and the South Midlands 
+V09884,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,St Albans City Hospital ,Waverley Road ,ST ALBANS ,Hertfordshire ,,AL3 5PN ,Q58 ,Hertfordshire and the South Midlands 
+V09885,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,West Herts Community Health N H ,Peace Childrens Centre ,Peace Prospect ,WATFORD ,Hertfordshire ,WD17 3EW ,Q58 ,Hertfordshire and the South Midlands 
+V09886,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Marlowes Health Centre ,Marlowes ,HEMEL HEMPSTEAD ,Hertfordshire ,,HP1 1HE ,Q58 ,Hertfordshire and the South Midlands 
+V09887,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Hertfordshire Partnership N H S ,Harper Lane ,Shenley ,RADLETT ,Hertfordshire ,WD7 9HQ ,Q58 ,Hertfordshire and the South Midlands 
+V09894,123471/0001 ,PDS Contract ,1/10/2006,,Mid Essex Community Dental Service ,Witham Health Centre ,4 Mayland Road ,WITHAM ,Essex ,,CM8 2UX ,Q57 ,Essex 
+V09895,143103/0001 ,PDS Contract ,1/1/2011,31/3/2018,Lynne Woodcock ,Colchester Community Dental ,Colchester Primary Care Centre ,Turner Road ,COLCHESTER ,Essex ,CO4 5JR ,Q57 ,Essex 
+V09902,100285/0001 ,PDS Contract ,1/4/2006,31/3/2018,West Norfolk Salaried Dental Service ,Swaffham Community Hospital ,Sporle Road ,SWAFFHAM ,Norfolk ,,PE37 7HL ,Q56 ,East Anglia 
+V09949,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Dental Clinic ,The Health Centre ,High Street ,HODDESDON ,Hertfordshire ,EN11 8BE ,Q58 ,Hertfordshire and the South Midlands 
+V09950,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Dental Clinic ,The Health Centre ,Nevells Road ,LETCHWORTH GARDEN CITY ,Hertfordshire ,SG6 4TS ,Q58 ,Hertfordshire and the South Midlands 
+V09965,129518/0001 ,PDS Contract ,1/10/2006,31/3/2018,West Essex Primary Care Dental Service ,Community Dental Service ,Alexandra Day Unit ,Princess Alexandra Hospital ,Hamstel Road ,Harlow ,CM20 1QX ,Q57 ,Essex 
+V09967,129518/0001 ,PDS Contract ,1/10/2006,31/3/2018,West Essex Primary Care Dental Service ,Community Clinic ,58 New Street ,DUNMOW ,Essex ,,CM6 1BH ,Q57 ,Essex 
+V09973,187992/0011 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Special Care Dentistry Dept ,Weybridge Health Centre ,22 Church Street ,Weybridge ,Surrey ,KT13 8DY ,Q68 ,Surrey and Sussex 
+V09974,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,St Marys Hospital ,Thorpe Road ,MELTON MOWBRAY ,Leicestershire ,,LE13 1SJ ,Q59 ,Leicestershire and Lincolnshire 
+V09998,181196/0010 ,PDS Contract ,1/4/2011,31/3/2021,Rotherham NHS Foundation Trust ,Wath Community Dental Clinic ,Church Street ,Wath Upon Dearne ,ROTHERHAM ,South Yorkshire ,S63 7RF ,Q51 ,South Yorkshire and Bassetlaw 
+V09999,181196/0018 ,PDS Contract ,1/4/2011,31/3/2021,Rotherham NHS Foundation Trust ,Barnsley Community And Priority ,New Street Health Centre ,Upper New Street ,BARNSLEY ,South Yorkshire ,S70 1LP ,Q51 ,South Yorkshire and Bassetlaw 
+V10041,152811/0001 ,PDS Contract ,1/4/2007,,Brent Community Dental Contract ,Willesden Centre For Health ,And Care ,Robson Avenue ,LONDON ,,NW10 3RY ,Q62 ,North West London 
+V10042,152811/0003 ,PDS Contract ,1/4/2007,31/3/2017,Brent Community Dental Contract ,Wembley Centre ,116 Chaplin Road ,WEMBLEY ,Middlesex ,,HA0 4UZ ,Q62 ,North West London 
+V10066,166383/0001 ,PDS Contract ,1/4/2007,,Ealing and Hounslow PCT Community Dental Service ,West London Healthcare N H S Tru ,Ravenor Park Clinic ,23 Oldfield Lane South ,GREENFORD ,Middlesex ,UB6 9LF ,Q62 ,North West London 
+V10130,187992/0002 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Bourne Hall Dental Clinic ,Chessington Road ,Ewell ,Surrey ,,KT17 1TG ,Q68 ,Surrey and Sussex 
+V10133,140449/0003 ,PDS Contract ,1/6/2013,31/3/2017,South Tyneside Foundation Trust ,Dental Department ,Palmer Community Hospital ,Wear Street ,JARROW ,Tyne And Wear ,NE32 3UX ,Q49 ,Cumbria Northumberland Tyne and Wear 
+V10146,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Dental Department ,Newmarket Hospital ,56 Exning Road ,Newmarket ,Suffolk ,CB8 7JG ,Q56 ,East Anglia 
+V10152,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Community Dental Service ,Islington PCT ,2nd Floor ,338 - 346 Goswell Road ,London ,EC1V 7LQ ,Q61 ,North East London 
+V10172,162353/0003 ,PDS Contract ,1/10/2006,31/3/2017,County Durham PCT ,Dental Department ,Community Dental Services ,The Castle Dental Practice ,39 Galgate ,"Bernard Castle , Co Durham ",DL12 8EJ ,Q45 ,Durham Darlington and Tees 
+V10179,155241/0009 ,PDS Contract ,1/10/2006,31/3/2017,East Sussex Special Dental Care Service ,Uckfield Community Hospital Chil ,Framfield Road ,UCKFIELD ,East Sussex ,,TN22 5AW ,Q68 ,Surrey and Sussex 
+V10187,163457/0029 ,PDS Contract ,1/4/2013,31/3/2018,Solent Dental Services ,Petersfield Dental Clinic ,Petersfield Community Hospital ,Swan Street ,Petersfield ,Hants ,GU32 3LB ,Q70 ,Wessex 
+V10198,127353/0001 ,PDS Contract ,1/4/2006,31/3/2017,Croydon Community Dental Service ,Purley Community Health Clinic ,62 Whytecliffe Road North ,PURLEY ,Surrey ,,CR8 2AR ,Q63 ,South London 
+V10199,127353/0001 ,PDS Contract ,1/4/2006,31/3/2017,Croydon Community Dental Service ,Shirley Clinic ,135 Shirley Road ,CROYDON ,Surrey ,,CR0 7LR ,Q63 ,South London 
+V10202,127353/0001 ,PDS Contract ,1/4/2006,31/3/2017,Croydon Community Dental Service ,Waddon Clinic ,1A Coldharbour Road ,CROYDON ,Surrey ,,CR0 4DY ,Q63 ,South London 
+V10205,127353/0001 ,PDS Contract ,1/4/2006,31/3/2017,Croydon Community Dental Service ,Parkway Health Centre ,Parkway ,New Addington ,Surrey ,,CR0 0JA ,Q63 ,South London 
+V10206,127353/0001 ,PDS Contract ,1/4/2006,31/3/2017,Croydon Community Dental Service ,Driscoll Centre ,Oaklands House ,Coulsdon Road ,Caterham ,Surrey ,CR3 5YA ,Q63 ,South London 
+V10212,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Kentish Town Health Centre ,2 Bartholomew Road ,LONDON ,,,NW5 2AJ ,Q61 ,North East London 
+V10213,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Crowndale Health Centre ,59 Crowndale Road ,,,,NW1 1TU ,Q61 ,North East London 
+V10214,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Community Dental Service ,Dental Departmen ,Hunter Street Health Centre ,8 Hunter Street ,London ,WC1N 1BN ,Q61 ,North East London 
+V10215,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Gospel Oak Health Centre ,Lismore Circus ,London ,,,NW5 4QD ,Q61 ,North East London 
+V10216,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Belsize Priory Health Centre ,208 Belsize Road ,London ,,,NW6 4DX ,Q61 ,North East London 
+V10217,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Goodinge Health Centre ,Goodinge Close ,North Road ,London ,,N7 9EW ,Q61 ,North East London 
+V10218,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Hornsey Rise Health Centre ,Beaumont Rise ,London ,,,N19 3YU ,Q61 ,North East London 
+V10219,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Highbury Grange Health Centre ,Highbury Grange ,London ,,,N5 2QB ,Q61 ,North East London 
+V10220,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,River Place Health Centre ,River Place ,Essex Road ,London ,,N1 2DE ,Q61 ,North East London 
+V10221,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Finsbury Health Centre ,Pine Street ,London ,,,EC1R 0JH ,Q61 ,North East London 
+V10222,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Kings Cross Primary Care Centre ,264 Pentonville Road ,London ,,,N1 3JY ,Q61 ,North East London 
+V10223,118001/0001 ,PDS Contract ,1/10/2006,,Community Dental Service ,Mortimer Market Dental Centre ,Capper Street ,London ,,,WC1 6AU ,Q61 ,North East London 
+V10224,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Salford Community Health Care ,Swinton Clinic ,139 Partington Lane ,Swinton ,MANCHESTER ,M27 0NS ,Q46 ,Greater Manchester 
+V10237,142573/0001 ,PDS Contract ,1/4/2007,,Hillingdon PCT Community Dental Services ,Hillingdon District Health Autho ,Uxbridge Health Centre ,George Street ,UXBRIDGE ,Middlesex ,UB8 1UB ,Q62 ,North West London 
+V10242,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Chantry Clinic ,Hawthorn Drive ,IPSWICH ,Suffolk ,,IP2 0QY ,Q56 ,East Anglia 
+V10243,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,The Dental Clinic ,Ravenswood Health Centre ,24 Henning Avenue ,Ipswich ,Suffolk ,IP3 9QJ ,Q56 ,East Anglia 
+V10245,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Whitton Clinic ,Meredith Road ,IPSWICH ,Suffolk ,,IP1 6ED ,Q56 ,East Anglia 
+V10246,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Stowhealth ,Violet Hill House ,Violet Hill Road ,STOWMARKET ,Suffolk ,IP14 1NL ,Q56 ,East Anglia 
+V10249,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Suffolk West PCT ,Health Centre ,Camps Road ,HAVERHILL ,Suffolk ,CB9 8HF ,Q56 ,East Anglia 
+V10250,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Suffolk West N H S ,Milden Hall Health Centre ,Chestnut Close ,Mildenhall ,BURY ST EDMUNDS ,IP28 7NL ,Q56 ,East Anglia 
+V10257,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Rushey Mead Health Centre ,8 Lockerbie Walk ,LEICESTER ,Leicestershire ,,LE4 7ZX ,Q59 ,Leicestershire and Lincolnshire 
+V10260,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Hinckley Health Centre ,29 Hill Street ,HINCKLEY ,Leicestershire ,,LE10 1DS ,Q59 ,Leicestershire and Lincolnshire 
+V10261,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Westcotes Health Centre ,Fosse Road South ,LEICESTER ,Leicestershire ,,LE3 0LP ,Q59 ,Leicestershire and Lincolnshire 
+V10262,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Loughborough Hospital ,Hospital Way ,LOUGHBOROUGH ,Leicestershire ,,LE11 5JY ,Q59 ,Leicestershire and Lincolnshire 
+V10279,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Suffolk West Primary Care Trust ,Sudbury Health Centre ,Acton Lane ,SUDBURY ,Suffolk ,CO10 1QN ,Q56 ,East Anglia 
+V10312,123471/0001 ,PDS Contract ,1/10/2006,,Mid Essex Community Dental Service ,Maldon And South Chelmsford Prim ,Maldon Clinic ,Wantz Chase ,MALDON ,Essex ,CM9 5DN ,Q57 ,Essex 
+V10313,123471/0001 ,PDS Contract ,1/10/2006,,Mid Essex Community Dental Service ,Melbourne Community Clinic ,Melbourne Avenue ,Chelmsford ,Essex ,,CM1 2DX ,Q57 ,Essex 
+V10314,123471/0001 ,PDS Contract ,1/10/2006,,Mid Essex Community Dental Service ,South Woodham Ferrers Clinic ,Merchant Street ,South Woodham Ferrers ,Essex ,,CM3 5XE ,Q57 ,Essex 
+V10315,123471/0001 ,PDS Contract ,1/10/2006,,Mid Essex Community Dental Service ,Elmstead Day Unit ,Colchester General Hospital ,Turner Road ,Colchester ,Essex ,CO4 5JL ,Q57 ,Essex 
+V10332,177490/0001 ,PDS Contract ,1/10/2006,,Manchester PCTDS ,Mancunian Community Health N H S ,Northenden Health Centre ,489 Palatine Road ,MANCHESTER ,Lancashire ,M22 4DH ,Q46 ,Greater Manchester 
+V10339,177490/0001 ,PDS Contract ,1/10/2006,,Manchester PCTDS ,Withington Community Clinic ,Dental Department ,535 Wilmslow Road ,Manchester ,,M20 9PW ,Q46 ,Greater Manchester 
+V10386,149829/0002 ,PDS Contract ,1/10/2013,30/9/2023,Bexley Community Dental Services ,Barnard Dental Centre ,Barnard Health Centre ,43 Granville Road ,SIDCUP ,Kent ,DA14 4TA ,Q63 ,South London 
+V10438,191310/0001 ,GDS Contract ,15/11/2006,,East Midlands Community Dental Ass. Ltd. ,Genesis Dental Care ,Abbey House ,1 Castlegate ,GRANTHAM ,Lincolnshire ,NG31 6SE ,Q59 ,Leicestershire and Lincolnshire 
+V10463,191310/0002 ,GDS Contract ,4/12/2006,,East Midlands Community Dental Ass. Ltd. ,2 Birchwood Lane ,South Normanton ,Alfreton ,Derbyshire ,,DE55 3DA ,Q55 ,Derbyshire and Nottinghamshire 
+V10478,127264/0001 ,PDS Contract ,1/5/2006,,Herts Community NHS Trust ,H M Prison ,"Dental Surgery , The Mount ",Molyneaux Avenue ,Bovingdon ,HEMEL HEMPSTEAD ,HP3 0NZ ,Q58 ,Hertfordshire and the South Midlands 
+V10490,187992/0023 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Dental Department ,H M Downview Prison ,Sutton Lane ,SUTTON ,Surrey ,SM2 5PD ,Q68 ,Surrey and Sussex 
+V10494,141534/0001 ,PDS Contract ,1/10/2006,31/3/2018,Norfolk PCT Dental Services ,Siskin Dental Centre ,Norwich Community Hospital ,Bowthorpe Road ,Norwich ,,NR2 3TU ,Q56 ,East Anglia 
+V10500,141534/0003 ,PDS Contract ,1/10/2006,31/3/2018,Norfolk PCT Dental Services ,Norwich Community Health Partner ,Bowthorpe Health Centre ,Bowthorpe Main Centre ,Wendene ,NORWICH ,NR5 9HA ,Q56 ,East Anglia 
+V10508,187992/0007 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Epsom Dental Access Centre ,Epsom Clinic ,Church Street ,Epsom ,Surrey ,KT17 4PH ,Q68 ,Surrey and Sussex 
+V10548,112984/0001 ,GDS Contract ,1/12/2014,,East Midlands Community Dental Association Ltd ,3/4 Carlton Mews ,The Carlton Centre ,LINCOLN ,Lincolnshire ,,LN2 4FJ ,Q59 ,Leicestershire and Lincolnshire 
+V10591,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,The Dental Clinic ,Thetford Community ,Healthy Living Centre ,Croxton Road ,Thetford ,IP24 1JD ,Q56 ,East Anglia 
+V10734,102989/0001 ,PDS Contract ,1/4/2007,,Devon PCT ,Okehampton Community Hospital ,Cavell Way ,OKEHAMPTON ,Devon ,,EX20 1PN ,Q66 ,Devon Cornwall and Isles of Scilly 
+V10754,129518/0001 ,PDS Contract ,1/10/2006,31/3/2018,West Essex Primary Care Dental Service ,Community Dental Service ,Addison House ,Hamstel Road ,Harlow ,Essex ,CM20 1EP ,Q57 ,Essex 
+V10755,129518/0001 ,PDS Contract ,1/10/2006,31/3/2018,West Essex Primary Care Dental Service ,Community Dental Service ,Waltham Abbey Primary Care Ctr. ,Sewardstone Road ,Waltham Abbey ,ESSEX ,EN9 1NP ,Q57 ,Essex 
+V10780,150231/0018 ,PDS Contract ,1/4/2007,31/3/2017,Leeds Community Dental Services ,Beeston Community Clinic ,123 Cemetery Road ,Beestpm ,Leeds ,,LS11 8LH ,Q52 ,West Yorkshire 
+V10811,193534/0016 ,GDS Contract ,1/4/2015,,Community Dental Services CIC ,H M Prison ,200 Springfield Road ,CHELMSFORD ,Essex ,,CM2 6LQ ,Q56 ,East Anglia 
+V10962,162353/0003 ,PDS Contract ,1/10/2006,31/3/2017,County Durham PCT ,Dental Department ,Richardson Community Hospital ,Victoria Road ,BARNARD CASTLE ,County Durham ,DL12 8HW ,Q45 ,Durham Darlington and Tees 
+V10991,829285/0004 ,GDS Contract ,2/7/2007,,MRS CO ADELOYE ,"Dental Department , First Floor ",The Gravesham Community Hospital ,Bath Street ,GRAVESEND ,Kent ,DA11 0DG ,Q67 ,Kent and Medway 
+V11225,150231/0019 ,PDS Contract ,17/10/2007,31/3/2017,Leeds Community Dental Services ,Yeadon Health Centre ,17 South View Road ,Yeadon ,LEEDS ,West Yorkshire ,LS19 7PS ,Q52 ,West Yorkshire 
+V11253,129429/0012 ,PDS Contract ,1/1/2008,31/12/2017,Community Dental Service ,Barkantine Clinic ,121 Westferry Road ,LONDON ,,,E14 8JH ,Q61 ,North East London 
+V11416,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Skimped Hill Health Centre ,Skimped Hill ,BRACKNELL ,Berkshire ,RG12 1LH ,Q69 ,Thames Valley 
+V11418,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,School Lane ,Caversham ,READING ,Berkshire ,RG4 8HX ,Q69 ,Thames Valley 
+V11419,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Townlands Hospital ,York Road ,Henley-on-Thames ,Oxon ,RG9 2DR ,Q69 ,Thames Valley 
+V11420,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Langley Health Centre ,Common Road ,Langley ,Berkshire ,SL3 8LE ,Q69 ,Thames Valley 
+V11421,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,St Marks Hospital ,St Marks Road ,Maidenhead ,BERKSHIRE ,SL6 6DU ,Q69 ,Thames Valley 
+V11423,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Southcote Health Clinic ,Coronation Square ,Southcote ,READING ,RG30 3QP ,Q69 ,Thames Valley 
+V11424,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Tilehurst Health Clinic ,Corwen Road ,Tilehurst ,READING ,RG30 4SH ,Q69 ,Thames Valley 
+V11425,100862/0002 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Reading Dental Access Centre ,Tilehurst Health Clinic ,Corwen Road ,Tilehurst ,READING ,RG30 4SH ,Q69 ,Thames Valley 
+V11427,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Health & Social Services Centre ,268 Northumberland Avenue ,Whitley ,READING ,RG2 7PJ ,Q69 ,Thames Valley 
+V11428,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Wokingham Hospital ,41 Barkham Road ,Wokingham ,BERKSHIRE ,RG41 2RE ,Q69 ,Thames Valley 
+V11444,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic Mobile 6 ,W Berkshire Community Hospital ,Benham Hill ,London Road ,THATCHAM Berks ,RG18 3AS ,Q69 ,Thames Valley 
+V11445,100862/0001 ,PDS Contract ,1/4/2006,31/3/2018,BERKSHIRE COMMUNITY DENTAL SERVICE ,Community Dental Clinic ,Upton Hospital ,Albert Street ,Slough ,BERKSHIRE ,SL1 2BJ ,Q69 ,Thames Valley 
+V11607,191310/0004 ,GDS Contract ,4/4/2008,,East Midlands Community Dental Ass. Ltd. ,Genesis Dental Care ,19 Market Street ,Gainsborough ,Lincolnshire ,,DN21 2BU ,Q59 ,Leicestershire and Lincolnshire 
+V11655,121371/0004 ,PDS Contract ,1/4/2011,31/3/2017,Sussex Community NHS Trust ,Crawley Hospital ,West Green Drive ,Crawley ,West Sussex ,,RH11 7DH ,Q68 ,Surrey and Sussex 
+V11685,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,"Community Dental Services , CIC ",Unit 12 Doolittle Mill ,Froghall Road ,Ampthill ,Bedfordshire ,MK45 2NX ,Q58 ,Hertfordshire and the South Midlands 
+V11755,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Barton Moss Secure Care Centre ,Barton Moss Road ,Eccles ,Manchester ,,M30 7RL ,Q46 ,Greater Manchester 
+V11790,187992/0015 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Farnham Hospital & ,Centre for Health ,Hale Road ,FARNHAM ,Surrey ,GU9 9QL ,Q68 ,Surrey and Sussex 
+V11804,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Mobile Service ,Bedfordshire PCT ,The Moakes ,Marsh Farm ,Luton ,LU3 3SR ,Q58 ,Hertfordshire and the South Midlands 
+V11810,109525/0005 ,PDS Contract ,1/4/2015,31/3/2018,Liverpool Dental Directorate ,Community Dental Clinic ,Bootle Health Centre ,Park Street ,Bootle ,,L20 3RF ,Q48 ,Merseyside 
+V11814,109525/0005 ,PDS Contract ,1/4/2015,31/3/2018,Liverpool Dental Directorate ,Community Dental Clinic ,Maghull Health Centre ,Westway ,Maghull ,Liverpool ,L31 0DJ ,Q48 ,Merseyside 
+V11817,109525/0005 ,PDS Contract ,1/4/2015,31/3/2018,Liverpool Dental Directorate ,Community Dental Clinic ,Norris Green Family Health Clini ,Townsend Avenue ,Norris Green ,Liverpool ,L11 5AF ,Q48 ,Merseyside 
+V11819,109525/0005 ,PDS Contract ,1/4/2015,31/3/2018,Liverpool Dental Directorate ,Community Dental Clinic ,Riverside Centre For Health ,Park Street ,Liverpool ,,L8 6QP ,Q48 ,Merseyside 
+V11820,109525/0005 ,PDS Contract ,1/4/2015,31/3/2018,Liverpool Dental Directorate ,Community Dental Clinic ,Southport Clinic ,44 - 46 Hoghton Street ,Southport ,,PR9 0PQ ,Q48 ,Merseyside 
+V11969,137189/0003 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,Tees Community Dental Service ,11B Trinity Mews ,North Ormesby Health Village ,Middlesborough ,,TS3 6AL ,Q45 ,Durham Darlington and Tees 
+V12016,187992/0013 ,PDS Contract ,1/6/2008,,Surrey Community Dental Services ,Special Care Dentistry ,Aldershot Centre for Health ,Hospital Hill ,Aldershot ,,GU11 1AY ,Q68 ,Surrey and Sussex 
+V12043,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Walkden Health And Social Care C ,2 Smith Street ,Worsley ,MANCHESTER ,Lancashire ,M28 3EZ ,Q46 ,Greater Manchester 
+V12102,185469/0039 ,PDS Contract ,1/8/2008,31/7/2018,King's Community Special Care Dentistry ,Downham Health Centre ,7 - 9 Moorside Road ,Downham ,BROMLEY ,Kent ,BR1 5EP ,Q63 ,South London 
+V12166,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Eccles Gateway ,29 Barton Lane ,Eccles ,Manchester ,,M30 0TU ,Q46 ,Greater Manchester 
+V12180,181730/0004 ,PDS Contract ,26/10/2008,25/10/2018,Buckinghamshire Priority Dental Service ,Buckinghamshire Priority Dental ,Marlow Community Hospital ,Glade Road ,Marlow ,Buckinghamshire ,SL7 1DJ ,Q69 ,Thames Valley 
+V12182,181730/0004 ,PDS Contract ,26/10/2008,25/10/2018,Buckinghamshire Priority Dental Service ,Buckinghamshire Priority Dental ,Buckingham Community Hospital ,"High Street , ",Buckingham ,,MK18 1NU ,Q69 ,Thames Valley 
+V12362,181196/0007 ,PDS Contract ,1/4/2011,31/3/2021,Rotherham NHS Foundation Trust ,Rotherham Community HealthCentre ,Greasbrough Road ,ROTHERHAM ,South Yorkshire ,,S60 1RY ,Q51 ,South Yorkshire and Bassetlaw 
+V12404,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Harpenden Memorial Hospital ,Carlton Road ,HARPENDEN ,Hertfordshire ,,AL5 4TA ,Q58 ,Hertfordshire and the South Midlands 
+V12421,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Pendleton Gateway ,1 Broadwalk ,SALFORD ,Lancashire ,,M6 5FX ,Q46 ,Greater Manchester 
+V12512,199052/0007 ,PDS Contract ,1/8/2009,,Sutton & Merton Community Dental Services ,Nelson Hospital ,Kingston Road ,LONDON ,,,SW20 8DB ,Q63 ,South London 
+V12618,136212/0001 ,PDS Contract ,1/4/2013,30/9/2017,PCH Dental CIC ,Liskeard Community Hospital ,Clemo Road ,LISKEARD ,Cornwall ,,PL14 3XD ,Q66 ,Devon Cornwall and Isles of Scilly 
+V12620,136212/0001 ,PDS Contract ,1/4/2013,30/9/2017,PCH Dental CIC ,St Austell Community Hospital ,Porthpean Road ,ST AUSTELL ,Cornwall ,,PL26 6AA ,Q66 ,Devon Cornwall and Isles of Scilly 
+V12707,833037/0009 ,GDS Contract ,1/6/2009,,MR MA HYDER ,Firthmoor Community Centre ,56 Burnside Road ,DARLINGTON ,County Durham ,,DL1 4SU ,Q45 ,Durham Darlington and Tees 
+V12709,189774/0001 ,PDS Contract ,1/7/2012,30/6/2022,NHS Redbridge ,Community Dental Service ,The Loxford Polyclinic ,417 Ilford Lane ,ILFORD ,Essex ,IG1 2SN ,Q61 ,North East London 
+V12754,132578/0001 ,PDS Contract ,1/7/2009,26/6/2019,The White Horse Dental Practice ,Westbury Community Hospital ,The Butts ,Westbury ,Wiltshire ,,BA13 3EL ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V12771,199052/0005 ,PDS Contract ,1/8/2009,,Sutton & Merton Community Dental Services ,Shotfield Health Centre ,6A Stanley Park Road ,Wallington ,,,SM6 0EU ,Q63 ,South London 
+V12786,150231/0021 ,PDS Contract ,1/7/2009,31/3/2017,Leeds Community Dental Services ,Paediatric GA ,Beeston Community Clinic ,123 Cemetery Road ,Beeston ,Leeds ,LS11 8LH ,Q52 ,West Yorkshire 
+V12787,150231/0022 ,PDS Contract ,1/7/2009,31/3/2017,Leeds Community Dental Services ,Adult GA ,Armley Moor Health Centre ,93 Town Street ,Armley ,Leeds. West Yorkshire ,LS12 3HD ,Q52 ,West Yorkshire 
+V12810,168912/0001 ,PDS Contract ,1/6/2009,31/5/2019,Springbank Dental Clinic ,Springbank Dental Clinic ,Springbank Community ,Resource Centre ,Springbank Way ,"Cheltenham , Gloucestershire ",GL51 0LG ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V12978,114650/0002 ,PDS Contract ,1/5/2007,30/4/2017,Community Dental Clinic ,Community Dental Clinic ,Cromwell Rd Primary Care Centre ,Cromwell Road ,GRIMSBY ,North East Lincolnshire ,DN31 2BH ,Q50 ,North Yorkshire and Humber 
+V13089,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Pasley Road Health Centre ,Pasley Road ,LEICESTER ,Leicestershire ,,LE2 9BU ,Q59 ,Leicestershire and Lincolnshire 
+V13126,185469/0041 ,PDS Contract ,1/4/2009,,King's Community Special Care Dentistry ,Mobile Dental Unit ,Kings College Hospital ,Denmark Hill ,London ,,SE5 9RS ,Q63 ,South London 
+V13214,193534/0013 ,GDS Contract ,1/4/2015,,Community Dental Services CIC ,H M Prison ,Hollesley Bay Colony ,Rectory Road ,Hollesley ,WOODBRIDGE ,IP12 3JW ,Q56 ,East Anglia 
+V13268,118001/0008 ,PDS Contract ,1/4/2014,31/3/2017,Community Dental Service ,Health Centre ,11 Hornsey Street ,LONDON ,,,N7 8GG ,Q61 ,North East London 
+V13352,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Merlyn Vaz Health And Social Car ,1 Spinney Hill Road ,LEICESTER ,Leicestershire ,,LE5 3GH ,Q59 ,Leicestershire and Lincolnshire 
+V13353,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Community Dental GA Clinic ,Glenville Day Unit ,Bradgate Mental Health Unit ,"Glenfield Hospital , Groby Road ",Leicester ,LE3 9EJ ,Q59 ,Leicestershire and Lincolnshire 
+V13354,127957/0017 ,PDS Contract ,1/7/2011,30/11/2016,Derbyshire Community Health Services ,Community Dental GA Service ,Balmoral Day Ward Level 2 ,Leicester Royal Infirmary ,Infirmary Close ,Leicester ,LE1 5WW ,Q59 ,Leicestershire and Lincolnshire 
+V13430,185787/0001 ,PDS Contract ,1/5/2010,30/4/2018,Compass Clinic Limited ,Wells Community Hospital ,Mill Road ,WELLS NEXT THE SEA ,Norfolk ,,NR23 1RF ,Q56 ,East Anglia 
+V13438,100088/0000 ,GDS Contract ,1/4/2016,,Portsea Dental Care Ltd ,John Pounds Community Centre ,23 Queen Street ,PORTSMOUTH ,Hampshire ,,PO1 3HN ,Q70 ,Wessex 
+V13493,137189/0004 ,PDS Contract ,1/9/2006,31/3/2017,Tees Community Dental Service ,One Life Hartlepool ,Park Road ,Hartlepool ,Cleveland ,,TS24 7PW ,Q45 ,Durham Darlington and Tees 
+V13524,185469/0045 ,PDS Contract ,1/6/2010,,King's Community Special Care Dentistry ,Elmcourt Health Centre ,214 - 218 Norwood Road ,Tulse Hill ,London ,SE27 9AW ,SE27 9AW ,Q63 ,South London 
+V13604,136212/0001 ,PDS Contract ,1/4/2013,30/9/2017,PCH Dental CIC ,Community Health Services ,Truro Health Park ,Infirmary Hill ,Truro ,Cornwall ,TR1 2JA ,Q66 ,Devon Cornwall and Isles of Scilly 
+V13865,186511/0001 ,GDS Contract ,6/9/2010,,Iosis Clinic Ltd ,Wickham Community Centre ,Mill Lane ,Wickham ,FAREHAM ,Hampshire ,PO17 5AL ,Q70 ,Wessex 
+V13872,100067/0000 ,PDS Contract ,1/4/2016,31/3/2017,ALWHCT ,Ashton Leigh And Wigan Community ,17 Beecham Court ,WIGAN ,Lancashire ,,WN3 6PR ,Q46 ,Greater Manchester 
+V14012,186856/0001 ,PDS Contract ,1/4/2013,31/3/2018,HERTS URGENT DENTAL CARE (OUT OF HOURS) LIMITED ,Edridge Road Community H.C. ,2 Edridge Road ,Croyden ,,,CR9 1PJ ,Q63 ,South London 
+V14084,168025/0001 ,GDS Contract ,1/10/2013,,Summerville Road Dental Practice ,Grange Interlink Community Centr ,Summerville Road ,BRADFORD ,West Yorkshire ,,BD7 1PX ,Q52 ,West Yorkshire 
+V14199,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,Hertfordshire Partnership NHS Tr ,Harper Lane ,Shenley ,RADLETT ,Hertfordshire ,WD7 9HQ ,Q58 ,Hertfordshire and the South Midlands 
+V14366,150231/0001 ,PDS Contract ,1/4/2006,31/3/2017,Leeds Community Dental Services ,Leeds Community Dental Services ,263 Chapeltown Road ,Leeds ,West Yorkshire ,,LS7 3EX ,Q52 ,West Yorkshire 
+V14579,127213/0002 ,PDS Contract ,1/4/2015,31/3/2018,Wirral Community NHS Trust ,Victoria Central Hospital Dental ,Victoria Central Hospital ,Mill Lane ,Wallasey ,,CH44 5UF ,Q44 ,Cheshire Warrington and Wirral 
+V14609,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,The Shefford Health Centre ,Robert Lucas Drive ,SHEFFORD ,Bedfordshire ,,SG17 5FS ,Q58 ,Hertfordshire and the South Midlands 
+V14644,154911/0001 ,PDS Contract ,1/10/2006,,Herts Community NHS Trust ,St Albans City Hospital ,Waverley Road ,St Albans ,Herts ,,AL3 5PN ,Q58 ,Hertfordshire and the South Midlands 
+V14708,154911/0002 ,PDS Contract ,4/1/2011,,Herts Community NHS Trust ,Peace Children's Centre ,Peace Prospect ,Watford ,Herts ,,WD17 3EW ,Q58 ,Hertfordshire and the South Midlands 
+V14729,150231/0022 ,PDS Contract ,1/7/2009,31/3/2017,Leeds Community Dental Services ,Adult GA Service ,263 Chapeltown Road ,Leeds ,West Yorkshire ,,LS7 3EX ,Q52 ,West Yorkshire 
+V14779,156353/0004 ,PDS Contract ,1/7/2011,,Central London Community Healthcare ,Emergency Dental Services ,St Charles Centre ,For Health & Wellbeing ,Exmoor Street ,London ,W10 6DZ ,Q62 ,North West London 
+V15025,102490/0003 ,GDS Contract ,26/9/2011,,Ashby Dental Clinic (CDS Unit) ,Community Dental Service ,Ironstone Centre ,West Street ,Scunthorpe ,,DN15 6HX ,Q50 ,North Yorkshire and Humber 
+V16845,177121/0002 ,PDS Contract ,1/4/2006,31/3/2017,Gloucestershire PCT ,Dental Department ,Vale Community Hospital ,"Lister Road , Kingsmill Lane ",Dursley ,Gloucester ,GL11 4BA ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V17300,164941/0002 ,PDS Contract ,1/4/2006,31/3/2018,Avon SPCDS ,South Bristol NHS Community Hosp ,Hengrove Promenade ,Hengrove Park ,Whitchurch Lane ,Bristol ,BS14 0DE ,Q65 ,Bristol North Somerset Somerset and South Gloucestershire 
+V17579,193534/0001 ,PDS Contract ,1/4/2011,31/3/2021,Community Dental Services CIC ,Bedford Heights ,Brickhill Drive ,Bedford ,,,MK41 7PH ,Q58 ,Hertfordshire and the South Midlands 
+V17991,185671/0001 ,PDS Contract ,1/10/2012,31/3/2018,Community Dental Services CIC ,Aldeburgh & District Community H ,Park Road ,Aldeburgh ,Suffolk ,,IP15 5ES ,Q56 ,East Anglia 
+V18031,174343/0001 ,PDS Contract ,1/4/2015,31/3/2018,Bridgewater Community Healthcare NHS Foundation Trust ,The Baths Health & Wellbeing ,Centre ,Legh Street ,Warrington ,,WA1 1UG ,Q44 ,Cheshire Warrington and Wirral 
+V19383,174343/0009 ,PDS Contract ,1/4/2015,31/3/2018,Bridgewater Community Healthcare NHS Foundation Trust ,ST. HELENS DENTAL CLINIC ,COLLEGE STREET ,ST. HELENS ,MERSEYSIDE ,,WA10 1UH ,Q48 ,Merseyside 
+V20132,127213/0001 ,PDS Contract ,1/4/2015,31/3/2018,Wirral Community NHS Trust ,Community Dental Clinic ,Devonshire Park Dental Centre ,"1st Floor , 62 Greenway Road ","Tranmere , Birkenhead ",Wirral ,CH42 7LX ,Q44 ,Cheshire Warrington and Wirral 
+V21506,108081/0001 ,PDS Contract ,1/9/2009,31/3/2017,Salford Community Health ,Salford Community Health ,Dental Department ,Ordsall Health Surgery ,118 Phoebe Street ,Salford ,M5 3PH ,Q46 ,Greater Manchester 
+V22803,184209/0001 ,PDS Contract ,1/4/2013,31/3/2018,Smilecare Swindon Limited ,Smile Dental Care ,Pinetrees Community Centre ,The Circle ,Pinehurst ,Swindon ,SN2 1QR ,Q64 ,Bath Gloucestershire Swindon and Wiltshire 
+V24833,102261/0001 ,PDS Contract ,1/10/2014,30/9/2024,BCHC - Special Care ,Community Dental Services ,"BCHC , 3 Priestley Wharf ",Holt Street ,Aston ,Birmingham ,B7 4BN ,Q54 ,Birmingham and The Black Country 
+V29825,127213/0006 ,PDS Contract ,1/4/2015,31/3/2018,Wirral Community NHS Trust ,Delamere Street ,Chester ,,,,CH1 4DS ,Q44 ,Cheshire Warrington and Wirral 
+V29827,174343/0007 ,PDS Contract ,1/4/2015,31/3/2018,Bridgewater Community Healthcare NHS Foundation Trust ,Macclesfield District Hospital ,Victoria Road ,Macclesfield ,Cheshire ,,SK10 3BL ,Q44 ,Cheshire Warrington and Wirral 
+V30785,193534/0015 ,GDS Contract ,1/4/2015,,Community Dental Services CIC ,Highpoint ,Newmarket ,Suffolk ,,,CB8 9YG ,Q56 ,East Anglia 
+V30786,193534/0014 ,GDS Contract ,1/4/2015,,Community Dental Services CIC ,Warren Hill ,Grove Road ,Woodbridge ,Suffolk ,,IP12 3BF ,Q56 ,East Anglia 
