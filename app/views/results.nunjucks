@@ -2,19 +2,14 @@
 
 {% block pageTitle %}All service results{% endblock %}
 
-{% block header %}Pharmacies near to '{{ location }}'{% endblock %}
-
-{% block pageIntro %}Listed below are all the places nearby that could help you, showing if they are open or closed.{% endblock %}
+{% block header %}Community dental practices near to '{{ location }}'{% endblock %}
 
 {% block content %}
-<a href="/symptoms/stomach-ache/search" class="back-to-previous">Back</a>
+<a href="/community-dentists/search" class="back-to-previous">Back</a>
 
     <table>
       <tbody>
           {% for service in serviceList %}
-        <tr>
-          <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
-        </tr>
         <tr>
           <td width="50%">
             <span style="font-size: 24px; font-weight: 800;">{{ service.name }}</span>
@@ -28,7 +23,7 @@
                 <p><strong>{{ service.openingTimesMessage }}</strong><br></p>
           </td>
           <td width="50%">
-            Distance: {{ service.distanceInMiles | round(1) }} miles
+            Distance: {{ service.distance.miles | round(1) }} miles
             <br/>
               <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
             <br/>

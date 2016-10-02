@@ -1,23 +1,67 @@
 // eslint - disabled no-param-reassign since assigning to request/response
 // is recommended best practice by Express
 
+const fs = require('fs');
 const http = require('http');
+const parse = require('csv-parse');
 const moment = require('moment');
 const openingTimesParser = require('../lib/openingTimesParser');
 const pharmaciesParser = require('../lib/pharmaciesParser');
 const pharmacyMapper = require('../lib/pharmacyMapper');
 const Verror = require('verror');
+const distance = require('geo-dist-calc');
 
-function getSyndicationResponseHandler(resourceType, parser, next) {
+function loadCommunityDentists(req, res, next) {
+  const path = '/Users/neilmclaughlin/work/nhshackday/connecting-to-services/resources/community_dentists_select.csv'
+  const input = fs.createReadStream(path);
+  const fileContents = fs.readFileSync(path, "utf8");
+
+  const communityDentistArray = [];
+
+  // Create the parser
+  const parser = parse({delimiter: ','});
+  // Use the writable stream api
+  parser.on('readable', function(){
+    while(communityDentist = parser.read()){
+      communityDentistArray.push( {
+            label: 'Community Dental Service',
+            name: communityDentist[5],
+            addressLine: [
+              communityDentist[8],
+              communityDentist[9],
+              communityDentist[10],
+              communityDentist[11]
+            ],
+            postcode: communityDentist[11], 
+          })
+    }
+  });
+  // Catch any error
+  parser.on('error', function(err){
+    console.log(err.message);
+  });
+
+  parser.on('finish', function(){
+    req.communityDentists = communityDentistArray;
+    next();
+  });
+
+  parser.write(fileContents);
+  parser.end(() => {
+    // console.log(latlongs);
+  });
+}
+
+function getHttpResponseHandler(resourceType, parser, next) {
   return (response) => {
-    let syndicationXml = '';
+    let responseText = '';
     response.on('data', (chunk) => {
-      syndicationXml += chunk;
+      responseText += chunk;
     });
 
     response.on('end', () => {
       if (response.statusCode === 200) {
-        parser(syndicationXml);
+        parser(responseText);
         next();
       } else if (response.statusCode === 404) {
         const err = new Verror(`${resourceType} Not Found`);
@@ -32,14 +76,54 @@ function getSyndicationResponseHandler(resourceType, parser, next) {
   };
 }
 
-function getSyndicationResponse(url, resourceType, parser, next) {
+function getHttpResponse(url, resourceType, parser, next) {
   http
-    .get(url, getSyndicationResponseHandler(resourceType, parser, next))
+    .get(url, getHttpResponseHandler(resourceType, parser, next))
     .on('error', (e) => {
       const err = new Verror(e, 'Syndication Server Error');
       err.statusCode = 500;
       next(err);
     });
+}
+
+function getLocationForCommunityDentists(req, res, next) {
+  let communityDentistCount = req.communityDentists.length;
+  req.communityDentists.forEach((communityDentist) => {
+    const postcode = encodeURIComponent(communityDentist.postcode.trim());
+
+    getHttpResponse(
+			`http://postcodes.io/postcodes/${postcode}`,
+      'Community Dentist List',
+      (responseJson) => {
+        try {
+          const json = JSON.parse(responseJson);
+          /* eslint-disable no-param-reassign */
+          communityDentist.location = {
+            latitude: json.result.latitude,
+            longitude: json.result.longitude,
+          }
+
+          console.log(res.locals.searchLocation, communityDentist.location);
+          communityDentist.distance = distance.discal(
+            res.locals.searchLocation,
+            communityDentist.location);
+          communityDentist.googleMapsQuery = `saddr=${res.locals.location}&daddr=${communityDentist.postcode}`
+
+          /* eslint-enable no-param-reassign */
+        } catch (e) {
+          // intentionally left empty to allow pharmacies without any opening time
+          // to be displayed without crashing the app
+          console.log(e);
+        }
+      },
+      () => {
+        communityDentistCount--;
+        if (communityDentistCount === 0) {
+          next();
+        }
+      }
+    );
+  });
 }
 
 function getPharmacies(req, res, next) {
@@ -48,8 +132,8 @@ function getPharmacies(req, res, next) {
   let pharmacyList = [];
 
   const buildPharmacyList =
-      (syndicationXml) => {
-        pharmacyList = pharmacyList.concat(pharmaciesParser(syndicationXml));
+      (responseText) => {
+        pharmacyList = pharmacyList.concat(pharmaciesParser(responseText));
       };
   const conditionalNext =
       (err) => {
@@ -66,7 +150,7 @@ function getPharmacies(req, res, next) {
       };
 
   for (let i = 1; i <= pageCount; i++) {
-    getSyndicationResponse(
+    getHttpResponse(
       `${req.urlForPharmacy}&page=${i}`,
       'Pharmacy List',
       buildPharmacyList,
@@ -81,15 +165,15 @@ function getPharmacyOpeningTimes(req, res, next) {
     const pharmacyId = pharmacy.id.split('/').slice(-1)[0];
 
     // TODO: Only need to get opening times for the first 2 open pharmacies
-    getSyndicationResponse(
+    getHttpResponse(
       `${process.env.NHSCHOICES_SYNDICATION_BASEURL}/organisations/pharmacies/`
       + `${pharmacyId}/overview.xml`
       + `?apikey=${process.env.NHSCHOICES_SYNDICATION_APIKEY}`,
       'Pharmacy List',
-      (syndicationXml) => {
+      (responseText) => {
         try {
           /* eslint-disable no-param-reassign */
-          pharmacy.openingTimes = openingTimesParser('general', syndicationXml);
+          pharmacy.openingTimes = openingTimesParser('general', responseText);
           /* eslint-enable no-param-reassign */
         } catch (e) {
           // intentionally left empty to allow pharmacies without any opening time
@@ -112,7 +196,7 @@ function renderServiceResults(req, res) {
 }
 
 function sortByDistanceInKms(a, b) {
-  return a.distanceInKms - b.distanceInKms;
+  return a.distance.kilometers - b.distance.kilometers;
 }
 
 function sortByDistance(a, b) {
@@ -130,6 +214,7 @@ function getDisplayValuesMapper(location) {
 
     const returnValue = {
       label: item.label,
+      name: item.name,
       distanceInMiles: (item.distanceInKms / 1.6),
       googleMapsQuery: `${start}&${destination}&${near}`,
       openingTimesMessage: item.openingTimes ?
@@ -146,37 +231,49 @@ function getDisplayValuesMapper(location) {
   };
 }
 
+function getCoordinatesForSearchLocation(req, res, next) {
+  const postcode = encodeURIComponent(res.locals.location);
+  let location = {}; 
+  getHttpResponse(
+    `http://postcodes.io/postcodes/${postcode}`,
+    'Community Dentist List',
+    (responseJson) => {
+      try {
+        const json = JSON.parse(responseJson);
+        /* eslint-disable no-param-reassign */
+        location = {
+          latitude: json.result.latitude,
+          longitude: json.result.longitude,
+        }
+        /* eslint-enable no-param-reassign */
+      } catch (e) {
+        // intentionally left empty to allow pharmacies without any opening time
+        // to be displayed without crashing the app
+        console.log(e);
+      }
+    },
+    () => {
+      res.locals.searchLocation = location;
+      next();
+    });
+}
+
 function prepareForRender(req, res, next) {
-  const open = req.query.open || false;
+  const open = false;
   const location = res.locals.location;
+  const searchLocation = res.locals.searchLocation;
   let serviceList = [];
   let altResultsUrl = '';
   let altResultsMessage = '';
 
-  if (open) {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}`;
-    altResultsMessage = 'See all nearby places that can help, open or closed';
+  altResultsUrl = `/community-dentists/results?location=${location}&open=true`;
+  altResultsMessage = 'See only open places nearby';
 
-    serviceList =
-      pharmacyMapper(req.pharmacyList)
+  serviceList = req.communityDentists
         .sort(sortByDistanceInKms)
-        .filter((pharmacy) => (pharmacy.openingTimes ?
-           pharmacy.openingTimes.isOpen(moment()) :
-           false))
-        .slice(0, 2)
-        .map(getDisplayValuesMapper(location));
-  } else {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
-    altResultsMessage = 'See only open places nearby';
-
-    const tenClosestPlaces = req.pharmacyList
-          .sort(sortByDistance)
           .slice(0, 10);
 
-    serviceList =
-      pharmacyMapper(tenClosestPlaces)
-        .map(getDisplayValuesMapper(location));
-  }
+  // console.log(serviceList);
   /* eslint-disable no-param-reassign */
   res.locals.serviceList = serviceList;
   res.locals.altResults = {};
@@ -188,6 +285,9 @@ function prepareForRender(req, res, next) {
 }
 
 module.exports = {
+  loadCommunityDentists,
+  getLocationForCommunityDentists,
+  getCoordinatesForSearchLocation,
   getPharmacies,
   getPharmacyOpeningTimes,
   renderServiceResults,

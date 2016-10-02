@@ -1,0 +1,37 @@
+{% extends 'layout.nunjucks' %}
+
+{% block pageTitle %}Community dental services referrals{% endblock %}
+
+{%block header %}Community dental services referrals{% endblock %}
+
+{% block pageIntro %}
+For those patients unable to access primary dental care services from a general dental practice.
+{% endblock %}
+
+{% block content %}
+<p class="lede">
+For health and social care workers to refer patients with complex, non-dental medical needs for dental services.
+</p>
+
+<h2>Referring patients</h2>
+
+<p>Examples of reasons for referrals might be:</p>
+<li>Learning disability</li>
+<li>Physical disability</li>
+<li>Complex medical condition</li>
+<li>Mental health condition</li>
+<li>Socially excluded</li>
+<li>Domiciliary care (primarily assessment only)</li>
+
+<p>In order to refer a patient you will need to do the following</p>
+<ul>
+  <li>Be sure the patient can not be treated by a high street dentist</li>
+  <li></li>
+  <li></li>
+</ul>
+
+<p>
+<a href="/community-dentists/search" class="button">Find an community dental service</a>
+</p>
+
+{% endblock %}

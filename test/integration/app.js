@@ -123,6 +123,27 @@ describe('The results routes', () => {
 
 
   describe('happy paths', () => {
+    describe('community dentist', () => {
+      it('should display all dentists', () => {
+        chai.request(server)
+          .get('/community-dentists')
+          .query({ location: validPostcode })
+          .end((err, res) => {
+            checkHtmlResponse(err, res);
+
+            const $ = cheerio.load(res.text);
+
+            // Some arbitary element to suggest there are 10 results
+            expect($('.map-button').length).to.equal(10);
+            expect($('.gotoservice-cta').attr('href'))
+              .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}&open=true`);
+            expect(postcodeSearchScope.isDone()).to.be.true;
+            expect(overviewScope.isDone()).to.be.true;
+            done();
+          });
+      })
+    });
+
     it('should return 10 results', (done) => {
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
       const overviewResponse = getSampleResponse('pharmacy_opening_times');

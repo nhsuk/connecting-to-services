@@ -41,8 +41,6 @@
       </p>
     </div>
 
-    {% include "includes/back-to-choices.nunjucks" %}
-
     {% block banner %}{% endblock %}
 
     <header role="banner">
@@ -78,10 +76,5 @@
 
     </article>
     </main>
-    <footer role="contentinfo">
-      {% include "includes/footer.nunjucks" %}
-    </footer>
-
-    {% include "includes/foot.nunjucks" %}
   </body>
 </html>

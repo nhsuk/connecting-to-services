@@ -6,11 +6,11 @@ const validateLocation = require('../app/middleware/locationValidator');
 
 router.get('/',
   (req, res) => {
-    res.render('index');
+    res.render('community-dentists-referrals');
   }
 );
 
-router.get('/symptoms/stomach-ache/search',
+router.get('/community-dentists/search',
   (req, res) => {
     const query = req.query;
 
@@ -28,6 +28,15 @@ router.get('/symptoms/stomach-ache/search',
   }
 );
 
+router.get('/community-dentists/results',
+  validateLocation,
+  servicesMiddleware.getCoordinatesForSearchLocation,
+  servicesMiddleware.loadCommunityDentists,
+  servicesMiddleware.getLocationForCommunityDentists,
+  servicesMiddleware.prepareForRender,
+  servicesMiddleware.renderServiceResults
+);
+
 router.get('/symptoms/stomach-ache/results',
   validateLocation,
   urlUtils.urlForPharmacyPostcodeSearch,
@@ -43,9 +52,9 @@ router.get('/symptoms/stomach-ache/find-help',
   }
 );
 
-router.get('/symptoms/stomach-ache',
+router.get('/community-dentists/referrals',
   (req, res) => {
-    res.render('stomach-ache');
+    res.render('community-dentists-referrals');
   }
 );
 
