@@ -107,6 +107,7 @@ function getLocationForCommunityDentists(req, res, next) {
           communityDentist.distance = distance.discal(
             res.locals.searchLocation,
             communityDentist.location);
+          communityDentist.googleMapsQuery = `saddr=${res.locals.location}&daddr=${communityDentist.postcode}`
 
           /* eslint-enable no-param-reassign */
         } catch (e) {

@@ -6,7 +6,7 @@ const validateLocation = require('../app/middleware/locationValidator');
 
 router.get('/',
   (req, res) => {
-    res.render('index');
+    res.render('community-dentists-referrals');
   }
 );
 
@@ -52,9 +52,9 @@ router.get('/symptoms/stomach-ache/find-help',
   }
 );
 
-router.get('/symptoms/stomach-ache',
+router.get('/community-dentists/referrals',
   (req, res) => {
-    res.render('stomach-ache');
+    res.render('community-dentists-referrals');
   }
 );
 
