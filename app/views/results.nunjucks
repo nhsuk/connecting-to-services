@@ -2,50 +2,43 @@
 
 {% block pageTitle %}All service results{% endblock %}
 
-{% block header %}Pharmacies near to '{{ location }}'{% endblock %}
-
-{% block pageIntro %}Listed below are all the places nearby that could help you, showing if they are open or closed.{% endblock %}
+{% block header %}Pharmacies that can help you near to '{{ location }}'{% endblock %}
 
 {% block content %}
-<a href="/symptoms/stomach-ache/search" class="back-to-previous">Back</a>
+<div class="grid-row">
+  <div class="column__two-thirds">
+    <p class="lede">The pharmacies listed below are currently open.</p>
+    <p class="lede">Others pharmacies nearby are not shown because they are currently closed.</p>
+  </div>
+</div>
 
-    <table>
-      <tbody>
-          {% for service in serviceList %}
-        <tr>
-          <td colspan="2"><span style="font-size: 18px; font-weight: 400;">{{ service.label }}</span></td>
-        </tr>
-        <tr>
-          <td width="50%">
-            <span style="font-size: 24px; font-weight: 800;">{{ service.name }}</span>
-                <p>
-                {{ service.addressLine | join(", ") }}
-                <br>
-                {% if service.telephone %}
-                  Telephone {{ service.telephone }}
-                {% endif %}
-                </p>
-                <p><strong>{{ service.openingTimesMessage }}</strong><br></p>
-          </td>
-          <td width="50%">
-            Distance: {{ service.distanceInMiles | round(1) }} miles
-            <br/>
-              <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button button-secondary-cta map-button" target="_blank">See on map and get directions</a>
-            <br/>
+{% for service in serviceList %}
+<div class="grid-row">
+  <div class="column__one-half">
+    <h2>{{ service.name }}</h2>
+    <p><strong>{{ service.openingTimesMessage }}</strong></p>
 
-        </tr>
-        <tr>
-          <td colspan="3"><hr></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <p>
-        <a href="{{altResults.url}}" class="gotoservice-cta button">{{altResults.message}}</a>
-        </p>
-      </div>
-    </div>
+    <p>
+    {{ service.addressLine | join(", ") }}
+    </p>
+    {% if service.telephone %}
+    <p>Telephone: {{ service.telephone }}</p>
+    {% endif %}
+  </div>
+  <div class="column__one-half">
+    <p>Distance from postcode: {{ service.distanceInMiles | round(1) }} miles</p>
+
+    <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button cta">See on map and get directions</a>
+  </div>
+
+</div>
+{% endfor %}
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <p>
+    <a href="{{ altResults.url }}" class="gotoservice-cta button">{{ altResults.message }}</a>
+    </p>
+  </div>
+</div>
 
 {% endblock %}

@@ -1,11 +1,8 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Enter a postcode{% endblock %}
+{% block pageTitle %}Your location{% endblock %}
 
-{% block header %}Enter a postcode{% endblock %}
-
-{% block pageIntro %}
-{% endblock %}
+{% block header %}Your location{% endblock %}
 
 {% block content %}
 <form method="get" class="form" action="results">
@@ -13,6 +10,7 @@
     <div class="form-group">
       <label class="form-label-bold" for="location">
         <!-- label -->
+        Enter a postcode
       </label>
 
       {% if errorMessage %}

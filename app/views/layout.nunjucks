@@ -27,7 +27,8 @@
   </head>
 
   <body>
-    <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script>
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
     <div class="skiplinks">
       <div class="skiplinks--inner">
         <a href="#content" class="skiplinks--link">Skip to main content</a>
@@ -61,17 +62,14 @@
       <div class="local-header">
         <div class="local-header--inner">
           <h1 class="local-header--title">{% block header %}{% endblock %}</h1>
-          <div class="local-header--intro">
-            <p>{% block pageIntro %}{% endblock %}</p>
-          </div>
+          {% block pageIntro %}
+          {% endblock %}
         </div>
       </div>
 
       <div class="page-section">
         {% block pageSection %}
-        <div class="reading-width">
           {% block content %}{% endblock %}
-        </div>
         {% endblock %}
       </div>
       {% endblock %}

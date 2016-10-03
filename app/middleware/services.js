@@ -129,7 +129,7 @@ function getDisplayValuesMapper(location) {
     const near = `near=${fullAddress}`;
 
     const returnValue = {
-      label: item.label,
+      name: item.name,
       distanceInMiles: (item.distanceInKms / 1.6),
       googleMapsQuery: `${start}&${destination}&${near}`,
       openingTimesMessage: item.openingTimes ?

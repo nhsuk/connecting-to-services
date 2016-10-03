@@ -1,43 +1,36 @@
 {% extends 'layout.nunjucks' %}
 
-{% block header %}Find a place that can help with{% endblock %}
+{% block header %}Find a place that can help you{% endblock %}
 
-{% block pageTitle %}Find a place that can help with{% endblock %}
+{% block pageTitle %}Find a place that can help you{% endblock %}
 
-{% block pageIntro %}
+{% block content %}
+<p>We’ll find open pharmacies near to you that can help with:</p>
+
 <ul>
   <li>feeling bloated (trapped wind)</li>
   <li>indigestion (burning pain or discomfort after eating)</li>
   <li>constipation (can’t poo)</li>
+  <li>pain relief</li>
 </ul>
-{% endblock %}
 
-{% block content %}
 <form class="form" id="formname" method="get" action="/symptoms/stomach-ache/search">
-  <div class="form-item-wrapper">
-      <legend class="form-label-bold">Can you get there by yourself?</legend>
-
-      <p class="form-label">
-      <!-- label -->
-      </p>
-
-      <div class="form-group">
-        <input type="radio" id="no" name="able" value="false">
-        <label for="no" class="form-control-radio">No</label>
-      </div>
-
-      <div class="form-group">
-        <input type="radio" id="yes" name="able"  value="true" checked>
-        <label for="yes" class="form-control-radio">Yes</label>
-      </div>
-  </div>
-
-  <div class="form-item-wrapper">
+  <fieldset>
+    <legend class="primary">Can you travel to a pharmacist?</legend>
     <div class="form-group">
-      <input type="submit" class="button" value="Continue">
+      <label for="radio-yes" class="block-label">
+        <input id="radio-yes" type="radio" name="able" value="true" checked>
+        Yes
+      </label>
+      <label for="radio-no" class="block-label">
+        <input id="radio-no" type="radio" name="able" value="false">
+        No
+      </label>
     </div>
-  </div>
-  <p></p>
+  </fieldset>
+
+  <input type="submit" class="button" value="Continue">
+
   <p>If you are not looking for help, <a href="/symptoms/stomach-ache">go back</a>.</p>
 </form>
 

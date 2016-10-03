@@ -10,7 +10,6 @@
     "start": "node app.js",
     "lint": "eslint --ext .js,.json .",
     "test": "mocha --recursive test",
-    "webpack": "webpack",
     "watch-dev": "nodemon app.js",
     "watch-lint": "esw --watch .",
     "watch-test": "npm run test -- --watch --reporter min",
@@ -46,7 +45,6 @@
     "postcode": "^0.2.5",
     "require-environment-variables": "^1.1.2",
     "verror": "^1.6.1",
-    "webpack": "^1.13.2",
     "xml2js": "^0.4.16"
   },
   "devDependencies": {

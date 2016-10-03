@@ -59,7 +59,7 @@ describe('The find help page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.local-header--title').text())
-          .to.equal('Find a place that can help with');
+          .to.equal('Find a place that can help you');
         done();
       });
   });
@@ -76,7 +76,7 @@ describe('The search page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.local-header--title').text())
-          .to.equal('Enter a postcode');
+          .to.equal('Your location');
         done();
       });
   });
@@ -150,7 +150,7 @@ describe('The results routes', () => {
           const $ = cheerio.load(res.text);
 
           // Some arbitary element to suggest there are 10 results
-          expect($('.map-button').length).to.equal(10);
+          expect($('.cta').length).to.equal(10);
           expect($('.gotoservice-cta').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
@@ -187,7 +187,7 @@ describe('The results routes', () => {
           const $ = cheerio.load(res.text);
 
           // Some arbitary element to suggest there are 2 results
-          expect($('.map-button').length).to.equal(2);
+          expect($('.cta').length).to.equal(2);
           expect($('.gotoservice-cta').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
