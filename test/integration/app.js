@@ -159,7 +159,7 @@ describe('The results routes', () => {
         });
     });
 
-    it('should only return 2 results when filtered by open', function (done) {
+    it('should only return 3 results when filtered by open', function (done) {
       this.timeout(3000);
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
       const overviewResponse = getSampleResponse('always_open');
@@ -187,7 +187,7 @@ describe('The results routes', () => {
           const $ = cheerio.load(res.text);
 
           // Some arbitary element to suggest there are 2 results
-          expect($('.cta').length).to.equal(2);
+          expect($('.cta').length).to.equal(3);
           expect($('.gotoservice-cta').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
