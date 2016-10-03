@@ -34,11 +34,11 @@ function getCookie(name) {
   return null;
 }
 
-module.exports = (id) => {
-  const banner = document.getElementById(id);
+$(function() {
+  const banner = document.getElementById('global-cookies-banner');
 
   if (banner && getCookie('nhsuk_seen_cookie_message') === null) {
     banner.style.display = 'block';
     setCookie('nhsuk_seen_cookie_message', 'yes', { days: 28 });
   }
-};
+});
