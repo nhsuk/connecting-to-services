@@ -29,7 +29,13 @@ module.exports = (app, config) => {
   }));
   app.use(cookieParser());
   app.use(compress());
-  app.use(express.static(`${config.root}/public`));
+
+  app.use([
+    /\/(symptoms|conditions)\/stomach-ache\/results/,
+    /\/(symptoms|conditions)\/stomach-ache/,
+    '/',
+  ],
+      express.static(`${config.root}/public`));
 
   app.use('/', router);
   app.use((req, res, next) => {

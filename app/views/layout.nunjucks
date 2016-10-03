@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!--[if IE]><link rel="shortcut icon" href="/assets/images/favicon.ico"><![endif]-->
+    <!--[if IE]><link rel="shortcut icon" href="./assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
-    <link rel="icon" href="/images/favicon.png">
+    <link rel="icon" href="./images/favicon.png">
 
     <title>{% block pageTitle %}NHS.UK{% endblock %}</title>
 
@@ -18,12 +18,12 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
 
-    <!--[if gt IE 8]><!--><link href="/css/nhsuk.css" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
-    <!--[if IE 6]><link href="/css/nhsuk-ie6.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 7]><link href="/css/nhsuk-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 8]><link href="/css/nhsuk-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if gt IE 8]><!--><link href="./css/nhsuk.css" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
+    <!--[if IE 6]><link href="./css/nhsuk-ie6.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="./css/nhsuk-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="./css/nhsuk-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 
-    <link rel="stylesheet" href="/css/print.css" media="print" type="text/css">
+    <link rel="stylesheet" href="./css/print.css" media="print" type="text/css">
   </head>
 
   <body>
@@ -50,7 +50,7 @@
       <div class="global-header">
         <div class="global-header--inner">
           <a href="/" class="global-header--link" title="Go to the NHS.UK homepage">
-            <img src="/images/logotype-nhs-mono.png" alt="">
+            <img src="./images/logotype-nhs-mono.png" alt="">
           </a>
         </div>
       </div>
