@@ -98,15 +98,16 @@ describe('The search page', () => {
     });
 });
 
-describe('The results routes', () => {
+describe('The results page', () => {
   let originalUrl = '';
   let originalApikey = '';
   const resultsRoute = '/symptoms/stomach-ache/results';
   const baseUrl = 'http://web.site';
   const apikey = 'secret';
-  const validPostcode = 'AB123CD';
+  const validPostcode = '   AB123CD   ';
+  const trimmedPostcode = validPostcode.trim();
   const postcodeSearchPath =
-    new RegExp(`/organisations/pharmacies/postcode/${validPostcode}`);
+    new RegExp(`/organisations/pharmacies/postcode/${trimmedPostcode}`);
 
   before('setup environment variables', () => {
     originalUrl = process.env.NHSCHOICES_SYNDICATION_BASEURL;
@@ -152,7 +153,7 @@ describe('The results routes', () => {
           // Some arbitary element to suggest there are 10 results
           expect($('.cta').length).to.equal(10);
           expect($('.gotoservice-cta').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}&open=true`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
@@ -189,7 +190,7 @@ describe('The results routes', () => {
           // Some arbitary element to suggest there are 2 results
           expect($('.cta').length).to.equal(3);
           expect($('.gotoservice-cta').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${validPostcode}`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
