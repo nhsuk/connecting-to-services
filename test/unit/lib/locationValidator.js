@@ -40,6 +40,16 @@ describe('Location validation', () => {
   describe('happy path', () => {
     const validPostcode = 'AB12 3CD';
 
+    it('should return the trimmed input', () => {
+      const postcodeNeedsTrimming = '  ab1  ';
+      const trimmedPostcode = 'ab1';
+
+      const result = validateLocation(postcodeNeedsTrimming);
+
+      expect(result.input).to.be.equal(trimmedPostcode);
+      // eslint-disable-next-line no-unused-expressions
+      expect(result.errorMessage).to.be.null;
+    });
     it('should pass validation with a valid outcode', () => {
       const outcode = 'AB12';
 

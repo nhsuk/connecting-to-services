@@ -163,7 +163,7 @@ function prepareForRender(req, res, next) {
         .filter((pharmacy) => (pharmacy.openingTimes ?
            pharmacy.openingTimes.isOpen(moment()) :
            false))
-        .slice(0, 2)
+        .slice(0, 3)
         .map(getDisplayValuesMapper(location));
   } else {
     altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
