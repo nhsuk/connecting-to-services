@@ -31,8 +31,10 @@ module.exports = (app, config) => {
   app.use(compress());
 
   app.use([
-    /\/(symptoms|conditions)\/stomach-ache\/results/,
-    /\/(symptoms|conditions)\/stomach-ache/,
+    /\/(symptoms|conditions)\/.*\/results/,
+    /\/(symptoms|conditions)\/.*\/search/,
+    /\/(symptoms|conditions)\/.*\/find-help/,
+    /\/(symptoms|conditions)\/(\w|-)+/,
     '/',
   ],
       express.static(`${config.root}/public`));
