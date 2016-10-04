@@ -628,6 +628,12 @@ body {
   text-decoration: none;
 }
 
+.cta-grey:link, .cta-grey:hover, .cta-grey:focus, .cta-grey:visited {
+  background-color: #aaa;
+  color: #fff;
+  text-decoration: none;
+}
+
 /*
    Form elements
 */

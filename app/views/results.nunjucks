@@ -37,7 +37,7 @@
 <div class="grid-row">
   <div class="column-two-thirds">
     <p>
-    <a href="{{ altResults.url }}" class="gotoservice-cta button">{{ altResults.message }}</a>
+    <a href="{{ altResults.url }}" class="button cta cta-grey">{{ altResults.message }}</a>
     </p>
   </div>
 </div>
