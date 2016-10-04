@@ -57,11 +57,10 @@
     </header>
 
     <main id="content" role="main" tabindex="-1" class="util-nofocus">
-    <article role="article">
       {% block article %}
-      <div class="local-header">
-        <div class="local-header--inner">
-          <h1 class="local-header--title">{% block header %}{% endblock %}</h1>
+      <div class="local-header-white-bg">
+        <div class="local-header--question">
+          <h1 class="local-header--title--question">{% block header %}{% endblock %}</h1>
           {% block pageIntro %}
           {% endblock %}
         </div>
@@ -73,9 +72,8 @@
         {% endblock %}
       </div>
       {% endblock %}
-
-    </article>
     </main>
+
     <footer role="contentinfo">
       {% include "includes/footer.nunjucks" %}
     </footer>

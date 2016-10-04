@@ -58,7 +58,7 @@ describe('The find help page', () => {
 
         const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title').text())
+        expect($('.local-header--title--question').text())
           .to.equal('Find a place that can help you');
         done();
       });
@@ -75,13 +75,13 @@ describe('The search page', () => {
 
         const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title').text())
+        expect($('.local-header--title--question').text())
           .to.equal('Your location');
         done();
       });
   });
 
-  it('should return a call 111 page when people are not able to get there',
+  it('should return a cannot travel page when people are not able to get there',
     (done) => {
       chai.request(server)
         .get('/symptoms/stomach-ache/search')
@@ -91,8 +91,8 @@ describe('The search page', () => {
 
           const $ = cheerio.load(res.text);
 
-          expect($('.local-header--title').text())
-            .to.equal('Call NHS 111');
+          expect($('.local-header--title--question').text())
+            .to.equal('You cannot travel to a pharmacy');
           done();
         });
     });
@@ -151,8 +151,8 @@ describe('The results page', () => {
           const $ = cheerio.load(res.text);
 
           // Some arbitary element to suggest there are 10 results
-          expect($('.cta').length).to.equal(10);
-          expect($('.gotoservice-cta').attr('href'))
+          expect($('.cta-blue').length).to.equal(10);
+          expect($('.cta-grey').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
@@ -188,8 +188,8 @@ describe('The results page', () => {
           const $ = cheerio.load(res.text);
 
           // Some arbitary element to suggest there are 2 results
-          expect($('.cta').length).to.equal(3);
-          expect($('.gotoservice-cta').attr('href'))
+          expect($('.cta-blue').length).to.equal(3);
+          expect($('.cta-grey').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
