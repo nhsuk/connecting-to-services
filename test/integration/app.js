@@ -75,7 +75,7 @@ describe('The search page', () => {
 
         const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title--question').text())
+        expect($('h1 .local-header--title--question').text())
           .to.equal('Your location');
         done();
       });
