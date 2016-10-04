@@ -1,0 +1,15 @@
+{% extends 'layout.nunjucks' %}
+
+{% block pageTitle %}You cannot travel to a pharmacy{% endblock %}
+
+{% block header %}You cannot travel to a pharmacy{% endblock %}
+
+{% block content %}
+<div class="reading-width">
+  <p>You have said you cannot travel to a pharmacy</p>
+  <p>Your nearby pharmacies could still be able to help you by a telephone call.</p>
+  <p>
+  <a class="button" href="../search">Continue &gt;</a>
+  </p>
+</div>
+{% endblock %}

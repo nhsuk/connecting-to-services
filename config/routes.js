@@ -20,7 +20,7 @@ router.get('/symptoms/stomach-ache/search',
       if (query.able === 'true') {
         viewToRender = 'search';
       } else {
-        viewToRender = 'call-111';
+        viewToRender = 'cannot-travel';
       }
     }
 

@@ -33,13 +33,13 @@
 }
 
 @media (min-width: 925px) {
-  .page-section, .callout--inner, .global-header--inner, .global-footer--inner, .local-header--inner, .local-header--inner, .notification-banner--inner, .skiplinks--inner {
+  .page-section, .callout--inner, .global-header--inner, .global-footer--inner, .local-header--inner, .local-header--question, .notification-banner--inner, .skiplinks--inner {
     margin: 0 30px;
   }
 }
 
 @media (min-width: 1020px) {
-  .page-section, .callout--inner, .global-header--inner, .global-footer--inner, .local-header--inner, .local-header--inner, .notification-banner--inner, .skiplinks--inner {
+  .page-section, .callout--inner, .global-header--inner, .global-footer--inner, .local-header--inner, .local-header--question, .notification-banner--inner, .skiplinks--inner {
     margin: 0 auto;
   }
 }
