@@ -5,7 +5,7 @@
 {% block header %}Your location{% endblock %}
 
 {% block content %}
-<form method="get" class="form" action="results">
+<form method="get" class="form" action="../results">
   <div class="form-item-wrapper">
     <div class="form-group">
       <label class="form-label-bold" for="location">
