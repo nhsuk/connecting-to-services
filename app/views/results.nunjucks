@@ -8,11 +8,12 @@
 <div class="grid-row">
   <div class="column__two-thirds">
     <p class="lede">The pharmacies listed below are currently open.</p>
-    <p class="lede">Others pharmacies nearby are not shown because they are currently closed.</p>
+    <p class="lede">Other pharmacies nearby are not shown because they are currently closed.</p>
   </div>
 </div>
 
 {% for service in serviceList %}
+<hr>
 <div class="grid-row">
   <div class="column__one-half">
     <h2>{{ service.name }}</h2>
@@ -28,7 +29,7 @@
   <div class="column__one-half">
     <p>Distance from postcode: {{ service.distanceInMiles | round(1) }} miles</p>
 
-    <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button cta">See on map and get directions</a>
+    <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button cta cta-blue">See on map and get directions &gt;</a>
   </div>
 
 </div>
