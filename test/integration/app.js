@@ -81,7 +81,7 @@ describe('The search page', () => {
       });
   });
 
-  it('should return a call 111 page when people are not able to get there',
+  it('should return a cannot travel page when people are not able to get there',
     (done) => {
       chai.request(server)
         .get('/symptoms/stomach-ache/search')
@@ -92,7 +92,7 @@ describe('The search page', () => {
           const $ = cheerio.load(res.text);
 
           expect($('.local-header--title--question').text())
-            .to.equal('Call NHS 111');
+            .to.equal('You cannot travel to a pharmacy');
           done();
         });
     });
