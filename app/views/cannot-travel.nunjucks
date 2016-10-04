@@ -9,7 +9,7 @@
   <p>You have said you cannot travel to a pharmacy</p>
   <p>Your nearby pharmacies could still be able to help you by a telephone call.</p>
   <p>
-  <a class="button" href="../search">Continue &gt;</a>
+  <a class="button" href="../search">Continue</a>
   </p>
 </div>
 {% endblock %}
