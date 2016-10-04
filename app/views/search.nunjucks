@@ -6,6 +6,7 @@
 
 {% block content %}
 <form method="get" class="form" action="../results">
+<div class="reading-width">
   <div class="form-item-wrapper">
     <div class="form-group">
       <label class="form-label-bold" for="location">
@@ -28,4 +29,5 @@
     </div>
   </div>
 </form>
+</div>
 {% endblock %}

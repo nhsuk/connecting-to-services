@@ -1,20 +1,35 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageSection %}
-<div class="grid-row">
-  <div class="column__two-thirds">
-    <div class="reading-width">
-      {% block content %}{% endblock %}
+{% block article %}
+
+<article role="article">
+  <div class="local-header">
+    <div class="local-header--inner">
+      <h1 class="local-header--title">{% block header %}{% endblock %}</h1>
+      {% block pageIntro %}
+      {% endblock %}
     </div>
   </div>
 
-  <div class="column__one-third-right">
-    <div class="reading-width">
-      <section class="callout callout__alert callout__overlap" id="emergency-info">
-        <h2>{% block page999title %}{% endblock %}</h2>
-        {% block page999content %}{% endblock %}
-      </section>
+      <div class="page-section">
+  {% block pageSection %}
+  <div class="grid-row">
+    <div class="column__two-thirds">
+      <div class="reading-width">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+
+    <div class="column__one-third-right">
+      <div class="reading-width">
+        <section class="callout callout__alert callout__overlap" id="emergency-info">
+          <h2>{% block page999title %}{% endblock %}</h2>
+          {% block page999content %}{% endblock %}
+        </section>
+      </div>
     </div>
   </div>
-</div>
+  {% endblock %}
+  </div>
+</article>
 {% endblock %}
