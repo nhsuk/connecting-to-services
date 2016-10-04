@@ -112,11 +112,9 @@
   global.NHSUK = NHSUK;
 })(window);
 
-$(document).ready(function() {
-
-  // Use GOV.UK selection-buttons.js to set selected
+$(function() {
+  // Use NHSUK selection-buttons.js to set selected
   // and focused states for block labels
   var $blockLabels = $(".block-label input[type='radio'], .block-label input[type='checkbox']");
   new NHSUK.SelectionButtons($blockLabels);
-
 });
