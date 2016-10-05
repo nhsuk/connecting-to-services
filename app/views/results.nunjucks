@@ -20,7 +20,9 @@
     <p><strong>{{ service.openingTimesMessage }}</strong></p>
 
     <p>
-    {{ service.addressLine | join(", ") }}
+    {% for line in service.addressLine %}
+      {{ line }} <br>
+    {% endfor %}
     </p>
     {% if service.telephone %}
     <p>Telephone: {{ service.telephone }}</p>
