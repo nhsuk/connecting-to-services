@@ -35,7 +35,7 @@
       }).track();
     };
     (function(){
-      var s=document.createElement('script'); s.async=true; s.src="./js/tracking/webtrends.js";
+      var s=document.createElement('script'); s.async=true; s.src="./js/vendor/tracking/webtrends.min.js";
       var s2=document.getElementsByTagName('script')[0]; s2.parentNode.insertBefore(s,s2);
     }());
   </script>
