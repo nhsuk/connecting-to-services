@@ -6,14 +6,9 @@ const bodyParser = require('body-parser');
 const compress = require('compression');
 const nunjucks = require('nunjucks');
 const router = require('./routes');
+const locals = require('../app/middleware/locals');
 
 module.exports = (app, config) => {
-  const env = process.env.NODE_ENV || 'development';
-  /* eslint-disable no-param-reassign */
-  app.locals.ENV = env;
-  app.locals.ENV_DEVELOPMENT = env === 'development';
-  /* eslint-enable no-param-reassign */
-
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'nunjucks');
   nunjucks.configure(`${config.root}/app/views`, {
@@ -21,6 +16,8 @@ module.exports = (app, config) => {
     express: app,
     watch: true,
   });
+
+  app.use(locals(config));
 
   app.use(logger('dev'));
   app.use(bodyParser.json());
