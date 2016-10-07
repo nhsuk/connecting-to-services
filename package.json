@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "lint": "eslint --ext .js,.json .",
+    "lint": "eslint --ext .js,.json . && cat .bithoundrc | eslint --stdin --stdin-filename=f.json",
     "test": "mocha --recursive test",
     "watch-dev": "nodemon app.js",
     "watch-lint": "esw --watch .",
