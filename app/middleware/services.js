@@ -149,13 +149,15 @@ function getDisplayValuesMapper(location) {
 function prepareForRender(req, res, next) {
   const open = req.query.open || false;
   const location = res.locals.location;
+  const labelOpenOnly = 'Pharmacies open now';
+  const labelShowAll = 'All pharmacies';
   let serviceList = [];
   let altResultsUrl = '';
-  let altResultsMessage = '';
+  let openNow = '';
 
   if (open) {
     altResultsUrl = `/symptoms/stomach-ache/results?location=${location}`;
-    altResultsMessage = 'See all nearby places that can help, open or closed';
+    openNow = true;
 
     serviceList =
       pharmacyMapper(req.pharmacyList)
@@ -167,7 +169,7 @@ function prepareForRender(req, res, next) {
         .map(getDisplayValuesMapper(location));
   } else {
     altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
-    altResultsMessage = 'See only open places nearby';
+    openNow = false;
 
     const tenClosestPlaces = req.pharmacyList
           .sort(sortByDistance)
@@ -178,10 +180,11 @@ function prepareForRender(req, res, next) {
         .map(getDisplayValuesMapper(location));
   }
   /* eslint-disable no-param-reassign */
+  res.locals.labelOpenOnly = labelOpenOnly;
+  res.locals.labelShowAll = labelShowAll;
   res.locals.serviceList = serviceList;
-  res.locals.altResults = {};
-  res.locals.altResults.url = altResultsUrl;
-  res.locals.altResults.message = altResultsMessage;
+  res.locals.altResultsUrl = altResultsUrl;
+  res.locals.openNow = openNow;
   /* eslint-enable no-param-reassign */
 
   next();
