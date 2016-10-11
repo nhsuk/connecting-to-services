@@ -152,7 +152,7 @@ describe('The results page', () => {
 
           // Some arbitary element to suggest there are 10 results
           expect($('.cta-blue').length).to.equal(10);
-          expect($('.cta-grey').attr('href'))
+          expect($('.list-tab__link').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
@@ -191,7 +191,7 @@ describe('The results page', () => {
 
           // Some arbitary element to suggest there are 2 results
           expect($('.cta-blue').length).to.equal(3);
-          expect($('.cta-grey').attr('href'))
+          expect($('.list-tab__link').attr('href'))
             .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
@@ -227,4 +227,3 @@ describe('The results page', () => {
     });
   });
 });
-

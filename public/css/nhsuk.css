@@ -550,7 +550,7 @@ body {
 
 .button {
   font-family: "FS Me", Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 32px;
   text-transform: none;
@@ -563,7 +563,7 @@ body {
   display: inline-block;
   letter-spacing: .5px;
   padding: 12px 24px;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 
@@ -2080,4 +2080,86 @@ abbr[title] {
   color: #b10e1e;
   font-weight: bold;
   text-decoration: underline;
+}
+
+
+/*
+  Tabbed list
+*/
+
+.list-tabs {
+  list-style:none;
+  margin-bottom:-1px;
+  padding:0;
+}
+
+.list-tabs__item {
+  display:inline-block;
+  padding:16px;
+}
+
+.list-tabs__item--active {
+  border:1px solid #bfc1c3;
+  border-bottom:1px solid #fff;
+}
+
+
+/*
+  Results
+*/
+
+@media (max-width: 924px) {
+  .results {
+    padding:16px;
+  }
+}
+
+@media (min-width: 925px) {
+  .results {
+    padding:32px;
+  }
+}
+
+.results hr:last-child {
+  display:none;
+}
+
+/*
+  layout modifiers
+*/
+
+@media (min-width: 925px) {
+
+  .grid-row--tabledisplay {
+    display:table;
+  }
+
+  .column__one-half--tablecell {
+    display:table-cell;
+    float:none;
+  }
+
+  .column__one-half--alignbottom {
+    vertical-align:bottom;
+  }
+
+}
+
+/*
+  button modifier
+*/
+.button--nomarginright {
+  margin-right:0;
+}
+
+
+/*
+  Utilities
+*/
+.u-border {
+  border:1px solid #bfc1c3;
+}
+
+.u-nomargin {
+  margin:0;
 }
