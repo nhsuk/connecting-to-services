@@ -3,6 +3,9 @@ const router = require('express').Router();
 const servicesMiddleware = require('../app/middleware/services');
 const urlUtils = require('../app/middleware/urlUtils');
 const validateLocation = require('../app/middleware/locationValidator');
+const getPharmacies = require('../app/middleware/getPharmacies');
+const coordinateResolver = require('../app/middleware/coordinateResolver');
+const render = require('../app/middleware/renderer');
 
 router.get('/',
   (req, res) => {
@@ -26,6 +29,13 @@ router.get('/symptoms/stomach-ache/search',
 
     res.render(viewToRender, {});
   }
+);
+
+router.get('/symptoms/stomach-ache/results-file',
+  validateLocation,
+  coordinateResolver,
+  getPharmacies,
+  render.results
 );
 
 router.get('/symptoms/stomach-ache/results',

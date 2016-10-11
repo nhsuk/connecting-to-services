@@ -1,0 +1,130 @@
+[
+  {
+    "identifierType": "Pharmacy Contract",
+    "openingTimes": {
+      "general": {
+        "monday": [
+          {
+            "opens": "08:00",
+            "closes": "23:00"
+          }
+        ],
+        "tuesday": [
+          {
+            "opens": "08:00",
+            "closes": "23:00"
+          }
+        ],
+        "wednesday": [
+          {
+            "opens": "08:00",
+            "closes": "23:00"
+          }
+        ],
+        "thursday": [
+          {
+            "opens": "08:00",
+            "closes": "23:00"
+          }
+        ],
+        "friday": [
+          {
+            "opens": "08:00",
+            "closes": "23:00"
+          }
+        ],
+        "saturday": [
+          {
+            "opens": "08:00",
+            "closes": "23:00"
+          }
+        ],
+        "sunday": [
+          {
+            "opens": "12:00",
+            "closes": "22:00"
+          }
+        ]
+      },
+      "alterations": {
+        "2014-04-18": [],
+        "2014-04-20": [],
+        "2014-04-21": [],
+        "2014-05-05": [],
+        "2014-05-26": [],
+        "2014-08-25": [],
+        "2014-12-25": [],
+        "2014-12-26": [],
+        "2015-01-01": [],
+        "2015-04-03": [],
+        "2015-04-05": [],
+        "2015-04-06": [],
+        "2015-05-04": [],
+        "2015-05-25": [],
+        "2015-08-31": [],
+        "2015-12-25": [],
+        "2015-12-28": [],
+        "2016-01-01": [],
+        "2016-03-25": [],
+        "2016-03-27": [],
+        "2016-03-28": [],
+        "2016-05-02": [],
+        "2016-05-30": [],
+        "2016-08-29": []
+      }
+    },
+    "outOfHours": "",
+    "hasEps": true,
+    "address": {
+      "line1": "Fountain Hall",
+      "line2": "Fountain Street",
+      "line3": null,
+      "city": "Bradford",
+      "county": "",
+      "postcode": "BD1 3RA"
+    },
+    "contacts": {
+      "website": "http://www.1stPharmacy-online.co.uk",
+      "additionalContacts": [],
+      "telephoneNumber": "01274 323877",
+      "isNonGeographicPhoneNumber": false,
+      "phoneChargeMethod": "unknown method",
+      "phoneChargeAmount": null,
+      "telephoneExtension": null,
+      "fax": "01274 323875",
+      "email": "ThePharmacist@1stPharmacy-online.co.uk"
+    },
+    "directionsInformation": "",
+    "externalProfileUrl": null,
+    "identifier": "FNM60",
+    "name": "1st Pharmacy",
+    "organisationType": "Pharmacy",
+    "parkingInformation": null,
+    "provider": "West Yorkshire Area Team",
+    "summary": "<p>Welcome to 1st Pharmacy on the NHS Choices website.&nbsp; Our aim is to advance patient care by providing a comprehensive range of pharmacy services just for you. &nbsp;</p><br /><p>For specific advice or further information please call our pharmacy team on 01274 323877 or email&nbsp;<a href=\"mailto:ThePharmacist@1stPharmacy-online.co.uk\">The Pharmacist</a></p><br /><p>In addition to a full range of services we also dispense private prescriptions at very competitive prices.&nbsp; Call in and ask for details.&nbsp;</p>",
+    "links": [
+      {
+        "rel": "NoFollow",
+        "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFNM60&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+        "name": "Tracking pixel"
+      },
+      {
+        "rel": "Self",
+        "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FNM60",
+        "name": "Link to self"
+      },
+      {
+        "rel": "Alternate",
+        "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FNM60",
+        "name": "NHS Choices profile"
+      }
+    ],
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -1.7577874660491943,
+        53.797275543212891
+      ]
+    }
+  }
+]

@@ -98,16 +98,33 @@ describe('The search page', () => {
     });
 });
 
+describe('The file loading results page', () => {
+  const postcode = 'AB123CD';
+  describe('happy paths', () => {
+    it('should return 10 results', (done) => {
+      chai.request(server)
+        .get('/symptoms/stomach-ache/results-file')
+        .query({ location: postcode })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+          // TODO: Check the specific results are correct, as loaded from the known file
+          // TODO: When the postcode lookup is done to get the coords that request will need mocking
+          done();
+        });
+    });
+  });
+});
+
 describe('The results page', () => {
   let originalUrl = '';
   let originalApikey = '';
   const resultsRoute = '/symptoms/stomach-ache/results';
   const baseUrl = 'http://web.site';
   const apikey = 'secret';
-  const validPostcode = '   AB123CD   ';
-  const trimmedPostcode = validPostcode.trim();
+  const paddedPostcode = '   AB123CD   ';
+  const postcode = paddedPostcode.trim();
   const postcodeSearchPath =
-    new RegExp(`/organisations/pharmacies/postcode/${trimmedPostcode}`);
+    new RegExp(`/organisations/pharmacies/postcode/${postcode}`);
 
   before('setup environment variables', () => {
     originalUrl = process.env.NHSCHOICES_SYNDICATION_BASEURL;
@@ -144,7 +161,7 @@ describe('The results page', () => {
 
       chai.request(server)
         .get(resultsRoute)
-        .query({ location: validPostcode })
+        .query({ location: paddedPostcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
 
@@ -153,7 +170,7 @@ describe('The results page', () => {
           // Some arbitary element to suggest there are 10 results
           expect($('.cta-blue').length).to.equal(10);
           expect($('.cta-grey').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}&open=true`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
@@ -183,7 +200,7 @@ describe('The results page', () => {
 
       chai.request(server)
         .get(resultsRoute)
-        .query({ location: validPostcode, open: true })
+        .query({ location: paddedPostcode, open: true })
         .end((err, res) => {
           checkHtmlResponse(err, res);
 
@@ -192,7 +209,7 @@ describe('The results page', () => {
           // Some arbitary element to suggest there are 2 results
           expect($('.cta-blue').length).to.equal(3);
           expect($('.cta-grey').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${trimmedPostcode}`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
