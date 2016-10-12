@@ -7,7 +7,7 @@
 {% block content %}
 <div class="grid-row">
   <div class="column__two-thirds">
-    <p class="lede">The pharmacies listed below are currently open.</p>
+    <p class="lede">The pharmacies listed below are currently not not open.</p>
     <p class="lede">Other pharmacies nearby are not shown because they are currently closed.</p>
   </div>
 </div>
