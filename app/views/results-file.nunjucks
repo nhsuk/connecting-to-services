@@ -1,0 +1,51 @@
+{% extends 'layout.nunjucks' %}
+
+{% block pageTitle %}All service results{% endblock %}
+
+{% block header %}Pharmacies that can help you near to '{{ location }}'{% endblock %}
+
+{% block content %}
+<div class="grid-row">
+  <div class="column__two-thirds">
+    <p class="lede">Other pharmacies nearby are not shown because they are currently closed.</p>
+  </div>
+</div>
+
+{% for service in nearbyServices %}
+<hr>
+<div class="grid-row">
+  <div class="column__one-half">
+    <h2>{{ service.name }}</h2>
+    <p><strong>{{ service.openingTimesMessage }}</strong></p>
+
+    <p>
+    {{ service.address.line1 }} <br>
+    {{ service.address.line2 }} <br>
+    {{ service.address.line3 }} <br>
+    {{ service.address.city }} <br>
+    {{ service.address.county }} <br>
+    {{ service.address.postcode }} <br>
+    LON: {{ service.longitude }} <br>
+    LAT: {{ service.latitude }} <br>
+    </p>
+    {% if service.contacts.telephoneNumber %}
+    <p>Telephone: {{ service.contacts.telephoneNumber }}</p>
+    {% endif %}
+  </div>
+  <div class="column__one-half">
+    <p>Distance from postcode: {{ service.distanceInMiles | round(1) }} miles</p>
+
+    <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button cta cta-blue">See on map and get directions</a>
+  </div>
+
+</div>
+{% endfor %}
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <p>
+    <a href="{{ altResults.url }}" class="button cta cta-grey">{{ altResults.message }}</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
