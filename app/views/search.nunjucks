@@ -38,7 +38,7 @@
           <span class="error-message"> Use a valid postcode </span>
           {% endif %}
           <div class="form-group">
-            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
+            <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
             <input type="hidden" name="open" value="true">
           </div>
         </fieldset>
