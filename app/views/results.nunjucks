@@ -34,7 +34,7 @@
     {% endif %}
   </div>
   <div class="column__one-half column__one-half--tablecell column__one-half--alignbottom">
-    <p>Distance from postcode: {{ service.distanceInMiles | round(1) }} miles</p>
+    <p>{{ service.distanceInMiles | round(1) }} miles away</p>
 
     <a href="https://www.google.com/maps?{{service.googleMapsQuery}}" class="button cta cta-blue button--nomarginright">See on map and get directions</a>
   </div>

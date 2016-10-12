@@ -2098,6 +2098,13 @@ abbr[title] {
   padding:16px;
 }
 
+@media (max-width: 640px) {
+  .list-tabs__item {
+    font-size:18px;
+  }
+}
+
+
 .list-tabs__item--active {
   border:1px solid #bfc1c3;
   border-bottom:1px solid #fff;
@@ -2150,6 +2157,14 @@ abbr[title] {
 */
 .button--nomarginright {
   margin-right:0;
+}
+
+@media (max-width: 640px) {
+  .cta {
+    line-height:24px;
+    padding-left:16px;
+    padding-right:2em;
+  }
 }
 
 
