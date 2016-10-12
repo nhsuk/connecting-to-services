@@ -1,16 +1,16 @@
 const cache = require('memory-cache');
 const Geo = require('geo-nearby');
-// TODO: Need to load the file from the storage  account
-const orgs = require('../data/pharmacy-list-20161010202727.json');
+
+const pharmacyListPath = process.env.PHARMACY_LIST_PATH || '../data/pharmacy-list';
+const orgs = require(pharmacyListPath);
+
+console.log(`Loaded data from ${pharmacyListPath}`);
 
 function loadData() {
   console.time('project orgs');
   const mappedOrgs =
     orgs.filter((item) => {
       if (item.location) {
-        // TODO: Can this be done better i.e. as part of the generation of the file?
-        // OR in the syntax specifying the creation of the dataset
-        // OR, does it really matter?
         /* eslint-disable no-param-reassign */
         item.longitude = item.location.coordinates[0];
         item.latitude = item.location.coordinates[1];

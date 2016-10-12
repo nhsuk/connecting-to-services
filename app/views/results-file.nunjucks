@@ -18,6 +18,7 @@
     <h2>{{ service.name }}</h2>
     <p><strong>{{ service.openingTimesMessage }}</strong></p>
 
+    <h2>{{ service.identifier }}</h2>
     <p>
     {{ service.address.line1 }} <br>
     {{ service.address.line2 }} <br>

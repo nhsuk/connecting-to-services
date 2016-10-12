@@ -1,6 +1,6 @@
 const geolib = require('geolib');
 
-const metersInAMile = 1600;
+const metersInAMile = 1609;
 
 function sortByDistance(a, b) {
   return a.distanceInMiles - b.distanceInMiles;
