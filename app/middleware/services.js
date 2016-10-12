@@ -149,7 +149,7 @@ function getDisplayValuesMapper(location) {
 function prepareForRender(req, res, next) {
   const open = req.query.open || false;
   const location = res.locals.location;
-  const labelOpenOnly = 'Pharmacies open now';
+  const labelOpenOnly = 'Open now';
   const labelShowAll = 'All pharmacies';
   let serviceList = [];
   let altResultsUrl = '';
