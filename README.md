@@ -44,13 +44,14 @@ environment.
 
 | Variable                         | Description                                                               | Default                  | Required |
 |:---------------------------------|:--------------------------------------------------------------------------|:-------------------------|----------|
-| `NODE_ENV`                       | node environment                                                          | development              | | 
-| `PORT`                           | server port                                                               | 3000                     | | 
-| `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id        |                          | |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                       |                          | |
-| `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                             |                          | |
+| `NODE_ENV`                       | node environment                                                          | development              |          |
+| `PORT`                           | server port                                                               | 3000                     |          |
+| `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id        |                          |          |
+| `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                       |                          |          |
+| `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                             |                          |          |
 | `NHSCHOICES_SYNDICATION_BASEURL` | [NHS Digital Syndication](http://www.nhs.uk/aboutNHSChoices/professionals/syndication/Pages/Webservices.aspx) base endpoint | | y |
 | `NHSCHOICES_SYNDICATION_APIKEY`  | [NHS Digital Syndication](http://www.nhs.uk/aboutNHSChoices/professionals/syndication/Pages/Webservices.aspx) API key | | y |
+| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                           | `../data/pharmacy-list` |      |
 
 ## FAQ
 
