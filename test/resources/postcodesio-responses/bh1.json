@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "result": {
+    "outcode": "BH1",
+    "longitude": -1.86100597628681,
+    "latitude": 50.7248817071575,
+    "northings": 91704,
+    "eastings": 409907,
+    "admin_district": [
+      "Bournemouth",
+      "Poole"
+    ],
+    "parish": [
+      "Bournemouth, unparished area",
+      "Poole, unparished area"
+    ],
+    "admin_county": [],
+    "admin_ward": [
+      "Central",
+      "East Cliff and Springbourne",
+      "Branksome East",
+      "Boscombe West",
+      "Littledown and Iford",
+      "Boscombe East"
+    ]
+  }
+}

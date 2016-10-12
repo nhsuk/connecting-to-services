@@ -84,11 +84,27 @@ describe('The file loading results page', () => {
   const postcode = 'AB123CD';
   describe('happy paths', () => {
     it('should return 10 results', (done) => {
+      const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+
+      nock('https://api.postcodes.io')
+        .get(/.*/)
+        .reply(200, postcodeioResponse);
+
       chai.request(server)
         .get(`${constants.SITE_ROOT}/results-file`)
         .query({ location: postcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
+          const $ = cheerio.load(res.text);
+
+          const mapLinks = $('.cta-blue');
+          // Some arbitary element to suggest there are 10 results
+          expect(mapLinks.length).to.equal(10);
+          mapLinks.toArray().forEach((link) => {
+            expect($(link).attr('href')).to.have.string('https://www.google.com');
+          });
+          expect($('.cta-grey').attr('href'))
+            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=true`);
           // TODO: Check the specific results are correct, as loaded from the known file
           // TODO: When the postcode lookup is done to get the coords that request will need mocking
           done();
@@ -123,9 +139,11 @@ describe('The results page', () => {
 
 
   describe('happy paths', () => {
-    it('should return 10 results open or closed results', (done) => {
-      const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-      const overviewResponse = getSampleResponse('pharmacy_opening_times');
+    it('should return 10 results', (done) => {
+      const postcodeSearchResponse =
+        getSampleResponse('syndication_responses/paged_pharmacies_postcode_search.xml');
+      const overviewResponse =
+        getSampleResponse('syndication_responses/pharmacy_opening_times.xml');
 
       const postcodeSearchScope =
         nock(baseUrl)
@@ -163,8 +181,9 @@ describe('The results page', () => {
       // This can not be an arrow function due to the use of this.timeout
       // https://github.com/mochajs/mocha/issues/2018
       this.timeout(3000);
-      const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-      const overviewResponse = getSampleResponse('always_open');
+      const postcodeSearchResponse =
+        getSampleResponse('syndication_responses/paged_pharmacies_postcode_search.xml');
+      const overviewResponse = getSampleResponse('syndication_responses/always_open.xml');
 
       const postcodeSearchScope =
         nock(baseUrl)
