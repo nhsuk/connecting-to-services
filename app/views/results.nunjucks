@@ -6,6 +6,9 @@
 
 {% block content %}
 
+{% set labelOpenOnly = "Open now" %}
+{% set labelShowAll = "All pharmacies" %}
+
 <ul class="list-tabs">
 {% if openNow %}
   <li class="list-tabs__item list-tabs__item--active"><strong>{{ labelOpenOnly }}</strong></li>
@@ -26,7 +29,7 @@
 
     <p>
     {% for line in service.addressLine %}
-      {{ line }}<br />
+      {{ line }}<br>
     {% endfor %}
     </p>
     {% if service.telephone %}

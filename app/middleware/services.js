@@ -149,8 +149,6 @@ function getDisplayValuesMapper(location) {
 function prepareForRender(req, res, next) {
   const open = req.query.open || false;
   const location = res.locals.location;
-  const labelOpenOnly = 'Open now';
-  const labelShowAll = 'All pharmacies';
   let serviceList = [];
   let altResultsUrl = '';
   let openNow = '';
@@ -180,8 +178,6 @@ function prepareForRender(req, res, next) {
         .map(getDisplayValuesMapper(location));
   }
   /* eslint-disable no-param-reassign */
-  res.locals.labelOpenOnly = labelOpenOnly;
-  res.locals.labelShowAll = labelShowAll;
   res.locals.serviceList = serviceList;
   res.locals.altResultsUrl = altResultsUrl;
   res.locals.openNow = openNow;
