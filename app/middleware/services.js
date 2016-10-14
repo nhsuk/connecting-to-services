@@ -151,11 +151,10 @@ function prepareForRender(req, res, next) {
   const location = res.locals.location;
   let serviceList = [];
   let altResultsUrl = '';
-  let openNow = '';
+  let openNow = true;
 
   if (open) {
     altResultsUrl = `/symptoms/stomach-ache/results?location=${location}`;
-    openNow = true;
 
     serviceList =
       pharmacyMapper(req.pharmacyList)
