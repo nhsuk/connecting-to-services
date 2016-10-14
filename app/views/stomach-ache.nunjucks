@@ -27,7 +27,7 @@ A stomach ache is a term often used to refer to cramps or a dull ache in the tum
 </ul>
 
 <p>
-<a href="/symptoms/stomach-ache/find-help" class="cta-clear cta-black-arrow">Find an open pharmacy near you</a>
+<a href="{{ SITE_ROOT }}/find-help" class="cta-clear cta-black-arrow">Find an open pharmacy near you</a>
 </p>
 
 <p>If you have vomiting and diarrhoea with your stomach ache, it should stop after a few days. Try to drink a lot of fluids to avoid dehydration.</p>

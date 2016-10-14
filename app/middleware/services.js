@@ -154,7 +154,7 @@ function prepareForRender(req, res, next) {
 
 
   if (open === 'true') {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=false`;
+    altResultsUrl = `${res.locals.SITE_ROOT}/results?location=${location}&open=false`;
     serviceList =
       pharmacyMapper(req.pharmacyList)
         .sort(sortByDistanceInKms)
@@ -164,7 +164,7 @@ function prepareForRender(req, res, next) {
         .slice(0, 3)
         .map(getDisplayValuesMapper(location));
   } else {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
+    altResultsUrl = `${res.locals.SITE_ROOT}/results?location=${location}&open=true`;
     const tenClosestPlaces = req.pharmacyList
           .sort(sortByDistance)
           .slice(0, 10);
