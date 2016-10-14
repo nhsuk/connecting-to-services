@@ -1,6 +1,20 @@
 {% extends 'layout.nunjucks' %}
 
-{% block header %}Find a place that can help you{% endblock %}
+{% block header %}
+Find a place that can help you
+{% if errorMessage %}
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+  <h2 class="local-header--error error-summary-heading" id="error-summary-heading-example-1">
+    {{ errorMessage }}
+  </h2>
+
+  <ul class="error-summary-list">
+    <li><a href="#location">Use a valid postcode.</a></li>
+  </ul>
+
+</div>
+{% endif %}
+{% endblock %}
 
 {% block pageTitle %}Find a place that can help you{% endblock %}
 
@@ -14,24 +28,38 @@
   <li>pain relief</li>
 </ul>
 
-<form class="form" id="formname" method="get" action="/symptoms/stomach-ache/search">
-  <fieldset>
-    <legend class="primary">Can you travel to a pharmacist?</legend>
-    <div class="form-group">
-      <label for="radio-yes" class="block-label">
-        <input id="radio-yes" type="radio" name="able" value="true" checked>
-        Yes
-      </label>
-      <label for="radio-no" class="block-label">
-        <input id="radio-no" type="radio" name="able" value="false">
-        No
-      </label>
+<form method="get" class="form" action="{{ SITE_ROOT }}/results">
+  <div class="reading-width">
+    <div class="form-item-wrapper">
+
+      {% if errorMessage %}
+      <div class="form-group error">
+        {% else %}
+        <div class="form-group">
+          {% endif %}
+          <fieldset>
+            <label class="form-label-bold" for="location">
+              <!-- label -->
+              Enter a postcode
+            </label>
+
+            {% if errorMessage %}
+            <span class="error-message"> Use a valid postcode </span>
+            {% endif %}
+            <div class="form-group">
+              <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
+              <input type="hidden" name="open" value="true">
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-item-wrapper" style="display:inline-block;">
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+        </div>
+      </div>
     </div>
-  </fieldset>
-
-  <input type="submit" class="button" value="Continue">
-
-  <p>If you are not looking for help, <a href="/symptoms/stomach-ache">go back</a>.</p>
 </form>
 
 {% endblock %}

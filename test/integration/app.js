@@ -5,6 +5,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../server');
 const getSampleResponse = require('../resources/getSampleResponse');
+const constants = require('../../app/lib/constants');
 
 const expect = chai.expect;
 
@@ -19,7 +20,7 @@ function checkHtmlResponse(err, res) {
 describe('The default page', () => {
   it('should return the link for stomach ache', (done) => {
     chai.request(server)
-      .get('/')
+      .get(`${constants.SITE_ROOT}`)
       .end((err, res) => {
         checkHtmlResponse(err, res);
 
@@ -36,7 +37,7 @@ describe('The default page', () => {
 describe('The stomach ache page', () => {
   it('should contain content for stomach ache', (done) => {
     chai.request(server)
-      .get('/symptoms/stomach-ache')
+      .get(`${constants.SITE_ROOT}/stomach-ache`)
       .end((err, res) => {
         checkHtmlResponse(err, res);
 
@@ -52,50 +53,31 @@ describe('The stomach ache page', () => {
 describe('The find help page', () => {
   it('should contain content for finding help with stomach ache', (done) => {
     chai.request(server)
-      .get('/symptoms/stomach-ache/find-help')
+      .get(`${constants.SITE_ROOT}/find-help`)
       .end((err, res) => {
         checkHtmlResponse(err, res);
 
         const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title--question').text())
+        expect($('.local-header--title--question').text().trim())
           .to.equal('Find a place that can help you');
         done();
       });
   });
-});
 
-describe('The search page', () => {
   it('should provide a prompt to enter a postcode', (done) => {
     chai.request(server)
-      .get('/symptoms/stomach-ache/search')
-      .query({ able: 'true' })
+      .get(`${constants.SITE_ROOT}/find-help`)
       .end((err, res) => {
         checkHtmlResponse(err, res);
 
         const $ = cheerio.load(res.text);
 
-        expect($('h1 .local-header--title--question').text())
-          .to.equal('Your location');
+        expect($('.local-header--title--question').text().trim())
+          .to.equal('Find a place that can help you');
         done();
       });
   });
-
-  it('should return a cannot travel page when people are not able to get there',
-    (done) => {
-      chai.request(server)
-        .get('/symptoms/stomach-ache/search')
-        .query({ able: 'false' })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-
-          const $ = cheerio.load(res.text);
-
-          expect($('.local-header--title--question').text())
-            .to.equal('You cannot travel to a pharmacy');
-          done();
-        });
-    });
 });
 
 describe('The file loading results page', () => {
@@ -103,7 +85,7 @@ describe('The file loading results page', () => {
   describe('happy paths', () => {
     it('should return 10 results', (done) => {
       chai.request(server)
-        .get('/symptoms/stomach-ache/results-file')
+        .get(`${constants.SITE_ROOT}/results-file`)
         .query({ location: postcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
@@ -118,7 +100,7 @@ describe('The file loading results page', () => {
 describe('The results page', () => {
   let originalUrl = '';
   let originalApikey = '';
-  const resultsRoute = '/symptoms/stomach-ache/results';
+  const resultsRoute = `${constants.SITE_ROOT}/results`;
   const baseUrl = 'http://web.site';
   const apikey = 'secret';
   const paddedPostcode = '   AB123CD   ';
@@ -170,7 +152,7 @@ describe('The results page', () => {
           // Some arbitary element to suggest there are 10 results
           expect($('.cta-blue').length).to.equal(10);
           expect($('.list-tab__link').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=true`);
+            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();
@@ -209,7 +191,7 @@ describe('The results page', () => {
           // Some arbitary element to suggest there are 3 results
           expect($('.cta-blue').length).to.equal(3);
           expect($('.list-tab__link').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=false`);
+            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();

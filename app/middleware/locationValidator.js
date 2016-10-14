@@ -9,7 +9,7 @@ function validateLocation(req, res, next) {
   res.locals.location = validationResult.input;
 
   if (validationResult.errorMessage) {
-    res.render('search', { errorMessage: validationResult.errorMessage });
+    res.render('find-help', { errorMessage: validationResult.errorMessage });
   } else {
     next();
   }

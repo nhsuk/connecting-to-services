@@ -1,5 +1,4 @@
 const express = require('express');
-
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -7,8 +6,12 @@ const compress = require('compression');
 const nunjucks = require('nunjucks');
 const router = require('./routes');
 const locals = require('../app/middleware/locals');
+const constants = require('../app/lib/constants');
 
 module.exports = (app, config) => {
+  // eslint-disable-next-line no-param-reassign
+  app.locals.SITE_ROOT = constants.SITE_ROOT;
+
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'nunjucks');
   nunjucks.configure(`${config.root}/app/views`, {
@@ -27,24 +30,21 @@ module.exports = (app, config) => {
   app.use(cookieParser());
   app.use(compress());
 
-  app.use([
-    /\/(symptoms|conditions)\/.*\/results/,
-    /\/(symptoms|conditions)\/.*\/search/,
-    /\/(symptoms|conditions)\/.*\/find-help/,
-    /\/(symptoms|conditions)\/(\w|-)+/,
-    '/',
-  ],
-      express.static(`${config.root}/public`));
+  app.get('/', (req, res) => {
+    res.redirect(constants.SITE_ROOT);
+  });
 
-  app.use('/', router);
-  app.use((req, res, next) => {
+  app.use(constants.SITE_ROOT, express.static(`${config.root}/public`));
+
+  app.use(constants.SITE_ROOT, router);
+  app.use(constants.SITE_ROOT, (req, res, next) => {
     const err = new Error('Not Found');
     err.statusCode = 404;
     next(err);
   });
 
   // eslint-disable-next-line no-unused-vars
-  app.use((err, req, res, next) => {
+  app.use(constants.SITE_ROOT, (err, req, res, next) => {
     console.log(err);
     res.status(err.statusCode || 500);
     res.render('error', {

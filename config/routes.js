@@ -13,32 +13,14 @@ router.get('/',
   }
 );
 
-router.get('/symptoms/stomach-ache/search',
-  (req, res) => {
-    const query = req.query;
-
-    let viewToRender = 'search';
-
-    if ({}.hasOwnProperty.call(query, 'able')) {
-      if (query.able === 'true') {
-        viewToRender = 'search';
-      } else {
-        viewToRender = 'cannot-travel';
-      }
-    }
-
-    res.render(viewToRender, {});
-  }
-);
-
-router.get('/symptoms/stomach-ache/results-file',
+router.get('/results-file',
   validateLocation,
   coordinateResolver,
   getPharmacies,
   render.results
 );
 
-router.get('/symptoms/stomach-ache/results',
+router.get('/results',
   validateLocation,
   urlUtils.urlForPharmacyPostcodeSearch,
   servicesMiddleware.getPharmacies,
@@ -47,13 +29,13 @@ router.get('/symptoms/stomach-ache/results',
   servicesMiddleware.renderServiceResults
 );
 
-router.get('/symptoms/stomach-ache/find-help',
+router.get('/find-help',
   (req, res) => {
     res.render('find-help');
   }
 );
 
-router.get('/symptoms/stomach-ache',
+router.get('/stomach-ache',
   (req, res) => {
     res.render('stomach-ache');
   }
