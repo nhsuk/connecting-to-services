@@ -141,9 +141,48 @@ describe('The results page', () => {
 
 
   describe('happy paths', () => {
-    it('should return 10 results', (done) => {
+    it('should return 10 results open or closed results', (done) => {
       const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
       const overviewResponse = getSampleResponse('pharmacy_opening_times');
+
+      const postcodeSearchScope =
+        nock(baseUrl)
+          .get(postcodeSearchPath)
+          .query(true)
+          .times(10)
+          .reply(200, postcodeSearchResponse);
+
+      const overviewScope =
+        nock(baseUrl)
+          .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
+          .query(true)
+          .times(100)
+          .reply(200, overviewResponse);
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: paddedPostcode, open: false })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+
+          const $ = cheerio.load(res.text);
+
+          // Some arbitary element to suggest there are 10 results
+          expect($('.cta-blue').length).to.equal(10);
+          expect($('.list-tab__link').attr('href'))
+            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=true`);
+          expect(postcodeSearchScope.isDone()).to.be.true;
+          expect(overviewScope.isDone()).to.be.true;
+          done();
+        });
+    });
+
+    it('should return 3 open results by default', function filterTest(done) {
+      // This can not be an arrow function due to the use of this.timeout
+      // https://github.com/mochajs/mocha/issues/2018
+      this.timeout(3000);
+      const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
+      const overviewResponse = getSampleResponse('always_open');
 
       const postcodeSearchScope =
         nock(baseUrl)
@@ -167,49 +206,10 @@ describe('The results page', () => {
 
           const $ = cheerio.load(res.text);
 
-          // Some arbitary element to suggest there are 10 results
-          expect($('.cta-blue').length).to.equal(10);
-          expect($('.list-tab__link').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=true`);
-          expect(postcodeSearchScope.isDone()).to.be.true;
-          expect(overviewScope.isDone()).to.be.true;
-          done();
-        });
-    });
-
-    it('should only return 3 results when filtered by open', function filterTest(done) {
-      // This can not be an arrow function due to the use of this.timeout
-      // https://github.com/mochajs/mocha/issues/2018
-      this.timeout(3000);
-      const postcodeSearchResponse = getSampleResponse('paged_pharmacies_postcode_search');
-      const overviewResponse = getSampleResponse('always_open');
-
-      const postcodeSearchScope =
-        nock(baseUrl)
-          .get(postcodeSearchPath)
-          .query(true)
-          .times(10)
-          .reply(200, postcodeSearchResponse);
-
-      const overviewScope =
-        nock(baseUrl)
-          .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
-          .query(true)
-          .times(100)
-          .reply(200, overviewResponse);
-
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: paddedPostcode, open: true })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-
-          const $ = cheerio.load(res.text);
-
-          // Some arbitary element to suggest there are 2 results
+          // Some arbitary element to suggest there are 3 results
           expect($('.cta-blue').length).to.equal(3);
           expect($('.list-tab__link').attr('href'))
-            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}`);
+            .to.equal(`/symptoms/stomach-ache/results?location=${postcode}&open=false`);
           expect(postcodeSearchScope.isDone()).to.be.true;
           expect(overviewScope.isDone()).to.be.true;
           done();

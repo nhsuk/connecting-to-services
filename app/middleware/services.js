@@ -147,15 +147,14 @@ function getDisplayValuesMapper(location) {
 }
 
 function prepareForRender(req, res, next) {
-  const open = req.query.open || false;
+  const open = req.query.open || 'true';
   const location = res.locals.location;
   let serviceList = [];
   let altResultsUrl = '';
-  let openNow = true;
 
-  if (open) {
-    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}`;
 
+  if (open === 'true') {
+    altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=false`;
     serviceList =
       pharmacyMapper(req.pharmacyList)
         .sort(sortByDistanceInKms)
@@ -166,8 +165,6 @@ function prepareForRender(req, res, next) {
         .map(getDisplayValuesMapper(location));
   } else {
     altResultsUrl = `/symptoms/stomach-ache/results?location=${location}&open=true`;
-    openNow = false;
-
     const tenClosestPlaces = req.pharmacyList
           .sort(sortByDistance)
           .slice(0, 10);
@@ -179,7 +176,7 @@ function prepareForRender(req, res, next) {
   /* eslint-disable no-param-reassign */
   res.locals.serviceList = serviceList;
   res.locals.altResultsUrl = altResultsUrl;
-  res.locals.openNow = openNow;
+  res.locals.open = open;
   /* eslint-enable no-param-reassign */
 
   next();

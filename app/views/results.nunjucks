@@ -10,7 +10,7 @@
 {% set labelShowAll = "All pharmacies" %}
 
 <ul class="list-tabs">
-{% if openNow %}
+{% if open === 'true' %}
   <li class="list-tabs__item list-tabs__item--active"><strong>{{ labelOpenOnly }}</strong></li>
   <li class="list-tabs__item"><a href="{{ altResultsUrl }}" class="list-tab__link">{{ labelShowAll }}</a></li>
 {% else %}
