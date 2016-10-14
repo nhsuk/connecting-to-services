@@ -634,6 +634,26 @@ body {
   text-decoration: none;
 }
 
+.cta-clear:link, .cta-clear:hover, .cta-clear:focus, .cta-clear:visited {
+  border-left:4px solid #000;
+  color:#000;
+  display:inline-block;
+  font-weight:bold;
+  padding:12px 32px 12px 24px;
+}
+
+.cta-black-arrow {
+  background:url('../images/icon-button-start-black.svg') right 60% no-repeat;
+}
+
+
+@media (max-width: 924px) {
+  .cta-clear:link, .cta-clear:hover, .cta-clear:focus, .cta-clear:visited {
+    margin:16px 0;
+  }
+}
+
+
 /*
    Form elements
 */
