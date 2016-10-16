@@ -11,31 +11,20 @@ function getDistanceInMiles(start, end) {
   return distanceInMeters / metersInAMile;
 }
 
-function nearby(searchPoint, geo, orgs) {
-  // Use the geohash data to get the nearby orgs
-  // Use the plain org data to grab the rest of the data
-
-  const lengthOfUKInMiles = 850;
+function nearby(searchPoint, geo, limit) {
+  const maxResults = limit || 10;
   const nearbyGeo =
     geo
-    .limit(10)
-    .nearBy(searchPoint.latitude, searchPoint.longitude, lengthOfUKInMiles * metersInAMile);
+    .nearBy(searchPoint.latitude, searchPoint.longitude, 50 * metersInAMile);
 
   const nearbyOrgs = nearbyGeo.map((item) => {
-    let nearbyOrg = {};
-    orgs.find((org) => {
-      if (org.identifier === item.i) {
-        nearbyOrg = org;
-        return true;
-      }
-      return false;
-    });
-    nearbyOrg.distanceInMiles = getDistanceInMiles(searchPoint, nearbyOrg);
+    // eslint-disable-next-line no-param-reassign
+    item.distanceInMiles = getDistanceInMiles(searchPoint, item);
 
-    return nearbyOrg;
+    return item;
   });
 
-  return nearbyOrgs.sort(sortByDistance);
+  return nearbyOrgs.sort(sortByDistance).slice(0, maxResults);
 }
 
 module.exports = {

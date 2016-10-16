@@ -44,6 +44,7 @@
     "moment": "^2.14.1",
     "moment-opening-times": "git+https://github.com/nhsuk/moment-opening-times.git",
     "morgan": "^1.6.1",
+    "ngeohash": "^0.6.0",
     "nunjucks": "^2.4.2",
     "postcode": "^0.2.5",
     "require-environment-variables": "^1.1.2",
