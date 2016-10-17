@@ -5,10 +5,12 @@ function getPharmacies(req, res, next) {
   const searchPoint = res.locals.coordinates;
   const geo = cache.get('geo');
 
-  const nearbyServices = pharmacies.nearby(searchPoint, geo);
+  const nearby = pharmacies.nearby(searchPoint, geo);
 
-  // eslint-disable-next-line no-param-reassign
-  res.locals.nearbyServices = nearbyServices;
+  /* eslint-disable no-param-reassign*/
+  res.locals.nearbyServices = nearby.nearbyServices;
+  res.locals.openServices = nearby.openServices;
+  /* eslint-enable no-param-reassign*/
   next();
 }
 

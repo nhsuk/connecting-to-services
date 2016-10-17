@@ -1,3 +1,5 @@
+const OpeningTimes = require('moment-opening-times');
+const moment = require('moment');
 const geolib = require('geolib');
 const assert = require('assert');
 
@@ -24,8 +26,12 @@ function nearby(searchPoint, geo, limit) {
       'geo must contain a nearBy function');
 
   const maxResults = limit || 10;
+  // TODO: Look at starting with a small range and increasing only if not
+  // enough results have been returned - mainly to reduce time later on
+  console.time('get-nearby-orgs');
   const nearbyGeo =
     geo.nearBy(searchPoint.latitude, searchPoint.longitude, 50 * metersInAMile);
+  console.timeEnd('get-nearby-orgs');
 
   console.log(`Found ${nearbyGeo.length} results`);
   console.time('add-distance-search');
@@ -41,7 +47,41 @@ function nearby(searchPoint, geo, limit) {
   const sortedOrgs = nearbyOrgs.sort(sortByDistance);
   console.timeEnd('sort-nearby-orgs');
 
-  return sortedOrgs.slice(0, maxResults);
+  const numberOfOpenToReturn = 3;
+  let numberReturned = 0;
+
+  console.time('filter-open-orgs');
+  const openServices = sortedOrgs.filter((item) => {
+    // TODO: Look at breaking out of the loop once three have been found
+    const openingTimes = item.openingTimes;
+    let isOpen;
+    let openingTimesMessage;
+
+    if (openingTimes) {
+      const openingTimesMoment = new OpeningTimes(item.openingTimes.general, 'Europe/London');
+      openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(moment());
+      isOpen = openingTimesMoment.isOpen(moment());
+    } else {
+      openingTimesMessage = 'Call for opening times';
+      isOpen = false;
+    }
+    /* eslint-disable no-param-reassign */
+    item.openingTimesMessage = openingTimesMessage;
+    item.isOpen = isOpen;
+    /* eslint-enable no-param-reassign */
+
+    if (numberReturned < numberOfOpenToReturn && item.isOpen) {
+      numberReturned++;
+      return true;
+    }
+    return false;
+  });
+  console.timeEnd('filter-open-orgs');
+
+  return {
+    nearbyServices: sortedOrgs.slice(0, maxResults),
+    openServices,
+  };
 }
 
 module.exports = {

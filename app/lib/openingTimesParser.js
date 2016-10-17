@@ -36,17 +36,11 @@ const parseOpeningTimesFromSyndicationXml = (openingTimesType, xml) => {
 
         openingTimesForType.daysOfWeek[0].dayOfWeek.forEach((item) => {
           const dayName = item.dayName[0].toLowerCase();
-          openingTimes[dayName] = {};
-          openingTimes[dayName] = {
-            times: [],
-          };
+          openingTimes[dayName] = [];
           item.timesSessions[0].timesSession.forEach((t) => {
             if (t.fromTime) {
               // session details are a time range
-              openingTimes[dayName].times.push({ fromTime: t.fromTime[0], toTime: t.toTime[0] });
-            } else {
-              // session details are text (e.g. closed)
-              openingTimes[dayName].times.push(t);
+              openingTimes[dayName].push({ opens: t.fromTime[0], closes: t.toTime[0] });
             }
           });
         });

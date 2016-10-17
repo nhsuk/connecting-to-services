@@ -11,8 +11,7 @@ const expect = chai.expect;
 
 describe('Nearby', () => {
   let geo = [];
-  let orgs = [];
-  const searchPoint = { latitude: 50.085453033447266, longitude: -1.5765184164047241 };
+  const searchPoint = { latitude: 50.08545303344, longitude: -1.576518416404 };
 
   describe('happy path', () => {
     beforeEach('load data', () => {
@@ -24,14 +23,20 @@ describe('Nearby', () => {
     });
 
     afterEach('clear all content from the cache', () => {
-      orgs = cache.get('orgs');
       cache.clear();
     });
 
-    it('should get 10 nearby pharmacies by default, ordered by distance', () => {
+    it('should return an object with nearby and open services', () => {
       const results = pharmacies.nearby(searchPoint, geo);
 
-      expect(results).is.not.equal(null);
+      expect(results).is.not.equal(undefined);
+      expect(results.nearbyServices).is.not.equal(undefined);
+      expect(results.openServices).is.not.equal(undefined);
+    });
+
+    it('should get 10 nearby pharmacies by default, ordered by distance', () => {
+      const results = pharmacies.nearby(searchPoint, geo).nearbyServices;
+
       expect(results.length).to.be.equal(10);
 
       let previousDistance = 0;
@@ -43,9 +48,8 @@ describe('Nearby', () => {
 
     it('should get the number of results requested, ordered by distance', () => {
       const requestedNumberOfResults = 5;
-      const results = pharmacies.nearby(searchPoint, geo, requestedNumberOfResults);
+      const results = pharmacies.nearby(searchPoint, geo, requestedNumberOfResults).nearbyServices;
 
-      expect(results).is.not.equal(null);
       expect(results.length).to.be.equal(requestedNumberOfResults);
 
       let previousDistance = 0;
@@ -55,27 +59,40 @@ describe('Nearby', () => {
       });
     });
 
-    it('should return obj with expected keys', () => {
-      const results = pharmacies.nearby(searchPoint, geo);
-
-      const expectedKeys = Object.keys(orgs[1]);
-      expectedKeys.push('distanceInMiles');
-
-      results.forEach((result) => {
-        expect(result).to.have.keys(expectedKeys);
-      });
-    });
-
     it('should return the nearest obj first', () => {
       const nearestIdentifier = 'FA040';
 
-      const results = pharmacies.nearby(searchPoint, geo);
+      const results = pharmacies.nearby(searchPoint, geo).nearbyServices;
 
       expect(results[0].identifier).to.be.equal(nearestIdentifier);
     });
 
-    it('should return obj with open orgs', () => {
-      // TODO:
+    it('should return obj with 3 open orgs', () => {
+      const results = pharmacies.nearby(searchPoint, geo).openServices;
+
+      expect(results.length).is.equal(3);
+    });
+
+    it('should return the opening times message and open state', () => {
+      const results = pharmacies.nearby(searchPoint, geo).openServices;
+
+      expect(results[0].isOpen).to.be.equal(true);
+      expect(results[0].openingTimesMessage).to.not.be.equal('Call for opening times');
+      expect(results[0].openingTimesMessage).to.be.a('string');
+    });
+
+    it('should say call for opening times when the org does not have any opening times', () => {
+      const orgWithNoOpeningTimes = {
+        latitude: searchPoint.latitude,
+        longitude: searchPoint.longitude,
+      };
+      function nearbyStub() { return [orgWithNoOpeningTimes]; }
+      const oneOrgGeo = { nearBy: nearbyStub };
+      const results = pharmacies.nearby(searchPoint, oneOrgGeo).nearbyServices;
+
+      expect(results.length).to.be.equal(1);
+      expect(results[0].isOpen).to.be.equal(false);
+      expect(results[0].openingTimesMessage).to.be.equal('Call for opening times');
     });
   });
 
