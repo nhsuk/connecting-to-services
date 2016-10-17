@@ -6,14 +6,12 @@
 
 {% block pageIntro %}
 <div class="local-header--intro">
-  <p>
-A stomach ache is a term often used to refer to cramps or a dull ache in the tummy (abdomen).
-  </p>
+  <p>A stomach ache is a term often used to refer to cramps or a dull ache in the tummy (abdomen).</p>
+  <p>Most stomach aches aren’t anything serious and will go away after a few days.</p>
 </div>
 {% endblock %}
 
 {% block content %}
-<p class="lede">Most stomach aches aren’t anything serious and will go away after a few days.</p>
 
 <h2>Treating stomach ache at home</h2>
 
@@ -36,9 +34,7 @@ A stomach ache is a term often used to refer to cramps or a dull ache in the tum
 
 <section class="callout callout__info">
 
-<h2>If the symptoms persist or get worse</h2>
-
-<p>Seek a doctor's advice if:</p>
+<h2>See your GP if</h2>
 
 <ul>
   <li>the pain gets much worse in a short space of time</li>
@@ -51,7 +47,7 @@ A stomach ache is a term often used to refer to cramps or a dull ache in the tum
   <li>your diarrhoea lasts longer than a few days</li>
 </ul>
 
-<p class="callout__advice">If you can’t speak to your GP or don’t know what to do next, call NHS 111.</p>
+<p class="callout__advice">If you can’t speak to your GP or don’t know what to do next, call NHS <a href="tel:111">111</a>.</p>
 
 </section>
 
