@@ -6,6 +6,7 @@ const chaiHttp = require('chai-http');
 const server = require('../../server');
 const getSampleResponse = require('../resources/getSampleResponse');
 const constants = require('../../app/lib/constants');
+const messages = require('../../app/lib/messages');
 
 const expect = chai.expect;
 
@@ -83,6 +84,7 @@ describe('The find help page', () => {
 describe('The file loading results page', () => {
   const postcode = 'AB123CD';
   const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+  const resultsRoute = `${constants.SITE_ROOT}/results-file`;
 
   describe('happy paths', () => {
     nock('https://api.postcodes.io')
@@ -92,7 +94,7 @@ describe('The file loading results page', () => {
 
     it('should return 3 open results, by default', (done) => {
       chai.request(server)
-        .get(`${constants.SITE_ROOT}/results-file`)
+        .get(resultsRoute)
         .query({ location: postcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
@@ -114,7 +116,7 @@ describe('The file loading results page', () => {
 
     it('should return 10 results', (done) => {
       chai.request(server)
-        .get(`${constants.SITE_ROOT}/results-file`)
+        .get(resultsRoute)
         .query({ location: postcode, open: false })
         .end((err, res) => {
           checkHtmlResponse(err, res);
@@ -130,6 +132,28 @@ describe('The file loading results page', () => {
             .to.equal(`${constants.SITE_ROOT}/results-file?location=${postcode}&open=true`);
           // TODO: Check the specific results are correct, as loaded from the known file
           // TODO: When the postcode lookup is done to get the coords that request will need mocking
+          done();
+        });
+    });
+  });
+
+  describe('error handling', () => {
+    const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
+
+    nock('https://api.postcodes.io')
+      .get(/.*/)
+      .times(1)
+      .reply(404, notFoundResponse);
+
+    const invalidPostcodePassingRegex = 'LS0';
+
+    it('should check a location is supplied and return an error message', (done) => {
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: invalidPostcodePassingRegex })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+          expect(res.text).to.contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
           done();
         });
     });
@@ -257,12 +281,17 @@ describe('The results page', () => {
         });
     });
 
-    it('should check a location is supplied and return an error message', (done) => {
+    it('should validate the postcode and return an error message', (done) => {
+      const invalidPostcode = 'invalid';
+      const errorMessage =
+        `${invalidPostcode} is not a valid postcode, please try again`;
+
       chai.request(server)
         .get(resultsRoute)
+        .query({ location: invalidPostcode })
         .end((err, res) => {
           checkHtmlResponse(err, res);
-          expect(res.text).to.contain('A valid postcode is required to progress');
+          expect(res.text).to.contain(errorMessage);
           done();
         });
     });
