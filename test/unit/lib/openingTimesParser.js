@@ -13,15 +13,15 @@ describe('openingTimesParser', () => {
       const syndicationXml = getSampleResponse('syndication_responses/pharmacy_overview.xml');
       const openingTimes = openingTimesParser('reception', syndicationXml);
       expect(openingTimes).to.have.keys(weekdays);
-      expect(openingTimes.monday.times).to.eql([
-        { fromTime: '08:00', toTime: '13:00' },
-        { fromTime: '13:00', toTime: '19:30' },
+      expect(openingTimes.monday).to.eql([
+        { opens: '08:00', closes: '13:00' },
+        { opens: '13:00', closes: '19:30' },
       ]);
-      expect(openingTimes.friday.times).to.eql([
-        { fromTime: '08:00', toTime: '13:00' },
-        { fromTime: '13:00', toTime: '18:00' },
+      expect(openingTimes.friday).to.eql([
+        { opens: '08:00', closes: '13:00' },
+        { opens: '13:00', closes: '18:00' },
       ]);
-      expect(openingTimes.sunday.times).to.eql(['Closed']);
+      expect(openingTimes.sunday).to.eql([]);
     });
 
     it('should get single slot opening times from syndication response', () => {
@@ -29,26 +29,26 @@ describe('openingTimesParser', () => {
         getSampleResponse('syndication_responses/pharmacy_overview_single_time_slot.xml');
       const openingTimes = openingTimesParser('reception', syndicationXml);
       expect(openingTimes).to.have.keys(weekdays);
-      expect(openingTimes.monday.times).to.eql([
-        { fromTime: '08:00', toTime: '19:30' },
+      expect(openingTimes.monday).to.eql([
+        { opens: '08:00', closes: '19:30' },
       ]);
-      expect(openingTimes.friday.times).to.eql([
-        { fromTime: '08:00', toTime: '19:30' },
+      expect(openingTimes.friday).to.eql([
+        { opens: '08:00', closes: '19:30' },
       ]);
-      expect(openingTimes.sunday.times).to.eql(['Closed']);
+      expect(openingTimes.sunday).to.eql([]);
     });
 
     it('should get single type opening times from syndication response', () => {
       const syndicationXml = getSampleResponse('syndication_responses/pharmacy_opening_times.xml');
       const openingTimes = openingTimesParser('general', syndicationXml);
       expect(openingTimes).to.have.keys(weekdays);
-      expect(openingTimes.monday.times).to.eql([
-        { fromTime: '09:00', toTime: '17:30' },
+      expect(openingTimes.monday).to.eql([
+        { opens: '09:00', closes: '17:30' },
       ]);
-      expect(openingTimes.friday.times).to.eql([
-        { fromTime: '09:00', toTime: '17:30' },
+      expect(openingTimes.friday).to.eql([
+        { opens: '09:00', closes: '17:30' },
       ]);
-      expect(openingTimes.sunday.times).to.eql(['Closed']);
+      expect(openingTimes.sunday).to.eql([]);
     });
 
     it('should handle missing opening times', () => {

@@ -82,17 +82,40 @@ describe('The find help page', () => {
 
 describe('The file loading results page', () => {
   const postcode = 'AB123CD';
+  const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+
   describe('happy paths', () => {
-    it('should return 10 results', (done) => {
-      const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+    nock('https://api.postcodes.io')
+      .get(/.*/)
+      .times(2)
+      .reply(200, postcodeioResponse);
 
-      nock('https://api.postcodes.io')
-        .get(/.*/)
-        .reply(200, postcodeioResponse);
-
+    it('should return 3 open results, by default', (done) => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/results-file`)
         .query({ location: postcode })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+          const $ = cheerio.load(res.text);
+
+          const mapLinks = $('.cta-blue');
+          // Some arbitary element to suggest there are 10 results
+          expect(mapLinks.length).to.equal(3);
+          mapLinks.toArray().forEach((link) => {
+            expect($(link).attr('href')).to.have.string('https://www.google.com');
+          });
+          expect($('.list-tab__link').attr('href'))
+            .to.equal(`${constants.SITE_ROOT}/results-file?location=${postcode}&open=false`);
+          // TODO: Check the specific results are correct, as loaded from the known file
+          // TODO: When the postcode lookup is done to get the coords that request will need mocking
+          done();
+        });
+    });
+
+    it('should return 10 results', (done) => {
+      chai.request(server)
+        .get(`${constants.SITE_ROOT}/results-file`)
+        .query({ location: postcode, open: false })
         .end((err, res) => {
           checkHtmlResponse(err, res);
           const $ = cheerio.load(res.text);
@@ -104,7 +127,7 @@ describe('The file loading results page', () => {
             expect($(link).attr('href')).to.have.string('https://www.google.com');
           });
           expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results-file?location=${postcode}&open=false`);
+            .to.equal(`${constants.SITE_ROOT}/results-file?location=${postcode}&open=true`);
           // TODO: Check the specific results are correct, as loaded from the known file
           // TODO: When the postcode lookup is done to get the coords that request will need mocking
           done();

@@ -21,7 +21,14 @@
 
 <div class="results u-border u-nomargin">
 
-{% for service in nearbyServices %}
+
+{% if open === 'true' %}
+  {% set services = openServices %}
+{% else %}
+  {% set services = nearbyServices %}
+{% endif %}
+
+{% for service in services %}
 <div class="grid-row grid-row--tabledisplay">
   <div class="column__one-half column__one-half--tablecell">
     <h2>{{ service.name }}</h2>
