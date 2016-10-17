@@ -54,13 +54,14 @@ function nearby(searchPoint, geo, limit) {
   for (let i = 0; i < sortedOrgs.length; i++) {
     const item = sortedOrgs[i];
     const openingTimes = item.openingTimes;
+    const now = moment();
     let isOpen;
     let openingTimesMessage;
 
     if (openingTimes) {
       const openingTimesMoment = new OpeningTimes(item.openingTimes.general, 'Europe/London');
-      openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(moment());
-      isOpen = openingTimesMoment.isOpen(moment());
+      openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(now);
+      isOpen = openingTimesMoment.isOpen(now);
       if (isOpen && openServiceCount < numberOfOpenToReturn) {
         openServiceCount++;
         openServices.push(item);
