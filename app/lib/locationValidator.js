@@ -1,4 +1,5 @@
 const Postcode = require('postcode');
+const messages = require('../lib/messages');
 
 function validateLocation(location) {
   let errorMessage = null;
@@ -11,7 +12,7 @@ function validateLocation(location) {
     const postcode = new Postcode(locationToReturn);
 
     if (!postcode.valid() && !Postcode.validOutcode(locationToReturn)) {
-      errorMessage = `${locationToReturn} is not a valid postcode, please try again`;
+      errorMessage = messages.invalidPostcodeMessage(locationToReturn);
     }
   }
 

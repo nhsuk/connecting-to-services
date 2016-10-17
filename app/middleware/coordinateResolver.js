@@ -3,7 +3,7 @@ const postcodes = require('../lib/postcodes');
 function coordinateResolver(req, res, next) {
   function afterLookup(err) {
     if (err) {
-      res.render('search', { errorMessage: err.message });
+      res.render('find-help', { errorMessage: err.message });
     } else {
       next();
     }
