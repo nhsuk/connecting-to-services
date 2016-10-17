@@ -1,5 +1,6 @@
 const cache = require('memory-cache');
 const Geo = require('geo-nearby');
+const geohash = require('ngeohash');
 
 const pharmacyListPath = process.env.PHARMACY_LIST_PATH || '../data/pharmacy-list';
 const orgs = require(pharmacyListPath);
@@ -14,6 +15,7 @@ function loadData() {
         /* eslint-disable no-param-reassign */
         item.longitude = item.location.coordinates[0];
         item.latitude = item.location.coordinates[1];
+        item.g = geohash.encode_int(item.latitude, item.longitude);
         /* eslint-enable no-param-reassign */
         return true;
       }
@@ -22,13 +24,8 @@ function loadData() {
     });
   console.timeEnd('project orgs');
 
-  console.time('createCompactSet');
-  const dataset =
-    Geo.createCompactSet(mappedOrgs, { id: 'identifier', lat: 'latitude', lon: 'longitude' });
-  console.timeEnd('createCompactSet');
-
   console.time('create Geo');
-  const geo = new Geo(dataset, { sorted: true });
+  const geo = new Geo(mappedOrgs);
   console.timeEnd('create Geo');
 
   cache.put('geo', geo);

@@ -38,4 +38,10 @@ describe('urlUtils', () => {
       expect(req.urlForPharmacy).to.be.equal(expectedUrl);
     });
   });
+
+  describe('googleMapsQuery', () => {
+    it('should get the google maps query for the result', () => {
+      // TODO:
+    });
+  });
 });

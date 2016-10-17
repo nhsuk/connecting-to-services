@@ -1,4 +1,5 @@
 const geolib = require('geolib');
+const assert = require('assert');
 
 const metersInAMile = 1609;
 
@@ -11,31 +12,36 @@ function getDistanceInMiles(start, end) {
   return distanceInMeters / metersInAMile;
 }
 
-function nearby(searchPoint, geo, orgs) {
-  // Use the geohash data to get the nearby orgs
-  // Use the plain org data to grab the rest of the data
+function nearby(searchPoint, geo, limit) {
+  assert(searchPoint, 'searchPoint can not be null');
+  assert.equal(typeof (searchPoint.latitude), 'number',
+      'searchPoint must contain a property named latitude');
+  assert.equal(typeof (searchPoint.longitude), 'number',
+      'searchPoint must contain a property named longitude');
 
-  const lengthOfUKInMiles = 850;
+  assert(geo, 'geo can not be null');
+  assert.equal(typeof (geo.nearBy), 'function',
+      'geo must contain a nearBy function');
+
+  const maxResults = limit || 10;
   const nearbyGeo =
-    geo
-    .limit(10)
-    .nearBy(searchPoint.latitude, searchPoint.longitude, lengthOfUKInMiles * metersInAMile);
+    geo.nearBy(searchPoint.latitude, searchPoint.longitude, 50 * metersInAMile);
 
+  console.log(`Found ${nearbyGeo.length} results`);
+  console.time('add-distance-search');
   const nearbyOrgs = nearbyGeo.map((item) => {
-    let nearbyOrg = {};
-    orgs.find((org) => {
-      if (org.identifier === item.i) {
-        nearbyOrg = org;
-        return true;
-      }
-      return false;
-    });
-    nearbyOrg.distanceInMiles = getDistanceInMiles(searchPoint, nearbyOrg);
+    // eslint-disable-next-line no-param-reassign
+    item.distanceInMiles = getDistanceInMiles(searchPoint, item);
 
-    return nearbyOrg;
+    return item;
   });
+  console.timeEnd('add-distance-search');
 
-  return nearbyOrgs.sort(sortByDistance);
+  console.time('sort-nearby-orgs');
+  const sortedOrgs = nearbyOrgs.sort(sortByDistance);
+  console.timeEnd('sort-nearby-orgs');
+
+  return sortedOrgs.slice(0, maxResults);
 }
 
 module.exports = {

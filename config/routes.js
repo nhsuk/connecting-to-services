@@ -6,6 +6,7 @@ const validateLocation = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
 const render = require('../app/middleware/renderer');
+const prerender = require('../app/middleware/prerender');
 
 router.get('/',
   (req, res) => {
@@ -17,6 +18,7 @@ router.get('/results-file',
   validateLocation,
   coordinateResolver,
   getPharmacies,
+  prerender.results,
   render.results
 );
 
