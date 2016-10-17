@@ -34,6 +34,8 @@ A stomach ache is a term often used to refer to cramps or a dull ache in the tum
 
 <p>Painkillers like paracetamol can help with your stomach ache but won’t stop any vomiting and diarrhoea. Find out more about <a href="http://www.nhs.uk/conditions/gastroenteritis/Pages/Introduction.aspx">treating vomiting and diarrhoea</a>.</p>
 
+<section class="callout callout__info">
+
 <h2>If the symptoms persist or get worse</h2>
 
 <p>Seek a doctor's advice if:</p>
@@ -49,10 +51,9 @@ A stomach ache is a term often used to refer to cramps or a dull ache in the tum
   <li>your diarrhoea lasts longer than a few days</li>
 </ul>
 
-<p>
-<strong>Visit your GP</strong> or <strong>use NHS 111</strong>
-</p>
-<p>Not registered with a GP? Need to find one? <a href="//www.nhs.uk/Service-Search/GP/LocationSearch/4">Find one</a>.</p>
+<p class="callout__advice">If you can’t speak to your GP or don’t know what to do next, call NHS 111.</p>
+
+</section>
 
 {% endblock %}
 

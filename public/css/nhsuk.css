@@ -2198,3 +2198,12 @@ abbr[title] {
 .u-nomargin {
   margin:0;
 }
+
+
+/*
+  Callouts
+*/
+.callout__advice {
+  background-color:#ffc649;
+  padding:16px;
+}
