@@ -26,33 +26,33 @@ function nearby(searchPoint, geo, limit) {
       'geo must contain a nearBy function');
 
   const maxResults = limit || 10;
-  // TODO: Look at starting with a small range and increasing only if not
-  // enough results have been returned - mainly to reduce time later on
+  const numberOfOpenToReturn = 3;
+  const openServices = [];
+  let serviceCount = 0;
+  let openServiceCount = 0;
+
   console.time('get-nearby-orgs');
   const nearbyGeo =
     geo.nearBy(searchPoint.latitude, searchPoint.longitude, 50 * metersInAMile);
   console.timeEnd('get-nearby-orgs');
 
   console.log(`Found ${nearbyGeo.length} results`);
-  console.time('add-distance-search');
+  console.time('add-distance');
   const nearbyOrgs = nearbyGeo.map((item) => {
     // eslint-disable-next-line no-param-reassign
     item.distanceInMiles = getDistanceInMiles(searchPoint, item);
 
     return item;
   });
-  console.timeEnd('add-distance-search');
+  console.timeEnd('add-distance');
 
   console.time('sort-nearby-orgs');
   const sortedOrgs = nearbyOrgs.sort(sortByDistance);
   console.timeEnd('sort-nearby-orgs');
 
-  const numberOfOpenToReturn = 3;
-  let numberReturned = 0;
-
   console.time('filter-open-orgs');
-  const openServices = sortedOrgs.filter((item) => {
-    // TODO: Look at breaking out of the loop once three have been found
+  for (let i = 0; i < sortedOrgs.length; i++) {
+    const item = sortedOrgs[i];
     const openingTimes = item.openingTimes;
     let isOpen;
     let openingTimesMessage;
@@ -61,21 +61,24 @@ function nearby(searchPoint, geo, limit) {
       const openingTimesMoment = new OpeningTimes(item.openingTimes.general, 'Europe/London');
       openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(moment());
       isOpen = openingTimesMoment.isOpen(moment());
+      if (isOpen && openServiceCount < numberOfOpenToReturn) {
+        openServiceCount++;
+        openServices.push(item);
+      }
     } else {
       openingTimesMessage = 'Call for opening times';
       isOpen = false;
     }
+    serviceCount++;
     /* eslint-disable no-param-reassign */
     item.openingTimesMessage = openingTimesMessage;
     item.isOpen = isOpen;
     /* eslint-enable no-param-reassign */
 
-    if (numberReturned < numberOfOpenToReturn && item.isOpen) {
-      numberReturned++;
-      return true;
+    if (openServiceCount >= numberOfOpenToReturn && serviceCount >= maxResults) {
+      break;
     }
-    return false;
-  });
+  }
   console.timeEnd('filter-open-orgs');
 
   return {
