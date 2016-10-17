@@ -1,7 +1,5 @@
 // eslint-disable-next-line new-cap
 const router = require('express').Router();
-const servicesMiddleware = require('../app/middleware/services');
-const urlUtils = require('../app/middleware/urlUtils');
 const validateLocation = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
@@ -14,21 +12,12 @@ router.get('/',
   }
 );
 
-router.get('/results-file',
+router.get('/results',
   validateLocation,
   coordinateResolver,
   getPharmacies,
   prerender.results,
   render.results
-);
-
-router.get('/results',
-  validateLocation,
-  urlUtils.urlForPharmacyPostcodeSearch,
-  servicesMiddleware.getPharmacies,
-  servicesMiddleware.getPharmacyOpeningTimes,
-  servicesMiddleware.prepareForRender,
-  servicesMiddleware.renderServiceResults
 );
 
 router.get('/find-help',

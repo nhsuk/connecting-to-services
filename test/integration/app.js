@@ -84,7 +84,7 @@ describe('The find help page', () => {
 describe('The file loading results page', () => {
   const postcode = 'AB123CD';
   const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
-  const resultsRoute = `${constants.SITE_ROOT}/results-file`;
+  const resultsRoute = `${constants.SITE_ROOT}/results`;
 
   describe('happy paths', () => {
     nock('https://api.postcodes.io')
@@ -101,13 +101,13 @@ describe('The file loading results page', () => {
           const $ = cheerio.load(res.text);
 
           const mapLinks = $('.cta-blue');
-          // Some arbitary element to suggest there are 10 results
+          // Some arbitary element to suggest there are 3 results
           expect(mapLinks.length).to.equal(3);
           mapLinks.toArray().forEach((link) => {
             expect($(link).attr('href')).to.have.string('https://www.google.com');
           });
           expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results-file?location=${postcode}&open=false`);
+            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false`);
           // TODO: Check the specific results are correct, as loaded from the known file
           // TODO: When the postcode lookup is done to get the coords that request will need mocking
           done();
@@ -129,7 +129,7 @@ describe('The file loading results page', () => {
             expect($(link).attr('href')).to.have.string('https://www.google.com');
           });
           expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results-file?location=${postcode}&open=true`);
+            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true`);
           // TODO: Check the specific results are correct, as loaded from the known file
           // TODO: When the postcode lookup is done to get the coords that request will need mocking
           done();
@@ -139,147 +139,27 @@ describe('The file loading results page', () => {
 
   describe('error handling', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
+    const invalidPostcodePassingRegex = 'LS0';
 
+    const postcodesioScope =
     nock('https://api.postcodes.io')
-      .get(/.*/)
+      .get(`/outcodes/${invalidPostcodePassingRegex}`)
       .times(1)
       .reply(404, notFoundResponse);
 
-    const invalidPostcodePassingRegex = 'LS0';
-
-    it('should check a location is supplied and return an error message', (done) => {
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: invalidPostcodePassingRegex })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-          expect(res.text).to.contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-          done();
+    it('should lookup a syntactically valid but unknown postcode and return an error message',
+        (done) => {
+          chai.request(server)
+            .get(resultsRoute)
+            .query({ location: invalidPostcodePassingRegex })
+            .end((err, res) => {
+              checkHtmlResponse(err, res);
+              expect(res.text).to
+                .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
+              expect(postcodesioScope.isDone()).to.equal(true);
+              done();
+            });
         });
-    });
-  });
-});
-
-describe('The results page', () => {
-  let originalUrl = '';
-  let originalApikey = '';
-  const resultsRoute = `${constants.SITE_ROOT}/results`;
-  const baseUrl = 'http://web.site';
-  const apikey = 'secret';
-  const paddedPostcode = '   AB123CD   ';
-  const postcode = paddedPostcode.trim();
-  const postcodeSearchPath =
-    new RegExp(`/organisations/pharmacies/postcode/${postcode}`);
-
-  before('setup environment variables', () => {
-    originalUrl = process.env.NHSCHOICES_SYNDICATION_BASEURL;
-    originalApikey = process.env.NHSCHOICES_SYNDICATION_APIKEY;
-
-    process.env.NHSCHOICES_SYNDICATION_BASEURL = baseUrl;
-    process.env.NHSCHOICES_SYNDICATION_APIKEY = apikey;
-  });
-
-  after('reset environemnt variables', () => {
-    process.env.NHSCHOICES_SYNDICATION_BASEURL = originalUrl;
-    process.env.NHSCHOICES_SYNDICATION_APIKEY = originalApikey;
-  });
-
-
-  describe('happy paths', () => {
-    it('should return 10 results', (done) => {
-      const postcodeSearchResponse =
-        getSampleResponse('syndication_responses/paged_pharmacies_postcode_search.xml');
-      const overviewResponse =
-        getSampleResponse('syndication_responses/pharmacy_opening_times.xml');
-
-      const postcodeSearchScope =
-        nock(baseUrl)
-          .get(postcodeSearchPath)
-          .query(true)
-          .times(10)
-          .reply(200, postcodeSearchResponse);
-
-      const overviewScope =
-        nock(baseUrl)
-          .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
-          .query(true)
-          .times(100)
-          .reply(200, overviewResponse);
-
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: paddedPostcode, open: false })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-
-          const $ = cheerio.load(res.text);
-
-          // Some arbitary element to suggest there are 10 results
-          expect($('.cta-blue').length).to.equal(10);
-          expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true`);
-          expect(postcodeSearchScope.isDone()).to.be.true;
-          expect(overviewScope.isDone()).to.be.true;
-          done();
-        });
-    });
-
-    it('should return 3 open results by default', function filterTest(done) {
-      // This can not be an arrow function due to the use of this.timeout
-      // https://github.com/mochajs/mocha/issues/2018
-      this.timeout(3000);
-      const postcodeSearchResponse =
-        getSampleResponse('syndication_responses/paged_pharmacies_postcode_search.xml');
-      const overviewResponse = getSampleResponse('syndication_responses/always_open.xml');
-
-      const postcodeSearchScope =
-        nock(baseUrl)
-          .get(postcodeSearchPath)
-          .query(true)
-          .times(10)
-          .reply(200, postcodeSearchResponse);
-
-      const overviewScope =
-        nock(baseUrl)
-          .get(/organisations\/pharmacies\/\d+\/overview\.xml/)
-          .query(true)
-          .times(100)
-          .reply(200, overviewResponse);
-
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: paddedPostcode })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-
-          const $ = cheerio.load(res.text);
-
-          // Some arbitary element to suggest there are 3 results
-          expect($('.cta-blue').length).to.equal(3);
-          expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false`);
-          expect(postcodeSearchScope.isDone()).to.be.true;
-          expect(overviewScope.isDone()).to.be.true;
-          done();
-        });
-    });
-  });
-
-  describe('error handling', () => {
-    it('should validate the postcode and return an error message', (done) => {
-      const invalidPostcode = 'invalid';
-      const errorMessage =
-        `${invalidPostcode} is not a valid postcode, please try again`;
-
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: invalidPostcode })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-          expect(res.text).to.contain(errorMessage);
-          done();
-        });
-    });
 
     it('should validate the postcode and return an error message', (done) => {
       const invalidPostcode = 'invalid';

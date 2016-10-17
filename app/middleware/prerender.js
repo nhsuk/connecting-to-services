@@ -5,9 +5,9 @@ function results(req, res, next) {
   let altResultsUrl = '';
 
   if (open === 'true') {
-    altResultsUrl = `${res.locals.SITE_ROOT}/results-file?location=${location}&open=false`;
+    altResultsUrl = `${res.locals.SITE_ROOT}/results?location=${location}&open=false`;
   } else {
-    altResultsUrl = `${res.locals.SITE_ROOT}/results-file?location=${location}&open=true`;
+    altResultsUrl = `${res.locals.SITE_ROOT}/results?location=${location}&open=true`;
   }
 
   const mappedOrgs = res.locals.nearbyServices.map((item) => {

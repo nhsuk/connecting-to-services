@@ -9,7 +9,7 @@ function results(req, res) {
   res.locals.altResults.message = altResultsMessage;
   /* eslint-enable no-param-reassign */
 
-  res.render('results-file');
+  res.render('results');
 }
 
 module.exports = {

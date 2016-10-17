@@ -39,17 +39,13 @@
     "express": "^4.13.3",
     "geo-nearby": "^2.0.1",
     "geolib": "^2.0.21",
-    "json-query": "^2.1.0",
     "memory-cache": "^0.1.6",
     "moment": "^2.14.1",
     "moment-opening-times": "git://github.com/nhsuk/moment-opening-times.git#feature/change-opening-times-format",
     "morgan": "^1.6.1",
     "ngeohash": "^0.6.0",
     "nunjucks": "^2.4.2",
-    "postcode": "^0.2.5",
-    "require-environment-variables": "^1.1.2",
-    "verror": "^1.6.1",
-    "xml2js": "^0.4.16"
+    "postcode": "^0.2.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -35,7 +35,7 @@ the application is being run. This is best practice as described by
 
 In order to protect the application from starting up without the required
 env vars in place [require-environment-variables](https://www.npmjs.com/package/require-environment-variables)
-is used to check all are present as part of the application start-up. If
+is used to check for required ones as part of the application start-up. If
 an env var is not found the application will fail to start and an appropriate
 message will be displayed.
 
@@ -49,9 +49,7 @@ environment.
 | `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id        |                          |          |
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                       |                          |          |
 | `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                             |                          |          |
-| `NHSCHOICES_SYNDICATION_BASEURL` | [NHS Digital Syndication](http://www.nhs.uk/aboutNHSChoices/professionals/syndication/Pages/Webservices.aspx) base endpoint | | y |
-| `NHSCHOICES_SYNDICATION_APIKEY`  | [NHS Digital Syndication](http://www.nhs.uk/aboutNHSChoices/professionals/syndication/Pages/Webservices.aspx) API key | | y |
-| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                           | `../data/pharmacy-list` |      |
+| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                           | `../data/pharmacy-list`  |          |
 
 ## FAQ
 

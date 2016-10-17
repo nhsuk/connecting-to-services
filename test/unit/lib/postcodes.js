@@ -53,7 +53,6 @@ describe('Postcodes', () => {
           expect(coords.latitude).to.be.equal(expectedLatitude);
           expect(coords.longitude).to.be.equal(expectedLongitude);
           expect(scope.isDone()).to.be.equal(true);
-          console.log('done');
           done();
         });
       });
