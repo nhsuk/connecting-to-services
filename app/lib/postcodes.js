@@ -1,16 +1,18 @@
 const Postcode = require('postcode');
 const https = require('https');
+const messages = require('../lib/messages');
 
 const baseUrl = 'https://api.postcodes.io';
 
 function lookup(res, next) {
   let url;
-  const outcode = Postcode.validOutcode(res.locals.location);
+  const location = res.locals.location;
+  const outcode = Postcode.validOutcode(location);
 
   if (outcode) {
-    url = `${baseUrl}/outcodes/${res.locals.location}`;
+    url = `${baseUrl}/outcodes/${location}`;
   } else {
-    url = `${baseUrl}/postcodes/${res.locals.location}`;
+    url = `${baseUrl}/postcodes/${location}`;
   }
 
   https.get(url, (postcodeRes) => {
@@ -32,13 +34,13 @@ function lookup(res, next) {
         next();
       } else {
         console.log('non 200 response code');
-        next({ message: 'unable to lookup postcode at this time' });
+        next({ message: messages.invalidPostcodeMessage(location) });
       }
     });
   }).on('error', (e) => {
     // TODO: Add 'standard' error
     console.log(e);
-    next({ message: 'unable to lookup postcode at this time' });
+    next({ message: messages.invalidPostcodeMessage(location) });
   });
 }
 

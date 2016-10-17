@@ -2,6 +2,7 @@ const chai = require('chai');
 const nock = require('nock');
 const postcodes = require('../../../app/lib/postcodes');
 const getSampleResponse = require('../../resources/getSampleResponse');
+const messages = require('../../../app/lib/messages');
 
 const expect = chai.expect;
 
@@ -52,7 +53,6 @@ describe('Postcodes', () => {
           expect(coords.latitude).to.be.equal(expectedLatitude);
           expect(coords.longitude).to.be.equal(expectedLongitude);
           expect(scope.isDone()).to.be.equal(true);
-          console.log('done');
           done();
         });
       });
@@ -68,7 +68,8 @@ describe('Postcodes', () => {
           .get(`/postcodes/${postcode404}`)
           .reply(404, response404);
 
-        postcodes.lookup(postcode404Res, () => {
+        postcodes.lookup(postcode404Res, (err) => {
+          expect(err.message).to.be.equal(messages.invalidPostcodeMessage(postcode404));
           expect(postcode404Res.locals.coordinates).to.be.equal(undefined);
           expect(scope.isDone()).to.be.equal(true);
           done();
@@ -86,7 +87,8 @@ describe('Postcodes', () => {
           .get(`/outcodes/${outcode404}`)
           .reply(404, response404);
 
-        postcodes.lookup(outcode404Res, () => {
+        postcodes.lookup(outcode404Res, (err) => {
+          expect(err.message).to.be.equal(messages.invalidPostcodeMessage(outcode404));
           expect(outcode404Res.locals.coordinates).to.be.equal(undefined);
           expect(scope.isDone()).to.be.equal(true);
           done();
