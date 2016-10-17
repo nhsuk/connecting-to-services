@@ -2,7 +2,6 @@ const cache = require('memory-cache');
 const pharmacies = require('../lib/getPharmacies');
 
 function getPharmacies(req, res, next) {
-  // TODO: Make sure the args are not null in the cache
   const searchPoint = res.locals.coordinates;
   const geo = cache.get('geo');
 

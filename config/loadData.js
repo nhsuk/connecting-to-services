@@ -25,8 +25,7 @@ function loadData() {
   console.timeEnd('project orgs');
 
   console.time('create Geo');
-  const geo =
-    new Geo(mappedOrgs);
+  const geo = new Geo(mappedOrgs);
   console.timeEnd('create Geo');
 
   cache.put('geo', geo);

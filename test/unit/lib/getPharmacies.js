@@ -1,6 +1,7 @@
 const cache = require('memory-cache');
 const chai = require('chai');
 const pharmacies = require('../../../app/lib/getPharmacies');
+const AssertionError = require('assert').AssertionError;
 
 delete require.cache[require.resolve('../../../config/loadData')];
 process.env.PHARMACY_LIST_PATH = '../test/resources/org_api_responses/pharmacy-list';
@@ -75,6 +76,41 @@ describe('Nearby', () => {
 
     it('should return obj with open orgs', () => {
       // TODO:
+    });
+  });
+
+  describe('error handling', () => {
+    it('should throw an exception when searchPoint is null', () => {
+      expect(() => { pharmacies.nearby(); })
+        .to.throw(
+            AssertionError,
+            'searchPoint can not be null');
+    });
+
+    it('should throw exception when searchPoint does not contain longitude', () => {
+      expect(() => { pharmacies.nearby({ latitude: 50.123456789 }); })
+        .to.throw(AssertionError,
+            'searchPoint must contain a property named longitude');
+    });
+    it('should throw exception when searchPoint does not contain latitude', () => {
+      expect(() => { pharmacies.nearby({ longitude: -1.123456789 }); })
+        .to.throw(
+            AssertionError,
+            'searchPoint must contain a property named latitude');
+    });
+
+    it('should throw an exception when geo is null', () => {
+      expect(() => { pharmacies.nearby({ latitude: 50.01, longitude: -1.23 }); })
+        .to.throw(
+            AssertionError,
+            'geo can not be null');
+    });
+
+    it('should throw an exception when geo does not contain a nearby function', () => {
+      expect(() => { pharmacies.nearby({ latitude: 50.01, longitude: -1.23 }, {}); })
+        .to.throw(
+            AssertionError,
+            'geo must contain a nearBy function');
     });
   });
 });
