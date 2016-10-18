@@ -738,13 +738,6 @@ legend {
   box-sizing: border-box;
   float: left;
   width: 100%;
-  margin-bottom: 15px;
-}
-
-@media (min-width: 641px) {
-  .form-group {
-    margin-bottom: 30px;
-  }
 }
 
 .form-group-related {
@@ -2199,6 +2192,9 @@ abbr[title] {
   margin:0;
 }
 
+.u-margintop5 {
+  margin-top:5px;
+}
 
 /*
   Callouts
@@ -2206,4 +2202,40 @@ abbr[title] {
 .callout__advice {
   background-color:#ffc649;
   padding:16px;
+}
+
+
+/*
+  Links
+*/
+
+.link-back {
+    border-bottom: 1px solid #0b0c0c;
+    color: #000000;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 32px;
+    padding-left: 14px;
+    position: relative;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.link-back:link, .link-back:visited, .link-back:hover, .link-back:active {
+    color: #000000;
+}
+.link-back::before {
+    border-bottom: 5px solid transparent;
+    border-right: 6px solid #0b0c0c;
+    border-top: 5px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    left: 0;
+    margin-top: -6px;
+    position: absolute;
+    top: 50%;
+    width: 0;
 }

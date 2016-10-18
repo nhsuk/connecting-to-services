@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-Find a place that can help you
+Find a pharmacy
 {% if errorMessage %}
 <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
   <h2 class="local-header--error error-summary-heading" id="error-summary-heading-example-1">
@@ -19,7 +19,7 @@ Find a place that can help you
 {% block pageTitle %}Find a place that can help you{% endblock %}
 
 {% block content %}
-<p>We’ll find open pharmacies near to you that can help with:</p>
+<p>For help with:</p>
 
 <ul>
   <li>feeling bloated (trapped wind)</li>
@@ -58,6 +58,7 @@ Find a place that can help you
             <input type="submit" class="button" value="Continue">
           </div>
         </div>
+        <p class="u-margintop5"><a href="{{ SITE_ROOT }}/stomach-ache" class="link-back">Back</a></p>
       </div>
     </div>
 </form>
