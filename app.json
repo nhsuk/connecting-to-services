@@ -2,14 +2,6 @@
   "name": "connecting to services",
   "scripts": {
   },
-  "env": {
-    "NHSCHOICES_SYNDICATION_BASEURL": {
-      "required": true
-    },
-    "NHSCHOICES_SYNDICATION_APIKEY": {
-      "required": true
-    }
-  },
   "formation": {
     "web": {
       "quantity": 1
