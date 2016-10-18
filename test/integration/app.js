@@ -61,7 +61,7 @@ describe('The find help page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.local-header--title--question').text().trim())
-          .to.equal('Find a place that can help you');
+          .to.equal('Find a pharmacy');
         done();
       });
   });
@@ -75,7 +75,7 @@ describe('The find help page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.local-header--title--question').text().trim())
-          .to.equal('Find a place that can help you');
+          .to.equal('Find a pharmacy');
         done();
       });
   });
