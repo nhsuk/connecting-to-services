@@ -11,7 +11,7 @@ const expect = chai.expect;
 
 describe('Nearby', () => {
   let geo = [];
-  const searchPoint = { latitude: 50.08545303344, longitude: -1.576518416404 };
+  const searchPoint = { latitude: 53.797431921096, longitude: -1.55275457242333 };
 
   describe('happy path', () => {
     beforeEach('load data', () => {
@@ -60,7 +60,7 @@ describe('Nearby', () => {
     });
 
     it('should return the nearest obj first', () => {
-      const nearestIdentifier = 'FA040';
+      const nearestIdentifier = 'FFP17';
 
       const results = pharmacies.nearby(searchPoint, geo).nearbyServices;
 
