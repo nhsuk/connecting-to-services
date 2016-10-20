@@ -13,6 +13,7 @@ function results(req, res, next) {
 
   /* eslint-disable no-param-reassign */
   res.locals.nearbyServices = mapLink.addUrl(location, res.locals.nearbyServices);
+  res.locals.openServices = mapLink.addUrl(location, res.locals.openServices);
   res.locals.altResultsUrl = altResultsUrl;
   res.locals.open = open;
   /* eslint-enable no-param-reassign */
