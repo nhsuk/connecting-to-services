@@ -37,10 +37,9 @@ module.exports = (app, config) => {
   app.use(constants.SITE_ROOT, express.static(`${config.root}/public`));
 
   app.use(constants.SITE_ROOT, router);
-  app.use(constants.SITE_ROOT, (req, res, next) => {
-    const err = new Error('Not Found');
-    err.statusCode = 404;
-    next(err);
+  app.use(constants.SITE_ROOT, (req, res) => {
+    res.status(404);
+    res.render('error-404', {});
   });
 
   // eslint-disable-next-line no-unused-vars

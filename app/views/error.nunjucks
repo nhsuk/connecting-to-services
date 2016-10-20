@@ -1,13 +1,13 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-Ooops...an error has occured.
+A server error has occured.
 {% endblock %}
 
 {% block content %}
-<div onclick="(function myFunction() { var error = document.getElementById('error-message'); error.style.display = error.style.display == 'none' ? 'block' : 'none'; })()">
-Looks like one of the techies has pulled a sickie. Please try again or get in touch if it keeps happening.
-<div id="error-message" style="display:none;">
+<p>This error page should only appear in non-production envirnoments.</p>
+<p>In production Akamai will serve up it's own error pages for 500 errors.</p>
+<div id="error-message">
   <div>{{ message }}</div>
   <div>{{ error.status }}</div>
   <pre>{{ error.stack }}</pre>

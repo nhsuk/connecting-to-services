@@ -77,6 +77,40 @@ describe('Postcodes', () => {
       });
     });
 
+    describe('server errors', () => {
+      it('should return and error when postcode service throws a 500 error', (done) => {
+        const postcode = 'AB123CD';
+        const postcodeRes = { locals: { location: postcode } };
+        const scope =
+          nock('https://api.postcodes.io')
+          .get(`/postcodes/${postcode}`)
+          .reply(500);
+
+        postcodes.lookup(postcodeRes, (err) => {
+          expect(err.message).to.be.equal('Postcode service error: 500');
+          expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
+          expect(scope.isDone()).to.be.equal(true);
+          done();
+        });
+      });
+      it('should return error when postcode service is unavailable', (done) => {
+        const postcode = 'AB123CD';
+        const postcodeRes = { locals: { location: postcode } };
+        const errorMessage = 'getaddrinfo ENOTFOUND api.postcodes.io api.postcodes.io:443';
+        const scope =
+          nock('https://api.postcodes.io')
+          .get(`/postcodes/${postcode}`)
+          .replyWithError({ message: errorMessage });
+
+        postcodes.lookup(postcodeRes, (err) => {
+          expect(err.message).to.be.equal(errorMessage);
+          expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
+          expect(scope.isDone()).to.be.equal(true);
+          done();
+        });
+      });
+    });
+
     describe('outcode errors', () => {
       const outcode404 = 'AB1';
       const outcode404Res = { locals: { location: outcode404 } };
