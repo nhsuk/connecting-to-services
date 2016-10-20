@@ -8,7 +8,7 @@ const prerender = require('../app/middleware/prerender');
 
 router.get('/',
   (req, res) => {
-    res.render('index');
+    res.redirect('find-help');
   }
 );
 

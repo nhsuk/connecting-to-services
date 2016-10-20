@@ -18,25 +18,38 @@ function checkHtmlResponse(err, res) {
   expect(res).to.be.html;
 }
 
-describe('The default page', () => {
-  it('should return the link for stomach ache', (done) => {
+describe('The root of the site', () => {
+  it('should redirect to the find help page', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        checkHtmlResponse(err, res);
+
+        console.log(res.req.path);
+        expect(res).to.redirect;
+        expect(res.req.path).to.be.equal(`${constants.SITE_ROOT}/find-help`);
+        done();
+      });
+  });
+});
+
+describe('The /finders route', () => {
+  it('should redirect to the find help page', (done) => {
     chai.request(server)
       .get(`${constants.SITE_ROOT}`)
       .end((err, res) => {
         checkHtmlResponse(err, res);
 
-        const $ = cheerio.load(res.text);
-
-        // Hardly robust but the page is in question of even existing
-        expect($('ul.list-bullet li a').text())
-          .to.equal('Stomach Ache');
+        console.log(res.req.path);
+        expect(res).to.redirect;
+        expect(res.req.path).to.be.equal(`${constants.SITE_ROOT}/find-help`);
         done();
       });
   });
 });
 
 describe('The stomach ache page', () => {
-  it('should contain content for stomach ache', (done) => {
+  it('should be accessible directly', (done) => {
     chai.request(server)
       .get(`${constants.SITE_ROOT}/stomach-ache`)
       .end((err, res) => {
@@ -81,7 +94,7 @@ describe('The find help page', () => {
   });
 });
 
-describe('The file loading results page', () => {
+describe('The results page', () => {
   const postcode = 'AB123CD';
   const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
   const resultsRoute = `${constants.SITE_ROOT}/results`;
