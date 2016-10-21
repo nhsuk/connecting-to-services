@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!--[if IE]><link rel="shortcut icon" href="./assets/images/favicon.ico"><![endif]-->
+    <!--[if IE]><link rel="shortcut icon" href="{{ SITE_ROOT }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
-    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{ SITE_ROOT }}/images/apple-touch-icon.png">
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
-    <link rel="icon" href="./images/favicon.png">
+    <link rel="icon" href="{{ SITE_ROOT }}/images/favicon.png">
 
     <title>{% block pageTitle %}NHS.UK{% endblock %}</title>
 
@@ -20,12 +20,12 @@
 
     {% set qs = '?v=2' %}
 
-    <!--[if gt IE 8]><!--><link href="./css/nhsuk.css{{ qs }}" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
-    <!--[if IE 6]><link href="./css/nhsuk-ie6.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 7]><link href="./css/nhsuk-ie7.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 8]><link href="./css/nhsuk-ie8.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{ SITE_ROOT }}/css/nhsuk.css{{ qs }}" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
+    <!--[if IE 6]><link href="{{ SITE_ROOT }}/css/nhsuk-ie6.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="{{ SITE_ROOT }}/css/nhsuk-ie7.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="{{ SITE_ROOT }}/css/nhsuk-ie8.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 
-    <link rel="stylesheet" href="./css/print.css{{ qs }}" media="print" type="text/css">
+    <link rel="stylesheet" href="{{ SITE_ROOT }}/css/print.css{{ qs }}" media="print" type="text/css">
 
     {% if HOTJAR_TRACKING_ID %}
        <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
@@ -67,7 +67,7 @@
       <div class="global-header">
         <div class="global-header--inner">
           <a href="/" class="global-header--link" title="Go to the NHS.UK homepage">
-            <img src="./images/logotype-nhs-mono.png" alt="">
+            <img src="{{ SITE_ROOT }}/images/logotype-nhs-mono.png" alt="">
           </a>
         </div>
       </div>
