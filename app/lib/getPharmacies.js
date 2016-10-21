@@ -64,7 +64,7 @@ function nearby(searchPoint, geo, limit) {
       isOpen = openingTimesMoment.isOpen(now);
       if (isOpen && openServiceCount < numberOfOpenToReturn) {
         openServiceCount++;
-        openServices.push(item);
+        openServices.push(JSON.parse(JSON.stringify(item)));
       }
     } else {
       openingTimesMessage = 'Call for opening times';
