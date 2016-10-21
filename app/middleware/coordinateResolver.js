@@ -2,9 +2,7 @@ const postcodes = require('../lib/postcodes');
 
 function coordinateResolver(req, res, next) {
   function afterLookup(err) {
-    if (err === undefined) {
-      next();
-    } else {
+    if (err) {
       switch (err.type) {
         case 'invalid-postcode':
           res.render('find-help', { errorMessage: err.message });
@@ -15,6 +13,8 @@ function coordinateResolver(req, res, next) {
         default:
           next('Unknown Error');
       }
+    } else {
+      next();
     }
   }
 
