@@ -37,20 +37,18 @@ Find a pharmacy
         {% else %}
         <div class="form-group">
           {% endif %}
-          <fieldset>
-            <label class="form-label-bold" for="location">
-              <!-- label -->
-              Enter a postcode
-            </label>
+          <label class="form-label-bold" for="location">
+            <!-- label -->
+            Enter a postcode
+          </label>
 
-            {% if errorMessage %}
-            <span class="error-message"> Use a valid postcode </span>
-            {% endif %}
-            <div class="form-group">
-              <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
-              <input type="hidden" name="open" value="true">
-            </div>
-          </fieldset>
+          {% if errorMessage %}
+          <span class="error-message"> Use a valid postcode </span>
+          {% endif %}
+          <div class="form-group">
+            <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
+            <input type="hidden" name="open" value="true">
+          </div>
         </div>
 
         <div class="form-item-wrapper" style="display:inline-block;">
