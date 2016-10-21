@@ -37,7 +37,6 @@ Find a pharmacy
         {% else %}
         <div class="form-group">
           {% endif %}
-          <legend></legend>
           <label class="form-label-bold" for="location">
             <!-- label -->
             Enter a postcode
