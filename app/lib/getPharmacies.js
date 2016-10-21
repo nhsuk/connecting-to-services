@@ -2,6 +2,7 @@ const OpeningTimes = require('moment-opening-times');
 const moment = require('moment');
 const geolib = require('geolib');
 const assert = require('assert');
+const utils = require('../lib/utils');
 
 const metersInAMile = 1609;
 
@@ -64,7 +65,7 @@ function nearby(searchPoint, geo, limit) {
       isOpen = openingTimesMoment.isOpen(now);
       if (isOpen && openServiceCount < numberOfOpenToReturn) {
         openServiceCount++;
-        openServices.push(JSON.parse(JSON.stringify(item)));
+        openServices.push(utils.deepClone(item));
       }
     } else {
       openingTimesMessage = 'Call for opening times';
