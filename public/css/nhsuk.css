@@ -1997,6 +1997,7 @@ abbr[title] {
   border: 3px solid #ffb81c;
   outline: none;
   position: static;
+  z-index:1;
 }
 
 /*
