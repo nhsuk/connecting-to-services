@@ -28,7 +28,9 @@
   {% set services = nearbyServices %}
 {% endif %}
 
+<ol class="list-results">
 {% for service in services %}
+<li class="list-results-item">
 <div class="grid-row grid-row--tabledisplay">
   <div class="column__one-half column__one-half--tablecell">
     <h2>{{ service.name }}</h2>
@@ -52,8 +54,9 @@
     <a href="{{service.mapUrl}}" class="button cta cta-blue button--nomarginright">See on map and get directions</a>
   </div>
 </div>
-<hr />
+</li>
 {% endfor %}
+</ol>
 
 </div>
 
