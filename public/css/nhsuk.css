@@ -2239,3 +2239,25 @@ abbr[title] {
     top: 50%;
     width: 0;
 }
+
+
+
+/*
+  Results list
+*/
+.list-results {
+  list-style:none;
+  padding:0;
+}
+
+.list-results-item {
+  border-bottom:2px solid #cce3f4;
+  margin:0 0 32px 0;
+  padding:0 0 32px 0;
+}
+
+.list-results-item:last-child {
+  border-bottom:0;
+  margin-bottom:0;
+  padding-bottom:0;
+}
