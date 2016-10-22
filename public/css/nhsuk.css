@@ -1995,8 +1995,10 @@ abbr[title] {
 .skiplinks--link:focus {
   background-color: #f2f8fc;
   border: 3px solid #ffb81c;
+  left:0;
   outline: none;
-  position: static;
+  /* position: static; */
+  z-index:1;
 }
 
 /*
