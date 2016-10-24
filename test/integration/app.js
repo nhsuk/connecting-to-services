@@ -29,6 +29,7 @@ describe('redirection', () => {
         done();
       });
   });
+
   it('/finder should redirect to find help page', (done) => {
     chai.request(server)
       .get(constants.SITE_ROOT)
@@ -171,6 +172,7 @@ describe('The results page', () => {
               .get(`/outcodes/${invalidPostcodePassingRegex}`)
               .times(1)
               .reply(404, notFoundResponse);
+
             chai.request(server)
               .get(resultsRoute)
               .query({ location: invalidPostcodePassingRegex })
@@ -184,10 +186,6 @@ describe('The results page', () => {
           });
 
         it('should validate the postcode and return an error message', (done) => {
-          nock('https://api.postcodes.io')
-            .get(`/outcodes/${invalidPostcodePassingRegex}`)
-            .times(1)
-            .reply(404, notFoundResponse);
           const invalidPostcode = 'invalid';
           const errorMessage =
             `${invalidPostcode} is not a valid postcode, please try again`;
@@ -206,9 +204,10 @@ describe('The results page', () => {
       it('postcode server error should return an error', (done) => {
         const postcodesioScope =
           nock('https://api.postcodes.io')
-          .get('/postcodes/AB123CD')
+          .get(`/postcodes/${postcode}`)
           .times(1)
           .reply(500);
+
         chai.request(server)
           .get(resultsRoute)
           .query({ location: postcode })

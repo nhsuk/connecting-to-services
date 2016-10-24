@@ -39,7 +39,7 @@ module.exports = (app, config) => {
   app.use(constants.SITE_ROOT, router);
   app.use(constants.SITE_ROOT, (req, res) => {
     res.status(404);
-    res.render('error-404', {});
+    res.render('error-404');
   });
 
   // eslint-disable-next-line no-unused-vars

@@ -3,14 +3,3 @@
 {% block header %}
 A server error has occured.
 {% endblock %}
-
-{% block content %}
-<p>This error page should only appear in non-production envirnoments.</p>
-<p>In production Akamai will serve up it's own error pages for 500 errors.</p>
-<div id="error-message">
-  <div>{{ message }}</div>
-  <div>{{ error.status }}</div>
-  <pre>{{ error.stack }}</pre>
-</div>
-</div>
-{% endblock %}

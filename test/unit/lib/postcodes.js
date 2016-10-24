@@ -78,7 +78,7 @@ describe('Postcodes', () => {
     });
 
     describe('server errors', () => {
-      it('should return and error when postcode service throws a 500 error', (done) => {
+      it('should return an error when postcode service throws a 500 error', (done) => {
         const postcode = 'AB123CD';
         const postcodeRes = { locals: { location: postcode } };
         const scope =
@@ -87,6 +87,7 @@ describe('Postcodes', () => {
           .reply(500);
 
         postcodes.lookup(postcodeRes, (err) => {
+          expect(err.type).to.be.equal('postcode-service-error');
           expect(err.message).to.be.equal('Postcode service error: 500');
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
           expect(scope.isDone()).to.be.equal(true);
@@ -103,6 +104,7 @@ describe('Postcodes', () => {
           .replyWithError({ message: errorMessage });
 
         postcodes.lookup(postcodeRes, (err) => {
+          expect(err.type).to.be.equal('postcode-service-error');
           expect(err.message).to.be.equal(errorMessage);
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
           expect(scope.isDone()).to.be.equal(true);
