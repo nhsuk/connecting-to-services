@@ -1,29 +1,25 @@
-/* eslint-disable no-unused-expressions */
 const nock = require('nock');
 const cheerio = require('cheerio');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../server');
-const getSampleResponse = require('../resources/getSampleResponse');
 const constants = require('../../app/lib/constants');
 const messages = require('../../app/lib/messages');
+const getSampleResponse = require('../resources/getSampleResponse');
+const iExpect = require('../lib/expectations');
 
 const expect = chai.expect;
 
 chai.use(chaiHttp);
-
-function checkHtmlResponse(err, res) {
-  expect(err).to.be.null;
-  expect(res).to.have.status(200);
-  expect(res).to.be.html;
-}
 
 describe('redirection', () => {
   it('default should be find help page', (done) => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
-        checkHtmlResponse(err, res);
+        iExpect.checkHtmlResponse(err, res);
+
+        // eslint-disable-next-line no-unused-expressions
         expect(res).to.redirect;
         expect(res.req.path).to.equal(`${constants.SITE_ROOT}/find-help`);
         done();
@@ -34,7 +30,9 @@ describe('redirection', () => {
     chai.request(server)
       .get(constants.SITE_ROOT)
       .end((err, res) => {
-        checkHtmlResponse(err, res);
+        iExpect.checkHtmlResponse(err, res);
+
+        // eslint-disable-next-line no-unused-expressions
         expect(res).to.redirect;
         expect(res.req.path).to.equal(`${constants.SITE_ROOT}/find-help`);
         done();
@@ -47,7 +45,7 @@ describe('The stomach ache page', () => {
     chai.request(server)
       .get(`${constants.SITE_ROOT}/stomach-ache`)
       .end((err, res) => {
-        checkHtmlResponse(err, res);
+        iExpect.checkHtmlResponse(err, res);
 
         const $ = cheerio.load(res.text);
 
@@ -65,15 +63,12 @@ describe('The find help page', () => {
         .get(`${constants.SITE_ROOT}/find-help`)
         .query({ context: 'stomach-ache' })
         .end((err, res) => {
-          checkHtmlResponse(err, res);
+          iExpect.checkHtmlResponse(err, res);
 
           const $ = cheerio.load(res.text);
 
-          expect($('.local-header--title--question').text().trim())
-            .to.equal('Find a pharmacy');
           expect($('.page-section').text()).to.contain('For help with');
-          expect($('label[for=location]').text()).to.contain('Enter a postcode');
-          expect($('#location').is('input')).is.equal(true);
+          iExpect.findHelpPage($);
           done();
         });
     });
@@ -84,15 +79,12 @@ describe('The find help page', () => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/find-help`)
         .end((err, res) => {
-          checkHtmlResponse(err, res);
+          iExpect.checkHtmlResponse(err, res);
 
           const $ = cheerio.load(res.text);
 
-          expect($('.local-header--title--question').text().trim())
-            .to.equal('Find a pharmacy');
           expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('label[for=location]').text()).to.contain('Enter a postcode');
-          expect($('#location').is('input')).is.equal(true);
+          iExpect.findHelpPage($);
           done();
         });
     });
@@ -104,155 +96,245 @@ describe('The find help page', () => {
         .get(`${constants.SITE_ROOT}/find-help`)
         .query({ context: 'unknown' })
         .end((err, res) => {
-          checkHtmlResponse(err, res);
+          iExpect.checkHtmlResponse(err, res);
 
           const $ = cheerio.load(res.text);
 
-          expect($('.local-header--title--question').text().trim())
-            .to.equal('Find a pharmacy');
           expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('label[for=location]').text()).to.contain('Enter a postcode');
-          expect($('#location').is('input')).is.equal(true);
+          iExpect.findHelpPage($);
           done();
         });
     });
   });
 });
 
-describe('The results page', () => {
+describe('The results page happy paths', () => {
   const postcode = 'AB123CD';
   const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
   const resultsRoute = `${constants.SITE_ROOT}/results`;
 
+  nock('https://api.postcodes.io')
+    .get(/.*/)
+    .times(4)
+    .reply(200, postcodeioResponse);
+
   describe('happy paths', () => {
-    nock('https://api.postcodes.io')
-      .get(/.*/)
-      .times(2)
-      .reply(200, postcodeioResponse);
-
-    it('should return 3 open results, by default', (done) => {
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: postcode })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-          const $ = cheerio.load(res.text);
-
-          const mapLinks = $('.cta-blue');
-          // Some arbitary element to suggest there are 3 results
-          expect(mapLinks.length).to.equal(3);
-          mapLinks.toArray().forEach((link) => {
-            expect($(link).attr('href')).to.have.string('https://www.google.com');
-          });
-          expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false`);
-          // TODO: Check the specific results are correct, as loaded from the known file
-          // TODO: When the postcode lookup is done to get the coords that request will need mocking
-          done();
-        });
-    });
-
-    it('should return 10 results', (done) => {
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: postcode, open: false })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-          const $ = cheerio.load(res.text);
-
-          const mapLinks = $('.cta-blue');
-          // Some arbitary element to suggest there are 10 results
-          expect(mapLinks.length).to.equal(10);
-          mapLinks.toArray().forEach((link) => {
-            expect($(link).attr('href')).to.have.string('https://www.google.com');
-          });
-          expect($('.list-tab__link').attr('href'))
-            .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true`);
-          // TODO: Check the specific results are correct, as loaded from the known file
-          // TODO: When the postcode lookup is done to get the coords that request will need mocking
-          done();
-        });
-    });
-  });
-
-  describe('error handling', () => {
-    describe('general site', () => {
-      it('should handle page not found.', (done) => {
+    describe('with no or unknown context', () => {
+      it('should return 3 open results, by default', (done) => {
         chai.request(server)
-          .get('/finders/unknown')
+          .get(resultsRoute)
+          .query({ location: postcode })
           .end((err, res) => {
-            expect(err).to.not.be.null;
-            expect(res).to.have.status(404);
-            expect(res).to.be.html;
+            iExpect.checkHtmlResponse(err, res);
             const $ = cheerio.load(res.text);
-            expect($('.local-header--title--question').text().trim())
-              .to.equal('Page not found');
+
+            expect($('.local-header--title--question').text())
+              .to.equal(`Pharmacies near to '${postcode}'`);
+            // Use something that every result with have in order to count them
+            const mapLinks = $('.cta-blue');
+            expect(mapLinks.length).to.equal(3);
+            mapLinks.toArray().forEach((link) => {
+              expect($(link).attr('href')).to.have.string('https://www.google.com');
+            });
+            expect($('.list-tab__link').attr('href'))
+              .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false&context=`);
+            done();
+          });
+      });
+
+      it('should return 10 results', (done) => {
+        chai.request(server)
+          .get(resultsRoute)
+          .query({ location: postcode, open: false })
+          .end((err, res) => {
+            iExpect.checkHtmlResponse(err, res);
+            const $ = cheerio.load(res.text);
+
+            expect($('.local-header--title--question').text())
+              .to.equal(`Pharmacies near to '${postcode}'`);
+            // Use something that every result with have in order to count them
+            const mapLinks = $('.cta-blue');
+            expect(mapLinks.length).to.equal(10);
+            mapLinks.toArray().forEach((link) => {
+              expect($(link).attr('href')).to.have.string('https://www.google.com');
+            });
+            expect($('.list-tab__link').attr('href'))
+              .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true&context=`);
             done();
           });
       });
     });
-    describe('postcode lookup', () => {
-      describe('invalid postcodes', () => {
-        const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-        const invalidPostcodePassingRegex = 'LS0';
 
-        it('should lookup a syntactically valid but unknown postcode and return an error message',
-          (done) => {
-            const postcodesioScope =
-              nock('https://api.postcodes.io')
-              .get(`/outcodes/${invalidPostcodePassingRegex}`)
-              .times(1)
-              .reply(404, notFoundResponse);
+    describe('with context of stomach ache', () => {
+      const context = 'stomach-ache';
 
-            chai.request(server)
-              .get(resultsRoute)
-              .query({ location: invalidPostcodePassingRegex })
-              .end((err, res) => {
-                checkHtmlResponse(err, res);
-                expect(res.text).to
-                  .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-                expect(postcodesioScope.isDone()).to.equal(true);
-                done();
-              });
+      it('should return 3 open results, by default', (done) => {
+        chai.request(server)
+          .get(resultsRoute)
+          .query({ location: postcode, context })
+          .end((err, res) => {
+            iExpect.checkHtmlResponse(err, res);
+            const $ = cheerio.load(res.text);
+
+            expect($('.local-header--title--question').text())
+              .to.equal(`Pharmacies that can help you near to '${postcode}'`);
+            // Use something that every result with have in order to count them
+            const mapLinks = $('.cta-blue');
+            expect(mapLinks.length).to.equal(3);
+            mapLinks.toArray().forEach((link) => {
+              expect($(link).attr('href')).to.have.string('https://www.google.com');
+            });
+            const expectedHref =
+              `${constants.SITE_ROOT}/results?location=${postcode}&open=false&context=${context}`;
+            expect($('.list-tab__link').attr('href')).to.equal(expectedHref);
+            done();
           });
+      });
 
-        it('should validate the postcode and return an error message', (done) => {
+      it('should return 10 results', (done) => {
+        chai.request(server)
+          .get(resultsRoute)
+          .query({ location: postcode, open: false, context: 'stomach-ache' })
+          .end((err, res) => {
+            iExpect.checkHtmlResponse(err, res);
+            const $ = cheerio.load(res.text);
+
+            expect($('.local-header--title--question').text())
+              .to.equal(`Pharmacies that can help you near to '${postcode}'`);
+            // Use something that every result with have in order to count them
+            const mapLinks = $('.cta-blue');
+            expect(mapLinks.length).to.equal(10);
+            mapLinks.toArray().forEach((link) => {
+              expect($(link).attr('href')).to.have.string('https://www.google.com');
+            });
+            const expectedHref =
+              `${constants.SITE_ROOT}/results?location=${postcode}&open=true&context=${context}`;
+            expect($('.list-tab__link').attr('href')).to.equal(expectedHref);
+            done();
+          });
+      });
+    });
+  });
+});
+
+describe('The results page error handling', () => {
+  describe('with a context', () => {
+    const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
+    const invalidPostcodePassingRegex = 'LS0';
+    const resultsRoute = `${constants.SITE_ROOT}/results`;
+    const context = 'stomach-ache';
+
+    const postcodesioScope =
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${invalidPostcodePassingRegex}`)
+      .times(1)
+      .reply(404, notFoundResponse);
+
+    it('should lookup a valid but unknown postcode and return an error with the help context',
+        (done) => {
+          chai.request(server)
+            .get(resultsRoute)
+            .query({ location: invalidPostcodePassingRegex, context })
+            .end((err, res) => {
+              iExpect.checkHtmlResponse(err, res);
+              const $ = cheerio.load(res.text);
+
+              expect($('.page-section').text()).to.contain('For help with');
+              iExpect.findHelpPage($);
+              expect(res.text).to
+                .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
+              expect(postcodesioScope.isDone()).to.equal(true);
+              done();
+            });
+        });
+
+    it('should validate the postcode and return an error along with the help context',
+        (done) => {
           const invalidPostcode = 'invalid';
           const errorMessage =
             `${invalidPostcode} is not a valid postcode, please try again`;
 
           chai.request(server)
             .get(resultsRoute)
-            .query({ location: invalidPostcode })
+            .query({ location: invalidPostcode, context })
             .end((err, res) => {
-              checkHtmlResponse(err, res);
+              iExpect.checkHtmlResponse(err, res);
+              const $ = cheerio.load(res.text);
+
+              expect($('.page-section').text()).to.contain('For help with');
+              iExpect.findHelpPage($);
               expect(res.text).to.contain(errorMessage);
               done();
             });
         });
-      });
+  });
 
-      it('postcode server error should return an error', (done) => {
+  describe('with no context', () => {
+    const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
+    const invalidPostcodePassingRegex = 'LS0';
+    const resultsRoute = `${constants.SITE_ROOT}/results`;
+
+    it('should lookup a syntactically valid but unknown postcode and return an error message',
+      (done) => {
         const postcodesioScope =
           nock('https://api.postcodes.io')
-          .get(`/postcodes/${postcode}`)
+          .get(`/outcodes/${invalidPostcodePassingRegex}`)
           .times(1)
-          .reply(500);
+          .reply(404, notFoundResponse);
 
         chai.request(server)
           .get(resultsRoute)
-          .query({ location: postcode })
+          .query({ location: invalidPostcodePassingRegex })
           .end((err, res) => {
-            expect(err).to.not.be.null;
-            expect(res).to.have.status(500);
-            expect(res).to.be.html;
-            const $ = cheerio.load(res.text);
-            expect($('.local-header--title--question').text().trim())
-              .to.equal('A server error has occured.');
+            iExpect.checkHtmlResponse(err, res);
+            expect(res.text).to
+              .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
             expect(postcodesioScope.isDone()).to.equal(true);
             done();
           });
       });
+
+    it('should validate the postcode and return an error message', (done) => {
+      const invalidPostcode = 'invalid';
+      // const errorMessage =
+      //   `${invalidPostcode} is not a valid postcode, please try again`;
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: invalidPostcode })
+        .end((err, res) => {
+          iExpect.checkHtmlResponse(err, res);
+          const $ = cheerio.load(res.text);
+
+          expect($('.page-section').text()).to.not.contain('For help with');
+          iExpect.findHelpPage($);
+          expect(res.text).to
+            .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
+          done();
+        });
+    });
+
+    it('postcode server error should return an error', (done) => {
+      const postcode = 'AB123CD';
+      const postcodesioScope =
+        nock('https://api.postcodes.io')
+        .get(`/postcodes/${postcode}`)
+        .times(1)
+        .reply(500);
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: postcode })
+        .end((err, res) => {
+          iExpect.checkHtmlResponse(err, res);
+          const $ = cheerio.load(res.text);
+
+          expect($('.page-section').text()).to.not.contain('For help with');
+          iExpect.findHelpPage($);
+          expect(res.text).to.contain('A server error has occurred');
+          expect(postcodesioScope.isDone()).to.equal(true);
+          done();
+        });
     });
   });
 });

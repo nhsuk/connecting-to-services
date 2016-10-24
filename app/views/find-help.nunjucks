@@ -42,6 +42,7 @@ Find a pharmacy
           <div class="form-group">
             <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
             <input type="hidden" name="open" value="true">
+            <input type="hidden" name="context" value="{{ context }}">
           </div>
         </div>
 

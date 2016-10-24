@@ -5,6 +5,7 @@ const getPharmacies = require('../app/middleware/getPharmacies');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
 const render = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
+const setLocals = require('../app/middleware/setLocals');
 
 router.get('/',
   (req, res) => {
@@ -13,6 +14,7 @@ router.get('/',
 );
 
 router.get('/results',
+  setLocals.fromRequest,
   validateLocation,
   coordinateResolver,
   getPharmacies,
@@ -21,10 +23,9 @@ router.get('/results',
 );
 
 router.get('/find-help',
+  setLocals.fromRequest,
   (req, res) => {
-    const context = req.query.context;
-    console.log(context);
-    if (context === 'stomach-ache') {
+    if (res.locals.context === 'stomach-ache') {
       res.render('find-help-stomach-ache');
     } else {
       res.render('find-help');

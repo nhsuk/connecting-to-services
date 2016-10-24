@@ -2,7 +2,7 @@
 
 {% block pageTitle %}All service results{% endblock %}
 
-{% block header %}Pharmacies that can help you near to '{{ location }}'{% endblock %}
+{% block header %}{{ headerMessage }}{% endblock %}
 
 {% block content %}
 
