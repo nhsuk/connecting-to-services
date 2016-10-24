@@ -59,32 +59,63 @@ describe('The stomach ache page', () => {
 });
 
 describe('The find help page', () => {
-  it('should contain content for finding help with stomach ache', (done) => {
-    chai.request(server)
-      .get(`${constants.SITE_ROOT}/find-help`)
-      .end((err, res) => {
-        checkHtmlResponse(err, res);
+  describe('with a context of stomach ache', () => {
+    it('should contain content for finding help with stomach ache and a postcode input', (done) => {
+      chai.request(server)
+        .get(`${constants.SITE_ROOT}/find-help`)
+        .query({ context: 'stomach-ache' })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
 
-        const $ = cheerio.load(res.text);
+          const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title--question').text().trim())
-          .to.equal('Find a pharmacy');
-        done();
-      });
+          expect($('.local-header--title--question').text().trim())
+            .to.equal('Find a pharmacy');
+          expect($('.page-section').text()).to.contain('For help with');
+          expect($('label[for=location]').text()).to.contain('Enter a postcode');
+          expect($('#location').is('input')).is.equal(true);
+          done();
+        });
+    });
   });
 
-  it('should provide a prompt to enter a postcode', (done) => {
-    chai.request(server)
-      .get(`${constants.SITE_ROOT}/find-help`)
-      .end((err, res) => {
-        checkHtmlResponse(err, res);
+  describe('with no context', () => {
+    it('should contain no additional content beyond the title and a postcode input', (done) => {
+      chai.request(server)
+        .get(`${constants.SITE_ROOT}/find-help`)
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
 
-        const $ = cheerio.load(res.text);
+          const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title--question').text().trim())
-          .to.equal('Find a pharmacy');
-        done();
-      });
+          expect($('.local-header--title--question').text().trim())
+            .to.equal('Find a pharmacy');
+          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('label[for=location]').text()).to.contain('Enter a postcode');
+          expect($('#location').is('input')).is.equal(true);
+          done();
+        });
+    });
+  });
+
+  describe('with an unknown context', () => {
+    it('should contain no additional content beyond the title and a postcode input', (done) => {
+      chai.request(server)
+        .get(`${constants.SITE_ROOT}/find-help`)
+        .query({ context: 'unknown' })
+        .end((err, res) => {
+          checkHtmlResponse(err, res);
+
+          const $ = cheerio.load(res.text);
+
+          expect($('.local-header--title--question').text().trim())
+            .to.equal('Find a pharmacy');
+          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('label[for=location]').text()).to.contain('Enter a postcode');
+          expect($('#location').is('input')).is.equal(true);
+          done();
+        });
+    });
   });
 });
 

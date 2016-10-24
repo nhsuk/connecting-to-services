@@ -22,7 +22,13 @@ router.get('/results',
 
 router.get('/find-help',
   (req, res) => {
-    res.render('find-help');
+    const context = req.query.context;
+    console.log(context);
+    if (context === 'stomach-ache') {
+      res.render('find-help-stomach-ache');
+    } else {
+      res.render('find-help');
+    }
   }
 );
 
