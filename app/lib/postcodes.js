@@ -4,6 +4,10 @@ const messages = require('../lib/messages');
 
 const baseUrl = 'https://api.postcodes.io';
 
+function log(logValue) {
+  console.log(logValue);
+}
+
 function lookup(res, next) {
   let url;
   const location = res.locals.location;
@@ -23,24 +27,35 @@ function lookup(res, next) {
     });
 
     postcodeRes.on('end', () => {
-      if (postcodeRes.statusCode === 200) {
-        const postcode = JSON.parse(body);
-
-        // eslint-disable-next-line no-param-reassign
-        res.locals.coordinates = {
-          latitude: postcode.result.latitude,
-          longitude: postcode.result.longitude,
-        };
-        next();
-      } else {
-        console.log('non 200 response code');
-        next({ message: messages.invalidPostcodeMessage(location) });
+      let postcode;
+      switch (postcodeRes.statusCode) {
+        case 200:
+          postcode = JSON.parse(body);
+          // eslint-disable-next-line no-param-reassign
+          res.locals.coordinates = {
+            latitude: postcode.result.latitude,
+            longitude: postcode.result.longitude,
+          };
+          next();
+          break;
+        case 404:
+          log({ url, response: postcodeRes.statusCode });
+          next({ type: 'invalid-postcode', message: messages.invalidPostcodeMessage(location) });
+          break;
+        default:
+          log({ url, response: postcodeRes.statusCode });
+          next(
+            {
+              type: 'postcode-service-error',
+              message: `Postcode service error: ${postcodeRes.statusCode}`,
+            }
+          );
       }
     });
   }).on('error', (e) => {
     // TODO: Add 'standard' error
-    console.log(e);
-    next({ message: messages.invalidPostcodeMessage(location) });
+    log({ url, error: e });
+    next({ type: 'postcode-service-error', message: e.message });
   });
 }
 

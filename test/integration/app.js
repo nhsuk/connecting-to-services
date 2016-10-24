@@ -18,31 +18,25 @@ function checkHtmlResponse(err, res) {
   expect(res).to.be.html;
 }
 
-describe('The root of the site', () => {
-  it('should redirect to the find help page', (done) => {
+describe('redirection', () => {
+  it('default should be find help page', (done) => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
         checkHtmlResponse(err, res);
-
-        console.log(res.req.path);
         expect(res).to.redirect;
-        expect(res.req.path).to.be.equal(`${constants.SITE_ROOT}/find-help`);
+        expect(res.req.path).to.equal(`${constants.SITE_ROOT}/find-help`);
         done();
       });
   });
-});
 
-describe('The /finders route', () => {
-  it('should redirect to the find help page', (done) => {
+  it('/finder should redirect to find help page', (done) => {
     chai.request(server)
-      .get(`${constants.SITE_ROOT}`)
+      .get(constants.SITE_ROOT)
       .end((err, res) => {
         checkHtmlResponse(err, res);
-
-        console.log(res.req.path);
         expect(res).to.redirect;
-        expect(res.req.path).to.be.equal(`${constants.SITE_ROOT}/find-help`);
+        expect(res.req.path).to.equal(`${constants.SITE_ROOT}/find-help`);
         done();
       });
   });
@@ -151,42 +145,83 @@ describe('The results page', () => {
   });
 
   describe('error handling', () => {
-    const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const invalidPostcodePassingRegex = 'LS0';
+    describe('general site', () => {
+      it('should handle page not found.', (done) => {
+        chai.request(server)
+          .get('/finders/unknown')
+          .end((err, res) => {
+            expect(err).to.not.be.null;
+            expect(res).to.have.status(404);
+            expect(res).to.be.html;
+            const $ = cheerio.load(res.text);
+            expect($('.local-header--title--question').text().trim())
+              .to.equal('Page not found');
+            done();
+          });
+      });
+    });
+    describe('postcode lookup', () => {
+      describe('invalid postcodes', () => {
+        const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
+        const invalidPostcodePassingRegex = 'LS0';
 
-    const postcodesioScope =
-    nock('https://api.postcodes.io')
-      .get(`/outcodes/${invalidPostcodePassingRegex}`)
-      .times(1)
-      .reply(404, notFoundResponse);
+        it('should lookup a syntactically valid but unknown postcode and return an error message',
+          (done) => {
+            const postcodesioScope =
+              nock('https://api.postcodes.io')
+              .get(`/outcodes/${invalidPostcodePassingRegex}`)
+              .times(1)
+              .reply(404, notFoundResponse);
 
-    it('should lookup a syntactically valid but unknown postcode and return an error message',
-        (done) => {
+            chai.request(server)
+              .get(resultsRoute)
+              .query({ location: invalidPostcodePassingRegex })
+              .end((err, res) => {
+                checkHtmlResponse(err, res);
+                expect(res.text).to
+                  .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
+                expect(postcodesioScope.isDone()).to.equal(true);
+                done();
+              });
+          });
+
+        it('should validate the postcode and return an error message', (done) => {
+          const invalidPostcode = 'invalid';
+          const errorMessage =
+            `${invalidPostcode} is not a valid postcode, please try again`;
+
           chai.request(server)
             .get(resultsRoute)
-            .query({ location: invalidPostcodePassingRegex })
+            .query({ location: invalidPostcode })
             .end((err, res) => {
               checkHtmlResponse(err, res);
-              expect(res.text).to
-                .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-              expect(postcodesioScope.isDone()).to.equal(true);
+              expect(res.text).to.contain(errorMessage);
               done();
             });
         });
+      });
 
-    it('should validate the postcode and return an error message', (done) => {
-      const invalidPostcode = 'invalid';
-      const errorMessage =
-        `${invalidPostcode} is not a valid postcode, please try again`;
+      it('postcode server error should return an error', (done) => {
+        const postcodesioScope =
+          nock('https://api.postcodes.io')
+          .get(`/postcodes/${postcode}`)
+          .times(1)
+          .reply(500);
 
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: invalidPostcode })
-        .end((err, res) => {
-          checkHtmlResponse(err, res);
-          expect(res.text).to.contain(errorMessage);
-          done();
-        });
+        chai.request(server)
+          .get(resultsRoute)
+          .query({ location: postcode })
+          .end((err, res) => {
+            expect(err).to.not.be.null;
+            expect(res).to.have.status(500);
+            expect(res).to.be.html;
+            const $ = cheerio.load(res.text);
+            expect($('.local-header--title--question').text().trim())
+              .to.equal('A server error has occured.');
+            expect(postcodesioScope.isDone()).to.equal(true);
+            done();
+          });
+      });
     });
   });
 });
