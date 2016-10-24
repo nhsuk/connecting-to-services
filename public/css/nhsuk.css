@@ -2123,6 +2123,11 @@ abbr[title] {
   border-bottom:1px solid #fff;
 }
 
+.list-tabs__header {
+  font-size:20px;
+  line-height:inherit;
+}
+
 
 /*
   Results
@@ -2142,6 +2147,11 @@ abbr[title] {
 
 .results hr:last-child {
   display:none;
+}
+
+.list-results__heading {
+  font-size:36px;
+  line-height:48px;
 }
 
 /*
