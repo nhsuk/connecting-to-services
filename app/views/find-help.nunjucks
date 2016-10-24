@@ -3,8 +3,8 @@
 {% block header %}
 Find a pharmacy
 {% if errorMessage %}
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-  <h2 class="local-header--error error-summary-heading" id="error-summary-heading-example-1">
+<div class="error-summary">
+  <h2 class="local-header--error error-summary-heading">
     {{ errorMessage }}
   </h2>
 
@@ -38,15 +38,14 @@ Find a pharmacy
         <div class="form-group">
           {% endif %}
           <label class="form-label-bold" for="location">
-            <!-- label -->
             Enter a postcode
           </label>
 
           {% if errorMessage %}
-          <span class="error-message"> Use a valid postcode </span>
+          <span class="error-message" id="error-message"> Use a valid postcode </span>
           {% endif %}
           <div class="form-group">
-            <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
+            <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="" aria-describedby="error-message"{% if errorMessage %} aria-invalid="true"{% endif %}>
             <input type="hidden" name="open" value="true">
           </div>
         </div>
