@@ -9,7 +9,7 @@ Find a pharmacy
   </h2>
 
   <ul class="error-summary-list">
-    <li><a href="#location">Use a valid postcode.</a></li>
+    <li><a href="#id-error">Use a valid postcode.</a></li>
   </ul>
 
 </div>
@@ -33,7 +33,7 @@ Find a pharmacy
     <div class="form-item-wrapper">
 
       {% if errorMessage %}
-      <div class="form-group error">
+      <div class="form-group error" id="id-error">
         {% else %}
         <div class="form-group">
           {% endif %}
