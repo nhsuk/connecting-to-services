@@ -11,11 +11,11 @@
 
 <ul class="list-tabs">
 {% if open === 'true' %}
-  <li class="list-tabs__item list-tabs__item--active"><strong>{{ labelOpenOnly }}</strong></li>
+  <li class="list-tabs__item list-tabs__item--active"><h2 class="list-tabs__header">{{ labelOpenOnly }}</h2></li>
   <li class="list-tabs__item"><a href="{{ altResultsUrl }}" class="list-tab__link">{{ labelShowAll }}</a></li>
 {% else %}
   <li class="list-tabs__item"><a href="{{ altResultsUrl }}" class="list-tab__link">{{ labelOpenOnly }}</a></li>
-  <li class="list-tabs__item list-tabs__item--active"><strong>{{ labelShowAll }}</strong></li>
+  <li class="list-tabs__item list-tabs__item--active"><h2 class="list-tabs__header">{{ labelShowAll }}</h2></li>
 {% endif %}
 </ul>
 
@@ -33,7 +33,7 @@
 <li class="list-results-item">
 <div class="grid-row grid-row--tabledisplay">
   <div class="column__one-half column__one-half--tablecell">
-    <h2>{{ service.name }}</h2>
+    <h3 class="list-results__heading">{{ service.name }}</h3>
     <p><strong>{{ service.openingTimesMessage }}</strong></p>
 
     <p>
