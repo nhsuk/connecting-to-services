@@ -1,23 +1,18 @@
+const renderer = require('../middleware/renderer');
 const locationValidator = require('../lib/locationValidator');
 
 function validateLocation(req, res, next) {
-  const location = req.query.location;
-  const context = res.locals.context;
-  let viewToRender = '';
+  const location = res.locals.location;
 
   const validationResult = locationValidator(location);
 
   // eslint-disable-next-line no-param-reassign
   res.locals.location = validationResult.input;
 
-  if (context === 'stomach-ache') {
-    viewToRender = 'find-help-stomach-ache';
-  } else {
-    viewToRender = 'find-help';
-  }
-
   if (validationResult.errorMessage) {
-    res.render(viewToRender, { errorMessage: validationResult.errorMessage });
+    // eslint-disable-next-line no-param-reassign
+    res.locals.errorMessage = validationResult.errorMessage;
+    renderer.findHelp(req, res);
   } else {
     next();
   }

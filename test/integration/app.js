@@ -40,6 +40,25 @@ describe('redirection', () => {
   });
 });
 
+describe('An unknown page', () => {
+  it('should return a 404', (done) => {
+    chai.request(server)
+      .get(`${constants.SITE_ROOT}/not-known`)
+      .end((err, res) => {
+        expect(err).to.not.be.equal(null);
+        expect(res).to.have.status(404);
+        // eslint-disable-next-line no-unused-expressions
+        expect(res).to.be.html;
+
+        const $ = cheerio.load(res.text);
+
+        expect($('.local-header--title--question').text().trim())
+          .to.equal('Page not found');
+        done();
+      });
+  });
+});
+
 describe('The stomach ache page', () => {
   it('should be accessible directly', (done) => {
     chai.request(server)
@@ -220,18 +239,18 @@ describe('The results page happy paths', () => {
 describe('The results page error handling', () => {
   describe('with a context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const invalidPostcodePassingRegex = 'LS0';
     const resultsRoute = `${constants.SITE_ROOT}/results`;
     const context = 'stomach-ache';
 
-    const postcodesioScope =
-    nock('https://api.postcodes.io')
-      .get(`/outcodes/${invalidPostcodePassingRegex}`)
-      .times(1)
-      .reply(404, notFoundResponse);
-
     it('should lookup a valid but unknown postcode and return an error with the help context',
         (done) => {
+          const invalidPostcodePassingRegex = 'LS0';
+          const postcodesioScope =
+          nock('https://api.postcodes.io')
+            .get(`/outcodes/${invalidPostcodePassingRegex}`)
+            .times(1)
+            .reply(404, notFoundResponse);
+
           chai.request(server)
             .get(resultsRoute)
             .query({ location: invalidPostcodePassingRegex, context })
@@ -267,15 +286,42 @@ describe('The results page error handling', () => {
               done();
             });
         });
+
+    it('postcode server error should return an error', (done) => {
+      const postcode = 'AB123CD';
+      const postcodesioScope =
+        nock('https://api.postcodes.io')
+        .get(`/postcodes/${postcode}`)
+        .times(1)
+        .reply(500);
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: postcode, context })
+        .end((err, res) => {
+          expect(err).to.not.be.equal(null);
+          expect(res).to.have.status(500);
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.html;
+
+          const $ = cheerio.load(res.text);
+
+          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('.local-header--title--question').text())
+            .to.contain('A server error has occured');
+          expect(postcodesioScope.isDone()).to.equal(true);
+          done();
+        });
+    });
   });
 
   describe('with no context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const invalidPostcodePassingRegex = 'LS0';
     const resultsRoute = `${constants.SITE_ROOT}/results`;
 
     it('should lookup a syntactically valid but unknown postcode and return an error message',
       (done) => {
+        const invalidPostcodePassingRegex = 'LS0';
         const postcodesioScope =
           nock('https://api.postcodes.io')
           .get(`/outcodes/${invalidPostcodePassingRegex}`)
@@ -296,8 +342,6 @@ describe('The results page error handling', () => {
 
     it('should validate the postcode and return an error message', (done) => {
       const invalidPostcode = 'invalid';
-      // const errorMessage =
-      //   `${invalidPostcode} is not a valid postcode, please try again`;
 
       chai.request(server)
         .get(resultsRoute)
@@ -308,8 +352,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           iExpect.findHelpPage($);
-          expect(res.text).to
-            .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
+          expect(res.text).to.contain(messages.invalidPostcodeMessage(invalidPostcode));
           done();
         });
     });
@@ -326,12 +369,16 @@ describe('The results page error handling', () => {
         .get(resultsRoute)
         .query({ location: postcode })
         .end((err, res) => {
-          iExpect.checkHtmlResponse(err, res);
+          expect(err).to.not.be.equal(null);
+          expect(res).to.have.status(500);
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.html;
+
           const $ = cheerio.load(res.text);
 
           expect($('.page-section').text()).to.not.contain('For help with');
-          iExpect.findHelpPage($);
-          expect(res.text).to.contain('A server error has occurred');
+          expect($('.local-header--title--question').text())
+            .to.contain('A server error has occured');
           expect(postcodesioScope.isDone()).to.equal(true);
           done();
         });

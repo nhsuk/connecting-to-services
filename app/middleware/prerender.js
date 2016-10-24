@@ -2,7 +2,7 @@ const mapLink = require('../lib/mapLink');
 
 function results(req, res, next) {
   const open = req.query.open || 'true';
-  const context = req.query.context || '';
+  const context = res.locals.context;
   const location = res.locals.location;
   let openParam = '';
   let headerMessage = '';

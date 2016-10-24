@@ -3,7 +3,7 @@ const router = require('express').Router();
 const validateLocation = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
-const render = require('../app/middleware/renderer');
+const renderer = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
 const setLocals = require('../app/middleware/setLocals');
 
@@ -19,18 +19,12 @@ router.get('/results',
   coordinateResolver,
   getPharmacies,
   prerender.results,
-  render.results
+  renderer.results
 );
 
 router.get('/find-help',
   setLocals.fromRequest,
-  (req, res) => {
-    if (res.locals.context === 'stomach-ache') {
-      res.render('find-help-stomach-ache');
-    } else {
-      res.render('find-help');
-    }
-  }
+  renderer.findHelp
 );
 
 router.get('/stomach-ache',

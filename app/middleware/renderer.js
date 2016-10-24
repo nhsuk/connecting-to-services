@@ -12,6 +12,20 @@ function results(req, res) {
   res.render('results');
 }
 
+function findHelp(req, res) {
+  const context = res.locals.context;
+  let viewToRender = '';
+
+  if (context === 'stomach-ache') {
+    viewToRender = 'find-help-stomach-ache';
+  } else {
+    viewToRender = 'find-help';
+  }
+
+  res.render(viewToRender);
+}
+
 module.exports = {
   results,
+  findHelp,
 };
