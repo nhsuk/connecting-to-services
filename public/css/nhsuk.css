@@ -2079,8 +2079,9 @@ abbr[title] {
 }
 
 .error-summary .error-summary-list {
-  padding-left: 20px;
   color: #000;
+  list-style-type:none;
+  padding:0;
 }
 
 @media (min-width: 641px) {
