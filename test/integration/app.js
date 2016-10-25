@@ -308,7 +308,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('A server error has occured');
+            .to.contain('Sorry, we are experiencing technical problems');
           expect(postcodesioScope.isDone()).to.equal(true);
           done();
         });
@@ -378,7 +378,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('A server error has occured');
+            .to.contain('Sorry, we are experiencing technical problems');
           expect(postcodesioScope.isDone()).to.equal(true);
           done();
         });
