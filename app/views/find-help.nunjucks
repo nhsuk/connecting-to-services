@@ -33,7 +33,7 @@ Find a pharmacy
     <div class="form-item-wrapper">
 
       {% if errorMessage %}
-      <div class="form-group error" id="id-error">
+      <div class="form-group error">
         {% else %}
         <div class="form-group">
           {% endif %}
