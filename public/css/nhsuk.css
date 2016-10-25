@@ -2081,6 +2081,7 @@ abbr[title] {
 .error-summary .error-summary-list {
   color: #000;
   list-style-type:none;
+  margin-top:0;
   padding:0;
 }
 
