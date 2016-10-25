@@ -3,8 +3,9 @@ const router = require('express').Router();
 const validateLocation = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
-const render = require('../app/middleware/renderer');
+const renderer = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
+const setLocals = require('../app/middleware/setLocals');
 
 router.get('/',
   (req, res) => {
@@ -13,17 +14,17 @@ router.get('/',
 );
 
 router.get('/results',
+  setLocals.fromRequest,
   validateLocation,
   coordinateResolver,
   getPharmacies,
   prerender.results,
-  render.results
+  renderer.results
 );
 
 router.get('/find-help',
-  (req, res) => {
-    res.render('find-help');
-  }
+  setLocals.fromRequest,
+  renderer.findHelp
 );
 
 router.get('/stomach-ache',

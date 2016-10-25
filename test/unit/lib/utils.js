@@ -15,6 +15,7 @@ describe('utils', () => {
       clone.a = 'new value';
       expect(clone).to.not.deep.equal(objToClone);
     });
+
     it('should clone object properties', () => {
       const objToClone = { a: { b: 'b' } };
 
@@ -24,6 +25,20 @@ describe('utils', () => {
 
       clone.a = 'new value';
       expect(clone).to.not.deep.equal(objToClone);
+    });
+  });
+
+  describe('flip', () => {
+    it('should return false as a string when it is passed true as a string', () => {
+      const result = utils.flip('true');
+
+      expect(result).to.be.equal('false');
+    });
+
+    it('should return true as a string when it is passed false as a string', () => {
+      const result = utils.flip('false');
+
+      expect(result).to.be.equal('true');
     });
   });
 });

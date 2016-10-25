@@ -1,7 +1,8 @@
+const renderer = require('../middleware/renderer');
 const locationValidator = require('../lib/locationValidator');
 
 function validateLocation(req, res, next) {
-  const location = req.query.location;
+  const location = res.locals.location;
 
   const validationResult = locationValidator(location);
 
@@ -9,7 +10,9 @@ function validateLocation(req, res, next) {
   res.locals.location = validationResult.input;
 
   if (validationResult.errorMessage) {
-    res.render('find-help', { errorMessage: validationResult.errorMessage });
+    // eslint-disable-next-line no-param-reassign
+    res.locals.errorMessage = validationResult.errorMessage;
+    renderer.findHelp(req, res);
   } else {
     next();
   }

@@ -19,14 +19,8 @@ Find a pharmacy
 {% block pageTitle %}Find a place that can help you{% endblock %}
 
 {% block content %}
-<p>For help with:</p>
 
-<ul>
-  <li>feeling bloated (trapped wind)</li>
-  <li>indigestion (burning pain or discomfort after eating)</li>
-  <li>constipation (can’t poo)</li>
-  <li>pain relief</li>
-</ul>
+{% block context %}{% endblock %}
 
 <form method="get" class="form" action="{{ SITE_ROOT }}/results">
   <div class="reading-width">
@@ -48,6 +42,7 @@ Find a pharmacy
           <div class="form-group">
             <input autofocus autocomplete="off" type="text" class="form-control" name="location" id="location" value="">
             <input type="hidden" name="open" value="true">
+            <input type="hidden" name="context" value="{{ context }}">
           </div>
         </div>
 

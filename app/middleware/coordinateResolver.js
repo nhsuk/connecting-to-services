@@ -1,3 +1,4 @@
+const renderer = require('../middleware/renderer');
 const postcodes = require('../lib/postcodes');
 
 function coordinateResolver(req, res, next) {
@@ -5,7 +6,9 @@ function coordinateResolver(req, res, next) {
     if (err) {
       switch (err.type) {
         case 'invalid-postcode':
-          res.render('find-help', { errorMessage: err.message });
+          // eslint-disable-next-line no-param-reassign
+          res.locals.errorMessage = err.message;
+          renderer.findHelp(req, res);
           break;
         case 'postcode-service-error':
           next(`Postcode Service Error: ${err.message}`);
