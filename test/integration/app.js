@@ -17,7 +17,7 @@ describe('redirection', () => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
-        iExpect.checkHtmlResponse(err, res);
+        iExpect.htmlWith200Status(err, res);
 
         // eslint-disable-next-line no-unused-expressions
         expect(res).to.redirect;
@@ -30,7 +30,7 @@ describe('redirection', () => {
     chai.request(server)
       .get(constants.SITE_ROOT)
       .end((err, res) => {
-        iExpect.checkHtmlResponse(err, res);
+        iExpect.htmlWith200Status(err, res);
 
         // eslint-disable-next-line no-unused-expressions
         expect(res).to.redirect;
@@ -64,7 +64,7 @@ describe('The stomach ache page', () => {
     chai.request(server)
       .get(`${constants.SITE_ROOT}/stomach-ache`)
       .end((err, res) => {
-        iExpect.checkHtmlResponse(err, res);
+        iExpect.htmlWith200Status(err, res);
 
         const $ = cheerio.load(res.text);
 
@@ -82,7 +82,7 @@ describe('The find help page', () => {
         .get(`${constants.SITE_ROOT}/find-help`)
         .query({ context: 'stomach-ache' })
         .end((err, res) => {
-          iExpect.checkHtmlResponse(err, res);
+          iExpect.htmlWith200Status(err, res);
 
           const $ = cheerio.load(res.text);
 
@@ -98,7 +98,7 @@ describe('The find help page', () => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/find-help`)
         .end((err, res) => {
-          iExpect.checkHtmlResponse(err, res);
+          iExpect.htmlWith200Status(err, res);
 
           const $ = cheerio.load(res.text);
 
@@ -115,7 +115,7 @@ describe('The find help page', () => {
         .get(`${constants.SITE_ROOT}/find-help`)
         .query({ context: 'unknown' })
         .end((err, res) => {
-          iExpect.checkHtmlResponse(err, res);
+          iExpect.htmlWith200Status(err, res);
 
           const $ = cheerio.load(res.text);
 
@@ -144,7 +144,7 @@ describe('The results page happy paths', () => {
           .get(resultsRoute)
           .query({ location: postcode })
           .end((err, res) => {
-            iExpect.checkHtmlResponse(err, res);
+            iExpect.htmlWith200Status(err, res);
             const $ = cheerio.load(res.text);
 
             expect($('.local-header--title--question').text())
@@ -166,7 +166,7 @@ describe('The results page happy paths', () => {
           .get(resultsRoute)
           .query({ location: postcode, open: false })
           .end((err, res) => {
-            iExpect.checkHtmlResponse(err, res);
+            iExpect.htmlWith200Status(err, res);
             const $ = cheerio.load(res.text);
 
             expect($('.local-header--title--question').text())
@@ -192,7 +192,7 @@ describe('The results page happy paths', () => {
           .get(resultsRoute)
           .query({ location: postcode, context })
           .end((err, res) => {
-            iExpect.checkHtmlResponse(err, res);
+            iExpect.htmlWith200Status(err, res);
             const $ = cheerio.load(res.text);
 
             expect($('.local-header--title--question').text())
@@ -215,7 +215,7 @@ describe('The results page happy paths', () => {
           .get(resultsRoute)
           .query({ location: postcode, open: false, context: 'stomach-ache' })
           .end((err, res) => {
-            iExpect.checkHtmlResponse(err, res);
+            iExpect.htmlWith200Status(err, res);
             const $ = cheerio.load(res.text);
 
             expect($('.local-header--title--question').text())
@@ -255,7 +255,7 @@ describe('The results page error handling', () => {
             .get(resultsRoute)
             .query({ location: invalidPostcodePassingRegex, context })
             .end((err, res) => {
-              iExpect.checkHtmlResponse(err, res);
+              iExpect.htmlWith200Status(err, res);
               const $ = cheerio.load(res.text);
 
               expect($('.page-section').text()).to.contain('For help with');
@@ -277,7 +277,7 @@ describe('The results page error handling', () => {
             .get(resultsRoute)
             .query({ location: invalidPostcode, context })
             .end((err, res) => {
-              iExpect.checkHtmlResponse(err, res);
+              iExpect.htmlWith200Status(err, res);
               const $ = cheerio.load(res.text);
 
               expect($('.page-section').text()).to.contain('For help with');
@@ -332,7 +332,7 @@ describe('The results page error handling', () => {
           .get(resultsRoute)
           .query({ location: invalidPostcodePassingRegex })
           .end((err, res) => {
-            iExpect.checkHtmlResponse(err, res);
+            iExpect.htmlWith200Status(err, res);
             expect(res.text).to
               .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
             expect(postcodesioScope.isDone()).to.equal(true);
@@ -347,7 +347,7 @@ describe('The results page error handling', () => {
         .get(resultsRoute)
         .query({ location: invalidPostcode })
         .end((err, res) => {
-          iExpect.checkHtmlResponse(err, res);
+          iExpect.htmlWith200Status(err, res);
           const $ = cheerio.load(res.text);
 
           expect($('.page-section').text()).to.not.contain('For help with');

@@ -1,11 +1,8 @@
 function fromRequest(req, res, next) {
-  const location = req.query.location;
-  const context = req.query.context || '';
-
   // eslint-disable-next-line no-param-reassign
-  res.locals.context = context;
+  res.locals.location = req.query.location;
   // eslint-disable-next-line no-param-reassign
-  res.locals.location = location;
+  res.locals.context = req.query.context || '';
   next();
 }
 

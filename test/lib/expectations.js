@@ -9,7 +9,7 @@ function findHelpPage($) {
   expect($('#location').is('input')).is.equal(true);
 }
 
-function checkHtmlResponse(err, res) {
+function htmlWith200Status(err, res) {
   expect(err).to.equal(null);
   expect(res).to.have.status(200);
   // eslint-disable-next-line no-unused-expressions
@@ -18,5 +18,5 @@ function checkHtmlResponse(err, res) {
 
 module.exports = {
   findHelpPage,
-  checkHtmlResponse,
+  htmlWith200Status,
 };
