@@ -12,7 +12,7 @@
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ SITE_ROOT }}/images/favicon.png">
 
-    <title>{% block pageTitle %}NHS.UK{% endblock %}</title>
+    <title>{% if errorMessage %}Please retry - {% endif %}{% block pageTitle %}NHS.UK{% endblock %}</title>
 
     <meta property="og:image" content="{{ SITE_ROOT }}/images/opengraph-image.png">
     <meta property="og:image:width" content="1200">
