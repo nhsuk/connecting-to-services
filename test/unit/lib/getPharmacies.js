@@ -74,7 +74,24 @@ describe('Nearby', () => {
     });
 
     it('should return the opening times message and open state', () => {
-      const results = pharmacies.nearby(searchPoint, geo).openServices;
+      const alwaysOpenOrg = {
+        latitude: searchPoint.latitude,
+        longitude: searchPoint.longitude,
+        openingTimes: {
+          general: {
+            monday: [{ opens: '00:00', closes: '23:59' }],
+            tuesday: [{ opens: '00:00', closes: '23:59' }],
+            wednesday: [{ opens: '00:00', closes: '23:59' }],
+            thursday: [{ opens: '00:00', closes: '23:59' }],
+            friday: [{ opens: '00:00', closes: '23:59' }],
+            saturday: [{ opens: '00:00', closes: '23:59' }],
+            sunday: [{ opens: '00:00', closes: '23:59' }],
+          },
+        },
+      };
+      function nearbyStub() { return [alwaysOpenOrg]; }
+      const oneOpenOrgGeo = { nearBy: nearbyStub };
+      const results = pharmacies.nearby(searchPoint, oneOpenOrgGeo).openServices;
 
       expect(results[0].isOpen).to.be.equal(true);
       expect(results[0].openingTimesMessage).to.not.be.equal('Call for opening times');

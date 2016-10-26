@@ -61,21 +61,23 @@ function nearby(searchPoint, geo, limit) {
 
     if (openingTimes) {
       const openingTimesMoment = new OpeningTimes(item.openingTimes.general, 'Europe/London');
+
       openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(now);
       isOpen = openingTimesMoment.isOpen(now);
-      if (isOpen && openServiceCount < numberOfOpenToReturn) {
-        openServiceCount++;
-        openServices.push(utils.deepClone(item));
-      }
     } else {
       openingTimesMessage = 'Call for opening times';
       isOpen = false;
     }
-    serviceCount++;
-    /* eslint-disable no-param-reassign */
+
     item.openingTimesMessage = openingTimesMessage;
     item.isOpen = isOpen;
-    /* eslint-enable no-param-reassign */
+
+    if (isOpen && openServiceCount < numberOfOpenToReturn) {
+      openServiceCount++;
+      openServices.push(utils.deepClone(item));
+    }
+
+    serviceCount++;
 
     if (openServiceCount >= numberOfOpenToReturn && serviceCount >= maxResults) {
       break;
