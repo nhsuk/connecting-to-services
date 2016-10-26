@@ -1,3 +1,4 @@
+const debug = require('debug')('finders:express');
 const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -44,7 +45,7 @@ module.exports = (app, config) => {
 
   // eslint-disable-next-line no-unused-vars
   app.use(constants.SITE_ROOT, (err, req, res, next) => {
-    console.log(err);
+    debug(err);
     res.status(err.statusCode || 500);
     res.render('error', {
       message: err,
