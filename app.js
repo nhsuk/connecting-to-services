@@ -1,6 +1,6 @@
-const debug = require('debug')('finders:app');
+const debugApp = require('./app/lib/debuggers').app;
 const app = require('./server');
 
 app.listen(app.port, () => {
-  debug(`Express server listening on port ${app.port}`);
+  debugApp(`Express server listening on port ${app.port}`);
 });
