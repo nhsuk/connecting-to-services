@@ -2002,9 +2002,9 @@ abbr[title] {
 @media (max-width: 640px) {
   .skiplinks--link:focus {
     left:0;
+    position:absolute;
   }
 }
-
 /*
 
    Error styling, nabbed from govuk

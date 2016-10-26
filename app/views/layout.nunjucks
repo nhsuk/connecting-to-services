@@ -73,7 +73,7 @@
       </div>
     </header>
 
-    <main id="content" role="main" tabindex="-1" class="util-nofocus">
+    <main id="content" role="main" class="util-nofocus">
       {% block article %}
       <div class="local-header-white-bg">
         <div class="local-header--question">
