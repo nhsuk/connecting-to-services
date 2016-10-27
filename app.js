@@ -1,5 +1,6 @@
+const debugApp = require('./app/lib/debuggers').app;
 const app = require('./server');
 
 app.listen(app.port, () => {
-  console.log(`Express server listening on port ${app.port}`);
+  debugApp(`Express server listening on port ${app.port}`);
 });
