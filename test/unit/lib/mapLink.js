@@ -38,10 +38,10 @@ describe('mapLink', () => {
       const nearTwo = `near=${nameAndAddressTwo}`;
 
       const expectedMapLinkOne =
-        `https://www.google.com/maps?${start}&${destinationOne}&${nearOne}`.replace(/ /g, '+');
+        `https://maps.google.com/maps?${start}&${destinationOne}&${nearOne}`.replace(/ /g, '+');
 
       const expectedMapLinkTwo =
-        `https://www.google.com/maps?${start}&${destinationTwo}&${nearTwo}`.replace(/ /g, '+');
+        `https://maps.google.com/maps?${start}&${destinationTwo}&${nearTwo}`.replace(/ /g, '+');
 
       const results = mapLink.addUrl(location, inputList);
 
@@ -66,7 +66,7 @@ describe('mapLink', () => {
 
       const destination = 'name,line1,AB12+3CD';
       const expectedMapLinkOne =
-        `https://www.google.com/maps?saddr=${location}&daddr=${destination}&near=${destination}`
+        `https://maps.google.com/maps?saddr=${location}&daddr=${destination}&near=${destination}`
         .replace(/ /g, '+');
 
       const results = mapLink.addUrl(location, inputList);

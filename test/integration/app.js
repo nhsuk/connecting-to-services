@@ -153,7 +153,7 @@ describe('The results page happy paths', () => {
             const mapLinks = $('.cta-blue');
             expect(mapLinks.length).to.equal(3);
             mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://www.google.com');
+              expect($(link).attr('href')).to.have.string('https://maps.google.com');
             });
             expect($('.list-tab__link').attr('href'))
               .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false&context=`);
@@ -175,7 +175,7 @@ describe('The results page happy paths', () => {
             const mapLinks = $('.cta-blue');
             expect(mapLinks.length).to.equal(10);
             mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://www.google.com');
+              expect($(link).attr('href')).to.have.string('https://maps.google.com');
             });
             expect($('.list-tab__link').attr('href'))
               .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true&context=`);
@@ -201,7 +201,7 @@ describe('The results page happy paths', () => {
             const mapLinks = $('.cta-blue');
             expect(mapLinks.length).to.equal(3);
             mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://www.google.com');
+              expect($(link).attr('href')).to.have.string('https://maps.google.com');
             });
             const expectedHref =
               `${constants.SITE_ROOT}/results?location=${postcode}&open=false&context=${context}`;
@@ -224,7 +224,7 @@ describe('The results page happy paths', () => {
             const mapLinks = $('.cta-blue');
             expect(mapLinks.length).to.equal(10);
             mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://www.google.com');
+              expect($(link).attr('href')).to.have.string('https://maps.google.com');
             });
             const expectedHref =
               `${constants.SITE_ROOT}/results?location=${postcode}&open=true&context=${context}`;
