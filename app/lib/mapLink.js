@@ -17,7 +17,7 @@ function addUrl(location, inputList) {
     const near = `near=${fullNameAndAddress}`;
 
     const mapUrl =
-      `https://www.google.com/maps?${start}&${destination}&${near}`
+      `https://maps.google.com/maps?${start}&${destination}&${near}`
       .replace(/ /g, '+');
 
     // eslint-disable-next-line no-param-reassign
