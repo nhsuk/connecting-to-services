@@ -2,6 +2,10 @@
 
 {% block pageTitle %}All service results{% endblock %}
 
+{% block meta %}
+<meta name="DCSext.ServiceName" content="pharmacies" />
+{% endblock %}
+
 {% block header %}{{ headerMessage }}{% endblock %}
 
 {% block content %}
