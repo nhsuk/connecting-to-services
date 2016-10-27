@@ -40,7 +40,7 @@ Find a pharmacy
           <span class="error-message" id="error-message">Use a valid postcode</span>
           {% endif %}
           <div class="form-group">
-            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""  aria-describedby="error-message"{% if errorMessage %} aria-invalid="true"{% endif %}>
+            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
             <input type="hidden" name="open" value="true">
             <input type="hidden" name="context" value="{{ context }}">
           </div>
