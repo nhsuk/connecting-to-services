@@ -1,4 +1,4 @@
-const debugLoadData = require('../app/lib/debuggers').loadData;
+const log = require('../app/lib/logger');
 const cache = require('memory-cache');
 const Geo = require('geo-nearby');
 const geohash = require('ngeohash');
@@ -6,7 +6,7 @@ const geohash = require('ngeohash');
 const pharmacyListPath = process.env.PHARMACY_LIST_PATH || '../data/pharmacy-list';
 const orgs = require(pharmacyListPath);
 
-debugLoadData(`Loaded data from ${pharmacyListPath}`);
+log.debug(`Loaded data from ${pharmacyListPath}`);
 
 function loadData() {
   const mappedOrgs =
@@ -19,7 +19,7 @@ function loadData() {
         /* eslint-enable no-param-reassign */
         return true;
       }
-      debugLoadData(`No location found for: ${item.identifier}`);
+      log.warn(`No location found for: ${item.identifier}`);
       return false;
     });
 
