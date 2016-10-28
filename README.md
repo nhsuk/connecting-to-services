@@ -43,14 +43,16 @@ application will fail to start and an appropriate message will be displayed.
 Environment variables are used to set application level settings for each
 environment.
 
-| Variable                         | Description                                                               | Default                  | Required |
-|:---------------------------------|:--------------------------------------------------------------------------|:-------------------------|----------|
-| `NODE_ENV`                       | node environment                                                          | development              |          |
-| `PORT`                           | server port                                                               | 3000                     |          |
-| `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id        |                          |          |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                       |                          |          |
-| `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                             |                          |          |
-| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                           | `../data/pharmacy-list`  |          |
+| Variable                         | Description                                                                            | Default                  | Required        |
+|:---------------------------------|:---------------------------------------------------------------------------------------|:-------------------------|-----------------|
+| `NODE_ENV`                       | node environment                                                                       | development              |                 |
+| `PORT`                           | server port                                                                            | 3000                     |                 |
+| `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id                     |                          |                 |
+| `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                                    |                          |                 |
+| `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                                          |                          |                 |
+| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                                        | `../data/pharmacy-list`  |                 |
+| `SPLUNK_HEC_TOKEN`               | [HTTP Event Collector token](http://dev.splunk.com/view/event-collector/SP-CAAAE7C)    |                          | In `production` |
+| `SPLUNK_HEC_ENDPOINT`            | [HTTP Event Collector endpoint](http://dev.splunk.com/view/event-collector/SP-CAAAE7H) |                          | In `production` |
 
 ## FAQ
 
