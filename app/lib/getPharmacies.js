@@ -1,4 +1,4 @@
-const debugGetPharmacies = require('../../app/lib/debuggers').getPharmacies;
+const log = require('../../app/lib/logger');
 const OpeningTimes = require('moment-opening-times');
 const moment = require('moment');
 const geolib = require('geolib');
@@ -33,26 +33,26 @@ function nearby(searchPoint, geo, limit) {
   let serviceCount = 0;
   let openServiceCount = 0;
 
-  debugGetPharmacies('get-nearby-results-start');
+  log.debug('get-nearby-results-start');
   const nearbyGeo =
     geo.nearBy(searchPoint.latitude, searchPoint.longitude, 50 * metersInAMile);
-  debugGetPharmacies('get-nearby-results-end');
+  log.debug('get-nearby-results-end');
 
-  debugGetPharmacies(`Found ${nearbyGeo.length} nearby results`);
-  debugGetPharmacies('add-distance-start');
+  log.debug(`Found ${nearbyGeo.length} nearby results`);
+  log.debug('add-distance-start');
   const nearbyOrgs = nearbyGeo.map((item) => {
     // eslint-disable-next-line no-param-reassign
     item.distanceInMiles = getDistanceInMiles(searchPoint, item);
 
     return item;
   });
-  debugGetPharmacies('add-distance-end');
+  log.debug('add-distance-end');
 
-  debugGetPharmacies('sort-nearby-results-start');
+  log.debug('sort-nearby-results-start');
   const sortedOrgs = nearbyOrgs.sort(sortByDistance);
-  debugGetPharmacies('sort-nearby-results-end');
+  log.debug('sort-nearby-results-end');
 
-  debugGetPharmacies('filter-open-results-start');
+  log.debug('filter-open-results-start');
   for (let i = 0; i < sortedOrgs.length; i++) {
     const item = sortedOrgs[i];
     const openingTimes = item.openingTimes;
@@ -84,7 +84,7 @@ function nearby(searchPoint, geo, limit) {
       break;
     }
   }
-  debugGetPharmacies('filter-open-results-end');
+  log.debug('filter-open-results-end');
 
   return {
     nearbyServices: sortedOrgs.slice(0, maxResults),

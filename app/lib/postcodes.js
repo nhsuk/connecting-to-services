@@ -1,4 +1,4 @@
-const debugPostcodes = require('../../app/lib/debuggers').postcodes;
+const log = require('../../app/lib/logger');
 const Postcode = require('postcode');
 const https = require('https');
 const messages = require('../lib/messages');
@@ -36,11 +36,11 @@ function lookup(res, next) {
           next();
           break;
         case 404:
-          debugPostcodes({ url, response: postcodeRes.statusCode });
+          log.warn({ res: postcodeRes }, '404 from postcodes.io');
           next({ type: 'invalid-postcode', message: messages.invalidPostcodeMessage(location) });
           break;
         default:
-          debugPostcodes({ url, response: postcodeRes.statusCode });
+          log.warn({ url, response: postcodeRes.statusCode });
           next(
             {
               type: 'postcode-service-error',
@@ -51,7 +51,7 @@ function lookup(res, next) {
     });
   }).on('error', (e) => {
     // TODO: Add 'standard' error
-    debugPostcodes({ url, error: e });
+    log.error({ err: e }, 'Postcode lookup failed');
     next({ type: 'postcode-service-error', message: e.message });
   });
 }
