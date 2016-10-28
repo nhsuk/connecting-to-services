@@ -50,7 +50,9 @@
     "ngeohash": "^0.6.0",
     "nunjucks": "^2.4.2",
     "object.values": "^1.0.3",
-    "postcode": "^0.2.5"
+    "postcode": "^0.2.5",
+    "require-environment-variables": "^1.1.2",
+    "splunk-bunyan-logger": "^0.9.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
