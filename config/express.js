@@ -1,9 +1,8 @@
-const debugExpress = require('../app/lib/debuggers').express;
+const log = require('../app/lib/logger');
 const express = require('express');
-const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const compress = require('compression');
+const compression = require('compression');
 const nunjucks = require('nunjucks');
 const router = require('./routes');
 const locals = require('../app/middleware/locals');
@@ -23,34 +22,42 @@ module.exports = (app, config) => {
 
   app.use(locals(config));
 
-  app.use(logger('dev'));
+  app.use((req, res, next) => {
+    log.debug({ req });
+    next();
+  });
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true,
   }));
-  app.use(cookieParser());
-  app.use(compress());
 
-  app.get('/', (req, res) => {
-    res.redirect(constants.SITE_ROOT);
-  });
+  app.use(cookieParser());
+  app.use(compression());
 
   app.use(constants.SITE_ROOT, express.static(`${config.root}/public`));
 
   app.use(constants.SITE_ROOT, router);
   app.use(constants.SITE_ROOT, (req, res) => {
+    log.warn({ req }, 404);
     res.status(404);
     res.render('error-404');
   });
 
   // eslint-disable-next-line no-unused-vars
   app.use(constants.SITE_ROOT, (err, req, res, next) => {
-    debugExpress(err);
-    res.status(err.statusCode || 500);
+    const statusCode = err.statusCode || 500;
+
+    log.error({ err }, statusCode);
+    res.status(statusCode);
     res.render('error', {
       message: err,
       error: app.get('env') === 'development' ? err : {},
       title: 'error',
     });
+  });
+
+  app.get('/', (req, res) => {
+    res.redirect(constants.SITE_ROOT);
   });
 };
