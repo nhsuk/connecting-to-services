@@ -61,7 +61,8 @@ function nearby(searchPoint, geo, limit) {
     let openingTimesMessage;
 
     if (openingTimes) {
-      const openingTimesMoment = new OpeningTimes(item.openingTimes.general, 'Europe/London');
+      const openingTimesMoment =
+        new OpeningTimes(item.openingTimes.general, 'Europe/London', item.openingTimes.alterations);
 
       openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(now);
       isOpen = openingTimesMoment.isOpen(now);
