@@ -1,10 +1,10 @@
+const utils = require('./utils');
 const bunyan = require('bunyan');
 
-const env = process.env.NODE_ENV;
 const log = bunyan.createLogger({
   name: 'finders',
   serializers: bunyan.stdSerializers,
-  level: env === 'development' ? bunyan.DEBUG : bunyan.INFO,
+  level: utils.getLogLevel(process.env.NODE_ENV),
 });
 
 log.info({ logger: log }, 'Created logger');
