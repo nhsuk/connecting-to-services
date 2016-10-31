@@ -1675,7 +1675,8 @@ abbr[title] {
 }
 
 .global-header {
-  background-color: #0072c6;
+  background-color: #fff;
+  border-bottom:2px solid #0072c6;
 }
 
 .global-header--inner {
@@ -1691,7 +1692,7 @@ abbr[title] {
 }
 
 .global-header--link {
-  background: url("../images/logotype-nhs-colour.png") no-repeat;
+  background: url("../images/logotype-nhs-colour__reverse.png") no-repeat;
   background-size: contain;
   display: block;
   height: 32px;
@@ -1701,15 +1702,15 @@ abbr[title] {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .global-header--link {
-    background-image: url("../images/logotype-nhs-colour@2x.png");
+    background-image: url("../images/logotype-nhs-colour__reverse@2x.png");
     background-size: 79px 32px;
   }
 }
 
 .global-footer {
-  background-color: #d9e1e2;
-  border-top: 1px solid #f7f9f9;
-  color: #425563;
+  background-color: #0072c6;
+  border-top: 4px solid #005b9e;
+  color: #fff;
 }
 
 .global-footer * {
@@ -1734,6 +1735,10 @@ abbr[title] {
   }
 }
 
+.global-footer li + li {
+  margin-top:8px;
+}
+
 .global-footer * + * {
   margin-top: 16px;
 }
@@ -1744,18 +1749,61 @@ abbr[title] {
   }
 }
 
-.global-footer a {
-  color: #425563;
+.global-footer a:link {
+  color: #fff;
+}
+
+.global-footer a:visited {
+  color: #fff;
 }
 
 .global-footer a:hover {
-  color: #000;
+  color: #d4efff;
+}
+
+.global-footer a:hover {
+  color: #d4efff;
+}
+
+.global-footer a:focus {
+  outline: 3px solid #ffb81c;
 }
 
 .global-footer--inner {
-  padding: 0 0 64px;
+    padding-bottom: 96px;
+    padding-top: 32px;
 }
 
+@media (min-width: 925px) {
+  .global-footer--inner {
+      padding-bottom: 128px;
+      padding-top: 48px;
+  }
+}
+
+.global-footer--inner::before {
+    background: url("../images/logotype-nhs-colour.png") no-repeat;
+    background-size: contain;
+    content: "";
+    display: block;
+    height: 32px;
+    margin-bottom: 32px;
+    text-indent: -999em;
+    width: 79px;
+}
+
+@media (min-width: 925px) {
+  .global-footer--inner::before {
+      margin-bottom: 48px;
+  }
+}
+
+@media not all, only screen and (min--moz-device-pixel-ratio: 2), not all, not all, not all, only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+.global-footer--inner::before {
+    background-image: url("../images/logotype-nhs-colour@2x.png");
+    background-size: 79px 32px;
+}
+}
 .inline-list {
   list-style: none;
   padding-left: 0;
@@ -1815,7 +1863,6 @@ abbr[title] {
 
 .local-header-white-bg {
   background-color: #fff;
-  border-top: 1px solid #338ed1;
 }
 
 .local-header * + * {

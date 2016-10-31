@@ -3,11 +3,11 @@
 
     <div>
       <h2 class="util-visuallyhidden">Support links</h2>
-      <ul class="inline-list inline-list__slash">
-        <li class="inline-list--item">
+      <ul class="link-list">
+        <li>
           <a href="https://beta.nhs.uk/help/clinical-assurance">Clinical assurance</a>
         </li>
-        <li class="inline-list--item">
+        <li>
           <a href="https://beta.nhs.uk/help/cookies">Cookies</a>
         </li>
       </ul>
