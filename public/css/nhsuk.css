@@ -28,7 +28,7 @@
 }
 
 .page-section, .callout--inner, .global-header--inner, .global-footer--inner, .local-header--inner, .local-header--question, .notification-banner--inner, .skiplinks--inner {
-  margin: 0 15px;
+  margin: 0 16px;
   max-width: 960px;
 }
 
