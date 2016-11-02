@@ -1,6 +1,7 @@
 node_modules/
 public/components
 coverage/
+reports/
 
 .sass-cache
 npm-debug.log
@@ -10,3 +11,6 @@ npm-debug.log.*
 .coveralls.yml
 
 *.swp
+
+# Use .keep files to keep empty folders
+!.keep

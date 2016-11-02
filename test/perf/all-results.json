@@ -1,0 +1,16 @@
+{
+  "config": {
+    "target": "http://localhost:3000",
+    "phases": [
+      { "duration": 5, "arrivalRate": 1 },
+      { "pause": 5 },
+      { "duration": 60, "arrivalRate": 1 }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "Get results for ls1",
+      "flow": [ { "get": { "url": "/finders/results?location=ls1" } } ]
+    }
+  ]
+}
