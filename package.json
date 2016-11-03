@@ -43,6 +43,7 @@
     "express": "^4.13.3",
     "geo-nearby": "^2.0.1",
     "geolib": "^2.0.21",
+    "helmet": "^3.0.0",
     "memory-cache": "^0.1.6",
     "moment": "^2.14.1",
     "moment-opening-times": "git://github.com/nhsuk/moment-opening-times.git",
