@@ -46,9 +46,11 @@ module.exports = (app, config) => {
       styleSrc: [
         '\'self\'',
         'fast.fonts.net',
+        'https://dhrlmnmyf2njb.cloudfront.net/',
       ],
       fontSrc: [
         'fast.fonts.net',
+        'https://dhrlmnmyf2njb.cloudfront.net/',
       ],
       connectSrc: [
         '\'self\'',
@@ -66,6 +68,7 @@ module.exports = (app, config) => {
   app.use(helmet.hidePoweredBy());
   app.use(helmet.ieNoOpen());
   app.use(helmet.noSniff());
+
   app.use(locals(config));
 
   app.use((req, res, next) => {
