@@ -46,7 +46,7 @@ module.exports = (app, config) => {
       styleSrc: [
         '\'self\'',
         'fast.fonts.net',
-        'dhrlmnmyf2njb.cloudfront.net',
+        'https://dhrlmnmyf2njb.cloudfront.net/',
       ],
       fontSrc: [
         'fast.fonts.net',
@@ -68,6 +68,17 @@ module.exports = (app, config) => {
   app.use(helmet.hidePoweredBy());
   app.use(helmet.ieNoOpen());
   app.use(helmet.noSniff());
+
+  app.use(helmet.hsts({
+    // Must be at least 18 weeks to be approved by Google
+    maxAge: 10886400,
+
+    // Must be enabled to be approved by Google
+    includeSubDomains: true,
+    preload: true,
+    force: true,
+  }));
+
   app.use(locals(config));
 
   app.use((req, res, next) => {
