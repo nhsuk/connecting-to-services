@@ -21,7 +21,51 @@ module.exports = (app, config) => {
     watch: true,
   });
 
-  app.use(helmet());
+  app.use(helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [
+        '\'self\'',
+      ],
+      scriptSrc: [
+        '\'self\'',
+        'data:',
+        'www.google-analytics.com',
+        's.webtrends.com',
+        'statse.webtrendslive.com',
+        'static.hotjar.com',
+        'script.hotjar.com',
+        'cdn.jsdelivr.net',
+      ],
+      imgSrc: [
+        '\'self\'',
+        'data:',
+        'www.google-analytics.com',
+        'statse.webtrendslive.com',
+        'hm.webtrends.com',
+      ],
+      styleSrc: [
+        '\'self\'',
+        'fast.fonts.net',
+      ],
+      fontSrc: [
+        'fast.fonts.net',
+      ],
+      connectSrc: [
+        '\'self\'',
+        'https://*.hotjar.com',
+        'wss://*.hotjar.com',
+      ],
+    },
+  }));
+  app.use(helmet.xssFilter());
+  app.use(helmet({
+    frameguard: {
+      action: 'deny',
+    },
+  }));
+  app.use(helmet.hidePoweredBy());
+  app.use(helmet.ieNoOpen());
+  app.use(helmet.noSniff());
   app.use(locals(config));
 
   app.use((req, res, next) => {
