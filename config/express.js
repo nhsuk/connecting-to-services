@@ -1,5 +1,6 @@
 const log = require('../app/lib/logger');
 const express = require('express');
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -20,6 +21,7 @@ module.exports = (app, config) => {
     watch: true,
   });
 
+  app.use(helmet());
   app.use(locals(config));
 
   app.use((req, res, next) => {
