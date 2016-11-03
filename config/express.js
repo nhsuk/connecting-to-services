@@ -46,9 +46,11 @@ module.exports = (app, config) => {
       styleSrc: [
         '\'self\'',
         'fast.fonts.net',
+        'dhrlmnmyf2njb.cloudfront.net',
       ],
       fontSrc: [
         'fast.fonts.net',
+        'https://dhrlmnmyf2njb.cloudfront.net/',
       ],
       connectSrc: [
         '\'self\'',
