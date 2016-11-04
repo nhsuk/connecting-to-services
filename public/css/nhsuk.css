@@ -732,6 +732,10 @@ legend {
   }
 }
 
+.form-item-wrapper {
+  margin-top:32px;
+}
+
 .form-group {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -864,7 +868,7 @@ legend {
   width: 100%;
   padding: 4px;
   background-color: #fff;
-  border: 3px solid #000;
+  border: 2px solid #000;
 }
 
 @media (min-width: 641px) {
@@ -1896,7 +1900,7 @@ abbr[title] {
 
 .local-header--question {
   padding-bottom: 16px;
-  padding-top: 16px;
+  padding-top: 32px;
 }
 
 @media (min-width: 641px) {
