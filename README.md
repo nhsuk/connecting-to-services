@@ -7,6 +7,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/nhsuk/connecting-to-services/badge.svg)](https://snyk.io/test/github/nhsuk/connecting-to-services)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cb52b7957b9748ff8f0d4fbfd12e7de6)](https://www.codacy.com/app/nhsuk/connecting-to-services?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nhsuk/connecting-to-services&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/cb52b7957b9748ff8f0d4fbfd12e7de6)](https://www.codacy.com/app/nhsuk/connecting-to-services?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nhsuk/connecting-to-services&amp;utm_campaign=Badge_Coverage)
+[![NSP Status](https://nodesecurity.io/orgs/nhsuk/projects/f33c99ec-12f8-4a49-bae8-8d5c3b167cb8/badge)](https://nodesecurity.io/orgs/nhsuk/projects/f33c99ec-12f8-4a49-bae8-8d5c3b167cb8)
 
 A service to help people connect to appropriate NHS services that
 meet their time, location and accessibility needs.
