@@ -28,6 +28,7 @@ module.exports = (app, config) => {
       ],
       scriptSrc: [
         '\'self\'',
+        '\'unsafe-inline\'',
         'data:',
         'www.google-analytics.com',
         's.webtrends.com',
@@ -45,6 +46,7 @@ module.exports = (app, config) => {
       ],
       styleSrc: [
         '\'self\'',
+        '\'unsafe-inline\'',
         'fast.fonts.net',
         'https://dhrlmnmyf2njb.cloudfront.net/',
       ],
