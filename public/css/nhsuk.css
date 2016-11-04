@@ -740,6 +740,16 @@ legend {
   width: 100%;
 }
 
+.form-group--submit {
+  float:none;
+}
+
+@media (max-width: 640px) {
+  .form-group--submit .button {
+    text-align:center;
+    width:100%;
+  }
+}
 .form-group-related {
   margin-bottom: 10px;
 }
