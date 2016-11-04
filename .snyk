@@ -1,0 +1,6 @@
+version: v1.5.0
+ignore: {}
+patch:
+  'npm:request:20160119':
+    - splunk-bunyan-logger > splunk-logging > request:
+        patched: '2016-11-04T14:40:50.085Z'
