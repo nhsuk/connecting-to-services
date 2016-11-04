@@ -53,8 +53,11 @@ environment.
 | `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                                        | `../data/pharmacy-list`  |                 |
 | `SPLUNK_HEC_TOKEN`               | [HTTP Event Collector token](http://dev.splunk.com/view/event-collector/SP-CAAAE7C)    |                          | In `production` |
 | `SPLUNK_HEC_ENDPOINT`            | [HTTP Event Collector endpoint](http://dev.splunk.com/view/event-collector/SP-CAAAE7H) |                          | In `production` |
+| `LOG_LEVEL`                      | [bunyan log level](https://github.com/trentm/node-bunyan#levels)                       | Depends on `NODE_ENV`    |                 |
 
 ## FAQ
 
 * Is the application failing to start?
-> Ensure all expected environment variables are available within the environment
+  * Ensure all expected environment variables are available within the environment
+  * Ensure `LOG_LEVEL` has been set to a valid value
+  * Check for messages in the logs
