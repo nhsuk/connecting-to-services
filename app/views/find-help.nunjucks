@@ -46,8 +46,8 @@ Find a pharmacy
           </div>
         </div>
 
-        <div class="form-item-wrapper" style="display:inline-block;">
-          <div class="form-group">
+        <div class="form-item-wrapper">
+          <div class="form-group form-group--submit">
             <input type="submit" class="button" value="Continue">
           </div>
         </div>
