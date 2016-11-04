@@ -43,16 +43,21 @@ application will fail to start and an appropriate message will be displayed.
 Environment variables are used to set application level settings for each
 environment.
 
-| Variable                         | Description                                                               | Default                  | Required |
-|:---------------------------------|:--------------------------------------------------------------------------|:-------------------------|----------|
-| `NODE_ENV`                       | node environment                                                          | development              |          |
-| `PORT`                           | server port                                                               | 3000                     |          |
-| `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id        |                          |          |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                       |                          |          |
-| `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                             |                          |          |
-| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                           | `../data/pharmacy-list`  |          |
+| Variable                         | Description                                                                            | Default                  | Required        |
+|:---------------------------------|:---------------------------------------------------------------------------------------|:-------------------------|-----------------|
+| `NODE_ENV`                       | node environment                                                                       | development              |                 |
+| `PORT`                           | server port                                                                            | 3000                     |                 |
+| `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id                     |                          |                 |
+| `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                                    |                          |                 |
+| `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                                          |                          |                 |
+| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                                        | `../data/pharmacy-list`  |                 |
+| `SPLUNK_HEC_TOKEN`               | [HTTP Event Collector token](http://dev.splunk.com/view/event-collector/SP-CAAAE7C)    |                          | In `production` |
+| `SPLUNK_HEC_ENDPOINT`            | [HTTP Event Collector endpoint](http://dev.splunk.com/view/event-collector/SP-CAAAE7H) |                          | In `production` |
+| `LOG_LEVEL`                      | [bunyan log level](https://github.com/trentm/node-bunyan#levels)                       | Depends on `NODE_ENV`    |                 |
 
 ## FAQ
 
 * Is the application failing to start?
-> Ensure all expected environment variables are available within the environment
+  * Ensure all expected environment variables are available within the environment
+  * Ensure `LOG_LEVEL` has been set to a valid value
+  * Check for messages in the logs

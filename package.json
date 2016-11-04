@@ -44,13 +44,16 @@
     "geo-nearby": "^2.0.1",
     "geolib": "^2.0.21",
     "helmet": "^3.0.0",
+    "is-nan": "^1.2.1",
     "memory-cache": "^0.1.6",
     "moment": "^2.14.1",
     "moment-opening-times": "git://github.com/nhsuk/moment-opening-times.git",
     "ngeohash": "^0.6.0",
     "nunjucks": "^2.4.2",
     "object.values": "^1.0.3",
-    "postcode": "^0.2.5"
+    "postcode": "^0.2.5",
+    "require-environment-variables": "^1.1.2",
+    "splunk-bunyan-logger": "^0.9.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -71,6 +74,6 @@
     "mocha": "^3.0.2",
     "nock": "^8.0.0",
     "nodemon": "^1.10.2",
-    "request": "^2.60.0"
+    "request": "^2.78.0"
   }
 }
