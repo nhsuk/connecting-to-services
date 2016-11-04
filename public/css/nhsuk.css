@@ -732,10 +732,6 @@ legend {
   }
 }
 
-.form-item-wrapper {
-  margin-top:32px;
-}
-
 .form-group {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2329,4 +2325,12 @@ abbr[title] {
   border-bottom:0;
   margin-bottom:0;
   padding-bottom:0;
+}
+
+
+/*
+  Content
+*/
+.content-contextual {
+  margin-bottom:32px;
 }
