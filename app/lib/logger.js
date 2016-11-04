@@ -1,4 +1,4 @@
-const utils = require('./utils');
+const utils = require('./loggerUtils');
 const bunyan = require('bunyan');
 
 const env = process.env.NODE_ENV || 'development';
