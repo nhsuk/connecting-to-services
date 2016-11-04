@@ -20,7 +20,9 @@
     "generate-full-coverage": "npm run istanbul -- cover --include-all-sources _mocha -- --recursive",
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
     "upload-coverage-codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
-    "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls"
+    "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "config": {
     "ghooks": {
@@ -53,7 +55,8 @@
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
     "require-environment-variables": "^1.1.2",
-    "splunk-bunyan-logger": "^0.9.1"
+    "splunk-bunyan-logger": "^0.9.1",
+    "snyk": "^1.19.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -75,5 +78,6 @@
     "nock": "^8.0.0",
     "nodemon": "^1.10.2",
     "request": "^2.78.0"
-  }
+  },
+  "snyk": true
 }
