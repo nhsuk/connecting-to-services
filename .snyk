@@ -1,6 +1,9 @@
-version: v1.5.0
+version: v1.5.2
 ignore: {}
 patch:
   'npm:request:20160119':
     - splunk-bunyan-logger > splunk-logging > request:
-        patched: '2016-11-04T14:40:50.085Z'
+        patched: '2016-11-04T15:38:51.508Z'
+  'npm:tough-cookie:20160722':
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        patched: '2016-11-04T15:42:04.109Z'

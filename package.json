@@ -21,13 +21,15 @@
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
     "upload-coverage-codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls",
+    "snyk": "snyk test",
     "snyk-protect": "snyk protect",
+    "snyk-wizard": "snyk wizard",
     "prepublish": "npm run snyk-protect"
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint && npm run generate-coverage && npm run check-coverage",
-      "post-rewrite": "npm run lint && npm run generate-coverage && npm run check-coverage"
+      "pre-commit": "npm run lint && npm run generate-coverage && npm run check-coverage && npm run snyk",
+      "post-rewrite": "npm run lint && npm run generate-coverage && npm run check-coverage && npm run snyk"
     }
   },
   "repository": {
