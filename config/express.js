@@ -58,7 +58,7 @@ module.exports = (app, config) => {
       ],
       connectSrc: [
         '\'self\'',
-        'https://*.hotjar.com',
+        'https://*.hotjar.com:*',
         'wss://*.hotjar.com',
       ],
     },
