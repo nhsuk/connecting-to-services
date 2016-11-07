@@ -17,6 +17,7 @@ function lookup(res, next) {
   }
 
   https.get(url, (postcodeRes) => {
+    log.info('postcodeio-lookup-start');
     let body = '';
 
     postcodeRes.on('data', (chunk) => {
@@ -24,6 +25,7 @@ function lookup(res, next) {
     });
 
     postcodeRes.on('end', () => {
+      log.info('postcodeio-lookup-end');
       let postcode;
       switch (postcodeRes.statusCode) {
         case 200:

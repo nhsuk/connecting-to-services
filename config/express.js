@@ -15,11 +15,13 @@ module.exports = (app, config) => {
 
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'nunjucks');
-  nunjucks.configure(`${config.root}/app/views`, {
-    autoescape: true,
-    express: app,
-    watch: true,
-  });
+  const nunjucksEnvironment =
+    nunjucks.configure(`${config.root}/app/views`, {
+      autoescape: true,
+      express: app,
+      watch: true,
+    });
+  log.info(nunjucksEnvironment, 'nunjucks environment configuration');
 
   app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -74,7 +76,7 @@ module.exports = (app, config) => {
   app.use(locals(config));
 
   app.use((req, res, next) => {
-    log.debug({ req });
+    log.info({ req });
     next();
   });
 
