@@ -1,6 +1,7 @@
 {% extends 'find-help.nunjucks' %}
 
 {% block context %}
+<div class="content-contextual">
 <p>For help with:</p>
 
 <ul>
@@ -9,5 +10,5 @@
   <li>constipation (can’t poo)</li>
   <li>pain relief</li>
 </ul>
-
+</div>
 {% endblock %}

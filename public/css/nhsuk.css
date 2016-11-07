@@ -740,6 +740,16 @@ legend {
   width: 100%;
 }
 
+.form-group--submit {
+  float:none;
+}
+
+@media (max-width: 640px) {
+  .form-group--submit .button {
+    text-align:center;
+    width:100%;
+  }
+}
 .form-group-related {
   margin-bottom: 10px;
 }
@@ -864,7 +874,7 @@ legend {
   width: 100%;
   padding: 4px;
   background-color: #fff;
-  border: 3px solid #000;
+  border: 2px solid #000;
 }
 
 @media (min-width: 641px) {
@@ -1896,7 +1906,7 @@ abbr[title] {
 
 .local-header--question {
   padding-bottom: 16px;
-  padding-top: 16px;
+  padding-top: 32px;
 }
 
 @media (min-width: 641px) {
@@ -2325,4 +2335,12 @@ abbr[title] {
   border-bottom:0;
   margin-bottom:0;
   padding-bottom:0;
+}
+
+
+/*
+  Content
+*/
+.content-contextual {
+  margin-bottom:32px;
 }
