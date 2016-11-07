@@ -31,6 +31,7 @@ module.exports = (app, config) => {
       scriptSrc: [
         '\'self\'',
         '\'unsafe-inline\'',
+        '\'unsafe-eval\'',
         'data:',
         'www.google-analytics.com',
         's.webtrends.com',
