@@ -1,7 +1,9 @@
+const log = require('../lib/logger');
 const utils = require('../lib/utils');
 const mapLink = require('../lib/mapLink');
 
 function results(req, res, next) {
+  log.info('prerender-start');
   const open = req.query.open || 'true';
   const context = res.locals.context;
   const location = res.locals.location;
@@ -23,6 +25,7 @@ function results(req, res, next) {
   res.locals.context = context;
   /* eslint-enable no-param-reassign */
 
+  log.info('prerender-end');
   next();
 }
 
