@@ -6,7 +6,7 @@ const geohash = require('ngeohash');
 const pharmacyListPath = process.env.PHARMACY_LIST_PATH || '../data/pharmacy-list';
 const orgs = require(pharmacyListPath);
 
-log.debug(`Loaded data from ${pharmacyListPath}`);
+log.info(`Loaded data from ${pharmacyListPath}`);
 
 function loadData() {
   const mappedOrgs =
@@ -27,6 +27,7 @@ function loadData() {
 
   cache.put('geo', geo);
   cache.put('orgs', orgs);
+  log.info(`${orgs.length} orgs available for searching`);
 }
 
 module.exports = loadData;
