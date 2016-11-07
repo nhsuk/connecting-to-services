@@ -53,6 +53,9 @@
   "dependencies": {
     "unused-ignores": [
       "snyk"
+    ],
+    "mute": [
+    "splunk-bunyan-logger"
     ]
   }
 }
