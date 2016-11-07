@@ -43,6 +43,7 @@ module.exports = (app, config) => {
       imgSrc: [
         '\'self\'',
         'data:',
+        'static.hotjar.com',
         'www.google-analytics.com',
         'statse.webtrendslive.com',
         'hm.webtrends.com',
