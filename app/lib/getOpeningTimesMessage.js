@@ -1,3 +1,10 @@
+function closesAtMidnightToday(closedDay, closedTime) {
+  return (
+    (closedDay === 'tomorrow' && closedTime === '12:00 am')
+    || (closedDay === 'today' && closedTime === '11:59 pm')
+  );
+}
+
 function getOpeningHoursMessage(status) {
   if (status.isOpen) {
     const closedNext = status.until;
@@ -11,8 +18,7 @@ function getOpeningHoursMessage(status) {
       sameElse: 'DD/MM/YYYY',
     });
     return (
-      ((closedDay === 'tomorrow' && closedTime === '12:00 am')
-        || (closedDay === 'today' && closedTime === '11:59 pm')) ?
+      closesAtMidnightToday(closedDay, closedTime) ?
         'Open until midnight' :
         `Open until ${closedTime} ${closedDay}`);
   }
