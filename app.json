@@ -2,6 +2,14 @@
   "name": "connecting to services",
   "scripts": {
   },
+  "env": {
+    "SPLUNK_HEC_ENDPOINT": {
+      "required": true
+    },
+    "SPLUNK_HEC_TOKEN": {
+      "required": true
+    }
+  },
   "formation": {
     "web": {
       "quantity": 1
