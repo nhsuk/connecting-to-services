@@ -68,7 +68,7 @@ function nearby(searchPoint, geo, limit) {
           'Europe/London',
           item.openingTimes.alterations);
 
-      const status = openingTimesMoment.getStatus(now, { until: true });
+      const status = openingTimesMoment.getStatus(now, { next: true });
       openingTimesMessage = getOpeningHoursMessage(status);
       isOpen = status.isOpen;
     } else {

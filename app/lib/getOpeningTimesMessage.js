@@ -3,7 +3,7 @@ function closesAtMidnight(moment) {
   return (time === '00:00' || time === '23:59');
 }
 
-function getOpeningHoursMessage(status) {
+function getDayDescriptor(moment, referenceMoment) {
   const dayDescriptors = {
     sameDay: '[today]',
     nextDay: '[tomorrow]',
@@ -12,25 +12,31 @@ function getOpeningHoursMessage(status) {
     lastWeek: '[last] dddd',
     sameElse: 'DD/MM/YYYY',
   };
-  if (status.isOpen) {
-    const closedNext = status.until;
-    const closedTime = closedNext.format('h:mm a');
-    const closedDay = closedNext.calendar(status.moment, dayDescriptors);
-    return (
-      closesAtMidnight(closedNext) ?
-        'Open until midnight' :
-        `Open until ${closedTime} ${closedDay}`);
+  return moment.calendar(referenceMoment, dayDescriptors);
+}
+
+function getOpeningHoursMessage(status) {
+  const callForTimesMessage = 'Call for opening times';
+
+  if ((status.isOpen && !status.nextClosed) || (!status.isOpen && !status.nextOpen)) {
+    return callForTimesMessage;
   }
-  const openNext = status.until;
-  if (!openNext) {
-    return 'Call for opening times.';
+
+  if (status.isOpen === true) {
+    if (closesAtMidnight(status.nextClosed)) {
+      return 'Open until midnight';
+    }
+    return `Open until ${status.nextClosed.format('h:mm a')} ` +
+      `${getDayDescriptor(status.nextClosed, status.moment)}`;
+  } else if (status.isOpen === false) {
+    const timeUntilOpen = status.nextOpen.diff(status.moment, 'minutes');
+    if (timeUntilOpen <= 60) {
+      return `Opening in ${timeUntilOpen} minutes`;
+    }
+    return `Closed until ${status.nextOpen.format('h:mm a')} ` +
+      `${getDayDescriptor(status.nextOpen, status.moment)}`;
   }
-  const timeUntilOpen = openNext.diff(status.moment, 'minutes');
-  const openDay = openNext.calendar(status.moment, dayDescriptors);
-  return (
-    (timeUntilOpen <= 60) ?
-      `Opening in ${timeUntilOpen} minutes` :
-      `Closed until ${openNext.format('h:mm a')} ${openDay}`);
+  return callForTimesMessage;
 }
 
 module.exports = getOpeningHoursMessage;
