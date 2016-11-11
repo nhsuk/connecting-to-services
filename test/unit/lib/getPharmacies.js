@@ -2,6 +2,7 @@ const cache = require('memory-cache');
 const chai = require('chai');
 const pharmacies = require('../../../app/lib/getPharmacies');
 const AssertionError = require('assert').AssertionError;
+const moment = require('moment');
 
 delete require.cache[require.resolve('../../../config/loadData')];
 process.env.PHARMACY_LIST_PATH = '../test/resources/org_api_responses/pharmacy-list';
@@ -91,7 +92,40 @@ describe('Nearby', () => {
       };
       function nearbyStub() { return [alwaysOpenOrg]; }
       const oneOpenOrgGeo = { nearBy: nearbyStub };
+
       const results = pharmacies.nearby(searchPoint, oneOpenOrgGeo).openServices;
+
+      expect(results[0].isOpen).to.be.equal(true);
+      expect(results[0].openingTimesMessage).to.not.be.equal('Call for opening times');
+      expect(results[0].openingTimesMessage).to.be.a('string');
+    });
+
+    it('should use alterations opening times', () => {
+      const nowDate = moment().format('YYYY-MM-DD');
+      const alterations = {};
+      alterations[nowDate] = [{ opens: '00:00', closes: '23:59' }];
+
+      const orgWithAlterations = {
+        latitude: searchPoint.latitude,
+        longitude: searchPoint.longitude,
+        openingTimes: {
+          general: {
+            monday: [],
+            tuesday: [],
+            wednesday: [],
+            thursday: [],
+            friday: [],
+            saturday: [],
+            sunday: [],
+          },
+          alterations,
+        },
+      };
+
+      function nearbyStub() { return [orgWithAlterations]; }
+      const oneOrgGeo = { nearBy: nearbyStub };
+
+      const results = pharmacies.nearby(searchPoint, oneOrgGeo).openServices;
 
       expect(results[0].isOpen).to.be.equal(true);
       expect(results[0].openingTimesMessage).to.not.be.equal('Call for opening times');
@@ -105,6 +139,7 @@ describe('Nearby', () => {
       };
       function nearbyStub() { return [orgWithNoOpeningTimes]; }
       const oneOrgGeo = { nearBy: nearbyStub };
+
       const results = pharmacies.nearby(searchPoint, oneOrgGeo).nearbyServices;
 
       expect(results.length).to.be.equal(1);
