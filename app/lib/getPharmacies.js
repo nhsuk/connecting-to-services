@@ -4,6 +4,7 @@ const moment = require('moment');
 const geolib = require('geolib');
 const assert = require('assert');
 const utils = require('../lib/utils');
+const getOpeningHoursMessage = require('../lib/getOpeningTimesMessage');
 
 const metersInAMile = 1609;
 
@@ -61,10 +62,15 @@ function nearby(searchPoint, geo, limit) {
     let openingTimesMessage;
 
     if (openingTimes) {
-      const openingTimesMoment = new OpeningTimes(item.openingTimes.general, 'Europe/London');
+      const openingTimesMoment =
+        new OpeningTimes(
+          item.openingTimes.general,
+          'Europe/London',
+          item.openingTimes.alterations);
 
-      openingTimesMessage = openingTimesMoment.getOpeningHoursMessage(now);
-      isOpen = openingTimesMoment.isOpen(now);
+      const status = openingTimesMoment.getStatus(now, { next: true });
+      openingTimesMessage = getOpeningHoursMessage(status);
+      isOpen = status.isOpen;
     } else {
       openingTimesMessage = 'Call for opening times';
       isOpen = false;
