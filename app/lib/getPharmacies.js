@@ -81,11 +81,11 @@ function nearbyRingSearch(searchPoint, geo, limits, searchRing) {
     item.isOpen = isOpen;
 
     if (isOpen && openServiceCount < numberOfOpenToReturn) {
-      openServiceCount++;
+      openServiceCount += 1;
       openServices.push(utils.deepClone(item));
     }
 
-    serviceCount++;
+    serviceCount += 1;
 
     if (openServiceCount >= numberOfOpenToReturn && serviceCount >= limits.nearby) {
       break;
@@ -151,7 +151,7 @@ function nearby(searchPoint, geo, searchLimits) {
     searchRing.start += searchRing.increment;
     searchRing.end += searchRing.increment;
 
-    loopCount++;
+    loopCount += 1;
     if (loopCount > 10) {
       // stop searching after 10 ring searches
       break;
