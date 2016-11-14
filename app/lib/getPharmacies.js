@@ -80,11 +80,11 @@ function nearby(searchPoint, geo, limit) {
     item.isOpen = isOpen;
 
     if (isOpen && openServiceCount < numberOfOpenToReturn) {
-      openServiceCount++;
+      openServiceCount += 1;
       openServices.push(utils.deepClone(item));
     }
 
-    serviceCount++;
+    serviceCount += 1;
 
     if (openServiceCount >= numberOfOpenToReturn && serviceCount >= maxResults) {
       break;

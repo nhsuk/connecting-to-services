@@ -4,6 +4,7 @@ const Geo = require('geo-nearby');
 const geohash = require('ngeohash');
 
 const pharmacyListPath = process.env.PHARMACY_LIST_PATH || '../data/pharmacy-list';
+// eslint-disable-next-line import/no-dynamic-require
 const orgs = require(pharmacyListPath);
 
 log.info(`Loaded data from ${pharmacyListPath}`);

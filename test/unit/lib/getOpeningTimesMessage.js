@@ -8,7 +8,7 @@ const aSunday = new Moment('2016-07-24T00:00:00+00:00');
 function getMoment(day, hours, minutes, timeZone) {
   const dayNumber = Moment
     .weekdays()
-    .map((d) => d.toLowerCase())
+    .map(d => d.toLowerCase())
     .indexOf(day);
   const moment = new Moment(aSunday).tz(timeZone);
   moment.add(dayNumber, 'days').hours(hours).minutes(minutes);
