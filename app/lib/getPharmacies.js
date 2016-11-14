@@ -116,6 +116,11 @@ function nearby(searchPoint, geo, searchLimits) {
   limits.nearby = limits.nearby || defaultNearbyLimit;
   limits.open = limits.open || defaultOpenLimit;
 
+  assert.equal(typeof (limits.nearby), 'number', 'nearby limit must be a number');
+  assert.equal(typeof (limits.open), 'number', 'open limit must be a number');
+  assert(limits.nearby >= 1, 'nearby limit must be at least 1');
+  assert(limits.open >= 1, 'open limit must be at least 1');
+
   let openServices = [];
   let nearbyServices = [];
 
