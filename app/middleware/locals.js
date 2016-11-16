@@ -1,4 +1,4 @@
-module.exports = (config) =>
+module.exports = config =>
   (req, res, next) => {
     /* eslint-disable no-param-reassign */
     res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.googleAnalyticsId;

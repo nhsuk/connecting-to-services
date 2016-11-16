@@ -5,9 +5,10 @@ const pharmacies = require('../lib/getPharmacies');
 function getPharmacies(req, res, next) {
   const searchPoint = res.locals.coordinates;
   const geo = cache.get('geo');
+  const limits = { nearby: 10, open: 3 };
 
   log.info('get-pharmacies-start');
-  const nearby = pharmacies.nearby(searchPoint, geo);
+  const nearby = pharmacies.nearby(searchPoint, geo, limits);
   log.info('get-pharmacies-end');
 
   /* eslint-disable no-param-reassign*/

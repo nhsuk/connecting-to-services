@@ -41,4 +41,15 @@ describe('utils', () => {
       expect(result).to.be.equal('true');
     });
   });
+
+  describe('removeDuplicates', () => {
+    it('should remove duplicate objects from an array based on property', () => {
+      const property = 'i';
+      const result =
+        utils.removeDuplicates([{ i: 1 }, { i: 2 }, { i: 3 }, { i: 2 }], property);
+
+      expect(result).to.not.equal(undefined);
+      expect(result.length).to.be.equal(3);
+    });
+  });
 });
