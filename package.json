@@ -51,12 +51,13 @@
     "moment": "^2.14.1",
     "moment-opening-times": "git://github.com/nhsuk/moment-opening-times.git#2.0.0",
     "ngeohash": "^0.6.0",
+    "nhsuk-bunyan-logger": "git://github.com/nhsuk/bunyan-logger.git#1.0.2",
     "nunjucks": "^2.4.2",
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
     "require-environment-variables": "^1.1.2",
-    "splunk-bunyan-logger": "^0.9.1",
-    "snyk": "^1.19.1"
+    "snyk": "^1.19.1",
+    "splunk-bunyan-logger": "^0.9.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
