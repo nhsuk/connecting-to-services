@@ -53,8 +53,7 @@
     "nunjucks": "^2.4.2",
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
-    "snyk": "^1.19.1",
-    "splunk-bunyan-logger": "^0.9.1"
+    "snyk": "^1.19.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
