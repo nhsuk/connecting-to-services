@@ -13,9 +13,21 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('The results page happy paths', () => {
+  after('reset env vars', () => {
+    process.env.API_BASE_URL = '';
+  });
+
   const postcode = 'AB123CD';
   const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+  const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
   const resultsRoute = `${constants.SITE_ROOT}/results`;
+
+  process.env.API_BASE_URL = 'https://dummy.url/';
+
+  nock(process.env.API_BASE_URL)
+    .get(/.*/)
+    .times(4)
+    .reply(200, serviceApiResponse);
 
   nock('https://api.postcodes.io')
     .get(/.*/)
@@ -127,7 +139,7 @@ describe('The results page error handling', () => {
     const resultsRoute = `${constants.SITE_ROOT}/results`;
     const context = 'stomach-ache';
 
-    it('should lookup a valid but unknown postcode and return an error with the help context',
+    it('should lookup a valid but unknown postcode and return an error message with the help context',
         (done) => {
           const invalidPostcodePassingRegex = 'LS0';
           const postcodesioScope =
@@ -152,7 +164,7 @@ describe('The results page error handling', () => {
             });
         });
 
-    it('should validate the postcode and return an error along with the help context',
+    it('should only validate the postcode and return an error message along with the help context',
         (done) => {
           const invalidPostcode = 'invalid';
           const errorMessage =
@@ -172,7 +184,7 @@ describe('The results page error handling', () => {
             });
         });
 
-    it('postcode server error should return an error', (done) => {
+    it('should handle an error produced by the postcode lookup and return an error message', (done) => {
       const postcode = 'AB123CD';
       const postcodesioScope =
         nock('https://api.postcodes.io')
@@ -204,7 +216,7 @@ describe('The results page error handling', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
     const resultsRoute = `${constants.SITE_ROOT}/results`;
 
-    it('should lookup a syntactically valid but unknown postcode and return an error message',
+    it('should lookup a valid but unknown postcode and return an error message with no context',
       (done) => {
         const invalidPostcodePassingRegex = 'LS0';
         const postcodesioScope =
@@ -225,7 +237,7 @@ describe('The results page error handling', () => {
           });
       });
 
-    it('should validate the postcode and return an error message', (done) => {
+    it('should only validate the postcode and return an error message', (done) => {
       const invalidPostcode = 'invalid';
 
       chai.request(server)
@@ -242,7 +254,7 @@ describe('The results page error handling', () => {
         });
     });
 
-    it('postcode server error should return an error', (done) => {
+    it('should handle an error produced by the postcode lookup and return an error message', (done) => {
       const postcode = 'AB123CD';
       const postcodesioScope =
         nock('https://api.postcodes.io')
