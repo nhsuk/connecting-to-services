@@ -38,11 +38,11 @@ function lookup(res, next) {
           next();
           break;
         case 404:
-          log.warn({ res: postcodeRes }, '404 from postcodes.io');
+          log.warn({ res: postcodeRes, location }, '404 from postcodes.io');
           next({ type: 'invalid-postcode', message: messages.invalidPostcodeMessage(location) });
           break;
         default:
-          log.warn({ url, response: postcodeRes.statusCode });
+          log.warn({ url, response: postcodeRes.statusCode, location });
           next(
             {
               type: 'postcode-service-error',
@@ -53,7 +53,7 @@ function lookup(res, next) {
     });
   }).on('error', (e) => {
     // TODO: Add 'standard' error
-    log.error({ err: e }, 'Postcode lookup failed');
+    log.error({ err: e, location }, 'Postcode lookup failed');
     next({ type: 'postcode-service-error', message: e.message });
   });
 }
