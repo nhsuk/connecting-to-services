@@ -13,6 +13,7 @@ function validateLocation(req, res, next) {
   res.locals.location = validationResult.input;
 
   if (validationResult.errorMessage) {
+    log.info({ location }, 'Location failed validation');
     // eslint-disable-next-line no-param-reassign
     res.locals.errorMessage = validationResult.errorMessage;
     renderer.findHelp(req, res);
