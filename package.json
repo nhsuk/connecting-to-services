@@ -11,6 +11,8 @@
     "start-logging": "node app.js | ./node_modules/.bin/bunyan",
     "lint": "eslint --ext .js,.json . && cat .bithoundrc | eslint --stdin --stdin-filename=f.json",
     "test": "NODE_ENV=test mocha --recursive test",
+    "artillery": "artillery run ./test/perf/all-results.json -o ./reports/all-results.json",
+    "artillery-report": "artillery report ./reports/all-results.json",
     "watch-dev": "nodemon app.js | ./node_modules/.bin/bunyan",
     "watch-dev-debug": "NODE_ENV=development && npm run watch-dev",
     "watch-lint": "esw --watch .",
@@ -56,6 +58,7 @@
     "snyk": "^1.19.1"
   },
   "devDependencies": {
+    "artillery": "^1.5.0-17",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "cheerio": "^0.22.0",
