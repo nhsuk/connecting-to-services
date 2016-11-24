@@ -21,7 +21,7 @@
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
     "upload-coverage-codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls",
-    "artillery": "artillery run ./test/perf/all-results.json -o ./reports/all-results.json",
+    "artillery-fire": "artillery run ./test/perf/all-results.json -o ./reports/all-results.json",
     "artillery-report": "artillery report ./reports/all-results.json",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
