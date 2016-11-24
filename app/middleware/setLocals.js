@@ -1,8 +1,10 @@
 function fromRequest(req, res, next) {
-  // eslint-disable-next-line no-param-reassign
+  /* eslint-disable no-param-reassign */
   res.locals.location = req.query.location;
-  // eslint-disable-next-line no-param-reassign
   res.locals.context = req.query.context || '';
+  // eslint-disable-next-line no-script-url
+  res.locals.backLink = req.get('referer') || 'javascript:history.back();';
+  /* eslint-enable no-param-reassign */
   next();
 }
 
