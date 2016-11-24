@@ -16,7 +16,7 @@ describe('Nearby', () => {
   const remoteSearchPoint = { latitude: 49.9126167297363, longitude: -6.30890274047852 };
 
   describe('happy path', () => {
-    before('load data', () => {
+    beforeEach('load data', () => {
       cache.clear();
       // load data into the cache using the load data module as there might be
       // stuff going on in it that we don't want to replicate in the tests
@@ -24,7 +24,7 @@ describe('Nearby', () => {
       geo = cache.get('geo');
     });
 
-    after('clear all content from the cache', () => {
+    afterEach('clear all content from the cache', () => {
       cache.clear();
     });
 
@@ -36,7 +36,7 @@ describe('Nearby', () => {
       expect(results.openServices).is.not.equal(undefined);
     });
 
-    it('should get 10 nearby services by default, ordered by distance', () => {
+    it('should get 10 nearby pharmacies by default, ordered by distance', () => {
       const results = pharmacies.nearby(searchPoint, geo).nearbyServices;
 
       expect(results.length).to.be.equal(10);
@@ -74,7 +74,7 @@ describe('Nearby', () => {
       });
 
     it('should get the number of unique nearby services requested, ordered by distance', () => {
-      const requestedNumberOfResults = 52;
+      const requestedNumberOfResults = 51;
       const results =
         pharmacies
         .nearby(remoteSearchPoint, geo, { nearby: requestedNumberOfResults })
@@ -102,6 +102,12 @@ describe('Nearby', () => {
       const results = pharmacies.nearby(searchPoint, geo).nearbyServices;
 
       expect(results[0].identifier).to.be.equal(nearestIdentifier);
+    });
+
+    it('should return obj with 3 open orgs', () => {
+      const results = pharmacies.nearby(searchPoint, geo).openServices;
+
+      expect(results.length).is.equal(3);
     });
 
     it('should return the opening times message and open state', () => {
@@ -172,6 +178,7 @@ describe('Nearby', () => {
 
       const results = pharmacies.nearby(searchPoint, oneOrgGeo).nearbyServices;
 
+      expect(results.length).to.be.equal(1);
       expect(results[0].isOpen).to.be.equal(false);
       expect(results[0].openingTimesMessage).to.be.equal('Call for opening times');
     });
@@ -190,7 +197,6 @@ describe('Nearby', () => {
         .to.throw(AssertionError,
             'searchPoint must contain a property named longitude');
     });
-
     it('should throw exception when searchPoint does not contain latitude', () => {
       expect(() => { pharmacies.nearby({ longitude: -1.123456789 }); })
         .to.throw(
