@@ -55,6 +55,15 @@ environment.
 | `SPLUNK_HEC_ENDPOINT`            | [HTTP Event Collector endpoint](http://dev.splunk.com/view/event-collector/SP-CAAAE7H) |                          | In `production` |
 | `LOG_LEVEL`                      | [bunyan log level](https://github.com/trentm/node-bunyan#levels)                       | Depends on `NODE_ENV`    |                 |
 
+## Testing
+
+### Performance testing
+
+[Artillery](https://artillery.io/docs/#) is available for running performance tests against the application. There are 2 commands:
+
+* `artillery-fire` - runs the tests. The application must be running on port `3000`.
+* `artillery-report` - generates a report based on the data saved in `reports/`. Running the test again will overwrite existing reports.
+
 ## FAQ
 
 * Is the application failing to start?
