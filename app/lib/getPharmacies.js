@@ -17,27 +17,36 @@ function getDistanceInMiles(start, end) {
   return distanceInMeters / metersInAMile;
 }
 
-function nearbyRingSearch(searchPoint, geo, limits, searchRing) {
-  const numberOfOpenToReturn = limits.open;
+function nearby(searchPoint, geo, searchLimits) {
+  assert(searchPoint, 'searchPoint can not be null');
+  assert.equal(typeof (searchPoint.latitude), 'number',
+    'searchPoint must contain a property named latitude');
+  assert.equal(typeof (searchPoint.longitude), 'number',
+    'searchPoint must contain a property named longitude');
+
+  assert(geo, 'geo can not be null');
+  assert.equal(typeof (geo.nearBy), 'function',
+    'geo must contain a nearBy function');
+
+  const defaultNearbyLimit = 10;
+  const defaultOpenLimit = 3;
+
+  const limits = searchLimits || {};
+  limits.nearby = limits.nearby || defaultNearbyLimit;
+  limits.open = limits.open || defaultOpenLimit;
+
+  assert.equal(typeof (limits.nearby), 'number', 'nearby limit must be a number');
+  assert.equal(typeof (limits.open), 'number', 'open limit must be a number');
+  assert(limits.nearby >= 1, 'nearby limit must be at least 1');
+  assert(limits.open >= 1, 'open limit must be at least 1');
+
   const openServices = [];
   let serviceCount = 0;
   let openServiceCount = 0;
-  let nearbyGeo;
 
   log.debug('get-nearby-results-start');
-  if (searchRing.start < 1) {
-    nearbyGeo =
-      geo.nearBy(
-        searchPoint.latitude,
-        searchPoint.longitude,
-        searchRing.end * metersInAMile);
-  } else {
-    nearbyGeo =
-      geo.nearBy(
-        searchPoint.latitude,
-        searchPoint.longitude,
-        [(searchRing.start * metersInAMile) + 1, searchRing.end * metersInAMile]);
-  }
+  const nearbyGeo =
+    geo.nearBy(searchPoint.latitude, searchPoint.longitude, 50 * metersInAMile);
   log.debug('get-nearby-results-end');
 
   log.debug(`Found ${nearbyGeo.length} nearby results`);
@@ -80,87 +89,22 @@ function nearbyRingSearch(searchPoint, geo, limits, searchRing) {
     item.openingTimesMessage = openingTimesMessage;
     item.isOpen = isOpen;
 
-    if (isOpen && openServiceCount < numberOfOpenToReturn) {
+    if (isOpen && openServiceCount < limits.open) {
       openServiceCount += 1;
       openServices.push(utils.deepClone(item));
     }
 
     serviceCount += 1;
 
-    if (openServiceCount >= numberOfOpenToReturn && serviceCount >= limits.nearby) {
+    if (openServiceCount >= limits.open && serviceCount >= limits.nearby) {
       break;
     }
   }
   log.debug('filter-open-results-end');
 
   return {
-    nearbyServices: sortedOrgs,
+    nearbyServices: sortedOrgs.slice(0, limits.nearby),
     openServices,
-  };
-}
-
-function nearby(searchPoint, geo, searchLimits) {
-  assert(searchPoint, 'searchPoint can not be null');
-  assert.equal(typeof (searchPoint.latitude), 'number',
-      'searchPoint must contain a property named latitude');
-  assert.equal(typeof (searchPoint.longitude), 'number',
-      'searchPoint must contain a property named longitude');
-
-  assert(geo, 'geo can not be null');
-  assert.equal(typeof (geo.nearBy), 'function', 'geo must contain a nearBy function');
-
-  const defaultNearbyLimit = 10;
-  const defaultOpenLimit = 3;
-
-  const limits = searchLimits || {};
-  limits.nearby = limits.nearby || defaultNearbyLimit;
-  limits.open = limits.open || defaultOpenLimit;
-
-  assert.equal(typeof (limits.nearby), 'number', 'nearby limit must be a number');
-  assert.equal(typeof (limits.open), 'number', 'open limit must be a number');
-  assert(limits.nearby >= 1, 'nearby limit must be at least 1');
-  assert(limits.open >= 1, 'open limit must be at least 1');
-
-  let openServices = [];
-  let nearbyServices = [];
-
-  const searchRing = {
-    start: 0,
-    end: 10,
-    increment: 10,
-  };
-
-  let loopCount = 0;
-  const idProperty = 'identifier';
-
-  while (openServices.length < limits.open + 1
-    && nearbyServices.length < limits.nearby + 1) {
-    log.info(`nearby-ring-search-start-#${loopCount + 1}`);
-    const ringSearchResults = nearbyRingSearch(searchPoint, geo, limits, searchRing);
-    log.info(`nearby-ring-search-end-#${loopCount + 1}`);
-
-    openServices =
-        utils.removeDuplicates(
-          openServices.concat(
-            ringSearchResults.openServices), idProperty);
-    nearbyServices =
-        utils.removeDuplicates(
-          nearbyServices.concat(
-            ringSearchResults.nearbyServices), idProperty);
-
-    searchRing.start += searchRing.increment;
-    searchRing.end += searchRing.increment;
-
-    loopCount += 1;
-    if (loopCount > 10) {
-      // stop searching after 10 ring searches
-      break;
-    }
-  }
-
-  return {
-    openServices: openServices.sort(sortByDistance).slice(0, limits.open),
-    nearbyServices: nearbyServices.sort(sortByDistance).slice(0, limits.nearby),
   };
 }
 
