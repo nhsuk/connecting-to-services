@@ -70,22 +70,6 @@ describe('An unknown page', () => {
   });
 });
 
-describe('The stomach ache page', () => {
-  it('should be accessible directly', (done) => {
-    chai.request(server)
-      .get(`${constants.SITE_ROOT}/stomach-ache`)
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
-
-        const $ = cheerio.load(res.text);
-
-        expect($('.local-header--title').text())
-          .to.equal('Stomach ache');
-        done();
-      });
-  });
-});
-
 describe('The find help page', () => {
   describe('with a context of stomach ache', () => {
     it('should contain content for finding help with stomach ache and a postcode input', (done) => {
