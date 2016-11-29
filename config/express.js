@@ -78,7 +78,7 @@ module.exports = (app, config) => {
   app.use(locals(config));
 
   app.use((req, res, next) => {
-    log.info({ req });
+    log.debug({ req });
     next();
   });
 
