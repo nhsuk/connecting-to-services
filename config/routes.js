@@ -27,10 +27,4 @@ router.get('/find-help',
   renderer.findHelp
 );
 
-router.get('/stomach-ache',
-  (req, res) => {
-    res.render('stomach-ache');
-  }
-);
-
 module.exports = router;
