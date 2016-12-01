@@ -9,14 +9,18 @@ function getPharmacies(req, res, next) {
   const latitude = searchPoint.latitude;
   const longitude = searchPoint.longitude;
 
-  // TODO: Extract to ENV var
   const baseUrl = process.env.API_BASE_URL;
   const url = `${baseUrl}/nearby?latitude=${latitude}&longitude=${longitude}`;
 
   log.info('get-pharmacies-start');
   request(url, (error, response, body) => {
     log.info('get-pharmacies-end');
-    if (!error && response.statusCode === 200) {
+    if (error) {
+      log.error({ err: error, requestUrl: url }, 'Get services data failed');
+      next('Get services data failed');
+    }
+
+    if (response.statusCode === 200) {
       const nearbyRes = JSON.parse(body);
       /* eslint-disable no-param-reassign*/
       res.locals.nearbyServices = nearbyRes.nearby;
@@ -24,9 +28,8 @@ function getPharmacies(req, res, next) {
       /* eslint-enable no-param-reassign*/
       next();
     } else {
-      // TODO: Test the errors being returned. Do one for status codes
-      console.log(error);
-      next('Error getting pharmacy data');
+      log.warn({ res: response }, `${response.statusCode} response from services api`);
+      next(`${response.statusCode} response from services api`);
     }
   });
 }

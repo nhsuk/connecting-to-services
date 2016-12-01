@@ -17,22 +17,10 @@ describe('The results page happy paths', () => {
     process.env.API_BASE_URL = '';
   });
 
-  const postcode = 'AB123CD';
-  const postcodeioResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
-  const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+  const postcode = 'LS27UE';
   const resultsRoute = `${constants.SITE_ROOT}/results`;
 
-  process.env.API_BASE_URL = 'https://dummy.url/';
-
-  nock(process.env.API_BASE_URL)
-    .get(/.*/)
-    .times(4)
-    .reply(200, serviceApiResponse);
-
-  nock('https://api.postcodes.io')
-    .get(/.*/)
-    .times(4)
-    .reply(200, postcodeioResponse);
+  process.env.API_BASE_URL = 'https://dummy.url';
 
   describe('happy paths', () => {
     describe('with no or unknown context', () => {
@@ -134,6 +122,10 @@ describe('The results page happy paths', () => {
 });
 
 describe('The results page error handling', () => {
+  after('reset env vars', () => {
+    process.env.API_BASE_URL = '';
+  });
+
   describe('with a context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
     const resultsRoute = `${constants.SITE_ROOT}/results`;
@@ -277,6 +269,75 @@ describe('The results page error handling', () => {
           expect($('.local-header--title--question').text())
             .to.contain('Sorry, we are experiencing technical problems');
           expect(postcodesioScope.isDone()).to.equal(true);
+          done();
+        });
+    });
+
+    it('should handle the pharmacy service being unavailable with an error message', (done) => {
+      const fakePostcode = 'FA123KE';
+      const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
+      const latitude = JSON.parse(fakeResponse).result.latitude;
+      const longitude = JSON.parse(fakeResponse).result.longitude;
+
+      nock('https://api.postcodes.io')
+        .get(`/postcodes/${fakePostcode}`)
+        .times(1)
+        .reply(200, fakeResponse);
+
+      process.env.API_BASE_URL = 'https://dummy.url';
+      nock(process.env.API_BASE_URL)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}`)
+        .reply(500);
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: fakePostcode })
+        .end((err, res) => {
+          expect(err).to.not.be.equal(null);
+          expect(res).to.have.status(500);
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.html;
+
+          const $ = cheerio.load(res.text);
+
+          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('.local-header--title--question').text())
+            .to.contain('Sorry, we are experiencing technical problems');
+          done();
+        });
+    });
+
+    it('should handle a response from the pharmacy service when there has been an error based on the input', (done) => {
+      const badPostcode = 'BA400AD';
+      const badResponse = getSampleResponse('postcodesio-responses/bad.json');
+      const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
+      const latitude = JSON.parse(badResponse).result.latitude;
+      const longitude = JSON.parse(badResponse).result.longitude;
+
+      nock('https://api.postcodes.io')
+        .get(`/postcodes/${badPostcode}`)
+        .times(1)
+        .reply(200, badResponse);
+
+      process.env.API_BASE_URL = 'https://dummy.url';
+      nock(process.env.API_BASE_URL)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}`)
+        .reply(400, badPharmacyResponse);
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: badPostcode })
+        .end((err, res) => {
+          expect(err).to.not.be.equal(null);
+          expect(res).to.have.status(500);
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.html;
+
+          const $ = cheerio.load(res.text);
+
+          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('.local-header--title--question').text())
+            .to.contain('Sorry, we are experiencing technical problems');
           done();
         });
     });

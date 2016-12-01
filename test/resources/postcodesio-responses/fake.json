@@ -1,0 +1,35 @@
+{
+  "status": 200,
+  "result": {
+    "postcode": "FA123KE",
+    "quality": 1,
+    "eastings": 430973,
+    "northings": 433649,
+    "country": "England",
+    "nhs_ha": "Yorkshire and the Humber",
+    "longitude": -1,
+    "latitude": 54,
+    "parliamentary_constituency": "Leeds Central",
+    "european_electoral_region": "Yorkshire and The Humber",
+    "primary_care_trust": "Leeds",
+    "region": "Yorkshire and The Humber",
+    "lsoa": "Leeds 111C",
+    "msoa": "Leeds 111",
+    "incode": "7UE",
+    "outcode": "LS2",
+    "admin_district": "Leeds",
+    "parish": "Leeds, unparished area",
+    "admin_county": null,
+    "admin_ward": "City and Hunslet",
+    "ccg": "NHS Leeds South and East",
+    "nuts": "Leeds",
+    "codes": {
+      "admin_district": "E08000035",
+      "admin_county": "E99999999",
+      "admin_ward": "E05001420",
+      "parish": "E43000244",
+      "ccg": "E38000095",
+      "nuts": "UKE42"
+    }
+  }
+}
