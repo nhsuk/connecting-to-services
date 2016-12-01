@@ -25,5 +25,6 @@ before('global setup', () => {
 
 after('Check all nocks have been called', () => {
   expect(nock.pendingMocks().length).to.equal(0);
+  expect(nock.isDone()).to.equal(true);
   nock.cleanAll();
 });

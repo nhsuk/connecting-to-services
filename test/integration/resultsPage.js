@@ -134,7 +134,7 @@ describe('The results page error handling', () => {
     it('should lookup a valid but unknown postcode and return an error message with the help context',
         (done) => {
           const invalidPostcodePassingRegex = 'LS0';
-          const postcodesioScope =
+
           nock('https://api.postcodes.io')
             .get(`/outcodes/${invalidPostcodePassingRegex}`)
             .times(1)
@@ -151,7 +151,6 @@ describe('The results page error handling', () => {
               iExpect.findHelpPage($);
               expect(res.text).to
                 .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-              expect(postcodesioScope.isDone()).to.equal(true);
               done();
             });
         });
@@ -178,8 +177,8 @@ describe('The results page error handling', () => {
 
     it('should handle an error produced by the postcode lookup and return an error message', (done) => {
       const postcode = 'AB123CD';
-      const postcodesioScope =
-        nock('https://api.postcodes.io')
+
+      nock('https://api.postcodes.io')
         .get(`/postcodes/${postcode}`)
         .times(1)
         .reply(500);
@@ -198,7 +197,6 @@ describe('The results page error handling', () => {
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
             .to.contain('Sorry, we are experiencing technical problems');
-          expect(postcodesioScope.isDone()).to.equal(true);
           done();
         });
     });
@@ -211,8 +209,8 @@ describe('The results page error handling', () => {
     it('should lookup a valid but unknown postcode and return an error message with no context',
       (done) => {
         const invalidPostcodePassingRegex = 'LS0';
-        const postcodesioScope =
-          nock('https://api.postcodes.io')
+
+        nock('https://api.postcodes.io')
           .get(`/outcodes/${invalidPostcodePassingRegex}`)
           .times(1)
           .reply(404, notFoundResponse);
@@ -224,7 +222,6 @@ describe('The results page error handling', () => {
             iExpect.htmlWith200Status(err, res);
             expect(res.text).to
               .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-            expect(postcodesioScope.isDone()).to.equal(true);
             done();
           });
       });
@@ -248,8 +245,8 @@ describe('The results page error handling', () => {
 
     it('should handle an error produced by the postcode lookup and return an error message', (done) => {
       const postcode = 'AB123CD';
-      const postcodesioScope =
-        nock('https://api.postcodes.io')
+
+      nock('https://api.postcodes.io')
         .get(`/postcodes/${postcode}`)
         .times(1)
         .reply(500);
@@ -268,7 +265,6 @@ describe('The results page error handling', () => {
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
             .to.contain('Sorry, we are experiencing technical problems');
-          expect(postcodesioScope.isDone()).to.equal(true);
           done();
         });
     });

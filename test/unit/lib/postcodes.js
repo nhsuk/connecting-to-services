@@ -20,8 +20,7 @@ describe('Postcodes', () => {
         const expectedLatitude = postcodeResponse.result.latitude;
         const expectedLongitude = postcodeResponse.result.longitude;
 
-        const scope =
-          nock('https://api.postcodes.io')
+        nock('https://api.postcodes.io')
           .get(`/postcodes/${postcode}`)
           .reply(200, postcodeResponse);
 
@@ -31,7 +30,6 @@ describe('Postcodes', () => {
           expect(coords).to.not.be.equal(null);
           expect(coords.latitude).to.be.equal(expectedLatitude);
           expect(coords.longitude).to.be.equal(expectedLongitude);
-          expect(scope.isDone()).to.be.equal(true);
           done();
         });
       });
@@ -41,8 +39,7 @@ describe('Postcodes', () => {
         const expectedLatitude = outcodeResponse.result.latitude;
         const expectedLongitude = outcodeResponse.result.longitude;
 
-        const scope =
-          nock('https://api.postcodes.io')
+        nock('https://api.postcodes.io')
           .get(`/outcodes/${outcode}`)
           .reply(200, outcodeResponse);
 
@@ -52,7 +49,6 @@ describe('Postcodes', () => {
           expect(coords).to.not.be.equal(null);
           expect(coords.latitude).to.be.equal(expectedLatitude);
           expect(coords.longitude).to.be.equal(expectedLongitude);
-          expect(scope.isDone()).to.be.equal(true);
           done();
         });
       });
@@ -63,15 +59,13 @@ describe('Postcodes', () => {
       const postcode404Res = { locals: { location: postcode404 } };
 
       it('should return null when postcode is not found', (done) => {
-        const scope =
-          nock('https://api.postcodes.io')
+        nock('https://api.postcodes.io')
           .get(`/postcodes/${postcode404}`)
           .reply(404, response404);
 
         postcodes.lookup(postcode404Res, (err) => {
           expect(err.message).to.be.equal(messages.invalidPostcodeMessage(postcode404));
           expect(postcode404Res.locals.coordinates).to.be.equal(undefined);
-          expect(scope.isDone()).to.be.equal(true);
           done();
         });
       });
@@ -81,8 +75,8 @@ describe('Postcodes', () => {
       it('should return an error when postcode service throws a 500 error', (done) => {
         const postcode = 'AB123CD';
         const postcodeRes = { locals: { location: postcode } };
-        const scope =
-          nock('https://api.postcodes.io')
+
+        nock('https://api.postcodes.io')
           .get(`/postcodes/${postcode}`)
           .reply(500);
 
@@ -90,16 +84,16 @@ describe('Postcodes', () => {
           expect(err.type).to.be.equal('postcode-service-error');
           expect(err.message).to.be.equal('Postcode service error: 500');
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
-          expect(scope.isDone()).to.be.equal(true);
           done();
         });
       });
+
       it('should return error when postcode service is unavailable', (done) => {
         const postcode = 'AB123CD';
         const postcodeRes = { locals: { location: postcode } };
         const errorMessage = 'getaddrinfo ENOTFOUND api.postcodes.io api.postcodes.io:443';
-        const scope =
-          nock('https://api.postcodes.io')
+
+        nock('https://api.postcodes.io')
           .get(`/postcodes/${postcode}`)
           .replyWithError({ message: errorMessage });
 
@@ -107,7 +101,6 @@ describe('Postcodes', () => {
           expect(err.type).to.be.equal('postcode-service-error');
           expect(err.message).to.be.equal(errorMessage);
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
-          expect(scope.isDone()).to.be.equal(true);
           done();
         });
       });
@@ -118,15 +111,13 @@ describe('Postcodes', () => {
       const outcode404Res = { locals: { location: outcode404 } };
 
       it('should return null when outcode is not found', (done) => {
-        const scope =
-          nock('https://api.postcodes.io')
+        nock('https://api.postcodes.io')
           .get(`/outcodes/${outcode404}`)
           .reply(404, response404);
 
         postcodes.lookup(outcode404Res, (err) => {
           expect(err.message).to.be.equal(messages.invalidPostcodeMessage(outcode404));
           expect(outcode404Res.locals.coordinates).to.be.equal(undefined);
-          expect(scope.isDone()).to.be.equal(true);
           done();
         });
       });
