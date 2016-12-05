@@ -48,7 +48,7 @@ Find a pharmacy
 
         <div class="form-item-wrapper">
           <div class="form-group form-group--submit">
-            <input type="submit" class="button" value="Continue">
+            <input type="submit" class="button" value="Search">
           </div>
         </div>
         <p class="u-margintop5"><a href="{{ backLink }}" class="link-back">Back</a></p>
