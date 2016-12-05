@@ -49,7 +49,7 @@ Find a pharmacy
             <input type="submit" class="button" value="Search">
           </div>
         </div>
-        <p class="u-margintop5"><a href="{{ backLink }}" class="link-back">{{ backLinkText }}</a></p>
+        <p class="u-margintop5"><a href="{{ backLink.href }}" class="link-back">{{ backLink.text }}</a></p>
       </div>
     </div>
 </form>

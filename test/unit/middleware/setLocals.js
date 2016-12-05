@@ -3,12 +3,6 @@ const setLocals = require('../../../app/middleware/setLocals');
 
 const expect = chai.expect;
 
-const referer = 'dummy-referer';
-
-function getReferer() {
-  return referer;
-}
-
 function getNull() {
   return null;
 }
@@ -27,7 +21,9 @@ describe('setLocals', () => {
           get: getNull,
         };
         res = {
-          locals: {},
+          locals: {
+            backLink: {},
+          },
         };
 
         setLocals.fromRequest(req, res, () => {});
@@ -39,15 +35,6 @@ describe('setLocals', () => {
 
       it('should set the context to \'\' when there is no context', () => {
         expect(res.locals.context).to.equal('');
-      });
-
-      it('should set the backLink to the JS fallback', () => {
-        // eslint-disable-next-line no-script-url
-        expect(res.locals.backLink).to.equal('javascript:history.back();');
-      });
-
-      it('should set the backLinkText to \'Back\' when there is no context', () => {
-        expect(res.locals.backLinkText).to.equal('Back');
       });
     });
 
@@ -61,10 +48,12 @@ describe('setLocals', () => {
             location: 'location',
             context: 'stomach-ache',
           },
-          get: getReferer,
+          get: getNull,
         };
         res = {
-          locals: {},
+          locals: {
+            backLink: {},
+          },
         };
 
         setLocals.fromRequest(req, res, () => {});
@@ -76,14 +65,6 @@ describe('setLocals', () => {
 
       it('should set context based on the existing context', () => {
         expect(res.locals.context).to.equal(req.query.context);
-      });
-
-      it('should set backLink to the referer', () => {
-        expect(res.locals.backLink).to.equal(referer);
-      });
-
-      it('should set backLinkText based on the context', () => {
-        expect(res.locals.backLinkText).to.equal('Back to information on stomach ache');
       });
     });
   });
