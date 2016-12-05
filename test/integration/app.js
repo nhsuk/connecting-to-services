@@ -72,7 +72,7 @@ describe('An unknown page', () => {
 
 describe('The find help page', () => {
   describe('with a context of stomach ache', () => {
-    it('should contain content for finding help with stomach ache and a postcode input', (done) => {
+    it('should contain a back link specific for the context', (done) => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/find-help`)
         .query({ context: 'stomach-ache' })
@@ -81,7 +81,7 @@ describe('The find help page', () => {
 
           const $ = cheerio.load(res.text);
 
-          expect($('.page-section').text()).to.contain('For help with');
+          expect($('.link-back').text()).to.equal('Back to information on stomach ache');
           iExpect.findHelpPage($);
           done();
         });
@@ -89,7 +89,7 @@ describe('The find help page', () => {
   });
 
   describe('with no context', () => {
-    it('should contain no additional content beyond the title and a postcode input', (done) => {
+    it('should contain a generic back link', (done) => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/find-help`)
         .end((err, res) => {
@@ -97,7 +97,7 @@ describe('The find help page', () => {
 
           const $ = cheerio.load(res.text);
 
-          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('.link-back').text()).to.equal('Back');
           iExpect.findHelpPage($);
           done();
         });
@@ -105,7 +105,7 @@ describe('The find help page', () => {
   });
 
   describe('with an unknown context', () => {
-    it('should contain no additional content beyond the title and a postcode input', (done) => {
+    it('should contain a generic back link', (done) => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/find-help`)
         .query({ context: 'unknown' })
@@ -114,7 +114,7 @@ describe('The find help page', () => {
 
           const $ = cheerio.load(res.text);
 
-          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('.link-back').text()).to.equal('Back');
           iExpect.findHelpPage($);
           done();
         });

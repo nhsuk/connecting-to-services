@@ -147,7 +147,7 @@ describe('The results page error handling', () => {
               iExpect.htmlWith200Status(err, res);
               const $ = cheerio.load(res.text);
 
-              expect($('.page-section').text()).to.contain('For help with');
+              expect($('.link-back').text()).to.equal('Back to information on stomach ache');
               iExpect.findHelpPage($);
               expect(res.text).to
                 .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
@@ -168,7 +168,7 @@ describe('The results page error handling', () => {
               iExpect.htmlWith200Status(err, res);
               const $ = cheerio.load(res.text);
 
-              expect($('.page-section').text()).to.contain('For help with');
+              expect($('.link-back').text()).to.equal('Back to information on stomach ache');
               iExpect.findHelpPage($);
               expect(res.text).to.contain(errorMessage);
               done();

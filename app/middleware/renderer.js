@@ -13,16 +13,7 @@ function results(req, res) {
 }
 
 function findHelp(req, res) {
-  const context = res.locals.context;
-  let viewToRender = '';
-
-  if (context === 'stomach-ache') {
-    viewToRender = 'find-help-stomach-ache';
-  } else {
-    viewToRender = 'find-help';
-  }
-
-  res.render(viewToRender);
+  res.render('find-help');
 }
 
 module.exports = {
