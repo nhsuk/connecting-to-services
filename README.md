@@ -45,6 +45,7 @@ environment.
 
 | Variable                         | Description                                                                            | Default                  | Required        |
 |:---------------------------------|:---------------------------------------------------------------------------------------|:-------------------------|-----------------|
+| `API_BASE_URL`                   | The fully qualified domain the api exists on e.g. `http://web.site`                    |                          | Yes             |
 | `NODE_ENV`                       | node environment                                                                       | development              |                 |
 | `PORT`                           | server port                                                                            | 3000                     |                 |
 | `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id                     |                          |                 |
@@ -54,6 +55,14 @@ environment.
 | `SPLUNK_HEC_TOKEN`               | [HTTP Event Collector token](http://dev.splunk.com/view/event-collector/SP-CAAAE7C)    |                          | In `production` |
 | `SPLUNK_HEC_ENDPOINT`            | [HTTP Event Collector endpoint](http://dev.splunk.com/view/event-collector/SP-CAAAE7H) |                          | In `production` |
 | `LOG_LEVEL`                      | [bunyan log level](https://github.com/trentm/node-bunyan#levels)                       | Depends on `NODE_ENV`    |                 |
+
+## Development
+
+If the application is to be run locally, a value will need to be set for `API_BASE_URL`.
+The value could be a local instance of the [API](https://github.com/nhsuk/nearby-services-api)
+or it could be the staging environment for the API. It depends on what changes
+are being worked on. A simple way to do that would be on the command line e.g.
+`API_BASE_URL=http://web.site npm run watch-dev`
 
 ## Testing
 

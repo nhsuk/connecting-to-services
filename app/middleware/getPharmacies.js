@@ -1,21 +1,37 @@
+const request = require('request');
 const log = require('../lib/logger');
-const cache = require('memory-cache');
-const pharmacies = require('../lib/getPharmacies');
 
 function getPharmacies(req, res, next) {
   const searchPoint = res.locals.coordinates;
-  const geo = cache.get('geo');
-  const limits = { nearby: 10, open: 3 };
+  // TODO: Implement this
+  // const limits = { nearby: 10, open: 3 };
+
+  const latitude = searchPoint.latitude;
+  const longitude = searchPoint.longitude;
+
+  const baseUrl = process.env.API_BASE_URL;
+  const url = `${baseUrl}/nearby?latitude=${latitude}&longitude=${longitude}`;
 
   log.info('get-pharmacies-start');
-  const nearby = pharmacies.nearby(searchPoint, geo, limits);
-  log.info('get-pharmacies-end');
+  request(url, (error, response, body) => {
+    log.info('get-pharmacies-end');
+    if (error) {
+      log.error({ err: error, requestUrl: url }, 'Get services data failed');
+      next('Get services data failed');
+    }
 
-  /* eslint-disable no-param-reassign*/
-  res.locals.nearbyServices = nearby.nearbyServices;
-  res.locals.openServices = nearby.openServices;
-  /* eslint-enable no-param-reassign*/
-  next();
+    if (response.statusCode === 200) {
+      const nearbyRes = JSON.parse(body);
+      /* eslint-disable no-param-reassign*/
+      res.locals.nearbyServices = nearbyRes.nearby;
+      res.locals.openServices = nearbyRes.open;
+      /* eslint-enable no-param-reassign*/
+      next();
+    } else {
+      log.warn({ res: response }, `${response.statusCode} response from services api`);
+      next(`${response.statusCode} response from services api`);
+    }
+  });
 }
 
 module.exports = getPharmacies;

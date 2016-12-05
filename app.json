@@ -8,6 +8,9 @@
     },
     "SPLUNK_HEC_TOKEN": {
       "required": true
+    },
+    "API_BASE_URL": {
+      "required": true
     }
   },
   "formation": {

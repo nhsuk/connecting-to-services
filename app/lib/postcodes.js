@@ -27,6 +27,7 @@ function lookup(res, next) {
     postcodeRes.on('end', () => {
       log.info('postcodeio-lookup-end');
       let postcode;
+
       switch (postcodeRes.statusCode) {
         case 200:
           postcode = JSON.parse(body);
@@ -42,18 +43,15 @@ function lookup(res, next) {
           next({ type: 'invalid-postcode', message: messages.invalidPostcodeMessage(location) });
           break;
         default:
-          log.warn({ url, response: postcodeRes.statusCode, location });
-          next(
-            {
-              type: 'postcode-service-error',
-              message: `Postcode service error: ${postcodeRes.statusCode}`,
-            }
-          );
+          log.warn({ url, response: postcodeRes.statusCode, location }, `Postcode service error: ${postcodeRes.statusCode}`);
+          next({
+            type: 'postcode-service-error',
+            message: `Postcode service error: ${postcodeRes.statusCode}`,
+          });
       }
     });
   }).on('error', (e) => {
-    // TODO: Add 'standard' error
-    log.error({ err: e, location }, 'Postcode lookup failed');
+    log.error({ err: e, location, type: 'postcode-service-error' }, 'Postcode lookup failed');
     next({ type: 'postcode-service-error', message: e.message });
   });
 }
