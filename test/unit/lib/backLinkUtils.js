@@ -6,61 +6,58 @@ const expect = chai.expect;
 const referer = 'not-real';
 
 describe('backLinkUtils', () => {
-  describe('behavior for default values', () => {
-    function getNull() {
-      return '';
-    }
+  function noReferer() { return ''; }
 
-    const req = {
-      get: getNull,
-    };
+  describe('text', () => {
+    const reqMock = { get: noReferer };
 
-    const res = {
-      locals: {},
-    };
+    it('should return \'Back\' when context is not stomach ache', () => {
+      const res = { locals: {} };
 
-    const response = backLinkUtils(req, res);
-
-    it('should return the JS fallback', () => {
-      const url = response.url;
-      // eslint-disable-next-line no-script-url
-      expect(url).to.equal('javascript:history.back();');
-    });
-
-    it('should return \'Back\' when there is no context', () => {
-      const text = response.text;
+      const text = backLinkUtils(reqMock, res).text;
 
       expect(text).to.equal('Back');
     });
-  });
 
-  describe('behavior for non-default values', () => {
-    function getReferer() {
-      return referer;
-    }
+    it('should return back link for stomach ache when context is stomach ache', () => {
+      const res = { locals: { context: 'stomach-ache' } };
 
-    const req = {
-      get: getReferer,
-    };
-
-    const res = {
-      locals: {
-        context: 'stomach-ache',
-      },
-    };
-
-    const response = backLinkUtils(req, res);
-
-    it('should return the referer', () => {
-      const url = response.url;
-
-      expect(url).to.equal(referer);
-    });
-
-    it('should return backLinkText based on the context', () => {
-      const text = response.text;
+      const text = backLinkUtils(reqMock, res).text;
 
       expect(text).to.equal('Back to information on stomach ache');
+    });
+  });
+
+  describe('url', () => {
+    function getReferer() { return referer; }
+
+    const mockReqWithReferer = { get: getReferer };
+    const mockReqWithNoReferer = { get: noReferer };
+
+    const mockResWithContext = { locals: { context: 'stomach-ache' } };
+    const mockResNoContext = { locals: {} };
+
+    describe('with unknown context', () => {
+      it('should return the JS fallback when there is no referer', () => {
+        const url = backLinkUtils(mockReqWithNoReferer, mockResNoContext).url;
+
+        // eslint-disable-next-line no-script-url
+        expect(url).to.equal('javascript:history.back();');
+      });
+
+      it('should return the referer when there is one', () => {
+        const url = backLinkUtils(mockReqWithReferer, mockResNoContext).url;
+
+        expect(url).to.equal(referer);
+      });
+    });
+
+    describe('with known context', () => {
+      it('should return the link to stomach ache', () => {
+        const url = backLinkUtils({}, mockResWithContext).url;
+
+        expect(url).to.equal('/symptoms/stomach-ache');
+      });
     });
   });
 });
