@@ -1,5 +1,6 @@
 const chai = require('chai');
 const setLocals = require('../../../app/middleware/setLocals');
+const contexts = require('../../../app/lib/contexts');
 
 const expect = chai.expect;
 
@@ -46,7 +47,7 @@ describe('setLocals', () => {
         req = {
           query: {
             location: 'location',
-            context: 'stomach-ache',
+            context: contexts.stomachAche.context,
           },
           get: getNull,
         };

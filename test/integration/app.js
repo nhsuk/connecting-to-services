@@ -4,6 +4,7 @@ const chaiHttp = require('chai-http');
 const server = require('../../server');
 const constants = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
+const contexts = require('../../app/lib/contexts');
 
 const expect = chai.expect;
 
@@ -75,13 +76,13 @@ describe('The find help page', () => {
     it('should contain a back link specific for the context', (done) => {
       chai.request(server)
         .get(`${constants.SITE_ROOT}/find-help`)
-        .query({ context: 'stomach-ache' })
+        .query({ context: contexts.stomachAche.context })
         .end((err, res) => {
           iExpect.htmlWith200Status(err, res);
 
           const $ = cheerio.load(res.text);
 
-          expect($('.link-back').text()).to.equal('Back to information on stomach ache');
+          expect($('.link-back').text()).to.equal(contexts.stomachAche.text);
           iExpect.findHelpPage($);
           done();
         });

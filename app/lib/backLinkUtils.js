@@ -1,14 +1,16 @@
+const contexts = require('./contexts');
+
 function text(res) {
-  return res.locals.context === 'stomach-ache'
-    ? 'Back to information on stomach ache'
+  return res.locals.context === contexts.stomachAche.context
+    ? contexts.stomachAche.text
     : 'Back';
 }
 
 function url(req, res) {
   let link;
 
-  if (res.locals.context === 'stomach-ache') {
-    link = '/symptoms/stomach-ache';
+  if (res.locals.context === contexts.stomachAche.context) {
+    link = contexts.stomachAche.url;
   } else {
     // eslint-disable-next-line no-script-url
     link = req.get('referer') || 'javascript:history.back();';

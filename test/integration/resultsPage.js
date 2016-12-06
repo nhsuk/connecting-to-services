@@ -7,6 +7,7 @@ const constants = require('../../app/lib/constants');
 const messages = require('../../app/lib/messages');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
+const contexts = require('../../app/lib/contexts');
 
 const expect = chai.expect;
 
@@ -70,7 +71,7 @@ describe('The results page happy paths', () => {
     });
 
     describe('with context of stomach ache', () => {
-      const context = 'stomach-ache';
+      const context = contexts.stomachAche.context;
 
       it('should return 3 open results, by default', (done) => {
         chai.request(server)
@@ -98,7 +99,7 @@ describe('The results page happy paths', () => {
       it('should return 10 results', (done) => {
         chai.request(server)
           .get(resultsRoute)
-          .query({ location: postcode, open: false, context: 'stomach-ache' })
+          .query({ location: postcode, open: false, context: contexts.stomachAche.context })
           .end((err, res) => {
             iExpect.htmlWith200Status(err, res);
             const $ = cheerio.load(res.text);
@@ -129,7 +130,7 @@ describe('The results page error handling', () => {
   describe('with a context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
     const resultsRoute = `${constants.SITE_ROOT}/results`;
-    const context = 'stomach-ache';
+    const context = contexts.stomachAche.context;
 
     it('should lookup a valid but unknown postcode and return an error message with the help context',
         (done) => {

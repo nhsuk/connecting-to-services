@@ -1,5 +1,6 @@
 const chai = require('chai');
 const backLinkUtils = require('../../../app/lib/backLinkUtils');
+const contexts = require('../../../app/lib/contexts');
 
 const expect = chai.expect;
 
@@ -20,7 +21,7 @@ describe('backLinkUtils', () => {
     });
 
     it('should return back link for stomach ache when context is stomach ache', () => {
-      const res = { locals: { context: 'stomach-ache' } };
+      const res = { locals: { context: contexts.stomachAche.context } };
 
       const text = backLinkUtils(reqMock, res).text;
 
@@ -34,7 +35,7 @@ describe('backLinkUtils', () => {
     const mockReqWithReferer = { get: getReferer };
     const mockReqWithNoReferer = { get: noReferer };
 
-    const mockResWithContext = { locals: { context: 'stomach-ache' } };
+    const mockResWithContext = { locals: { context: contexts.stomachAche.context } };
     const mockResNoContext = { locals: {} };
 
     describe('with unknown context', () => {
@@ -56,7 +57,7 @@ describe('backLinkUtils', () => {
       it('should return the link to stomach ache', () => {
         const url = backLinkUtils({}, mockResWithContext).url;
 
-        expect(url).to.equal('/symptoms/stomach-ache');
+        expect(url).to.equal(contexts.stomachAche.url);
       });
     });
   });
