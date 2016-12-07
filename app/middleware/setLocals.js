@@ -1,9 +1,15 @@
+const backLinkUtils = require('../lib/backLinkUtils');
+
 function fromRequest(req, res, next) {
   /* eslint-disable no-param-reassign */
   res.locals.location = req.query.location;
   res.locals.context = req.query.context || '';
-  // eslint-disable-next-line no-script-url
-  res.locals.backLink = req.get('referer') || 'javascript:history.back();';
+
+  const backLink = backLinkUtils(req, res);
+  res.locals.backLink = {
+    href: backLink.url,
+    text: backLink.text,
+  };
   /* eslint-enable no-param-reassign */
   next();
 }
