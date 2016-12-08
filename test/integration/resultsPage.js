@@ -270,7 +270,7 @@ describe('The results page error handling', () => {
         });
     });
 
-    it('should handle the pharmacy service being unavailable with an error message', (done) => {
+    it('should handle the pharmacy service when it responds with a 500 response with an error message', (done) => {
       const fakePostcode = 'FA123KE';
       const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
       const latitude = JSON.parse(fakeResponse).result.latitude;
@@ -324,6 +324,32 @@ describe('The results page error handling', () => {
       chai.request(server)
         .get(resultsRoute)
         .query({ location: badPostcode })
+        .end((err, res) => {
+          expect(err).to.not.be.equal(null);
+          expect(res).to.have.status(500);
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.html;
+
+          const $ = cheerio.load(res.text);
+
+          expect($('.page-section').text()).to.not.contain('For help with');
+          expect($('.local-header--title--question').text())
+            .to.contain('Sorry, we are experiencing technical problems');
+          done();
+        });
+    });
+
+    it('it should handle the pharmacy service being unavailable with an error message', (done) => {
+      const postcode = 'LS27UE';
+
+      process.env.API_BASE_URL = 'http://not.real';
+      nock(process.env.API_BASE_URL)
+        .get(/.*/)
+        .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
+
+      chai.request(server)
+        .get(resultsRoute)
+        .query({ location: postcode })
         .end((err, res) => {
           expect(err).to.not.be.equal(null);
           expect(res).to.have.status(500);

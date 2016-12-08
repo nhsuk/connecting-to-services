@@ -19,11 +19,12 @@ before('global setup', () => {
 
   nock('https://api.postcodes.io')
     .get(`/postcodes/${ls27ue}`)
-    .times(4)
+    .times(5)
     .reply(200, ls27ueResponse);
 });
 
 after('Check all nocks have been called', () => {
+  console.log(nock.pendingMocks());
   expect(nock.pendingMocks().length).to.equal(0);
   expect(nock.isDone()).to.equal(true);
   nock.cleanAll();
