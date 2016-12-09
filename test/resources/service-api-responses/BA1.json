@@ -1,0 +1,267 @@
+{
+  "nearby": [
+    {
+      "address": {
+        "city": "Monks Cross Shopping Park",
+        "county": "",
+        "line1": "Asda Superstore",
+        "line2": "Jockey Lane",
+        "line3": "",
+        "postcode": "YO32 9LF"
+      },
+      "contacts": {
+        "additionalContacts": [],
+        "email": null,
+        "fax": null,
+        "isNonGeographicPhoneNumber": false,
+        "phoneChargeAmount": null,
+        "phoneChargeMethod": "unknown method",
+        "telephoneExtension": null,
+        "telephoneNumber": "01904 628107        ",
+        "website": null
+      },
+      "distanceInMiles": 2.0031075201988813,
+      "externalProfileUrl": null,
+      "g": 2163456662128803,
+      "identifier": "FCM91",
+      "identifierType": "Pharmacy Contract",
+      "isOpen": true,
+      "latitude": 53.98647689819336,
+      "location": {
+        "coordinates": [
+          -1.0434553623199463,
+          53.98647689819336
+        ],
+        "type": "Point"
+      },
+      "longitude": -1.0434553623199463,
+      "name": "Asda Stores Ltd",
+      "openingTimes": {
+        "alterations": {},
+        "general": {
+          "friday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "monday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "saturday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "sunday": [
+            {
+              "closes": "16:00",
+              "opens": "11:00"
+            }
+          ],
+          "thursday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ]
+        }
+      },
+      "openingTimesMessage": "Open until 9:00 pm today",
+      "organisationType": "Pharmacy",
+      "outOfHours": "",
+      "parkingInformation": null,
+      "provider": "North Yorkshire And Humber Area Team",
+      "summary": ""
+    },
+    {
+      "address": {
+        "city": "York",
+        "county": "North Yorkshire",
+        "line1": "7 Monks Cross Shopping Park",
+        "line2": "Monks Cross Drive",
+        "line3": null,
+        "postcode": "YO32 9LF"
+      },
+      "contacts": {
+        "additionalContacts": [],
+        "email": "store.manager.6435@boots.co.uk",
+        "fax": "01904656389",
+        "isNonGeographicPhoneNumber": false,
+        "phoneChargeAmount": null,
+        "phoneChargeMethod": "unknown method",
+        "telephoneExtension": null,
+        "telephoneNumber": "01904656360",
+        "website": ""
+      },
+      "distanceInMiles": 2.0031075201988813,
+      "g": 2163456662128803,
+      "identifier": "FLX35",
+      "identifierType": "Pharmacy Contract",
+      "isOpen": true,
+      "latitude": 53.98647689819336,
+      "location": {
+        "coordinates": [
+          -1.0434553623199463,
+          53.98647689819336
+        ],
+        "type": "Point"
+      },
+      "longitude": -1.0434553623199463,
+      "name": "Boots",
+      "openingTimes": {
+        "alterations": {},
+        "general": {
+          "friday": [
+            {
+              "closes": "20:00",
+              "opens": "09:00"
+            }
+          ],
+          "monday": [
+            {
+              "closes": "20:00",
+              "opens": "09:00"
+            }
+          ],
+          "saturday": [
+            {
+              "closes": "19:00",
+              "opens": "09:00"
+            }
+          ],
+          "sunday": [
+            {
+              "closes": "17:00",
+              "opens": "11:00"
+            }
+          ],
+          "thursday": [
+            {
+              "closes": "20:00",
+              "opens": "09:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "closes": "20:00",
+              "opens": "09:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "closes": "20:00",
+              "opens": "09:00"
+            }
+          ]
+        }
+      },
+      "openingTimesMessage": "Open until 8:00 pm today",
+      "organisationType": "Pharmacy",
+      "outOfHours": ""
+    },
+    {
+      "address": {
+        "city": "York",
+        "county": "North Yorkshire",
+        "line1": "Huntington Surgery",
+        "line2": "1-3 North Lane",
+        "line3": "Huntington",
+        "postcode": "YO32 9RU"
+      },
+      "contacts": {
+        "additionalContacts": [],
+        "email": null,
+        "fax": null,
+        "isNonGeographicPhoneNumber": false,
+        "phoneChargeAmount": null,
+        "phoneChargeMethod": "unknown method",
+        "telephoneExtension": null,
+        "telephoneNumber": "01904 721724",
+        "website": "http://huntingtonpharmacy.co.uk"
+      },
+      "distanceInMiles": 2.249844623990056,
+      "externalProfileUrl": null,
+      "g": 2163450988698666,
+      "identifier": "FWL29",
+      "identifierType": "Pharmacy Contract",
+      "isOpen": true,
+      "latitude": 53.998748779296875,
+      "location": {
+        "coordinates": [
+          -1.0551648139953613,
+          53.998748779296875
+        ],
+        "type": "Point"
+      },
+      "longitude": -1.0551648139953613,
+      "name": "Huntington Pharmacy",
+      "openingTimes": {
+        "alterations": {},
+        "general": {
+          "friday": [
+            {
+              "closes": "23:00",
+              "opens": "07:00"
+            }
+          ],
+          "monday": [
+            {
+              "closes": "23:00",
+              "opens": "07:00"
+            }
+          ],
+          "saturday": [
+            {
+              "closes": "19:00",
+              "opens": "07:00"
+            }
+          ],
+          "sunday": [
+            {
+              "closes": "17:00",
+              "opens": "09:00"
+            }
+          ],
+          "thursday": [
+            {
+              "closes": "23:00",
+              "opens": "07:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "closes": "23:00",
+              "opens": "07:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "closes": "23:00",
+              "opens": "07:00"
+            }
+          ]
+        }
+      },
+      "openingTimesMessage": "Open until 11:00 pm today",
+      "organisationType": "Pharmacy"
+    }
+  ],
+  "open": []
+}

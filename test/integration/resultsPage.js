@@ -66,6 +66,97 @@ describe('The results page', () => {
         done();
       });
   });
+
+  it('should display a message when there are no open pharmacies', (done) => {
+    const outcode = 'BA1';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA1.json');
+    const noOpenResponse = getSampleResponse('service-api-responses/BA1.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
+
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+      .times(1)
+      .reply(200, noOpenResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.all-shut').text()).to.be.equal('SOZ, nout open right now');
+        expect($('.nout-nearby').length).to.be.equal(0);
+        done();
+      });
+  });
+
+  it('should display a message when there is an open pharmacy but no additional nearby pharmacies', (done) => {
+    const outcode = 'BA2';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA2.json');
+    const noNearbyResponse = getSampleResponse('service-api-responses/BA2.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
+
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+      .times(1)
+      .reply(200, noNearbyResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.nout-nearby').text()).to.be.equal('SOZ, nout else nearby');
+        expect($('.all-shut').length).to.be.equal(0);
+        done();
+      });
+  });
+
+  it('should display a message when there are no open pharmacies', (done) => {
+    const outcode = 'BA3';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
+    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
+
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+      .times(1)
+      .reply(200, noResultsResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.nout-at-all').text()).to.be.equal('NOTHING TO SEE HERE');
+        expect($('.nout-nearby').length).to.be.equal(0);
+        expect($('.all-shut').length).to.be.equal(0);
+        done();
+      });
+  });
 });
 
 describe('The results page error handling', () => {

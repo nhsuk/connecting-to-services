@@ -10,21 +10,33 @@
 <a href="{{ SITE_ROOT }}/find-help?context={{ context }}" class="link-back">Back to find a pharmacy</a>
 
 <div class="results u-border u-nomargin">
-  <ol class="list-results">
-    <h1 class="local-header--title--question open">Pharmacy nearest to {{ location }} open now</h1>
-    {% for service in openServices %}
-    <li class="list-results-item open" style="background-color:hotpink;">
-      {% include "includes/result-item.nunjucks" %}
-    </li>
-    {% endfor %}
+  {% if openServices.length === 0 and nearbyServices.length === 0 %}
+  <p class="nout-at-all">NOTHING TO SEE HERE</p>
+  {% else %}
+    <ol class="list-results">
+      {% if openServices.length > 0 %}
+        <h1 class="local-header--title--question open">Pharmacy nearest to {{ location }} open now</h1>
+        {% for service in openServices %}
+        <li class="list-results-item open" style="background-color:hotpink;">
+          {% include "includes/result-item.nunjucks" %}
+        </li>
+        {% endfor %}
+      {% else %}
+        <p class="all-shut">SOZ, nout open right now</p>
+      {% endif %}
 
-    <h1 class="local-header--title--question nearby">Next closest pharmacies to {{ location }}</h1>
-    {% for service in nearbyServices %}
-    <li class="list-results-item nearby" style="background-color:cadetblue;">
-      {% include "includes/result-item.nunjucks" %}
-    </li>
-    {% endfor %}
-  </ol>
+      {% if nearbyServices.length > 0 %}
+        <h1 class="local-header--title--question nearby">Next closest pharmacies to {{ location }}</h1>
+        {% for service in nearbyServices %}
+        <li class="list-results-item nearby" style="background-color:cadetblue;">
+          {% include "includes/result-item.nunjucks" %}
+        </li>
+        {% endfor %}
+      {% else %}
+        <p class="nout-nearby">SOZ, nout else nearby</p>
+      {% endif %}
+    </ol>
+    {% endif %}
 </div>
 
 {% endblock %}
