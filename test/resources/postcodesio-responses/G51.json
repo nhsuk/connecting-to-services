@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "result": {
+    "outcode": "G51",
+    "longitude": -4.31643313277805,
+    "latitude": 55.857800422095,
+    "northings": 665160,
+    "eastings": 255107,
+    "admin_district": [
+      "Renfrewshire",
+      "Glasgow City"
+    ],
+    "parish": [],
+    "admin_county": [],
+    "admin_ward": [
+      "Govan",
+      "Craigton",
+      "Renfrew North"
+    ]
+  }
+}
