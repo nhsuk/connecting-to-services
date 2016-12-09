@@ -257,7 +257,6 @@ describe('The results page error handling', () => {
         .times(1)
         .reply(200, badResponse);
 
-      // process.env.API_BASE_URL = 'https://dummy.url';
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
         .reply(400, badPharmacyResponse);
