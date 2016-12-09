@@ -18,9 +18,7 @@ function getPharmacies(req, res, next) {
     if (error) {
       log.error({ err: error, requestUrl: url }, 'Get services data failed');
       next('Get services data failed');
-    }
-
-    if (response.statusCode === 200) {
+    } else if (response.statusCode === 200) {
       const nearbyRes = JSON.parse(body);
       /* eslint-disable no-param-reassign*/
       res.locals.nearbyServices = nearbyRes.nearby;
