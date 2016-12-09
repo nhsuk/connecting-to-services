@@ -13,65 +13,64 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('The results page happy paths', () => {
-  const resultsRoute = `${constants.SITE_ROOT}/results`;
+const resultsRoute = `${constants.SITE_ROOT}/results`;
 
-  describe('happy paths', () => {
-    describe('default stuff', () => {
-      it('should return 1 open result and 3 nearby results, by default', (done) => {
-        const ls27ue = 'LS27UE';
-        const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
-        const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
-        const ls27ueResult = JSON.parse(ls27ueResponse).result;
-        const latitude = ls27ueResult.latitude;
-        const longitude = ls27ueResult.longitude;
-        const numberOfOpenResults = 1;
-        const numberOfNearbyResults = 3;
+describe('The results page', () => {
+  it('should return 1 open result and 3 nearby results, by default', (done) => {
+    const ls27ue = 'LS27UE';
+    const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+    const ls27ueResult = JSON.parse(ls27ueResponse).result;
+    const latitude = ls27ueResult.latitude;
+    const longitude = ls27ueResult.longitude;
+    const numberOfOpenResults = 1;
+    const numberOfNearbyResults = 3;
+    const context = contexts.stomachAche.context;
 
-        nock('https://api.postcodes.io')
-          .get(`/postcodes/${ls27ue}`)
-          .times(1)
-          .reply(200, ls27ueResponse);
+    nock('https://api.postcodes.io')
+      .get(`/postcodes/${ls27ue}`)
+      .times(1)
+      .reply(200, ls27ueResponse);
 
-        nock(process.env.API_BASE_URL)
-          .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
-          .times(1)
-          .reply(200, serviceApiResponse);
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, serviceApiResponse);
 
-        chai.request(server)
-          .get(resultsRoute)
-          .query({ location: ls27ue })
-          .end((err, res) => {
-            iExpect.htmlWith200Status(err, res);
-            const $ = cheerio.load(res.text);
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: ls27ue, context })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
 
-            expect($('.local-header--title--question.open').text())
-              .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
+        expect($('.local-header--title--question.open').text())
+          .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
 
-            expect($('.local-header--title--question.nearby').text())
-              .to.equal(`Next closest pharmacies to ${ls27ue}`);
+        expect($('.local-header--title--question.nearby').text())
+          .to.equal(`Next closest pharmacies to ${ls27ue}`);
 
-            const openResults = $('.list-results-item.open');
-            expect(openResults.length).to.equal(1);
+        const openResults = $('.list-results-item.open');
+        expect(openResults.length).to.equal(1);
 
-            const nearbyResults = $('.list-results-item.nearby');
-            expect(nearbyResults.length).to.equal(3);
+        const nearbyResults = $('.list-results-item.nearby');
+        expect(nearbyResults.length).to.equal(3);
 
-            const mapLinks = $('.cta-blue');
-            mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://maps.google.com');
-            });
-            done();
-          });
+        const mapLinks = $('.cta-blue');
+        mapLinks.toArray().forEach((link) => {
+          expect($(link).attr('href')).to.have.string('https://maps.google.com');
+        });
+
+        expect($('.link-back').text()).to.equal('Back to find a pharmacy');
+        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help?context=${context}`);
+        done();
       });
-    });
   });
 });
 
 describe('The results page error handling', () => {
   describe('with a context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const resultsRoute = `${constants.SITE_ROOT}/results`;
     const context = contexts.stomachAche.context;
 
     it('should lookup a valid but unknown postcode and return an error message with the help context',
@@ -147,7 +146,6 @@ describe('The results page error handling', () => {
 
   describe('with no context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const resultsRoute = `${constants.SITE_ROOT}/results`;
 
     it('should lookup a valid but unknown postcode and return an error message with no context',
       (done) => {

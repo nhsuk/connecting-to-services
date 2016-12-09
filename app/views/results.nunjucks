@@ -6,9 +6,8 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
-{% block header %}{{ headerMessage }}{% endblock %}
-
 {% block content %}
+<a href="{{ SITE_ROOT }}/find-help?context={{ context }}" class="link-back">Back to find a pharmacy</a>
 
 <div class="results u-border u-nomargin">
   <ol class="list-results">
