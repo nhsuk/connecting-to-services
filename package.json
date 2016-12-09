@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node app.js",
     "start-logging": "node app.js | ./node_modules/.bin/bunyan",
-    "lint": "eslint --ext .js,.json . && cat .bithoundrc | eslint --stdin --stdin-filename=f.json",
+    "lint": "eslint --ext .js,.json .",
     "test": "NODE_ENV=test mocha --recursive test",
     "watch-dev": "nodemon app.js | ./node_modules/.bin/bunyan",
     "watch-dev-debug": "NODE_ENV=development && npm run watch-dev",
