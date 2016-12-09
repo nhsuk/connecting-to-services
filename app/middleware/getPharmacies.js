@@ -3,14 +3,9 @@ const log = require('../lib/logger');
 
 function getPharmacies(req, res, next) {
   const searchPoint = res.locals.coordinates;
-  // TODO: Implement this
-  // const limits = { nearby: 10, open: 3 };
-
-  const latitude = searchPoint.latitude;
-  const longitude = searchPoint.longitude;
 
   const baseUrl = process.env.API_BASE_URL;
-  const url = `${baseUrl}/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`;
+  const url = `${baseUrl}/nearby?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results:open=1&limits:results:nearby=3`;
 
   log.info('get-pharmacies-start');
   request(url, (error, response, body) => {
