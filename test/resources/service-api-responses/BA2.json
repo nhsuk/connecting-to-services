@@ -1,0 +1,95 @@
+{
+  "open": [
+    {
+      "address": {
+        "city": "Monks Cross Shopping Park",
+        "county": "",
+        "line1": "Asda Superstore",
+        "line2": "Jockey Lane",
+        "line3": "",
+        "postcode": "YO32 9LF"
+      },
+      "contacts": {
+        "additionalContacts": [],
+        "email": null,
+        "fax": null,
+        "isNonGeographicPhoneNumber": false,
+        "phoneChargeAmount": null,
+        "phoneChargeMethod": "unknown method",
+        "telephoneExtension": null,
+        "telephoneNumber": "01904 628107        ",
+        "website": null
+      },
+      "distanceInMiles": 2.0031075201988813,
+      "externalProfileUrl": null,
+      "g": 2163456662128803,
+      "identifier": "FCM91",
+      "identifierType": "Pharmacy Contract",
+      "isOpen": true,
+      "latitude": 53.98647689819336,
+      "location": {
+        "coordinates": [
+          -1.0434553623199463,
+          53.98647689819336
+        ],
+        "type": "Point"
+      },
+      "longitude": -1.0434553623199463,
+      "name": "Asda Stores Ltd",
+      "openingTimes": {
+        "alterations": {},
+        "general": {
+          "friday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "monday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "saturday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "sunday": [
+            {
+              "closes": "16:00",
+              "opens": "11:00"
+            }
+          ],
+          "thursday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "closes": "21:00",
+              "opens": "09:00"
+            }
+          ]
+        }
+      },
+      "openingTimesMessage": "Open until 9:00 pm today",
+      "organisationType": "Pharmacy",
+      "outOfHours": "",
+      "parkingInformation": null,
+      "provider": "North Yorkshire And Humber Area Team",
+      "summary": ""
+    }
+  ],
+  "nearby": []
+}
