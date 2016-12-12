@@ -14,6 +14,8 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.SITE_ROOT}/results`;
+const numberOfOpenResults = constants.numberOfOpenResults;
+const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
 describe('The results page', () => {
   it('should return 1 open result and 3 nearby results, by default', (done) => {
@@ -23,8 +25,6 @@ describe('The results page', () => {
     const ls27ueResult = JSON.parse(ls27ueResponse).result;
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
-    const numberOfOpenResults = 1;
-    const numberOfNearbyResults = 3;
     const context = contexts.stomachAche.context;
 
     nock('https://api.postcodes.io')
@@ -54,7 +54,7 @@ describe('The results page', () => {
         expect(openResults.length).to.equal(1);
 
         const nearbyResults = $('.list-results-item.nearby');
-        expect(nearbyResults.length).to.equal(3);
+        expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
 
         const mapLinks = $('.cta-blue');
         mapLinks.toArray().forEach((link) => {
@@ -80,7 +80,7 @@ describe('The results page', () => {
       .reply(200, postcodeResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
       .times(1)
       .reply(200, noOpenResponse);
 
@@ -110,7 +110,7 @@ describe('The results page', () => {
       .reply(200, postcodeResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
       .times(1)
       .reply(200, noNearbyResponse);
 
@@ -140,7 +140,7 @@ describe('The results page', () => {
       .reply(200, postcodeResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
       .times(1)
       .reply(200, noResultsResponse);
 
@@ -313,7 +313,7 @@ describe('The results page error handling', () => {
         .reply(200, fakeResponse);
 
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
         .reply(500);
 
       chai.request(server)
@@ -347,7 +347,7 @@ describe('The results page error handling', () => {
         .reply(200, badResponse);
 
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
         .reply(400, badPharmacyResponse);
 
       chai.request(server)
@@ -380,7 +380,7 @@ describe('The results page error handling', () => {
         .reply(200, badResponse);
 
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=1&limits:results:nearby=3`)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
         .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
 
       chai.request(server)

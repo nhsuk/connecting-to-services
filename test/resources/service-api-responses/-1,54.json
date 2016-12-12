@@ -165,7 +165,50 @@
             "longitude": -1.0434553623199463,
             "name": "Boots",
             "openingTimes": {
-                "alterations": {},
+                "alterations": {
+                    "2016-12-05": [
+                        {
+                            "closes": "21:00",
+                            "opens": "09:00"
+                        }
+                    ],
+                    "2016-12-06": [
+                        {
+                            "closes": "21:00",
+                            "opens": "09:00"
+                        }
+                    ],
+                    "2016-12-07": [
+                        {
+                            "closes": "21:00",
+                            "opens": "09:00"
+                        }
+                    ],
+                    "2016-12-08": [
+                        {
+                            "closes": "21:00",
+                            "opens": "09:00"
+                        }
+                    ],
+                    "2016-12-09": [
+                        {
+                            "closes": "21:00",
+                            "opens": "09:00"
+                        }
+                    ],
+                    "2016-12-10": [
+                        {
+                            "closes": "19:00",
+                            "opens": "09:00"
+                        }
+                    ],
+                    "2016-12-11": [
+                        {
+                            "closes": "17:00",
+                            "opens": "11:00"
+                        }
+                    ]
+                },
                 "general": {
                     "friday": [
                         {
@@ -326,6 +369,105 @@
             "parkingInformation": null,
             "provider": "North Yorkshire And Humber Area Team",
             "summary": "<div class=\"grid_12 alpha\">Huntington Pharmacy is a local independent pharmacy open 7 days a week.<br /><p class=\"description\">Huntington Pharmacy is a  new independent pharmacy for the residents of Huntington and surrounding  areas. It is located on the corner of North Lane and Huntington Road  and open late at night and 7 days a week.</p><br /></div>"
+        },
+        {
+            "address": {
+                "city": "York",
+                "county": "",
+                "line1": "61 North Moor Road",
+                "line2": "Huntington",
+                "line3": "York",
+                "postcode": "YO32 9QN"
+            },
+            "contacts": {
+                "additionalContacts": [],
+                "email": "mail@parkerspharmacy.co.uk",
+                "fax": "01904768778",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeAmount": 0,
+                "phoneChargeMethod": "flat-rate",
+                "telephoneExtension": null,
+                "telephoneNumber": "01904 762566",
+                "website": "http://www.parkerspharmacy.co.uk/"
+            },
+            "directionsInformation": null,
+            "distanceInMiles": 2.3548788067122435,
+            "externalProfileUrl": null,
+            "g": 2163450976920502,
+            "hasEps": true,
+            "identifier": "FGH82",
+            "identifierType": "Pharmacy Contract",
+            "isOpen": true,
+            "latitude": 53.997520446777344,
+            "links": [
+                {
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFGH82&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel",
+                    "rel": "NoFollow"
+                },
+                {
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FGH82",
+                    "name": "Link to self",
+                    "rel": "Self"
+                },
+                {
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FGH82",
+                    "name": "NHS Choices profile",
+                    "rel": "Alternate"
+                }
+            ],
+            "location": {
+                "coordinates": [
+                    -1.057618260383606,
+                    53.997520446777344
+                ],
+                "type": "Point"
+            },
+            "longitude": -1.057618260383606,
+            "name": "Parkers Pharmacy",
+            "openingTimes": {
+                "alterations": {},
+                "general": {
+                    "friday": [
+                        {
+                            "closes": "17:30",
+                            "opens": "08:30"
+                        }
+                    ],
+                    "monday": [
+                        {
+                            "closes": "17:30",
+                            "opens": "08:30"
+                        }
+                    ],
+                    "saturday": [],
+                    "sunday": [],
+                    "thursday": [
+                        {
+                            "closes": "17:30",
+                            "opens": "08:30"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "closes": "17:30",
+                            "opens": "08:30"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "closes": "17:30",
+                            "opens": "08:30"
+                        }
+                    ]
+                }
+            },
+            "openingTimesMessage": "Open until 5:30 pm today",
+            "organisationType": "Pharmacy",
+            "outOfHours": null,
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p><strong>Established for many year, we pride ourselves on a high standard personal service and catering for the needs of our local community.</strong><br /><br />Our reputation has been built on our commitment to personal service and attention to detail, which is reflected in the services we offer and the time we take to get to know everyone who comes through our door.<br /><br />Our dispensing service includes both our while-you-wait and collection and&nbsp;<a href=\"http://weebly-link/\">delivery options</a>, where we pick the prescription up from your GP surgery and can&nbsp;<a href=\"http://weebly-link/\">deliver it direct to your door, free of charge.<br /></a><br /><strong>Choosing a&nbsp;pharmacy is one of the most important decisions you can make. You want someone who is caring, knowledgeable, and accessible. Someone willing to take the time to go over all of your options and treat you as a person, not just a patient.&nbsp;</strong><br /><br />At our pharmacy, we pride ourselves on our patient service. We offer knowledgeable staff, safe and proven procedures, and the latest in&nbsp;pharmacy technology.<br /><br />We've created this web site for both new and current customers. It includes specific information on our&nbsp;pharmacy and&nbsp;the&nbsp;<a href=\"http://weebly-link/\">wide range of services we offer</a>.<br /><br />Other services available include<a href=\"http://weebly-link/\">&nbsp;Lipotrim Weight Loss Programme</a>, Stop Smoking Clinic and Blood Pressure Monitoring - see our Services page for full details.<br /><br />We have our own private consultation room and also offer advice on your medicines free of charge.<br /><br />We look forward to meeting you soon and looking after you in the years to come.<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br /><br />Best Regards .... &nbsp;<br /><br /><br /><span style=\"font-size: xx-large;\"><em>Esther</em></span><br />Pharmacist</p>"
         }
     ],
     "open": [
