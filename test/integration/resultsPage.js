@@ -44,10 +44,10 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__type--nearest').text())
+        expect($('.results__header--nearest').text())
           .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
 
-        expect($('.results__type--nearby').text())
+        expect($('.results__header--nearby').text())
           .to.equal(`Next closest pharmacies to ${ls27ue}`);
 
         const openResults = $('.results__details-nearest .results__maplink');

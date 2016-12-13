@@ -2290,12 +2290,12 @@ abbr[title] {
   }
 }
 
-.results__type {
+.results__header {
   font-size:32px;
   line-height:48px;
 }
 
-.results__type--nearest {
+.results__header--nearest {
   padding:16px 0;
 }
 
