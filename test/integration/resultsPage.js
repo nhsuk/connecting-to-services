@@ -44,19 +44,19 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.local-header--title--question.open').text())
+        expect($('.results__type--nearest').text())
           .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
 
-        expect($('.local-header--title--question.nearby').text())
+        expect($('.results__type--nearby').text())
           .to.equal(`Next closest pharmacies to ${ls27ue}`);
 
-        const openResults = $('.list-results-item.open');
+        const openResults = $('.results__details-nearest .results__maplink');
         expect(openResults.length).to.equal(1);
 
-        const nearbyResults = $('.list-results-item.nearby');
+        const nearbyResults = $('.results__item--nearby');
         expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
 
-        const mapLinks = $('.cta-blue');
+        const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
           expect($(link).attr('href')).to.have.string('https://maps.google.com');
         });
@@ -91,8 +91,8 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.all-shut').text()).to.be.equal('SOZ, nout open right now');
-        expect($('.nout-nearby').length).to.be.equal(0);
+        expect($('.results-none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
+        expect($('.results-none-nearby').length).to.be.equal(0);
         done();
       });
   });
@@ -121,8 +121,8 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.nout-nearby').text()).to.be.equal('SOZ, nout else nearby');
-        expect($('.all-shut').length).to.be.equal(0);
+        expect($('.results-none-nearby').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results-none').length).to.be.equal(0);
         done();
       });
   });
@@ -151,9 +151,9 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.nout-at-all').text()).to.be.equal('NOTHING TO SEE HERE');
-        expect($('.nout-nearby').length).to.be.equal(0);
-        expect($('.all-shut').length).to.be.equal(0);
+        expect($('.results-none').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results-block').text()).to.contain('Call 111 for:');
+        expect($('.results-none-nearby').length).to.be.equal(0);
         done();
       });
   });

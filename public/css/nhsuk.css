@@ -2161,107 +2161,12 @@ abbr[title] {
 }
 
 
-/*
-  Tabbed list
-*/
 
-.list-tabs {
-  list-style:none;
-  margin-bottom:-1px;
-  padding:0;
-}
-
-.list-tabs__item {
-  display:inline-block;
-  padding:16px;
-}
-
-@media (max-width: 640px) {
-  .list-tabs__item {
-    font-size:18px;
-  }
-}
-
-
-.list-tabs__item--active {
-  border:1px solid #bfc1c3;
-  border-bottom:1px solid #fff;
-}
-
-.list-tabs__header {
-  font-size:20px;
-  line-height:inherit;
-}
-
-
-/*
-  Results
-*/
-
-@media (max-width: 924px) {
-  .results {
-    padding:16px;
-  }
-}
-
-@media (min-width: 925px) {
-  .results {
-    padding:32px;
-  }
-}
-
-.results hr:last-child {
-  display:none;
-}
-
-.list-results__heading {
-  font-size:36px;
-  line-height:48px;
-}
-
-/*
-  layout modifiers
-*/
-
-@media (min-width: 925px) {
-
-  .grid-row--tabledisplay {
-    display:table;
-  }
-
-  .column__one-half--tablecell {
-    display:table-cell;
-    float:none;
-  }
-
-  .column__one-half--alignbottom {
-    vertical-align:bottom;
-  }
-
-}
-
-/*
-  button modifier
-*/
-.button--nomarginright {
-  margin-right:0;
-}
-
-@media (max-width: 640px) {
-  .cta {
-    line-height:24px;
-    padding-left:16px;
-    padding-right:2em;
-  }
-}
 
 
 /*
   Utilities
 */
-.u-border {
-  border:1px solid #bfc1c3;
-}
 
 .u-nomargin {
   margin:0;
@@ -2317,30 +2222,199 @@ abbr[title] {
 
 
 
+
 /*
-  Results list
+  Results page
 */
-.list-results {
+
+.grid-row {
+  margin: 0 -16px;
+}
+
+.grid-row:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+@media (min-width: 925px) {
+  .page-section .grid-row > * {
+      margin-top: 0;
+  }
+}
+
+.column--two-thirds {
+    display:block;
+    padding:0 16px;
+}
+
+.results__details--column {
+    padding:0;
+}
+
+@media (min-width: 925px) {
+  .results__details--column {
+      padding: 0 8px;
+  }
+}
+
+
+@media (min-width: 641px) {
+  .column--two-thirds {
+      float: left;
+      width: 66.6667%;
+  }
+}
+
+.results {
+  list-style: none;
+  margin:0;
+  padding:0 16px;
+}
+
+.results__item:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.results__item--nearest {
+  background-color: #0072c6;
+  color:#fff;
+  padding:16px;
+}
+
+@media (min-width: 925px) {
+  .results__item--nearest {
+    padding:32px;
+  }
+}
+
+.results__type {
+  font-size:32px;
+  line-height:48px;
+}
+
+.results__type--nearest {
+  padding:16px 0;
+}
+
+.results__details {
+  padding-bottom:32px;
+  padding-top:16px;
+  position:relative;
+}
+
+@media (max-width: 924px) {
+  .results__details--column {
+    margin-top:0;
+  }
+}
+
+.results__details-nearest:before {
+    background-color: #338ed1;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: -2px;
+    width: 130px;
+}
+
+.results__name {
+  margin-top:8px;
+}
+
+.results__item--nearest .results__maplink {
+  color:#fff;
+}
+
+.results__nearby {
+  margin-top:32px;
+  padding:16px;
+}
+
+@media (min-width: 925px) {
+  .results__nearby {
+    padding:32px;
+  }
+}
+
+
+.results__nearby-list {
   list-style:none;
+  margin:32px 0 0 0;
   padding:0;
 }
 
-.list-results-item {
-  border-bottom:2px solid #cce3f4;
-  margin:0 0 32px 0;
-  padding:0 0 32px 0;
+.results__nearby-list .results__item--nearby {
+  margin-top:48px;
 }
 
-.list-results-item:last-child {
-  border-bottom:0;
-  margin-bottom:0;
-  padding-bottom:0;
+.results__item--nearby:first-child {
+    margin-top:0;
 }
 
+.results__item--nearby:first-child .results__details {
+  padding-top:0;
+}
 
-/*
-  Content
-*/
-.content-contextual {
+.results__details--nearby {
+  padding-bottom:32px;
+  padding-left:0;
+  padding-right:0;
+}
+
+.results__details--nearby:after {
+    background-color: #d9e1e2;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    bottom: -2px;
+    width: 130px;
+}
+
+.results-block {
+  background-color: #0072c6;
+  color:#fff;
   margin-bottom:32px;
+  padding:16px;
+}
+
+@media (min-width: 925px) {
+  .results-block {
+    margin-bottom:48px;
+    padding:32px;
+  }
+}
+
+.results-none-nearby {
+  margin:32px 0;
+}
+
+.callout--info {
+  background:#eff1f2;
+  border-left: 4px solid #768692;
+}
+
+.callout--info__mesg {
+  color:#000;
+}
+
+.callout--compact {
+  padding:16px 24px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }
