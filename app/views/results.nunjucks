@@ -17,7 +17,7 @@
 
   <div class="results">
     <div class="results-block">
-      <h2 class="results-none">There are no pharmacies within 20 miles of your location</h2>
+      <h2 class="results__header results-none">There are no pharmacies within 20 miles of your location</h2>
       <p>Call 111 for:</p>
       <ul>
         <li>medical advice if you aren’t in an emergency</li>
@@ -28,63 +28,60 @@
     </div>
   </div>
 
-  {% else %}
+  {% elif openServices.length > 0 %}
 
-    {% if openServices.length > 0 %}
-      <ol class="results">
-        <li class="results__item results__item--nearest">
-          <h2 class="results__type results__type--nearest">Pharmacy nearest to {{ location }} open now</h2>
-          <div class="results__details results__details-nearest column--two-thirds results__details--column">
-            {% set service = openServices[0] %}
-            {% include "includes/result-item.nunjucks" %}
-          </div>
-        </li>
+    <ol class="results">
+      <li class="results__item results__item--nearest">
+        <h2 class="results__header results__header--nearest">Pharmacy nearest to {{ location }} open now</h2>
+        <div class="results__details results__details-nearest column--two-thirds results__details--column">
+          {% set service = openServices[0] %}
+          {% include "includes/result-item.nunjucks" %}
+        </div>
+      </li>
 
-        {% if nearbyServices.length === 0 %}
+      {% if nearbyServices.length === 0 %}
 
-          </ol>
-          <div class="results">
-            <h2 class="results-none-nearby">There are no pharmacies within 20 miles of your location</h2>
-          </div>
-
-        {% else %}
-          <li class="results__item results__nearby">
-            <h2 class="results__type results__type--nearby">Next closest pharmacies to {{ location }}</h2>
-            <ol class="results__nearby-list">
-            {% for service in nearbyServices %}
-              <li class="results__item results__item--nearby">
-                <div class="results__details results__details--nearby column--two-thirds">
-                {% include "includes/result-item.nunjucks" %}
-                </div>
-              </li>
-            {% endfor %}
-            </ol>
-          </li>
         </ol>
-        {% endif %}
+        <div class="results">
+          <h2 class="results__header results-none-nearby">There are no pharmacies within 20 miles of your location</h2>
+        </div>
+
+      {% else %}
+        <li class="results__item results__nearby">
+          <h2 class="results__header results__header--nearby">Next closest pharmacies to {{ location }}</h2>
+          <ol class="results__nearby-list">
+          {% for service in nearbyServices %}
+            <li class="results__item results__item--nearby">
+              <div class="results__details results__details--nearby column--two-thirds">
+              {% include "includes/result-item.nunjucks" %}
+              </div>
+            </li>
+          {% endfor %}
+          </ol>
+        </li>
+      </ol>
+      {% endif %}
 
     {% else %}
 
-      <div class="results">
+    <div class="results">
 
-        <div class="results-block">
-          <h2 class="results-none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
-        </div>
-
-        <h2 class="">Next closest pharmacies to {{ location }}</h2>
-        <ol class="results__nearby-list">
-        {% for service in nearbyServices %}
-          <li class="results__item results__item--nearby">
-            <div class="results__details results__details--nearby column--two-thirds">
-            {% include "includes/result-item.nunjucks" %}
-            </div>
-          </li>
-        {% endfor %}
-        </ol>
-
+      <div class="results-block">
+        <h2 class="results__header results-none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
       </div>
 
-    {% endif %}
+      <h2 class="results__header">Next closest pharmacies to {{ location }}</h2>
+      <ol class="results__nearby-list">
+      {% for service in nearbyServices %}
+        <li class="results__item results__item--nearby">
+          <div class="results__details results__details--nearby column--two-thirds">
+          {% include "includes/result-item.nunjucks" %}
+          </div>
+        </li>
+      {% endfor %}
+      </ol>
+
+    </div>
 
   {% endif %}
 </div>
