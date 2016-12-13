@@ -1,16 +1,15 @@
 const request = require('request');
 const log = require('../lib/logger');
+const dedupe = require('../lib/dedupePharmacies');
+const constants = require('../lib/constants');
 
 function getPharmacies(req, res, next) {
   const searchPoint = res.locals.coordinates;
-  // TODO: Implement this
-  // const limits = { nearby: 10, open: 3 };
-
-  const latitude = searchPoint.latitude;
-  const longitude = searchPoint.longitude;
+  const numberOfOpenResults = constants.numberOfOpenResults;
+  const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
   const baseUrl = process.env.API_BASE_URL;
-  const url = `${baseUrl}/nearby?latitude=${latitude}&longitude=${longitude}`;
+  const url = `${baseUrl}/nearby?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`;
 
   log.info('get-pharmacies-start');
   request(url, (error, response, body) => {
@@ -20,9 +19,10 @@ function getPharmacies(req, res, next) {
       next('Get services data failed');
     } else if (response.statusCode === 200) {
       const nearbyRes = JSON.parse(body);
+      const dedupedServices = dedupe(nearbyRes);
       /* eslint-disable no-param-reassign*/
-      res.locals.nearbyServices = nearbyRes.nearby;
-      res.locals.openServices = nearbyRes.open;
+      res.locals.nearbyServices = dedupedServices.nearby;
+      res.locals.openServices = dedupedServices.open;
       /* eslint-enable no-param-reassign*/
       next();
     } else {

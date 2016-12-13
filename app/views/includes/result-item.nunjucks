@@ -1,0 +1,14 @@
+<p>{{ service.distanceInMiles | round(1) }} miles away</p>
+<h2 class="results__name">{{ service.name }}</h2>
+<section class="callout callout--info callout--compact"><p class="callout--info__mesg">{{ service.openingTimesMessage }}</p></section>
+<p>
+{% if service.address.line1 %} {{ service.address.line1 }}<br>{% endif %}
+{% if service.address.line2 %} {{ service.address.line2 }}<br> {% endif %}
+{% if service.address.line3 %} {{ service.address.line3 }}<br> {% endif %}
+{% if service.address.city %} {{ service.address.city }}<br> {% endif %}
+{% if service.address.county %} {{ service.address.county }}<br> {% endif %}
+{% if service.address.postcode %} {{ service.address.postcode }}<br> {% endif %}
+<a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
+{% if service.contacts.telephoneNumber %}
+<p class="results__phone">Phone: {{ service.contacts.telephoneNumber }}</p>
+{% endif %}

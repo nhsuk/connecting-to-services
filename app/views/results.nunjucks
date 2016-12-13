@@ -6,62 +6,84 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
-{% block header %}{{ headerMessage }}{% endblock %}
-
 {% block content %}
+<a href="{{ SITE_ROOT }}/find-help?context={{ context }}" class="link-back">Back to find a pharmacy</a>
 
-{% set labelOpenOnly = "Open now" %}
-{% set labelShowAll = "All pharmacies" %}
+<div class="grid-row">
 
-<ul class="list-tabs">
-{% if open === 'true' %}
-  <li class="list-tabs__item list-tabs__item--active"><h2 class="list-tabs__header">{{ labelOpenOnly }}</h2></li>
-  <li class="list-tabs__item"><a href="{{ altResultsUrl }}" class="list-tab__link">{{ labelShowAll }}</a></li>
-{% else %}
-  <li class="list-tabs__item"><a href="{{ altResultsUrl }}" class="list-tab__link">{{ labelOpenOnly }}</a></li>
-  <li class="list-tabs__item list-tabs__item--active"><h2 class="list-tabs__header">{{ labelShowAll }}</h2></li>
-{% endif %}
-</ul>
+  <h1 class="sr-only">Search results</h1>
 
-<div class="results u-border u-nomargin">
+  {% if openServices.length === 0 and nearbyServices.length === 0 %}
 
-
-{% if open === 'true' %}
-  {% set services = openServices %}
-{% else %}
-  {% set services = nearbyServices %}
-{% endif %}
-
-<ol class="list-results">
-{% for service in services %}
-<li class="list-results-item">
-<div class="grid-row grid-row--tabledisplay">
-  <div class="column__one-half column__one-half--tablecell">
-    <h3 class="list-results__heading">{{ service.name }}</h3>
-    <p><strong>{{ service.openingTimesMessage }}</strong></p>
-
-    <p>
-    {% if service.address.line1 %} {{ service.address.line1 }},<br>{% endif %}
-    {% if service.address.line2 %} {{ service.address.line2 }},<br> {% endif %}
-    {% if service.address.line3 %} {{ service.address.line3 }},<br> {% endif %}
-    {% if service.address.city %} {{ service.address.city }},<br> {% endif %}
-    {% if service.address.county %} {{ service.address.county }},<br> {% endif %}
-    {% if service.address.postcode %} {{ service.address.postcode }}<br> {% endif %}
-    </p>
-    {% if service.contacts.telephoneNumber %}
-    <p>Telephone: {{ service.contacts.telephoneNumber }}</p>
-    {% endif %}
+  <div class="results">
+    <div class="results-block">
+      <h2 class="results__header results-none">There are no pharmacies within 20 miles of your location</h2>
+      <p>Call 111 for:</p>
+      <ul>
+        <li>medical advice if you aren’t in an emergency</li>
+        <li>advice on whether you need urgent care</li>
+        <li>more information about a specific health condition</li>
+      </ul>
+      <p>If you need emergency help, call 999.</p>
+    </div>
   </div>
-  <div class="column__one-half column__one-half--tablecell column__one-half--alignbottom">
-    <p>{{ service.distanceInMiles | round(1) }} miles away</p>
 
-    <a href="{{service.mapUrl}}" class="button cta cta-blue button--nomarginright">See on map and get directions</a>
-  </div>
-</div>
-</li>
-{% endfor %}
-</ol>
+  {% elif openServices.length > 0 %}
 
+    <ol class="results">
+      <li class="results__item results__item--nearest">
+        <h2 class="results__header results__header--nearest">Pharmacy nearest to {{ location }} open now</h2>
+        <div class="results__details results__details-nearest column--two-thirds results__details--column">
+          {% set service = openServices[0] %}
+          {% include "includes/result-item.nunjucks" %}
+        </div>
+      </li>
+
+      {% if nearbyServices.length === 0 %}
+
+        </ol>
+        <div class="results">
+          <h2 class="results__header results-none-nearby">There are no pharmacies within 20 miles of your location</h2>
+        </div>
+
+      {% else %}
+        <li class="results__item results__nearby">
+          <h2 class="results__header results__header--nearby">Next closest pharmacies to {{ location }}</h2>
+          <ol class="results__nearby-list">
+          {% for service in nearbyServices %}
+            <li class="results__item results__item--nearby">
+              <div class="results__details results__details--nearby column--two-thirds">
+              {% include "includes/result-item.nunjucks" %}
+              </div>
+            </li>
+          {% endfor %}
+          </ol>
+        </li>
+      </ol>
+      {% endif %}
+
+    {% else %}
+
+    <div class="results">
+
+      <div class="results-block">
+        <h2 class="results__header results-none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
+      </div>
+
+      <h2 class="results__header">Next closest pharmacies to {{ location }}</h2>
+      <ol class="results__nearby-list">
+      {% for service in nearbyServices %}
+        <li class="results__item results__item--nearby">
+          <div class="results__details results__details--nearby column--two-thirds">
+          {% include "includes/result-item.nunjucks" %}
+          </div>
+        </li>
+      {% endfor %}
+      </ol>
+
+    </div>
+
+  {% endif %}
 </div>
 
 {% endblock %}

@@ -13,123 +13,155 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('The results page happy paths', () => {
-  after('reset env vars', () => {
-    process.env.API_BASE_URL = '';
+const resultsRoute = `${constants.SITE_ROOT}/results`;
+const numberOfOpenResults = constants.numberOfOpenResults;
+const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
+
+describe('The results page', () => {
+  it('should return 1 open result and 3 nearby results, by default', (done) => {
+    const ls27ue = 'LS27UE';
+    const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+    const ls27ueResult = JSON.parse(ls27ueResponse).result;
+    const latitude = ls27ueResult.latitude;
+    const longitude = ls27ueResult.longitude;
+    const context = contexts.stomachAche.context;
+
+    nock('https://api.postcodes.io')
+      .get(`/postcodes/${ls27ue}`)
+      .times(1)
+      .reply(200, ls27ueResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, serviceApiResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: ls27ue, context })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results__header--nearest').text())
+          .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
+
+        expect($('.results__header--nearby').text())
+          .to.equal(`Next closest pharmacies to ${ls27ue}`);
+
+        const openResults = $('.results__details-nearest .results__maplink');
+        expect(openResults.length).to.equal(1);
+
+        const nearbyResults = $('.results__item--nearby');
+        expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
+
+        const mapLinks = $('.results__maplink');
+        mapLinks.toArray().forEach((link) => {
+          expect($(link).attr('href')).to.have.string('https://maps.google.com');
+        });
+
+        expect($('.link-back').text()).to.equal('Back to find a pharmacy');
+        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help?context=${context}`);
+        done();
+      });
   });
 
-  const postcode = 'LS27UE';
-  const resultsRoute = `${constants.SITE_ROOT}/results`;
+  it('should display a message when there are no open pharmacies', (done) => {
+    const outcode = 'BA1';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA1.json');
+    const noOpenResponse = getSampleResponse('service-api-responses/BA1.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
 
-  process.env.API_BASE_URL = 'https://dummy.url';
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
 
-  describe('happy paths', () => {
-    describe('with no or unknown context', () => {
-      it('should return 3 open results, by default', (done) => {
-        chai.request(server)
-          .get(resultsRoute)
-          .query({ location: postcode })
-          .end((err, res) => {
-            iExpect.htmlWith200Status(err, res);
-            const $ = cheerio.load(res.text);
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, noOpenResponse);
 
-            expect($('.local-header--title--question').text())
-              .to.equal(`Pharmacies near to '${postcode}'`);
-            // Use something that every result with have in order to count them
-            const mapLinks = $('.cta-blue');
-            expect(mapLinks.length).to.equal(3);
-            mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://maps.google.com');
-            });
-            expect($('.list-tab__link').attr('href'))
-              .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=false&context=`);
-            done();
-          });
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results-none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
+        expect($('.results-none-nearby').length).to.be.equal(0);
+        done();
       });
+  });
 
-      it('should return 10 results', (done) => {
-        chai.request(server)
-          .get(resultsRoute)
-          .query({ location: postcode, open: false })
-          .end((err, res) => {
-            iExpect.htmlWith200Status(err, res);
-            const $ = cheerio.load(res.text);
+  it('should display a message when there is an open pharmacy but no additional nearby pharmacies', (done) => {
+    const outcode = 'BA2';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA2.json');
+    const noNearbyResponse = getSampleResponse('service-api-responses/BA2.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
 
-            expect($('.local-header--title--question').text())
-              .to.equal(`Pharmacies near to '${postcode}'`);
-            // Use something that every result with have in order to count them
-            const mapLinks = $('.cta-blue');
-            expect(mapLinks.length).to.equal(10);
-            mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://maps.google.com');
-            });
-            expect($('.list-tab__link').attr('href'))
-              .to.equal(`${constants.SITE_ROOT}/results?location=${postcode}&open=true&context=`);
-            done();
-          });
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, noNearbyResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results-none-nearby').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results-none').length).to.be.equal(0);
+        done();
       });
-    });
+  });
 
-    describe('with context of stomach ache', () => {
-      const context = contexts.stomachAche.context;
+  it('should display a message when there are no open pharmacies', (done) => {
+    const outcode = 'BA3';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
+    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
 
-      it('should return 3 open results, by default', (done) => {
-        chai.request(server)
-          .get(resultsRoute)
-          .query({ location: postcode, context })
-          .end((err, res) => {
-            iExpect.htmlWith200Status(err, res);
-            const $ = cheerio.load(res.text);
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
 
-            expect($('.local-header--title--question').text())
-              .to.equal(`Pharmacies that can help you near to '${postcode}'`);
-            // Use something that every result with have in order to count them
-            const mapLinks = $('.cta-blue');
-            expect(mapLinks.length).to.equal(3);
-            mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://maps.google.com');
-            });
-            const expectedHref =
-              `${constants.SITE_ROOT}/results?location=${postcode}&open=false&context=${context}`;
-            expect($('.list-tab__link').attr('href')).to.equal(expectedHref);
-            done();
-          });
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, noResultsResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results-none').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results-block').text()).to.contain('Call 111 for:');
+        expect($('.results-none-nearby').length).to.be.equal(0);
+        done();
       });
-
-      it('should return 10 results', (done) => {
-        chai.request(server)
-          .get(resultsRoute)
-          .query({ location: postcode, open: false, context: contexts.stomachAche.context })
-          .end((err, res) => {
-            iExpect.htmlWith200Status(err, res);
-            const $ = cheerio.load(res.text);
-
-            expect($('.local-header--title--question').text())
-              .to.equal(`Pharmacies that can help you near to '${postcode}'`);
-            // Use something that every result with have in order to count them
-            const mapLinks = $('.cta-blue');
-            expect(mapLinks.length).to.equal(10);
-            mapLinks.toArray().forEach((link) => {
-              expect($(link).attr('href')).to.have.string('https://maps.google.com');
-            });
-            const expectedHref =
-              `${constants.SITE_ROOT}/results?location=${postcode}&open=true&context=${context}`;
-            expect($('.list-tab__link').attr('href')).to.equal(expectedHref);
-            done();
-          });
-      });
-    });
   });
 });
 
 describe('The results page error handling', () => {
-  after('reset env vars', () => {
-    process.env.API_BASE_URL = '';
-  });
-
   describe('with a context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const resultsRoute = `${constants.SITE_ROOT}/results`;
     const context = contexts.stomachAche.context;
 
     it('should lookup a valid but unknown postcode and return an error message with the help context',
@@ -205,7 +237,6 @@ describe('The results page error handling', () => {
 
   describe('with no context', () => {
     const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const resultsRoute = `${constants.SITE_ROOT}/results`;
 
     it('should lookup a valid but unknown postcode and return an error message with no context',
       (done) => {
@@ -281,9 +312,8 @@ describe('The results page error handling', () => {
         .times(1)
         .reply(200, fakeResponse);
 
-      process.env.API_BASE_URL = 'https://dummy.url';
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}`)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
         .reply(500);
 
       chai.request(server)
@@ -316,9 +346,8 @@ describe('The results page error handling', () => {
         .times(1)
         .reply(200, badResponse);
 
-      process.env.API_BASE_URL = 'https://dummy.url';
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}`)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
         .reply(400, badPharmacyResponse);
 
       chai.request(server)
@@ -340,16 +369,23 @@ describe('The results page error handling', () => {
     });
 
     it('it should handle the pharmacy service being unavailable with an error message', (done) => {
-      const postcode = 'LS27UE';
+      const badOutcode = 'G51';
+      const badResponse = getSampleResponse('postcodesio-responses/G51.json');
+      const latitude = JSON.parse(badResponse).result.latitude;
+      const longitude = JSON.parse(badResponse).result.longitude;
 
-      process.env.API_BASE_URL = 'http://not.real';
+      nock('https://api.postcodes.io')
+        .get(`/outcodes/${badOutcode}`)
+        .times(1)
+        .reply(200, badResponse);
+
       nock(process.env.API_BASE_URL)
-        .get(/.*/)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
         .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
 
       chai.request(server)
         .get(resultsRoute)
-        .query({ location: postcode })
+        .query({ location: badOutcode })
         .end((err, res) => {
           expect(err).to.not.be.equal(null);
           expect(res).to.have.status(500);

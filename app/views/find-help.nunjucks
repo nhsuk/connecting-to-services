@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-Find a pharmacy
+<h1 class="local-header--title--question">Find a pharmacy</h1>
 {% endblock %}
 
 {% block pageTitle %}Find a place that can help you{% endblock %}
@@ -39,7 +39,6 @@ Find a pharmacy
           {% endif %}
           <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <input type="hidden" name="open" value="true">
             <input type="hidden" name="context" value="{{ context }}">
           </div>
         </div>
