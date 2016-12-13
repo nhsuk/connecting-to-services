@@ -17,7 +17,6 @@ describe('setLocals', () => {
       before('setup the function and execute it', () => {
         req = {
           query: {
-            location: 'location',
           },
           get: getNull,
         };
@@ -30,8 +29,8 @@ describe('setLocals', () => {
         setLocals.fromRequest(req, res, () => {});
       });
 
-      it('should set location based on the query location', () => {
-        expect(res.locals.location).to.equal(req.query.location);
+      it('should set location to empty string when it is not setupper cased based on the query locatio', () => {
+        expect(res.locals.location).to.equal('');
       });
 
       it('should set the context to \'\' when there is no context', () => {
@@ -60,8 +59,10 @@ describe('setLocals', () => {
         setLocals.fromRequest(req, res, () => {});
       });
 
-      it('should set location based on the query location', () => {
-        expect(res.locals.location).to.equal(req.query.location);
+      it('should set location upper cased based on the query location', () => {
+        const upperCasedLocation = req.query.location.toLocaleUpperCase();
+
+        expect(res.locals.location).to.equal(upperCasedLocation);
       });
 
       it('should set context based on the existing context', () => {

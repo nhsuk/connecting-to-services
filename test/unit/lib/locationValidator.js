@@ -1,5 +1,6 @@
 const chai = require('chai');
 const validateLocation = require('../../../app/lib/locationValidator');
+const messages = require('../../../app/lib/messages');
 
 const expect = chai.expect;
 
@@ -8,11 +9,13 @@ describe('Location validation', () => {
     const invalidPostcode = 'invalid';
 
     it('should return an errorMessage for an invalid postcode', () => {
+      const expectedErrorMessage = messages.invalidPostcodeMessage(invalidPostcode);
+
       const result = validateLocation(invalidPostcode);
 
       expect(result.errorMessage)
         .to.be
-        .equal(`${invalidPostcode} is not a valid postcode, please try again`);
+        .equal(expectedErrorMessage);
     });
 
     it('should return an errorMessage when no location is provided', () => {

@@ -191,8 +191,7 @@ describe('The results page error handling', () => {
     it('should only validate the postcode and return an error message along with the help context',
         (done) => {
           const invalidPostcode = 'invalid';
-          const errorMessage =
-            `${invalidPostcode} is not a valid postcode, please try again`;
+          const errorMessage = messages.invalidPostcodeMessage(invalidPostcode);
 
           chai.request(server)
             .get(resultsRoute)
