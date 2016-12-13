@@ -78,7 +78,7 @@
       {% block article %}
       <div class="local-header-white-bg">
         <div class="local-header--question">
-          <h1 class="local-header--title--question">{% block header %}{% endblock %}</h1>
+          {% block header %}{% endblock %}
           {% block pageIntro %}
           {% endblock %}
         </div>

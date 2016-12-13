@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-Find a pharmacy
+<h1 class="local-header--title--question">Find a pharmacy</h1>
 {% endblock %}
 
 {% block pageTitle %}Find a place that can help you{% endblock %}
