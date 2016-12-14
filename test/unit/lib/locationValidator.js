@@ -26,7 +26,7 @@ describe('Location validation', () => {
 
       expect(result.errorMessage)
         .to.be
-        .equal('A valid postcode is required to progress');
+        .equal(messages.emptyPostcodeMessage());
     });
 
     it('should return the input', () => {

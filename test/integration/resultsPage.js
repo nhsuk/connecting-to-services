@@ -183,7 +183,7 @@ describe('The results page error handling', () => {
 
               expect($('.link-back').text()).to.equal('Back to information on stomach ache');
               iExpect.findHelpPage($);
-              expect(res.text).to
+              expect($('.error-summary-heading').text()).to
                 .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
               done();
             });
@@ -203,7 +203,7 @@ describe('The results page error handling', () => {
 
               expect($('.link-back').text()).to.equal('Back to information on stomach ache');
               iExpect.findHelpPage($);
-              expect(res.text).to.contain(errorMessage);
+              expect($('.error-summary-heading').text()).to.contain(errorMessage);
               done();
             });
         });
@@ -229,7 +229,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
@@ -252,7 +252,9 @@ describe('The results page error handling', () => {
           .query({ location: invalidPostcodePassingRegex })
           .end((err, res) => {
             iExpect.htmlWith200Status(err, res);
-            expect(res.text).to
+            const $ = cheerio.load(res.text);
+
+            expect($('.error-summary-heading').text()).to
               .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
             done();
           });
@@ -270,7 +272,8 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           iExpect.findHelpPage($);
-          expect(res.text).to.contain(messages.invalidPostcodeMessage(invalidPostcode));
+          expect($('.error-summary-heading').text()).to
+            .contain(messages.invalidPostcodeMessage(invalidPostcode));
           done();
         });
     });
@@ -296,7 +299,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
@@ -329,7 +332,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
@@ -363,7 +366,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
@@ -396,7 +399,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
