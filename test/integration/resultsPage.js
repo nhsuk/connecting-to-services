@@ -19,7 +19,7 @@ const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
 describe('The results page', () => {
   it('should return 1 open result and 3 nearby results, by default', (done) => {
-    const ls27ue = 'LS27UE';
+    const ls27ue = 'LS2 7UE';
     const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const ls27ueResult = JSON.parse(ls27ueResponse).result;
@@ -28,7 +28,7 @@ describe('The results page', () => {
     const context = contexts.stomachAche.context;
 
     nock('https://api.postcodes.io')
-      .get(`/postcodes/${ls27ue}`)
+      .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
       .reply(200, ls27ueResponse);
 
@@ -208,10 +208,10 @@ describe('The results page error handling', () => {
         });
 
     it('should handle an error produced by the postcode lookup and return an error message', (done) => {
-      const postcode = 'AB123CD';
+      const postcode = 'AB12 3CD';
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${postcode}`)
+        .get(`/postcodes/${encodeURIComponent(postcode)}`)
         .times(1)
         .reply(500);
 
@@ -275,10 +275,10 @@ describe('The results page error handling', () => {
     });
 
     it('should handle an error produced by the postcode lookup and return an error message', (done) => {
-      const postcode = 'AB123CD';
+      const postcode = 'AB12 3CD';
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${postcode}`)
+        .get(`/postcodes/${encodeURIComponent(postcode)}`)
         .times(1)
         .reply(500);
 
@@ -301,13 +301,13 @@ describe('The results page error handling', () => {
     });
 
     it('should handle the pharmacy service when it responds with a 500 response with an error message', (done) => {
-      const fakePostcode = 'FA123KE';
+      const fakePostcode = 'FA12 3KE';
       const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
       const latitude = JSON.parse(fakeResponse).result.latitude;
       const longitude = JSON.parse(fakeResponse).result.longitude;
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${fakePostcode}`)
+        .get(`/postcodes/${encodeURIComponent(fakePostcode)}`)
         .times(1)
         .reply(200, fakeResponse);
 
@@ -334,14 +334,14 @@ describe('The results page error handling', () => {
     });
 
     it('should handle a response from the pharmacy service when there has been an error based on the input', (done) => {
-      const badPostcode = 'BA400AD';
+      const badPostcode = 'BA40 0AD';
       const badResponse = getSampleResponse('postcodesio-responses/bad.json');
       const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
       const latitude = JSON.parse(badResponse).result.latitude;
       const longitude = JSON.parse(badResponse).result.longitude;
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${badPostcode}`)
+        .get(`/postcodes/${encodeURIComponent(badPostcode)}`)
         .times(1)
         .reply(200, badResponse);
 

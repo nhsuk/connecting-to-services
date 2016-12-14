@@ -11,7 +11,11 @@ function validateLocation(location) {
     locationToReturn = location.trim();
     const postcode = new Postcode(locationToReturn);
 
-    if (!postcode.valid() && !Postcode.validOutcode(locationToReturn)) {
+    if (postcode.valid()) {
+      locationToReturn = postcode.normalise();
+    } else if (Postcode.validOutcode(locationToReturn)) {
+      locationToReturn = locationToReturn.toLocaleUpperCase();
+    } else {
       errorMessage = messages.invalidPostcodeMessage(locationToReturn);
     }
   }

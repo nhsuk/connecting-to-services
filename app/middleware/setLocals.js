@@ -2,8 +2,7 @@ const backLinkUtils = require('../lib/backLinkUtils');
 
 function fromRequest(req, res, next) {
   /* eslint-disable no-param-reassign */
-  const location = req.query.location || '';
-  res.locals.location = location.toLocaleUpperCase();
+  res.locals.location = req.query.location;
   res.locals.context = req.query.context || '';
 
   const backLink = backLinkUtils(req, res);

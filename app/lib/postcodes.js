@@ -13,7 +13,8 @@ function lookup(res, next) {
   if (outcode) {
     url = `${baseUrl}/outcodes/${location}`;
   } else {
-    url = `${baseUrl}/postcodes/${location}`;
+    const encodedLocation = encodeURIComponent(location);
+    url = `${baseUrl}/postcodes/${encodedLocation}`;
   }
 
   https.get(url, (postcodeRes) => {

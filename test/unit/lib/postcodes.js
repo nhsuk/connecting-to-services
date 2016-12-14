@@ -8,9 +8,11 @@ const expect = chai.expect;
 
 describe('Postcodes', () => {
   describe('lookup', () => {
+    const postcode = 'AB12 3CD';
+    const postcodeForRequest = encodeURIComponent(postcode);
     const response404 = JSON.parse(getSampleResponse('postcodesio-responses/404.json'));
+
     describe('happy path', () => {
-      const postcode = 'AB123CD';
       const outcode = 'AB1';
       const postcodeRes = { locals: { location: postcode } };
       const outcodeRes = { locals: { location: outcode } };
@@ -21,7 +23,7 @@ describe('Postcodes', () => {
         const expectedLongitude = postcodeResponse.result.longitude;
 
         nock('https://api.postcodes.io')
-          .get(`/postcodes/${postcode}`)
+          .get(`/postcodes/${postcodeForRequest}`)
           .reply(200, postcodeResponse);
 
         postcodes.lookup(postcodeRes, () => {
@@ -55,12 +57,12 @@ describe('Postcodes', () => {
     });
 
     describe('postcode errors', () => {
-      const postcode404 = 'AB123CD';
+      const postcode404 = 'AB12 3CD';
       const postcode404Res = { locals: { location: postcode404 } };
 
       it('should return null when postcode is not found', (done) => {
         nock('https://api.postcodes.io')
-          .get(`/postcodes/${postcode404}`)
+          .get(`/postcodes/${encodeURIComponent(postcode404)}`)
           .reply(404, response404);
 
         postcodes.lookup(postcode404Res, (err) => {
@@ -73,11 +75,10 @@ describe('Postcodes', () => {
 
     describe('server errors', () => {
       it('should return an error when postcode service throws a 500 error', (done) => {
-        const postcode = 'AB123CD';
         const postcodeRes = { locals: { location: postcode } };
 
         nock('https://api.postcodes.io')
-          .get(`/postcodes/${postcode}`)
+          .get(`/postcodes/${postcodeForRequest}`)
           .reply(500);
 
         postcodes.lookup(postcodeRes, (err) => {
@@ -89,12 +90,11 @@ describe('Postcodes', () => {
       });
 
       it('should return error when postcode service is unavailable', (done) => {
-        const postcode = 'AB123CD';
         const postcodeRes = { locals: { location: postcode } };
         const errorMessage = 'getaddrinfo ENOTFOUND api.postcodes.io api.postcodes.io:443';
 
         nock('https://api.postcodes.io')
-          .get(`/postcodes/${postcode}`)
+          .get(`/postcodes/${postcodeForRequest}`)
           .replyWithError({ message: errorMessage });
 
         postcodes.lookup(postcodeRes, (err) => {

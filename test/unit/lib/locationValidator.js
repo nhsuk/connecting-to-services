@@ -1,6 +1,7 @@
 const chai = require('chai');
 const validateLocation = require('../../../app/lib/locationValidator');
 const messages = require('../../../app/lib/messages');
+const Postcode = require('postcode');
 
 const expect = chai.expect;
 
@@ -44,49 +45,60 @@ describe('Location validation', () => {
   });
 
   describe('happy path', () => {
-    const validPostcode = 'AB12 3CD';
-    const outcode = 'AB12';
+    describe('for outcode', () => {
+      it('should return the trimmed input, capitalised', () => {
+        const outcodeNeedsTrimming = '  ab1  ';
+        const trimmedOutcode = 'AB1';
 
-    it('should return the trimmed input', () => {
-      const postcodeNeedsTrimming = '  ab1  ';
-      const trimmedPostcode = 'ab1';
+        const result = validateLocation(outcodeNeedsTrimming);
 
-      const result = validateLocation(postcodeNeedsTrimming);
+        expect(result.input).to.be.equal(trimmedOutcode);
+        // eslint-disable-next-line no-unused-expressions
+        expect(result.errorMessage).to.be.null;
+      });
 
-      expect(result.input).to.be.equal(trimmedPostcode);
-      // eslint-disable-next-line no-unused-expressions
-      expect(result.errorMessage).to.be.null;
+      it('should pass validation with a valid outcode', () => {
+        const outcode = 'AB12';
+
+        const result = validateLocation(outcode);
+
+        expect(result.input).to.be.equal(outcode);
+        // eslint-disable-next-line no-unused-expressions
+        expect(result.errorMessage).to.be.null;
+      });
     });
 
-    it('should pass validation with a valid outcode', () => {
-      const result = validateLocation(outcode);
-
-      expect(result.input).to.be.equal(outcode);
-      // eslint-disable-next-line no-unused-expressions
-      expect(result.errorMessage).to.be.null;
-    });
-
-    it('should pass validation with a valid full postcode', () => {
+    describe('for postcode', () => {
+      const validPostcode = 'ab123cd';
       const result = validateLocation(validPostcode);
+      const formattedPostcode = new Postcode(validPostcode).normalise();
 
-      expect(result.input).to.be.equal(validPostcode);
-      // eslint-disable-next-line no-unused-expressions
-      expect(result.errorMessage).to.be.null;
-    });
+      it('should pass validation and return a formatted postcode with a valid full postcode', () => {
+        expect(result.input).to.be.equal(formattedPostcode);
+        // eslint-disable-next-line no-unused-expressions
+        expect(result.errorMessage).to.be.null;
+      });
 
-    it('should return the input', () => {
-      const result = validateLocation(validPostcode);
+      it('should return the input', () => {
+        expect(result).to.be.an('object');
+        expect(result.input).to.be.equal(formattedPostcode);
+      });
 
-      expect(result).to.be.an('object');
-      expect(result.input).to.be.equal(validPostcode);
-    });
+      it('should return an object with expected properties', () => {
+        expect(result).to.be.an('object');
+        expect(result).to.have.property('input');
+        expect(result).to.have.property('errorMessage');
+      });
 
-    it('should return an object with expected properties', () => {
-      const result = validateLocation(validPostcode);
+      it('should return the trimmed input', () => {
+        const postcodeNeedsTrimming = '  ab123cd  ';
 
-      expect(result).to.be.an('object');
-      expect(result).to.have.property('input');
-      expect(result).to.have.property('errorMessage');
+        const trimmedResult = validateLocation(postcodeNeedsTrimming);
+
+        expect(trimmedResult.input).to.be.equal(formattedPostcode);
+        // eslint-disable-next-line no-unused-expressions
+        expect(trimmedResult.errorMessage).to.be.null;
+      });
     });
   });
 });
