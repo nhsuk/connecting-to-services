@@ -16,15 +16,17 @@
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
 
   <div class="results">
-    <div class="results-block">
-      <h2 class="results__header results-none">There are no pharmacies within 20 miles of your location</h2>
-      <p>Call 111 for:</p>
-      <ul>
-        <li>medical advice if you aren’t in an emergency</li>
-        <li>advice on whether you need urgent care</li>
-        <li>more information about a specific health condition</li>
-      </ul>
-      <p>If you need emergency help, call 999.</p>
+    <div class="results-block results-block--none">
+      <h2 class="results__header results__header--none">There are no pharmacies within 20 miles of your location</h2>
+      <div class="results__none-content">
+        <p>Call 111 for:</p>
+        <ul>
+          <li>medical advice if you aren’t in an emergency</li>
+          <li>advice on whether you need urgent care</li>
+          <li>more information about a specific health condition</li>
+        </ul>
+        <p>If you need emergency help, call 999.</p>
+      </div>
     </div>
   </div>
 
@@ -67,7 +69,7 @@
     <div class="results">
 
       <div class="results-block">
-        <h2 class="results__header results-none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
+        <h2 class="results__header results__header--none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
       </div>
 
       <h2 class="results__header">Next closest pharmacies to {{ location }}</h2>
