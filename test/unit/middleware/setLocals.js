@@ -15,16 +15,8 @@ describe('setLocals', () => {
       let res;
 
       before('setup the function and execute it', () => {
-        req = {
-          query: {
-          },
-          get: getNull,
-        };
-        res = {
-          locals: {
-            backLink: {},
-          },
-        };
+        req = { query: { }, get: getNull };
+        res = { locals: { backLink: {} } };
 
         setLocals.fromRequest(req, res, () => {});
       });
@@ -50,11 +42,7 @@ describe('setLocals', () => {
           },
           get: getNull,
         };
-        res = {
-          locals: {
-            backLink: {},
-          },
-        };
+        res = { locals: { backLink: {} } };
 
         setLocals.fromRequest(req, res, () => {});
       });
