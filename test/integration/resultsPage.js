@@ -91,7 +91,7 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results-none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
+        expect($('.results__header--none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();
       });
@@ -151,7 +151,7 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results-none').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results__header--none').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
         expect($('.results-block').text()).to.contain('Call 111 for:');
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();
