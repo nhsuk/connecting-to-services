@@ -45,10 +45,10 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--nearest').text())
-          .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
+          .to.equal(`Pharmacy near ${ls27ue} open now`);
 
         expect($('.results__header--nearby').text())
-          .to.equal(`Next closest pharmacies to ${ls27ue}`);
+          .to.equal('Other pharmacies nearby');
 
         const openResults = $('.results__details-nearest .results__maplink');
         expect(openResults.length).to.equal(1);
@@ -121,13 +121,13 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results-none-nearby').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results-none-nearby').text()).to.be.equal(`There are no more pharmacies within 20 miles of ${outcode}`);
         expect($('.results-none').length).to.be.equal(0);
         done();
       });
   });
 
-  it('should display a message when there are no open pharmacies', (done) => {
+  it('should display a message when there are no nearby and no open pharmacies', (done) => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
     const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
@@ -151,7 +151,8 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results__header--none').text()).to
+          .be.equal(`There are no pharmacies within 20 miles of ${outcode}`);
         expect($('.results-block').text()).to.contain('Call 111 for:');
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();
