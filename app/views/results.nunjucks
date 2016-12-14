@@ -21,7 +21,7 @@
 
     <ol class="results">
       <li class="results__item results__item--nearest">
-        <h2 class="results__header results__header--nearest">Pharmacy near {{ location }} open now</h2>
+        <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ location }}</h2>
         <div class="results__details results__details-nearest column--two-thirds results__details--column">
           {% set service = openServices[0] %}
           {% include "includes/result-item.nunjucks" %}
@@ -32,7 +32,7 @@
 
         </ol>
         <div class="results">
-          <h2 class="results__header results-none-nearby">There are no more pharmacies within 20 miles of {{ location }}</h2>
+          <h2 class="results__header results-none-nearby">There are no other pharmacies within 20 miles of {{ location }}</h2>
         </div>
 
       {% else %}

@@ -45,7 +45,7 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--nearest').text())
-          .to.equal(`Pharmacy near ${ls27ue} open now`);
+          .to.equal(`Nearest open pharmacy to ${ls27ue}`);
 
         expect($('.results__header--nearby').text())
           .to.equal('Other pharmacies nearby');
@@ -121,7 +121,7 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results-none-nearby').text()).to.be.equal(`There are no more pharmacies within 20 miles of ${outcode}`);
+        expect($('.results-none-nearby').text()).to.be.equal(`There are no other pharmacies within 20 miles of ${outcode}`);
         expect($('.results-none').length).to.be.equal(0);
         done();
       });
