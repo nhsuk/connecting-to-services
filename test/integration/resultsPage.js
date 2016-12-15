@@ -153,7 +153,8 @@ describe('The results page', () => {
 
         expect($('.results__header--none').text()).to
           .be.equal(`There are no pharmacies within 20 miles of ${outcode}`);
-        expect($('.results-block').text()).to.contain('Call 111 for:');
+        expect($('.results__none-content').text()).to
+          .contain('This service only provides information about pharmacies in England');
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();
       });
