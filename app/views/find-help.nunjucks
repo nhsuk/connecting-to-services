@@ -25,9 +25,7 @@
         {% else %}
         <div class="form-group">
           {% endif %}
-          <label class="form-label-bold" for="location">
-            Enter a postcode
-          </label>
+          <label class="form-label-bold" for="location">{{ locationLabel }}</label>
 
           <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>

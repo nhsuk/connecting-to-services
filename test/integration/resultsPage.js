@@ -202,7 +202,7 @@ describe('The results page error handling', () => {
               const $ = cheerio.load(res.text);
 
               expect($('.link-back').text()).to.equal('Back to information on stomach ache');
-              iExpect.findHelpPage($);
+              iExpect.findHelpPageInvalidEntry($);
               expect($('.error-summary-heading').text()).to.contain(errorMessage);
               done();
             });
@@ -271,7 +271,7 @@ describe('The results page error handling', () => {
           const $ = cheerio.load(res.text);
 
           expect($('.page-section').text()).to.not.contain('For help with');
-          iExpect.findHelpPage($);
+          iExpect.findHelpPageInvalidEntry($);
           expect($('.error-summary-heading').text()).to
             .contain(messages.invalidPostcodeMessage(invalidPostcode));
           done();

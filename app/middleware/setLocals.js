@@ -4,6 +4,7 @@ function fromRequest(req, res, next) {
   /* eslint-disable no-param-reassign */
   res.locals.location = req.query.location;
   res.locals.context = req.query.context || '';
+  res.locals.locationLabel = 'Enter a postcode';
 
   const backLink = backLinkUtils(req, res);
   res.locals.backLink = {
