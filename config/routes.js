@@ -7,6 +7,7 @@ const renderer = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
 const setLocals = require('../app/middleware/setLocals');
 const log = require('../app/middleware/logger');
+const logZeroResults = require('../app/middleware/logZeroResults');
 
 router.get('/',
   (req, res) => {
@@ -20,6 +21,7 @@ router.get('/results',
   validateLocation,
   coordinateResolver,
   getPharmacies,
+  logZeroResults,
   prerender.results,
   renderer.results
 );
