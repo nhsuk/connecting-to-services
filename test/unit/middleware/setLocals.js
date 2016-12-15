@@ -15,23 +15,10 @@ describe('setLocals', () => {
       let res;
 
       before('setup the function and execute it', () => {
-        req = {
-          query: {
-            location: 'location',
-          },
-          get: getNull,
-        };
-        res = {
-          locals: {
-            backLink: {},
-          },
-        };
+        req = { query: { }, get: getNull };
+        res = { locals: { backLink: {} } };
 
         setLocals.fromRequest(req, res, () => {});
-      });
-
-      it('should set location based on the query location', () => {
-        expect(res.locals.location).to.equal(req.query.location);
       });
 
       it('should set the context to \'\' when there is no context', () => {
@@ -51,17 +38,9 @@ describe('setLocals', () => {
           },
           get: getNull,
         };
-        res = {
-          locals: {
-            backLink: {},
-          },
-        };
+        res = { locals: { backLink: {} } };
 
         setLocals.fromRequest(req, res, () => {});
-      });
-
-      it('should set location based on the query location', () => {
-        expect(res.locals.location).to.equal(req.query.location);
       });
 
       it('should set context based on the existing context', () => {
@@ -70,4 +49,3 @@ describe('setLocals', () => {
     });
   });
 });
-

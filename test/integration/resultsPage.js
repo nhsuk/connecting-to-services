@@ -19,7 +19,7 @@ const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
 describe('The results page', () => {
   it('should return 1 open result and 3 nearby results, by default', (done) => {
-    const ls27ue = 'LS27UE';
+    const ls27ue = 'LS2 7UE';
     const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const ls27ueResult = JSON.parse(ls27ueResponse).result;
@@ -28,7 +28,7 @@ describe('The results page', () => {
     const context = contexts.stomachAche.context;
 
     nock('https://api.postcodes.io')
-      .get(`/postcodes/${ls27ue}`)
+      .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
       .reply(200, ls27ueResponse);
 
@@ -45,10 +45,10 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--nearest').text())
-          .to.equal(`Pharmacy nearest to ${ls27ue} open now`);
+          .to.equal(`Nearest open pharmacy to ${ls27ue}`);
 
         expect($('.results__header--nearby').text())
-          .to.equal(`Next closest pharmacies to ${ls27ue}`);
+          .to.equal('Other pharmacies nearby');
 
         const openResults = $('.results__details-nearest .results__maplink');
         expect(openResults.length).to.equal(1);
@@ -121,13 +121,13 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results-none-nearby').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results-none-nearby').text()).to.be.equal(`There are no other pharmacies within 20 miles of ${outcode}`);
         expect($('.results-none').length).to.be.equal(0);
         done();
       });
   });
 
-  it('should display a message when there are no open pharmacies', (done) => {
+  it('should display a message when there are no nearby and no open pharmacies', (done) => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
     const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
@@ -151,7 +151,8 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal('There are no pharmacies within 20 miles of your location');
+        expect($('.results__header--none').text()).to
+          .be.equal(`There are no pharmacies within 20 miles of ${outcode}`);
         expect($('.results-block').text()).to.contain('Call 111 for:');
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();
@@ -182,7 +183,7 @@ describe('The results page error handling', () => {
 
               expect($('.link-back').text()).to.equal('Back to information on stomach ache');
               iExpect.findHelpPage($);
-              expect(res.text).to
+              expect($('.error-summary-heading').text()).to
                 .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
               done();
             });
@@ -191,8 +192,7 @@ describe('The results page error handling', () => {
     it('should only validate the postcode and return an error message along with the help context',
         (done) => {
           const invalidPostcode = 'invalid';
-          const errorMessage =
-            `${invalidPostcode} is not a valid postcode, please try again`;
+          const errorMessage = messages.invalidPostcodeMessage(invalidPostcode);
 
           chai.request(server)
             .get(resultsRoute)
@@ -202,17 +202,17 @@ describe('The results page error handling', () => {
               const $ = cheerio.load(res.text);
 
               expect($('.link-back').text()).to.equal('Back to information on stomach ache');
-              iExpect.findHelpPage($);
-              expect(res.text).to.contain(errorMessage);
+              iExpect.findHelpPageInvalidEntry($);
+              expect($('.error-summary-heading').text()).to.contain(errorMessage);
               done();
             });
         });
 
     it('should handle an error produced by the postcode lookup and return an error message', (done) => {
-      const postcode = 'AB123CD';
+      const postcode = 'AB12 3CD';
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${postcode}`)
+        .get(`/postcodes/${encodeURIComponent(postcode)}`)
         .times(1)
         .reply(500);
 
@@ -229,7 +229,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
@@ -252,7 +252,9 @@ describe('The results page error handling', () => {
           .query({ location: invalidPostcodePassingRegex })
           .end((err, res) => {
             iExpect.htmlWith200Status(err, res);
-            expect(res.text).to
+            const $ = cheerio.load(res.text);
+
+            expect($('.error-summary-heading').text()).to
               .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
             done();
           });
@@ -269,17 +271,18 @@ describe('The results page error handling', () => {
           const $ = cheerio.load(res.text);
 
           expect($('.page-section').text()).to.not.contain('For help with');
-          iExpect.findHelpPage($);
-          expect(res.text).to.contain(messages.invalidPostcodeMessage(invalidPostcode));
+          iExpect.findHelpPageInvalidEntry($);
+          expect($('.error-summary-heading').text()).to
+            .contain(messages.invalidPostcodeMessage(invalidPostcode));
           done();
         });
     });
 
     it('should handle an error produced by the postcode lookup and return an error message', (done) => {
-      const postcode = 'AB123CD';
+      const postcode = 'AB12 3CD';
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${postcode}`)
+        .get(`/postcodes/${encodeURIComponent(postcode)}`)
         .times(1)
         .reply(500);
 
@@ -296,19 +299,19 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
 
     it('should handle the pharmacy service when it responds with a 500 response with an error message', (done) => {
-      const fakePostcode = 'FA123KE';
+      const fakePostcode = 'FA12 3KE';
       const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
       const latitude = JSON.parse(fakeResponse).result.latitude;
       const longitude = JSON.parse(fakeResponse).result.longitude;
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${fakePostcode}`)
+        .get(`/postcodes/${encodeURIComponent(fakePostcode)}`)
         .times(1)
         .reply(200, fakeResponse);
 
@@ -329,20 +332,20 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
 
     it('should handle a response from the pharmacy service when there has been an error based on the input', (done) => {
-      const badPostcode = 'BA400AD';
+      const badPostcode = 'BA40 0AD';
       const badResponse = getSampleResponse('postcodesio-responses/bad.json');
       const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
       const latitude = JSON.parse(badResponse).result.latitude;
       const longitude = JSON.parse(badResponse).result.longitude;
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${badPostcode}`)
+        .get(`/postcodes/${encodeURIComponent(badPostcode)}`)
         .times(1)
         .reply(200, badResponse);
 
@@ -363,7 +366,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });
@@ -396,7 +399,7 @@ describe('The results page error handling', () => {
 
           expect($('.page-section').text()).to.not.contain('For help with');
           expect($('.local-header--title--question').text())
-            .to.contain('Sorry, we are experiencing technical problems');
+            .to.contain(messages.technicalProblems());
           done();
         });
     });

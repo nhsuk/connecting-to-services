@@ -6,12 +6,16 @@ function validateLocation(location) {
   let locationToReturn = location;
 
   if (!location) {
-    errorMessage = 'A valid postcode is required to progress';
+    errorMessage = messages.emptyPostcodeMessage();
   } else {
     locationToReturn = location.trim();
     const postcode = new Postcode(locationToReturn);
 
-    if (!postcode.valid() && !Postcode.validOutcode(locationToReturn)) {
+    if (postcode.valid()) {
+      locationToReturn = postcode.normalise();
+    } else if (Postcode.validOutcode(locationToReturn)) {
+      locationToReturn = locationToReturn.toLocaleUpperCase();
+    } else {
       errorMessage = messages.invalidPostcodeMessage(locationToReturn);
     }
   }

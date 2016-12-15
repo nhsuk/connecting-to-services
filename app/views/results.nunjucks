@@ -15,26 +15,13 @@
 
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
 
-  <div class="results">
-    <div class="results-block results-block--none">
-      <h2 class="results__header results__header--none">There are no pharmacies within 20 miles of your location</h2>
-      <div class="results__none-content">
-        <p>Call 111 for:</p>
-        <ul>
-          <li>medical advice if you aren’t in an emergency</li>
-          <li>advice on whether you need urgent care</li>
-          <li>more information about a specific health condition</li>
-        </ul>
-        <p>If you need emergency help, call 999.</p>
-      </div>
-    </div>
-  </div>
+    {% include "includes/no-results.nunjucks" %}
 
   {% elif openServices.length > 0 %}
 
     <ol class="results">
       <li class="results__item results__item--nearest">
-        <h2 class="results__header results__header--nearest">Pharmacy nearest to {{ location }} open now</h2>
+        <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ location }}</h2>
         <div class="results__details results__details-nearest column--two-thirds results__details--column">
           {% set service = openServices[0] %}
           {% include "includes/result-item.nunjucks" %}
@@ -45,12 +32,12 @@
 
         </ol>
         <div class="results">
-          <h2 class="results__header results-none-nearby">There are no pharmacies within 20 miles of your location</h2>
+          <h2 class="results__header results-none-nearby">There are no other pharmacies within 20 miles of {{ location }}</h2>
         </div>
 
       {% else %}
         <li class="results__item results__nearby">
-          <h2 class="results__header results__header--nearby">Next closest pharmacies to {{ location }}</h2>
+          <h2 class="results__header results__header--nearby">Other pharmacies nearby</h2>
           <ol class="results__nearby-list">
           {% for service in nearbyServices %}
             <li class="results__item results__item--nearby">
@@ -72,7 +59,7 @@
         <h2 class="results__header results__header--none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
       </div>
 
-      <h2 class="results__header">Next closest pharmacies to {{ location }}</h2>
+      <h2 class="results__header">Other pharmacies nearby</h2>
       <ol class="results__nearby-list">
       {% for service in nearbyServices %}
         <li class="results__item results__item--nearby">
