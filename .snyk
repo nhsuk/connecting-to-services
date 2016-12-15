@@ -3,6 +3,4 @@ ignore: {}
 patch:
   'npm:request:20160119':
     - bunyan-logger > splunk-bunyan-logger > splunk-logging > request:
-        patched: '2016-11-17T08:05:34.014Z'
-    - bunyan-logger > splunk-bunyan-logger > splunk-logging > request:
         patched: '2016-12-15T09:44:48.602Z'
