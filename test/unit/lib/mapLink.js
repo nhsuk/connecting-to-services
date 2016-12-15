@@ -24,22 +24,20 @@ describe('mapLink', () => {
         name: nameOne,
         address,
       },
-        {
-          name: nameTwo,
-          address,
-        }];
+      {
+        name: nameTwo,
+        address,
+      }];
+
       const start = `saddr=${location}`;
       const nameAndAddressOne = `${nameOne},${Object.values(address).join()}`;
       const destinationOne = `daddr=${nameAndAddressOne}`;
       const nearOne = `near=${nameAndAddressOne}`;
-
       const nameAndAddressTwo = `${nameTwo},${Object.values(address).join()}`;
       const destinationTwo = `daddr=${nameAndAddressTwo}`;
       const nearTwo = `near=${nameAndAddressTwo}`;
-
       const expectedMapLinkOne =
         `https://maps.google.com/maps?${start}&${destinationOne}&${nearOne}`.replace(/ /g, '+');
-
       const expectedMapLinkTwo =
         `https://maps.google.com/maps?${start}&${destinationTwo}&${nearTwo}`.replace(/ /g, '+');
 
@@ -51,6 +49,7 @@ describe('mapLink', () => {
       expect(results[0].mapUrl).to.be.equal(expectedMapLinkOne);
       expect(results[1].mapUrl).to.be.equal(expectedMapLinkTwo);
     });
+
     it('should remove any empty, null or undefined address properties', () => {
       const inputList = [{
         name: 'name',
