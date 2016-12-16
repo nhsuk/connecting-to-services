@@ -73,6 +73,7 @@
     "mocha": "^3.0.2",
     "nock": "^8.0.0",
     "nodemon": "^1.10.2",
+    "proxyquire": "^1.7.10",
     "request": "^2.78.0"
   },
   "snyk": true
