@@ -17,12 +17,12 @@ if (navigator.geolocation) {
         })
         .fail(function (error) {
           $('.location-error').show();
-          console.log(error.code);
+          alert(error.code);
         });
     };
     var geoError = function(error) {
       $('.location-error').show();
-      console.log(error.code);
+      alert(error.code);
     };
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
   });
