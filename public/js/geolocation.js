@@ -12,7 +12,8 @@ if (navigator.geolocation) {
       $.get((url)).
         done(function (data) {
           postcode = data.result[0].postcode;
-          $('#location').addClass('highlight').val(postcode);
+          $('#location').val(postcode);
+          $('.submit-search').click();
         })
         .fail(function (error) {
           $('.location-error').show();

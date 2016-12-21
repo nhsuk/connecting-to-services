@@ -42,7 +42,7 @@
 
         <div class="form-item-wrapper">
           <div class="form-group form-group--submit">
-            <input type="submit" class="button" value="Search">
+            <input type="submit" class="button submit-search" value="Search">
           </div>
         </div>
         <div class="find-location location-hide">or
