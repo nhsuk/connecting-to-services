@@ -17,14 +17,15 @@ if (navigator.geolocation) {
         })
         .fail(function (error) {
           $('.location-error').show();
-          alert(error.code);
         });
     };
     var geoError = function(error) {
       $('.location-error').show();
-      alert(error.code);
     };
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    var geoOptions = {
+      enableHighAccuracy: true
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
   });
 
 }
