@@ -62,6 +62,7 @@ module.exports = (app, config) => {
         '\'self\'',
         'https://*.hotjar.com:*',
         'wss://*.hotjar.com',
+        'https://api.postcodes.io'
       ],
     },
   }));
