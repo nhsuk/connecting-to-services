@@ -2450,3 +2450,11 @@ abbr[title] {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+.location-hide {
+  display:none;
+}
+
+.highlight {
+  border:5px solid #338ed1;
+}
