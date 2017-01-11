@@ -1,5 +1,5 @@
-FROM node
-RUN apt-get update && apt-get -y install git
+FROM node:alpine
+RUN apk add --no-cache git
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY package.json /app
 
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 3001
 
 COPY . /app
 
