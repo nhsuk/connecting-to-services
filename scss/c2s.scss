@@ -4,6 +4,7 @@
    Colours
 */
 $hiviz: #ffca55;
+$blue: #0072c6;
 
 
 .sr-only {
@@ -182,7 +183,7 @@ form {
       &__item {
         margin-top:8px;
         &--nearest {
-          border: 16px solid #0072c6;
+          border: 16px solid $blue;
           padding: 0;
         }
         &--nearby {
@@ -208,7 +209,7 @@ form {
         line-height:40px;
         padding:0 8px;
         &--nearest {
-          background-color: #0072c6;
+          background-color: $blue;
           color: #fff;
           padding:8px 8px 24px 8px;
         }
@@ -255,6 +256,31 @@ form {
       }
       &__name {
         margin-top:8px;
+      }
+      &-block {
+        &--none {
+          background-color: #0072c6;
+          color: #fff;
+          margin-bottom: 32px;
+          padding: 16px;
+          @include media(desktop) {
+            margin-bottom: 48px;
+          }
+          .results__header {
+            padding: 8px 8px 12px 8px;
+            @include media(desktop) {
+              padding: 8px 16px 0 16px;
+            }
+          }
+          .results__none-content {
+            background: #fff;
+            color: #000;
+            padding: 16px;
+            @include media(desktop) {
+              padding: 32px;
+            }
+          }
+        }
       }
     }
   }
