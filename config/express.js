@@ -28,6 +28,9 @@ module.exports = (app, config) => {
       defaultSrc: [
         '\'self\'',
       ],
+      childSrc: [
+        'https://*.hotjar.com:*',
+      ],
       scriptSrc: [
         '\'self\'',
         '\'unsafe-inline\'',
