@@ -11,7 +11,7 @@ script:
 - npm run lint
 - npm run generate-coverage
 - npm run check-coverage
-- npm run upload-coverage-coveralls
+#- npm run upload-coverage-coveralls
 #- npm run upload-coverage-codacy
 
 
