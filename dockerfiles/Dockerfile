@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY package.json /app
 
-RUN npm install
+RUN npm config set loglevel warn && npm install
 
 EXPOSE 3000
 
