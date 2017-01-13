@@ -1,5 +1,5 @@
-node-sass --output-style compact --include-path scss scss/c2s.scss public/css/nhsuk.css;
-node-sass --output-style compact --include-path scss scss/c2s-print.scss public/css/print.css;
-node-sass --output-style compact --include-path scss scss/c2s-ie6.scss public/css/nhsuk-ie6.css;
-node-sass --output-style compact --include-path scss scss/c2s-ie7.scss public/css/nhsuk-ie7.css;
-node-sass --output-style compact --include-path scss scss/c2s-ie8.scss public/css/nhsuk-ie8.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s.scss public/css/nhsuk.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-print.scss public/css/print.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie6.scss public/css/nhsuk-ie6.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie7.scss public/css/nhsuk-ie7.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie8.scss public/css/nhsuk-ie8.css;
