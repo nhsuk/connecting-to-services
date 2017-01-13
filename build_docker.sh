@@ -7,6 +7,10 @@ push_to_docker=true
 docker_repo="connecting-to-services"
 docker_registry="nhsuk"
 
+currentBranch=`git rev-parse --abbrev-ref HEAD`
+currentBranchSanitised=`echo $currentBranch | sed 's/\//_/g'`
+currentCommit=`git rev-parse --short HEAD`
+
 info() {
   printf "%s\n" "$@"
 }
@@ -81,6 +85,13 @@ if [ "$push_to_docker" = true ]; then
   fold_start "Default Image"
   docker tag $docker_repo $docker_registry/$docker_repo
   push_to_dockerhub $docker_registry/$docker_repo
+
+  docker tag $docker_repo:$variant $docker_registry/$docker_repo:$currentBranch
+  push_to_dockerhub $docker_registry/$docker_repo:$currentBranch
+
+  docker tag $docker_repo:$variant $docker_registry/$docker_repo:$currentCommit
+  push_to_dockerhub $docker_registry/$docker_repo:$currentCommit
+
   fold_end "Default Image"
 
   for variant in $variants; do
@@ -90,6 +101,13 @@ if [ "$push_to_docker" = true ]; then
     fold_start "$variant variant image"
     docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant
     push_to_dockerhub $docker_registry/$docker_repo:$variant
+
+    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-$currentBranch
+    push_to_dockerhub $docker_registry/$docker_repo:$variant-$currentBranch
+
+    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-$currentCommit
+    push_to_dockerhub $docker_registry/$docker_repo:$variant-$currentCommit
+
     fold_end "$variant variant image"
 
   done
