@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
+set -u
 IFS=$'\n\t'
 
 push_to_docker=true
@@ -17,47 +17,86 @@ fatal() {
   printf "**********\n"
   exit 1
 }
+
+fold_start() {
+  printf "%s\n" "travis_fold:start:$@"
+}
+
+fold_end() {
+  printf "%s\n" "travis_fold:end:$@"
+}
+
+push_to_dockerhub() {
+
+  docker push "$@"
+  if [[ $? -gt 0 ]]; then
+    fatal "Push of $@ failed!"
+  else
+    info "Push of $@ succeeded"
+  fi
+
+}
+
+fold_start "Building Docker Images"
+
 dockerfile_dir="dockerfiles"
 [ -f "$dockerfile_dir/Dockerfile" ] || continue
 
-info "Building..."
-BUILD_OUTPUT=$(docker build -t $docker_repo -f $dockerfile_dir/Dockerfile . )
+fold_start "Building Default Image"
+info "Building default image"
+docker build -t $docker_repo -f $dockerfile_dir/Dockerfile .
 
 if [[ $? -gt 0 ]]; then
   fatal "Build failed!"
-  fatal $BUILD_OUTPUT
 else
   info "Build succeeded."
 fi
-
-if [ "$push_to_docker" = true ]; then
-  docker tag $docker_repo $docker_registry/$docker_repo
-  docker push $docker_registry/$docker_repo
-fi
+fold_end "Building Default Image"
 
 
+fold_start "Building variant images"
 variants=$(echo $dockerfile_dir/*/ | xargs -n1 basename)
-
 for variant in $variants; do
   # Skip non-docker directories
   [ -f "$dockerfile_dir/$variant/Dockerfile" ] || continue
 
+  fold_start "Building $variant Image"
   info "Building $docker_repo:$variant variant..."
-  BUILD_OUTPUT=$(docker build -t $docker_repo:$variant -f $dockerfile_dir/$variant/Dockerfile . )
+  docker build -t $docker_repo:$variant -f $dockerfile_dir/$variant/Dockerfile .
 
   if [[ $? -gt 0 ]]; then
     fatal "Build of $variant failed!"
-    fatal $BUILD_OUTPUT
   else
     info "Build of $variant succeeded."
   fi
-
-  if [ "$push_to_docker" = true ]; then
-    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant
-    docker push $docker_registry/$docker_repo:$variant
-  fi
+  fold_end "Building $variant Image"
 
 done
+fold_end "Building variant images"
+
+
+if [ "$push_to_docker" = true ]; then
+  fold_start "Tagging and pushing images to docker hub"
+
+  fold_start "Default Image"
+  docker tag $docker_repo $docker_registry/$docker_repo
+  push_to_dockerhub $docker_registry/$docker_repo
+  fold_end "Default Image"
+
+  for variant in $variants; do
+    # Skip non-docker directories
+    [ -f "$dockerfile_dir/$variant/Dockerfile" ] || continue
+
+    fold_start "$variant variant image"
+    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant
+    push_to_dockerhub $docker_registry/$docker_repo:$variant
+    fold_end "$variant variant image"
+
+  done
+
+  fold_end "Tagging and pushing images to docker hub"
+
+fi
 
 info "All builds successful!"
 
