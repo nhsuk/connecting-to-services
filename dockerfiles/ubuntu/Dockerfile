@@ -3,6 +3,8 @@ RUN apt-get update && apt-get -y install git
 
 WORKDIR /app
 
+ENV NODE_ENV=production
+
 COPY package.json /app
 
 RUN npm config set loglevel warn && npm install
