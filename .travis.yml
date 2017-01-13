@@ -8,15 +8,15 @@ language: node_js
 node_js:
 - node
 script:
-- npm run lint
-- npm run generate-coverage
-- npm run check-coverage
+#- npm run lint
+#- npm run generate-coverage
+#- npm run check-coverage
 #- npm run upload-coverage-coveralls
 #- npm run upload-coverage-codacy
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - ./build_docker.sh
 
 after_success:
 #- docker build -t nhsuk/connecting-to-services:travis-test -f dockerfiles/Dockerfile .
-#- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 #- docker push nhsuk/connecting-to-services:travis-test
 - 
