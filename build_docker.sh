@@ -4,8 +4,7 @@ set -u
 IFS=$'\n\t'
 
 push_to_docker=true
-docker_repo="connecting-to-services"
-docker_registry="nhsuk"
+docker_repo="nhsuk/connecting-to-services"
 
 currentBranch=`git rev-parse --abbrev-ref HEAD`
 currentBranchSanitised=`echo $currentBranch | sed 's/\//_/g'`
@@ -30,17 +29,6 @@ fold_end() {
   printf "%s\n" "travis_fold:end:$@"
 }
 
-push_to_dockerhub() {
-
-  docker push "$@"
-  if [[ $? -gt 0 ]]; then
-    fatal "Push of $@ failed!"
-  else
-    info "Push of $@ succeeded"
-  fi
-
-}
-
 fold_start "Building Docker Images"
 
 dockerfile_dir="dockerfiles"
@@ -48,7 +36,7 @@ dockerfile_dir="dockerfiles"
 
 fold_start "Building Default Image"
 info "Building default image"
-docker build -t $docker_repo -f $dockerfile_dir/Dockerfile .
+docker build -t ${docker_repo}:${currentCommit} -f $dockerfile_dir/Dockerfile .
 
 if [[ $? -gt 0 ]]; then
   fatal "Build failed!"
@@ -57,60 +45,15 @@ else
 fi
 fold_end "Building Default Image"
 
-
-fold_start "Building variant images"
-variants=$(echo $dockerfile_dir/*/ | xargs -n1 basename)
-for variant in $variants; do
-  # Skip non-docker directories
-  [ -f "$dockerfile_dir/$variant/Dockerfile" ] || continue
-
-  fold_start "Building $variant Image"
-  info "Building $docker_repo:$variant variant..."
-  docker build -t $docker_repo:$variant -f $dockerfile_dir/$variant/Dockerfile .
-
-  if [[ $? -gt 0 ]]; then
-    fatal "Build of $variant failed!"
-  else
-    info "Build of $variant succeeded."
-  fi
-  fold_end "Building $variant Image"
-
-done
-fold_end "Building variant images"
-
-
 if [ "$push_to_docker" = true ]; then
   fold_start "Tagging and pushing images to docker hub"
 
   fold_start "Default Image"
-  docker tag $docker_repo $docker_registry/$docker_repo
-  push_to_dockerhub $docker_registry/$docker_repo
+  docker push ${docker_repo}:${currentCommit}
 
-  docker tag $docker_repo $docker_registry/$docker_repo:br_$currentBranchSanitised
-  push_to_dockerhub $docker_registry/$docker_repo:br_$currentBranchSanitised
-
-  docker tag $docker_repo $docker_registry/$docker_repo:$currentCommit
-  push_to_dockerhub $docker_registry/$docker_repo:$currentCommit
-
+  docker tag ${docker_repo}:${currentCommit} ${docker_repo}:${currentBranchSanitised}
+  docker push ${docker_repo}:${currentBranchSanitised}
   fold_end "Default Image"
-
-  for variant in $variants; do
-    # Skip non-docker directories
-    [ -f "$dockerfile_dir/$variant/Dockerfile" ] || continue
-
-    fold_start "$variant variant image"
-    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant
-    push_to_dockerhub $docker_registry/$docker_repo:$variant
-
-    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-br_$currentBranchSanitised
-    push_to_dockerhub $docker_registry/$docker_repo:$variant-br_$currentBranchSanitised
-
-    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-$currentCommit
-    push_to_dockerhub $docker_registry/$docker_repo:$variant-$currentCommit
-
-    fold_end "$variant variant image"
-
-  done
 
   fold_end "Tagging and pushing images to docker hub"
 
