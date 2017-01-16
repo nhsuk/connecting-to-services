@@ -86,10 +86,10 @@ if [ "$push_to_docker" = true ]; then
   docker tag $docker_repo $docker_registry/$docker_repo
   push_to_dockerhub $docker_registry/$docker_repo
 
-  docker tag $docker_repo:$variant $docker_registry/$docker_repo:$currentBranch
-  push_to_dockerhub $docker_registry/$docker_repo:$currentBranch
+  docker tag $docker_repo $docker_registry/$docker_repo:$currentBranchSanitised
+  push_to_dockerhub $docker_registry/$docker_repo:$currentBranchSanitised
 
-  docker tag $docker_repo:$variant $docker_registry/$docker_repo:$currentCommit
+  docker tag $docker_repo $docker_registry/$docker_repo:$currentCommit
   push_to_dockerhub $docker_registry/$docker_repo:$currentCommit
 
   fold_end "Default Image"
@@ -102,8 +102,8 @@ if [ "$push_to_docker" = true ]; then
     docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant
     push_to_dockerhub $docker_registry/$docker_repo:$variant
 
-    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-$currentBranch
-    push_to_dockerhub $docker_registry/$docker_repo:$variant-$currentBranch
+    docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-$currentBranchSanitised
+    push_to_dockerhub $docker_registry/$docker_repo:$variant-$currentBranchSanitised
 
     docker tag $docker_repo:$variant $docker_registry/$docker_repo:$variant-$currentCommit
     push_to_dockerhub $docker_registry/$docker_repo:$variant-$currentCommit
