@@ -39,6 +39,9 @@ $blue: #0072c6;
       margin: 0 auto;
     }
   }
+  &__js-hidden {
+    display:none;
+  }
   &__hiviz {
     background-color: $hiviz;
   }
@@ -241,6 +244,9 @@ form {
             bottom: -2px;
             width: 130px;
           }
+        }
+        .callout {
+          display:block;
         }
       }
       &__nearby {
