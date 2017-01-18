@@ -31,8 +31,9 @@ fold_end() {
 
 
 # CREATE ARRAY OF DOCKER TAGS WE'RE GOING TO APPLY TO THE IMAGE
-if [[ -v $TRAVIS ]]; then
+if [[ -n "$TRAVIS" ]]; then
 
+  echo "Travis detected"
   # ALWAYS BUILD THE COMMIT ID AND THE BRANCH
   CURRENT_COMMIT=$( echo $TRAVIS_COMMIT | sed 's/\//_/g' )
   TAGS="$TAGS $CURRENT_COMMIT"
@@ -54,9 +55,9 @@ if [[ -v $TRAVIS ]]; then
   fi
 
 else
-  currentBranch=`git rev-parse --abbrev-ref HEAD | sed 's/\//_/g'`
+  currentBranch=$(git rev-parse --abbrev-ref HEAD | sed 's/\//_/g')
   TAGS="${TAGS} $currentBranch"
-  currentCommit=`git rev-parse --short HEAD`
+  currentCommit=$(git rev-parse --short HEAD)
   TAGS="${TAGS} $currentCommit"
   if [ "$currentBranch"=="master" ]; then
     TAGS="${TAGS} latest"
