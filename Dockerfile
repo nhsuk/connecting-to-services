@@ -7,7 +7,7 @@ ENV NODE_ENV=production
 
 COPY package.json /app
 
-RUN npm config set loglevel warn && npm install
+RUN npm install --quiet
 
 EXPOSE 3000
 
