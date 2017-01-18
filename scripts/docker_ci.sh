@@ -45,12 +45,14 @@ if [[ -n "$TRAVIS" ]]; then
   fi
 
   # IF PULL REQUEST BUILD, CREATE TAG FOR PR
-  if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-    TAGS
+  if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+    echo "Pull Request build detected, adding pr-${TRAVIS_PULL_REQUEST} to the docker tags"
+    TAGS="$TAGS pr-${TRAVIS_PULL_REQUEST}"
   fi
 
   # ADD TAG BRANCH
   if [ -n "TRAVIS_TAG" ]; then
+    echo "Tag detected, adding ${TRAVIS_TAG} to the docker tags"
     TAGS="$TAGS $TRAVIS_TAG"
   fi
 
