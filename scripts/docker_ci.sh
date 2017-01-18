@@ -83,7 +83,7 @@ if [ "$PUSH_TO_DOCKER" = true ]; then
 
   for TAG in $TAGS; do
     fold_start "Tagging '$TAG' and pushing to docker hub"
-    docker tag ${DOCKER_REPO}:${TAG} ${DOCKER_REPO}:${TAG}
+    docker tag $TEMP_IMAGE_NAME ${DOCKER_REPO}:${TAG}
     docker push ${DOCKER_REPO}:${TAG}
     fold_end "Tagging '$TAG' and pushing to docker hub"
   done
