@@ -14,5 +14,4 @@ script:
 - npm run upload-coverage-coveralls
 - npm run upload-coverage-codacy
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- ./dockerfiles/build_docker.sh
-
+- ./scripts/docker_ci.sh

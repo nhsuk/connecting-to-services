@@ -4,7 +4,7 @@ PUSH_TO_DOCKER=true
 DOCKER_REPO="nhsuk/connecting-to-services"
 TAGS=""
 TEMP_IMAGE_NAME="temp_nhsuk_docker_image"
-DOCKERFILE="docker"
+DOCKERFILE="Dockerfile"
 
 info() {
   printf "%s\n" "$@"
