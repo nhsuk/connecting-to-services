@@ -18,13 +18,13 @@ fatal() {
 }
 
 fold_start() {
-  if [[ -v $TRAVIS ]]; then
+  if [[ -n $TRAVIS ]]; then
     printf "%s\n" "travis_fold:start:$@"
   fi
 }
 
 fold_end() {
-  if [[ -v $TRAVIS ]]; then
+  if [[ -n $TRAVIS ]]; then
     printf "%s\n" "travis_fold:end:$@"
   fi
 }
@@ -35,8 +35,8 @@ if [[ -n "$TRAVIS" ]]; then
 
   echo "Travis detected"
   # ALWAYS BUILD THE COMMIT ID AND THE BRANCH
-  CURRENT_COMMIT=$( echo $TRAVIS_COMMIT | sed 's/\//_/g' )
   TAGS="$TAGS $CURRENT_COMMIT"
+  SANITISED_BRANCH=$( echo $TRAVIS_BRANCH | sed 's/\//_/g' )
   TAGS="$TAGS $TRAVIS_BRANCH"
 
   # IF MASTER BRANCH ALWAYS SET THE LATEST TAG
