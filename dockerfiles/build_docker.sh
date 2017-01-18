@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
-set -u
-IFS=$'\n\t'
-
-push_to_docker=true
-docker_repo="nhsuk/connecting-to-services"
-
-currentBranch=`git rev-parse --abbrev-ref HEAD`
-currentBranchSanitised=`echo $currentBranch | sed 's/\//_/g'`
-currentCommit=`git rev-parse --short HEAD`
+PUSH_TO_DOCKER=true
+DOCKER_REPO="nhsuk/connecting-to-services"
+TAGS=""
+TEMP_IMAGE_NAME="temp_nhsuk_docker_image"
+DOCKERFILE="docker"
 
 info() {
   printf "%s\n" "$@"
@@ -22,21 +18,58 @@ fatal() {
 }
 
 fold_start() {
-  printf "%s\n" "travis_fold:start:$@"
+  if [[ -v $TRAVIS ]]; then
+    printf "%s\n" "travis_fold:start:$@"
+  fi
 }
 
 fold_end() {
-  printf "%s\n" "travis_fold:end:$@"
+  if [[ -v $TRAVIS ]]; then
+    printf "%s\n" "travis_fold:end:$@"
+  fi
 }
+
+
+# CREATE ARRAY OF DOCKER TAGS WE'RE GOING TO APPLY TO THE IMAGE
+if [[ -v $TRAVIS ]]; then
+
+  # ALWAYS BUILD THE COMMIT ID AND THE BRANCH
+  CURRENT_COMMIT=$( echo $TRAVIS_COMMIT | sed 's/\//_/g' )
+  TAGS="$TAGS $CURRENT_COMMIT"
+  TAGS="$TAGS $TRAVIS_BRANCH"
+
+  # IF MASTER BRANCH ALWAYS SET THE LATEST TAG
+  if [ "$TRAVIS_BRANCH" = "master" ]; then
+    TAGS="$TAGS latest"
+  fi
+
+  # IF PULL REQUEST BUILD, CREATE TAG FOR PR
+  if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+    TAGS
+  fi
+
+  # ADD TAG BRANCH
+  if [ -n "TRAVIS_TAG" ]; then
+    TAGS="$TAGS $TRAVIS_TAG"
+  fi
+
+else
+  currentBranch=`git rev-parse --abbrev-ref HEAD | sed 's/\//_/g'`
+  TAGS="${TAGS} $currentBranch"
+  currentCommit=`git rev-parse --short HEAD`
+  TAGS="${TAGS} $currentCommit"
+  if [ "$currentBranch"=="master" ]; then
+    TAGS="${TAGS} latest"
+  fi
+fi
+
+echo $TAGS
 
 fold_start "Building Docker Images"
 
-dockerfile_dir="dockerfiles"
-[ -f "$dockerfile_dir/Dockerfile" ] || continue
-
 fold_start "Building Default Image"
 info "Building default image"
-docker build -t ${docker_repo}:${currentCommit} -f $dockerfile_dir/Dockerfile .
+docker build -t ${TEMP_IMAGE_NAME} -f $DOCKERFILE .
 
 if [[ $? -gt 0 ]]; then
   fatal "Build failed!"
@@ -45,15 +78,15 @@ else
 fi
 fold_end "Building Default Image"
 
-if [ "$push_to_docker" = true ]; then
+if [ "$PUSH_TO_DOCKER" = true ]; then
   fold_start "Tagging and pushing images to docker hub"
 
-  fold_start "Default Image"
-  docker push ${docker_repo}:${currentCommit}
-
-  docker tag ${docker_repo}:${currentCommit} ${docker_repo}:${currentBranchSanitised}
-  docker push ${docker_repo}:${currentBranchSanitised}
-  fold_end "Default Image"
+  for TAG in $TAGS; do
+    fold_start "Tagging '$TAG' and pushing to docker hub"
+    docker tag ${DOCKER_REPO}:${TAG} ${DOCKER_REPO}:${TAG}
+    docker push ${DOCKER_REPO}:${TAG}
+    fold_end "Tagging '$TAG' and pushing to docker hub"
+  done
 
   fold_end "Tagging and pushing images to docker hub"
 
