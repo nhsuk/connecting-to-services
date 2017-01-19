@@ -7,11 +7,11 @@ PUSH_TO_DOCKER='true'
 
 for TAG in $TAGS; do
   echo "Building tag: $TAG"
-  git checkout $TAG #2&>1 > /dev/null
+  git checkout "$TAG" #2&>1 > /dev/null
   if [ -e $DOCKERFILE ]; then
-    docker build -t ${DOCKER_REPO}:${TAG} -f ${DOCKERFILE} .
-    if [ "$PUSH_TO_DOCKER"=="true" ]; then
-      docker push ${DOCKER_REPO}:${TAG}
+    docker build -t "${DOCKER_REPO}:${TAG}" -f ${DOCKERFILE} .
+    if [ "$PUSH_TO_DOCKER" == "true" ]; then
+      docker push "${DOCKER_REPO}:${TAG}"
     fi
   fi
 done
