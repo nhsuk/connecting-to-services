@@ -13,7 +13,8 @@ script:
 - npm run check-coverage
 - npm run upload-coverage-coveralls
 - npm run upload-coverage-codacy
-- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- chmod +x ./scripts/*
-- ./scripts/docker_ci.sh
 
+deploy:
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- chmod +x scripts/*
+- ./scripts/docker_ci.sh
