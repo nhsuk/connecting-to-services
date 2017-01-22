@@ -41,8 +41,6 @@ elif [[ -n "$TRAVIS" ]]; then
 
   echo "Travis detected"
 
-  # ALWAYS BUILD THE COMMIT ID AND THE BRANCH
-  TAGS="$TAGS $TRAVIS_COMMIT"
   SANITISED_BRANCH=$( echo "$TRAVIS_BRANCH" | sed 's/\//_/g' )
   TAGS="$TAGS $SANITISED_BRANCH"
 
@@ -60,8 +58,6 @@ elif [[ -n "$TRAVIS" ]]; then
 else
   currentBranch=$(git rev-parse --abbrev-ref HEAD | sed 's/\//_/g')
   TAGS="${TAGS} $currentBranch"
-  currentCommit=$(git rev-parse --short HEAD)
-  TAGS="${TAGS} $currentCommit"
   if [ "$currentBranch" == "master" ]; then
     TAGS="${TAGS} latest"
   fi
