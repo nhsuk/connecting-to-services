@@ -41,7 +41,7 @@ elif [[ -n "$TRAVIS" ]]; then
 
   echo "Travis detected"
 
-  SANITISED_BRANCH=$( echo "$TRAVIS_BRANCH" | sed 's/\//_/g' )
+  SANITISED_BRANCH=$( echo "$TRAVIS_BRANCH"  | tr -dc '[:alnum:]\/-' | tr '/' '-' | tr '[:upper:]' '[:lower:]' )
   TAGS="$TAGS $SANITISED_BRANCH"
 
   # IF MASTER BRANCH ALWAYS SET THE LATEST TAG
@@ -56,7 +56,7 @@ elif [[ -n "$TRAVIS" ]]; then
   fi
 
 else
-  currentBranch=$(git rev-parse --abbrev-ref HEAD | sed 's/\//_/g')
+  currentBranch=$(git rev-parse --abbrev-ref HEAD | tr -dc '[:alnum:]\/-' | tr '/' '-' | tr '[:upper:]' '[:lower:]' )
   TAGS="${TAGS} $currentBranch"
   if [ "$currentBranch" == "master" ]; then
     TAGS="${TAGS} latest"
