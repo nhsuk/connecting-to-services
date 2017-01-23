@@ -17,6 +17,7 @@ script:
 after_script:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - ./scripts/docker_ci.sh
+- ./scripts/rancher_pr_deploy.sh
 
 notifications:
   slack:
