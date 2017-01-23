@@ -4,6 +4,7 @@ node-sass --output-style compressed --include-path scss scss/c2s/c2s-print.scss 
 node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie6.scss public/css/nhsuk-ie6.css;
 node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie7.scss public/css/nhsuk-ie7.css;
 node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie8.scss public/css/nhsuk-ie8.css;
+replace -s '\/\* @echo FONT_CDN_PATH \*' 'https://dhrlmnmyf2njb.cloudfront.net' public/css -r;
 hashmark -c public -r -l 6 'css/*.*' '{dir}/{name}.{hash}{ext}' | replaceinfiles -s 'app/views/layout.nunjucks' -d '{dir}/{base}';
 mkdir ./public/hashed;
 cp ./public/css/*.*.css ./public/hashed;
