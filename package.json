@@ -26,10 +26,10 @@
     "artillery-report": "artillery report ./reports/all-results.json",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect",
-    "precommit": "npm run git-hook",
+    "precommit": " npm run build-css && npm run git-hook",
     "prepush": "npm run git-hook",
     "postrewrite": "npm run git-hook",
-    "git-hook": "npm run lint && npm run generate-coverage && npm run check-coverage && npm run build-css"
+    "git-hook": "npm run lint && npm run generate-coverage && npm run check-coverage"
   },
   "repository": {
     "type": "git",

@@ -20,10 +20,10 @@
 
     {% set qs = '?v=5' %}
 
-    <!--[if gt IE 8]><!--><link href="{{ SITE_ROOT }}/css/nhsuk.css{{ qs }}" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
-    <!--[if IE 6]><link href="{{ SITE_ROOT }}/css/nhsuk-ie6.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 7]><link href="{{ SITE_ROOT }}/css/nhsuk-ie7.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 8]><link href="{{ SITE_ROOT }}/css/nhsuk-ie8.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{ SITE_ROOT }}/css/nhsuk.e8f0e6.css{{ qs }}" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
+    <!--[if IE 6]><link href="{{ SITE_ROOT }}/css/nhsuk-ie6.5a8880.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="{{ SITE_ROOT }}/css/nhsuk-ie7.5a8880.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="{{ SITE_ROOT }}/css/nhsuk-ie8.3f404e.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 
     <link rel="stylesheet" href="{{ SITE_ROOT }}/css/print.css{{ qs }}" media="print" type="text/css">
 
