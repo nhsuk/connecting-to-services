@@ -29,7 +29,7 @@
     "precommit": "npm run git-hook",
     "prepush": "npm run git-hook",
     "postrewrite": "npm run git-hook",
-    "git-hook": "npm run lint && npm run generate-coverage && npm run check-coverage && npm run check-coverage"
+    "git-hook": "npm run lint && npm run generate-coverage && npm run check-coverage && npm run build-css"
   },
   "repository": {
     "type": "git",
