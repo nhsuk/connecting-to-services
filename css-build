@@ -1,11 +1,22 @@
 rm -R ./public/css;
+cp
+hash=$(date +%T | base64 | head -c 12);
+echo "{" > assets.json;
 node-sass --output-style compressed --include-path scss scss/c2s/c2s.scss public/css/nhsuk.css;
-node-sass --output-style compressed--include-path scss scss/c2s/c2s-print.scss public/css/print.css;
+mv ./public/css/nhsuk.css ./public/css/nhsuk.$hash.css;
+echo '  "'"nhsuk.css"'":"'"nhsuk.$hash.css"'",' >> assets.json;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-print.scss public/css/print.css;
+mv ./public/css/print.css ./public/css/print.$hash.css;
+echo '  "'"print.css"'":"'"print.$hash.css"'",' >> assets.json;
 node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie6.scss public/css/nhsuk-ie6.css;
+mv ./public/css/nhsuk-ie6.css ./public/css/nhsuk-ie6.$hash.css;
+echo '  "'"nhsuk-ie6.css"'":"'"nhsuk-ie6.$hash.css"'",' >> assets.json;
 node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie7.scss public/css/nhsuk-ie7.css;
+mv ./public/css/nhsuk-ie7.css ./public/css/nhsuk-ie7.$hash.css;
+echo '  "'"nhsuk-ie7.css"'":"'"nhsuk-ie7.$hash.css"'",' >> assets.json;
 node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie8.scss public/css/nhsuk-ie8.css;
-hashmark -c public -r -l 6 'css/*.*' '{dir}/{name}.{hash}{ext}' | replaceinfiles -s 'app/views/layout.nunjucks' -d '{dir}/{base}';
-mkdir ./public/hashed;
-cp ./public/css/*.*.css ./public/hashed;
-rm -R ./public/css;
-mv ./public/hashed ./public/css;
+mv ./public/css/nhsuk-ie8.css ./public/css/nhsuk-ie8.$hash.css;
+echo '  "'"nhsuk-ie8.css"'":"'"nhsuk-ie8.$hash.css"'"' >> assets.json;
+echo "}" >> assets.json;
+replaceinfiles -r assets.json -s 'app/views/includes/layout.hash' -d 'app/views/layout.nunjucks';
+rm assets.json;

@@ -10,9 +10,3 @@ npm-debug.log.*
 .coveralls.yml
 
 *.swp
-
-public/css/nhsuk-ie6.css
-public/css/nhsuk-ie7.css
-public/css/nhsuk-ie8.css
-public/css/nhsuk.css
-public/css/print.css
