@@ -1,0 +1,42 @@
+ version: '2'
+
+ services:
+  connecting-to-services:
+    build:
+      context: .
+#    command: nodemon --debug=56745 # for debugging purposes
+#    volumes: # for debugging purposes
+#      - .:/app # for debugging purposes
+    ports:
+      - "3000:3000"
+#      - "56745:56745" # for debugging purposes
+    environment:
+      SPLUNK_HEC_TOKEN: "changeme"
+      SPLUNK_HEC_ENDPOINT: "https://splunk-collector.cloudapp.net:8088"
+      HOTJAR_ANALYTICS_TRACKING_ID: "changeme"
+      GOOGLE_ANALYTICS_TRACKING_ID: "changeme"
+      WEBTRENDS_ANALYTICS_TRACKING_ID: "changeme"
+      API_BASE_URL: 'http://nearby-services-api:3001'
+    links:
+      - nearby-services-api:nearby-services-api
+
+  nearby-services-api:
+    image: "nhsuk/nearby-services-api:pr-30"
+    ports:
+      - "3001:3001"
+    environment:
+      SPLUNK_HEC_TOKEN: "changeme"
+      SPLUNK_HEC_ENDPOINT: "https://splunk-collector.cloudapp.net:8088"
+    links:
+      - mongodb-pharmacy:mongo
+
+  mongodb-pharmacy:
+    image: "mongo:3.2"
+    volumes_from:
+      - pharmacy-data
+    command: sh -c "mongod --fork --logpath /temp.log ; sleep 2 ; mongoimport --jsonArray -d services -c services --file /pharmacy-data/pharmacy-data-large.json ; pkill mongod ; sleep 1 ; mongod"
+
+  pharmacy-data:
+    image: "nhsuk/c2s-pharmacy-data:large"
+    command:
+      - /bin/true
