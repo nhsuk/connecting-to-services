@@ -54,7 +54,8 @@
     "snyk": "^1.21.2"
   },
   "devDependencies": {
-    "artillery": "^1.5.0-17",
+    "artillery": "^1.5.0-22",
+    "bower": "^1.8.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "cheerio": "^0.22.0",
