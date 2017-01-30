@@ -9,7 +9,7 @@ ENV NODE_ENV=${NODE_ENV}
 
 COPY npm-shrinkwrap.json /code
 
-RUN npm install --quiet
+RUN if [ "$NODE_ENV" == "production" ]; then npm install --quiet --only=prod; else npm install --quiet ; fi
 
 EXPOSE 3000
 
