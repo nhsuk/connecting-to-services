@@ -3,8 +3,9 @@ RUN apk add --no-cache git
 
 WORKDIR /app
 
-ENV NODE_ENV=production
-#ENV NODE_ENV=development # for debuggin purposes
+ARG NODE_ENV=production
+
+ENV NODE_ENV=${NODE_ENV}
 
 COPY package.json /app
 
