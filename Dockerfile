@@ -1,16 +1,18 @@
 FROM node:7.4-alpine
 RUN apk add --no-cache git
 
-WORKDIR /app
+WORKDIR /code
 
-ENV NODE_ENV=production
+ARG NODE_ENV=production
 
-COPY package.json /app
+ENV NODE_ENV $NODE_ENV
+
+COPY package.json /code
 
 RUN npm install --quiet
 
 EXPOSE 3000
 
-COPY . /app
+COPY . /code
 
 CMD [ "npm", "start" ]
