@@ -1,4 +1,4 @@
-<p>{{ service.distanceInMiles | round(1) }} miles away</p>
+<p>{{ service.dist | round(1) }} miles away</p>
 <h2 class="results__name">{{ service.name }}</h2>
 <section class="callout callout--info callout--compact"><p class="callout--info__mesg">{{ service.openingTimesMessage }}</p></section>
 <p>
