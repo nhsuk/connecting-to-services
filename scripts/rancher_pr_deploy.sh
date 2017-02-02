@@ -24,13 +24,15 @@ if [[ -n "$TRAVIS" ]]; then
     curl -s https://raw.githubusercontent.com/nhsuk/nhsuk-rancher-templates/master/templates/c2s-pharmacy-finder/0/docker-compose.yml  -o docker-compose.yml
     curl -s https://raw.githubusercontent.com/nhsuk/nhsuk-rancher-templates/master/templates/c2s-pharmacy-finder/0/rancher-compose.yml -o rancher-compose.yml
 
+    LATEST_RELEASE=$(curl -s https://api.github.com/repos/nhsuk/nearby-services-api/releases/latest | jq -r '.tag_name')
+
     touch answers.txt
     echo -n "" > answers.txt
 
     {
       echo "traefik_domain=dev.c2s.nhschoices.net"
       echo "c2s_docker_image_tag=pr-${TRAVIS_PULL_REQUEST}"
-      echo "nearbyservices_docker_image_tag=latest"
+      echo "nearbyservices_docker_image_tag=${LATEST_RELEASE}"
       echo "splunk_hec_endpoint=https://splunk-collector.cloudapp.net:8088"
       echo "splunk_hec_token=${SPLUNK_HEC_TOKEN}"
       echo "hotjar_id=265857"
@@ -41,10 +43,11 @@ if [[ -n "$TRAVIS" ]]; then
     rancher -w up --pull --upgrade -d --stack "${RANCHER_STACK_NAME}" --env-file answers.txt
 
     # SLACK NOTIFICATION
-    SLACK_MSG="C2S Pull request ${TRAVIS_PULL_REQUEST} deployed to ${RANCHER_STACK_NAME}.dev.c2s.nhschoices.net"
+    SLACK_MSG="connectingtoservices pull request ${TRAVIS_PULL_REQUEST} for deployed to ${RANCHER_STACK_NAME}.dev.c2s.nhschoices.net and using release ${LATEST_RELEASE} of nearby-services-api"
+
+    echo "${SLACK_MSG}"
 
     PAYLOAD="{\"text\": \"${SLACK_MSG}\" }"
-    echo "${PAYLOAD}"
     curl -X POST --data-urlencode "payload=${PAYLOAD}" "${SLACK_HOOK_URL}"
 
   fi
