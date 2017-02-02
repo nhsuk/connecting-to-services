@@ -43,7 +43,7 @@ if [[ -n "$TRAVIS" ]]; then
     # SLACK NOTIFICATION
     SLACK_MSG="C2S Pull request ${TRAVIS_PULL_REQUEST} deployed to ${RANCHER_STACK_NAME}.dev.c2s.nhschoices.net"
 
-    PAYLOAD="{\"text\"': \"${SLACK_MSG}\" }"
+    PAYLOAD="{\"text\": \"${SLACK_MSG}\" }"
     echo "${PAYLOAD}"
     curl -X POST --data-urlencode "payload=${PAYLOAD}" "${SLACK_HOOK_URL}"
 
