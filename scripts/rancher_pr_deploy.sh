@@ -38,7 +38,7 @@ if [[ -n "$TRAVIS" ]]; then
       echo "webtrends_id=dcs222rfg0jh2hpdaqwc2gmki_9r4q"
     } >> answers.txt
 
-    rancher -w --environment "${RANCHER_ENVIRONMENT}" up --pull --upgrade -d --stack "${RANCHER_STACK_NAME}" --env-file answers.txt
+    rancher -w up --pull --upgrade -d --stack "${RANCHER_STACK_NAME}" --env-file answers.txt
 
     # SLACK NOTIFICATION
     SLACK_MSG="C2S Pull request ${TRAVIS_PULL_REQUEST} deployed to ${RANCHER_STACK_NAME}.dev.c2s.nhschoices.net"
