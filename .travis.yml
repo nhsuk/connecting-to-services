@@ -14,7 +14,7 @@ script:
 - npm run upload-coverage-coveralls
 - npm run upload-coverage-codacy
 
-after_script:
+after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - ./scripts/docker_ci.sh
 - ./scripts/rancher_pr_deploy.sh
