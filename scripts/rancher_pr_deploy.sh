@@ -43,7 +43,7 @@ if [[ -n "$TRAVIS" ]]; then
     rancher -w up --pull --upgrade -d --stack "${RANCHER_STACK_NAME}" --env-file answers.txt
 
     # SLACK NOTIFICATION
-    SLACK_MSG="connectingtoservices pull request ${TRAVIS_PULL_REQUEST} for deployed to ${RANCHER_STACK_NAME}.dev.c2s.nhschoices.net and using release ${LATEST_RELEASE} of nearby-services-api"
+    SLACK_MSG="connecting-to-services pull request ${TRAVIS_PULL_REQUEST} deployed to ${RANCHER_STACK_NAME}.dev.c2s.nhschoices.net and using the latest release of nearby-services-api (${LATEST_RELEASE})"
 
     echo "${SLACK_MSG}"
 
