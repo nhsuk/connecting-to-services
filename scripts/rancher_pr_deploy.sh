@@ -10,8 +10,6 @@ install_rancher() {
   PATH=$PATH:./bin
 }
 
-RANCHER_STACK_NAME=$(scripts/docker-style-name.sh)
-
 if [[ -n "$TRAVIS" ]]; then
 
   echo "Travis detected"
@@ -39,6 +37,8 @@ if [[ -n "$TRAVIS" ]]; then
       echo "google_id=UA-67365892-5"
       echo "webtrends_id=dcs222rfg0jh2hpdaqwc2gmki_9r4q"
     } >> answers.txt
+
+    RANCHER_STACK_NAME="connecting-to-services-pr-${TRAVIS_PULL_REQUEST}"
 
     rancher -w up --pull --upgrade -d --stack "${RANCHER_STACK_NAME}" --env-file answers.txt
 
