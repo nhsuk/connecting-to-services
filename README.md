@@ -16,6 +16,9 @@ Clone the repo: `git clone https://github.com/nhsuk/connecting-to-services.git`
 Change directory to where the repo was cloned and install dependencies:
 `cd ./connecting-to-services/ && npm install`
 
+If running the app on your local machine you will need to regenerate the CSS by running `npm run build-css-dev`.
+CSS generation happens as part of the Docker image creation and also when running locally using the Docker development environment with file watching and so the step isn't required in those situations.
+
 ### Run the app
 
 In order to get the application running, execute `API_BASE_URL=${apiUrl} npm run watch-dev`
