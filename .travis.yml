@@ -13,6 +13,7 @@ script:
 - npm run check-coverage
 - npm run upload-coverage-coveralls
 - npm run upload-coverage-codacy
+- npm run build-css
 
 after_script:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
