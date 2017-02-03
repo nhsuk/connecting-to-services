@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.json .",
     "test": "NODE_ENV=test mocha --recursive test",
     "build-css": "./css-build",
-    "watch-dev": "nodemon app.js | ./node_modules/.bin/bunyan & nodemon -e scss -x npm run build-css",
+    "build-css-dev": "./css-build-dev",
+    "watch-dev": "nodemon app.js | ./node_modules/.bin/bunyan & nodemon -e scss -x npm run build-css-dev",
     "watch-dev-debug": "NODE_ENV=development && npm run watch-dev",
     "watch-lint": "esw --watch .",
     "watch-test": "npm run test -- --watch --reporter min",
@@ -69,6 +70,7 @@
     "eslint-plugin-mocha": "^4.3.0",
     "eslint-plugin-react": "^6.0.0",
     "eslint-watch": "^2.1.11",
+    "hashmark": "^4.1.0",
     "husky": "^0.12.0",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.2",
@@ -76,6 +78,7 @@
     "node-sass": "^4.2.0",
     "nodemon": "^1.10.2",
     "proxyquire": "^1.7.10",
+    "replaceinfiles": "^1.1.4",
     "request": "^2.78.0"
   },
   "snyk": true

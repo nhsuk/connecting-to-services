@@ -756,7 +756,7 @@ b, strong { font-weight: 600; }
 
 .js-enabled .js-tabs-content > div.is-active { display: block; }
 
-/* Colours. */
+/* Colours */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
 
 .local-header--question, .local-header > *, .global-header--question, .global-header > *, .global-footer--question, .global-footer > *, .notification-banner--question, .notification-banner > * { max-width: 960px; margin: 0 16px; padding: 8px 0; font-size: 16px; line-height: 24px; }

@@ -1,5 +1,11 @@
-node-sass --output-style compact --include-path scss scss/c2s/c2s.scss public/css/nhsuk.css;
-node-sass --output-style compact --include-path scss scss/c2s/c2s-print.scss public/css/print.css;
-node-sass --output-style compact --include-path scss scss/c2s/c2s-ie6.scss public/css/nhsuk-ie6.css;
-node-sass --output-style compact --include-path scss scss/c2s/c2s-ie7.scss public/css/nhsuk-ie7.css;
-node-sass --output-style compact --include-path scss scss/c2s/c2s-ie8.scss public/css/nhsuk-ie8.css;
+rm -R ./public/css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s.scss public/css/nhsuk.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-print.scss public/css/print.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie6.scss public/css/nhsuk-ie6.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie7.scss public/css/nhsuk-ie7.css;
+node-sass --output-style compressed --include-path scss scss/c2s/c2s-ie8.scss public/css/nhsuk-ie8.css;
+hashmark -c public -r -l 6 'css/*.*' '{dir}/{name}.{hash}{ext}' | replaceinfiles -s 'app/views/layout.nunjucks' -d '{dir}/{base}';
+mkdir ./public/hashed;
+cp ./public/css/*.*.css ./public/hashed;
+rm -R ./public/css;
+mv ./public/hashed ./public/css;
