@@ -10,5 +10,5 @@
 {% if service.address.postcode %} {{ service.address.postcode }}<br> {% endif %}
 <a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
 {% if service.contacts.telephoneNumber %}
-<p class="results__phone">Telephone: {{ service.contacts.telephoneNumber }}</p>
+<p class="results__phone">Telephone: <span>{{ service.contacts.telephoneNumber }}</span></p>
 {% endif %}
