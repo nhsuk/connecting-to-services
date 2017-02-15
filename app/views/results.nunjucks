@@ -26,6 +26,7 @@
           {% set service = openServices[0] %}
           {% include "includes/result-item.nunjucks" %}
         </div>
+        <!--[if IE]><div style="clear: both;"></div><![endif]-->
       </li>
 
       {% if nearbyServices.length === 0 %}
@@ -44,6 +45,7 @@
               <div class="results__details results__details--nearby column--two-thirds">
               {% include "includes/result-item.nunjucks" %}
               </div>
+              <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
             </li>
           {% endfor %}
           </ol>
