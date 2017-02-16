@@ -42,21 +42,12 @@ the site when changes are made.
 * `artillery-fire` - runs the tests. The application must be running on port `3000`.
 * `artillery-report` - generates a report based on the data saved in `reports/`. Running the test again will overwrite existing reports.
 
-## Hosting
+## Test environments
 
-There are a number of solutions employed to host the application. The version of
-the application linked to from the live website is hosted in Azure, as is the
-staging environment.
-
-* [Live](https://beta.nhs.uk/finders/)
-* [Staging](https://connecting-to-services-staging.azurewebsites.net/)
-
-As the application is being developed, every branch of code has its own test
-environment automatically built and deployed via Heroku's
-[Review Apps](https://devcenter.heroku.com/articles/github-integration-review-apps)
-
-The head of `master` is also automatically built and deployed into Heroku.
-That is hosted [here](https://connecting-to-services.herokuapp.com/)
+As the application is being developed, every Pull Request has its own test
+environment automatically built and deployed to. The PR environments can be
+accessed on the internet via `https://<stack_name>-pr-<pr#>.dev.c2s.nhschoices.net`
+e.g. `https://connecting-to-services-pr-123.dev.c2s.nhschoices.net`
 
 ## Environment variables
 
