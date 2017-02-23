@@ -3,6 +3,15 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+  - DOCKER_REPO=nhsuk/connecting-to-services
+  - DOCKER_USERNAME=nhsukautomata
+  - RANCHER_ACCESS_KEY=655696CC96424E6D4DB0
+  - RANCHER_ENVIRONMENT=c2s-dev
+  - RANCHER_TEMPLATE_NAME=c2s-pharmacy-finder
+  - RANCHER_URL=https://rancher.nhschoices.net
+
 script:
   - docker build --build-arg NODE_ENV=development -t nhsuk/c2s .
   - docker run -e TRAVIS=true -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN -e CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN -e TRAVIS_COMMIT=$TRAVIS_COMMIT nhsuk/c2s sh -c "cd /code && npm run git-hook && npm run upload-coverage-coveralls && npm run upload-coverage-codacy"
