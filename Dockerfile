@@ -15,6 +15,8 @@ EXPOSE 3000
 
 COPY . /code
 
+VOLUME /code/perf-tests
+
 RUN [ "npm", "run", "build-css" ]
 
 CMD [ "npm", "start" ]
