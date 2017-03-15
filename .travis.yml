@@ -17,9 +17,10 @@ script:
   - docker run -e TRAVIS=true -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN -e CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN -e TRAVIS_COMMIT=$TRAVIS_COMMIT nhsuk/c2s sh -c "cd /code && npm run git-hook && npm run upload-coverage-coveralls && npm run upload-coverage-codacy"
 
 after_success:
-- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- ./scripts/ci-deployment/docker_ci.sh
-- ./scripts/ci-deployment/rancher_pr_deploy.sh
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - ./scripts/ci-deployment/docker_ci.sh
+  - pip install pyyaml
+  - ./scripts/ci-deployment/rancher_pr_deploy.sh
 
 notifications:
   slack:
