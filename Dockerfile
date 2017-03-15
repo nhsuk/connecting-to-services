@@ -20,7 +20,7 @@ EXPOSE 3000
 COPY . /code
 
 USER root
-RUN chown -R $USERNAME:$USERNAME /code
+RUN find /code -user 0 -print0 | xargs -0 chown $USERNAME:$USERNAME
 USER $USERNAME
 
 RUN [ "npm", "run", "build-css" ]
