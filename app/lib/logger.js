@@ -1,1 +1,1 @@
-module.exports = require('nhsuk-bunyan-logger')('finders');
+module.exports = require('bunyan').createLogger({ name: 'connecting-to-services' });
