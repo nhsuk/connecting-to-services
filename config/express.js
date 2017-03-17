@@ -16,11 +16,18 @@ module.exports = (app, config) => {
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'nunjucks');
   const nunjucksEnvironment =
-    nunjucks.configure(`${config.root}/app/views`, {
-      autoescape: true,
-      express: app,
-      watch: true,
-    });
+    nunjucks.configure(
+      [
+        `${config.root}/app/views`,
+        `${config.root}/node_modules/nhsuk-frontend/src/templates`
+      ], {
+        autoescape: true,
+        express: app,
+        watch: true,
+      });
+
+  nunjucksEnvironment.addGlobal('asset_path', filename => `${app.locals.SITE_ROOT}/${filename}`);
+
   log.info(nunjucksEnvironment, 'nunjucks environment configuration');
 
   app.use(helmet.contentSecurityPolicy({

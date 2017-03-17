@@ -1,0 +1,61 @@
+.reading-width{
+  @include reading-width;
+}
+
+.notification-banner {
+  > * {
+    max-width:960px;
+    margin: 0 16px;
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 24px;
+    @include media(tablet) {
+      margin: 0 16px;
+    }
+    @include media(desktop) {
+      margin: 0 32px;
+    }
+    @media (min-width: 1024px){
+      margin: 0 auto;
+    }
+  }
+  &__hiviz {
+    background-color: $hiviz;
+  }
+}
+
+.link-back {
+  border-bottom: 1px solid $back-black;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-top:16px;
+  margin-bottom: 32px;
+  padding-left: 14px;
+  position: relative;
+  text-decoration: none;
+  text-transform: none;
+  @include media(desktop) {
+    margin-top:0;
+  }
+  &::before {
+    border-bottom: 5px solid transparent;
+    border-right: 6px solid $back-black;
+    border-top: 5px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    left: 0;
+    margin-top: -6px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+  }
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $back-black;
+  }
+}
