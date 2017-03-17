@@ -1,46 +1,46 @@
-{% extends 'layout.nunjucks' %}
+{% extends 'c2s-base.nunjucks' %}
 
 {% block header %}
 <h1 class="local-header--title--question">Find a pharmacy</h1>
 {% endblock %}
 
-{% block pageTitle %}Find a place that can help you{% endblock %}
+{% block body_main_content %}
 
-{% block content %}
+<div class="page-section">
+  <h1 class="local-header--title--question">Find a pharmacy</h1>
+  {% if errorMessage %}
+  <div class="error-summary">
+    <h2 class="local-header--error error-summary-heading">
+      {{ errorMessage }}
+    </h2>
+  </div>
+  {% endif %}
 
-{% if errorMessage %}
-<div class="error-summary">
-  <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage }}
-  </h2>
-</div>
-{% endif %}
+  <form method="get" class="form" action="{{ SITE_ROOT }}/results">
+    <div class="reading-width">
+      <div class="form-item-wrapper">
 
-<form method="get" class="form" action="{{ SITE_ROOT }}/results">
-  <div class="reading-width">
-    <div class="form-item-wrapper">
-
-      {% if errorMessage %}
-      <div class="form-group error">
-        {% else %}
-        <div class="form-group">
-          {% endif %}
-          <label class="form-label-bold" for="location">{{ locationLabel }}</label>
-
+        {% if errorMessage %}
+        <div class="form-group error">
+          {% else %}
           <div class="form-group">
-            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <input type="hidden" name="context" value="{{ context }}">
-          </div>
-        </div>
+            {% endif %}
+            <label class="form-label-bold" for="location">{{ locationLabel }}</label>
 
-        <div class="form-item-wrapper">
-          <div class="form-group form-group--submit">
-            <input type="submit" class="button" value="Search">
+            <div class="form-group">
+              <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+              <input type="hidden" name="context" value="{{ context }}">
+            </div>
           </div>
+
+          <div class="form-item-wrapper">
+            <div class="form-group form-group--submit">
+              <input type="submit" class="button" value="Search">
+            </div>
+          </div>
+          <p class="u-margintop5"><a href="{{ backLink.href }}" class="link-back">{{ backLink.text }}</a></p>
         </div>
-        <p class="u-margintop5"><a href="{{ backLink.href }}" class="link-back">{{ backLink.text }}</a></p>
       </div>
-    </div>
-</form>
-
+  </form>
+</div>
 {% endblock %}
