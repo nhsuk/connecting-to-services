@@ -1,4 +1,5 @@
 FROM node:7.4-alpine
+RUN apk add --no-cache git
 
 WORKDIR /code
 
@@ -6,7 +7,7 @@ ARG NODE_ENV=production
 
 ENV NODE_ENV=${NODE_ENV}
 
-COPY npm-shrinkwrap.json /code
+COPY npm-shrinkwrap.json package.json /code/
 
 RUN if [ "$NODE_ENV" == "production" ]; then npm install --quiet --only=prod; else npm install --quiet ; fi
 

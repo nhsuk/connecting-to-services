@@ -1,5 +1,4 @@
 coverage/
-app/lib/buildCss.js
 public/assets/js/*
 data/*
 test/resources/*
