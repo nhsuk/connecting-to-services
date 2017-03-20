@@ -2,6 +2,81 @@
   "name": "connecting-to-services",
   "version": "0.0.1",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@allmarkedup/fang": {
+      "version": "1.0.0",
+      "from": "@allmarkedup/fang@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@allmarkedup/fang/-/fang-1.0.0.tgz"
+    },
+    "@frctl/fractal": {
+      "version": "1.1.3",
+      "from": "@frctl/fractal@>=1.1.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@frctl/fractal/-/fractal-1.1.3.tgz",
+      "dependencies": {
+        "boxen": {
+          "version": "0.6.0",
+          "from": "boxen@>=0.6.0 <0.7.0",
+          "resolved": "https://registry.npmjs.org/boxen/-/boxen-0.6.0.tgz"
+        },
+        "camelcase": {
+          "version": "2.1.1",
+          "from": "camelcase@>=2.1.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-2.1.1.tgz"
+        },
+        "configstore": {
+          "version": "2.1.0",
+          "from": "configstore@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/configstore/-/configstore-2.1.0.tgz"
+        },
+        "inquirer": {
+          "version": "1.2.3",
+          "from": "inquirer@>=1.1.2 <2.0.0",
+          "resolved": "https://registry.npmjs.org/inquirer/-/inquirer-1.2.3.tgz"
+        },
+        "isarray": {
+          "version": "0.0.1",
+          "from": "isarray@0.0.1",
+          "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
+        },
+        "minimist": {
+          "version": "1.2.0",
+          "from": "minimist@>=1.2.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz"
+        },
+        "path-to-regexp": {
+          "version": "1.7.0",
+          "from": "path-to-regexp@>=1.5.3 <2.0.0",
+          "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-1.7.0.tgz"
+        },
+        "update-notifier": {
+          "version": "1.0.3",
+          "from": "update-notifier@>=1.0.2 <2.0.0",
+          "resolved": "https://registry.npmjs.org/update-notifier/-/update-notifier-1.0.3.tgz"
+        },
+        "uuid": {
+          "version": "2.0.3",
+          "from": "uuid@>=2.0.1 <3.0.0",
+          "resolved": "https://registry.npmjs.org/uuid/-/uuid-2.0.3.tgz"
+        }
+      }
+    },
+    "@frctl/handlebars": {
+      "version": "1.1.4",
+      "from": "@frctl/handlebars@>=1.1.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@frctl/handlebars/-/handlebars-1.1.4.tgz"
+    },
+    "@frctl/mandelbrot": {
+      "version": "1.1.0",
+      "from": "@frctl/mandelbrot@>=1.1.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@frctl/mandelbrot/-/mandelbrot-1.1.0.tgz"
+    },
+    "@frctl/nunjucks": {
+      "version": "1.0.3",
+      "from": "@frctl/nunjucks@>=1.0.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@frctl/nunjucks/-/nunjucks-1.0.3.tgz"
+    },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     "a-sync-waterfall": {
       "version": "1.0.0",
       "from": "a-sync-waterfall@>=1.0.0 <2.0.0",
@@ -226,6 +301,15 @@
       "resolved": "https://registry.npmjs.org/artillery-core/-/artillery-core-2.5.0.tgz",
       "dev": true,
       "dependencies": {
+<<<<<<< HEAD
+=======
+        "base64-arraybuffer": {
+          "version": "0.1.2",
+          "from": "base64-arraybuffer@0.1.2",
+          "resolved": "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-0.1.2.tgz",
+          "dev": true
+        },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
         "caseless": {
           "version": "0.11.0",
           "from": "caseless@>=0.11.0 <0.12.0",
@@ -244,6 +328,37 @@
           "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz",
           "dev": true
         },
+<<<<<<< HEAD
+=======
+        "engine.io-client": {
+          "version": "1.6.9",
+          "from": "engine.io-client@1.6.9",
+          "resolved": "https://registry.npmjs.org/engine.io-client/-/engine.io-client-1.6.9.tgz",
+          "dev": true,
+          "dependencies": {
+            "component-emitter": {
+              "version": "1.1.2",
+              "from": "component-emitter@1.1.2",
+              "resolved": "https://registry.npmjs.org/component-emitter/-/component-emitter-1.1.2.tgz",
+              "dev": true
+            }
+          }
+        },
+        "engine.io-parser": {
+          "version": "1.2.4",
+          "from": "engine.io-parser@1.2.4",
+          "resolved": "https://registry.npmjs.org/engine.io-parser/-/engine.io-parser-1.2.4.tgz",
+          "dev": true,
+          "dependencies": {
+            "has-binary": {
+              "version": "0.1.6",
+              "from": "has-binary@0.1.6",
+              "resolved": "https://registry.npmjs.org/has-binary/-/has-binary-0.1.6.tgz",
+              "dev": true
+            }
+          }
+        },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
         "esprima": {
           "version": "2.5.0",
           "from": "esprima@2.5.0",
@@ -276,6 +391,12 @@
           "resolved": "https://registry.npmjs.org/har-validator/-/har-validator-2.0.6.tgz",
           "dev": true
         },
+        "isarray": {
+          "version": "0.0.1",
+          "from": "isarray@0.0.1",
+          "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz",
+          "dev": true
+        },
         "lodash": {
           "version": "4.13.1",
           "from": "lodash@4.13.1",
@@ -306,6 +427,29 @@
           "resolved": "https://registry.npmjs.org/request/-/request-2.72.0.tgz",
           "dev": true
         },
+<<<<<<< HEAD
+=======
+        "socket.io-client": {
+          "version": "1.4.6",
+          "from": "socket.io-client@1.4.6",
+          "resolved": "https://registry.npmjs.org/socket.io-client/-/socket.io-client-1.4.6.tgz",
+          "dev": true
+        },
+        "socket.io-parser": {
+          "version": "2.2.6",
+          "from": "socket.io-parser@2.2.6",
+          "resolved": "https://registry.npmjs.org/socket.io-parser/-/socket.io-parser-2.2.6.tgz",
+          "dev": true,
+          "dependencies": {
+            "component-emitter": {
+              "version": "1.1.2",
+              "from": "component-emitter@1.1.2",
+              "resolved": "https://registry.npmjs.org/component-emitter/-/component-emitter-1.1.2.tgz",
+              "dev": true
+            }
+          }
+        },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
         "tough-cookie": {
           "version": "2.2.2",
           "from": "tough-cookie@2.2.2",
@@ -477,9 +621,14 @@
     },
     "bluebird": {
       "version": "3.5.0",
+<<<<<<< HEAD
       "from": "bluebird@>=3.4.7 <4.0.0",
       "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.5.0.tgz",
       "dev": true
+=======
+      "from": "bluebird@>=3.4.1 <4.0.0",
+      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.5.0.tgz"
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     },
     "body-parser": {
       "version": "1.17.1",
@@ -540,9 +689,15 @@
       "resolved": "https://registry.npmjs.org/builtins/-/builtins-0.0.7.tgz"
     },
     "bunyan": {
+<<<<<<< HEAD
       "version": "1.8.9",
       "from": "bunyan@>=1.8.5 <2.0.0",
       "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-1.8.9.tgz"
+=======
+      "version": "1.8.8",
+      "from": "bunyan@>=1.8.5 <2.0.0",
+      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-1.8.8.tgz"
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     },
     "bytes": {
       "version": "2.4.0",
@@ -735,6 +890,23 @@
       "from": "co@>=4.6.0 <5.0.0",
       "resolved": "https://registry.npmjs.org/co/-/co-4.6.0.tgz"
     },
+<<<<<<< HEAD
+=======
+    "codacy-coverage": {
+      "version": "2.0.1",
+      "from": "codacy-coverage@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/codacy-coverage/-/codacy-coverage-2.0.1.tgz",
+      "dev": true,
+      "dependencies": {
+        "bluebird": {
+          "version": "2.11.0",
+          "from": "bluebird@>=2.9.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.11.0.tgz",
+          "dev": true
+        }
+      }
+    },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     "code-point-at": {
       "version": "1.1.0",
       "from": "code-point-at@>=1.0.0 <2.0.0",
@@ -760,9 +932,14 @@
     },
     "commander": {
       "version": "2.9.0",
+<<<<<<< HEAD
       "from": "commander@2.9.0",
       "resolved": "https://registry.npmjs.org/commander/-/commander-2.9.0.tgz",
       "dev": true
+=======
+      "from": "commander@>=2.9.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/commander/-/commander-2.9.0.tgz"
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     },
     "component-bind": {
       "version": "1.0.0",
@@ -1218,11 +1395,6 @@
       "from": "editorconfig@>=0.13.2 <0.14.0",
       "resolved": "https://registry.npmjs.org/editorconfig/-/editorconfig-0.13.2.tgz",
       "dependencies": {
-        "bluebird": {
-          "version": "3.5.0",
-          "from": "bluebird@>=3.0.5 <4.0.0",
-          "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.5.0.tgz"
-        },
         "lru-cache": {
           "version": "3.2.0",
           "from": "lru-cache@>=3.2.0 <4.0.0",
@@ -2248,8 +2420,12 @@
     "is-my-json-valid": {
       "version": "2.16.0",
       "from": "is-my-json-valid@>=2.12.4 <3.0.0",
+<<<<<<< HEAD
       "resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.16.0.tgz",
       "dev": true
+=======
+      "resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.16.0.tgz"
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     },
     "is-nan": {
       "version": "1.2.1",
@@ -2604,6 +2780,66 @@
       "from": "load-json-file@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/load-json-file/-/load-json-file-1.1.0.tgz"
     },
+<<<<<<< HEAD
+=======
+    "localtunnel": {
+      "version": "1.8.2",
+      "from": "localtunnel@1.8.2",
+      "resolved": "https://registry.npmjs.org/localtunnel/-/localtunnel-1.8.2.tgz",
+      "dependencies": {
+        "caseless": {
+          "version": "0.11.0",
+          "from": "caseless@>=0.11.0 <0.12.0",
+          "resolved": "https://registry.npmjs.org/caseless/-/caseless-0.11.0.tgz"
+        },
+        "cliui": {
+          "version": "3.2.0",
+          "from": "cliui@>=3.0.3 <4.0.0",
+          "resolved": "https://registry.npmjs.org/cliui/-/cliui-3.2.0.tgz"
+        },
+        "debug": {
+          "version": "2.2.0",
+          "from": "debug@2.2.0",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
+        },
+        "har-validator": {
+          "version": "2.0.6",
+          "from": "har-validator@>=2.0.6 <2.1.0",
+          "resolved": "https://registry.npmjs.org/har-validator/-/har-validator-2.0.6.tgz"
+        },
+        "ms": {
+          "version": "0.7.1",
+          "from": "ms@0.7.1",
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
+        },
+        "node-uuid": {
+          "version": "1.4.7",
+          "from": "node-uuid@>=1.4.7 <1.5.0",
+          "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
+        },
+        "qs": {
+          "version": "6.3.2",
+          "from": "qs@>=6.3.0 <6.4.0",
+          "resolved": "https://registry.npmjs.org/qs/-/qs-6.3.2.tgz"
+        },
+        "request": {
+          "version": "2.78.0",
+          "from": "request@2.78.0",
+          "resolved": "https://registry.npmjs.org/request/-/request-2.78.0.tgz"
+        },
+        "tunnel-agent": {
+          "version": "0.4.3",
+          "from": "tunnel-agent@>=0.4.1 <0.5.0",
+          "resolved": "https://registry.npmjs.org/tunnel-agent/-/tunnel-agent-0.4.3.tgz"
+        },
+        "yargs": {
+          "version": "3.29.0",
+          "from": "yargs@3.29.0",
+          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.29.0.tgz"
+        }
+      }
+    },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     "lodash": {
       "version": "4.17.4",
       "from": "lodash@>=4.3.0 <5.0.0",
@@ -2970,8 +3206,40 @@
     },
     "nhsuk-bunyan-logger": {
       "version": "0.1.0",
+<<<<<<< HEAD
       "from": "nhsuk/bunyan-logger#1.1.1",
       "resolved": "git://github.com/nhsuk/bunyan-logger.git#c3a8bcad6ffc179da89bef1d9830ae0c9a97a79e"
+=======
+      "from": "nhsuk/bunyan-logger#1.1.0",
+      "resolved": "git://github.com/nhsuk/bunyan-logger.git#80f8535f1196d92d0475307a07c921cf82f08f40"
+    },
+    "nhsuk-frontend": {
+      "version": "0.2.0",
+      "from": "nhsuk/frontend#0.2.0",
+      "resolved": "git://github.com/nhsuk/frontend.git#ba1f1b5b118c092e53dcc4f19f307cd7813f8161",
+      "dependencies": {
+        "camelcase": {
+          "version": "2.1.1",
+          "from": "camelcase@>=2.0.1 <3.0.0",
+          "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-2.1.1.tgz"
+        },
+        "cliui": {
+          "version": "3.2.0",
+          "from": "cliui@>=3.0.3 <4.0.0",
+          "resolved": "https://registry.npmjs.org/cliui/-/cliui-3.2.0.tgz"
+        },
+        "nunjucks": {
+          "version": "3.0.0",
+          "from": "nunjucks@>=3.0.0 <4.0.0",
+          "resolved": "https://registry.npmjs.org/nunjucks/-/nunjucks-3.0.0.tgz"
+        },
+        "yargs": {
+          "version": "3.32.0",
+          "from": "yargs@>=3.32.0 <4.0.0",
+          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.32.0.tgz"
+        }
+      }
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     },
     "nocache": {
       "version": "2.0.0",
@@ -3557,6 +3825,34 @@
       "from": "request@>=2.79.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/request/-/request-2.81.0.tgz"
     },
+<<<<<<< HEAD
+=======
+    "request-promise": {
+      "version": "0.4.3",
+      "from": "request-promise@>=0.0.0 <1.0.0",
+      "resolved": "https://registry.npmjs.org/request-promise/-/request-promise-0.4.3.tgz",
+      "dev": true,
+      "dependencies": {
+        "bluebird": {
+          "version": "2.11.0",
+          "from": "bluebird@>=2.3.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.11.0.tgz",
+          "dev": true
+        },
+        "lodash": {
+          "version": "3.10.1",
+          "from": "lodash@>=3.10.0 <4.0.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+          "dev": true
+        }
+      }
+    },
+    "require-all": {
+      "version": "2.2.0",
+      "from": "require-all@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/require-all/-/require-all-2.2.0.tgz"
+    },
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     "require-directory": {
       "version": "2.1.1",
       "from": "require-directory@>=2.1.1 <3.0.0",
@@ -3856,8 +4152,12 @@
     "split": {
       "version": "0.3.3",
       "from": "split@>=0.3.0 <0.4.0",
+<<<<<<< HEAD
       "resolved": "https://registry.npmjs.org/split/-/split-0.3.3.tgz",
       "dev": true
+=======
+      "resolved": "https://registry.npmjs.org/split/-/split-0.3.3.tgz"
+>>>>>>> ad0abd8... :ghost: Use nhsuk-bunyan-logger for configurability
     },
     "sprintf-js": {
       "version": "1.0.3",
