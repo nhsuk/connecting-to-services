@@ -11,10 +11,10 @@ sass.render({
   includePaths: ['node_modules/'],
   outputStyle: 'compressed',
   outFile: './public/css/nhsuk.css'
-}, function (error, result) {
+}, (error, result) => {
   if (error) {
     console.log(error.message);
   } else {
-    fs.writeFile('./public/assets/css/nhsuk.css', result.css);
+    fs.writeFileSync('./public/assets/css/nhsuk.css', result.css);
   }
 });

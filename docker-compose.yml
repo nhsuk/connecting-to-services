@@ -1,0 +1,30 @@
+version: '2.1'
+
+services:
+
+  c2s-frontend:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    command: npm run watch-dev
+    volumes:
+      - .:/code
+      - c2s-node_modules:/code/node_modules
+    environment:
+      API_BASE_URL: 'http://nearby-services-api:3001'
+    links:
+      - nearby-services-api:nearby-services-api
+    ports:
+      - 3000:3000
+
+  nearby-services-api:
+    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-latest}"
+    links:
+      - mongodb-pharmacy:mongo
+
+  mongodb-pharmacy:
+    image: "nhsuk/mongodb-pharmacy:${PHARMACY_DB_DOCKER_IMAGE_TAG-latest}"
+
+volumes:
+  c2s-node_modules:
