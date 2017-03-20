@@ -43,7 +43,7 @@
     "express": "^4.13.3",
     "helmet": "^3.0.0",
     "nhsuk-bunyan-logger": "github:nhsuk/bunyan-logger#1.1.1",
-    "node-sass": "^4.2.0",
+    "node-sass": "^4.5.0",
     "normalize.css": "^6.0.0",
     "nunjucks": "^3.0.0",
     "object.values": "^1.0.3",
