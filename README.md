@@ -37,6 +37,19 @@ the site when changes are made.
 
 ## Testing
 
+The application uses [Docker](https://www.docker.com/) to run in containers.
+Development is done on the host machine. The files are loaded into the
+container so the changes are automatically updated.
+
+In order to get this working the application should be started via
+`docker-compose up --force-recreate --build`. The application will be available
+on [http://localhost:3000](http://localhost:3000) and will auto reload on
+changes.
+
+When finished the containers should be stopped via `docker-compose down -v`.
+This will ensure the next time they are started they are starting with a
+fresh baseline.
+
 ### Performance testing
 
 [Artillery](https://artillery.io/docs/#) is available for running performance
