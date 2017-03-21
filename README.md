@@ -13,27 +13,18 @@ meet their time, location and accessibility needs.
 
 Clone the repo: `git clone https://github.com/nhsuk/connecting-to-services.git`
 
-Change directory to where the repo was cloned and install dependencies:
-`cd ./connecting-to-services/ && npm install`
+The application uses [Docker](https://www.docker.com/) to run in containers.
+Development is done on the host machine. The files are loaded into the
+container so the changes are automatically updated.
 
-If running the app on your local machine you will need to regenerate the CSS by running `npm run build-css-dev`.
-CSS generation happens as part of the Docker image creation and also when running locally using the Docker development environment with file watching and so the step isn't required in those situations.
+In order to get this working the application should be started via
+`docker-compose up --force-recreate --build`. The application will be available
+on [http://localhost:3000](http://localhost:3000) and will auto reload on
+changes.
 
-### Run the app
-
-In order to get the application running, execute `API_BASE_URL=${apiUrl} npm run watch-dev`
-where `${apiUrl}` is the url of the api being used to retrieve nearby services.
-The api will be a version of [`nhsuk/nearby-services-api`](https://github.com/nhsuk/nearby-services-api).
-Any instance of the api can be used, typically it would be the staging instance
-but it might be a local version if changes are being made to the API at the same
-time. If the local version of the API is being used `${apiUrl}` would be
-http://localhost:3001 which gives the full command to run as:
-`API_BASE_URL=http://localhost:3001 npm run watch-dev`.
-
-The npm script `watch-dev` uses [nodemon](https://nodemon.io/) to auto reload
-the site when changes are made.
-
-## Testing
+When finished the containers should be stopped via `docker-compose down -v`.
+This will ensure the next time they are started they are starting with a
+fresh baseline.
 
 ### Performance testing
 

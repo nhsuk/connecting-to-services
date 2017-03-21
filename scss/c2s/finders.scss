@@ -1,0 +1,166 @@
+@import "nhsuk-frontend/dist/scss/nhsuk";
+@import "base";
+
+.page-section{
+  .grid-row {
+    margin: 0 -16px;
+    &:after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+    @include media(desktop) {
+      > * {
+        margin-top: 0;
+      }
+    }
+    .column--two-thirds {
+      display:block;
+      padding:0 16px;
+      @include media(tablet) {
+        float: left;
+        width: 66.6667%;
+      }
+    }
+    .results {
+      list-style: none;
+      margin:0;
+      padding:0 16px;
+      &__item {
+        margin-top:8px;
+        &--nearest {
+          border: 16px solid $blue;
+          padding: 0;
+        }
+        &--nearby {
+          margin-top:48px;
+          &:first-child {
+            padding-top:0;
+            .results__details {
+              padding-top:0;
+            }
+          }
+        }
+        &:first-child {
+          margin-top: 0;
+        }
+        &:after {
+          clear: both;
+          content: "";
+          display: block;
+        }
+      }
+      &__header {
+        font-size: 32px;
+        line-height:40px;
+        padding:0 8px;
+        &--nearest {
+          background-color: $blue;
+          color: #fff;
+          padding:8px 8px 24px 8px;
+        }
+        @include media(tablet) {
+          line-height: 48px;
+          padding:0;
+          &--nearest {
+            padding: 16px 16px 32px 16px;
+          }
+          &--none {
+            padding:0;
+          }
+        }
+      }
+      &__details {
+        padding: 0 32px 32px 32px;
+        position: relative;
+        &--nearby {
+          padding-bottom: 32px;
+          padding-left: 0;
+          padding-right: 0;
+          &:after {
+            background-color: #d9e1e2;
+            content: "";
+            display: block;
+            height: 4px;
+            left: 0;
+            position: absolute;
+            bottom: -2px;
+            width: 130px;
+          }
+        }
+        .callout {
+          display:block;
+        }
+      }
+      &__nearby {
+        padding: 16px;
+        @include media(desktop) {
+          padding:32px;
+        }
+        &-list {
+          list-style: none;
+          margin: 32px 0 0 0;
+          padding: 0;
+        }
+      }
+      &__name {
+        margin-top:8px;
+      }
+      &-block {
+        &--none {
+          background-color: #0072c6;
+          color: #fff;
+          margin-bottom: 32px;
+          padding: 16px;
+          @include media(desktop) {
+            margin-bottom: 48px;
+          }
+          .results__header {
+            padding: 8px 8px 12px 8px;
+            @include media(desktop) {
+              padding: 8px 16px 0 16px;
+            }
+          }
+          .results__none-content {
+            background: #fff;
+            color: #000;
+            padding: 16px;
+            @include media(desktop) {
+              padding: 32px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+  Links
+*/
+
+
+
+.results-block {
+    background-color: #0072c6;
+    color: #fff;
+    margin-bottom: 32px;
+    padding: 16px;
+}
+/*
+  Utilities
+*/
+.u-nomargin {
+  margin:0;
+}
+
+.u-margintop5 {
+  margin-top:5px;
+}
+
+/*
+  Other
+*/
+.local-header--question {
+    padding: 0;
+}

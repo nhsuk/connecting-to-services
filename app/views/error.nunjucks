@@ -1,14 +1,16 @@
-{% extends 'layout.nunjucks' %}
+{% extends 'c2s-base.nunjucks' %}
 
 {% set message = 'Sorry, we are experiencing technical problems' %}
 
-{% block pageTitle %} {{ message }} {% endblock %}
+{% block head_title_content %} {{ message }} {% endblock %}
 
-{% block header %}
+{% block body_main_content %}
+
+<div class="page-section">
   <h1 class="local-header--title--question">{{ message }}</h1>
-{% endblock %}
-{% block content %}
+
   <div class="reading-width">
     <p>Please try again later.</p>
-  <div>
+  </div>
+</div>
 {% endblock %}
