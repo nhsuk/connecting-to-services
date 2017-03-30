@@ -69,6 +69,7 @@ environment.
 |:---------------------------------|:---------------------------------------------------------------------------------------|:-------------------------|-----------------|
 | `API_BASE_URL`                   | The fully qualified domain the api exists on e.g. `http://web.site`                    |                          | Yes             |
 | `NODE_ENV`                       | node environment                                                                       | development              |                 |
+| `LOG_LEVEL`                      | [bunyan log level](https://github.com/trentm/node-bunyan#levels)                       | `INFO`                   |                 |
 | `PORT`                           | server port                                                                            | 3000                     |                 |
 | `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id                     |                          |                 |
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                                    |                          |                 |
