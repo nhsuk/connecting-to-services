@@ -415,12 +415,6 @@
       "from": "block-stream@*",
       "resolved": "https://registry.npmjs.org/block-stream/-/block-stream-0.0.9.tgz"
     },
-    "bluebird": {
-      "version": "2.11.0",
-      "from": "bluebird@>=2.9.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.11.0.tgz",
-      "dev": true
-    },
     "body-parser": {
       "version": "1.17.1",
       "from": "body-parser@>=1.13.3 <2.0.0",
@@ -674,12 +668,6 @@
       "version": "4.6.0",
       "from": "co@>=4.6.0 <5.0.0",
       "resolved": "https://registry.npmjs.org/co/-/co-4.6.0.tgz"
-    },
-    "codacy-coverage": {
-      "version": "2.0.1",
-      "from": "codacy-coverage@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/codacy-coverage/-/codacy-coverage-2.0.1.tgz",
-      "dev": true
     },
     "code-point-at": {
       "version": "1.1.0",
@@ -2179,12 +2167,6 @@
       "from": "isarray@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
     },
-    "isemail": {
-      "version": "1.2.0",
-      "from": "isemail@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/isemail/-/isemail-1.2.0.tgz",
-      "dev": true
-    },
     "isexe": {
       "version": "2.0.0",
       "from": "isexe@>=2.0.0 <3.0.0",
@@ -2249,12 +2231,6 @@
           "dev": true
         }
       }
-    },
-    "joi": {
-      "version": "6.10.1",
-      "from": "joi@>=6.4.0 <7.0.0",
-      "resolved": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
-      "dev": true
     },
     "js-tokens": {
       "version": "3.0.1",
@@ -3351,20 +3327,6 @@
       "from": "request@>=2.79.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/request/-/request-2.81.0.tgz"
     },
-    "request-promise": {
-      "version": "0.4.3",
-      "from": "request-promise@>=0.0.0 <1.0.0",
-      "resolved": "https://registry.npmjs.org/request-promise/-/request-promise-0.4.3.tgz",
-      "dev": true,
-      "dependencies": {
-        "lodash": {
-          "version": "3.10.1",
-          "from": "lodash@>=3.10.0 <4.0.0",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
-          "dev": true
-        }
-      }
-    },
     "require-directory": {
       "version": "2.1.1",
       "from": "require-directory@>=2.1.1 <3.0.0",
@@ -3832,12 +3794,6 @@
       "version": "0.1.4",
       "from": "to-array@0.1.4",
       "resolved": "https://registry.npmjs.org/to-array/-/to-array-0.1.4.tgz",
-      "dev": true
-    },
-    "topo": {
-      "version": "1.1.0",
-      "from": "topo@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/topo/-/topo-1.1.0.tgz",
       "dev": true
     },
     "touch": {
