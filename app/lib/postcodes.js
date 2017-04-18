@@ -5,6 +5,26 @@ const messages = require('../lib/messages');
 
 const baseUrl = 'https://api.postcodes.io';
 
+const isleOfManLatLon = {
+  latitude: 54.206457,
+  longitude: -4.570902
+};
+
+function isleOfManPostcode(result) {
+  return result.country === 'Isle of Man';
+}
+
+function getLatLon(result) {
+  return {
+    latitude: result.latitude,
+    longitude: result.longitude,
+  };
+}
+
+function getCoordinates(result) {
+  return isleOfManPostcode(result) ? isleOfManLatLon : getLatLon(result);
+}
+
 function lookup(res, next) {
   let url;
   const location = res.locals.location;
@@ -33,10 +53,7 @@ function lookup(res, next) {
         case 200:
           postcode = JSON.parse(body);
           // eslint-disable-next-line no-param-reassign
-          res.locals.coordinates = {
-            latitude: postcode.result.latitude,
-            longitude: postcode.result.longitude,
-          };
+          res.locals.coordinates = getCoordinates(postcode.result);
           next();
           break;
         case 404:
