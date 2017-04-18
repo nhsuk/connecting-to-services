@@ -5,7 +5,7 @@ const messages = require('../lib/messages');
 
 const baseUrl = 'https://api.postcodes.io';
 
-const isleOfManLatLon = {
+const isleOfManLatLong = {
   latitude: 54.206457,
   longitude: -4.570902
 };
@@ -14,7 +14,7 @@ function isleOfManPostcode(result) {
   return result.country === 'Isle of Man';
 }
 
-function getLatLon(result) {
+function getLatLong(result) {
   return {
     latitude: result.latitude,
     longitude: result.longitude,
@@ -22,7 +22,9 @@ function getLatLon(result) {
 }
 
 function getCoordinates(result) {
-  return isleOfManPostcode(result) ? isleOfManLatLon : getLatLon(result);
+  // postcodes.io doesn't return lat/long for the Isle of Man
+  // return centre of the 33 mile long, 13 mile wide island instead
+  return isleOfManPostcode(result) ? isleOfManLatLong : getLatLong(result);
 }
 
 function lookup(res, next) {
