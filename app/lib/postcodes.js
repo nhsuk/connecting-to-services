@@ -10,7 +10,7 @@ const isleOfManLatLong = {
   longitude: -4.570902
 };
 
-function isleOfManPostcode(result) {
+function isIsleOfManPostcode(result) {
   return result.country === 'Isle of Man';
 }
 
@@ -24,7 +24,7 @@ function getLatLong(result) {
 function getCoordinates(result) {
   // postcodes.io doesn't return lat/long for the Isle of Man
   // return centre of the 33 mile long, 13 mile wide island instead
-  return isleOfManPostcode(result) ? isleOfManLatLong : getLatLong(result);
+  return isIsleOfManPostcode(result) ? isleOfManLatLong : getLatLong(result);
 }
 
 function lookup(res, next) {
