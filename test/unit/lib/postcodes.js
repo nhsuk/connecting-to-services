@@ -74,6 +74,21 @@ describe('Postcodes', () => {
     });
 
     describe('server errors', () => {
+      it('should return an error when location not avaiable', (done) => {
+        const noLatLongResponse = JSON.parse(getSampleResponse('postcodesio-responses/noLatLong.json'));
+        const postcodeRes = { locals: { location: postcode } };
+        nock('https://api.postcodes.io')
+          .get(`/postcodes/${postcodeForRequest}`)
+          .reply(200, noLatLongResponse);
+
+        postcodes.lookup(postcodeRes, (err) => {
+          expect(err.type).to.be.equal('postcode-service-error');
+          expect(err.message).to.be.equal('No location found for AB12 3CD');
+          expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
+          done();
+        });
+      });
+
       it('should return an error when postcode service throws a 500 error', (done) => {
         const postcodeRes = { locals: { location: postcode } };
 
@@ -88,7 +103,6 @@ describe('Postcodes', () => {
           done();
         });
       });
-
       it('should return error when postcode service is unavailable', (done) => {
         const postcodeRes = { locals: { location: postcode } };
         const errorMessage = 'getaddrinfo ENOTFOUND api.postcodes.io api.postcodes.io:443';
