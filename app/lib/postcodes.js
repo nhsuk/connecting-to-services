@@ -5,26 +5,28 @@ const messages = require('../lib/messages');
 
 const baseUrl = 'https://api.postcodes.io';
 
-const isleOfManLatLong = {
-  latitude: 54.206457,
-  longitude: -4.570902
+// postcodes in the Isle of Man and the Channel Isle are missing lat longs
+// use the following values instead
+const missingLatLongForCountry = {
+  'Isle of Man': {
+    latitude: 54.206457,
+    longitude: -4.570902
+  },
+  'Channel Islands': {
+    latitude: 49.2327,
+    longitude: -2.1325
+  },
 };
-
-function isIsleOfManPostcode(result) {
-  return result.country === 'Isle of Man';
-}
 
 function getLatLong(result) {
   return {
     latitude: result.latitude,
-    longitude: result.longitude,
+    longitude: result.longitude
   };
 }
 
 function getCoordinates(result) {
-  // postcodes.io doesn't return lat/long for the Isle of Man
-  // return centre of the 33 mile long, 13 mile wide island instead
-  return isIsleOfManPostcode(result) ? isleOfManLatLong : getLatLong(result);
+  return missingLatLongForCountry[result.country] || getLatLong(result);
 }
 
 function lookup(res, next) {
