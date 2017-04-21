@@ -9,6 +9,7 @@ before('global setup', () => {
 
 after('Check all nocks have been called', () => {
   try {
+    // eslint-disable-next-line no-console
     console.log(nock.pendingMocks());
     expect(nock.pendingMocks().length).to.equal(0);
     expect(nock.isDone()).to.equal(true);
