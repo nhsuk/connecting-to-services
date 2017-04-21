@@ -1,5 +1,6 @@
 const log = require('../lib/logger');
 const renderer = require('../middleware/renderer');
+const isNotEnglishLocation = require('../lib/isNotEnglishLocation');
 const locationValidator = require('../lib/locationValidator');
 
 function setLocationLabel(res, location) {
@@ -9,7 +10,7 @@ function setLocationLabel(res, location) {
   }
 }
 
-function validateLocation(req, res, next) {
+function validateEnglishLocation(req, res, next) {
   const location = res.locals.location;
 
   log.info('validate-location-start');
@@ -27,6 +28,22 @@ function validateLocation(req, res, next) {
     renderer.findHelp(req, res);
   } else {
     next();
+  }
+}
+
+function renderNoResultsPage(req, res) {
+  /* eslint-disable no-param-reassign */
+  res.locals.nearbyServices = [];
+  res.locals.openServices = [];
+  /* eslint-enable no-param-reassign*/
+  renderer.results(req, res);
+}
+
+function validateLocation(req, res, next) {
+  if (isNotEnglishLocation(res.locals.location)) {
+    renderNoResultsPage(req, res);
+  } else {
+    validateEnglishLocation(req, res, next);
   }
 }
 
