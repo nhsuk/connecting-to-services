@@ -32,6 +32,7 @@ function validateEnglishLocation(req, res, next) {
 }
 
 function renderNoResultsPage(req, res) {
+  log.info(`Rendering no results page for non-english postcode '${res.locals.location}'`);
   /* eslint-disable no-param-reassign */
   res.locals.nearbyServices = [];
   res.locals.openServices = [];

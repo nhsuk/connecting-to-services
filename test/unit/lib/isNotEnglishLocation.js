@@ -69,4 +69,22 @@ describe('isNotEnglishLocation', () => {
      // eslint-disable-next-line no-unused-expressions
     expect(isNotEnglish).to.be.false;
   });
+
+  it('should return true for Isle of Man outcode', () => {
+    const isNotEnglish = isNotEnglishLocation('IM1');
+     // eslint-disable-next-line no-unused-expressions
+    expect(isNotEnglish).to.be.true;
+  });
+
+  it('should return true for Isle of Man postcode', () => {
+    const isNotEnglish = isNotEnglishLocation('IM9 2AS');
+     // eslint-disable-next-line no-unused-expressions
+    expect(isNotEnglish).to.be.true;
+  });
+
+  it('should return false for postcodes ending in IM', () => {
+    const isNotEnglish = isNotEnglishLocation('LS1 4IM');
+     // eslint-disable-next-line no-unused-expressions
+    expect(isNotEnglish).to.be.false;
+  });
 });
