@@ -6,7 +6,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: npm run git-hook
+    command: yarn run git-hook
     volumes:
       - c2s-tests-node_modules:/code/node_modules
     environment:
@@ -18,7 +18,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: npm run travis
+    command: yarn run travis
     user: root
     volumes:
       - .:/code

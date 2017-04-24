@@ -20,7 +20,7 @@ We welcome patches to the NHS.UK Beta products, as long as you follow these guid
 
 - Must be readable with meaningful naming, eg no short hand single character variable names
 - Follow our [styleguides](https://github.com/nhsuk/styleguides)
-- Must pass linting with the ruleset from `.eslint.json` (`npm run lint`). Lint will run on all commits, rebases and as part of CI 
+- Must pass linting with the ruleset from `.eslint.json` (`yarn run lint`). Lint will run on all commits, rebases and as part of CI
 
 ## Testing
 
