@@ -2,15 +2,26 @@ version: '2.1'
 
 services:
 
+  tests:
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: npm run git-hook
+    volumes:
+      - c2s-tests-node_modules:/code/node_modules
+    environment:
+      NODE_ENV: test
+    links:
+      - nearby-services-api:nearby-services-api
+
   travis-tests:
-    build:
-      context: .
-      args:
-        NODE_ENV: development
-    command: sh -c "npm run travis"
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: npm run travis
     volumes:
       - .:/code
-      - c2s-node_modules:/code/node_modules
+      - c2s-travis-tests-node_modules:/code/node_modules
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
@@ -20,8 +31,6 @@ services:
       TRAVIS_JOB_ID: ${TRAVIS_JOB_ID}
     links:
       - nearby-services-api:nearby-services-api
-    ports:
-      - 3000:3000
 
   nearby-services-api:
     image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-latest}"
@@ -32,4 +41,5 @@ services:
     image: "nhsuk/pharmacy-db:${PHARMACY_DB_DOCKER_IMAGE_TAG-0.1.0}"
 
 volumes:
-  c2s-node_modules:
+  c2s-tests-node_modules:
+  c2s-travis-tests-node_modules:
