@@ -97,6 +97,22 @@ describe('The results page', () => {
       });
   });
 
+  it('should display no pharmacies message for non-english postcodes', (done) => {
+    const outcode = 'BT1';
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results__header--none').text()).to.be.equal(`There are no pharmacies within 20 miles of ${outcode}`);
+        expect($('.results-none-nearby').length).to.be.equal(0);
+        done();
+      });
+  });
+
   it('should display a message when there is an open pharmacy but no additional nearby pharmacies', (done) => {
     const outcode = 'BA2';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA2.json');
