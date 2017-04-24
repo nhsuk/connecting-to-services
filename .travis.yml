@@ -1,13 +1,27 @@
 sudo: required
 
+language: node_js
+node_js:
+  - node
+
 services:
   - docker
 
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
 script:
-  - docker build --build-arg NODE_ENV=development -t nhsuk/c2s .
-  - docker run --user=root -e TRAVIS=true -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN -e CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN -e TRAVIS_COMMIT=$TRAVIS_COMMIT nhsuk/c2s sh -c "cd /code && npm run git-hook && npm run upload-coverage-coveralls"
+  - docker-compose -f docker-compose-tests.yml build travis-tests
+  - docker-compose -f docker-compose-tests.yml run travis-tests
 
 after_success:
+  - pip install pyyaml
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - ./scripts/ci-deployment/docker_ci.sh
   - ./scripts/ci-deployment/rancher_pr_deploy.sh
+
+after_script:
+  - docker-compose -f docker-compose-tests.yml down -v

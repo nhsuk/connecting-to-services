@@ -1,0 +1,5 @@
+#!/bin/bash
+# Specifying the project name (-p) creates a non-default network for the tests
+# to run isolated from the main app
+docker-compose -p tests -f docker-compose-tests.yml down -v
+docker-compose -p tests -f docker-compose-tests.yml up --build --force-recreate tests
