@@ -21,10 +21,10 @@ services:
   nearby-services-api:
     image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-latest}"
     links:
-      - mongodb-pharmacy:mongo
+      - pharmacy-db:mongo
 
-  mongodb-pharmacy:
-    image: "nhsuk/mongodb-pharmacy:${PHARMACY_DB_DOCKER_IMAGE_TAG-latest}"
+  pharmacy-db:
+    image: "nhsuk/pharmacy-db:${PHARMACY_DB_DOCKER_IMAGE_TAG-0.1.0}"
 
 volumes:
   c2s-node_modules:
