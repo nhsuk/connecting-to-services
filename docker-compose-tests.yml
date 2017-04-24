@@ -19,6 +19,7 @@ services:
       file: docker-compose.yml
       service: base-app
     command: npm run travis
+    user: root
     volumes:
       - .:/code
       - c2s-travis-tests-node_modules:/code/node_modules
