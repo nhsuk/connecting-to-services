@@ -8,27 +8,27 @@
   },
   "scripts": {
     "start": "node app.js",
-    "start-logging": "node app.js | ./node_modules/.bin/bunyan",
+    "start-logging": "node app.js | ./node_modules/bunyan/bin/bunyan",
     "lint": "eslint --ext .js,.json .",
     "test": "NODE_ENV=test mocha --recursive test",
     "build-css": "./css-build",
-    "watch-dev": "nodemon app.js | ./node_modules/.bin/bunyan & nodemon -e scss -x npm run build-css -- compact",
-    "watch-dev-debug": "NODE_ENV=development && npm run watch-dev",
+    "watch-dev": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn run build-css -- compact",
+    "watch-dev-debug": "NODE_ENV=development && yarn run watch-dev",
     "watch-lint": "esw --watch .",
-    "watch-test": "npm run test -- --watch --reporter min",
+    "watch-test": "yarn run test -- --watch --reporter min",
     "istanbul": "NODE_ENV=test istanbul",
-    "generate-coverage": "npm run istanbul -- cover _mocha -- --recursive",
-    "generate-full-coverage": "npm run istanbul -- cover --include-all-sources _mocha -- --recursive",
+    "generate-coverage": "yarn run istanbul -- cover _mocha -- --recursive",
+    "generate-full-coverage": "yarn run istanbul -- cover --include-all-sources _mocha -- --recursive",
     "check-coverage": "istanbul check-coverage --config .istanbul.yml",
     "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls",
     "artillery-fire": "artillery run ./test/perf/all-results.json -o ./reports/all-results.json",
     "artillery-report": "artillery report ./reports/all-results.json",
     "snyk": "snyk",
-    "precommit": "npm run git-hook",
-    "prepush": "npm run git-hook && npm run snyk -- test",
-    "postrewrite": "npm run git-hook",
-    "travis": "npm run git-hook && npm run upload-coverage-coveralls",
-    "git-hook": "npm run lint && npm run generate-coverage && npm run check-coverage"
+    "precommit": "yarn run git-hook",
+    "prepush": "yarn run git-hook && yarn run snyk -- test",
+    "postrewrite": "yarn run git-hook",
+    "travis": "yarn run git-hook && yarn run upload-coverage-coveralls",
+    "git-hook": "yarn run lint && yarn run generate-coverage && yarn run check-coverage"
   },
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "nunjucks": "^3.0.0",
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
-    "request": "^2.79.0",
+    "request": "^2.81.0",
     "require-environment-variables": "^1.1.2",
     "snyk": "^1.21.2"
   },
@@ -73,8 +73,7 @@
     "mocha": "^3.0.2",
     "nock": "^9.0.0",
     "nodemon": "^1.10.2",
-    "proxyquire": "^1.7.10",
-    "request": "^2.78.0"
+    "proxyquire": "^1.7.10"
   },
   "snyk": true
 }
