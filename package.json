@@ -27,7 +27,7 @@
     "precommit": "yarn run git-hook",
     "prepush": "yarn run git-hook",
     "postrewrite": "yarn run git-hook",
-    "travis": "yarn run git-hook && yarn run upload-coverage-coveralls && yarn run snyk -- test --org=nhsuk && yarn run snyk -- monitor --org=nhsuk",
+    "travis": "yarn run git-hook && yarn run upload-coverage-coveralls && yarn run snyk -- test --org=nhsuk ignore --id=npm:moment:20161019 && yarn run snyk -- monitor --org=nhsuk",
     "git-hook": "yarn run lint && yarn run generate-coverage && yarn run check-coverage"
   },
   "repository": {
