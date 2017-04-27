@@ -25,7 +25,7 @@
     "artillery-report": "artillery report ./reports/all-results.json",
     "snyk": "snyk",
     "precommit": "yarn run git-hook",
-    "prepush": "yarn run git-hook && yarn run snyk -- test",
+    "prepush": "yarn run git-hook",
     "postrewrite": "yarn run git-hook",
     "travis": "yarn run git-hook && yarn run upload-coverage-coveralls && yarn run snyk -- test",
     "git-hook": "yarn run lint && yarn run generate-coverage && yarn run check-coverage"
@@ -43,7 +43,7 @@
     "cookie-parser": "^1.3.3",
     "express": "^4.13.3",
     "helmet": "^3.0.0",
-    "nhsuk-bunyan-logger": "github:nhsuk/bunyan-logger#1.1.1",
+    "nhsuk-bunyan-logger": "^1.2.2",
     "node-sass": "^4.5.0",
     "normalize.css": "^6.0.0",
     "nunjucks": "^3.0.0",

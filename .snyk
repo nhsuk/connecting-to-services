@@ -1,6 +1,35 @@
-version: v1.5.0
-ignore: {}
-patch:
-  'npm:request:20160119':
-    - bunyan-logger > splunk-bunyan-logger > splunk-logging > request:
-        patched: '2016-12-15T09:44:48.602Z'
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:moment:20161019':
+    - nhsuk-bunyan-logger > bunyan > moment:
+        reason: None given
+        expires: '2017-05-27T13:42:43.447Z'
+  'npm:brace-expansion:20170302':
+    - nunjucks > chokidar > fsevents > node-pre-gyp > rimraf > glob > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.447Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar > fstream > rimraf > glob > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.447Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > rimraf > glob > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.448Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > fstream > rimraf > glob > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.448Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > fstream-ignore > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.448Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > fstream-ignore > fstream > rimraf > glob > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.448Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > tar > fstream > rimraf > glob > minimatch > brace-expansion:
+        reason: None given
+        expires: '2017-05-27T13:42:43.449Z'
+  'npm:qs:20170213':
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > qs:
+        reason: None given
+        expires: '2017-05-27T13:42:43.449Z'
+patch: {}
