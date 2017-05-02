@@ -7,7 +7,6 @@ const constants = require('../../app/lib/constants');
 const messages = require('../../app/lib/messages');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const contexts = require('../../app/lib/contexts');
 
 const expect = chai.expect;
 
@@ -25,7 +24,6 @@ describe('The results page', () => {
     const ls27ueResult = JSON.parse(ls27ueResponse).result;
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
-    const context = contexts.stomachAche.context;
 
     nock('https://api.postcodes.io')
       .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
@@ -39,7 +37,7 @@ describe('The results page', () => {
 
     chai.request(server)
       .get(resultsRoute)
-      .query({ location: ls27ue, context })
+      .query({ location: ls27ue })
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
@@ -62,7 +60,7 @@ describe('The results page', () => {
         });
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
-        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help?context=${context}`);
+        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help`);
         done();
       });
   });
@@ -178,247 +176,171 @@ describe('The results page', () => {
 });
 
 describe('The results page error handling', () => {
-  describe('with a context', () => {
-    const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-    const context = contexts.stomachAche.context;
+  const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
 
-    it('should lookup a valid but unknown postcode and return an error message with the help context',
-        (done) => {
-          const invalidPostcodePassingRegex = 'LS0';
-
-          nock('https://api.postcodes.io')
-            .get(`/outcodes/${invalidPostcodePassingRegex}`)
-            .times(1)
-            .reply(404, notFoundResponse);
-
-          chai.request(server)
-            .get(resultsRoute)
-            .query({ location: invalidPostcodePassingRegex, context })
-            .end((err, res) => {
-              iExpect.htmlWith200Status(err, res);
-              const $ = cheerio.load(res.text);
-
-              expect($('.link-back').text()).to.equal('Back to information on stomach ache');
-              iExpect.findHelpPage($);
-              expect($('.error-summary-heading').text()).to
-                .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-              done();
-            });
-        });
-
-    it('should only validate the postcode and return an error message along with the help context',
-        (done) => {
-          const invalidPostcode = 'invalid';
-          const errorMessage = messages.invalidPostcodeMessage(invalidPostcode);
-
-          chai.request(server)
-            .get(resultsRoute)
-            .query({ location: invalidPostcode, context })
-            .end((err, res) => {
-              iExpect.htmlWith200Status(err, res);
-              const $ = cheerio.load(res.text);
-
-              expect($('.link-back').text()).to.equal('Back to information on stomach ache');
-              iExpect.findHelpPageInvalidEntry($);
-              expect($('.error-summary-heading').text()).to.contain(errorMessage);
-              done();
-            });
-        });
-
-    it('should handle an error produced by the postcode lookup and return an error message', (done) => {
-      const postcode = 'AB12 3CD';
+  it('should lookup a valid but unknown postcode and return an error message',
+    (done) => {
+      const invalidPostcodePassingRegex = 'LS0';
 
       nock('https://api.postcodes.io')
-        .get(`/postcodes/${encodeURIComponent(postcode)}`)
+        .get(`/outcodes/${invalidPostcodePassingRegex}`)
         .times(1)
-        .reply(500);
+        .reply(404, notFoundResponse);
 
       chai.request(server)
         .get(resultsRoute)
-        .query({ location: postcode, context })
-        .end((err, res) => {
-          expect(err).to.not.be.equal(null);
-          expect(res).to.have.status(500);
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.html;
-
-          const $ = cheerio.load(res.text);
-
-          expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('.local-header--title--question').text())
-            .to.contain(messages.technicalProblems());
-          done();
-        });
-    });
-  });
-
-  describe('with no context', () => {
-    const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
-
-    it('should lookup a valid but unknown postcode and return an error message with no context',
-      (done) => {
-        const invalidPostcodePassingRegex = 'LS0';
-
-        nock('https://api.postcodes.io')
-          .get(`/outcodes/${invalidPostcodePassingRegex}`)
-          .times(1)
-          .reply(404, notFoundResponse);
-
-        chai.request(server)
-          .get(resultsRoute)
-          .query({ location: invalidPostcodePassingRegex })
-          .end((err, res) => {
-            iExpect.htmlWith200Status(err, res);
-            const $ = cheerio.load(res.text);
-
-            expect($('.error-summary-heading').text()).to
-              .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-            done();
-          });
-      });
-
-    it('should only validate the postcode and return an error message', (done) => {
-      const invalidPostcode = 'invalid';
-
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: invalidPostcode })
+        .query({ location: invalidPostcodePassingRegex })
         .end((err, res) => {
           iExpect.htmlWith200Status(err, res);
           const $ = cheerio.load(res.text);
 
-          expect($('.page-section').text()).to.not.contain('For help with');
-          iExpect.findHelpPageInvalidEntry($);
           expect($('.error-summary-heading').text()).to
-            .contain(messages.invalidPostcodeMessage(invalidPostcode));
+            .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
           done();
         });
     });
 
-    it('should handle an error produced by the postcode lookup and return an error message', (done) => {
-      const postcode = 'AB12 3CD';
+  it('should only validate the postcode and return an error message', (done) => {
+    const invalidPostcode = 'invalid';
 
-      nock('https://api.postcodes.io')
-        .get(`/postcodes/${encodeURIComponent(postcode)}`)
-        .times(1)
-        .reply(500);
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: invalidPostcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
 
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: postcode })
-        .end((err, res) => {
-          expect(err).to.not.be.equal(null);
-          expect(res).to.have.status(500);
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.html;
+        expect($('.page-section').text()).to.not.contain('For help with');
+        iExpect.findHelpPageInvalidEntry($);
+        expect($('.error-summary-heading').text()).to
+          .contain(messages.invalidPostcodeMessage(invalidPostcode));
+        done();
+      });
+  });
 
-          const $ = cheerio.load(res.text);
+  it('should handle an error produced by the postcode lookup and return an error message', (done) => {
+    const postcode = 'AB12 3CD';
 
-          expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('.local-header--title--question').text())
-            .to.contain(messages.technicalProblems());
-          done();
-        });
-    });
+    nock('https://api.postcodes.io')
+      .get(`/postcodes/${encodeURIComponent(postcode)}`)
+      .times(1)
+      .reply(500);
 
-    it('should handle the pharmacy service when it responds with a 500 response with an error message', (done) => {
-      const fakePostcode = 'FA12 3KE';
-      const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
-      const latitude = JSON.parse(fakeResponse).result.latitude;
-      const longitude = JSON.parse(fakeResponse).result.longitude;
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: postcode })
+      .end((err, res) => {
+        expect(err).to.not.be.equal(null);
+        expect(res).to.have.status(500);
+        // eslint-disable-next-line no-unused-expressions
+        expect(res).to.be.html;
 
-      nock('https://api.postcodes.io')
-        .get(`/postcodes/${encodeURIComponent(fakePostcode)}`)
-        .times(1)
-        .reply(200, fakeResponse);
+        const $ = cheerio.load(res.text);
 
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
-        .reply(500);
+        expect($('.page-section').text()).to.not.contain('For help with');
+        expect($('.local-header--title--question').text())
+          .to.contain(messages.technicalProblems());
+        done();
+      });
+  });
 
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: fakePostcode })
-        .end((err, res) => {
-          expect(err).to.not.be.equal(null);
-          expect(res).to.have.status(500);
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.html;
+  it('should handle the pharmacy service when it responds with a 500 response with an error message', (done) => {
+    const fakePostcode = 'FA12 3KE';
+    const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
+    const latitude = JSON.parse(fakeResponse).result.latitude;
+    const longitude = JSON.parse(fakeResponse).result.longitude;
 
-          const $ = cheerio.load(res.text);
+    nock('https://api.postcodes.io')
+      .get(`/postcodes/${encodeURIComponent(fakePostcode)}`)
+      .times(1)
+      .reply(200, fakeResponse);
 
-          expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('.local-header--title--question').text())
-            .to.contain(messages.technicalProblems());
-          done();
-        });
-    });
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .reply(500);
 
-    it('should handle a response from the pharmacy service when there has been an error based on the input', (done) => {
-      const badPostcode = 'BA40 0AD';
-      const badResponse = getSampleResponse('postcodesio-responses/bad.json');
-      const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
-      const latitude = JSON.parse(badResponse).result.latitude;
-      const longitude = JSON.parse(badResponse).result.longitude;
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: fakePostcode })
+      .end((err, res) => {
+        expect(err).to.not.be.equal(null);
+        expect(res).to.have.status(500);
+        // eslint-disable-next-line no-unused-expressions
+        expect(res).to.be.html;
 
-      nock('https://api.postcodes.io')
-        .get(`/postcodes/${encodeURIComponent(badPostcode)}`)
-        .times(1)
-        .reply(200, badResponse);
+        const $ = cheerio.load(res.text);
 
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
-        .reply(400, badPharmacyResponse);
+        expect($('.page-section').text()).to.not.contain('For help with');
+        expect($('.local-header--title--question').text())
+          .to.contain(messages.technicalProblems());
+        done();
+      });
+  });
 
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: badPostcode })
-        .end((err, res) => {
-          expect(err).to.not.be.equal(null);
-          expect(res).to.have.status(500);
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.html;
+  it('should handle a response from the pharmacy service when there has been an error based on the input', (done) => {
+    const badPostcode = 'BA40 0AD';
+    const badResponse = getSampleResponse('postcodesio-responses/bad.json');
+    const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
+    const latitude = JSON.parse(badResponse).result.latitude;
+    const longitude = JSON.parse(badResponse).result.longitude;
 
-          const $ = cheerio.load(res.text);
+    nock('https://api.postcodes.io')
+      .get(`/postcodes/${encodeURIComponent(badPostcode)}`)
+      .times(1)
+      .reply(200, badResponse);
 
-          expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('.local-header--title--question').text())
-            .to.contain(messages.technicalProblems());
-          done();
-        });
-    });
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .reply(400, badPharmacyResponse);
 
-    it('it should handle the pharmacy service being unavailable with an error message', (done) => {
-      const badOutcode = 'G51';
-      const badResponse = getSampleResponse('postcodesio-responses/G51.json');
-      const latitude = JSON.parse(badResponse).result.latitude;
-      const longitude = JSON.parse(badResponse).result.longitude;
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: badPostcode })
+      .end((err, res) => {
+        expect(err).to.not.be.equal(null);
+        expect(res).to.have.status(500);
+        // eslint-disable-next-line no-unused-expressions
+        expect(res).to.be.html;
 
-      nock('https://api.postcodes.io')
-        .get(`/outcodes/${badOutcode}`)
-        .times(1)
-        .reply(200, badResponse);
+        const $ = cheerio.load(res.text);
 
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
-        .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
+        expect($('.page-section').text()).to.not.contain('For help with');
+        expect($('.local-header--title--question').text())
+          .to.contain(messages.technicalProblems());
+        done();
+      });
+  });
 
-      chai.request(server)
-        .get(resultsRoute)
-        .query({ location: badOutcode })
-        .end((err, res) => {
-          expect(err).to.not.be.equal(null);
-          expect(res).to.have.status(500);
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.html;
+  it('it should handle the pharmacy service being unavailable with an error message', (done) => {
+    const badOutcode = 'G51';
+    const badResponse = getSampleResponse('postcodesio-responses/G51.json');
+    const latitude = JSON.parse(badResponse).result.latitude;
+    const longitude = JSON.parse(badResponse).result.longitude;
 
-          const $ = cheerio.load(res.text);
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${badOutcode}`)
+      .times(1)
+      .reply(200, badResponse);
 
-          expect($('.page-section').text()).to.not.contain('For help with');
-          expect($('.local-header--title--question').text())
-            .to.contain(messages.technicalProblems());
-          done();
-        });
-    });
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: badOutcode })
+      .end((err, res) => {
+        expect(err).to.not.be.equal(null);
+        expect(res).to.have.status(500);
+        // eslint-disable-next-line no-unused-expressions
+        expect(res).to.be.html;
+
+        const $ = cheerio.load(res.text);
+
+        expect($('.page-section').text()).to.not.contain('For help with');
+        expect($('.local-header--title--question').text())
+          .to.contain(messages.technicalProblems());
+        done();
+      });
   });
 });
