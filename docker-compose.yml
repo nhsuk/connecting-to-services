@@ -24,7 +24,7 @@ services:
       - c2s-node_modules:/code/node_modules
 
   nearby-services-api:
-    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-latest}"
+    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.5.2}"
     links:
       - pharmacy-db:mongo
 

@@ -26,6 +26,7 @@ services:
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
+      SNYK_TOKEN: ${SNYK_TOKEN}
       TRAVIS: ${TRAVIS}
       TRAVIS_BRANCH: ${TRAVIS_BRANCH}
       TRAVIS_COMMIT: ${TRAVIS_COMMIT}
@@ -34,7 +35,7 @@ services:
       - nearby-services-api:nearby-services-api
 
   nearby-services-api:
-    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-latest}"
+    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.5.2}"
     links:
       - pharmacy-db:mongo
 
