@@ -18,9 +18,7 @@ script:
   - docker-compose -f docker-compose-tests.yml run travis-tests
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - ./scripts/ci-deployment/docker_ci.sh
-  - ./scripts/ci-deployment/rancher_pr_deploy.sh
+  - bash ./scripts/ci-deployment/deploy.sh
 
 after_script:
   - docker-compose -f docker-compose-tests.yml down -v
