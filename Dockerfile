@@ -27,4 +27,5 @@ USER $USERNAME
 
 RUN [ "yarn", "run", "build-css" ]
 
+# RUN APP DIRECTLY TO AVOID SPAWNING SUBPROCESSES IN DOCKER
 CMD [ "node", "app.js" ]
