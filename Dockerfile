@@ -15,7 +15,7 @@ ENV NODE_ENV=${NODE_ENV}
 
 COPY yarn.lock package.json /code/
 
-RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --ignore-optional; else yarn install --ignore-optional; fi
+RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile --ignore-optional; else yarn install --pure-lockfile --ignore-optional; fi
 
 EXPOSE 3000
 
@@ -27,4 +27,5 @@ USER $USERNAME
 
 RUN [ "yarn", "run", "build-css" ]
 
-CMD [ "yarn", "start" ]
+# RUN APP DIRECTLY TO AVOID SPAWNING SUBPROCESSES IN DOCKER
+CMD [ "node", "app.js" ]
