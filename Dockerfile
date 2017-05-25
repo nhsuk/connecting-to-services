@@ -15,7 +15,7 @@ ENV NODE_ENV=${NODE_ENV}
 
 COPY yarn.lock package.json /code/
 
-RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockifile --ignore-optional; else yarn install --pure-lockifile --ignore-optional; fi
+RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile --ignore-optional; else yarn install --pure-lockfile --ignore-optional; fi
 
 EXPOSE 3000
 
