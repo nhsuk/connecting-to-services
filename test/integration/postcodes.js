@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 describe('Postcode to lat long', () => {
   it('Should return lat long for valid England postcode', (done) => {
-    const res = { locals: { location: 'LS11 5RU' } };
+    const res = { locals: { location: 'BD24 9PT' } };
     lookup(res, () => {
       /* eslint-disable no-unused-expressions */
       expect(res.locals.coordinates).to.exist;
