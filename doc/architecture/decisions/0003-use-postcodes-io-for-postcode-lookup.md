@@ -28,8 +28,8 @@ Only currently active postcodes return responses. This means any
 deactivated/deleted postcodes return 404s from which a co-ordinate can not be
 retrieved and the application will not be able to return any results.
 If additional search terms e.g. town names are added to the application an
-additional lookup service might be required. That service might be instead of
-Postcodes.io or as well was.
+additional lookup service might be required. That service might replace or be
+used alongside Postcodes.io.
 If the hosted service ever became unreliable or unavailable/shutdown the code,
 data and [instructions](https://postcodes.io/docs) for how to run it is freely
 available.

@@ -15,7 +15,7 @@ libraries [geolib](https://www.npmjs.com/package/geolib),
 geo-location search was added. However, this is a CPU intense operation. Node
 is not best suited to that use case. This resulted in the Node process being
 blocked for the duration of the calculation. The performance of the site wasn't
-effected too much when services (that were open) were found close to the search
+affected too much when services (that were open) were found close to the search
 point. However, when a lot of results were returned (when searches originated
 within highly populated areas) and there were no services open the processing
 took a considerable amount of time (several minutes). This resulted in the web

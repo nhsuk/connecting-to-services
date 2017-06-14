@@ -28,8 +28,8 @@ such has been well tested and is deployed across many
 Due to Express being a minimalist web framework, when additional features are
 required they are added as
 [middleware](http://expressjs.com/en/resources/middleware.html) modules.
-A working knowledge of existing modules will help with reducing duplication of
-effort by where modules may already exist within the community.
+Duplication of effort for common tasks may be reduced by using modules that
+already exist within the community.
 Middleware modules created by us may be useful to other members of the
 community, providing an opportunity for us to contribute back.
 
