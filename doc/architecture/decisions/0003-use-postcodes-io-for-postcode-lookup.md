@@ -9,14 +9,14 @@ Accepted
 ## Context
 
 The application is about finding services closest to the search point. All
-services have a co-ordindate in lat/lon format. Currently the application
-requests either an outcode or a postcode as the search point. The submitted
+services have a co-ordinate in lat/lon format. Currently the application
+requests either an out-code or a postcode as the search point. The submitted
 postcode needs to be resolved to a lat/lon that can be used to query against.
 
 ## Decision
 
-[Postcodes.io](https://postcodes.io/) provides both an outcode and a postcode
-lookup. The results of which return latitude and lonitude. The service is
+[Postcodes.io](https://postcodes.io/) provides both an out-code and a postcode
+lookup. The results of which return latitude and longitude. The service is
 free, [supported](https://postcodes.io/about),
 [monitored](https://status.ideal-postcodes.co.uk/) and contains the full set of
 active postcodes for the UK. Supplied by the
