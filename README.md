@@ -19,7 +19,7 @@ The application uses [Docker](https://www.docker.com/) to run in containers.
 Development is typically done on the host machine. Files are loaded into the
 container and changes are automatically updated.
 
-Use the `test` script for continous testing during development.
+Use the `test` script for continuous testing during development.
 
 ### Performance testing
 
@@ -57,18 +57,18 @@ environment.
 | Variable                         | Description                                                         | Default                 | Required |
 |:---------------------------------|:--------------------------------------------------------------------|:------------------------|----------|
 | `API_BASE_URL`                   | The fully qualified domain the api exists on e.g. `http://web.site` |                         | Yes      |
-| `NODE_ENV`                       | node environment                                                    | development             |          |
-| `PORT`                           | server port                                                         | 3000                    |          |
+| `NODE_ENV`                       | Node environment                                                    | development             |          |
+| `LOG_LEVEL`                      | Numeric [log level](https://github.com/trentm/node-bunyan#levels)   | Depends on `NODE_ENV`   |          |
+| `PORT`                           | Server port                                                         | 3000                    |          |
 | `GOOGLE_ANALYTICS_TRACKING_ID`   | [Google Analytics](https://www.google.co.uk/analytics) property id  |                         |          |
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`| [Webtrends](https://www.webtrends.com/) tracking id                 |                         |          |
 | `HOTJAR_ANALYTICS_TRACKING_ID`   | [Hotjar](https://www.hotjar.com/) tracking id                       |                         |          |
-| `PHARMACY_LIST_PATH`             | Path to json file containing list of pharmacies                     | `../data/pharmacy-list` |          |
 
 ## FAQ
 
 * Is the application failing to start?
   * Ensure all expected environment variables are available within the environment
-  * Ensure `LOG_LEVEL` has been set to a valid value
+  * If set, `LOG_LEVEL` must be a number and one of the defined [log levels](https://github.com/trentm/node-bunyan#levels)
   * Check for messages in the logs
 
 ## Architecture Decision Records
