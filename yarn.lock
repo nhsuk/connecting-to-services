@@ -1103,8 +1103,8 @@ dot-prop@^4.1.0:
     is-obj "^1.0.0"
 
 dtrace-provider@~0.8:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/dtrace-provider/-/dtrace-provider-0.8.1.tgz#cd4d174a233bea1bcf4a1fbfa5798f44f48cda9f"
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/dtrace-provider/-/dtrace-provider-0.8.3.tgz#ba1bfc6493285ccfcfc6ab69cd5c61d74c2a43bf"
   dependencies:
     nan "^2.3.3"
 
@@ -1368,17 +1368,11 @@ eslint-plugin-jsx-a11y@^5.0.3:
     emoji-regex "^6.1.0"
     jsx-ast-utils "^1.4.0"
 
-eslint-plugin-mocha@^4.10.1:
+eslint-plugin-mocha@^4.10.1, eslint-plugin-mocha@^4.8.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-4.10.1.tgz#c63ccb83933bdb01d2bef922332dc4c44b30f3f8"
   dependencies:
     ramda "^0.24.1"
-
-eslint-plugin-mocha@^4.8.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-4.9.0.tgz#917a8b499ab8d0c01d69c6e4f81d362ee099b6fd"
-  dependencies:
-    ramda "^0.23.0"
 
 eslint-plugin-react@^7.1.0:
   version "7.1.0"
@@ -2804,11 +2798,11 @@ lodash@4.13.1:
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.13.1.tgz#83e4b10913f48496d4d16fec4a560af2ee744b68"
 
-lodash@4.17.2, lodash@^4.0.0, lodash@^4.1.0, lodash@^4.3.0, lodash@~4.17.2:
+lodash@4.17.2, lodash@^4.0.0:
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
-lodash@^4.17.4:
+lodash@^4.1.0, lodash@^4.17.4, lodash@^4.3.0, lodash@~4.17.2:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -3053,7 +3047,7 @@ nested-error-stacks@^1.0.0:
   dependencies:
     inherits "~2.0.1"
 
-nhsuk-bunyan-logger@^1.4.0:
+nhsuk-bunyan-logger@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/nhsuk-bunyan-logger/-/nhsuk-bunyan-logger-1.4.0.tgz#5d8d36ed2716c2a21df27de610235270e1d98c04"
   dependencies:
@@ -3594,10 +3588,6 @@ qs@~6.3.0:
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
-
-ramda@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
 
 ramda@^0.24.1:
   version "0.24.1"
