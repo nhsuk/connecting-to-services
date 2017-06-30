@@ -27,3 +27,4 @@ services:
         splunk-source: pharmacy-finder
         splunk-verify-connection: "false"
         tag: '{{.ImageName}} {{.Name}} {{.FullID}}'
+        splunk-format: json
