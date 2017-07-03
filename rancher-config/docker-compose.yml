@@ -24,7 +24,7 @@ services:
         splunk-token: ${SPLUNK_HEC_TOKEN}
         splunk-insecureskipverify: "true"
         splunk-sourcetype: docker
-        splunk-source: pharmacy-finder
+        splunk-source: connecting-to-services
         splunk-verify-connection: "false"
-        tag: '{{.ImageName}} {{.Name}} {{.FullID}}'
+        tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
         splunk-format: json
