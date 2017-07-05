@@ -1,19 +1,19 @@
 language: node_js
-node_js:
-  - node
-
-services:
-  - docker
+node_js: node
+services: docker
 
 before_install:
+  - yarn global add greenkeeper-lockfile@1
   - pip install docker-compose
+
+before_script: greenkeeper-lockfile-update
 
 script:
   - docker-compose -f docker-compose-tests.yml build travis-tests
   - docker-compose -f docker-compose-tests.yml run travis-tests
 
-after_success:
-  - bash ./scripts/ci-deployment/deploy.sh
-
 after_script:
   - docker-compose -f docker-compose-tests.yml down -v
+  - greenkeeper-lockfile-upload
+
+after_success: bash ./scripts/ci-deployment/deploy.sh
