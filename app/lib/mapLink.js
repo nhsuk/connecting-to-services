@@ -18,7 +18,7 @@ function addUrl(location, inputList) {
 
     const mapUrl =
       `https://maps.google.com/maps?${start}&${destination}&${near}`
-      .replace(/ /g, '+');
+        .replace(/ /g, '+');
 
     // eslint-disable-next-line no-param-reassign
     item.mapUrl = mapUrl;
