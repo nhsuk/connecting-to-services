@@ -6,7 +6,6 @@ const coordinateResolver = require('../app/middleware/coordinateResolver');
 const renderer = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
 const setLocals = require('../app/middleware/setLocals');
-const log = require('../app/middleware/logger');
 const logZeroResults = require('../app/middleware/logZeroResults');
 
 router.get('/',
@@ -16,7 +15,6 @@ router.get('/',
 );
 
 router.get('/results',
-  log.info,
   setLocals.fromRequest,
   validateLocation,
   coordinateResolver,
@@ -27,7 +25,6 @@ router.get('/results',
 );
 
 router.get('/find-help',
-  log.info,
   setLocals.fromRequest,
   renderer.findHelp
 );

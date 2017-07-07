@@ -22,7 +22,7 @@ function validateLocation(location) {
 
   return {
     errorMessage,
-    input: locationToReturn,
+    alteredLocation: locationToReturn,
   };
 }
 

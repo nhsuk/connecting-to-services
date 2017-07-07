@@ -1,8 +1,6 @@
-const log = require('../lib/logger');
 const mapLink = require('../lib/mapLink');
 
 function results(req, res, next) {
-  log.info('prerender-start');
   const location = res.locals.location;
 
   /* eslint-disable no-param-reassign */
@@ -10,7 +8,6 @@ function results(req, res, next) {
   res.locals.openServices = mapLink.addUrl(location, res.locals.openServices);
   /* eslint-enable no-param-reassign */
 
-  log.info('prerender-end');
   next();
 }
 

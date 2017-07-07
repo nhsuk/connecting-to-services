@@ -13,15 +13,13 @@ function setLocationLabel(res, location) {
 function validateEnglishLocation(req, res, next) {
   const location = res.locals.location;
 
-  log.info('validate-location-start');
   const validationResult = locationValidator(location);
-  log.info('validate-location-end');
 
   // eslint-disable-next-line no-param-reassign
-  res.locals.location = validationResult.input;
+  res.locals.location = validationResult.alteredLocation;
 
   if (validationResult.errorMessage) {
-    log.info({ location }, 'Location failed validation');
+    log.info({ locationValidationResponse: { location } }, 'Non-English postcode');
     // eslint-disable-next-line no-param-reassign
     res.locals.errorMessage = validationResult.errorMessage;
     setLocationLabel(res, location);
@@ -32,7 +30,6 @@ function validateEnglishLocation(req, res, next) {
 }
 
 function renderNoResultsPage(req, res) {
-  log.info(`Rendering no results page for non-english postcode '${res.locals.location}'`);
   /* eslint-disable no-param-reassign */
   res.locals.nearbyServices = [];
   res.locals.openServices = [];
@@ -41,7 +38,10 @@ function renderNoResultsPage(req, res) {
 }
 
 function validateLocation(req, res, next) {
-  if (isNotEnglishLocation(res.locals.location)) {
+  const location = res.locals.location;
+
+  if (isNotEnglishLocation(location)) {
+    log.info({ req: { location } }, 'Non-English location');
     renderNoResultsPage(req, res);
   } else {
     validateEnglishLocation(req, res, next);
