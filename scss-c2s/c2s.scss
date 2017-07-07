@@ -3,6 +3,10 @@
 /*
    Colours.
 */
+<<<<<<< HEAD:scss-c2s/c2s.scss
+=======
+$yellow-50: #ffca55;
+>>>>>>> 468a5937dc41faf8cbf944191a1bc13464f1f814:scss-c2s/c2s.scss
 $blue: #0072c6;
 
 
@@ -51,7 +55,11 @@ h1 {
     display:none;
   }
   &__hiviz {
+<<<<<<< HEAD:scss-c2s/c2s.scss
     background-color: $yellow-50;
+=======
+    background-color: $yellow-50; 
+>>>>>>> 468a5937dc41faf8cbf944191a1bc13464f1f814:scss-c2s/c2s.scss
   }
 }
 .global-header {
