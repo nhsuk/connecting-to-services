@@ -3,7 +3,6 @@
 /*
    Colours.
 */
-$yellow-50: #ffca55;
 $blue: #0072c6;
 
 
@@ -16,6 +15,15 @@ $blue: #0072c6;
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+.reading-width {
+  @include reading-width;
+}
+h1 {
+  margin: 10px 0 58px;
+  @include media(tablet) {
+    margin: 10px 0 86px;
+  }
 }
 
 .local-header,
@@ -43,7 +51,7 @@ $blue: #0072c6;
     display:none;
   }
   &__hiviz {
-    background-color: $yellow-50; 
+    background-color: $yellow-50;
   }
 }
 .global-header {
@@ -152,6 +160,12 @@ form {
     box-sizing: border-box;
     float: left;
     width: 100%;
+    .button {
+      margin-top:16px;
+      @include media(tablet) {
+        margin-top:32px;
+      }
+    }
   }
 }
 /*
