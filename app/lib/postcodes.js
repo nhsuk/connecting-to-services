@@ -18,7 +18,7 @@ function lookup(res, next) {
   }
 
   https.get(url, (postcodeRes) => {
-    log.info('postcodeio-lookup-start');
+    log.info({ postcodeLookupRequest: { url } }, 'postcode-lookup-start');
     let body = '';
 
     postcodeRes.on('data', (chunk) => {
@@ -26,11 +26,13 @@ function lookup(res, next) {
     });
 
     postcodeRes.on('end', () => {
-      log.info('postcodeio-lookup-end');
+      log.debug({ postcodeLookupResponse: { response: postcodeRes } }, 'postcode-lookup-end');
       let postcode;
+      const unknownMsg = `Postcode lookup returned statusCode: ${postcodeRes.statusCode} for ${location}`;
 
       switch (postcodeRes.statusCode) {
         case 200:
+          log.info(`Postcode lookup success for ${location}`);
           postcode = JSON.parse(body);
           // eslint-disable-next-line no-param-reassign
           res.locals.coordinates = {
@@ -40,20 +42,17 @@ function lookup(res, next) {
           next();
           break;
         case 404:
-          log.warn({ res: postcodeRes, location }, '404 from postcodes.io');
+          log.info(`Postcode lookup 404 for ${location}`);
           next({ type: 'invalid-postcode', message: messages.invalidPostcodeMessage(location) });
           break;
         default:
-          log.warn({ url, response: postcodeRes.statusCode, location }, `Postcode service error: ${postcodeRes.statusCode}`);
-          next({
-            type: 'postcode-service-error',
-            message: `Postcode service error: ${postcodeRes.statusCode}`,
-          });
+          log.warn(unknownMsg);
+          next({ type: 'postcode-lookup-unknown-response', message: unknownMsg });
       }
     });
   }).on('error', (e) => {
-    log.error({ err: e, location, type: 'postcode-service-error' }, 'Postcode lookup failed');
-    next({ type: 'postcode-service-error', message: e.message });
+    log.error({ postcodeLookupResponse: { error: e } }, 'Postcode lookup error');
+    next({ type: 'postcode-lookup-error', message: e.message });
   });
 }
 

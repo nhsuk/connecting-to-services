@@ -21,7 +21,7 @@ module.exports = (app, config) => {
       express: app,
       watch: true,
     });
-  log.info({ nunjucksEnvironment }, 'nunjucks environment configuration');
+  log.info({ config: { nunjucksEnvironment } }, 'nunjucks environment configuration');
 
   app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -106,7 +106,7 @@ module.exports = (app, config) => {
   app.use(constants.SITE_ROOT, (err, req, res, next) => {
     const statusCode = err.statusCode || 500;
 
-    log.error(err, 'Error');
+    log.error({ error: { err, req, res } }, 'Error');
     res.status(statusCode);
     res.render('error', {
       message: err,

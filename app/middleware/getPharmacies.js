@@ -11,13 +11,15 @@ function getPharmacies(req, res, next) {
   const baseUrl = process.env.API_BASE_URL;
   const url = `${baseUrl}/nearby?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`;
 
-  log.info('get-pharmacies-start');
+  log.info({ pharmacyLookupRequest: { url } }, 'get-pharmacies-request');
   request(url, (error, response, body) => {
-    log.info('get-pharmacies-end');
+    log.debug({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-response');
+
     if (error) {
-      log.error({ err: error, requestUrl: url }, 'Get services data failed');
-      next('Get services data failed');
+      log.error({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-error');
+      next('get-pharmacies-error');
     } else if (response.statusCode === 200) {
+      log.info('get-pharmacies-success');
       const nearbyRes = JSON.parse(body);
       const dedupedServices = dedupe(nearbyRes);
       /* eslint-disable no-param-reassign*/
@@ -26,7 +28,7 @@ function getPharmacies(req, res, next) {
       /* eslint-enable no-param-reassign*/
       next();
     } else {
-      log.warn({ res: response }, `${response.statusCode} response from services api`);
+      log.warn({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-warning');
       next(`${response.statusCode} response from services api`);
     }
   });

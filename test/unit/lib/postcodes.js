@@ -82,8 +82,8 @@ describe('Postcodes', () => {
           .reply(500);
 
         postcodes.lookup(postcodeRes, (err) => {
-          expect(err.type).to.be.equal('postcode-service-error');
-          expect(err.message).to.be.equal('Postcode service error: 500');
+          expect(err.type).to.be.equal('postcode-lookup-unknown-response');
+          expect(err.message).to.be.equal(`Postcode lookup returned statusCode: 500 for ${postcode}`);
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
           done();
         });
@@ -98,7 +98,7 @@ describe('Postcodes', () => {
           .replyWithError({ message: errorMessage });
 
         postcodes.lookup(postcodeRes, (err) => {
-          expect(err.type).to.be.equal('postcode-service-error');
+          expect(err.type).to.be.equal('postcode-lookup-error');
           expect(err.message).to.be.equal(errorMessage);
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
           done();
