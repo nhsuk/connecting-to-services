@@ -21,9 +21,8 @@
     "prepush": "yarn run git-hook",
     "start": "node app.js",
     "start-logging": "node app.js | ./node_modules/bunyan/bin/bunyan",
-    "snyk": "snyk",
     "test": "NODE_ENV=test mocha --recursive test",
-    "travis": "yarn run git-hook && yarn run upload-coverage-coveralls && yarn run snyk -- test --org=nhsuk ignore --id=npm:moment:20161019 && yarn run snyk -- monitor --org=nhsuk",
+    "travis": "yarn run git-hook && yarn run upload-coverage-coveralls",
     "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls",
     "watch-dev": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn run build-css -- compact",
     "watch-dev-debug": "NODE_ENV=development && yarn run watch-dev",
@@ -50,8 +49,7 @@
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
     "request": "^2.81.0",
-    "require-environment-variables": "^1.1.2",
-    "snyk": "^1.36.2"
+    "require-environment-variables": "^1.1.2"
   },
   "devDependencies": {
     "artillery": "^1.6.0-2",
@@ -73,6 +71,5 @@
     "nock": "^9.0.0",
     "nodemon": "^1.10.2",
     "proxyquire": "^1.7.10"
-  },
-  "snyk": true
+  }
 }
