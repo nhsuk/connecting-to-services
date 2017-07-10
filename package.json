@@ -20,7 +20,7 @@
     "lint-watch": "esw --watch .",
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
-    "prepush": "yarn git-hook",
+    "prepush": "yarn git-hook && yarn snyk test",
     "start": "node app.js",
     "start-watch": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn build-css -- compact",
     "test": "NODE_ENV=test mocha --recursive test",
@@ -68,6 +68,7 @@
     "mocha": "^3.4.2",
     "nock": "^9.0.0",
     "nodemon": "^1.10.2",
-    "proxyquire": "^1.7.10"
+    "proxyquire": "^1.7.10",
+    "snyk": "^1.36.2"
   }
 }
