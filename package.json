@@ -7,28 +7,25 @@
     "node": "6.x.x"
   },
   "scripts": {
-    "artillery-fire": "artillery run ./test/perf/all-results.json -o ./reports/all-results.json",
+    "artillery-fire": "artillery ./test/perf/all-results.json -o ./reports/all-results.json",
     "artillery-report": "artillery report ./reports/all-results.json",
     "build-css": "./css-build",
-    "check-coverage": "istanbul check-coverage --config .istanbul.yml",
-    "generate-coverage": "yarn run istanbul -- cover _mocha -- --recursive",
-    "generate-full-coverage": "yarn run istanbul -- cover --include-all-sources _mocha -- --recursive",
-    "git-hook": "yarn run lint && yarn run generate-coverage && yarn run check-coverage",
+    "coverage-check": "istanbul check-coverage --config .istanbul.yml",
+    "coverage-generate": "yarn istanbul -- cover _mocha -- --recursive",
+    "coverage-generate-full": "yarn istanbul -- cover --include-all-sources _mocha -- --recursive",
+    "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
+    "git-hook": "yarn lint && yarn coverage-generate && yarn coverage-check",
     "istanbul": "NODE_ENV=test istanbul",
     "lint": "eslint --ext .js,.json .",
-    "postrewrite": "yarn run git-hook",
-    "precommit": "yarn run git-hook",
-    "prepush": "yarn run git-hook",
+    "lint-watch": "esw --watch .",
+    "postrewrite": "yarn git-hook",
+    "precommit": "yarn git-hook",
+    "prepush": "yarn git-hook && yarn snyk test",
     "start": "node app.js",
-    "start-logging": "node app.js | ./node_modules/bunyan/bin/bunyan",
-    "snyk": "snyk",
+    "start-watch": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn build-css -- compact",
     "test": "NODE_ENV=test mocha --recursive test",
-    "travis": "yarn run git-hook && yarn run upload-coverage-coveralls && yarn run snyk -- test --org=nhsuk ignore --id=npm:moment:20161019 && yarn run snyk -- monitor --org=nhsuk",
-    "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls",
-    "watch-dev": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn run build-css -- compact",
-    "watch-dev-debug": "NODE_ENV=development && yarn run watch-dev",
-    "watch-lint": "esw --watch .",
-    "watch-test": "yarn run test -- --watch --reporter min"
+    "test-ci": "yarn git-hook && yarn coverage-upload-coveralls",
+    "test-watch": "yarn test -- --watch --reporter min"
   },
   "repository": {
     "type": "git",
@@ -50,8 +47,7 @@
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
     "request": "^2.81.0",
-    "require-environment-variables": "^1.1.2",
-    "snyk": "^1.36.2"
+    "require-environment-variables": "^1.1.2"
   },
   "devDependencies": {
     "artillery": "^1.6.0-2",
@@ -72,7 +68,7 @@
     "mocha": "^3.4.2",
     "nock": "^9.0.0",
     "nodemon": "^1.10.2",
-    "proxyquire": "^1.7.10"
-  },
-  "snyk": true
+    "proxyquire": "^1.7.10",
+    "snyk": "^1.36.2"
+  }
 }

@@ -8,9 +8,7 @@ before_install:
 
 before_script: greenkeeper-lockfile-update
 
-script:
-  - docker-compose -f docker-compose-tests.yml build travis-tests
-  - docker-compose -f docker-compose-tests.yml run travis-tests
+script: bash ./scripts/test-ci
 
 after_script:
   - docker-compose -f docker-compose-tests.yml down -v
