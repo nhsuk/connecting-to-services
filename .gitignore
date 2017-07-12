@@ -1,6 +1,6 @@
 node_modules/
 public/components
-css
+public/*.css
 coverage/
 
 .sass-cache
