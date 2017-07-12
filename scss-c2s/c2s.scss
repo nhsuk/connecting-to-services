@@ -26,8 +26,7 @@ h1 {
   }
 }
 
-.local-header,
-.notification-banner {
+.local-header{
   &--question,
   > * {
     max-width:960px;
@@ -42,11 +41,8 @@ h1 {
       margin: 0 32px;
     }
   }
-  &__js-hidden {
+  &--js-hidden {
     display:none;
-  }
-  &__hiviz {
-    background-color: $yellow-50;
   }
 }
 
@@ -147,7 +143,7 @@ form {
         width: 66.6667%;
       }
     }
-    
+
     .results {
       list-style: none;
       margin:0;
