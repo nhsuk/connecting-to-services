@@ -20,12 +20,12 @@
 
     {% set qs = '?v=9' %}
 
-    <!--[if gt IE 8]><!--><link href="{{ SITE_ROOT }}/nhsuk.css{{ qs }}" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
-    <!--[if IE 6]><link href="{{ SITE_ROOT }}/nhsuk-ie6.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 7]><link href="{{ SITE_ROOT }}/nhsuk-ie7.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 8]><link href="{{ SITE_ROOT }}/nhsuk-ie8.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{ SITE_ROOT }}/css/nhsuk.css{{ qs }}" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
+    <!--[if IE 6]><link href="{{ SITE_ROOT }}/css/nhsuk-ie6.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="{{ SITE_ROOT }}/css/nhsuk-ie7.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="{{ SITE_ROOT }}/css/nhsuk-ie8.css{{ qs }}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 
-    <link rel="stylesheet" href="{{ SITE_ROOT }}/print.css{{ qs }}" media="print" type="text/css">
+    <link rel="stylesheet" href="{{ SITE_ROOT }}/css/print.css{{ qs }}" media="print" type="text/css">
 
     {% if HOTJAR_ANALYTICS_TRACKING_ID %}
        <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
@@ -53,8 +53,8 @@
       </div>
     </div>
 
-    <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner" role="alert">
-      <p class="notification-banner__inner">
+    <div class="notification-banner notification-banner__js-hidden" id="global-cookies-banner" role="alert">
+      <p class="notification-banner--inner">
       NHS.UK uses cookies to make the site simpler.
       <a href="https://beta.nhs.uk/help/cookies">Find out more about cookies</a>
       </p>
@@ -66,8 +66,8 @@
 
     <header role="banner">
       <div class="global-header">
-        <div class="global-header__inner">
-          <a href="/" class="global-header__link" title="Go to the NHS.UK homepage">
+        <div class="global-header--inner">
+          <a href="/" class="global-header--link" title="Go to the NHS.UK homepage">
             <img src="{{ SITE_ROOT }}/images/logotype-nhs-mono.png" alt="">
           </a>
         </div>

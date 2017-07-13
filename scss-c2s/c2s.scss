@@ -5,6 +5,7 @@
 */
 $blue: #0072c6;
 
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -15,7 +16,6 @@ $blue: #0072c6;
   clip: rect(0,0,0,0);
   border: 0;
 }
-
 .reading-width {
   @include reading-width;
 }
@@ -26,7 +26,10 @@ h1 {
   }
 }
 
-.local-header{
+.local-header,
+.global-header,
+.global-footer,
+.notification-banner {
   &--question,
   > * {
     max-width:960px;
@@ -40,9 +43,56 @@ h1 {
     @include media(desktop) {
       margin: 0 32px;
     }
+    @media (min-width: 1024px){
+      margin: 0 auto;
+    }
   }
-  &--js-hidden {
+  &__js-hidden {
     display:none;
+  }
+  &__hiviz {
+    background-color: $yellow-50;
+  }
+}
+.global-header {
+  &--inner {
+    padding-bottom: 16px;
+    padding-top: 16px;
+    @include media(tablet) {
+      padding-bottom: 24px;
+      padding-top: 24px;
+    }
+  }
+  &--link {
+    background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
+    background-size: contain;
+    display: block;
+    height: 32px;
+    text-indent: -999em;
+    width: 79px;
+  }
+}
+.global-footer {
+  &--inner {
+    padding-bottom: 96px;
+    padding-top: 32px;
+    &::before {
+      background: url(../images/logotype-nhs-colour.png) no-repeat;
+      background-size: contain;
+      content: "";
+      display: block;
+      height: 32px;
+      margin-bottom: 32px;
+      text-indent: -999em;
+      width: 79px;
+      @include media(desktop) {
+        margin-bottom: 48px;
+      }
+    }
+    @include media(desktop) {
+      padding-bottom: 128px;
+      padding-top: 48px;
+    }
   }
 }
 
@@ -143,7 +193,6 @@ form {
         width: 66.6667%;
       }
     }
-
     .results {
       list-style: none;
       margin:0;

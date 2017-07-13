@@ -37,6 +37,15 @@ $hiviz: #ffca55;
   padding-top: 24px;
 }
 
+.global-header--link {
+  background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
+  background-size: contain;
+  display: block;
+  height: 32px;
+  text-indent: -999em;
+  width: 79px;
+}
+
 form {
   .form-label-bold {
     font-family: "FS Me", Arial, sans-serif;
