@@ -22,7 +22,7 @@
     "precommit": "yarn git-hook",
     "prepush": "yarn git-hook && yarn snyk test",
     "start": "node app.js",
-    "start-watch": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn build-css -- compact",
+    "start-watch": "nodemon app.js | ./node_modules/bunyan/bin/bunyan & nodemon -e scss -x yarn build-css -- compressed",
     "test": "NODE_ENV=test mocha --recursive test",
     "test-ci": "yarn git-hook && yarn coverage-upload-coveralls",
     "test-watch": "yarn test -- --watch --reporter min"

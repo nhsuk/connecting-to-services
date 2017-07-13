@@ -1,16 +1,16 @@
-@import "normalize";
-@import "environment/tools/mixins/addons";
-
-@import "environment/generic/border-box";
-@import "environment/generic/reset";
-@import "environment/generic/shared";
-@import "environment/generic/utilities";
-
 @import "environment/settings/colours";
 @import "environment/settings/fonts";
 @import "environment/settings/globals";
 @import "environment/settings/layout";
 @import "environment/settings/typography";
+
+@import "environment/tools/mixins/addons";
+
+@import "environment/generic/border-box";
+@import "environment/generic/reset";
+@import "normalize";
+@import "environment/generic/shared";
+@import "environment/generic/utilities";
 
 @import "environment/tools/functions/colour";
 @import "environment/tools/functions/typography";
