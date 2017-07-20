@@ -5,8 +5,8 @@ INCLUDE_PATH="--include-path node_modules/normalize-scss/sass --include-path scs
 
 echo "node-sass with output-style of ${OUTPUT_STYLE}"
 
-node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s.scss public/css/nhsuk.css;
-node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-print.scss public/css/print.css;
-node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-ie6.scss public/css/nhsuk-ie6.css;
-node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-ie7.scss public/css/nhsuk-ie7.css;
-node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-ie8.scss public/css/nhsuk-ie8.css;
+node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s.scss public/nhsuk.css;
+node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-print.scss public/print.css;
+node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-ie6.scss public/nhsuk-ie6.css;
+node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-ie7.scss public/nhsuk-ie7.css;
+node-sass --output-style "${OUTPUT_STYLE}" $INCLUDE_PATH scss-c2s/c2s-ie8.scss public/nhsuk-ie8.css;
