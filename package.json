@@ -42,7 +42,6 @@
     "helmet": "^3.0.0",
     "nhsuk-bunyan-logger": "^1.4.0",
     "node-sass": "^4.5.0",
-    "normalize-scss": "^7.0.0",
     "nunjucks": "^3.0.0",
     "object.values": "^1.0.3",
     "postcode": "^0.2.5",
