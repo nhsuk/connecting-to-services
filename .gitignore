@@ -13,3 +13,6 @@ yarn-error.log
 
 *.swp
 .idea/*
+
+*.jtl
+jmeter.log
