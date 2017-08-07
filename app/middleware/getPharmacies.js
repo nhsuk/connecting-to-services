@@ -22,10 +22,10 @@ function getPharmacies(req, res, next) {
       log.info('get-pharmacies-success');
       const nearbyRes = JSON.parse(body);
       const dedupedServices = dedupe(nearbyRes);
-      /* eslint-disable no-param-reassign*/
+      /* eslint-disable no-param-reassign */
       res.locals.nearbyServices = dedupedServices.nearby;
       res.locals.openServices = dedupedServices.open;
-      /* eslint-enable no-param-reassign*/
+      /* eslint-enable no-param-reassign */
       next();
     } else {
       log.warn({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-warning');

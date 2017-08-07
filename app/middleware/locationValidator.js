@@ -33,7 +33,7 @@ function renderNoResultsPage(req, res) {
   /* eslint-disable no-param-reassign */
   res.locals.nearbyServices = [];
   res.locals.openServices = [];
-  /* eslint-enable no-param-reassign*/
+  /* eslint-enable no-param-reassign */
   renderer.results(req, res);
 }
 
