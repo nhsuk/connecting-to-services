@@ -1,5 +1,6 @@
 # Connecting to services
 
+[![GitHub Release](https://img.shields.io/github/release/nhsuk/connecting-to-services.svg)](https://github.com/nhsuk/connecting-to-services/releases/latest/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/nhsuk/connecting-to-services.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/nhsuk/connecting-to-services.svg?branch=master)](https://travis-ci.org/nhsuk/connecting-to-services)
 [![Coverage Status](https://coveralls.io/repos/github/nhsuk/connecting-to-services/badge.svg?branch=master)](https://coveralls.io/github/nhsuk/connecting-to-services?branch=master)
