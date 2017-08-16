@@ -1,4 +1,5 @@
 require('object.values').shim();
+const qs = require('querystring');
 const mapLink = require('../../../app/lib/mapLink');
 const chai = require('chai');
 
@@ -29,17 +30,19 @@ describe('mapLink', () => {
           address,
         }];
 
-        const start = `saddr=${location}`;
+        const start = `saddr=${qs.escape(location)}`;
         const nameAndAddressOne = `${nameOne},${Object.values(address).join()}`;
-        const destinationOne = `daddr=${nameAndAddressOne}`;
-        const nearOne = `near=${nameAndAddressOne}`;
+        const nameAndAddressOneEncoded = qs.escape(nameAndAddressOne);
+        const destinationOne = `daddr=${nameAndAddressOneEncoded}`;
+        const nearOne = `near=${nameAndAddressOneEncoded}`;
         const nameAndAddressTwo = `${nameTwo},${Object.values(address).join()}`;
-        const destinationTwo = `daddr=${nameAndAddressTwo}`;
-        const nearTwo = `near=${nameAndAddressTwo}`;
-        const expectedMapLinkOne =
-        `https://maps.google.com/maps?${start}&${destinationOne}&${nearOne}`.replace(/ /g, '+');
-        const expectedMapLinkTwo =
-        `https://maps.google.com/maps?${start}&${destinationTwo}&${nearTwo}`.replace(/ /g, '+');
+        const nameAndAddressTwoEncoded = qs.escape(nameAndAddressTwo);
+        const destinationTwo = `daddr=${nameAndAddressTwoEncoded}`;
+        const nearTwo = `near=${nameAndAddressTwoEncoded}`;
+        const encodedQueryOne = `${start}&${destinationOne}&${nearOne}`;
+        const encodedQueryTwo = `${start}&${destinationTwo}&${nearTwo}`;
+        const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQueryOne}`;
+        const expectedMapLinkTwo = `https://maps.google.com/maps?${encodedQueryTwo}`;
 
         const results = mapLink.addUrl(location, inputList);
 
@@ -63,10 +66,9 @@ describe('mapLink', () => {
         },
       }];
 
-      const destination = 'name,line1,AB12+3CD';
-      const expectedMapLinkOne =
-        `https://maps.google.com/maps?saddr=${location}&daddr=${destination}&near=${destination}`
-          .replace(/ /g, '+');
+      const destination = 'name,line1,AB12 3CD';
+      const encodedQuery = `saddr=${qs.escape(location)}&daddr=${qs.escape(destination)}&near=${qs.escape(destination)}`;
+      const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQuery}`;
 
       const results = mapLink.addUrl(location, inputList);
 
