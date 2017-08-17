@@ -20,4 +20,3 @@ function smartCache(settings) {
 }
 
 module.exports = smartCache;
-
