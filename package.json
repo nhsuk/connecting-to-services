@@ -7,8 +7,6 @@
     "node": "6.x.x"
   },
   "scripts": {
-    "artillery-fire": "artillery ./test/perf/all-results.json -o ./reports/all-results.json",
-    "artillery-report": "artillery report ./reports/all-results.json",
     "build-css": "./css-build",
     "coverage-check": "istanbul check-coverage --config .istanbul.yml",
     "coverage-generate": "yarn istanbul -- cover _mocha -- --recursive",
@@ -49,7 +47,6 @@
     "require-environment-variables": "^1.1.2"
   },
   "devDependencies": {
-    "artillery": "^1.6.0-2",
     "bower": "^1.8.0",
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
