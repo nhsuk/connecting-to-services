@@ -6,6 +6,7 @@ module.exports = {
   app: {
     name: 'connecting-to-services',
   },
+  cacheTimeoutSeconds: process.env.CACHE_TIMEOUT_SECONDS || 0,
   env: process.env.NODE_ENV || 'development',
   root: rootPath,
   port: process.env.PORT || 3000,
