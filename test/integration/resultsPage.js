@@ -178,7 +178,8 @@ describe('The results page', () => {
 describe('The results page error handling', () => {
   const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
 
-  it('should lookup a valid but unknown postcode and return an error message',
+  it(
+    'should lookup a valid but unknown postcode and return an error message',
     (done) => {
       const invalidPostcodePassingRegex = 'LS0';
 
@@ -198,7 +199,8 @@ describe('The results page error handling', () => {
             .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
           done();
         });
-    });
+    }
+  );
 
   it('should only validate the postcode and return an error message', (done) => {
     const invalidPostcode = 'invalid';

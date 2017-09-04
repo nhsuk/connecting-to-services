@@ -9,7 +9,8 @@ describe('mapLink', () => {
   describe('addUrl', () => {
     const location = 'some place';
 
-    it('should add an additional property to all items in the input list with the google maps Url',
+    it(
+      'should add an additional property to all items in the input list with the google maps Url',
       () => {
         const nameOne = 'place name one';
         const nameTwo = 'place name two';
@@ -51,7 +52,8 @@ describe('mapLink', () => {
         expect(results.length).to.be.equal(2);
         expect(results[0].mapUrl).to.be.equal(expectedMapLinkOne);
         expect(results[1].mapUrl).to.be.equal(expectedMapLinkTwo);
-      });
+      }
+    );
 
     it('should remove any empty, null or undefined address properties', () => {
       const inputList = [{

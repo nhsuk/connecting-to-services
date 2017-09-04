@@ -8,13 +8,15 @@ const prerender = require('../app/middleware/prerender');
 const setLocals = require('../app/middleware/setLocals');
 const logZeroResults = require('../app/middleware/logZeroResults');
 
-router.get('/',
+router.get(
+  '/',
   (req, res) => {
     res.redirect('find-help');
   }
 );
 
-router.get('/results',
+router.get(
+  '/results',
   setLocals.fromRequest,
   validateLocation,
   coordinateResolver,
@@ -24,7 +26,8 @@ router.get('/results',
   renderer.results
 );
 
-router.get('/find-help',
+router.get(
+  '/find-help',
   setLocals.fromRequest,
   renderer.findHelp
 );
