@@ -55,7 +55,7 @@
     "coveralls": "^2.11.9",
     "eslint": "^4.4.1",
     "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-config-nhsuk": "^0.3.3",
+    "eslint-config-nhsuk": "^0.5.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-mocha": "^4.11.0",
