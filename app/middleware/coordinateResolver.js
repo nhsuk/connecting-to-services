@@ -6,7 +6,6 @@ function coordinateResolver(req, res, next) {
     if (err) {
       switch (err.type) {
         case 'invalid-postcode':
-          // eslint-disable-next-line no-param-reassign
           res.locals.errorMessage = err.message;
           renderer.findHelp(req, res);
           break;
