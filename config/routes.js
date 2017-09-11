@@ -1,4 +1,3 @@
-// eslint-disable-next-line new-cap
 const router = require('express').Router();
 const validateLocation = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
