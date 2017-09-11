@@ -34,6 +34,10 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP error_page_views The number of error page views\n# TYPE error_page_views counter');
   });
 
+  it('should return an histogram for get_nearby_services timings', () => {
+    expect(responseText).to.have.string('# HELP get_nearby_services Duration histogram of request to nearby-services-api\n# TYPE get_nearby_services histogram');
+  });
+
   it('should return an http_request_duration_seconds histogram', () => {
     expect(responseText).to.have.string('# HELP http_request_duration_seconds duration histogram of http responses labeled with: status_code, path\n# TYPE http_request_duration_seconds histogram');
   });

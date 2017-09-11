@@ -2,6 +2,7 @@ const request = require('request');
 const log = require('../lib/logger');
 const dedupe = require('../lib/dedupePharmacies');
 const constants = require('../lib/constants');
+const getNearbyServicesHistogram = require('../lib/promHistorgrams').getNearbyServices;
 
 function getPharmacies(req, res, next) {
   const searchPoint = res.locals.coordinates;
@@ -12,7 +13,9 @@ function getPharmacies(req, res, next) {
   const url = `${baseUrl}/nearby?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`;
 
   log.info({ pharmacyLookupRequest: { url } }, 'get-pharmacies-request');
+  const endTimer = getNearbyServicesHistogram.startTimer();
   request(url, (error, response, body) => {
+    endTimer();
     log.debug({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-response');
 
     if (error) {
