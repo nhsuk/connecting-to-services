@@ -34,7 +34,6 @@ function lookup(res, next) {
         case 200:
           log.info(`Postcode lookup success for ${location}`);
           postcode = JSON.parse(body);
-          // eslint-disable-next-line no-param-reassign
           res.locals.coordinates = {
             latitude: postcode.result.latitude,
             longitude: postcode.result.longitude,
