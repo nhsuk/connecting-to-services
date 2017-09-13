@@ -29,3 +29,4 @@ Provide a general summary of your changes in the Title
 - [ ] An [ADR](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
 - [ ] New and/or updated tests
 - [ ] Version of the cache is increased
+- [ ] Changes log in `CHANGELOG`
