@@ -3,9 +3,6 @@
   "version": "0.12.1",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
-  "engines": {
-    "node": "6.x.x"
-  },
   "scripts": {
     "build-css": "./css-build",
     "coverage-check": "istanbul check-coverage --config .istanbul.yml",
