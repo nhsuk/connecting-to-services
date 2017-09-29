@@ -1,3 +1,9 @@
+0.13.0 / 2017-09-29
+===================
+- Update npm dependencies
+- Update `.snyk` policy
+- Remove `engine` field from `package.json`
+
 0.12.1 / 2017-09-13
 ===================
 - Fix date format in CHANGELOG
