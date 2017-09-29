@@ -1,11 +1,8 @@
 {
   "name": "connecting-to-services",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
-  "engines": {
-    "node": "6.x.x"
-  },
   "scripts": {
     "build-css": "./css-build",
     "coverage-check": "istanbul check-coverage --config .istanbul.yml",
@@ -40,8 +37,8 @@
     "express-prom-bundle": "^3.1.0",
     "helmet": "^3.8.1",
     "nhsuk-bunyan-logger": "^1.4.1",
-    "node-sass": "^4.5.0",
-    "nunjucks": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "nunjucks": "^3.0.1",
     "object.values": "^1.0.3",
     "on-headers": "^1.0.1",
     "postcode": "^0.2.5",
