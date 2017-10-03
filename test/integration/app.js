@@ -37,20 +37,6 @@ describe('redirection', () => {
   });
 });
 
-describe('page response', () => {
-  it('should consist of required security headers', (done) => {
-    chai.request(server)
-      .get(`${constants.SITE_ROOT}/finders/find-help`)
-      .end((err, res) => {
-        expect(res).to.have.header('Content-Security-Policy', 'default-src \'self\'; child-src https://*.hotjar.com:*; script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' data: www.google-analytics.com s.webtrends.com statse.webtrendslive.com static.hotjar.com script.hotjar.com cdn.jsdelivr.net; img-src \'self\' data: static.hotjar.com www.google-analytics.com statse.webtrendslive.com hm.webtrends.com; style-src \'self\' \'unsafe-inline\' assets.nhs.uk; font-src assets.nhs.uk; connect-src \'self\' https://*.hotjar.com:* wss://*.hotjar.com');
-        expect(res).to.have.header('X-Xss-Protection', '1; mode=block');
-        expect(res).to.have.header('X-Frame-Options', 'DENY');
-        expect(res).to.have.header('X-Content-Type-Options', 'nosniff');
-        done();
-      });
-  });
-});
-
 describe('An unknown page', () => {
   it('should return a 404', (done) => {
     chai.request(server)
