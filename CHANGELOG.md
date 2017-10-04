@@ -1,8 +1,9 @@
-0.13.0 / 2017-09-29
+0.13.0 / TBC
 ===================
 - Update npm dependencies
 - Update `.snyk` policy
 - Remove `engine` field from `package.json`
+- Exclude subdomains from Strict-Transport-Security header
 
 0.12.1 / 2017-09-13
 ===================
