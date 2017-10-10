@@ -1,4 +1,4 @@
-0.13.0 / TBC
+0.13.0 / 2017-10-10
 ===================
 - Update npm dependencies
 - Update `.snyk` policy
