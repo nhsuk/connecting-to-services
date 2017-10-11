@@ -1,4 +1,4 @@
-0.13.1 / 2017-10-11
+0.14.0 / 2017-10-11
 ===================
 - Remove smart cache to prevent pharmacy results from being stale.
 
