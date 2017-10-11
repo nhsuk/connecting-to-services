@@ -8,7 +8,6 @@ const nunjucks = require('nunjucks');
 const router = require('./routes');
 const locals = require('../app/middleware/locals');
 const constants = require('../app/lib/constants');
-const smartCache = require('../app/middleware/smartCache');
 const promBundle = require('../app/lib/promBundle').middleware;
 const errorCounter = require('../app/lib/promCounters').errorPageViews;
 
@@ -18,8 +17,6 @@ module.exports = (app, config) => {
 
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
-
-  app.use(smartCache({ maxAge: config.cacheTimeoutSeconds }));
 
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'nunjucks');
