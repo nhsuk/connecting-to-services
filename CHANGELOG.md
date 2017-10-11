@@ -1,3 +1,7 @@
+0.14.0 / 2017-10-11
+===================
+- Remove smart cache to prevent pharmacy results from being stale.
+
 0.13.0 / 2017-10-10
 ===================
 - Update npm dependencies

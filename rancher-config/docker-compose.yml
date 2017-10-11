@@ -10,7 +10,6 @@ services:
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ID}
       WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}
       API_BASE_URL: 'http://nearby-services-api.nearby-services-api:3001'
-      CACHE_TIMEOUT_SECONDS: 1800
     labels:
       traefik.enable: true
       traefik.frontend.rule: $TRAEFIK_RULE

@@ -4,7 +4,7 @@ Date: 2017-08-17
 
 ## Status
 
-Accepted
+Superseded ([0007](https://github.com/nhsuk/connecting-to-services/blob/master/doc/adr/0007-remove-cache-control-headers.md))
 
 ## Context
 
