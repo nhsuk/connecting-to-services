@@ -1,5 +1,6 @@
 0.14.1 / TBA
-- Performance tests use threshold of 750ms
+===================
+- Performance tests use threshold of 500ms
 
 0.14.0 / 2017-10-11
 ===================
