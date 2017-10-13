@@ -1,3 +1,7 @@
+0.15.0 / TBD
+===================
+- Be less specific about third party domains within content security policy
+
 0.14.1 / TBA
 ===================
 - Performance tests use threshold of 500ms
