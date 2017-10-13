@@ -1,3 +1,7 @@
+0.14.1 / TBA
+===================
+- Performance tests use threshold of 500ms
+
 0.14.0 / 2017-10-11
 ===================
 - Remove smart cache to prevent pharmacy results from being stale.
