@@ -109,7 +109,7 @@ h1 {
       background-color: #f2f8fc;
       border: 3px solid #ffb81c;
       outline: none;
-      position: static;
+      left:0;
       @include media(mobile) {
         left:0;
         position:absolute;
