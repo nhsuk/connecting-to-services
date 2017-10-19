@@ -1,3 +1,7 @@
+0.15.1 / TBA
+===================
+- Ignore metrics test when running githook as it only works in the container.
+
 0.15.0 / 2017-10-17
 ===================
 - Be less specific about third party domains within content security policy
