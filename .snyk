@@ -7,6 +7,9 @@ ignore:
         reason: node-pre-gyp is dev only
         expires: '2017-10-29T08:53:23.719Z'
       nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: Not user facing.
+        expires: '2017-11-24T07:59:27.559Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: No upgrade available
         expires: '2017-11-08T14:03:37.615Z'
   'npm:mime:20170907':
@@ -18,6 +21,6 @@ ignore:
         expires: '2017-11-08T14:03:37.615Z'
   'npm:tough-cookie:20170905':
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
-        reason: No upgrade available
-        expires: '2017-11-08T14:03:37.615Z'
+        reason: Not user facing.
+        expires: '2017-11-24T07:59:27.559Z'
 patch: {}
