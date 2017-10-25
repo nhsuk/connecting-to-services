@@ -2,6 +2,8 @@
 ===================
 - Add basic authentication to service when running test environments in Rancher
 - Ignore metrics test when running githook as it only works in the container.
+- Upgrade Docker container to `node:8.8.0-alpine`
+- Update npm dependencies
 
 0.15.0 / 2017-10-17
 ===================
