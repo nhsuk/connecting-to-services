@@ -5,28 +5,28 @@ services:
   c2s-frontend:
     image: "nhsuk/connecting-to-services:${DOCKER_IMAGE_TAG}"
     environment:
-      NODE_ENV: production
-      HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
-      GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ID}
-      WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}
       API_BASE_URL: 'http://nearby-services-api.nearby-services-api:3001'
+      GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ID}
+      HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
+      NODE_ENV: production
+      WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}
     labels:
+      io.rancher.container.pull_image: always
+      prometheus.monitoring: true
+      prometheus.port: 3000
+      traefik.backend: ${RANCHER_STACK_NAME}-connecting-to-services
       traefik.enable: true
       traefik.frontend.auth.basic: ${BASIC_AUTH}
       traefik.frontend.rule: $TRAEFIK_RULE
-      traefik.backend: ${RANCHER_STACK_NAME}-connecting-to-services
       traefik.port: 3000
-      prometheus.port: 3000
-      prometheus.monitoring: true
-      io.rancher.container.pull_image: always
     logging:
       driver: splunk
       options:
-        splunk-url: ${SPLUNK_HEC_URL}
-        splunk-token: ${SPLUNK_HEC_TOKEN}
+        splunk-format: json
         splunk-insecureskipverify: "true"
-        splunk-sourcetype: docker
         splunk-source: connecting-to-services
+        splunk-sourcetype: docker
+        splunk-token: ${SPLUNK_HEC_TOKEN}
+        splunk-url: ${SPLUNK_HEC_URL}
         splunk-verify-connection: "false"
         tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
-        splunk-format: json
