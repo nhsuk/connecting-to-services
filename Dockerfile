@@ -1,4 +1,4 @@
-FROM node:8.4.0-alpine
+FROM node:8.8.0-alpine
 
 ENV USERNAME nodeuser
 
@@ -14,7 +14,7 @@ ENV NODE_ENV=${NODE_ENV}
 
 COPY yarn.lock package.json /code/
 
-RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile --ignore-optional; else yarn install --pure-lockfile --ignore-optional; fi
+RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile; else yarn install --pure-lockfile; fi
 
 EXPOSE 3000
 
