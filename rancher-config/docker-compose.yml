@@ -12,6 +12,7 @@ services:
       API_BASE_URL: 'http://nearby-services-api.nearby-services-api:3001'
     labels:
       traefik.enable: true
+      traefik.frontend.auth.basic: ${BASIC_AUTH}
       traefik.frontend.rule: $TRAEFIK_RULE
       traefik.backend: ${RANCHER_STACK_NAME}-connecting-to-services
       traefik.port: 3000
