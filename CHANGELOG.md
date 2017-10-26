@@ -1,5 +1,6 @@
-0.15.1 / TBA
+0.16.0 / 2017-10-31
 ===================
+- Add basic authentication to service when running test environments in Rancher
 - Ignore metrics test when running githook as it only works in the container.
 
 0.15.0 / 2017-10-17
