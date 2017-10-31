@@ -1,3 +1,7 @@
+0.16.1 / TBD
+===================
+- Link back to pharmacy finder on Choices
+
 0.16.0 / 2017-10-31
 ===================
 - Add basic authentication to service when running test environments in Rancher
