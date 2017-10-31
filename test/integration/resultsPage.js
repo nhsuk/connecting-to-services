@@ -1,7 +1,7 @@
-const nock = require('nock');
-const cheerio = require('cheerio');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const cheerio = require('cheerio');
+const nock = require('nock');
 const server = require('../../server');
 const constants = require('../../app/lib/constants');
 const messages = require('../../app/lib/messages');
@@ -15,10 +15,10 @@ chai.use(chaiHttp);
 const resultsRoute = `${constants.SITE_ROOT}/results`;
 const numberOfOpenResults = constants.numberOfOpenResults;
 const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
-const ls27ue = 'LS2 7UE';
 
 describe('The results page', () => {
   it('should return 1 open result and 3 nearby results, by default', (done) => {
+    const ls27ue = 'LS2 7UE';
     const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const ls27ueResult = JSON.parse(ls27ueResponse).result;
