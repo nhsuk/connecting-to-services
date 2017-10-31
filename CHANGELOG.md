@@ -1,6 +1,7 @@
-0.16.1 / TBD
+0.17.0 / TBD
 ===================
 - Link back to pharmacy finder on Choices
+- Updated page titles
 
 0.16.0 / 2017-10-31
 ===================

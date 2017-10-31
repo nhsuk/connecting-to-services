@@ -15,10 +15,10 @@ chai.use(chaiHttp);
 const resultsRoute = `${constants.SITE_ROOT}/results`;
 const numberOfOpenResults = constants.numberOfOpenResults;
 const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
+const ls27ue = 'LS2 7UE';
 
 describe('The results page', () => {
   it('should return 1 open result and 3 nearby results, by default', (done) => {
-    const ls27ue = 'LS2 7UE';
     const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const ls27ueResult = JSON.parse(ls27ueResponse).result;
@@ -61,6 +61,7 @@ describe('The results page', () => {
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help`);
+        expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
         done();
       });
   });
@@ -91,6 +92,7 @@ describe('The results page', () => {
 
         expect($('.results__header--none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
         expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('title').text()).to.equal('Pharmacies near BA1 - NHS.UK');
         done();
       });
   });
@@ -107,6 +109,7 @@ describe('The results page', () => {
 
         expect($('.results__header--none').text()).to.be.equal(`There are no pharmacies within 20 miles of ${outcode}`);
         expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('title').text()).to.equal('Pharmacies near BT1 - NHS.UK');
         done();
       });
   });
@@ -197,6 +200,7 @@ describe('The results page error handling', () => {
 
           expect($('.error-summary-heading').text()).to
             .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
+          expect($('title').text()).to.equal('Please retry - Find a pharmacy - NHS.UK');
           done();
         });
     }
@@ -342,6 +346,21 @@ describe('The results page error handling', () => {
         expect($('.page-section').text()).to.not.contain('For help with');
         expect($('.local-header--title--question').text())
           .to.contain(messages.technicalProblems());
+        done();
+      });
+  });
+});
+
+describe('Return to Choices banner', () => {
+  it('should have a link back to the Choices pharmacy finder', (done) => {
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: 'ls2' })
+      .end((err, res) => {
+        const $ = cheerio.load(res.text);
+
+        expect($('.back-to-choices').attr('href'))
+          .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
         done();
       });
   });
