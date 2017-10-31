@@ -2,25 +2,19 @@
 version: v1.7.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
-  'npm:debug:20170905':
-    - node-pre-gyp > tar-pack > debug:
-        reason: node-pre-gyp is dev only
-        expires: '2017-10-29T08:53:23.719Z'
-      nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
-        reason: Not user facing.
-        expires: '2017-11-24T07:59:27.559Z'
-    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
-        reason: No upgrade available
-        expires: '2017-11-08T14:03:37.615Z'
   'npm:mime:20170907':
     - express > send > mime:
-        reason: Express 4.16.0 has broken dependencies for this project.
-        expires: '2017-11-08T14:03:37.615Z'
+        reason: 4.16.0 has problems
+        expires: '2017-11-30T11:49:48.020Z'
     - express > serve-static > send > mime:
-        reason: Express 4.16.0 has broken dependencies for this project.
-        expires: '2017-11-08T14:03:37.615Z'
+        reason: 4.16.0 has problems
+        expires: '2017-11-30T11:49:48.021Z'
+  'npm:debug:20170905':
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: Not user facing
+        expires: '2017-11-30T11:49:48.021Z'
   'npm:tough-cookie:20170905':
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
-        reason: Not user facing.
-        expires: '2017-11-24T07:59:27.559Z'
+        reason: Not user facing
+        expires: '2017-11-30T11:49:48.021Z'
 patch: {}

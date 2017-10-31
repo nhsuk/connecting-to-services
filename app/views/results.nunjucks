@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}All service results{% endblock %}
+{% block pageTitle %}Pharmacies near {{ location }} - NHS.UK{% endblock %}
 
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />

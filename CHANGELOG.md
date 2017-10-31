@@ -1,3 +1,9 @@
+0.17.0 / TBD
+===================
+- Link back to pharmacy finder on Choices
+- Update page titles
+- Update npm dependencies
+
 0.16.0 / 2017-10-31
 ===================
 - Add basic authentication to service when running test environments in Rancher
