@@ -6,7 +6,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run git-hook
+    command: yarn test-watch
     volumes:
       - c2s-test-node_modules:/code/node_modules
     environment:
