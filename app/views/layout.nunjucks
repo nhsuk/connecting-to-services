@@ -47,11 +47,7 @@
   <body>
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
-    <div class="skiplinks">
-      <div class="skiplinks--inner">
-        <a href="#content" class="skiplinks--link">Skip to main content</a>
-      </div>
-    </div>
+    <a href="#content" class="skippy">Skip to main content</a>
 
     <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
       <p class="notification-banner--inner">
