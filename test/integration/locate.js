@@ -29,5 +29,19 @@ describe('locate', () => {
       expect(results[0].region).to.exist;
       /* eslint-enable no-unused-expressions */
     });
+
+    it('Should handle multiple spaces between words', async () => {
+      const results = await lookup.byPlace('stoke  newington');
+
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(1);
+    });
+
+    it('Should handle non alphanumeric character', async () => {
+      const results = await lookup.byPlace('stoke . newington');
+
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(1);
+    });
   });
 });

@@ -1,0 +1,8 @@
+<h2 class="results__name">{{ place.name_1 }}</h2>
+<p>
+{% if place.name_2 %} {{ place.name_2 }}<br>{% endif %}
+{% if place.county_unitary %} {{ place.county_unitary }}<br>{% endif %}
+{% if place.outcode %} {{ place.outcode }}<br>{% endif %}
+{% if place.region %} {{ place.region }}<br>{% endif %}
+{% if place.country %} {{ place.country }}<br>{% endif %}
+</p>

@@ -1,5 +1,7 @@
 const log = require('../lib/logger');
 const renderer = require('../middleware/renderer');
+const isNotPostcode = require('../lib/isNotPostcode');
+const messages = require('../lib/messages');
 const isNotEnglishLocation = require('../lib/isNotEnglishLocation');
 const locationValidator = require('../lib/locationValidator');
 
@@ -9,18 +11,19 @@ function setLocationLabel(res, location) {
   }
 }
 
+function renderFindHelpPage(req, res, location, message, errorMessage) {
+  log.info({ locationValidationResponse: { location } }, message);
+  res.locals.errorMessage = errorMessage;
+  setLocationLabel(res, location);
+  renderer.findHelp(req, res);
+}
+
 function validateEnglishLocation(req, res, next) {
   const location = res.locals.location;
-
   const validationResult = locationValidator(location);
-
   res.locals.location = validationResult.alteredLocation;
-
   if (validationResult.errorMessage) {
-    log.info({ locationValidationResponse: { location } }, 'Non-English postcode');
-    res.locals.errorMessage = validationResult.errorMessage;
-    setLocationLabel(res, location);
-    renderer.findHelp(req, res);
+    renderFindHelpPage(req, res, location, 'Non-English postcode', validationResult.errorMessage);
   } else {
     next();
   }
@@ -32,10 +35,21 @@ function renderNoResultsPage(req, res) {
   renderer.results(req, res);
 }
 
+function sanitiseString(string) {
+  return string && string.replace(/[^a-z]/gmi, ' ').replace(/\s\s+/g, ' ').trim();
+}
 function validateLocation(req, res, next) {
-  const location = res.locals.location;
-
-  if (isNotEnglishLocation(location)) {
+  const location = res.locals.location && res.locals.location.trim();
+  if (!location) {
+    renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+  } else if (isNotPostcode(location)) {
+    const safeString = sanitiseString(location);
+    if (safeString) {
+      res.redirect(`places?location=${sanitiseString(location)}`);
+    } else {
+      renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+    }
+  } else if (isNotEnglishLocation(location)) {
     log.info({ req: { location } }, 'Non-English location');
     renderNoResultsPage(req, res);
   } else {

@@ -9,12 +9,16 @@ PostcodesIO.prototype.lookupPlaces = function lookupOutcode(place, callback) {
 
 const postcodes = new PostcodesIO();
 
+function removeMultipleSpaces(string) {
+  return string.replace(/[^a-z]/gmi, ' ').replace(/\s\s+/g, ' ');
+}
+
 function byPostcode(postcode) {
   return postcodes.lookup(postcode);
 }
 
 function byPlace(place) {
-  return postcodes.lookupPlaces(place);
+  return postcodes.lookupPlaces(removeMultipleSpaces(place));
 }
 
 module.exports = {
