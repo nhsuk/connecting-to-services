@@ -200,7 +200,7 @@ describe('The results page error handling', () => {
 
           expect($('.error-summary-heading').text()).to
             .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-          expect($('title').text()).to.equal('Please retry - Find a pharmacy - NHS.UK');
+          expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode ${invalidPostcodePassingRegex} - NHS.UK`);
           done();
         });
     }
@@ -246,6 +246,8 @@ describe('The results page error handling', () => {
         expect($('.page-section').text()).to.not.contain('For help with');
         expect($('.local-header--title--question').text())
           .to.contain(messages.technicalProblems());
+        expect($('title').text())
+          .to.equal('Sorry, we are experiencing technical problems - NHS.UK');
         done();
       });
   });

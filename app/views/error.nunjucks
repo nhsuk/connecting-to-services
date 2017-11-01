@@ -2,7 +2,7 @@
 
 {% set message = 'Sorry, we are experiencing technical problems' %}
 
-{% block pageTitle %} {{ message }} {% endblock %}
+{% block pageTitle %}{{ message }}{% endblock %}
 
 {% block header %}
   <h1 class="local-header--title--question">{{ message }}</h1>

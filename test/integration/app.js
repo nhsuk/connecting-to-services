@@ -51,6 +51,7 @@ describe('An unknown page', () => {
 
         expect($('.local-header--title--question').text().trim())
           .to.equal('Page not found');
+        expect($('title').text()).to.equal('Page not found - NHS.UK');
         done();
       });
   });
