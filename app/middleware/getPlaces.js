@@ -15,13 +15,21 @@ function logZeroResults(places, location) {
   }
 }
 
+function getLocationUrl(place, location) {
+  return `location?location=${location}&latitude=${place.latitude}&longitude=${place.longitude}`;
+}
+
 async function getPlaces(req, res, next) {
   const location = req.query.location;
   try {
     const places = await locate.byPlace(location);
     res.locals.places = places.filter(place => place.country === 'England');
     logZeroResults(places, location);
-    next();
+    if (places.length === 1) {
+      res.redirect(getLocationUrl(places[0], location));
+    } else {
+      next();
+    }
   } catch (ex) {
     renderFindHelpPage(req, res, location, 'Find places error', ex.message);
   }

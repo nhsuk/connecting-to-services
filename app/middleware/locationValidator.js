@@ -45,7 +45,7 @@ function validateLocation(req, res, next) {
   } else if (isNotPostcode(location)) {
     const safeString = sanitiseString(location);
     if (safeString) {
-      res.redirect(`places?location=${sanitiseString(location)}`);
+      res.redirect(`places?location=${safeString}`);
     } else {
       renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
     }
