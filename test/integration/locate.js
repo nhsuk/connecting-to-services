@@ -6,16 +6,17 @@ const expect = chai.expect;
 describe('locate', () => {
   describe('byPostcode', () => {
     it('Should return lat long for valid England postcode', async () => {
-      const result = await lookup.byPostcode('BD24 9PT');
+      const validPostcode = 'BD24 9PT';
+      const result = await lookup.byPostcode(validPostcode);
 
-      expect(result.postcode).to.equal('BD24 9PT');
+      expect(result.postcode).to.equal(validPostcode);
       /* eslint-disable no-unused-expressions */
       expect(result.latitude).to.exist;
       expect(result.longitude).to.exist;
       /* eslint-enable no-unused-expressions */
     });
   });
-  describe('byPlaces', () => {
+  describe('byPlace', () => {
     it('Should return list of places', async () => {
       const results = await lookup.byPlace('Leeds');
 
@@ -30,14 +31,14 @@ describe('locate', () => {
       /* eslint-enable no-unused-expressions */
     });
 
-    it('Should handle multiple spaces between words', async () => {
+    it('Should ignore multiple spaces between words', async () => {
       const results = await lookup.byPlace('stoke  newington');
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(1);
     });
 
-    it('Should handle non alphanumeric character', async () => {
+    it('Should ignore non-alphanumeric character', async () => {
       const results = await lookup.byPlace('stoke . newington');
 
       expect(results).to.be.an('array');
@@ -49,6 +50,13 @@ describe('locate', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(0);
+    });
+
+    it('Should limit results', async () => {
+      const results = await lookup.byPlace('le', 5);
+
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(5);
     });
   });
 });

@@ -2,5 +2,5 @@ check:
   global:
     statements: 90
     lines: 90
-    branches: 75
-    functions: 85
+    branches: 85
+    functions: 90

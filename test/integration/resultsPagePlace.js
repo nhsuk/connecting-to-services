@@ -11,12 +11,12 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.SITE_ROOT}/places`;
+const resultsRoute = `${constants.SITE_ROOT}/results`;
 const numberOfOpenResults = constants.numberOfOpenResults;
 const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
 describe('The place results page', () => {
-  it('should return 1 open result and 3 nearby results for unique place search', (done) => {
+  it('should return list of pharmacies for unique place search', (done) => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const singleResult = JSON.parse(singlePlaceResponse).result;
@@ -40,8 +40,8 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        // expect($('.results__header--nearest').text())
-        //   .to.equal(`Nearest open pharmacy to ${ls27ue}`);
+        expect($('.results__header--nearest').text())
+          .to.equal('Nearest open pharmacy to oneresult');
 
         expect($('.results__header--nearby').text())
           .to.equal('Other pharmacies nearby');
@@ -60,6 +60,51 @@ describe('The place results page', () => {
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help`);
         expect($('title').text()).to.equal('Pharmacies near oneresult - NHS.UK');
+        done();
+      });
+  });
+
+  it('should return disambiguation page for non unique place search', (done) => {
+    const multiPlaceResponse = getSampleResponse('postcodesio-responses/multiplePlaceResult.json');
+
+    nock('https://api.postcodes.io')
+      .get('/places?q=multiresult&limit=10')
+      .times(1)
+      .reply(200, multiPlaceResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: 'multiresult' })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results__header').text())
+          .to.equal('There are 3 places matching \'multiresult\'');
+
+        expect($('.link-back').text()).to.equal('Back to find a pharmacy');
+        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help`);
+        expect($('title').text()).to.equal('Places disambiguation - NHS.UK');
+
+        done();
+      });
+  });
+  it('should return search page for empty search', (done) => {
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: '' })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.error-summary-heading').text())
+          .to.contain('You must insert a postcode to find a pharmacy.');
+
+        expect($('.link-back').text()).to.equal('Back');
+        // eslint-disable-next-line no-script-url
+        expect($('.link-back').attr('href')).to.equal('javascript:history.back();');
+        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode  - NHS.UK');
+
         done();
       });
   });

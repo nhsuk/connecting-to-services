@@ -1,7 +1,7 @@
 const PostcodesIO = require('postcodesio-client');
 
 // monkey patch postcodesIO to add places method
-PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit = 10, callback) {
+PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit, callback) {
   // eslint-disable-next-line no-underscore-dangle
   return this._request('get', 'places', { q: place, limit })
     .nodeify(callback);
@@ -17,8 +17,8 @@ function byPostcode(postcode) {
   return postcodes.lookup(postcode);
 }
 
-function byPlace(place) {
-  return postcodes.lookupPlaces(removeMultipleSpaces(place));
+function byPlace(place, limit = 10) {
+  return postcodes.lookupPlaces(removeMultipleSpaces(place), limit);
 }
 
 module.exports = {
