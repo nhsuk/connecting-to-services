@@ -5,5 +5,5 @@
 {% if place.outcode %} {{ place.outcode }}<br>{% endif %}
 {% if place.region %} {{ place.region }}<br>{% endif %}
 {% if place.country %} {{ place.country }}<br>{% endif %}
-<a href="{{ SITE_ROOT }}/location?latitude={{place.latitude}}&longitude={{place.longitude}}" class="link">View Nearby Pharmacies</a>
+<a href="{{ SITE_ROOT }}/location?location={{place.name_1}}&latitude={{place.latitude}}&longitude={{place.longitude}}" class="link">View Nearby Pharmacies</a>
 </p>

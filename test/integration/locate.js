@@ -43,5 +43,12 @@ describe('locate', () => {
       expect(results).to.be.an('array');
       expect(results.length).to.equal(1);
     });
+
+    it('Should return no results for unknown place', async () => {
+      const results = await lookup.byPlace('fgfgfgfgfgfg');
+
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(0);
+    });
   });
 });

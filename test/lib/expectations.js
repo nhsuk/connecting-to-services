@@ -14,7 +14,7 @@ function findHelpPageInvalidEntry($) {
 
 function findHelpPage($) {
   findHelpPageBase($);
-  expect($('label[for=location]').text()).to.contain('Enter a postcode');
+  expect($('label[for=location]').text()).to.contain('Enter a place or a postcode');
 }
 
 function htmlWith200Status(err, res) {

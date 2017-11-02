@@ -31,7 +31,7 @@ async function getPlaces(req, res, next) {
       next();
     }
   } catch (ex) {
-    renderFindHelpPage(req, res, location, 'Find places error', ex.message);
+    renderFindHelpPage(req, res, location, 'Find places error');
   }
 }
 

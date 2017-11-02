@@ -18,6 +18,7 @@
     {% include "includes/no-place-results.nunjucks" %}
 
   {% elif places.length > 0 %}
+  <h2 class="results__header">There are {{places.length}} places matching '{{location}}'</h2>
     <ol class="results">
     {% for place in places %}
       <li class="results__item results__item--nearby">
