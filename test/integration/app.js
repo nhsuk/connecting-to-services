@@ -10,7 +10,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('redirection', () => {
-  it('default should be find help page', (done) => {
+  it('should redirect root requests to /find-a-pharmacy/', (done) => {
     chai.request(server)
       .get('/')
       .end((err, res) => {
@@ -18,20 +18,7 @@ describe('redirection', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(res).to.redirect;
-        expect(res.req.path).to.equal(`${constants.SITE_ROOT}/find-help`);
-        done();
-      });
-  });
-
-  it('/finder should redirect to find help page', (done) => {
-    chai.request(server)
-      .get(constants.SITE_ROOT)
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
-
-        // eslint-disable-next-line no-unused-expressions
-        expect(res).to.redirect;
-        expect(res.req.path).to.equal(`${constants.SITE_ROOT}/find-help`);
+        expect(res.req.path).to.equal(`${constants.SITE_ROOT}/`);
         done();
       });
   });
@@ -60,7 +47,7 @@ describe('An unknown page', () => {
 describe('The find help page', () => {
   it('should contain a generic back link', (done) => {
     chai.request(server)
-      .get(`${constants.SITE_ROOT}/find-help`)
+      .get(`${constants.SITE_ROOT}`)
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
 

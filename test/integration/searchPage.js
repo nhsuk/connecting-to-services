@@ -12,7 +12,7 @@ describe('Search page', () => {
   describe('page title', () => {
     it('should be \'Find a pharmarcy - NHS.UK\'', (done) => {
       chai.request(server)
-        .get(`${constants.SITE_ROOT}/find-help`)
+        .get(`${constants.SITE_ROOT}`)
         .end((err, res) => {
           const $ = cheerio.load(res.text);
 
@@ -25,7 +25,7 @@ describe('Search page', () => {
   describe('return to Choices banner', () => {
     it('should have a link back to the Choices pharmacy finder', (done) => {
       chai.request(server)
-        .get(`${constants.SITE_ROOT}/find-help`)
+        .get(`${constants.SITE_ROOT}`)
         .end((err, res) => {
           const $ = cheerio.load(res.text);
 

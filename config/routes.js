@@ -9,9 +9,8 @@ const logZeroResults = require('../app/middleware/logZeroResults');
 
 router.get(
   '/',
-  (req, res) => {
-    res.redirect('find-help');
-  }
+  setLocals.fromRequest,
+  renderer.findHelp
 );
 
 router.get(
@@ -23,12 +22,6 @@ router.get(
   logZeroResults,
   prerender.results,
   renderer.results
-);
-
-router.get(
-  '/find-help',
-  setLocals.fromRequest,
-  renderer.findHelp
 );
 
 module.exports = router;

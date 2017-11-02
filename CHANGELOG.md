@@ -1,4 +1,8 @@
-0.17.0 / TBD
+0.18.0 / 2017-11-09
+===================
+- Update URLs to `/find-a-pharmacy`
+
+0.17.0 / 2017-11-02
 ===================
 - Link back to pharmacy finder on Choices
 - Update page titles
