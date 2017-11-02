@@ -24,7 +24,7 @@ describe('The place results page', () => {
     const longitude = singleResult[0].longitude;
 
     nock('https://api.postcodes.io')
-      .get('/places?q=oneresult')
+      .get('/places?q=oneresult&limit=10')
       .times(1)
       .reply(200, singlePlaceResponse);
 
