@@ -1,14 +1,12 @@
 const Postcode = require('postcode');
 
 function isNotPostcode(text) {
-  const locationToReturn = text && text.trim();
-
-  const postcode = new Postcode(locationToReturn);
+  const postcode = new Postcode(text);
 
   if (postcode.valid()) {
     return false;
   }
-  if (Postcode.validOutcode(locationToReturn)) {
+  if (Postcode.validOutcode(text)) {
     return false;
   }
   return true;

@@ -28,27 +28,30 @@ function validateEnglishLocation(req, res, next) {
     next();
   }
 }
+function sanitiseString(string) {
+  return string.replace(/[^a-z]/gmi, ' ').replace(/\s\s+/g, ' ').trim();
+}
 
+function validatePlaceLocation(req, res, location) {
+  const safeString = sanitiseString(location);
+  if (safeString) {
+    res.redirect(`places?location=${safeString}`);
+  } else {
+    renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+  }
+}
 function renderNoResultsPage(req, res) {
   res.locals.nearbyServices = [];
   res.locals.openServices = [];
   renderer.results(req, res);
 }
 
-function sanitiseString(string) {
-  return string && string.replace(/[^a-z]/gmi, ' ').replace(/\s\s+/g, ' ').trim();
-}
 function validateLocation(req, res, next) {
   const location = res.locals.location && res.locals.location.trim();
   if (!location) {
     renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
   } else if (isNotPostcode(location)) {
-    const safeString = sanitiseString(location);
-    if (safeString) {
-      res.redirect(`places?location=${safeString}`);
-    } else {
-      renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
-    }
+    validatePlaceLocation(req, res, location);
   } else if (isNotEnglishLocation(location)) {
     log.info({ req: { location } }, 'Non-English location');
     renderNoResultsPage(req, res);

@@ -19,16 +19,6 @@ describe('Location validation', () => {
         .equal(expectedErrorMessage);
     });
 
-    it('should return an errorMessage when no location is provided', () => {
-      const emptyLocation = '';
-
-      const result = validateLocation(emptyLocation);
-
-      expect(result.errorMessage)
-        .to.be
-        .equal(messages.emptyPostcodeMessage());
-    });
-
     it('should return the input', () => {
       const result = validateLocation(invalidPostcode);
 
@@ -46,8 +36,8 @@ describe('Location validation', () => {
 
   describe('happy path', () => {
     describe('for outcode', () => {
-      it('should return the trimmed input, capitalised', () => {
-        const outcodeNeedsTrimming = '  ab1  ';
+      it('should return the input capitalised', () => {
+        const outcodeNeedsTrimming = 'ab1';
         const trimmedOutcode = 'AB1';
 
         const result = validateLocation(outcodeNeedsTrimming);
@@ -88,16 +78,6 @@ describe('Location validation', () => {
         expect(result).to.be.an('object');
         expect(result).to.have.property('alteredLocation');
         expect(result).to.have.property('errorMessage');
-      });
-
-      it('should return the trimmed input', () => {
-        const postcodeNeedsTrimming = '  ab123cd  ';
-
-        const trimmedResult = validateLocation(postcodeNeedsTrimming);
-
-        expect(trimmedResult.alteredLocation).to.be.equal(formattedPostcode);
-        // eslint-disable-next-line no-unused-expressions
-        expect(trimmedResult.errorMessage).to.be.null;
       });
     });
   });

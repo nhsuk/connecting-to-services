@@ -16,7 +16,7 @@ describe('isNotPostcode', () => {
     expect(result).to.be.false;
   });
   it('should return false for a valid postcode with whitespace', () => {
-    const result = isNotPostcode('  ls11    5qb  ');
+    const result = isNotPostcode('ls11    5qb');
     // eslint-disable-next-line no-unused-expressions
     expect(result).to.be.false;
   });
