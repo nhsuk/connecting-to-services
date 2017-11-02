@@ -80,7 +80,7 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header').text())
-          .to.equal('There are 3 places matching \'multiresult\'');
+          .to.include('There are 3 places matching \'multiresult\'');
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/find-help`);

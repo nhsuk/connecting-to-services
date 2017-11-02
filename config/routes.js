@@ -2,6 +2,7 @@ const router = require('express').Router();
 const validateLocation = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
 const getPlaces = require('../app/middleware/getPlaces');
+const createPlaceViewModel = require('../app/middleware/createPlaceViewModel');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
 const renderer = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
@@ -40,6 +41,7 @@ router.get(
   '/places',
   setLocals.fromRequest,
   getPlaces,
+  createPlaceViewModel,
   renderer.places
 );
 

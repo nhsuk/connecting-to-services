@@ -18,13 +18,14 @@
     {% include "includes/no-place-results.nunjucks" %}
 
   {% elif places.length > 0 %}
-  <h2 class="results__header">There are {{places.length}} places matching '{{location}}'</h2>
+  <h2 class="results__header">
+  There are {{places.length}} places matching '{{location}}'. <br/>
+  Please select your location from the list below to continue.
+  </h2>
     <ol class="results">
     {% for place in places %}
-      <li class="results__item results__item--nearby">
-        <div class="results__details results__details--nearby column--two-thirds">
-        {% include "includes/place-item.nunjucks" %}
-        </div>
+      <li class="results__item">
+       <a href="{{ SITE_ROOT }}/location?{{place.queryString}}" class="link">{{place.description}}</a>
         <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
       </li>
     {% endfor %}
