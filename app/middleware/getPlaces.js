@@ -17,7 +17,7 @@ function logZeroResults(places, location) {
 }
 
 function getLocationUrl(place, location) {
-  return `location?location=${location}&latitude=${place.latitude}&longitude=${place.longitude}`;
+  return `results?location=${location}&latitude=${place.latitude}&longitude=${place.longitude}`;
 }
 
 async function getPlaces(req, res, next) {

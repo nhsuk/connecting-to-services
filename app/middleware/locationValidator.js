@@ -1,5 +1,6 @@
 const log = require('../lib/logger');
-const renderer = require('../middleware/renderer');
+const renderer = require('./renderer');
+const skipLatLongLookup = require('./skipLatLongLookup');
 const isNotPostcode = require('../lib/isNotPostcode');
 const messages = require('../lib/messages');
 const isNotEnglishLocation = require('../lib/isNotEnglishLocation');
@@ -47,16 +48,20 @@ function renderNoResultsPage(req, res) {
 }
 
 function validateLocation(req, res, next) {
-  const location = res.locals.location && res.locals.location.trim();
-  if (!location) {
-    renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
-  } else if (isNotPostcode(location)) {
-    validatePlaceLocation(req, res, location);
-  } else if (isNotEnglishLocation(location)) {
-    log.info({ req: { location } }, 'Non-English location');
-    renderNoResultsPage(req, res);
+  if (skipLatLongLookup(res)) {
+    next();
   } else {
-    validateEnglishLocation(req, res, next);
+    const location = res.locals.location && res.locals.location.trim();
+    if (!location) {
+      renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+    } else if (isNotPostcode(location)) {
+      validatePlaceLocation(req, res, location);
+    } else if (isNotEnglishLocation(location)) {
+      log.info({ req: { location } }, 'Non-English location');
+      renderNoResultsPage(req, res);
+    } else {
+      validateEnglishLocation(req, res, next);
+    }
   }
 }
 

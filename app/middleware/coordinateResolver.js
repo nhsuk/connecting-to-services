@@ -1,4 +1,5 @@
-const renderer = require('../middleware/renderer');
+const renderer = require('./renderer');
+const skipLatLongLookup = require('./skipLatLongLookup');
 const postcodes = require('../lib/postcodes');
 
 function coordinateResolver(req, res, next) {
@@ -19,8 +20,11 @@ function coordinateResolver(req, res, next) {
       next();
     }
   }
-
-  postcodes.lookup(res, afterLookup);
+  if (skipLatLongLookup(res)) {
+    next();
+  } else {
+    postcodes.lookup(res, afterLookup);
+  }
 }
 
 module.exports = coordinateResolver;
