@@ -1,5 +1,6 @@
 const log = require('../lib/logger');
 const locate = require('../lib/locate');
+const sortByLocalType = require('../lib/sortByLocalType');
 const renderer = require('../middleware/renderer');
 
 // to do move to common library
@@ -23,7 +24,7 @@ async function getPlaces(req, res, next) {
   const location = req.query.location;
   try {
     const places = await locate.byPlace(location);
-    res.locals.places = places.filter(place => place.country === 'England');
+    res.locals.places = sortByLocalType(places.filter(place => place.country === 'England'));
     logZeroResults(places, location);
     if (places.length === 1) {
       res.redirect(getLocationUrl(places[0], location));

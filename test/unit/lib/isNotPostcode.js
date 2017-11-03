@@ -1,6 +1,5 @@
 const chai = require('chai');
 const isNotPostcode = require('../../../app/lib/isNotPostcode');
-// const Postcode = require('postcode');
 
 const expect = chai.expect;
 
