@@ -1,7 +1,9 @@
 const log = require('../lib/logger');
 const locate = require('../lib/locate');
 const sortByLocalType = require('../lib/sortByLocalType');
-const renderer = require('../middleware/renderer');
+const renderer = require('./renderer');
+const placeSearches = require('../lib/promCounters').placeSearches;
+const placeDisambiguationViews = require('../lib/promCounters').placeDisambiguationViews;
 
 // to do move to common library
 function renderFindHelpPage(req, res, location, message, errorMessage) {
@@ -24,11 +26,13 @@ async function getPlaces(req, res, next) {
   const location = req.query.location;
   try {
     const places = await locate.byPlace(location);
+    placeSearches.inc(1);
     res.locals.places = sortByLocalType(places.filter(place => place.country === 'England'));
     logZeroResults(places, location);
     if (places.length === 1) {
       res.redirect(getLocationUrl(places[0], location));
     } else {
+      placeDisambiguationViews.inc(1);
       next();
     }
   } catch (ex) {

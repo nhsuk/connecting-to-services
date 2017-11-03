@@ -30,6 +30,14 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP app_starts The number of times the application has been started\n# TYPE app_starts counter');
   });
 
+  it('should return a place searches counter', () => {
+    expect(responseText).to.have.string('# HELP place_searches The number of place searches\n# TYPE place_searches counter');
+  });
+
+  it('should return a place disambiguation views counter', () => {
+    expect(responseText).to.have.string('# HELP place_disambiguation_views The number of place disambiguation page views\n# TYPE place_disambiguation_views counter');
+  });
+
   it('should return an error_page_views counter', () => {
     expect(responseText).to.have.string('# HELP error_page_views The number of error page views\n# TYPE error_page_views counter');
   });
