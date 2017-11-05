@@ -1,5 +1,7 @@
 FROM node:8.8.1-alpine
 
+RUN apk add --no-cache python=2.7.13-r1 git-perl bash make gcc g++
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 ENV USERNAME nodeuser
 
 RUN adduser -D $USERNAME && \
@@ -24,7 +26,7 @@ USER root
 RUN find /code -user 0 -print0 | xargs -0 chown $USERNAME:$USERNAME
 USER $USERNAME
 
-RUN [ "yarn", "run", "build-css" ]
+RUN [ "yarn", "brunch-build" ]
 
 # RUN APP DIRECTLY TO AVOID SPAWNING SUBPROCESSES IN DOCKER
 CMD [ "node", "app.js" ]

@@ -1,6 +1,5 @@
 (function (global) {
   var $ = global.jQuery;
-  var NHSUK = global.NHSUK || {};
   var $geoLocate = $('.geo-locate');
   var $geoLocateError = $('.geo-locate--error');
 
@@ -21,6 +20,4 @@
       navigator.geolocation.getCurrentPosition(success, error);
     });
   }
-
-  global.NHSUK = NHSUK;
 })(window);
