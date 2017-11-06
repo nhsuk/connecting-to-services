@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "after-brunch": "^0.0.5",
-    "before-brunch": "^0.0.5",
     "body-parser": "^1.13.3",
     "brunch": "^2.10.12",
     "compression": "^1.7.0",
@@ -54,7 +53,8 @@
     "request": "^2.81.0",
     "require-environment-variables": "^1.1.2",
     "sass-brunch": "^2.10.4",
-    "tdigest": "^0.1.1"
+    "tdigest": "^0.1.1",
+    "uglify-es": "^3.1.8"
   },
   "devDependencies": {
     "bower": "^1.8.0",
