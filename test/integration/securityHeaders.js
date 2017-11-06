@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('app', () => {
   it('should include required security headers', (done) => {
     chai.request(server)
-      .get(`${constants.SITE_ROOT}/finders/find-help`)
+      .get(`${constants.SITE_ROOT}`)
       .end((err, res) => {
         expect(res).to.have.header('Content-Security-Policy', 'default-src \'self\'; child-src *.hotjar.com; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data: *.google-analytics.com *.hotjar.com *.webtrends.com *.webtrendslive.com; img-src \'self\' data: *.google-analytics.com *.hotjar.com *.webtrends.com *.webtrendslive.com; style-src \'self\' \'unsafe-inline\' assets.nhs.uk; font-src assets.nhs.uk; connect-src \'self\' *.hotjar.com:*');
         expect(res).to.have.header('X-Xss-Protection', '1; mode=block');

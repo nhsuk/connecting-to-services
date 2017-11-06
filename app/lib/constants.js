@@ -1,5 +1,5 @@
 module.exports = {
-  SITE_ROOT: '/finders',
+  SITE_ROOT: '/find-a-pharmacy',
   numberOfOpenResults: 1,
   numberOfNearbyResultsToRequest: 4,
   numberOfNearbyResultsToDisplay: 3,
