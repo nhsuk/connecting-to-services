@@ -1,0 +1,65 @@
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="site-header__brand">
+      <!-- noindex -->
+      <a href="/">
+        <img
+          src="{{ SITE_ROOT }}/images/choices-logo.png"
+          class="nhs-choices-logo"
+        />
+      </a>
+      <span class="site-header__tagline">Your health, your choices</span>
+    </div>
+
+    <div class="site-header__controls">
+      <div class="site-header__user-links user-links">
+        <a class="user-links__translate" href="http://www.nhs.uk/pages/languagehub.aspx">Translate</a>
+        <span class="user-links__right-align">
+          <a class="user-links__account" href="https://www.nhs.uk/Personalisation/MyNHSChoices.aspx">User Accounts</a>
+        </span>
+      </div>
+      <div id="search" class="site-header__search search">
+        <form id="gs" method="get" action="https://www.nhs.uk/Search/">
+          <input name="q" class="search__input" type="text" placeholder="Search" />
+          <div class="search__button icon-Search">
+            <input type="submit" value=""/>
+          </div>
+        </form>
+      </div>
+      <div id="menu-icon" class="site-header__menu-icon menu-icon">
+          <a id="main-nav-toggle" class="menu-icon__link" href="#">Menu</a>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+
+  <nav id="main-nav" class="site-header__nav main-nav main-nav">
+
+    <div id="main-nav-items" class="main-nav__items">
+      <ul class="main-nav__page-menu">
+        <li class="">
+          <a href="#">Parent</a>
+          <ul>
+            <li><a href="#">Child</a></li>
+            <li><a href="#">Child 2</a></li>
+            <li><a href="#">All Children</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="#">Parent</a>
+          <ul>
+            <li><a href="#">Child</a></li>
+            <li><a href="#">Child 2</a></li>
+            <li><a href="#">All Children</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="main-nav__account-menu account-menu">
+        <li><a href="#">Log in</a></li>
+        <li><a href="#">Create an account</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- endnoindex -->
+</header>
