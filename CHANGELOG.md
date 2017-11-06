@@ -1,3 +1,7 @@
+0.19.0 / TBA
+===================
+- Search by place
+
 0.18.1 / 2017-11-07
 ===================
 - Update URLs to `/find-a-pharmacy/`

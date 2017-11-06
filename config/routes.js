@@ -24,10 +24,4 @@ router.get(
   renderer.results
 );
 
-router.get(
-  '/find-help',
-  setLocals.fromRequest,
-  renderer.findHelp
-);
-
 module.exports = router;
