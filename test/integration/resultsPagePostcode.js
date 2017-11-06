@@ -220,7 +220,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);
@@ -255,7 +254,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);
@@ -289,7 +287,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);
@@ -322,7 +319,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);

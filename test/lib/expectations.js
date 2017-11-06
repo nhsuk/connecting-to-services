@@ -20,7 +20,6 @@ function findHelpPage($) {
 function htmlWith200Status(err, res) {
   expect(err).to.equal(null);
   expect(res).to.have.status(200);
-  // eslint-disable-next-line no-unused-expressions
   expect(res).to.be.html;
 }
 

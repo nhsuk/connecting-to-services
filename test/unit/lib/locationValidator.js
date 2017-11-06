@@ -43,7 +43,6 @@ describe('Location validation', () => {
         const result = validateLocation(outcodeNeedsTrimming);
 
         expect(result.alteredLocation).to.be.equal(trimmedOutcode);
-        // eslint-disable-next-line no-unused-expressions
         expect(result.errorMessage).to.be.null;
       });
 
@@ -53,7 +52,6 @@ describe('Location validation', () => {
         const result = validateLocation(outcode);
 
         expect(result.alteredLocation).to.be.equal(outcode);
-        // eslint-disable-next-line no-unused-expressions
         expect(result.errorMessage).to.be.null;
       });
     });
@@ -65,7 +63,6 @@ describe('Location validation', () => {
 
       it('should pass validation and return a formatted postcode with a valid full postcode', () => {
         expect(result.alteredLocation).to.be.equal(formattedPostcode);
-        // eslint-disable-next-line no-unused-expressions
         expect(result.errorMessage).to.be.null;
       });
 

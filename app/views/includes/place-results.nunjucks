@@ -1,0 +1,12 @@
+  <h2 class="results__header">
+    There are {{places.length}} places matching '{{location}}'. <br/>
+    Please select your location from the list below to continue.
+  </h2>
+  <ol class="results">
+  {% for place in places %}
+    <li class="results__item">
+      <a href="{{ SITE_ROOT }}/results?{{place.queryString}}" class="link">{{place.description}}</a>
+      <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+    </li>
+  {% endfor %}
+  </ol>

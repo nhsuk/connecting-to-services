@@ -16,7 +16,6 @@ describe('redirection', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
 
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.redirect;
         expect(res.req.path).to.equal(`${constants.SITE_ROOT}/`);
         done();
@@ -31,7 +30,6 @@ describe('An unknown page', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(404);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);

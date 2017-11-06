@@ -34,6 +34,14 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP place_searches The number of place searches\n# TYPE place_searches counter');
   });
 
+  it('should return a The number of zero pharmacy results views counter', () => {
+    expect(responseText).to.have.string('# HELP zero_pharmacy_results_views The number of zero pharmacy results page views\n# TYPE zero_pharmacy_results_views counter');
+  });
+
+  it('should return a The number of zero place results views counter', () => {
+    expect(responseText).to.have.string('# HELP zero_place_results_views The number of zero place results page views\n# TYPE zero_place_results_views counter');
+  });
+
   it('should return a place disambiguation views counter', () => {
     expect(responseText).to.have.string('# HELP place_disambiguation_views The number of place disambiguation page views\n# TYPE place_disambiguation_views counter');
   });

@@ -1,3 +1,5 @@
+const logger = require('./logger');
+
 const localOrder = {
   City: 5,
   'Suburban Area': 4,
@@ -7,10 +9,19 @@ const localOrder = {
   'Other Settlement': 0,
 };
 
+function getOrder(type) {
+  const order = localOrder[type];
+  if (order === undefined) {
+    logger.error(`unknown local_type '${type}'`);
+    return -1;
+  }
+  return order;
+}
+
 function sortByLocalType(places) {
   return places.sort((a, b) => {
-    const first = localOrder[a.local_type];
-    const second = localOrder[b.local_type];
+    const first = getOrder(a.local_type);
+    const second = getOrder(b.local_type);
     if (first > second) {
       return -1;
     }

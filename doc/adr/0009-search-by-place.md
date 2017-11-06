@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Pharmacies may only be located by postcode or outcode.
+There is a need to provide the ability for users to search by place name.
 
 ## Decision
 

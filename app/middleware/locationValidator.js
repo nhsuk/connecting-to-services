@@ -1,10 +1,12 @@
 const log = require('../lib/logger');
 const renderer = require('./renderer');
 const skipLatLongLookup = require('./skipLatLongLookup');
-const isNotPostcode = require('../lib/isNotPostcode');
+const isPostcode = require('../lib/isPostcode');
 const messages = require('../lib/messages');
 const isNotEnglishLocation = require('../lib/isNotEnglishLocation');
 const locationValidator = require('../lib/locationValidator');
+const performPlaceSearch = require('./performPlaceSearch');
+const removeNonAlphabeticAndWhitespace = require('../lib/stringUtils').removeNonAlphabeticAndWhitespace;
 
 function setLocationLabel(res, location) {
   if (location) {
@@ -29,14 +31,12 @@ function validateEnglishLocation(req, res, next) {
     next();
   }
 }
-function sanitiseString(string) {
-  return string.replace(/[^a-z]/gmi, ' ').replace(/\s\s+/g, ' ').trim();
-}
 
-function validatePlaceLocation(req, res, location) {
-  const safeString = sanitiseString(location);
+function validatePlaceLocation(req, res, next, location) {
+  const safeString = removeNonAlphabeticAndWhitespace(location);
   if (safeString) {
-    res.redirect(`places?location=${safeString}`);
+    res.locals.location = safeString;
+    performPlaceSearch(req, res, next);
   } else {
     renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
   }
@@ -54,8 +54,8 @@ function validateLocation(req, res, next) {
     const location = res.locals.location && res.locals.location.trim();
     if (!location) {
       renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
-    } else if (isNotPostcode(location)) {
-      validatePlaceLocation(req, res, location);
+    } else if (!isPostcode(location)) {
+      validatePlaceLocation(req, res, next, location);
     } else if (isNotEnglishLocation(location)) {
       log.info({ req: { location } }, 'Non-English location');
       renderNoResultsPage(req, res);
