@@ -1,5 +1,5 @@
 const Postcode = require('postcode');
-const messages = require('../lib/messages');
+const messages = require('./messages');
 
 function validateLocation(location) {
   let errorMessage = null;

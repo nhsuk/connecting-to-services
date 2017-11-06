@@ -1,6 +1,6 @@
-const log = require('../../app/lib/logger');
+const log = require('./logger');
 const locate = require('./locate');
-const messages = require('../lib/messages');
+const messages = require('./messages');
 
 async function lookup(res, next) {
   const location = res.locals.location;
