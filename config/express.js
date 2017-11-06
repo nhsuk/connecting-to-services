@@ -64,6 +64,7 @@ module.exports = (app, config) => {
         ],
         fontSrc: [
           'assets.nhs.uk',
+          'www.nhs.uk',
         ],
         connectSrc: [
           '\'self\'',

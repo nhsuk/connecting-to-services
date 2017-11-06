@@ -62,17 +62,10 @@
 
     {% block banner %}{% endblock %}
 
-    <header role="banner">
-      <div class="global-header">
-        <div class="global-header__inner">
-          <a href="/" class="global-header__link" title="Go to the NHS.UK homepage">
-            <img src="{{ SITE_ROOT }}/images/logotype-nhs-mono.png" alt="">
-          </a>
-        </div>
-      </div>
-    </header>
+    {% include "includes/header.nunjucks" %}
 
     <main id="content" role="main" class="util-nofocus">
+      {% include "includes/breadcrumb.nunjucks" %}
       {% block article %}
       <div class="page-section">
         {% block pageSection %}
