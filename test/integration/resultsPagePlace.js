@@ -58,7 +58,7 @@ describe('The place results page', () => {
         });
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
-        expect($('.link-back').attr('href')).to.equal(constants.SITE_ROOT);
+        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
         expect($('title').text()).to.equal('Pharmacies near oneresult - NHS.UK');
         done();
       });
@@ -83,7 +83,7 @@ describe('The place results page', () => {
           .to.include('There are 3 places matching \'multiresult\'');
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
-        expect($('.link-back').attr('href')).to.equal(constants.SITE_ROOT);
+        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
         expect($('title').text()).to.equal('Places disambiguation - NHS.UK');
 
         done();
