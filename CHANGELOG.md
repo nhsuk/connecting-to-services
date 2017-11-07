@@ -1,6 +1,8 @@
-0.19.0 / 2017-11-10
+0.19.0 / TBD
 ===================
 - Search by place
+- Add 'find my location' search capability
+- Add Brunch to minify and compress front-end assets
 
 0.18.1 / 2017-11-07
 ===================
