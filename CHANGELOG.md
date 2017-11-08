@@ -8,7 +8,6 @@
 
 0.17.0 / 2017-11-02
 ===================
-- Search by place
 - Link back to pharmacy finder on Choices
 - Update page titles
 - Update npm dependencies

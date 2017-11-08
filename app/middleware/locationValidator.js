@@ -3,14 +3,14 @@ const routeHelper = require('./routeHelper');
 const skipLatLongLookup = require('./skipLatLongLookup');
 const isPostcode = require('../lib/isPostcode');
 const messages = require('../lib/messages');
-const isNotEnglishLocation = require('../lib/isNotEnglishLocation');
-const locationValidator = require('../lib/locationValidator');
+const isNotEnglishPostcode = require('../lib/isNotEnglishPostcode');
+const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
 const performPlaceSearch = require('./performPlaceSearch');
 const removeNonAlphabeticAndWhitespace = require('../lib/stringUtils').removeNonAlphabeticAndWhitespace;
 
-function validateEnglishLocation(req, res, next) {
+function validateEnglishPostcode(req, res, next) {
   const location = res.locals.location;
-  const validationResult = locationValidator(location);
+  const validationResult = englishPostcodeValidator(location);
   res.locals.location = validationResult.alteredLocation;
   if (validationResult.errorMessage) {
     routeHelper.renderFindHelpPage(req, res, location, 'Non-English postcode', validationResult.errorMessage);
@@ -31,6 +31,7 @@ function validatePlaceLocation(req, res, next, location) {
 
 function validateLocation(req, res, next) {
   if (skipLatLongLookup(res)) {
+    res.locals.location = removeNonAlphabeticAndWhitespace(res.locals.location);
     next();
   } else {
     const location = res.locals.location && res.locals.location.trim();
@@ -38,11 +39,11 @@ function validateLocation(req, res, next) {
       routeHelper.renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
     } else if (!isPostcode(location)) {
       validatePlaceLocation(req, res, next, location);
-    } else if (isNotEnglishLocation(location)) {
+    } else if (isNotEnglishPostcode(location)) {
       log.info({ req: { location } }, 'Non-English location');
       routeHelper.renderNoResultsPage(req, res);
     } else {
-      validateEnglishLocation(req, res, next);
+      validateEnglishPostcode(req, res, next);
     }
   }
 }

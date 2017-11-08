@@ -113,6 +113,23 @@ describe('The place results page', () => {
       });
   });
 
+  it('should return no results page for unknown place search', (done) => {
+    nock('https://api.postcodes.io')
+      .get('/places?q=noresults&limit=10')
+      .times(1)
+      .reply(200, { status: 200, result: [] });
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: 'noresults' })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+        expect($('.results__header--none').text()).to.be.equal('There are no matches for place \'noresults\'');
+        done();
+      });
+  });
+
   it('should return search page for non-alphanumeric search', (done) => {
     chai.request(server)
       .get(resultsRoute)

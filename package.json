@@ -8,7 +8,7 @@
     "coverage-check": "istanbul check-coverage --config .istanbul.yml",
     "coverage-generate": "yarn istanbul -- cover _mocha -- --exit --recursive",
     "coverage-generate-full": "yarn istanbul -- cover --include-all-sources _mocha -- --exit --recursive",
-    "coverage-generate-no-metrics": "yarn istanbul -- cover _mocha -- --exit mocha \"./test/**/!(metrics).js\"",
+    "coverage-generate-no-metrics": "yarn istanbul -- cover _mocha -- --exit \"./test/**/!(metrics).js\"",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
     "git-hook": "yarn lint && yarn coverage-generate-no-metrics && yarn coverage-check",
     "ci-hook": "yarn lint && yarn coverage-generate && yarn coverage-check",

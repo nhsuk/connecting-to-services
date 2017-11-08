@@ -18,7 +18,6 @@
     {% include "includes/no-place-results.nunjucks" %}
 
   {% elif places.length > 0 %}
-  <h2 class="results__header">
     {% include "includes/place-results.nunjucks" %}
   {% endif %}
 </div>

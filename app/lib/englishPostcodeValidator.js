@@ -1,7 +1,7 @@
 const Postcode = require('postcode');
 const messages = require('./messages');
 
-function validateLocation(location) {
+function englishPostcodeValidator(location) {
   let errorMessage = null;
   let locationToReturn = location;
 
@@ -21,4 +21,4 @@ function validateLocation(location) {
   };
 }
 
-module.exports = validateLocation;
+module.exports = englishPostcodeValidator;

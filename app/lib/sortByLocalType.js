@@ -1,4 +1,4 @@
-const logger = require('./logger');
+const log = require('./logger');
 
 const localOrder = {
   City: 5,
@@ -12,7 +12,7 @@ const localOrder = {
 function getOrder(type) {
   const order = localOrder[type];
   if (order === undefined) {
-    logger.error(`unknown local_type '${type}'`);
+    log.error(`unknown local_type '${type}'`);
     return -1;
   }
   return order;

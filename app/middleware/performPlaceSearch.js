@@ -1,7 +1,6 @@
 const log = require('../lib/logger');
 const locate = require('../lib/locate');
 const sortByLocalType = require('../lib/sortByLocalType');
-const routeHelper = require('./routeHelper');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
 const placeSearches = require('../lib/promCounters').placeSearches;
@@ -12,6 +11,12 @@ function logZeroResults(places, location) {
   if (places.length === 0) {
     log.warn({ location }, `No results were found for ${location}`);
     zeroPlaceResultsViews.inc(1);
+  }
+}
+
+function incrementDisambiguationViews(places) {
+  if (places.length > 0) {
+    placeDisambiguationViews.inc(1);
   }
 }
 
@@ -33,12 +38,13 @@ async function getPlaces(req, res, next) {
       res.locals.coordinates = getCoordinates(places[0]);
       next();
     } else {
-      placeDisambiguationViews.inc(1);
+      incrementDisambiguationViews(places);
       res.locals.places = createPlaceViewModel(places);
       renderer.places(req, res);
     }
-  } catch (ex) {
-    routeHelper.renderFindHelpPage(req, res, location, 'Find places error');
+  } catch (e) {
+    log.error({ placeLookupResponse: { error: e } }, 'Place lookup error');
+    next({ type: 'place-lookup-error', message: e.message });
   }
 }
 

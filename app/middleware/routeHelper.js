@@ -1,4 +1,3 @@
-
 const renderer = require('./renderer');
 const log = require('../lib/logger');
 const messages = require('../lib/messages');
