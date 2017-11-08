@@ -92,7 +92,7 @@ describe('The place results page', () => {
 
   function expectSearchAgainPage($) {
     expect($('.error-summary-heading').text())
-      .to.contain('You must insert a postcode to find a pharmacy.');
+      .to.contain('You must insert a place or a postcode to find a pharmacy.');
 
     expect($('.link-back').text()).to.equal('Back');
     // eslint-disable-next-line no-script-url

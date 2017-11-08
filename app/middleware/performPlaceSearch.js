@@ -1,18 +1,12 @@
 const log = require('../lib/logger');
 const locate = require('../lib/locate');
 const sortByLocalType = require('../lib/sortByLocalType');
+const routeHelper = require('./routeHelper');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
 const placeSearches = require('../lib/promCounters').placeSearches;
 const placeDisambiguationViews = require('../lib/promCounters').placeDisambiguationViews;
 const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsViews;
-
-// to do move to common library
-function renderFindHelpPage(req, res, location, message, errorMessage) {
-  log.info({ locationValidationResponse: { location } }, message);
-  res.locals.errorMessage = errorMessage;
-  renderer.findHelp(req, res);
-}
 
 function logZeroResults(places, location) {
   if (places.length === 0) {
@@ -44,7 +38,7 @@ async function getPlaces(req, res, next) {
       renderer.places(req, res);
     }
   } catch (ex) {
-    renderFindHelpPage(req, res, location, 'Find places error');
+    routeHelper.renderFindHelpPage(req, res, location, 'Find places error');
   }
 }
 

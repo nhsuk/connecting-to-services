@@ -18,7 +18,7 @@ describe('messages', () => {
   it('should have an error message for when nothing has been entered to search with', () => {
     const message = messages.emptyPostcodeMessage();
 
-    expect(message).to.equal('You must insert a postcode to find a pharmacy.');
+    expect(message).to.equal('You must insert a place or a postcode to find a pharmacy.');
   });
 
   it('should have an error message for technical problems', () => {
