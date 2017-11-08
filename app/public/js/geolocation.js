@@ -1,4 +1,5 @@
 (function (global) {
+  'use strict';
   var $ = global.jQuery;
   var $geoLocate = $('.geo-locate');
   var $geoLocateError = $('.geo-locate--error');
