@@ -1,6 +1,6 @@
 
   <h2 class="results__header">
-    There are {{places.length}} places matching '{{location}}'. <br/>
+    There are {{places.length}} places matching {{location}}. <br/>
     Please select your location from the list below to continue.
   </h2>
   <ol class="results">

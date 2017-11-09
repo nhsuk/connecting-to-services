@@ -24,7 +24,7 @@ describe('The place results page', () => {
     const longitude = singleResult[0].longitude;
 
     nock('https://api.postcodes.io')
-      .get('/places?q=oneresult&limit=10')
+      .get('/places?q=oneresult&limit=100')
       .times(1)
       .reply(200, singlePlaceResponse);
 
@@ -68,7 +68,7 @@ describe('The place results page', () => {
     const multiPlaceResponse = getSampleResponse('postcodesio-responses/multiplePlaceResult.json');
 
     nock('https://api.postcodes.io')
-      .get('/places?q=multiresult&limit=10')
+      .get('/places?q=multiresult&limit=100')
       .times(1)
       .reply(200, multiPlaceResponse);
 
@@ -80,7 +80,7 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header').text())
-          .to.include('There are 3 places matching \'multiresult\'');
+          .to.include('There are 3 places matching multiresult');
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
@@ -115,7 +115,7 @@ describe('The place results page', () => {
 
   it('should return no results page for unknown place search', (done) => {
     nock('https://api.postcodes.io')
-      .get('/places?q=noresults&limit=10')
+      .get('/places?q=noresults&limit=100')
       .times(1)
       .reply(200, { status: 200, result: [] });
 
@@ -125,7 +125,7 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expect($('.results__header--none').text()).to.be.equal('There are no matches for place \'noresults\'');
+        expect($('.results__header--none').text()).to.be.equal('There are no matches for place noresults');
         done();
       });
   });

@@ -7,6 +7,12 @@ const placeSearches = require('../lib/promCounters').placeSearches;
 const placeDisambiguationViews = require('../lib/promCounters').placeDisambiguationViews;
 const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsViews;
 
+const maxResults = 10;
+
+function englandFilter(place) {
+  return place.country === 'England';
+}
+
 function logZeroResults(places, location) {
   if (places.length === 0) {
     log.warn({ location }, `No results were found for ${location}`);
@@ -30,9 +36,9 @@ function getCoordinates(place) {
 async function getPlaces(req, res, next) {
   const location = req.query.location;
   try {
-    let places = await locate.byPlace(location);
+    let places = await locate.byPlace(location, 100);
     placeSearches.inc(1);
-    places = sortByLocalType(places.filter(place => place.country === 'England'));
+    places = sortByLocalType(places.filter(englandFilter)).slice(0, maxResults);
     logZeroResults(places, location);
     if (places.length === 1) {
       res.locals.coordinates = getCoordinates(places[0]);

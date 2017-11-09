@@ -6,7 +6,7 @@ const messages = require('../lib/messages');
 const isNotEnglishPostcode = require('../lib/isNotEnglishPostcode');
 const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
 const performPlaceSearch = require('./performPlaceSearch');
-const removeNonAlphabeticAndWhitespace = require('../lib/stringUtils').removeNonAlphabeticAndWhitespace;
+const stringUtils = require('../lib/stringUtils');
 
 function validateEnglishPostcode(req, res, next) {
   const location = res.locals.location;
@@ -20,7 +20,7 @@ function validateEnglishPostcode(req, res, next) {
 }
 
 function validatePlaceLocation(req, res, next, location) {
-  const safeString = removeNonAlphabeticAndWhitespace(location);
+  const safeString = stringUtils.removeNonAlphabeticAndWhitespace(location);
   if (safeString) {
     res.locals.location = safeString;
     performPlaceSearch(req, res, next);
@@ -31,7 +31,7 @@ function validatePlaceLocation(req, res, next, location) {
 
 function validateLocation(req, res, next) {
   if (skipLatLongLookup(res)) {
-    res.locals.location = removeNonAlphabeticAndWhitespace(res.locals.location);
+    res.locals.location = stringUtils.removeNonAddressCharacters(res.locals.location);
     next();
   } else {
     const location = res.locals.location && res.locals.location.trim();

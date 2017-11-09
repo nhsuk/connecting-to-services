@@ -23,4 +23,12 @@ describe('stringUtils', () => {
       expect(word).to.equal('stoke newington');
     });
   });
+
+  describe('removeNonAddressCharacters', () => {
+    it('should leave numbers and commas intact', () => {
+      const word = stringUtils.removeNonAddressCharacters('Leeds, Yorkshire and the Humber, LS1 £@$%$%£$%');
+
+      expect(word).to.equal('Leeds, Yorkshire and the Humber, LS1');
+    });
+  });
 });

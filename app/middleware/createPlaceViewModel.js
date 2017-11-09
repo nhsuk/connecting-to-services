@@ -1,8 +1,12 @@
 const qs = require('querystring');
 
+function getAddress(place) {
+  return `${place.name_1}, ${place.county_unitary || place.region}, ${place.outcode}`;
+}
+
 function getParams(place) {
   return {
-    location: place.name_1,
+    location: getAddress(place),
     latitude: place.latitude,
     longitude: place.longitude
   };
@@ -11,7 +15,7 @@ function getParams(place) {
 function createPlaceViewModel(place) {
   return {
     name: place.name_1,
-    description: `${place.name_1}, ${place.county_unitary || place.region}, ${place.outcode}`,
+    description: getAddress(place),
     queryString: qs.stringify(getParams(place))
   };
 }
