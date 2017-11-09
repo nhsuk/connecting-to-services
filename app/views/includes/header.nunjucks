@@ -38,22 +38,7 @@
 
     <div id="main-nav-items" class="main-nav__items">
       <ul class="main-nav__page-menu">
-        <li class="">
-          <a href="#">Parent</a>
-          <ul>
-            <li><a href="#">Child</a></li>
-            <li><a href="#">Child 2</a></li>
-            <li><a href="#">All Children</a></li>
-          </ul>
-        </li>
-        <li class="">
-          <a href="#">Parent</a>
-          <ul>
-            <li><a href="#">Child</a></li>
-            <li><a href="#">Child 2</a></li>
-            <li><a href="#">All Children</a></li>
-          </ul>
-        </li>
+        {% include "includes/header-items.nunjucks" %}
       </ul>
       <ul class="main-nav__account-menu account-menu">
         <li><a href="#">Log in</a></li>
