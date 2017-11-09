@@ -4642,7 +4642,15 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
+<<<<<<< HEAD
 request@2, request@^2.61.0, request@^2.81.0:
+=======
+<<<<<<< HEAD
+request@2, request@^2.61.0, request@^2.79.0, request@^2.81.0:
+=======
+request@2, request@^2.79.0, request@^2.83.0:
+>>>>>>> 473348f... :yum: Navigation built using the JSON API
+>>>>>>> d689307... :yum: Navigation built using the JSON API
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
