@@ -76,7 +76,7 @@
       {% endblock %}
     </main>
 
-    <footer role="contentinfo">
+    <footer role="contentinfo" class="footer">
       {% include "includes/footer.nunjucks" %}
     </footer>
 
