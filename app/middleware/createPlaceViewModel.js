@@ -1,8 +1,5 @@
 const qs = require('querystring');
-
-function getAddress(place) {
-  return `${place.name_1}, ${place.county_unitary || place.region}, ${place.outcode}`;
-}
+const getAddress = require('../lib/getAddress');
 
 function getParams(place) {
   return {

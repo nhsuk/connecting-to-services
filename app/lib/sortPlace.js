@@ -2,11 +2,11 @@ const log = require('./logger');
 
 const localOrder = {
   City: 5,
-  'Suburban Area': 4,
-  Town: 3,
-  Village: 2,
-  Hamlet: 1,
-  'Other Settlement': 0,
+  Town: 4,
+  Village: 3,
+  Hamlet: 2,
+  'Other Settlement': 1,
+  'Suburban Area': 0,
 };
 
 function getOrder(type) {
@@ -18,18 +18,22 @@ function getOrder(type) {
   return order;
 }
 
-function sortByLocalType(places) {
+function compare(first, second) {
+  if (first > second) {
+    return -1;
+  }
+  if (first < second) {
+    return 1;
+  }
+  return 0;
+}
+
+function sortPlace(places) {
   return places.sort((a, b) => {
     const first = getOrder(a.local_type);
     const second = getOrder(b.local_type);
-    if (first > second) {
-      return -1;
-    }
-    if (first < second) {
-      return 1;
-    }
-    return 0;
+    return compare(first, second) || compare(b.name_1, a.name_1);
   });
 }
 
-module.exports = sortByLocalType;
+module.exports = sortPlace;

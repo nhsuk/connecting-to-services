@@ -1,6 +1,7 @@
 const log = require('../lib/logger');
 const locate = require('../lib/locate');
-const sortByLocalType = require('../lib/sortByLocalType');
+const sortPlace = require('../lib/sortPlace');
+const getAddress = require('../lib/getAddress');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
 const placeSearches = require('../lib/promCounters').placeSearches;
@@ -38,10 +39,11 @@ async function getPlaces(req, res, next) {
   try {
     let places = await locate.byPlace(location, 100);
     placeSearches.inc(1);
-    places = sortByLocalType(places.filter(englandFilter)).slice(0, maxResults);
+    places = sortPlace(places.filter(englandFilter)).slice(0, maxResults);
     logZeroResults(places, location);
     if (places.length === 1) {
       res.locals.coordinates = getCoordinates(places[0]);
+      res.locals.location = getAddress(places[0]);
       next();
     } else {
       incrementDisambiguationViews(places);
