@@ -31,6 +31,4 @@ request('https://refdata-api.azurewebsites.net/api/fullheadermenu', function (er
   } else {
     console.warn(error);
   }
-
-
 });
