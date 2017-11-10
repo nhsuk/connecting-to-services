@@ -6,8 +6,10 @@ function createSuburb(name) {
   return { name_1: name, local_type: 'Suburban Area' };
 }
 
-function createCity(name) {
-  return { name_1: name, local_type: 'City' };
+function createCity(name, region, outcode) {
+  return {
+    name_1: name, local_type: 'City', region, outcode
+  };
 }
 
 function createTown(name) {
@@ -79,7 +81,7 @@ describe('sortPlace', () => {
     });
   });
 
-  describe('sort by type then name', () => {
+  describe('sort by type then address', () => {
     it('should return types in ascending alphabetical order', () => {
       const sampleData = [
         createTown('B Town'),
@@ -96,6 +98,18 @@ describe('sortPlace', () => {
       expect(result[3].name_1).to.equal('A Town');
       expect(result[4].name_1).to.equal('B Town');
       expect(result[5].name_1).to.equal('C Town');
+    });
+
+    it('should return type in ascending alphabetical order for address', () => {
+      const sampleData = [
+        createCity('City', 'B Region', 'B1'),
+        createCity('City', 'C Region', 'C1'),
+        createCity('City', 'A Region', 'B1'),
+      ];
+      const result = sortPlace(sampleData);
+      expect(result[0].region).to.equal('A Region');
+      expect(result[1].region).to.equal('B Region');
+      expect(result[2].region).to.equal('C Region');
     });
   });
 });

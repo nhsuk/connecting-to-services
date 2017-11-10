@@ -32,7 +32,10 @@ function sortPlace(places) {
   return places.sort((a, b) => {
     const first = getOrder(a.local_type);
     const second = getOrder(b.local_type);
-    return compare(first, second) || compare(b.name_1, a.name_1);
+    return compare(first, second) ||
+           compare(b.name_1, a.name_1) ||
+           compare(b.county_unitary || b.region, a.county_unitary || a.region) ||
+           compare(b.outcode, a.outcode);
   });
 }
 
