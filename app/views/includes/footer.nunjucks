@@ -3,13 +3,17 @@
       <ul>
         <li>
           <a href="/">
-            <img
-              src="{{ SITE_ROOT }}/images/logotype-nhs-colour__reverse.png"
-              class="nhs-choices-logo"
+            <img class="footer__logo" src="{{ SITE_ROOT }}/images/nhs-logo.png" srcset="
+                {{ SITE_ROOT }}/images/nhs-logo.png 1x,
+                {{ SITE_ROOT }}/images/nhs-logo@2x.png 2x,
+                {{ SITE_ROOT }}/images/nhs-logo@3x.png 3x,"
             />
           </a>
         </li>
-          <li><a href="#">link</a></li>
+        <li><a href="http://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
+        <li><a href="http://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
+        <li><a href="http://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
+      </ul>
       </ul>
     </div>
   </div>
@@ -17,7 +21,9 @@
   <div class="footer__utility-links">
     <div class="footer__content">
       <ul>
-        <li><a href="#">link</a></li>
+        <li><a href="http://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
+        <li><a href="http://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx">Accessibility</a></li>
+        <li><a href="http://www.nhs.uk/Pages/site-policies.aspx">Our policies</a></li>
         <li>&copy; Crown Copyright</li>
       </ul>
     </div>
