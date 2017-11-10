@@ -1,17 +1,24 @@
-<div class="global-footer">
-  <div class="global-footer__inner">
-
-    <div>
-      <h2 class="util-visuallyhidden">Support links</h2>
-      <ul class="link-list">
+<div class="footer__main-links">
+    <div class="footer__content">
+      <ul>
         <li>
-          <a href="https://beta.nhs.uk/help/clinical-assurance">Clinical assurance</a>
+          <a href="/">
+            <img
+              src="{{ SITE_ROOT }}/images/logotype-nhs-colour__reverse.png"
+              class="nhs-choices-logo"
+            />
+          </a>
         </li>
-        <li>
-          <a href="https://beta.nhs.uk/help/cookies">Cookies</a>
-        </li>
+          <li><a href="#">link</a></li>
       </ul>
     </div>
-
   </div>
-</div>
+
+  <div class="footer__utility-links">
+    <div class="footer__content">
+      <ul>
+        <li><a href="#">link</a></li>
+        <li>&copy; Crown Copyright</li>
+      </ul>
+    </div>
+  </div>
