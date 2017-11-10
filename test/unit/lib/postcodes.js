@@ -79,11 +79,11 @@ describe('Postcodes', () => {
 
         nock('https://api.postcodes.io')
           .get(`/postcodes/${postcodeForRequest}`)
-          .reply(500);
+          .reply(500, '{"status":500,"error":"Server error"}');
 
         postcodes.lookup(postcodeRes, (err) => {
-          expect(err.type).to.be.equal('postcode-lookup-unknown-response');
-          expect(err.message).to.be.equal(`Postcode lookup returned statusCode: 500 for ${postcode}`);
+          expect(err.type).to.be.equal('postcode-lookup-error');
+          expect(err.message).to.be.equal('Server error');
           expect(postcodeRes.locals.coordinates).to.be.equal(undefined);
           done();
         });

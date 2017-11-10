@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const validateLocation = require('../app/middleware/locationValidator');
+const locationValidator = require('../app/middleware/locationValidator');
 const getPharmacies = require('../app/middleware/getPharmacies');
 const coordinateResolver = require('../app/middleware/coordinateResolver');
 const renderer = require('../app/middleware/renderer');
@@ -16,7 +16,7 @@ router.get(
 router.get(
   '/results',
   setLocals.fromRequest,
-  validateLocation,
+  locationValidator,
   coordinateResolver,
   getPharmacies,
   logZeroResults,

@@ -206,24 +206,6 @@ describe('The results page error handling', () => {
     }
   );
 
-  it('should only validate the postcode and return an error message', (done) => {
-    const invalidPostcode = 'invalid';
-
-    chai.request(server)
-      .get(resultsRoute)
-      .query({ location: invalidPostcode })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
-        const $ = cheerio.load(res.text);
-
-        expect($('.page-section').text()).to.not.contain('For help with');
-        iExpect.findHelpPageInvalidEntry($);
-        expect($('.error-summary-heading').text()).to
-          .contain(messages.invalidPostcodeMessage(invalidPostcode));
-        done();
-      });
-  });
-
   it('should handle an error produced by the postcode lookup and return an error message', (done) => {
     const postcode = 'AB12 3CD';
 
@@ -238,7 +220,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);
@@ -273,7 +254,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);
@@ -307,7 +287,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);
@@ -340,7 +319,6 @@ describe('The results page error handling', () => {
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);
-        // eslint-disable-next-line no-unused-expressions
         expect(res).to.be.html;
 
         const $ = cheerio.load(res.text);

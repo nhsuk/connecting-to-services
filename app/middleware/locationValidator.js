@@ -1,45 +1,50 @@
 const log = require('../lib/logger');
-const renderer = require('../middleware/renderer');
-const isNotEnglishLocation = require('../lib/isNotEnglishLocation');
-const locationValidator = require('../lib/locationValidator');
+const routeHelper = require('./routeHelper');
+const skipLatLongLookup = require('./skipLatLongLookup');
+const isPostcode = require('../lib/isPostcode');
+const messages = require('../lib/messages');
+const isNotEnglishPostcode = require('../lib/isNotEnglishPostcode');
+const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
+const performPlaceSearch = require('./performPlaceSearch');
+const stringUtils = require('../lib/stringUtils');
 
-function setLocationLabel(res, location) {
-  if (location) {
-    res.locals.locationLabel = 'Enter a valid postcode';
-  }
-}
-
-function validateEnglishLocation(req, res, next) {
+function validateEnglishPostcode(req, res, next) {
   const location = res.locals.location;
-
-  const validationResult = locationValidator(location);
-
+  const validationResult = englishPostcodeValidator(location);
   res.locals.location = validationResult.alteredLocation;
-
   if (validationResult.errorMessage) {
-    log.info({ locationValidationResponse: { location } }, 'Non-English postcode');
-    res.locals.errorMessage = validationResult.errorMessage;
-    setLocationLabel(res, location);
-    renderer.findHelp(req, res);
+    routeHelper.renderFindHelpPage(req, res, location, 'Non-English postcode', validationResult.errorMessage);
   } else {
     next();
   }
 }
 
-function renderNoResultsPage(req, res) {
-  res.locals.nearbyServices = [];
-  res.locals.openServices = [];
-  renderer.results(req, res);
+function validatePlaceLocation(req, res, next, location) {
+  const safeString = stringUtils.removeNonAlphabeticAndWhitespace(location);
+  if (safeString) {
+    res.locals.location = safeString;
+    performPlaceSearch(req, res, next);
+  } else {
+    routeHelper.renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+  }
 }
 
 function validateLocation(req, res, next) {
-  const location = res.locals.location;
-
-  if (isNotEnglishLocation(location)) {
-    log.info({ req: { location } }, 'Non-English location');
-    renderNoResultsPage(req, res);
+  if (skipLatLongLookup(res)) {
+    res.locals.location = stringUtils.removeNonAddressCharacters(res.locals.location);
+    next();
   } else {
-    validateEnglishLocation(req, res, next);
+    const location = res.locals.location && res.locals.location.trim();
+    if (!location) {
+      routeHelper.renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+    } else if (!isPostcode(location)) {
+      validatePlaceLocation(req, res, next, location);
+    } else if (isNotEnglishPostcode(location)) {
+      log.info({ req: { location } }, 'Non-English location');
+      routeHelper.renderNoResultsPage(req, res);
+    } else {
+      validateEnglishPostcode(req, res, next);
+    }
   }
 }
 

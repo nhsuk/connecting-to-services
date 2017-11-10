@@ -1,0 +1,28 @@
+{
+  "status": 200,
+  "result": [
+    {
+      "code": "osgb4000000074571824",
+      "name_1": "Midsomer Norton",
+      "name_1_lang": null,
+      "name_2": null,
+      "name_2_lang": null,
+      "local_type": "Town",
+      "outcode": "BA3",
+      "county_unitary": "Bath and North East Somerset",
+      "county_unitary_type": "UnitaryAuthority",
+      "district_borough": null,
+      "district_borough_type": null,
+      "region": "South West",
+      "country": "England",
+      "longitude": -1,
+      "latitude": 54,
+      "eastings": 366422,
+      "northings": 154163,
+      "min_eastings": 365126,
+      "min_northings": 152908,
+      "max_eastings": 367920,
+      "max_northings": 155772
+    }
+  ]
+}
