@@ -37,6 +37,17 @@
             <input type="submit" class="button" value="Search">
           </div>
         </div>
+        <div class="geo-locate" style="display:none">
+          <p>--- OR ---</p>
+        <div class="geo-locate--error error" style="display:none">
+          <p>There has been a problem getting your location.</p>
+          <p>Please try again or enter a place or postcode.</p>
+        </div>
+        <div class="geo-locate--searching" style="display:none">
+          <p>We are searching for your location...</p>
+        </div>
+          <p><a href="#">Use my location</a></p>
+        </div>
       </div>
     </div>
 </form>
