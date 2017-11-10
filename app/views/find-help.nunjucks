@@ -37,6 +37,14 @@
             <input type="submit" class="button" value="Search">
           </div>
         </div>
+        <div class="geo-locate" style="display:none">
+          <p>--- OR ---</p>
+        <div class="geo-locate--error error" style="display:none">
+          <p>There has been a problem getting your location.</p>
+          <p>Please try again or enter a place of postcode.</p>
+        </div>
+          <p><a href="#">Use my location</a></p>
+        </div>
         <p class="u-margintop5"><a href="{{ backLink.href }}" class="link-back">{{ backLink.text }}</a></p>
       </div>
     </div>
