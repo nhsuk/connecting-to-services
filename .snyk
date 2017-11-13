@@ -4,17 +4,52 @@ version: v1.7.1
 ignore:
   'npm:mime:20170907':
     - express > send > mime:
-        reason: 4.16.0 has problems
-        expires: '2017-11-30T11:49:48.020Z'
+        reason: Issue upgrading to express 4.16.0 atm
+        expires: '2017-12-09T09:33:33.056Z'
     - express > serve-static > send > mime:
-        reason: 4.16.0 has problems
-        expires: '2017-11-30T11:49:48.021Z'
+        reason: Issue upgrading to express 4.16.0 atm
+        expires: '2017-12-09T09:33:33.056Z'
   'npm:debug:20170905':
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: Not user facing
         expires: '2017-11-30T11:49:48.021Z'
+      brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: Package is not executed from site.
+        expires: '2017-12-09T09:33:33.056Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: No upgrade path
+        expires: '2017-12-09T09:33:33.056Z'
+    - brunch > debug:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
+    - brunch > since-app-start > debug:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
+    - node-pre-gyp > tar-pack > debug:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
   'npm:tough-cookie:20170905':
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: Not user facing
         expires: '2017-11-30T11:49:48.021Z'
+      brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: Package is not executed from site.
+        expires: '2017-12-09T09:33:33.056Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: No upgrade path
+        expires: '2017-12-09T09:33:33.057Z'
+    - node-pre-gyp > request > tough-cookie:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
+  'npm:ms:20170412':
+    - brunch > debug > ms:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
+    - brunch > since-app-start > debug > ms:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
+  'npm:growl:20160721':
+    - brunch > deppack > loggy > growl:
+        reason: Not user facing
+        expires: '2017-12-09T09:33:33.057Z'
 patch: {}

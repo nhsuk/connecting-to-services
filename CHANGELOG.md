@@ -1,6 +1,10 @@
-0.19.0 / 2017-11-10
+0.19.0 / TBD
 ===================
 - Search by place
+- Add Brunch to minify and compress front-end assets
+- Update npm dependencies
+- Upgrade Docker container to `node:8.9.1-alpine`
+- Support IE7+
 
 0.18.1 / 2017-11-07
 ===================
