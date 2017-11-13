@@ -90,15 +90,6 @@ describe('The place results page', () => {
       });
   });
 
-  function expectSearchAgainPage($) {
-    expect($('.error-summary-heading').text())
-      .to.contain('You must insert a place or a postcode to find a pharmacy.');
-
-    expect($('.link-back').text()).to.equal('Back');
-    // eslint-disable-next-line no-script-url
-    expect($('.link-back').attr('href')).to.equal('javascript:history.back();');
-  }
-
   it('should return search page for empty search', (done) => {
     chai.request(server)
       .get(resultsRoute)
@@ -106,7 +97,6 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode  - NHS.UK');
 
         done();
@@ -137,7 +127,6 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode !@£$% - NHS.UK');
 
         done();

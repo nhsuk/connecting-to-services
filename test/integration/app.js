@@ -41,19 +41,3 @@ describe('An unknown page', () => {
       });
   });
 });
-
-describe('The find help page', () => {
-  it('should contain a generic back link', (done) => {
-    chai.request(server)
-      .get(`${constants.SITE_ROOT}`)
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
-
-        const $ = cheerio.load(res.text);
-
-        expect($('.link-back').text()).to.equal('Back');
-        iExpect.findHelpPage($);
-        done();
-      });
-  });
-});

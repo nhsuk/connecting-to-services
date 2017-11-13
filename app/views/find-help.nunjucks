@@ -37,7 +37,7 @@
             <input type="submit" class="button" value="Search">
           </div>
         </div>
-        <p class="u-margintop5"><a href="{{ backLink.href }}" class="link-back">{{ backLink.text }}</a></p>
+        <p class="u-margintop5">&nbsp;</p>
       </div>
     </div>
 </form>
