@@ -93,10 +93,6 @@ describe('The place results page', () => {
   function expectSearchAgainPage($) {
     expect($('.error-summary-heading').text())
       .to.contain('You must insert a place or a postcode to find a pharmacy.');
-
-    expect($('.link-back').text()).to.equal('Back');
-    // eslint-disable-next-line no-script-url
-    expect($('.link-back').attr('href')).to.equal('javascript:history.back();');
   }
 
   it('should return search page for empty search', (done) => {
