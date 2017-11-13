@@ -33,11 +33,10 @@
         </div>
 
         <div class="form-item-wrapper">
-          <div class="form-group form-group--submit">
+          <div class="form-group">
             <input type="submit" class="button" value="Search">
           </div>
         </div>
-        <p class="u-margintop5">&nbsp;</p>
       </div>
     </div>
 </form>
