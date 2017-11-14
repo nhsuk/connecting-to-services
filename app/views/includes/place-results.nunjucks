@@ -1,7 +1,9 @@
 
   <h2 class="results__header">
-    There are {{places.length}} places matching {{location}}. <br/>
-    Please select your location from the list below to continue.
+    We found {{places.length}} places that match '{{location}}'
+  </h2>
+  <h2 class="results__header">
+    Choose one of the following:
   </h2>
   <ol class="results">
   {% for place in places %}

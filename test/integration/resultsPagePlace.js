@@ -80,7 +80,7 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header').text())
-          .to.include('There are 3 places matching multiresult');
+          .to.include('We found 3 places that match \'multiresult\'');
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
@@ -103,7 +103,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode  - NHS.UK');
+        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'\' - NHS.UK');
 
         done();
       });
@@ -134,7 +134,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode !@£$% - NHS.UK');
+        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
 
         done();
       });
