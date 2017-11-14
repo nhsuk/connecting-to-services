@@ -5,6 +5,7 @@
 - Update npm dependencies
 - Upgrade Docker container to `node:8.9.1-alpine`
 - Support IE7+
+- Lint frontend JS
 
 0.18.1 / 2017-11-07
 ===================

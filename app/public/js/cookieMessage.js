@@ -3,11 +3,12 @@
   var $ = global.jQuery;
   var document = global.document;
 
-  function setCookie(name, value, options = {}) {
+  function setCookie(name, value, options) {
+    options = options || {};
     var cookieString = name + '=' + value + '; path=/';
 
     if (options.days) {
-      const date = new Date();
+      var date = new Date();
       date.setTime(date.getTime() + (options.days * 24 * 60 * 60 * 1000));
       cookieString = cookieString + '; expires=' + date.toGMTString();
     }
@@ -20,8 +21,8 @@
   }
 
   function getCookie(name) {
-    const nameEQ = name + '=';
-    const cookies = document.cookie.split(';');
+    var nameEQ = name + '=';
+    var cookies = document.cookie.split(';');
 
     for (var i = 0, len = cookies.length; i < len; i++) {
       var cookie = cookies[i];
@@ -39,7 +40,7 @@
   }
 
   $(function() {
-    const banner = document.getElementById('global-cookies-banner');
+    var banner = document.getElementById('global-cookies-banner');
 
     if (banner && getCookie('nhsuk_seen_cookie_message') === null) {
       banner.style.display = 'block';
