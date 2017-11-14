@@ -200,7 +200,7 @@ describe('The results page error handling', () => {
 
           expect($('.error-summary-heading').text()).to
             .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-          expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode ${invalidPostcodePassingRegex} - NHS.UK`);
+          expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${invalidPostcodePassingRegex}' - NHS.UK`);
           done();
         });
     }
