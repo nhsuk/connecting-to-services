@@ -299,6 +299,15 @@ form {
           }
         }
       }
+      &.place {
+        padding:0;
+        margin:20px 0;
+      }
+    }
+    p {
+      &.place {
+        margin:20px 0;
+      }
     }
   }
 }
