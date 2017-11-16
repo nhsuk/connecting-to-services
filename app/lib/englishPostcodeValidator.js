@@ -1,18 +1,21 @@
 const Postcode = require('postcode');
 const messages = require('./messages');
+const stringUtils = require('./stringUtils');
 
 function englishPostcodeValidator(location) {
   let errorMessage = null;
   let locationToReturn = location;
+  const locationWithoutSpaces = stringUtils.removeNonAlphanumericAndWhitespace(locationToReturn);
 
-  const postcode = new Postcode(locationToReturn);
+  const postcode = new Postcode(locationWithoutSpaces);
 
   if (postcode.valid()) {
     locationToReturn = postcode.normalise();
-  } else if (Postcode.validOutcode(locationToReturn)) {
-    locationToReturn = locationToReturn.toLocaleUpperCase();
+  } else if (Postcode.validOutcode(locationWithoutSpaces)) {
+    locationToReturn = locationWithoutSpaces.toLocaleUpperCase();
   } else {
-    errorMessage = messages.invalidPostcodeMessage(locationToReturn);
+    const sanitisedlocation = stringUtils.removeNonAlphanumericAndDoubleSpaces(locationToReturn);
+    errorMessage = messages.invalidPostcodeMessage(sanitisedlocation);
   }
 
   return {

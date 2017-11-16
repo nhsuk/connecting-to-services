@@ -8,7 +8,8 @@ function setLocationLabel(res, location) {
   }
 }
 
-function renderFindHelpPage(req, res, location, message, errorMessage) {
+function renderFindHelpPage(req, res, message, errorMessage) {
+  const location = res.locals.location;
   log.info({ locationValidationResponse: { location } }, message);
   res.locals.errorMessage = errorMessage;
   setLocationLabel(res, location);

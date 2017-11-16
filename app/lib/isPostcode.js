@@ -1,7 +1,6 @@
-const Postcode = require('postcode');
-
+const simplePostcodeMatch = /\d/;
 function isPostcode(text) {
-  return ((new Postcode(text)).valid() || Postcode.validOutcode(text));
+  return text.match(simplePostcodeMatch) !== null;
 }
 
 module.exports = isPostcode;
