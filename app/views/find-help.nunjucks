@@ -46,7 +46,7 @@
         <div class="geo-locate--searching" style="display:none">
           <p>We are searching for your location...</p>
         </div>
-          <p><a href="#">Use my location</a></p>
+          <p><a class="geo-locate--locate" href="#">Use my location</a></p>
         </div>
       </div>
     </div>

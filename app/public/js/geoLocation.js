@@ -2,6 +2,7 @@
   'use strict';
   var $ = global.jQuery;
   var $geoLocate = $('.geo-locate');
+  var $geoLocateLocate = $('.geo-locate--locate');
   var $geoLocateError = $('.geo-locate--error');
   var $geoSearching = $('.geo-locate--searching');
   var window = global;
@@ -11,7 +12,7 @@
     var longitude = position.coords.longitude;
 
     if (latitude && longitude) {
-      var locationDescription = 'my location';
+      var locationDescription = 'your location';
       var location = './results?location=' + encodeURIComponent(locationDescription) + '&latitude=' + latitude + '&longitude=' + longitude;
       // load the results page
       window.location = location;
@@ -20,15 +21,25 @@
     }
   }
 
-  function error() {
+  function error(e) {
+    switch(e.code) {
+      case e.PERMISSION_DENIED:
+        $geoLocate.hide();
+        break;
+      case e.POSITION_UNAVAILABLE:
+        $geoLocateError.show();
+        break;
+      case e.TIMEOUT:
+        $geoLocateError.show();
+        break;
+    }
     $geoSearching.hide();
-    $geoLocateError.show();
   }
 
   if (navigator.geolocation) {
     $geoLocate.show();
 
-    $geoLocate.on('click', function() {
+    $geoLocateLocate.on('click', function() {
       $geoLocateError.hide();
       navigator.geolocation.getCurrentPosition(success, error);
       $geoSearching.show();
