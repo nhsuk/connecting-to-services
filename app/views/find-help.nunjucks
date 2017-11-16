@@ -48,6 +48,10 @@
         </div>
           <p><a class="geo-locate--locate" href="#">Use my location</a></p>
         </div>
+        <div class="geo-locate--denied" style="display:none">
+          <p>You have decided to deny permisson to use your location.</p>
+          <p>If you would like to enable permission <a href="http://waziggle.com/BrowserAllow.aspx">try this</a> and reload the page</p>
+        </div>
       </div>
     </div>
 </form>

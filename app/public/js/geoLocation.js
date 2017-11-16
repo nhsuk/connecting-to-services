@@ -2,9 +2,10 @@
   'use strict';
   var $ = global.jQuery;
   var $geoLocate = $('.geo-locate');
-  var $geoLocateLocate = $('.geo-locate--locate');
+  var $geoLocateDenied = $('.geo-locate--denied');
   var $geoLocateError = $('.geo-locate--error');
-  var $geoSearching = $('.geo-locate--searching');
+  var $geoLocateLocate = $('.geo-locate--locate');
+  var $geoLocateSearching = $('.geo-locate--searching');
   var window = global;
 
   function success(position) {
@@ -25,6 +26,7 @@
     switch(e.code) {
       case e.PERMISSION_DENIED:
         $geoLocate.hide();
+        $geoLocateDenied.show();
         break;
       case e.POSITION_UNAVAILABLE:
         $geoLocateError.show();
@@ -33,7 +35,7 @@
         $geoLocateError.show();
         break;
     }
-    $geoSearching.hide();
+    $geoLocateSearching.hide();
   }
 
   if (navigator.geolocation) {
@@ -42,7 +44,7 @@
     $geoLocateLocate.on('click', function() {
       $geoLocateError.hide();
       navigator.geolocation.getCurrentPosition(success, error);
-      $geoSearching.show();
+      $geoLocateSearching.show();
     });
   }
 })(window);
