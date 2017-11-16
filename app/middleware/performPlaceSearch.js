@@ -2,6 +2,7 @@ const log = require('../lib/logger');
 const locate = require('../lib/locate');
 const sortPlace = require('../lib/sortPlace');
 const getAddress = require('../lib/getAddress');
+const setLocationsOnLocals = require('../lib/setLocationsOnLocals');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
 const placeSearches = require('../lib/promCounters').placeSearches;
@@ -35,7 +36,7 @@ function getCoordinates(place) {
 }
 
 async function getPlaces(req, res, next) {
-  const location = req.query.location;
+  const location = res.locals.location;
   try {
     let places = await locate.byPlace(location, 100);
     placeSearches.inc(1);
@@ -43,7 +44,7 @@ async function getPlaces(req, res, next) {
     logZeroResults(places, location);
     if (places.length === 1) {
       res.locals.coordinates = getCoordinates(places[0]);
-      res.locals.location = getAddress(places[0]);
+      setLocationsOnLocals(res, getAddress(places[0]));
       next();
     } else {
       incrementDisambiguationViews(places);

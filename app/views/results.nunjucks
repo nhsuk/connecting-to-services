@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Pharmacies near {{ location }}{% endblock %}
+{% block pageTitle %}Pharmacies near {{ displayLocation }}{% endblock %}
 
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />
@@ -21,7 +21,7 @@
 
     <ol class="results">
       <li class="results__item results__item--nearest">
-        <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ location }}</h2>
+        <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ displayLocation }}</h2>
         <div class="results__details results__details-nearest column--two-thirds results__details--column">
           {% set service = openServices[0] %}
           {% include "includes/result-item.nunjucks" %}
