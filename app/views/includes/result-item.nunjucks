@@ -1,6 +1,7 @@
 <p>{{ service.distanceInMiles | round(1) }} miles away</p>
 <h2 class="results__name">{{ service.name }}</h2>
 <section class="callout callout--info callout--compact"><p class="callout--info__mesg">{{ service.openingTimesMessage }}</p></section>
+<p class="overview"><a href="{{ service.overviewUrl }}">See opening times and service<span class="sr-only">for {{ service.name }}</span></a></p>
 <p>
 {% if service.address.line1 %} {{ service.address.line1 }}<br>{% endif %}
 {% if service.address.line2 %} {{ service.address.line2 }}<br> {% endif %}
