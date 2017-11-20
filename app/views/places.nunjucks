@@ -9,7 +9,7 @@
 {% block content %}
 <a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
 
-<div class="grid-row">
+<div class="reading-width places">
 
   <h1 class="sr-only">Search results</h1>
 

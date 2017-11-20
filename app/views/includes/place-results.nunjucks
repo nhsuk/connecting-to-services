@@ -2,9 +2,9 @@
   <h2 class="results__header">
     We found {{places.length}} places that match '{{location}}'
   </h2>
-  <h2 class="results__header">
+  <p>
     Choose one of the following:
-  </h2>
+  </p>
   <ol class="results">
   {% for place in places %}
     <li class="results__item">
