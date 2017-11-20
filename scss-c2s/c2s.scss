@@ -155,12 +155,6 @@ form {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
-    .button {
-      margin-top:16px;
-      @include media(tablet) {
-        margin-top:32px;
-      }
-    }
   }
 }
 /*
