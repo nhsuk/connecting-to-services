@@ -10,14 +10,15 @@ function joinAllTruthyValues(obj) {
 function addUrl(location, inputList) {
   return inputList.map((item) => {
     const address = joinAllTruthyValues(item.address);
-    const fullNameAndAddress =
-      `${item.name},${address}`;
+    const fullNameAndAddress = `${item.name},${address}`;
 
-    const encodedQuery = `saddr=${qs.escape(location)}&daddr=${qs.escape(fullNameAndAddress)}&near=${qs.escape(fullNameAndAddress)}`;
-    const mapUrl = `https://maps.google.com/maps?${encodedQuery}`;
-
+    const params = {
+      saddr: location,
+      daddr: fullNameAndAddress,
+      near: fullNameAndAddress
+    };
     // eslint-disable-next-line no-param-reassign
-    item.mapUrl = mapUrl;
+    item.mapUrl = `https://maps.google.com/maps?${qs.stringify(params)}`;
     return item;
   });
 }

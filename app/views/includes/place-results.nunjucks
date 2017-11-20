@@ -1,9 +1,11 @@
 
   <h2 class="results__header">
-    There are {{places.length}} places matching {{location}}. <br/>
-    Please select your location from the list below to continue.
+    We found {{places.length}} places that match '{{location}}'
   </h2>
-  <ol class="results">
+  <p class="place">
+    Choose one of the following:
+  </p>
+  <ol class="place">
   {% for place in places %}
     <li class="results__item">
       <a href="{{ SITE_ROOT }}/results?{{place.queryString}}" class="link">{{place.description}}</a>

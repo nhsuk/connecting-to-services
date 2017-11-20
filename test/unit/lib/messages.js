@@ -7,7 +7,7 @@ describe('messages', () => {
   it('should have a message for an invalid postcode where the location has been capitalised', () => {
     const location = 'something';
     const expectedMessage =
-      `We can't find the postcode ${location.toLocaleUpperCase()}. Check the postcode is correct and try again.`;
+      `We can't find the postcode '${location.toLocaleUpperCase()}'. Check the postcode is correct and try again.`;
 
     const message = messages.invalidPostcodeMessage(location);
 
