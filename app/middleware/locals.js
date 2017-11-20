@@ -4,6 +4,7 @@ module.exports = config =>
     res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.webtrendsId;
     res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.hotjarId;
     res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
+    res.locals.getDisplayLocation = () => res.locals.location && res.locals.location.split(',')[0];
 
     next();
   };

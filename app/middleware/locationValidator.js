@@ -7,12 +7,11 @@ const isNotEnglishPostcode = require('../lib/isNotEnglishPostcode');
 const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
 const performPlaceSearch = require('./performPlaceSearch');
 const stringUtils = require('../lib/stringUtils');
-const setLocationsOnLocals = require('../lib/setLocationsOnLocals');
 
 function validateEnglishPostcode(req, res, next) {
   const location = res.locals.location;
   const validationResult = englishPostcodeValidator(location);
-  setLocationsOnLocals(res, validationResult.alteredLocation);
+  res.locals.location = validationResult.alteredLocation;
   if (validationResult.errorMessage) {
     routeHelper.renderFindHelpPage(req, res, location, 'Non-English postcode', validationResult.errorMessage);
   } else {
@@ -23,7 +22,7 @@ function validateEnglishPostcode(req, res, next) {
 function validatePlaceLocation(req, res, next, location) {
   const safeString = stringUtils.removeNonAlphabeticAndWhitespace(location);
   if (safeString) {
-    setLocationsOnLocals(res, safeString);
+    res.locals.location = safeString;
     performPlaceSearch(req, res, next);
   } else {
     routeHelper.renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
@@ -32,7 +31,7 @@ function validatePlaceLocation(req, res, next, location) {
 
 function validateLocation(req, res, next) {
   if (skipLatLongLookup(res)) {
-    setLocationsOnLocals(res, stringUtils.removeNonAddressCharacters(res.locals.location));
+    res.locals.location = stringUtils.removeNonAddressCharacters(res.locals.location);
     next();
   } else {
     const location = res.locals.location && res.locals.location.trim();
