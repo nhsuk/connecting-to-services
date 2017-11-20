@@ -2,10 +2,10 @@
   <h2 class="results__header">
     We found {{places.length}} places that match '{{location}}'
   </h2>
-  <h2 class="results__header">
+  <p class="place">
     Choose one of the following:
-  </h2>
-  <ol class="results">
+  </p>
+  <ol class="place">
   {% for place in places %}
     <li class="results__item">
       <a href="{{ SITE_ROOT }}/results?{{place.queryString}}" class="link">{{place.description}}</a>
