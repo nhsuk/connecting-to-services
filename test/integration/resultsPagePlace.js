@@ -61,7 +61,9 @@ describe('The place results page', () => {
         ChoicesOverviewLinks.toArray().forEach((link) => {
           expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
         });
-        expect(ChoicesOverviewLinks.length).to.equal(constants.numberOfNearbyResultsToDisplay + 1);
+
+        const numberOfResults = numberOfNearbyResults + numberOfOpenResults;
+        expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
