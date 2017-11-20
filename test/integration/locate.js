@@ -3,7 +3,8 @@ const lookup = require('../../app/lib/locate');
 
 const expect = chai.expect;
 
-describe('locate', () => {
+describe('locate', function testWithTimeout() {
+  this.timeout(15000);
   describe('byPostcode', () => {
     it('should return lat long for valid England postcode', async () => {
       const validPostcode = 'BD24 9PT';

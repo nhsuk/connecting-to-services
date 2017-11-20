@@ -7,7 +7,7 @@ describe('messages', () => {
   it('should have a message for an invalid postcode where the location has been capitalised', () => {
     const location = 'something';
     const expectedMessage =
-      `We can't find the postcode ${location.toLocaleUpperCase()}. Check the postcode is correct and try again.`;
+      `We can't find the postcode '${location.toLocaleUpperCase()}'. Check the postcode is correct and try again.`;
 
     const message = messages.invalidPostcodeMessage(location);
 
@@ -18,7 +18,7 @@ describe('messages', () => {
   it('should have an error message for when nothing has been entered to search with', () => {
     const message = messages.emptyPostcodeMessage();
 
-    expect(message).to.equal('You must insert a place or a postcode to find a pharmacy.');
+    expect(message).to.equal('You must enter a town, city or postcode to find a pharmacy.');
   });
 
   it('should have an error message for technical problems', () => {

@@ -1,8 +1,11 @@
-
+<div class="reading-width places">
+  <h1 class="sr-only">Search results</h1>
   <h2 class="results__header">
-    There are {{places.length}} places matching {{location}}. <br/>
-    Please select your location from the list below to continue.
+    We found {{places.length}} places that match '{{location}}'
   </h2>
+  <p>
+    Choose one of the following:
+  </p>
   <ol class="results">
   {% for place in places %}
     <li class="results__item">
@@ -11,3 +14,4 @@
     </li>
   {% endfor %}
   </ol>
+  </div>

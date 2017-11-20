@@ -35,7 +35,7 @@ function getCoordinates(place) {
 }
 
 async function getPlaces(req, res, next) {
-  const location = req.query.location;
+  const location = res.locals.location;
   try {
     let places = await locate.byPlace(location, 100);
     placeSearches.inc(1);

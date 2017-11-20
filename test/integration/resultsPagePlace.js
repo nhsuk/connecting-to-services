@@ -41,7 +41,7 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--nearest').text())
-          .to.equal('Nearest open pharmacy to Midsomer Norton, Bath and North East Somerset, BA3');
+          .to.equal('Nearest open pharmacy to Midsomer Norton');
 
         expect($('.results__header--nearby').text())
           .to.equal('Other pharmacies nearby');
@@ -59,28 +59,28 @@ describe('The place results page', () => {
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
-        expect($('title').text()).to.equal('Pharmacies near Midsomer Norton, Bath and North East Somerset, BA3 - NHS.UK');
+        expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
         done();
       });
   });
 
   it('should return disambiguation page for non unique place search', (done) => {
     const multiPlaceResponse = getSampleResponse('postcodesio-responses/multiplePlaceResult.json');
-
+    const multiPlaceTerm = 'multiresult';
     nock('https://api.postcodes.io')
-      .get('/places?q=multiresult&limit=100')
+      .get(`/places?q=${multiPlaceTerm}&limit=100`)
       .times(1)
       .reply(200, multiPlaceResponse);
 
     chai.request(server)
       .get(resultsRoute)
-      .query({ location: 'multiresult' })
+      .query({ location: multiPlaceTerm })
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
         expect($('.results__header').text())
-          .to.include('There are 3 places matching multiresult');
+          .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
@@ -92,7 +92,7 @@ describe('The place results page', () => {
 
   function expectSearchAgainPage($) {
     expect($('.error-summary-heading').text())
-      .to.contain('You must insert a place or a postcode to find a pharmacy.');
+      .to.contain('You must enter a town, city or postcode to find a pharmacy.');
   }
 
   it('should return search page for empty search', (done) => {
@@ -103,25 +103,26 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode  - NHS.UK');
+        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'\' - NHS.UK');
 
         done();
       });
   });
 
   it('should return no results page for unknown place search', (done) => {
+    const noResultsTerm = 'noresults';
     nock('https://api.postcodes.io')
-      .get('/places?q=noresults&limit=100')
+      .get(`/places?q=${noResultsTerm}&limit=100`)
       .times(1)
       .reply(200, { status: 200, result: [] });
 
     chai.request(server)
       .get(resultsRoute)
-      .query({ location: 'noresults' })
+      .query({ location: noResultsTerm })
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expect($('.results__header--none').text()).to.be.equal('There are no matches for place noresults');
+        expect($('.results__header--none').text()).to.be.equal(`We can't find '${noResultsTerm}'`);
         done();
       });
   });
@@ -134,7 +135,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode !@£$% - NHS.UK');
+        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
 
         done();
       });

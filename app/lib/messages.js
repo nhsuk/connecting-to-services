@@ -1,9 +1,9 @@
 function invalidPostcodeMessage(location) {
-  return `We can't find the postcode ${location.toLocaleUpperCase()}. Check the postcode is correct and try again.`;
+  return `We can't find the postcode '${location.toLocaleUpperCase()}'. Check the postcode is correct and try again.`;
 }
 
 function emptyPostcodeMessage() {
-  return 'You must insert a place or a postcode to find a pharmacy.';
+  return 'You must enter a town, city or postcode to find a pharmacy.';
 }
 
 function technicalProblems() {
