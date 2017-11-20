@@ -121,7 +121,7 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expect($('.results__header--none').text()).to.be.equal('There are no matches for place \'noresults\'');
+        expect($('.results__header--none').text()).to.be.equal('We can\'t find \'noresults\'');
         done();
       });
   });
