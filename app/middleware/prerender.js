@@ -6,8 +6,8 @@ function results(req, res, next) {
   res.locals.nearbyServices = mapLink.addUrl(location, res.locals.nearbyServices);
   res.locals.openServices = mapLink.addUrl(location, res.locals.openServices);
 
-  res.locals.nearbyServices = choicesOverview.choicesOverviewUrl(res.locals.nearbyServices);
-  res.locals.openServices = choicesOverview.choicesOverviewUrl(res.locals.openServices);
+  res.locals.nearbyServices = choicesOverview.addUrl(res.locals.nearbyServices);
+  res.locals.openServices = choicesOverview.addUrl(res.locals.openServices);
 
   next();
 }

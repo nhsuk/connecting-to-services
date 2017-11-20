@@ -57,19 +57,15 @@ describe('The place results page', () => {
           expect($(link).attr('href')).to.have.string('https://maps.google.com');
         });
 
-        const overviewLinks = $('.overview a');
-        overviewLinks.toArray().forEach((link) => {
+        const ChoicesOverviewLinks = $('.overview a');
+        ChoicesOverviewLinks.toArray().forEach((link) => {
           expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
         });
+        expect(ChoicesOverviewLinks.length).to.equal(constants.numberOfNearbyResultsToDisplay + 1);
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
-<<<<<<< HEAD
         expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
-=======
-        expect($('title').text()).to.equal('Pharmacies near Midsomer Norton, Bath and North East Somerset, BA3 - NHS.UK');
-
->>>>>>> af22eea... :metal: add link to choices overview page
         done();
       });
   });
