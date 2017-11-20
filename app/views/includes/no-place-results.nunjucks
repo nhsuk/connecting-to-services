@@ -1,4 +1,6 @@
-<div class="results">
+<div class="grid-row">
+  <h1 class="sr-only">Search results</h1>
+  <div class="results">
   <div class="results-block results-block--none">
     <h2 class="results__header results__header--none">We can't find '{{ location }}'</h2>
     <div class="results__none-content">
@@ -10,4 +12,5 @@
       <p><a href="https://www.gov.im/categories/health-and-wellbeing/pharmacy">Find pharmacies on the Isle of Man government website</a>.</p>
     </div>
   </div>
+</div>
 </div>

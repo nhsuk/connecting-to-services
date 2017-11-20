@@ -1,4 +1,5 @@
-
+<div class="reading-width places">
+  <h1 class="sr-only">Search results</h1>
   <h2 class="results__header">
     We found {{places.length}} places that match '{{location}}'
   </h2>
@@ -13,3 +14,4 @@
     </li>
   {% endfor %}
   </ol>
+  </div>
