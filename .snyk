@@ -13,9 +13,6 @@ ignore:
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: Not user facing
         expires: '2017-11-30T11:49:48.021Z'
-      brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
-        reason: Package is not executed from site.
-        expires: '2017-12-09T09:33:33.056Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: No upgrade path
         expires: '2017-12-09T09:33:33.056Z'
@@ -28,19 +25,22 @@ ignore:
     - node-pre-gyp > tar-pack > debug:
         reason: Not user facing
         expires: '2017-12-09T09:33:33.057Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: Package is not executed from site.
+        expires: '2017-12-09T09:33:33.056Z'
   'npm:tough-cookie:20170905':
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: Not user facing
         expires: '2017-11-30T11:49:48.021Z'
-      brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
-        reason: Package is not executed from site.
-        expires: '2017-12-09T09:33:33.056Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: No upgrade path
         expires: '2017-12-09T09:33:33.057Z'
     - node-pre-gyp > request > tough-cookie:
         reason: Not user facing
         expires: '2017-12-09T09:33:33.057Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: Package is not executed from site.
+        expires: '2017-12-09T09:33:33.056Z'
   'npm:ms:20170412':
     - brunch > debug > ms:
         reason: Not user facing
@@ -52,4 +52,8 @@ ignore:
     - brunch > deppack > loggy > growl:
         reason: Not user facing
         expires: '2017-12-09T09:33:33.057Z'
+  'npm:tunnel-agent:20170305':
+    - node-sass > request > tunnel-agent:
+        reason: Ignore as no patch available
+        expires: '2017-12-20T11:59:37.194Z'
 patch: {}
