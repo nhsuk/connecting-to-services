@@ -3,7 +3,7 @@ function invalidPostcodeMessage(location) {
 }
 
 function emptyPostcodeMessage() {
-  return 'You must insert a place or a postcode to find a pharmacy.';
+  return 'You must enter a town, city or postcode to find a pharmacy.';
 }
 
 function technicalProblems() {

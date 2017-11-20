@@ -2,6 +2,7 @@ const backLinkUtils = require('../lib/backLinkUtils');
 const setLocationsOnLocals = require('../lib/setLocationsOnLocals');
 
 function fromRequest(req, res, next) {
+  res.locals.req_location = req.query.location;
   setLocationsOnLocals(res, req.query.location);
   res.locals.locationLabel = 'Enter a town, city or postcode';
   res.locals.coordinates = {
