@@ -1,4 +1,7 @@
-$color-orange: #ff6600;
+@import "../environment/settings/colours";
+@import "../environment/tools/mixins/layout";
+@import "../environment/tools/mixins/typography";
+@import "../environment/tools/functions/asset-urls";
 
 .site-header {
     position: relative;
@@ -27,6 +30,22 @@ $color-orange: #ff6600;
 
     &__search {
       width: 100%;
+      .search__button {
+        &.icon-Search {
+          input {
+            cursor: pointer;
+          }
+          &:after {
+            content: "\e900";
+            position: absolute;
+            display: block;
+            pointer-events: none;
+            top: 0;
+            font-size: 1.5em;
+            padding: 10px;
+          }
+        }
+      }
     }
 
     &__user-links {
@@ -347,5 +366,36 @@ $color-orange: #ff6600;
 
   &__account {
 
+  }
+}
+
+
+[class^="icon-"], [class*=" icon-"], .main-nav__page-menu a:after, .external-link:after {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'NHS-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-External {
+  &:after {
+    content: $icon-External;
+  }
+}
+.icon-Search {
+  &:after {
+    content: $icon-Search;
+  }
+}
+.icon-Chevron {
+  &:before {
+    content: $icon-Chevron;
   }
 }
