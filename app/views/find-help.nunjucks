@@ -44,9 +44,10 @@
           <p>Please try again or enter a place or postcode.</p>
         </div>
         <div class="geo-locate--searching" style="display:none">
-          <p>We are searching for your location...</p>
+          <p>We are searching for your location <img src="images/loading.gif" width="40px" heigt="40px"></p>
         </div>
-          <p><a class="geo-locate--locate" href="#">Use my location</a></p>
+          <!-- <input class="button geo-locate--locate" class="button" value="Use your location"> -->
+          <p><a class="button button--secondary geo-locate--locate" href="#">Use your location</a></p>
         </div>
         <div class="geo-locate--denied" style="display:none">
           <p>You have decided to deny permisson to use your location.</p>
