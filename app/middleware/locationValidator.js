@@ -4,7 +4,6 @@ const routeHelper = require('./routeHelper');
 const skipLatLongLookup = require('./skipLatLongLookup');
 const isPostcode = require('../lib/isPostcode');
 const messages = require('../lib/messages');
-const isNotEnglishPostcode = require('../lib/isNotEnglishPostcode');
 const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
 const performPlaceSearch = require('./performPlaceSearch');
 const stringUtils = require('../lib/stringUtils');
@@ -43,17 +42,9 @@ function validateLocation(req, res, next) {
       routeHelper.renderFindHelpPage(req, res, 'No location entered', messages.emptyPostcodeMessage());
     } else if (!isPostcode(res.locals.location)) {
       validatePlaceLocation(req, res, next);
-    } else if (isNotEnglishPostcode(res.locals.location)) {
-      log.info({ req: { location: res.locals.location } }, 'Non-English location');
-      routeHelper.renderNoResultsPage(req, res);
     } else {
       res.locals.searchType = constants.postcodeSearch;
-      if (isNotEnglishPostcode(res.locals.location)) {
-        log.info({ req: { location: res.locals.location } }, 'Non-English location');
-        routeHelper.renderNoResultsPage(req, res);
-      } else {
-        validateEnglishPostcode(req, res, next);
-      }
+      validateEnglishPostcode(req, res, next);
     }
   }
 }

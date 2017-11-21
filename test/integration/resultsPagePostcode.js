@@ -100,6 +100,20 @@ describe('The results page', () => {
   it('should display no pharmacies message for non-english postcodes', (done) => {
     const outcode = 'BT1';
 
+    const postcodeResponse = getSampleResponse('postcodesio-responses/bt1.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
+    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, noResultsResponse);
+
     chai.request(server)
       .get(resultsRoute)
       .query({ location: outcode })
