@@ -9,8 +9,6 @@ services:
     command: yarn test-watch
     volumes:
       - c2s-test-node_modules:/code/node_modules
-    environment:
-      NODE_ENV: test
     links:
       - nearby-services-api:nearby-services-api
 
