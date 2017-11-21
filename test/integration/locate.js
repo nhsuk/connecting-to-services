@@ -13,6 +13,7 @@ describe('locate', function testWithTimeout() {
       const result = await lookup.byLatLon(lat, lon);
 
       expect(result.country).to.equal('Scotland');
+      expect(result.countries).to.be.an('array');
     });
 
     it('should return object with country for English coordinate', async () => {
@@ -21,6 +22,7 @@ describe('locate', function testWithTimeout() {
       const result = await lookup.byLatLon(lat, lon);
 
       expect(result.country).to.equal('England');
+      expect(result.countries).to.be.an('array');
     });
 
     it('should return null for a coordinate with no known outcode', async () => {
@@ -40,6 +42,18 @@ describe('locate', function testWithTimeout() {
       expect(result.postcode).to.equal(validPostcode);
       expect(result.latitude).to.exist;
       expect(result.longitude).to.exist;
+      expect(result.countries).to.be.an('array');
+    });
+  });
+
+  describe('byOutcode', () => {
+    it('should return lat long for valid England outcode', async () => {
+      const validOutcode = 'BD24';
+      const result = await lookup.byPostcode(validOutcode);
+      expect(result.outcode).to.equal(validOutcode);
+      expect(result.latitude).to.exist;
+      expect(result.longitude).to.exist;
+      expect(result.countries).to.be.an('array');
     });
   });
 

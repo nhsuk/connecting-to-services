@@ -9,16 +9,35 @@ PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit, callbac
 
 const postcodes = new PostcodesIO();
 
-function byPostcode(postcode) {
-  return postcodes.lookup(postcode);
+function asArray(value) {
+  if (value) {
+    return value.constructor === Array ? value : [value];
+  }
+  return [];
+}
+
+function addCountries(result) {
+  // postcode lookups return country as single value but outcodes lookups
+  // return country as an array. Add countries to always hold them as an array
+  if (result) {
+    // eslint-disable-next-line no-param-reassign
+    result.countries = result && asArray(result.country);
+  }
+  return result;
+}
+
+async function byPostcode(postcode) {
+  const result = await postcodes.lookup(postcode);
+  return addCountries(result);
 }
 
 function byPlace(place, limit = 10) {
   return postcodes.lookupPlaces(place, limit);
 }
 
-function byLatLon(lat, lon) {
-  return postcodes.reverseGeocode(lat, lon);
+async function byLatLon(lat, lon) {
+  const result = await postcodes.reverseGeocode(lat, lon);
+  return addCountries(result);
 }
 
 module.exports = {

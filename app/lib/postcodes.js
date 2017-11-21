@@ -16,6 +16,7 @@ async function lookup(res, next) {
         latitude: result.latitude,
         longitude: result.longitude,
       };
+      res.locals.countries = [result.country];
       next();
     } else {
       log.info(`Postcode lookup 404 for ${location}`);
