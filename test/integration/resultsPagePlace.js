@@ -57,6 +57,14 @@ describe('The place results page', () => {
           expect($(link).attr('href')).to.have.string('https://maps.google.com');
         });
 
+        const ChoicesOverviewLinks = $('.overview a');
+        ChoicesOverviewLinks.toArray().forEach((link) => {
+          expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
+        });
+
+        const numberOfResults = constants.numberOfNearbyResultsToDisplay + numberOfOpenResults;
+        expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
+
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
         expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
         expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
