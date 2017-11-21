@@ -1,0 +1,37 @@
+{
+  "status": 200,
+  "result": [{
+     "postcode":"LE11 3YD",
+     "quality":1,
+     "eastings":450845,
+     "northings":317421,
+     "country":"England",
+     "nhs_ha":"East Midlands",
+     "longitude":-1.24813228219099,
+     "latitude":52.7520222141652,
+     "european_electoral_region":"East Midlands",
+     "primary_care_trust":"Leicestershire County and Rutland",
+     "region":"East Midlands",
+     "lsoa":"Charnwood 010A",
+     "msoa":"Charnwood 010",
+     "incode":"3YD",
+     "outcode":"LE11",
+     "distance":257.96407402,
+     "parliamentary_constituency":"Loughborough",
+     "admin_district":"Charnwood",
+     "parish":"Charnwood, unparished area",
+     "admin_county":"Leicestershire",
+     "admin_ward":"Loughborough Nanpantan",
+     "ccg":"NHS West Leicestershire",
+     "nuts":"Leicestershire CC and Rutland",
+     "codes":{
+        "admin_district":"E07000130",
+        "admin_county":"E10000018",
+        "admin_ward":"E05005437",
+        "parish":"E43000103",
+        "parliamentary_constituency":"E14000797",
+        "ccg":"E38000201",
+        "nuts":"UKF22"
+     }
+  }]
+}

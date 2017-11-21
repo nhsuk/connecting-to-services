@@ -24,7 +24,7 @@
     "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
-    "test-watch": "yarn test -- --watch --reporter min"
+    "test-watch": "yarn test -- --watch"
   },
   "repository": {
     "type": "git",
