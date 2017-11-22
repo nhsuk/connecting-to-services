@@ -40,18 +40,15 @@
         <div class="geo-locate" style="display:none">
           <p>--- OR ---</p>
         <div class="geo-locate--error error" style="display:none">
-          <p>There has been a problem getting your location.</p>
-          <p>Please try again or enter a place or postcode.</p>
+          <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
         </div>
         <div class="geo-locate--searching" style="display:none">
           <p>We are searching for your location <img src="images/loading.gif" width="40px" heigt="40px"></p>
         </div>
-          <!-- <input class="button geo-locate--locate" class="button" value="Use your location"> -->
           <p><a class="button button--secondary geo-locate--locate" href="#">Use your location</a></p>
         </div>
-        <div class="geo-locate--denied" style="display:none">
-          <p>You have decided to deny permisson to use your location.</p>
-          <p>If you would like to enable permission <a href="http://waziggle.com/BrowserAllow.aspx">try this</a> and reload the page</p>
+        <div class="geo-locate--denied error" style="display:none">
+          <p>You have not allowed us to use your location. You can change this in your browser settings.</p>
         </div>
       </div>
     </div>
