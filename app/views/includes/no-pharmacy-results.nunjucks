@@ -1,0 +1,3 @@
+{% extends 'includes/no-results.nunjucks' %}
+
+{% block resultsHeader %}There are no pharmacies within 20 miles of {{ location }}{% endblock %}

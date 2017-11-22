@@ -1,0 +1,37 @@
+{
+  "status": 200,
+  "result": [{
+     "postcode":"DG7 3BQ",
+     "quality":1,
+     "eastings":272284,
+     "northings":568817,
+     "country":"Scotland",
+     "nhs_ha":"Dumfries and Galloway",
+     "longitude":-3.99803251405601,
+     "latitude":54.9975006861588,
+     "european_electoral_region":"Scotland",
+     "primary_care_trust":"Dumfries and Galloway Community Health Partnership",
+     "region":null,
+     "lsoa":"Glenkens - 03",
+     "msoa":"Glenkens",
+     "incode":"3BQ",
+     "outcode":"DG7",
+     "distance":305.39639007,
+     "parliamentary_constituency":"Dumfries and Galloway",
+     "admin_district":"Dumfries and Galloway",
+     "parish":"(pseudo) Scotland",
+     "admin_county":null,
+     "admin_ward":"Castle Douglas and Crocketford",
+     "ccg":"Dumfries and Galloway Community Health Partnership",
+     "nuts":"Dumfries & Galloway",
+     "codes":{
+        "admin_district":"S12000006",
+        "admin_county":"S99999999",
+        "admin_ward":"S13002883",
+        "parish":"S99999999",
+        "parliamentary_constituency":"S14000013",
+        "ccg":"S03000005",
+        "nuts":"UKM32"
+     }
+  }]
+}

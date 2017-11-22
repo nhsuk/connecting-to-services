@@ -1,6 +1,8 @@
-const renderer = require('./renderer');
-const skipLatLongLookup = require('./skipLatLongLookup');
+const constants = require('../lib/constants');
 const postcodes = require('../lib/postcodes');
+const renderer = require('./renderer');
+const reverseGeocode = require('../lib/reverseGeocodeLookup');
+const skipLatLongLookup = require('./skipLatLongLookup');
 
 function coordinateResolver(req, res, next) {
   function afterLookup(err) {
@@ -20,7 +22,10 @@ function coordinateResolver(req, res, next) {
       next();
     }
   }
-  if (skipLatLongLookup(res)) {
+
+  if (res.locals.location === constants.yourLocation) {
+    reverseGeocode(req, res, next);
+  } else if (skipLatLongLookup(res)) {
     next();
   } else {
     postcodes.lookup(res, afterLookup);

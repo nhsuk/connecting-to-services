@@ -17,7 +17,12 @@ function byPlace(place, limit = 10) {
   return postcodes.lookupPlaces(place, limit);
 }
 
+function byLatLon(lat, lon) {
+  return postcodes.reverseGeocode(lat, lon);
+}
+
 module.exports = {
   byPostcode,
-  byPlace
+  byPlace,
+  byLatLon,
 };

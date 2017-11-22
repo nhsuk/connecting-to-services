@@ -1,0 +1,5 @@
+{% extends 'includes/no-results.nunjucks' %}
+
+{% block resultsHeader %}Your location is not in England{% endblock %}
+
+{% block reasonForMessage %}{% endblock %}

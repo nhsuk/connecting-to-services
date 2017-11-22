@@ -20,7 +20,13 @@ function renderNoResultsPage(req, res) {
   res.locals.openServices = [];
   renderer.results(req, res);
 }
+
+function renderNoLocationResultsPage(res) {
+  renderer.notEnglishLocation(res);
+}
+
 module.exports = {
   renderFindHelpPage,
-  renderNoResultsPage
+  renderNoResultsPage,
+  renderNoLocationResultsPage,
 };

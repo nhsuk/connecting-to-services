@@ -5,6 +5,33 @@ const expect = chai.expect;
 
 describe('locate', function testWithTimeout() {
   this.timeout(15000);
+
+  describe('byLatLon', () => {
+    it('should return object with country for Scotish coordinate', async () => {
+      const lat = 55;
+      const lon = -4;
+      const result = await lookup.byLatLon(lat, lon);
+
+      expect(result.country).to.equal('Scotland');
+    });
+
+    it('should return object with country for English coordinate', async () => {
+      const lat = 52.75;
+      const lon = -1.25;
+      const result = await lookup.byLatLon(lat, lon);
+
+      expect(result.country).to.equal('England');
+    });
+
+    it('should return null for a coordinate with no known outcode', async () => {
+      const lat = 1;
+      const lon = 1;
+      const result = await lookup.byLatLon(lat, lon);
+
+      expect(result).to.be.null;
+    });
+  });
+
   describe('byPostcode', () => {
     it('should return lat long for valid England postcode', async () => {
       const validPostcode = 'BD24 9PT';
@@ -15,6 +42,7 @@ describe('locate', function testWithTimeout() {
       expect(result.longitude).to.exist;
     });
   });
+
   describe('byPlace', () => {
     it('should return list of places', async () => {
       const results = await lookup.byPlace('Leeds');

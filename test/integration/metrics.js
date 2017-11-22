@@ -58,6 +58,26 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP error_page_views The number of error page views\n# TYPE error_page_views counter');
   });
 
+  it('should return an error_page_views counter', () => {
+    expect(responseText).to.have.string('# HELP error_page_views The number of error page views\n# TYPE error_page_views counter');
+  });
+
+  it('should return an english_my_location_searches counter', () => {
+    expect(responseText).to.have.string('# HELP english_my_location_searches The number of my location searches in England\n# TYPE english_my_location_searches counter');
+  });
+
+  it('should return a known_but_not_english_my_location_searches counter', () => {
+    expect(responseText).to.have.string('# HELP known_but_not_english_my_location_searches The number of my location searches in an area that is known but is not in England\n# TYPE known_but_not_english_my_location_searches counter');
+  });
+
+  it('should return an out_of_area_my_location_searches counter', () => {
+    expect(responseText).to.have.string('# HELP out_of_area_my_location_searches The number of my location searches in an unsupported area\n# TYPE out_of_area_my_location_searches counter');
+  });
+
+  it('should return an my_location_searches counter', () => {
+    expect(responseText).to.have.string('# HELP my_location_searches The number of my location searches\n# TYPE my_location_searches counter');
+  });
+
   it('should return an histogram for get_nearby_services timings', () => {
     expect(responseText).to.have.string('# HELP get_nearby_services Duration histogram of request to nearby-services-api\n# TYPE get_nearby_services histogram');
   });
@@ -94,4 +114,3 @@ describe('metrics end point', () => {
     promClient.register.clear();
   });
 });
-

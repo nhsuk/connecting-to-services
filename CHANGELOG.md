@@ -1,6 +1,7 @@
 0.19.0 / TBD
 ===================
 - Search by place
+- Add 'find my location' search capability
 - Add Brunch to minify and compress front-end assets
 - Update npm dependencies
 - Upgrade Docker container to `node:8.9.1-alpine`

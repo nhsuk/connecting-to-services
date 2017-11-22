@@ -7,18 +7,12 @@
 {% endblock %}
 
 {% block content %}
-<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
-
-<div class="grid-row">
-
-  <h1 class="sr-only">Search results</h1>
-
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
-
-    {% include "includes/no-results.nunjucks" %}
-
+    {% include "includes/no-pharmacy-results.nunjucks" %}
   {% elif openServices.length > 0 %}
-
+<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
+<div class="grid-row">
+  <h1 class="sr-only">Search results</h1>
     <ol class="results">
       <li class="results__item results__item--nearest">
         <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ getDisplayLocation() }}</h2>
@@ -52,11 +46,13 @@
         </li>
       </ol>
       {% endif %}
+  </div>
 
     {% else %}
-
+<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
+<div class="grid-row">
+  <h1 class="sr-only">Search results</h1>
     <div class="results">
-
       <div class="results-block">
         <h2 class="results__header results__header--none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
       </div>
@@ -73,8 +69,7 @@
       </ol>
 
     </div>
-
+  </div>
   {% endif %}
-</div>
 
 {% endblock %}
