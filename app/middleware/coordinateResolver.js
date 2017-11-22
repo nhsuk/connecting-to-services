@@ -1,5 +1,4 @@
 const constants = require('../lib/constants');
-const handleReverseGeocodeError = require('../lib/handleReverseGeocodeError');
 const postcodes = require('../lib/postcodes');
 const renderer = require('./renderer');
 const reverseGeocode = require('../lib/reverseGeocodeLookup');
@@ -25,7 +24,7 @@ function coordinateResolver(req, res, next) {
   }
 
   if (res.locals.location === constants.yourLocation) {
-    reverseGeocode(req, res, next).catch(error => handleReverseGeocodeError(error, next));
+    reverseGeocode(req, res, next);
   } else if (skipLatLongLookup(res)) {
     next();
   } else {
