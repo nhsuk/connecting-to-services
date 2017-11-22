@@ -2,4 +2,4 @@
 
 {% block resultsHeader %}Your location is not in England{% endblock %}
 
-{% block reasonForMessage %}{% endblock %}
+{% block reasonForMessage %}<p>This service only provides information about pharmacies in England.</p>{% endblock %}

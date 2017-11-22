@@ -5,13 +5,12 @@
     <div class="results-block results-block--none">
       <h2 class="results__header results__header--none">{% block resultsHeader %}{% endblock %}</h2>
       <div class="results__none-content">
-         <h2>We can only find pharmacies in England</h2>
         {% block reasonForMessage %}
         <p>If the place you searched for is in England, you could:
         <ul>
           <li>check your spelling and try again</li>
           <li>try a different place name</li>
-        </ul>
+        </ul> 
       </p>
       <p>If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.</p>
       {% endblock %}
