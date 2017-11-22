@@ -38,7 +38,6 @@
           </div>
         </div>
         <div class="geo-locate" style="display:none">
-          <p>--- OR ---</p>
         <div class="geo-locate--error error" style="display:none">
           <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
         </div>
