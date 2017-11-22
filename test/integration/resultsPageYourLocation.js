@@ -81,7 +81,7 @@ describe(`The ${yourLocation} results page`, () => {
       });
   });
 
-  it('should return the \'no results\' page for a coordindate with no result from the reverse lookup', (done) => {
+  it('should return the \'no results\' page for a coordinate with no result from the reverse lookup', (done) => {
     const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeUnknown.json');
     const latitude = 1;
     const longitude = 1;

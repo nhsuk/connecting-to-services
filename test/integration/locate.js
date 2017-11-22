@@ -23,7 +23,7 @@ describe('locate', function testWithTimeout() {
       expect(result.country).to.equal('England');
     });
 
-    it('should return null for a coordindate with no known outcode', async () => {
+    it('should return null for a coordinate with no known outcode', async () => {
       const lat = 1;
       const lon = 1;
       const result = await lookup.byLatLon(lat, lon);
