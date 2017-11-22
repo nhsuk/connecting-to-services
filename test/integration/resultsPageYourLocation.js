@@ -75,7 +75,8 @@ describe(`The ${yourLocation} results page`, () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal(`There are no pharmacies within 20 miles of ${yourLocation}`);
+        expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
+        expect($('.results__none-content p').length).to.be.equal(5);
         done();
       });
   });
@@ -100,10 +101,8 @@ describe(`The ${yourLocation} results page`, () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal(`There are no pharmacies within 20 miles of ${yourLocation}`);
-        // TODO: this needs to be the 'sorry we can't find that point page'
-        // expect($('.results__header--none').text())
-        // .to.be.equal(`We can't find '${yourLocation}'`);
+        expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
+        expect($('.results__none-content p').length).to.be.equal(5);
         done();
       });
   });
