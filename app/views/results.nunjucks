@@ -15,7 +15,7 @@
 
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
 
-    {% include "includes/no-results.nunjucks" %}
+  {% include "includes/no-results.nunjucks" %}
 
   {% elif openServices.length > 0 %}
 

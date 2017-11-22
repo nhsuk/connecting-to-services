@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block content %}
-<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
 {% if places.length === 0 %}
+  <a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
   {% include "includes/no-place-results.nunjucks" %}
 {% elif places.length > 0 %}
   {% include "includes/place-results.nunjucks" %}

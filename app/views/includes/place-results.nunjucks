@@ -14,4 +14,5 @@
     </li>
   {% endfor %}
   </ol>
+  <p><a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a></p>
   </div>
