@@ -5,8 +5,16 @@
     <div class="results-block results-block--none">
       <h2 class="results__header results__header--none">{% block resultsHeader %}{% endblock %}</h2>
       <div class="results__none-content">
-        <p>This service only provides information about pharmacies in England.</p>
-        {% block reasonForMessage %}<p>You might be getting this result because you live in Scotland, Wales or Northern Ireland, or because you live near a border with one of those countries. It could also be because you live on the Isle of Man.</p>{% endblock %}
+         <h2>We can only find pharmacies in England</h2>
+        {% block reasonForMessage %}
+        <p>If the place you searched for is in England, you could:
+        <ul>
+          <li>check your spelling and try again</li>
+          <li>try a different place name</li>
+        </ul>
+      </p>
+      <p>If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.</p>
+      {% endblock %}
         <p><a href="http://www.nhs24.com/findlocal/">Find pharmacies in Scotland on the NHS 24 website</a>.</p>
         <p><a href="http://www.nhsdirect.wales.nhs.uk/localservices/searchlocalservices.aspx?s=Pharmacy">Find pharmacies in Wales on the NHS Direct Wales website</a>.</p>
         <p><a href="http://servicefinder.hscni.net">Find pharmacies in Northern Ireland on the Health and Social Care Online website</a>.</p>

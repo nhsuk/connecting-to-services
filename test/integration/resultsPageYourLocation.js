@@ -76,7 +76,7 @@ describe(`The ${yourLocation} results page`, () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
-        expect($('.results__none-content p').length).to.be.equal(5);
+        expect($('.results__none-content p').length).to.be.equal(4);
         done();
       });
   });
@@ -102,7 +102,7 @@ describe(`The ${yourLocation} results page`, () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
-        expect($('.results__none-content p').length).to.be.equal(5);
+        expect($('.results__none-content p').length).to.be.equal(4);
         done();
       });
   });
