@@ -7,14 +7,10 @@
 {% endblock %}
 
 {% block content %}
-<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
-
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
-
     {% include "includes/no-pharmacy-results.nunjucks" %}
-
   {% elif openServices.length > 0 %}
-
+<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
 <div class="grid-row">
   <h1 class="sr-only">Search results</h1>
     <ol class="results">
@@ -53,7 +49,7 @@
   </div>
 
     {% else %}
-
+<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
 <div class="grid-row">
   <h1 class="sr-only">Search results</h1>
     <div class="results">
