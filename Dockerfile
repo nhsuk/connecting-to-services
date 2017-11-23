@@ -1,4 +1,4 @@
-FROM node:8.9.1-alpine
+FROM node:8.9.1-alpine as build
 
 RUN apk add --no-cache python=2.7.13-r1 git-perl bash make gcc g++
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -18,8 +18,6 @@ COPY yarn.lock package.json /code/
 
 RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile; else yarn install --pure-lockfile; fi
 
-EXPOSE 3000
-
 COPY . /code
 
 USER root
@@ -28,5 +26,12 @@ USER $USERNAME
 
 RUN [ "yarn", "brunch-build" ]
 
-# RUN APP DIRECTLY TO AVOID SPAWNING SUBPROCESSES IN DOCKER
+FROM node:8.9.1-alpine as release
+
+WORKDIR /code/
+
+COPY --from=build /code/* /code/
+
+EXPOSE 3000
+
 CMD [ "node", "app.js" ]
