@@ -2,6 +2,12 @@ language: node_js
 node_js: node
 services: docker
 
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+
 before_install:
   - yarn global add greenkeeper-lockfile@1
 
