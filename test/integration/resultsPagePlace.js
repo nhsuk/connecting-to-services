@@ -131,6 +131,9 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expect($('.results__header--none').text()).to.be.equal(`We can't find '${noResultsTerm}'`);
+        expect($('.results__none-content').text()).to
+          .contain('If the place you searched for is in England, you could:');
+        expect($('.results-none-nearby').length).to.be.equal(0);
         done();
       });
   });
