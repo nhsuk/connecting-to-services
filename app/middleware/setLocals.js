@@ -3,7 +3,7 @@ const backLinkUtils = require('../lib/backLinkUtils');
 function fromRequest(req, res, next) {
   res.locals.req_location = req.query.location;
   res.locals.location = req.query.location;
-  res.locals.locationLabel = 'Enter a town, city or postcode';
+  res.locals.locationLabel = 'Enter a town, city or postcode in England';
   res.locals.coordinates = {
     latitude: req.query.latitude,
     longitude: req.query.longitude,

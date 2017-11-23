@@ -102,6 +102,10 @@ describe(`The ${yourLocation} results page`, () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
+        expect($('.results__none-content').text()).to
+          .contain('This service only provides information about pharmacies in England.');
+        expect($('.results__none-content').text()).to.not
+          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results__none-content p').length).to.be.equal(5);
         done();
       });

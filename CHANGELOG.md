@@ -1,4 +1,4 @@
-0.19.0 / TBD
+0.19.0 / 2017-11-23
 ===================
 - Search by place
 - Add 'find my location' search capability
