@@ -108,6 +108,10 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcode}`);
+        expect($('.results__none-content').text()).to
+          .contain('This service only provides information about pharmacies in England.');
+        expect($('.results__none-content').text()).to
+          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BT1 - NHS.UK');
         done();
