@@ -1,0 +1,26 @@
+{
+  "status": 200,
+  "result": {
+    "outcode": "BT1",
+    "longitude": -5.92850802507578,
+    "latitude": 54.5996136149079,
+    "northings": 374348,
+    "eastings": 333924,
+    "admin_district": [
+      "Belfast"
+    ],
+    "parish": [
+      "(pseudo) Northern Ireland"
+    ],
+    "admin_county": [],
+    "admin_ward": [
+      "Central",
+      "Duncairn",
+      "New Lodge",
+      "Falls"
+    ],
+    "country": [
+      "Northern Ireland"
+    ]
+  }
+}

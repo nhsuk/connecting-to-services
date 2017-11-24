@@ -1,16 +1,24 @@
 const constants = require('../lib/constants');
 const postcodes = require('../lib/postcodes');
-const renderer = require('./renderer');
+const routeHelper = require('./routeHelper');
 const reverseGeocode = require('../lib/reverseGeocodeLookup');
 const skipLatLongLookup = require('./skipLatLongLookup');
+
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+function latLongPopulated(res) {
+  const coords = res.locals.coordinates;
+  return isNumber(coords.longitude) && isNumber(coords.latitude);
+}
 
 function coordinateResolver(req, res, next) {
   function afterLookup(err) {
     if (err) {
       switch (err.type) {
         case 'invalid-postcode':
-          res.locals.errorMessage = err.message;
-          renderer.findHelp(req, res);
+          routeHelper.renderFindHelpPage(req, res, err.type, err.message);
           break;
         case 'postcode-service-error':
           next(`Postcode Service Error: ${err.message}`);
@@ -18,8 +26,10 @@ function coordinateResolver(req, res, next) {
         default:
           next('Unknown Error');
       }
-    } else {
+    } else if (latLongPopulated(res)) {
       next();
+    } else {
+      routeHelper.renderNoResultsPage(req, res, 'Lat long missing', 'Non-English postcode');
     }
   }
 

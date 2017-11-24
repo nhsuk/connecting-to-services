@@ -54,6 +54,15 @@ describe('Location validation', () => {
         expect(result.alteredLocation).to.be.equal(outcode);
         expect(result.errorMessage).to.be.null;
       });
+
+      it('should pass validation for a valid outcode with extra spaces', () => {
+        const outcode = ' AB  12 ';
+
+        const result = englishPostcodeValidator(outcode);
+
+        expect(result.alteredLocation).to.be.equal('AB12');
+        expect(result.errorMessage).to.be.null;
+      });
     });
 
     describe('for postcode', () => {

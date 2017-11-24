@@ -1,10 +1,8 @@
 const constants = require('../lib/constants');
-const log = require('../lib/logger');
 const routeHelper = require('./routeHelper');
 const skipLatLongLookup = require('./skipLatLongLookup');
 const isPostcode = require('../lib/isPostcode');
 const messages = require('../lib/messages');
-const isNotEnglishPostcode = require('../lib/isNotEnglishPostcode');
 const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
 const performPlaceSearch = require('./performPlaceSearch');
 const stringUtils = require('../lib/stringUtils');
@@ -14,19 +12,19 @@ function validateEnglishPostcode(req, res, next) {
   const validationResult = englishPostcodeValidator(location);
   res.locals.location = validationResult.alteredLocation;
   if (validationResult.errorMessage) {
-    routeHelper.renderFindHelpPage(req, res, location, 'Non-English postcode', validationResult.errorMessage);
+    routeHelper.renderFindHelpPage(req, res, 'Non-English postcode', validationResult.errorMessage);
   } else {
     next();
   }
 }
 
-function validatePlaceLocation(req, res, next, location) {
-  const safeString = stringUtils.removeNonAlphabeticAndWhitespace(location);
+function validatePlaceLocation(req, res, next) {
+  const safeString = stringUtils.removeNonAlphanumericAndDoubleSpaces(res.locals.location);
   if (safeString) {
     res.locals.location = safeString;
     performPlaceSearch(req, res, next);
   } else {
-    routeHelper.renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
+    routeHelper.renderFindHelpPage(req, res, 'No location entered', messages.emptyPostcodeMessage());
   }
 }
 
@@ -38,20 +36,15 @@ function validateLocation(req, res, next) {
     }
     next();
   } else {
-    const location = res.locals.location && res.locals.location.trim();
-    if (!location) {
-      routeHelper.renderFindHelpPage(req, res, location, 'No location entered', messages.emptyPostcodeMessage());
-    } else if (!isPostcode(location)) {
+    res.locals.location = res.locals.location && res.locals.location.trim();
+    if (!res.locals.location) {
+      routeHelper.renderFindHelpPage(req, res, 'No location entered', messages.emptyPostcodeMessage());
+    } else if (!isPostcode(res.locals.location)) {
       res.locals.searchType = constants.placeSearch;
-      validatePlaceLocation(req, res, next, location);
+      validatePlaceLocation(req, res, next);
     } else {
       res.locals.searchType = constants.postcodeSearch;
-      if (isNotEnglishPostcode(location)) {
-        log.info({ req: { location } }, 'Non-English location');
-        routeHelper.renderNoResultsPage(req, res);
-      } else {
-        validateEnglishPostcode(req, res, next);
-      }
+      validateEnglishPostcode(req, res, next);
     }
   }
 }
