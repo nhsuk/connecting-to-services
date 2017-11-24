@@ -98,9 +98,12 @@ describe('mapLink', () => {
         },
       }];
       const destination = 'name,line1';
-      const encodedQuery =
-        `saddr=${coordinates.latitude},${coordinates.longitude}&daddr=${qs.escape(destination)}&near=${qs.escape(destination)}`;
-      const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
+      const params = {
+        saddr: `${coordinates.latitude},${coordinates.longitude}`,
+        daddr: `${destination}`,
+        near: `${destination}`,
+      };
+      const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
       const results = mapLink.addUrl(yourLocationSearchCriteria, inputList);
 

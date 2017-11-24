@@ -53,7 +53,7 @@ describe(`The ${yourLocation} results page`, () => {
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude},${longitude}`);
+          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
         });
 
         done();

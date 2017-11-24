@@ -19,16 +19,17 @@ function addUrl(searchCriteria, inputList) {
     if (searchCriteria.searchType === constants.yourLocationSearch) {
       saddr = `${searchCriteria.coordinates.latitude},${searchCriteria.coordinates.longitude}`;
     } else {
-      saddr = qs.escape(searchCriteria.searchTerm);
+      saddr = searchCriteria.searchTerm;
     }
 
     const params = {
+      saddr,
       daddr: fullNameAndAddress,
       near: fullNameAndAddress
     };
 
     // eslint-disable-next-line no-param-reassign
-    item.mapUrl = `https://maps.google.com/maps?saddr=${saddr}&${qs.stringify(params)}`;
+    item.mapUrl = `https://maps.google.com/maps?${qs.stringify(params)}`;
     return item;
   });
 }
