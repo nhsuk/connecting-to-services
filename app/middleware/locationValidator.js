@@ -1,4 +1,3 @@
-const constants = require('../lib/constants');
 const routeHelper = require('./routeHelper');
 const skipLatLongLookup = require('./skipLatLongLookup');
 const isPostcode = require('../lib/isPostcode');
@@ -31,19 +30,14 @@ function validatePlaceLocation(req, res, next) {
 function validateLocation(req, res, next) {
   if (skipLatLongLookup(res)) {
     res.locals.location = stringUtils.removeNonAddressCharacters(res.locals.location);
-    if (res.locals.location === constants.yourLocation) {
-      res.locals.searchType = constants.yourLocationSearch;
-    }
     next();
   } else {
     res.locals.location = res.locals.location && res.locals.location.trim();
     if (!res.locals.location) {
       routeHelper.renderFindHelpPage(req, res, 'No location entered', messages.emptyPostcodeMessage());
     } else if (!isPostcode(res.locals.location)) {
-      res.locals.searchType = constants.placeSearch;
       validatePlaceLocation(req, res, next);
     } else {
-      res.locals.searchType = constants.postcodeSearch;
       validateEnglishPostcode(req, res, next);
     }
   }
