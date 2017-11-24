@@ -33,7 +33,7 @@ function coordinateResolver(req, res, next) {
     }
   }
 
-  if (res.locals.location === constants.yourLocation) {
+  if (res.locals.searchType === constants.yourLocationSearch) {
     reverseGeocode(req, res, next);
   } else if (skipLatLongLookup(res)) {
     next();

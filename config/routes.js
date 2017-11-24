@@ -5,6 +5,7 @@ const coordinateResolver = require('../app/middleware/coordinateResolver');
 const renderer = require('../app/middleware/renderer');
 const prerender = require('../app/middleware/prerender');
 const setLocals = require('../app/middleware/setLocals');
+const setSearchType = require('../app/middleware/setSearchType');
 const logZeroResults = require('../app/middleware/logZeroResults');
 
 router.get(
@@ -16,6 +17,7 @@ router.get(
 router.get(
   '/results',
   setLocals.fromRequest,
+  setSearchType,
   locationValidator,
   coordinateResolver,
   getPharmacies,
