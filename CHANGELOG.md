@@ -1,3 +1,7 @@
+0.19.1 / 2017-11-28
+===================
+- Fix map link for `your location` searches
+
 0.19.0 / 2017-11-23
 ===================
 - Search by place
