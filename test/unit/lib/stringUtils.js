@@ -32,6 +32,14 @@ describe('stringUtils', () => {
     });
   });
 
+  describe('removeNonAlphanumericAndWhitespace', () => {
+    it('should remove spaces and special characters', () => {
+      const word = stringUtils.removeNonAlphanumericAndWhitespace('L S 1 @£$@£$£@$');
+
+      expect(word).to.equal('LS1');
+    });
+  });
+
   describe('joinWithCommas', () => {
     it('should return no commas or and for a single word', () => {
       const words = ['One'];
