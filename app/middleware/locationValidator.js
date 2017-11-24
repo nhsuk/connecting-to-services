@@ -33,6 +33,9 @@ function validatePlaceLocation(req, res, next, location) {
 function validateLocation(req, res, next) {
   if (skipLatLongLookup(res)) {
     res.locals.location = stringUtils.removeNonAddressCharacters(res.locals.location);
+    if (res.locals.location === constants.yourLocation) {
+      res.locals.searchType = constants.yourLocationSearch;
+    }
     next();
   } else {
     const location = res.locals.location && res.locals.location.trim();
