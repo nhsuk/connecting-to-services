@@ -7,4 +7,5 @@ module.exports = {
   yourLocation: 'your location',
   placeSearch: 'place',
   postcodeSearch: 'postcode',
+  yourLocationSearch: 'location',
 };
