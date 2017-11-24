@@ -51,6 +51,11 @@ describe(`The ${yourLocation} results page`, () => {
         expect(openResults.length).to.equal(constants.numberOfOpenResults);
         expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
 
+        const mapLinks = $('.results__maplink');
+        mapLinks.toArray().forEach((link) => {
+          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude},${longitude}`);
+        });
+
         done();
       });
   });

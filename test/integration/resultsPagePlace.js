@@ -19,12 +19,14 @@ describe('The place results page', () => {
   it('should return list of pharmacies for unique place search', (done) => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
-    const singleResult = JSON.parse(singlePlaceResponse).result;
-    const latitude = singleResult[0].latitude;
-    const longitude = singleResult[0].longitude;
+    const singleResult = JSON.parse(singlePlaceResponse).result[0];
+    const latitude = singleResult.latitude;
+    const longitude = singleResult.longitude;
+    const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
+    const searchTerm = 'oneresult';
 
     nock('https://api.postcodes.io')
-      .get('/places?q=oneresult&limit=100')
+      .get(`/places?q=${searchTerm}&limit=100`)
       .times(1)
       .reply(200, singlePlaceResponse);
 
@@ -35,7 +37,7 @@ describe('The place results page', () => {
 
     chai.request(server)
       .get(resultsRoute)
-      .query({ location: 'oneresult' })
+      .query({ location: searchTerm })
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
@@ -54,7 +56,7 @@ describe('The place results page', () => {
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string('https://maps.google.com');
+          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(saddr)}`);
         });
 
         const ChoicesOverviewLinks = $('.overview a');

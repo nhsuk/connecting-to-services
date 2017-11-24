@@ -56,7 +56,7 @@ describe('The results page', () => {
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string('https://maps.google.com');
+          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
         });
 
         expect($('.link-back').text()).to.equal('Back to find a pharmacy');
