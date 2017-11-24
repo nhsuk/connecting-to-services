@@ -1,3 +1,3 @@
 {% extends 'includes/no-results.nunjucks' %}
 
-{% block resultsHeader %}We can't find '{{ location }}'{% endblock %}
+{% block resultsHeader %}We can't find '{{ req_location }}'{% endblock %}

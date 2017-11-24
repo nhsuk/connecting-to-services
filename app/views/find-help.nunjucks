@@ -4,7 +4,7 @@
 <h1 class="local-header--title--question">Find a pharmacy</h1>
 {% endblock %}
 
-{% block pageTitle %}Find a pharmacy{% if errorMessage %} - We can't find the postcode '{{location}}'{% endif %}{% endblock %}
+{% block pageTitle %}Find a pharmacy{% if errorMessage %} - We can't find the postcode '{{req_location}}'{% endif %}{% endblock %}
 
 {% block content %}
 
