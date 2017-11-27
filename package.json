@@ -4,7 +4,8 @@
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
-    "brunch-build": "node headerItems.js & yarn brunch build",
+    "brunch-build": "yarn brunch build",
+    "build-header": "node headerItems.js",
     "coverage-check": "istanbul check-coverage --config .istanbul.yml",
     "coverage-generate": "yarn istanbul -- cover _mocha -- --exit --recursive",
     "coverage-generate-full": "yarn istanbul -- cover --include-all-sources _mocha -- --exit --recursive",
@@ -20,10 +21,10 @@
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
     "prepush": "yarn git-hook && yarn snyk test",
-    "start": "node app.js",
-    "start-watch": "node headerItems.js && yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "NODE_ENV=test mocha --exit --recursive test",
-    "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
+    "start": "yarn build-header && node app.js",
+    "start-watch": "yarn build-header && yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
+    "test": "yarn build-header && NODE_ENV=test mocha --exit --recursive test",
+    "test-ci": "yarn build-header && yarn ci-hook && yarn coverage-upload-coveralls",
     "test-watch": "yarn test -- --watch --reporter min"
   },
   "repository": {
