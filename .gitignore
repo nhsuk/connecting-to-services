@@ -3,6 +3,7 @@ public/js
 *.css
 *.css.map
 assets.json
+views/includes/header-items.nunjucks
 
 coverage/
 .sass-cache

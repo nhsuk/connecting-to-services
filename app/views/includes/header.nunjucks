@@ -16,7 +16,6 @@
 
     <div class="site-header__controls">
       <div class="site-header__user-links user-links">
-        <a class="user-links__translate" href="http://www.nhs.uk/pages/languagehub.aspx">Translate</a>
         <span class="user-links__right-align">
           <a class="user-links__account" href="https://www.nhs.uk/Personalisation/MyNHSChoices.aspx">User Accounts</a>
         </span>
@@ -33,12 +32,10 @@
           <a id="main-nav-toggle" class="menu-icon__link" href="#">Menu</a>
       </div>
     </div>
-
     <div class="clearfix"></div>
   </div>
 
   <nav id="main-nav" class="site-header__nav main-nav main-nav">
-
     <div id="main-nav-items" class="main-nav__items">
       <ul class="main-nav__page-menu">
         {% include "includes/header-items.nunjucks" %}
