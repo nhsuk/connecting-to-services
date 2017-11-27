@@ -1,4 +1,3 @@
-<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
 <div class="grid-row">
   <h1 class="sr-only">Search results</h1>
   <div class="results">
@@ -11,7 +10,8 @@
         <ul>
           <li>check your spelling and try again</li>
           <li>try a different place name</li>
-        </ul> 
+          <li><a href="{{ SITE_ROOT }}/">Back to find a pharmacy</a></li>
+        </ul>
       </p>
       {% else %}
         <p>This service only provides information about pharmacies in England.</p>
