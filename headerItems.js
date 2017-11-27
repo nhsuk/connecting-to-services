@@ -1,10 +1,11 @@
 const request = require('request');
-
 const fs = require('fs');
+
+const headerAPIURL = process.env.HEADER_API_URL;
 
 let output = '';
 
-request('https://refdata-api.azurewebsites.net/api/fullheadermenu', (error, response, body) => {
+request(headerAPIURL, (error, response, body) => {
   const topLevel = JSON.parse(body);
   if (!error && response.statusCode === 200) {
     for (let i = 0; i < topLevel.length; i++) {

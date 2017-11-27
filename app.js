@@ -3,7 +3,7 @@ const app = require('./server');
 const requireEnv = require('require-environment-variables');
 const applicationStarts = require('./app/lib/promCounters').applicationStarts;
 
-requireEnv(['API_BASE_URL']);
+requireEnv(['API_BASE_URL', 'HEADER_API_URL']);
 
 app.listen(app.port, () => {
   applicationStarts.inc(1);
