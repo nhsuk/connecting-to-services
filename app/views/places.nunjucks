@@ -2,6 +2,16 @@
 
 {% block pageTitle %}Places disambiguation{% endblock %}
 
+{% block breadcrumbItems %}
+  {% if places.length === 0 %}
+  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
+  <li class="breadcrumb__last">No results</li>
+  {% elif places.length > 0 %}
+  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
+  <li class="breadcrumb__last">Places that match '{{location}}'</li>
+  {% endif %}
+{% endblock %}
+
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
@@ -10,7 +20,6 @@
 {% if places.length === 0 %}
   {% include "includes/no-place-results.nunjucks" %}
 {% elif places.length > 0 %}
-<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
   {% include "includes/place-results.nunjucks" %}
 {% endif %}
 {% endblock %}
