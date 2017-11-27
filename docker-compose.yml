@@ -12,6 +12,7 @@ services:
       - .:/code
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
+      HEADER_API_URL: ${HEADER_API_URL}
 
   frontend:
     extends:
