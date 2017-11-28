@@ -1,4 +1,9 @@
 .footer {
+    @include media(desktop) {
+      position: absolute;
+      bottom:0;
+      width:100%
+    }
     font-size: 18px;
     ul {
       font-size: 18px;
