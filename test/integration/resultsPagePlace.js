@@ -134,7 +134,7 @@ describe('The place results page', () => {
         expect($('.results__header--none').text()).to.be.equal(`We can't find '${noResultsTerm}'`);
         expect($('.results__none-content').text()).to
           .contain('If the place you searched for is in England, you could:');
-        expect($('.results__none-content').text()).to
+        expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();

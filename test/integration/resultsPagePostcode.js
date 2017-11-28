@@ -104,18 +104,10 @@ describe('The results page', () => {
     const outcodeFormatted = 'BT1';
 
     const postcodeResponse = getSampleResponse('postcodesio-responses/bt1.json');
-    const latitude = JSON.parse(postcodeResponse).result.latitude;
-    const longitude = JSON.parse(postcodeResponse).result.longitude;
-    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
     nock('https://api.postcodes.io')
       .get(`/outcodes/${outcodeFormatted}`)
       .times(1)
       .reply(200, postcodeResponse);
-
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
-      .times(1)
-      .reply(200, noResultsResponse);
 
     chai.request(server)
       .get(resultsRoute)
@@ -127,7 +119,7 @@ describe('The results page', () => {
         expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
-        expect($('.results__none-content').text()).to
+        expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BT1 - NHS.UK');
@@ -197,7 +189,7 @@ describe('The results page', () => {
           .be.equal(`We can't find any pharmacies near ${outcode}`);
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
-        expect($('.results__none-content').text()).to
+        expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('.breadcrumb li').length).to.equal(4);
@@ -330,15 +322,15 @@ describe('The results page error handling', () => {
   });
 
   it('it should handle the pharmacy service being unavailable with an error message', (done) => {
-    const badOutcode = 'G51';
-    const badResponse = getSampleResponse('postcodesio-responses/G51.json');
-    const latitude = JSON.parse(badResponse).result.latitude;
-    const longitude = JSON.parse(badResponse).result.longitude;
+    const outcode = 'BH1';
+    const postcodesResponse = getSampleResponse('postcodesio-responses/bh1.json');
+    const latitude = JSON.parse(postcodesResponse).result.latitude;
+    const longitude = JSON.parse(postcodesResponse).result.longitude;
 
     nock('https://api.postcodes.io')
-      .get(`/outcodes/${badOutcode}`)
+      .get(`/outcodes/${outcode}`)
       .times(1)
-      .reply(200, badResponse);
+      .reply(200, postcodesResponse);
 
     nock(process.env.API_BASE_URL)
       .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
@@ -346,7 +338,7 @@ describe('The results page error handling', () => {
 
     chai.request(server)
       .get(resultsRoute)
-      .query({ location: badOutcode })
+      .query({ location: outcode })
       .end((err, res) => {
         expect(err).to.not.be.equal(null);
         expect(res).to.have.status(500);

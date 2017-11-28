@@ -3,6 +3,9 @@
   "result": {
     "outcode": "BH1",
     "longitude": -1.86100597628681,
-    "latitude": 50.7248817071575
+    "latitude": 50.7248817071575,
+    "country": [
+      "England"
+    ]
   }
 }

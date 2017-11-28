@@ -5,8 +5,8 @@
       <h2 class="results__header results__header--none">{% block resultsHeader %}{% endblock %}</h2>
       <div class="results__none-content">
         {% block reasonForMessage %}
-        {% if searchType === 'place' %}
-        <p>{{ getCountryMessage() }} If the place you searched for is in England, you could:
+        {% if searchType === 'place' and hasNoCountries()%}
+        <p>If the place you searched for is in England, you could:
         <ul>
           <li>check your spelling and try again</li>
           <li>try a different place name</li>
@@ -14,14 +14,13 @@
         <p><a href="{{ SITE_ROOT }}/">Back to find a pharmacy</a></p>
       </p>
       {% else %}
-        <p>{{ getCountryMessage() }} This service only provides information about pharmacies in England.</p>
+        <p>This service only provides information about pharmacies in England.</p>
       {% endif %}
-      <p>If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.</p>
+       {% if hasNoCountries()%}<p>If you need a pharmacy in Scotland, Wales, or Northern Ireland, you can use one of the following websites.</p>{% endif %}
       {% endblock %}
-        <p><a href="http://www.nhs24.com/findlocal/">Find pharmacies in Scotland on the NHS 24 website</a>.</p>
-        <p><a href="http://www.nhsdirect.wales.nhs.uk/localservices/searchlocalservices.aspx?s=Pharmacy">Find pharmacies in Wales on the NHS Direct Wales website</a>.</p>
-        <p><a href="http://servicefinder.hscni.net">Find pharmacies in Northern Ireland on the Health and Social Care Online website</a>.</p>
-        <p><a href="https://www.gov.im/categories/health-and-wellbeing/pharmacy">Find pharmacies on the Isle of Man government website</a>.</p>
+        {% if isCountry('Scotland') %}<p><a href="http://www.nhs24.com/findlocal/">Find pharmacies in Scotland on the NHS 24 website</a>.</p>{% endif %}
+        {% if isCountry('Wales') %}<p><a href="http://www.nhsdirect.wales.nhs.uk/localservices/searchlocalservices.aspx?s=Pharmacy">Find pharmacies in Wales on the NHS Direct Wales website</a>.</p>{% endif %}
+        {% if isCountry('Northern Ireland') %}<p><a href="http://servicefinder.hscni.net">Find pharmacies in Northern Ireland on the Health and Social Care Online website</a>.</p>{% endif %}
       </div>
     </div>
   </div>

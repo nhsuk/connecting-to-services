@@ -2,22 +2,22 @@ const routeHelper = require('./routeHelper');
 const skipLatLongLookup = require('./skipLatLongLookup');
 const isPostcode = require('../lib/isPostcode');
 const messages = require('../lib/messages');
-const englishPostcodeValidator = require('../lib/englishPostcodeValidator');
+const postcodeValidator = require('../lib/postcodeValidator');
 const performPlaceSearch = require('./performPlaceSearch');
 const stringUtils = require('../lib/stringUtils');
 
-function validateEnglishPostcode(req, res, next) {
+function validatePostcode(req, res, next) {
   const location = res.locals.location;
-  const validationResult = englishPostcodeValidator(location);
+  const validationResult = postcodeValidator(location);
   res.locals.location = validationResult.alteredLocation;
   if (validationResult.errorMessage) {
-    routeHelper.renderFindHelpPage(req, res, 'Non-English postcode', validationResult.errorMessage);
+    routeHelper.renderFindHelpPage(req, res, 'Invalid postcode', validationResult.errorMessage);
   } else {
     next();
   }
 }
 
-function validatePlaceLocation(req, res, next) {
+function validatePlace(req, res, next) {
   const safeString = stringUtils.removeNonAlphanumericAndDoubleSpaces(res.locals.location);
   if (safeString) {
     res.locals.location = safeString;
@@ -36,9 +36,9 @@ function validateLocation(req, res, next) {
     if (!res.locals.location) {
       routeHelper.renderFindHelpPage(req, res, 'No location entered', messages.emptyPostcodeMessage());
     } else if (!isPostcode(res.locals.location)) {
-      validatePlaceLocation(req, res, next);
+      validatePlace(req, res, next);
     } else {
-      validateEnglishPostcode(req, res, next);
+      validatePostcode(req, res, next);
     }
   }
 }

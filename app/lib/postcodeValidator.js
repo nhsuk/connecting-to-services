@@ -2,7 +2,7 @@ const Postcode = require('postcode');
 const messages = require('./messages');
 const stringUtils = require('./stringUtils');
 
-function englishPostcodeValidator(location) {
+function postcodeValidator(location) {
   let errorMessage = null;
   let locationToReturn = location;
   const locationWithoutSpaces = stringUtils.removeNonAlphanumericAndWhitespace(locationToReturn);
@@ -23,4 +23,4 @@ function englishPostcodeValidator(location) {
   };
 }
 
-module.exports = englishPostcodeValidator;
+module.exports = postcodeValidator;

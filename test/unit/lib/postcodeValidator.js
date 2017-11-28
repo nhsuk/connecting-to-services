@@ -1,5 +1,5 @@
 const chai = require('chai');
-const englishPostcodeValidator = require('../../../app/lib/englishPostcodeValidator');
+const postcodeValidator = require('../../../app/lib/postcodeValidator');
 const messages = require('../../../app/lib/messages');
 const Postcode = require('postcode');
 
@@ -12,7 +12,7 @@ describe('Location validation', () => {
     it('should return an errorMessage for an invalid postcode', () => {
       const expectedErrorMessage = messages.invalidPostcodeMessage(invalidPostcode);
 
-      const result = englishPostcodeValidator(invalidPostcode);
+      const result = postcodeValidator(invalidPostcode);
 
       expect(result.errorMessage)
         .to.be
@@ -20,13 +20,13 @@ describe('Location validation', () => {
     });
 
     it('should return the input', () => {
-      const result = englishPostcodeValidator(invalidPostcode);
+      const result = postcodeValidator(invalidPostcode);
 
       expect(result.alteredLocation).to.be.equal(invalidPostcode);
     });
 
     it('should return an object with expected properties', () => {
-      const result = englishPostcodeValidator(invalidPostcode);
+      const result = postcodeValidator(invalidPostcode);
 
       expect(result).to.be.an('object');
       expect(result).to.have.property('alteredLocation');
@@ -40,7 +40,7 @@ describe('Location validation', () => {
         const outcodeNeedsTrimming = 'ab1';
         const trimmedOutcode = 'AB1';
 
-        const result = englishPostcodeValidator(outcodeNeedsTrimming);
+        const result = postcodeValidator(outcodeNeedsTrimming);
 
         expect(result.alteredLocation).to.be.equal(trimmedOutcode);
         expect(result.errorMessage).to.be.null;
@@ -49,7 +49,7 @@ describe('Location validation', () => {
       it('should pass validation with a valid outcode', () => {
         const outcode = 'AB12';
 
-        const result = englishPostcodeValidator(outcode);
+        const result = postcodeValidator(outcode);
 
         expect(result.alteredLocation).to.be.equal(outcode);
         expect(result.errorMessage).to.be.null;
@@ -58,7 +58,7 @@ describe('Location validation', () => {
       it('should pass validation for a valid outcode with extra spaces', () => {
         const outcode = ' AB  12 ';
 
-        const result = englishPostcodeValidator(outcode);
+        const result = postcodeValidator(outcode);
 
         expect(result.alteredLocation).to.be.equal('AB12');
         expect(result.errorMessage).to.be.null;
@@ -67,7 +67,7 @@ describe('Location validation', () => {
 
     describe('for postcode', () => {
       const validPostcode = 'ab123cd';
-      const result = englishPostcodeValidator(validPostcode);
+      const result = postcodeValidator(validPostcode);
       const formattedPostcode = new Postcode(validPostcode).normalise();
 
       it('should pass validation and return a formatted postcode with a valid full postcode', () => {

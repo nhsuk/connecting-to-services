@@ -3,6 +3,9 @@
   "result": {
     "postcode": "BA400AD",
     "longitude": 181,
-    "latitude": 91
+    "latitude": 91,
+    "country": [
+      "England"
+    ]
   }
 }
