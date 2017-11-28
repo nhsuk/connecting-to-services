@@ -3,6 +3,7 @@
 - Move 'none' option out of disambiguation place list
 - Move 'back' option out of list
 - Update npm dependencies
+- Display actual search term when no matches in results.
 
 0.20.0 / 2017-11-28
 ===================
