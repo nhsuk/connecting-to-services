@@ -26,6 +26,7 @@ USER root
 RUN find /code -user 0 -print0 | xargs -0 chown $USERNAME:$USERNAME
 USER $USERNAME
 
+RUN [ "yarn", "build-header" ]
 RUN [ "yarn", "brunch-build" ]
 
 # RUN APP DIRECTLY TO AVOID SPAWNING SUBPROCESSES IN DOCKER
