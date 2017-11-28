@@ -117,10 +117,11 @@ describe('The place results page', () => {
       });
   });
 
-  it('should return no results page for unknown place search', (done) => {
-    const noResultsTerm = 'noresults';
+  it('should return no results page with exact term displayed for unknown place search', (done) => {
+    const noResultsTerm = '@noresults@';
+    const noResultsTermClean = 'noresults';
     nock('https://api.postcodes.io')
-      .get(`/places?q=${noResultsTerm}&limit=100`)
+      .get(`/places?q=${noResultsTermClean}&limit=100`)
       .times(1)
       .reply(200, { status: 200, result: [] });
 
