@@ -1,7 +1,8 @@
-0.19.1 / 2017-11-28
+0.20.0 / 2017-11-28
 ===================
 - Fix map link for `your location` searches
 - Display correct search field label when no postcode result
+- New transitional style header and footer added
 
 0.19.0 / 2017-11-23
 ===================
