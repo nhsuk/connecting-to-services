@@ -15,6 +15,12 @@ const resultsRoute = `${constants.SITE_ROOT}/results`;
 const numberOfOpenResults = constants.numberOfOpenResults;
 const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
+function expectSearchAgainPage($) {
+  expect($('.error-summary-heading').text())
+    .to.contain('You must enter a town, city or postcode to find a pharmacy.');
+  expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
+}
+
 describe('The place results page', () => {
   it('should return list of pharmacies for unique place search', (done) => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
@@ -100,11 +106,6 @@ describe('The place results page', () => {
       });
   });
 
-  function expectSearchAgainPage($) {
-    expect($('.error-summary-heading').text())
-      .to.contain('You must enter a town, city or postcode to find a pharmacy.');
-  }
-
   it('should return search page for empty search', (done) => {
     chai.request(server)
       .get(resultsRoute)
@@ -114,7 +115,6 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'\' - NHS.UK');
-
         done();
       });
   });
@@ -151,7 +151,6 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
-
         done();
       });
   });
