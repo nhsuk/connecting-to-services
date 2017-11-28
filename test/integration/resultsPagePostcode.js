@@ -59,8 +59,6 @@ describe('The results page', () => {
           expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
         });
 
-        expect($('.link-back').text()).to.equal('Back to find a pharmacy');
-        expect($('.link-back').attr('href')).to.equal(`${constants.SITE_ROOT}/`);
         expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
         done();
       });

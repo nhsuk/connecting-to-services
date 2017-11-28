@@ -60,10 +60,10 @@ module.exports = (app, config) => {
         styleSrc: [
           '\'self\'',
           '\'unsafe-inline\'',
-          'assets.nhs.uk',
+          '*.nhs.uk',
         ],
         fontSrc: [
-          'assets.nhs.uk',
+          '*.nhs.uk',
         ],
         connectSrc: [
           '\'self\'',

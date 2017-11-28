@@ -6,11 +6,21 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
+{% block breadcrumbItems %}
+  {% if openServices.length === 0 and nearbyServices.length === 0 %}
+  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
+  <li class="breadcrumb__last">No results</li>
+  {% elif openServices.length > 0 %}
+  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
+  <li class="breadcrumb__last">Results</li>
+  {% endif %}
+{% endblock %}
+
 {% block content %}
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
     {% include "includes/no-pharmacy-results.nunjucks" %}
   {% elif openServices.length > 0 %}
-<a href="{{ SITE_ROOT }}/" class="link-back">Back to find a pharmacy</a>
+
 <div class="grid-row">
   <h1 class="sr-only">Search results</h1>
     <ol class="results">

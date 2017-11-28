@@ -62,17 +62,18 @@
 
     {% block banner %}{% endblock %}
 
-    <header role="banner">
-      <div class="global-header">
-        <div class="global-header__inner">
-          <a href="/" class="global-header__link" title="Go to the NHS.UK homepage">
-            <img src="{{ SITE_ROOT }}/images/logotype-nhs-mono.png" alt="">
-          </a>
-        </div>
-      </div>
-    </header>
+    {% include "includes/header.nunjucks" %}
 
     <main id="content" role="main" class="util-nofocus">
+      <div class="breadcrumb">
+        <ol>
+          <li><a href="http://www.nhs.uk">Home</a></li>
+          <li><a href="https://www.nhs.uk/service-search">Services near you</a></li>
+          {% block breadcrumbItems %}
+            <li class="breadcrumb__last">Find a pharmacy</li>
+          {% endblock %}
+        </ol>
+      </div>
       {% block article %}
       <div class="page-section">
         {% block pageSection %}
@@ -83,7 +84,7 @@
       {% endblock %}
     </main>
 
-    <footer role="contentinfo">
+    <footer role="contentinfo" class="footer">
       {% include "includes/footer.nunjucks" %}
     </footer>
 
