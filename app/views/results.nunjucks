@@ -9,7 +9,7 @@
 {% block breadcrumbItems %}
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
   <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
-  <li class="breadcrumb__last">Results</li>
+  <li class="breadcrumb__last">No results</li>
   {% elif openServices.length > 0 %}
   <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
   <li class="breadcrumb__last">Results</li>
