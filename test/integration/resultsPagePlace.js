@@ -114,7 +114,7 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'\' - NHS.UK');
-
+        expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
         done();
       });
   });
@@ -151,7 +151,7 @@ describe('The place results page', () => {
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
-
+        expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
         done();
       });
   });
