@@ -13,15 +13,18 @@ ignore:
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: Not user facing
         expires: '2017-11-30T11:49:48.021Z'
+      brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: Run during build
+        expires: '2017-12-29T11:40:04.430Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: No upgrade path
-        expires: '2017-12-09T09:33:33.056Z'
+        expires: '2017-12-29T11:40:04.430Z'
     - brunch > debug:
-        reason: Not user facing
-        expires: '2017-12-09T09:33:33.057Z'
+        reason: No upgrade path
+        expires: '2017-12-29T11:40:04.430Z'
     - brunch > since-app-start > debug:
-        reason: Not user facing
-        expires: '2017-12-09T09:33:33.057Z'
+        reason: No upgrade path
+        expires: '2017-12-29T11:40:04.430Z'
     - node-pre-gyp > tar-pack > debug:
         reason: Not user facing
         expires: '2017-12-09T09:33:33.057Z'
@@ -32,9 +35,12 @@ ignore:
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: Not user facing
         expires: '2017-11-30T11:49:48.021Z'
+      brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: Run during build
+        expires: '2017-12-29T11:40:04.430Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: No upgrade path
-        expires: '2017-12-09T09:33:33.057Z'
+        expires: '2017-12-29T11:40:04.430Z'
     - node-pre-gyp > request > tough-cookie:
         reason: Not user facing
         expires: '2017-12-09T09:33:33.057Z'
@@ -43,17 +49,21 @@ ignore:
         expires: '2017-12-09T09:33:33.056Z'
   'npm:ms:20170412':
     - brunch > debug > ms:
-        reason: Not user facing
-        expires: '2017-12-09T09:33:33.057Z'
+        reason: No upgrade path
+        expires: '2017-12-29T11:40:04.430Z'
     - brunch > since-app-start > debug > ms:
-        reason: Not user facing
-        expires: '2017-12-09T09:33:33.057Z'
+        reason: No upgrade path
+        expires: '2017-12-29T11:40:04.430Z'
   'npm:growl:20160721':
     - brunch > deppack > loggy > growl:
-        reason: Not user facing
-        expires: '2017-12-09T09:33:33.057Z'
+        reason: No upgrade path
+        expires: '2017-12-29T11:40:04.430Z'
   'npm:tunnel-agent:20170305':
     - node-sass > request > tunnel-agent:
-        reason: Ignore as no patch available
-        expires: '2017-12-20T11:59:37.194Z'
+        reason: Run during build
+        expires: '2017-12-29T11:40:04.430Z'
+  'npm:moment:20170905':
+    - nhsuk-bunyan-logger > bunyan > moment:
+        reason: No upgrade path
+        expires: '2017-12-29T11:40:04.430Z'
 patch: {}
