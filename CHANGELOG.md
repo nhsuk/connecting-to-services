@@ -1,3 +1,7 @@
+0.20.1 / TBD
+===================
+- Move 'none' option out of disambiguation place list
+
 0.20.0 / 2017-11-28
 ===================
 - Fix map link for `your location` searches
