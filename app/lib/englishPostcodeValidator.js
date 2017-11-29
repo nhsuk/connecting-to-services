@@ -14,8 +14,7 @@ function englishPostcodeValidator(location) {
   } else if (Postcode.validOutcode(locationWithoutSpaces)) {
     locationToReturn = locationWithoutSpaces.toLocaleUpperCase();
   } else {
-    const sanitisedlocation = stringUtils.removeNonAlphanumericAndDoubleSpaces(locationToReturn);
-    errorMessage = messages.invalidPostcodeMessage(sanitisedlocation);
+    errorMessage = messages.invalidPostcodeMessage(location);
   }
 
   return {

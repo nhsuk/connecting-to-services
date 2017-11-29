@@ -95,15 +95,16 @@ describe('The results page', () => {
       });
   });
 
-  it('should display no pharmacies message for non-english postcodes', (done) => {
-    const outcode = 'BT1';
+  it('should display no pharmacies and formatted postcode message for non-english postcodes', (done) => {
+    const outcode = 'bt1';
+    const outcodeFormatted = 'BT1';
 
     const postcodeResponse = getSampleResponse('postcodesio-responses/bt1.json');
     const latitude = JSON.parse(postcodeResponse).result.latitude;
     const longitude = JSON.parse(postcodeResponse).result.longitude;
     const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
     nock('https://api.postcodes.io')
-      .get(`/outcodes/${outcode}`)
+      .get(`/outcodes/${outcodeFormatted}`)
       .times(1)
       .reply(200, postcodeResponse);
 
@@ -119,7 +120,7 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcode}`);
+        expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to
@@ -200,25 +201,26 @@ describe('The results page error handling', () => {
   const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
 
   it(
-    'should lookup a valid but unknown postcode and return an error message',
+    'should lookup a valid but unknown postcode and return an error message with postcode in uppercase',
     (done) => {
-      const invalidPostcodePassingRegex = 'LS0';
+      const unknownPostcode = 'ls0';
+      const unknownPostcodeUppercase = 'LS0';
 
       nock('https://api.postcodes.io')
-        .get(`/outcodes/${invalidPostcodePassingRegex}`)
+        .get(`/outcodes/${unknownPostcodeUppercase}`)
         .times(1)
         .reply(404, notFoundResponse);
 
       chai.request(server)
         .get(resultsRoute)
-        .query({ location: invalidPostcodePassingRegex })
+        .query({ location: unknownPostcode })
         .end((err, res) => {
           iExpect.htmlWith200Status(err, res);
           const $ = cheerio.load(res.text);
 
           expect($('.error-summary-heading').text()).to
-            .contain(messages.invalidPostcodeMessage(invalidPostcodePassingRegex));
-          expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${invalidPostcodePassingRegex}' - NHS.UK`);
+            .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
+          expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcode}' - NHS.UK`);
           expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
           done();
         });
