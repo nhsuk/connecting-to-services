@@ -10,8 +10,8 @@
         <ul>
           <li>check your spelling and try again</li>
           <li>try a different place name</li>
-          <li><a href="{{ SITE_ROOT }}/">Back to find a pharmacy</a></li>
         </ul>
+        <p><a href="{{ SITE_ROOT }}/">Back to find a pharmacy</a></p>
       </p>
       {% else %}
         <p>This service only provides information about pharmacies in England.</p>
