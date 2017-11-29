@@ -1,3 +1,9 @@
+0.20.1 / 2017-11-30
+===================
+- Move 'none' option out of disambiguation place list
+- Move 'back' option out of list
+- Update npm dependencies
+
 0.20.0 / 2017-11-28
 ===================
 - Fix map link for `your location` searches
