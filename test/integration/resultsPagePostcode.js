@@ -60,6 +60,8 @@ describe('The results page', () => {
         });
 
         expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+        expect($('.breadcrumb li').length).to.equal(4);
+        expect($('.breadcrumb__last').text()).to.equal('Results');
         done();
       });
   });
@@ -91,6 +93,8 @@ describe('The results page', () => {
         expect($('.results__header--none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BA1 - NHS.UK');
+        expect($('.breadcrumb li').length).to.equal(4);
+        expect($('.breadcrumb__last').text()).to.equal('Results');
         done();
       });
   });
@@ -127,6 +131,8 @@ describe('The results page', () => {
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BT1 - NHS.UK');
+        expect($('.breadcrumb li').length).to.equal(4);
+        expect($('.breadcrumb__last').text()).to.equal('No results');
         done();
       });
   });
@@ -157,6 +163,8 @@ describe('The results page', () => {
 
         expect($('.results-none-nearby').text()).to.be.equal(`There are no other pharmacies within 20 miles of ${outcode}`);
         expect($('.results-none').length).to.be.equal(0);
+        expect($('.breadcrumb li').length).to.equal(4);
+        expect($('.breadcrumb__last').text()).to.equal('Results');
         done();
       });
   });
@@ -192,6 +200,8 @@ describe('The results page', () => {
         expect($('.results__none-content').text()).to
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('.breadcrumb li').length).to.equal(4);
+        expect($('.breadcrumb__last').text()).to.equal('No results');
         done();
       });
   });

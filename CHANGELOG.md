@@ -1,3 +1,7 @@
+0.20.2 / 2017-11-30
+===================
+- Fix no open results breadcrumbs
+
 0.20.1 / 2017-11-30
 ===================
 - Move 'none' option out of disambiguation place list
