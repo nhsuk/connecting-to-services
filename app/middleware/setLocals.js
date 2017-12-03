@@ -1,7 +1,9 @@
 const completeOriginalUrl = require('../lib/completeOriginalUrl');
 const backLinkUtils = require('../lib/backLinkUtils');
+const displayBankHolidayMessage = require('../lib/displayBankHolidayMessage');
 
 function fromRequest(req, res, next) {
+  res.locals.displayBankHolidayMessage = displayBankHolidayMessage();
   res.locals.req_location = req.query.location;
   res.locals.location = req.query.location;
   res.locals.locationLabel = 'Enter a town, city or postcode in England';
