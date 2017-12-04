@@ -8,7 +8,7 @@ describe('fullUrlUtils', () => {
   const mockReturnUrl = 'https://beta.nhs.uk/find-a-pharmacy/results?location=ls';
 
   describe('url', () => {
-    const reqMock = { protocol: 'https', get: host, originalUrl: '/find-a-pharmacy/results?location=ls' };
+    const reqMock = { protocol: 'https://', get: host, originalUrl: '/find-a-pharmacy/results?location=ls' };
     it('should return the current URL', () => {
       const url = fullUrlUtils(reqMock).url;
 
