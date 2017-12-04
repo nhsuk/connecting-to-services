@@ -12,7 +12,6 @@
 <a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
 {% if service.contacts.telephoneNumber %}
 <p class="results__phone">Telephone:
-  <span>{{ service.contacts.telephoneNumber }}</span> 
   <a href="tel:{{ service.contacts.telephoneNumber }}">{{ service.contacts.telephoneNumber }}</a>
 </p>
 {% endif %}

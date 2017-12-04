@@ -27,20 +27,6 @@ h1 {
   }
 }
 
-.results__phone {
-  > span {
-    display: none;
-    @include media(tablet) {
-      display:inline-block;
-    }
-  }
-  a[href^="tel:"] {
-    @include media(tablet) {
-      display:none;
-    }
-  }
-}
-
 .local-header,
 .notification-banner {
   &--question,
