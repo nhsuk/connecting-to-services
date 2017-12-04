@@ -38,6 +38,7 @@ function sortPlace(places) {
            compare(a.outcode, b.outcode);
   });
 }
+
 function getCountries(places) {
   return [...new Set(places.map(place => place.country))].sort(compare);
 }
