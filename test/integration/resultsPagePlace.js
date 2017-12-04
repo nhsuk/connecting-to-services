@@ -117,7 +117,7 @@ describe('The place results page', () => {
       });
   });
 
-  it('should return no results page with exact term displayed for unknown place search', (done) => {
+  it('should return no results page with exact term displayed, and links for Scotland, Wales and NI for unknown place search', (done) => {
     const noResultsTerm = '@noresults@';
     const noResultsTermClean = 'noresults';
     nock('https://api.postcodes.io')
@@ -136,6 +136,9 @@ describe('The place results page', () => {
           .contain('If the place you searched for is in England, you could:');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+        expect($('.results__none-content p').text()).to.contain('Find pharmacies in Scotland on the NHS 24 website');
+        expect($('.results__none-content p').text()).to.contain('Find pharmacies in Wales on the NHS Direct Wales website');
+        expect($('.results__none-content p').text()).to.contain('Find pharmacies in Northern Ireland on the Health and Social Care website');
         expect($('.results-none-nearby').length).to.be.equal(0);
         done();
       });
