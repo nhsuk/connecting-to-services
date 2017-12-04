@@ -18,6 +18,10 @@ const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 const yourLocation = constants.yourLocation;
 
 describe('The bank holiday alert messaging', () => {
+  after('clean nock', () => {
+    nock.cleanAll();
+  });
+
   afterEach('reset DATETIME', () => {
     process.env.DATETIME = null;
   });

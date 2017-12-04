@@ -17,6 +17,10 @@ const numberOfOpenResults = constants.numberOfOpenResults;
 const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
 describe('The results page', () => {
+  after('clean nock', () => {
+    nock.cleanAll();
+  });
+
   it('should return 1 open result and 3 nearby results, by default', (done) => {
     const ls27ue = 'LS2 7UE';
     const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
@@ -235,6 +239,10 @@ describe('The results page', () => {
 });
 
 describe('The results page error handling', () => {
+  after('clean nock', () => {
+    nock.cleanAll();
+  });
+
   const notFoundResponse = getSampleResponse('postcodesio-responses/404.json');
 
   it(
@@ -390,6 +398,10 @@ describe('The results page error handling', () => {
 });
 
 describe('Return to Choices banner', () => {
+  after('clean nock', () => {
+    nock.cleanAll();
+  });
+
   it('should have a link back to the Choices pharmacy finder', (done) => {
     chai.request(server)
       .get(resultsRoute)
