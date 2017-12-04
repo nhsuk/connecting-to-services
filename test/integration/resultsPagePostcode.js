@@ -99,7 +99,7 @@ describe('The results page', () => {
       });
   });
 
-  it('should display no pharmacies and formatted postcode message for non-english postcodes', (done) => {
+  it('should display no pharmacies, formatted postcode, and country specific message for known non-english postcodes', (done) => {
     const outcode = 'bt1';
     const outcodeFormatted = 'BT1';
 
@@ -117,12 +117,47 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+        expect($('.results__none-content p').length).to.be.equal(2);
+        expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Northern Ireland on the Health and Social Care website');
+
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BT1 - NHS.UK');
+        expect($('.breadcrumb li').length).to.equal(4);
+        expect($('.breadcrumb__last').text()).to.equal('No results');
+        done();
+      });
+  });
+
+  it('should display no pharmacies, formatted postcode, and country specific message for postcode for unknown country', (done) => {
+    const outcode = 'im1';
+    const outcodeFormatted = 'IM1';
+
+    const postcodeResponse = getSampleResponse('postcodesio-responses/im1.json');
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcodeFormatted}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+        expect($('.results__none-content p').length).to.be.equal(1);
+
+        expect($('.results__none-content').text()).to
+          .contain('This service only provides information about pharmacies in England.');
+        expect($('.results__none-content').text()).to.not
+          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+        expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('title').text()).to.equal('Pharmacies near IM1 - NHS.UK');
         expect($('.breadcrumb li').length).to.equal(4);
         expect($('.breadcrumb__last').text()).to.equal('No results');
         done();

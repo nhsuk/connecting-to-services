@@ -82,6 +82,7 @@ describe(`The ${yourLocation} results page`, () => {
 
         expect($('.results__header--none').text()).to.be.equal('We can\'t find any pharmacies near your location');
         expect($('.results__none-content p').length).to.be.equal(2);
+        expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Scotland on the NHS 24 website');
         done();
       });
   });

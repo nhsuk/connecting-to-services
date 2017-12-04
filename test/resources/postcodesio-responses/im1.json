@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "result": {
+    "outcode": "IM1",
+    "longitude": null,
+    "latitude": null,
+    "northings": 0,
+    "eastings": 0,
+    "admin_district": [],
+    "parish": [
+      "(pseudo) Isle of Man"
+    ],
+    "admin_county": [],
+    "admin_ward": [],
+    "country": [
+      "Isle of Man"
+    ]
+  }
+}
