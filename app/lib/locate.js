@@ -1,4 +1,7 @@
 const PostcodesIO = require('postcodesio-client');
+const placeSearches = require('../lib/promCounters').placeSearches;
+const postcodeSearches = require('../lib/promCounters').postcodeSearches;
+const myLocationSearches = require('./promCounters').myLocationSearches;
 
 // monkey patch postcodesIO to add places method
 PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit, callback) {
@@ -28,15 +31,19 @@ function addCountries(result) {
 
 async function byPostcode(postcode) {
   const result = await postcodes.lookup(postcode);
+  postcodeSearches.inc(1);
   return addCountries(result);
 }
 
-function byPlace(place, limit = 10) {
-  return postcodes.lookupPlaces(place, limit);
+async function byPlace(place, limit = 10) {
+  const result = await postcodes.lookupPlaces(place, limit);
+  placeSearches.inc(1);
+  return result;
 }
 
 async function byLatLon(lat, lon) {
   const result = await postcodes.reverseGeocode(lat, lon);
+  myLocationSearches.inc(1);
   return addCountries(result);
 }
 

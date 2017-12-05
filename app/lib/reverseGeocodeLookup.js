@@ -4,7 +4,6 @@ const promCounters = require('./promCounters');
 const routeHelper = require('../middleware/routeHelper');
 
 async function reverseGeocode(req, res, next) {
-  promCounters.myLocationSearches.inc(1);
   try {
     const result =
       await locate.byLatLon(req.query.latitude, req.query.longitude);

@@ -4,7 +4,6 @@ const placeHelper = require('../lib/placeHelper');
 const getAddress = require('../lib/getAddress');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
-const placeSearches = require('../lib/promCounters').placeSearches;
 const placeDisambiguationViews = require('../lib/promCounters').placeDisambiguationViews;
 const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsViews;
 
@@ -39,7 +38,6 @@ async function getPlaces(req, res, next) {
   try {
     const allPlaces = await locate.byPlace(location, 100);
     res.locals.countries = placeHelper.getCountries(allPlaces);
-    placeSearches.inc(1);
     const places = placeHelper.sortPlace(allPlaces.filter(englandFilter)).slice(0, maxResults);
     logZeroResults(places, location);
     if (places.length === 1) {
