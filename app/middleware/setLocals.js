@@ -9,8 +9,8 @@ function fromRequest(req, res, next) {
     latitude: req.query.latitude,
     longitude: req.query.longitude,
   };
-  const backLink = backLinkUtils(req);
   res.locals.completeOriginalUrl = completeOriginalUrl(req);
+  const backLink = backLinkUtils(req);
   res.locals.backLink = {
     href: backLink.url,
     text: backLink.text,
