@@ -80,8 +80,9 @@ describe(`The ${yourLocation} results page`, () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
-        expect($('.results__none-content p').length).to.be.equal(5);
+        expect($('.results__header--none').text()).to.be.equal('We can\'t find any pharmacies near your location');
+        expect($('.results__none-content p').length).to.be.equal(2);
+        expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Scotland on the NHS 24 website');
         done();
       });
   });
@@ -106,12 +107,12 @@ describe(`The ${yourLocation} results page`, () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal('Your location is not in England');
+        expect($('.results__header--none').text()).to.be.equal('We can\'t find any pharmacies near your location');
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results__none-content p').length).to.be.equal(5);
+        expect($('.results__none-content p').length).to.be.equal(4);
         done();
       });
   });

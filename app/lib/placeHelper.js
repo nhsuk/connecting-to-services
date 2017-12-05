@@ -19,10 +19,10 @@ function getOrder(type) {
 }
 
 function compare(first, second) {
-  if (first > second) {
+  if (first < second) {
     return -1;
   }
-  if (first < second) {
+  if (first > second) {
     return 1;
   }
   return 0;
@@ -32,11 +32,18 @@ function sortPlace(places) {
   return places.sort((a, b) => {
     const first = getOrder(a.local_type);
     const second = getOrder(b.local_type);
-    return compare(first, second) ||
-           compare(b.name_1, a.name_1) ||
-           compare(b.county_unitary || b.region, a.county_unitary || a.region) ||
-           compare(b.outcode, a.outcode);
+    return compare(second, first) ||
+           compare(a.name_1, b.name_1) ||
+           compare(a.county_unitary || a.region, b.county_unitary || b.region) ||
+           compare(a.outcode, b.outcode);
   });
 }
 
-module.exports = sortPlace;
+function getCountries(places) {
+  return [...new Set(places.map(place => place.country))].sort(compare);
+}
+
+module.exports = {
+  sortPlace,
+  getCountries,
+};

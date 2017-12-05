@@ -1,10 +1,9 @@
 const log = require('../lib/logger');
 const locate = require('../lib/locate');
-const sortPlace = require('../lib/sortPlace');
+const placeHelper = require('../lib/placeHelper');
 const getAddress = require('../lib/getAddress');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
-const placeSearches = require('../lib/promCounters').placeSearches;
 const placeDisambiguationViews = require('../lib/promCounters').placeDisambiguationViews;
 const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsViews;
 
@@ -37,9 +36,9 @@ function getCoordinates(place) {
 async function getPlaces(req, res, next) {
   const location = res.locals.location;
   try {
-    let places = await locate.byPlace(location, 100);
-    placeSearches.inc(1);
-    places = sortPlace(places.filter(englandFilter)).slice(0, maxResults);
+    const allPlaces = await locate.byPlace(location, 100);
+    res.locals.countries = placeHelper.getCountries(allPlaces);
+    const places = placeHelper.sortPlace(allPlaces.filter(englandFilter)).slice(0, maxResults);
     logZeroResults(places, location);
     if (places.length === 1) {
       res.locals.coordinates = getCoordinates(places[0]);

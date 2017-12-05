@@ -1,4 +1,7 @@
 const PostcodesIO = require('postcodesio-client');
+const placeSearches = require('../lib/promCounters').placeSearches;
+const postcodeSearches = require('../lib/promCounters').postcodeSearches;
+const myLocationSearches = require('./promCounters').myLocationSearches;
 
 // monkey patch postcodesIO to add places method
 PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit, callback) {
@@ -9,16 +12,39 @@ PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit, callbac
 
 const postcodes = new PostcodesIO();
 
-function byPostcode(postcode) {
-  return postcodes.lookup(postcode);
+function asArray(value) {
+  if (value) {
+    return value.constructor === Array ? value : [value];
+  }
+  return [];
 }
 
-function byPlace(place, limit = 10) {
-  return postcodes.lookupPlaces(place, limit);
+function addCountries(result) {
+  // postcode lookups return country as single value but outcodes lookups
+  // return country as an array. Add countries to always hold them as an array
+  if (result) {
+    // eslint-disable-next-line no-param-reassign
+    result.countries = result && asArray(result.country);
+  }
+  return result;
 }
 
-function byLatLon(lat, lon) {
-  return postcodes.reverseGeocode(lat, lon);
+async function byPostcode(postcode) {
+  const result = await postcodes.lookup(postcode);
+  postcodeSearches.inc(1);
+  return addCountries(result);
+}
+
+async function byPlace(place, limit = 10) {
+  const result = await postcodes.lookupPlaces(place, limit);
+  placeSearches.inc(1);
+  return result;
+}
+
+async function byLatLon(lat, lon) {
+  const result = await postcodes.reverseGeocode(lat, lon);
+  myLocationSearches.inc(1);
+  return addCountries(result);
 }
 
 module.exports = {

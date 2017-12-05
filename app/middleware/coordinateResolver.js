@@ -36,6 +36,9 @@ function coordinateResolver(req, res, next) {
   if (res.locals.searchType === constants.yourLocationSearch) {
     reverseGeocode(req, res, next);
   } else if (skipLatLongLookup(res)) {
+    // lat long lookup is only skipped on links from the disambiguation page
+    // these will always be in England
+    res.locals.countries = ['England'];
     next();
   } else {
     postcodes.lookup(res, afterLookup);

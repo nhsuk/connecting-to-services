@@ -1,7 +1,6 @@
 const log = require('./logger');
 const locate = require('./locate');
 const messages = require('./messages');
-const postcodeSearches = require('../lib/promCounters').postcodeSearches;
 const zeroPostcodeResults = require('../lib/promCounters').zeroPostcodeResultsViews;
 
 async function lookup(res, next) {
@@ -9,13 +8,13 @@ async function lookup(res, next) {
   try {
     log.info({ postcodeLookupRequest: { location } }, 'postcode-lookup-start');
     const result = await locate.byPostcode(location);
-    postcodeSearches.inc(1);
     if (result) {
       log.info(`Postcode lookup success for ${location}`);
       res.locals.coordinates = {
         latitude: result.latitude,
         longitude: result.longitude,
       };
+      res.locals.countries = result.countries;
       next();
     } else {
       log.info(`Postcode lookup 404 for ${location}`);

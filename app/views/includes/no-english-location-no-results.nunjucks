@@ -1,5 +1,5 @@
 {% extends 'includes/no-results.nunjucks' %}
 
-{% block resultsHeader %}Your location is not in England{% endblock %}
+{% block resultsHeader %}We can't find any pharmacies near your location{% endblock %}
 
 {% block reasonForMessage %}<p>This service only provides information about pharmacies in England.</p>{% endblock %}

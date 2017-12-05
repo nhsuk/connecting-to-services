@@ -1,5 +1,5 @@
 const chai = require('chai');
-const sortPlace = require('../../../app/lib/sortPlace');
+const sortPlace = require('../../../app/lib/placeHelper').sortPlace;
 
 const expect = chai.expect;
 function createSuburb(name) {

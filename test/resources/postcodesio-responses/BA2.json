@@ -3,6 +3,9 @@
   "result": {
     "outcode": "BA3",
     "longitude": 3,
-    "latitude": 3
+    "latitude": 3,
+    "country": [
+      "England"
+    ]
   }
 }
