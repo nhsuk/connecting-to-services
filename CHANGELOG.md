@@ -1,3 +1,7 @@
+0.21.0 / 2017-12-07
+===================
+- Make telephone numbers clickable, using 'tel:'
+
 0.20.2 / 2017-11-30
 ===================
 - Fix no open results breadcrumbs
