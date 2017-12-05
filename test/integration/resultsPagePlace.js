@@ -21,6 +21,35 @@ function expectSearchAgainPage($) {
   expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
 }
 
+function expectMidsomerNortonResults($, location) {
+  expect($('.results__header--nearest').text())
+    .to.equal('Nearest open pharmacy to Midsomer Norton');
+
+  expect($('.results__header--nearby').text())
+    .to.equal('Other pharmacies nearby');
+
+  const openResults = $('.results__details-nearest .results__maplink');
+  expect(openResults.length).to.equal(1);
+
+  const nearbyResults = $('.results__item--nearby');
+  expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
+
+  const mapLinks = $('.results__maplink');
+  mapLinks.toArray().forEach((link) => {
+    expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(location)}`);
+  });
+
+  const ChoicesOverviewLinks = $('.overview a');
+  ChoicesOverviewLinks.toArray().forEach((link) => {
+    expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
+  });
+
+  const numberOfResults = constants.numberOfNearbyResultsToDisplay + numberOfOpenResults;
+  expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
+
+  expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
+}
+
 describe('The place results page', () => {
   it('should return list of pharmacies for unique place search', (done) => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
@@ -47,33 +76,7 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-
-        expect($('.results__header--nearest').text())
-          .to.equal('Nearest open pharmacy to Midsomer Norton');
-
-        expect($('.results__header--nearby').text())
-          .to.equal('Other pharmacies nearby');
-
-        const openResults = $('.results__details-nearest .results__maplink');
-        expect(openResults.length).to.equal(1);
-
-        const nearbyResults = $('.results__item--nearby');
-        expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
-
-        const mapLinks = $('.results__maplink');
-        mapLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(saddr)}`);
-        });
-
-        const ChoicesOverviewLinks = $('.overview a');
-        ChoicesOverviewLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
-        });
-
-        const numberOfResults = constants.numberOfNearbyResultsToDisplay + numberOfOpenResults;
-        expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
-
-        expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
+        expectMidsomerNortonResults($, saddr);
         done();
       });
   });
@@ -100,6 +103,27 @@ describe('The place results page', () => {
 
         expect($('title').text()).to.equal('Places disambiguation - NHS.UK');
 
+        done();
+      });
+  });
+
+  it('should return results page for link clicked from disambiguation page', (done) => {
+    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+    const location = 'Midsomer Norton, Bath and North East Somerset, BA3';
+    const latitude = 54;
+    const longitude = -1;
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(200, serviceApiResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location, latitude, longitude })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+        expectMidsomerNortonResults($, location);
         done();
       });
   });

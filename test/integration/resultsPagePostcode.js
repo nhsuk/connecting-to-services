@@ -132,7 +132,7 @@ describe('The results page', () => {
       });
   });
 
-  it('should display no pharmacies, and no onward journey for postcode not in England, Scotland, Wales or Norther Ireland', (done) => {
+  it('should display no pharmacies, and no onward journey for postcode not in England, Scotland, Wales or Northern Ireland', (done) => {
     const outcode = 'im1';
     const outcodeFormatted = 'IM1';
 

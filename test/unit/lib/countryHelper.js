@@ -18,7 +18,7 @@ describe('countryHelper', () => {
       expect(countryHelper.showCountry(['Scotland', countryToMatch], countryToMatch)).to.be.true;
     });
 
-    it('should return false when country to match is in countries array', () => {
+    it('should return false when country to match is not in countries array', () => {
       expect(countryHelper.showCountry(['Scotland'], countryToMatch)).to.be.false;
     });
   });
