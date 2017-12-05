@@ -1,3 +1,4 @@
+const completeOriginalUrl = require('../lib/completeOriginalUrl');
 const backLinkUtils = require('../lib/backLinkUtils');
 
 function fromRequest(req, res, next) {
@@ -8,6 +9,7 @@ function fromRequest(req, res, next) {
     latitude: req.query.latitude,
     longitude: req.query.longitude,
   };
+  res.locals.completeOriginalUrl = completeOriginalUrl(req);
   const backLink = backLinkUtils(req);
   res.locals.backLink = {
     href: backLink.url,

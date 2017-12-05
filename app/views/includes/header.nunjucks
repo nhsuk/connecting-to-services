@@ -41,8 +41,8 @@
         {% include "includes/header-items.nunjucks" %}
       </ul>
       <ul class="main-nav__account-menu account-menu">
-        <li><a href="#">Log in</a></li>
-        <li><a href="#">Create an account</a></li>
+        <li><a href="https://www.nhs.uk/Personalisation/Login.aspx">Log in</a></li>
+        <li><a href="https://www.nhs.uk/Personalisation/Registration.aspx?ReturnUrl={{completeOriginalUrl}}">Create an account</a></li>
       </ul>
     </div>
   </nav>
