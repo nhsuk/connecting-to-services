@@ -1,13 +1,9 @@
-const siteToReplace = 'http://site';
-const nhsukDomain = 'https://www.nhs.uk';
+const cleanUrl = require('./cleanUrl');
+
 const seperator = '';
 
-function getUrl(item) {
-  return item.URL.split(',')[0].replace(siteToReplace, nhsukDomain).replace(/ /g, '%20');
-}
-
 function getAnchor(item) {
-  return `<a href="${getUrl(item)}">${item.Title}</a>`;
+  return `<a href="${cleanUrl(item.URL)}">${item.Title}</a>`;
 }
 
 function getSubmenu(submenus) {
