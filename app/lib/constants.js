@@ -1,5 +1,6 @@
 module.exports = {
   SITE_ROOT: '/find-a-pharmacy',
+  ASSETS_URL: 'https://assets.nhs.uk',
   numberOfOpenResults: 1,
   numberOfNearbyResultsToRequest: 4,
   numberOfNearbyResultsToDisplay: 3,

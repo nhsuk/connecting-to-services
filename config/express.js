@@ -14,7 +14,8 @@ const errorCounter = require('../app/lib/promCounters').errorPageViews;
 module.exports = (app, config) => {
   // eslint-disable-next-line no-param-reassign
   app.locals.SITE_ROOT = constants.SITE_ROOT;
-
+  // eslint-disable-next-line no-param-reassign
+  app.locals.ASSETS_URL = constants.ASSETS_URL;
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 
@@ -56,6 +57,7 @@ module.exports = (app, config) => {
           '*.hotjar.com',
           '*.webtrends.com',
           '*.webtrendslive.com',
+          '*.nhs.uk',
         ],
         styleSrc: [
           '\'self\'',
