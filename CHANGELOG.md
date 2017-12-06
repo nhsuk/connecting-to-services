@@ -3,6 +3,7 @@
 - Improve non-English search experience
 - Make telephone numbers clickable, using 'tel:'
 - Use hosted images
+- Refactor headerItems
 
 0.20.2 / 2017-11-30
 ===================
