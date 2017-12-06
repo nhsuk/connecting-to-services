@@ -37,16 +37,16 @@
             <input type="submit" class="button" value="Search">
           </div>
         </div>
-        <div class="geo-locate" style="display:none">
-        <div class="geo-locate--error error" style="display:none">
-          <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
-        </div>
-        <div class="geo-locate--searching" style="display:none">
-          <p>We are searching for your location <img src="images/loading.gif" width="40px" heigt="40px"></p>
-        </div>
+        <div class="geo-locate">
+          <div class="geo-locate--error error">
+            <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
+          </div>
+          <div class="geo-locate--searching">
+            <p>We are searching for your location <img src="images/loading.gif" alt="" /></p>
+          </div>
           <p><a class="button button--secondary geo-locate--locate" href="#">Use your location</a></p>
         </div>
-        <div class="geo-locate--denied error" style="display:none">
+        <div class="geo-locate--denied error">
           <p>You have not allowed us to use your location. You can change this in your browser settings.</p>
         </div>
       </div>

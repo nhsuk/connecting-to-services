@@ -65,7 +65,7 @@
 
     {% include "includes/header.nunjucks" %}
 
-    <main id="content" role="main" class="util-nofocus">
+    <main id="content" class="util-nofocus">
       <div class="breadcrumb">
         <ol>
           <li><a href="http://www.nhs.uk">Home</a></li>
@@ -85,7 +85,7 @@
       {% endblock %}
     </main>
 
-    <footer role="contentinfo" class="footer">
+    <footer class="footer">
       {% include "includes/footer.nunjucks" %}
     </footer>
 

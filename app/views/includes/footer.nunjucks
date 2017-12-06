@@ -6,14 +6,14 @@
             <img class="footer__logo" src="{{ ASSETS_URL }}/images/nhs-logo.png" srcset="
                 {{ ASSETS_URL }}/images/nhs-logo.png 1x,
                 {{ ASSETS_URL }}/images/nhs-logo@2x.png 2x,
-                {{ ASSETS_URL }}/images/nhs-logo@3x.png 3x,"
+                {{ ASSETS_URL }}/images/nhs-logo@3x.png 3x"
+                alt=""
             />
           </a>
         </li>
         <li><a href="http://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
         <li><a href="http://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
         <li><a href="http://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
-      </ul>
       </ul>
     </div>
   </div>
