@@ -7,8 +7,9 @@
           src="{{ ASSETS_URL }}/images/choices-logo.png" srcset="
               {{ ASSETS_URL }}/images/choices-logo.png 1x,
               {{ ASSETS_URL }}/images/choices-logo@2x.png 2x,
-              {{ ASSETS_URL }}/images/choices-logo@3x.png 3x,"
+              {{ ASSETS_URL }}/images/choices-logo@3x.png 3x"
           class="nhs-choices-logo"
+          alt=""
         />
       </a>
       <span class="site-header__tagline">Your health, your choices</span>

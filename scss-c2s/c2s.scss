@@ -429,3 +429,18 @@ form {
 .local-header--question {
     padding: 0;
 }
+
+
+.geo-locate {
+  display:none;
+  > div {
+    display: none;
+    img {
+      height:40px;
+      width:40px;
+    }
+  }
+  &--denied {
+    display: none;
+  }
+}
