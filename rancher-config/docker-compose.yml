@@ -6,8 +6,8 @@ services:
     image: "nhsuk/connecting-to-services:${DOCKER_IMAGE_TAG}"
     environment:
       API_BASE_URL: 'http://nearby-services-api.nearby-services-api:3001'
+      HEADER_API_URL: '${HEADER_API_URL}'
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ID}
-      HEADER_API_URL: ${HEADER_API_URL}
       HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
       NODE_ENV: production
       WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}

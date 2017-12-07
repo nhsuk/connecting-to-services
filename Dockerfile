@@ -13,7 +13,8 @@ WORKDIR /code
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
-
+ARG HEADER_API_URL=${HEADER_API_URL}
+ENV HEADER_API_URL=${HEADER_API_URL}
 COPY yarn.lock package.json /code/
 
 RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile; else yarn install --pure-lockfile; fi
@@ -25,7 +26,8 @@ COPY . /code
 USER root
 RUN find /code -user 0 -print0 | xargs -0 chown $USERNAME:$USERNAME
 USER $USERNAME
-
+# FOLLOWING LINE DOES NOT WORK IN ARRAY SYNTAX
+RUN node headerItems $HEADER_API_URL
 RUN [ "yarn", "brunch-build" ]
 
 # RUN APP DIRECTLY TO AVOID SPAWNING SUBPROCESSES IN DOCKER

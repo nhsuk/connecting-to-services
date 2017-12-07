@@ -1,9 +1,13 @@
+const fs = require('fs');
 const chai = require('chai');
 const buildHeaderItems = require('../../../app/lib/header/buildHeaderItems');
-const cleanUrl = require('../../../app/lib/header/cleanUrl');
 const headerApiResponse = require('../../resources/headerApiResponse');
 
 const expect = chai.expect;
+
+function getExpectedHtml() {
+  return fs.readFileSync('./test/resources/headerItems.html').toString();
+}
 
 function createMenuItem(title, partUrl, submenus) {
   return {
@@ -12,31 +16,6 @@ function createMenuItem(title, partUrl, submenus) {
     Submenus: submenus
   };
 }
-
-describe('cleanUrl', () => {
-  it('should replace \'http://site\' with  \'https://www.nhs.uk\' and remove text after comma', () => {
-    const title = 'Health A-Z';
-    const partUrl = 'Conditions/Pages/hub.aspx';
-    const url = `http://site/${partUrl},${title}`;
-    const output = cleanUrl(url);
-    expect(output).to.equal(`https://www.nhs.uk/${partUrl}`);
-  });
-
-  it('should replaces spaces with \'%20\'', () => {
-    const output = cleanUrl('http://site/some url');
-    expect(output).to.equal('https://www.nhs.uk/some%20url');
-  });
-
-  it('should gracefully handle empty urls', () => {
-    const output = cleanUrl('');
-    expect(output).to.equal('');
-  });
-
-  it('should gracefully handle undefined urls', () => {
-    const output = cleanUrl(undefined);
-    expect(output).to.equal('');
-  });
-});
 
 describe('buildHeaderItems', () => {
   it('should format list item with no sub menus', () => {
@@ -79,6 +58,6 @@ describe('buildHeaderItems', () => {
 
   it('should return html for full headerItems response', () => {
     const output = buildHeaderItems(headerApiResponse);
-    expect(output).to.exist;
+    expect(output).to.equal(getExpectedHtml());
   });
 });

@@ -10,8 +10,8 @@ function replaceSpaces(url) {
   return url.replace(/ /g, '%20');
 }
 
-function cleanUrl(item) {
+function cleanHeaderUrl(item) {
   return replaceSpaces(getUrl(item).replace(siteToReplace, nhsukDomain));
 }
 
-module.exports = cleanUrl;
+module.exports = cleanHeaderUrl;

@@ -1,9 +1,9 @@
-const cleanUrl = require('./cleanUrl');
+const cleanHeaderUrl = require('./cleanHeaderUrl');
 
 const seperator = '';
 
 function getAnchor(item) {
-  return `<a href="${cleanUrl(item.URL)}">${item.Title}</a>`;
+  return `<a href="${cleanHeaderUrl(item.URL)}">${item.Title}</a>`;
 }
 
 function getSubmenu(submenus) {

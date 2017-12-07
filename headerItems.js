@@ -1,12 +1,9 @@
 const fs = require('fs');
-const requireEnv = require('require-environment-variables');
 const getHeader = require('./app/lib/header/getHeader');
 const buildHeaderItems = require('./app/lib/header/buildHeaderItems');
 const log = require('./app/lib/logger');
 
-requireEnv(['HEADER_API_URL']);
-
-const headerApiUrl = process.env.HEADER_API_URL;
+const headerApiUrl = process.argv[2] || process.env.HEADER_API_URL;
 const headerFileName = 'app/views/includes/header-items.nunjucks';
 
 function saveFile(output, filename) {
@@ -19,9 +16,15 @@ function saveFile(output, filename) {
 }
 
 async function saveHeaderItems() {
-  const response = await getHeader(headerApiUrl);
-  const headerItems = buildHeaderItems(response);
-  saveFile(headerItems, headerFileName);
+  try {
+    log.info('Building header nunjucks...');
+    const response = await getHeader(headerApiUrl);
+    const headerItems = buildHeaderItems(response);
+    saveFile(headerItems, headerFileName);
+    log.info('Build complete.');
+  } catch (ex) {
+    log.error(ex);
+  }
 }
 
 saveHeaderItems();

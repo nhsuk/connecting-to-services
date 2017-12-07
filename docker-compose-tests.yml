@@ -21,7 +21,6 @@ services:
     command: yarn run test-ci
     user: root
     volumes:
-      - .:/code
       - c2s-test-ci-node_modules:/code/node_modules
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
