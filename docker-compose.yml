@@ -19,6 +19,7 @@ services:
       - 3000:3000
     volumes:
       - c2s-node_modules:/code/node_modules
+      - .:/code
 
   nearby-services-api:
     image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.5.2}"

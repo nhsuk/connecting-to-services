@@ -1,4 +1,4 @@
-0.21.1 / 2017-12-12
+0.22.0 / 2017-12-12
 ===================
 - Build `header-items.nunjucks` in Dockerfile
 
