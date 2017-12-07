@@ -2,8 +2,8 @@ const fs = require('fs');
 const getHeader = require('./app/lib/header/getHeader');
 const buildHeaderItems = require('./app/lib/header/buildHeaderItems');
 const log = require('./app/lib/logger');
+const config = require('./config/config');
 
-const headerApiUrl = process.argv[2] || process.env.HEADER_API_URL;
 const headerFileName = 'app/views/includes/header-items.nunjucks';
 
 function saveFile(output, filename) {
@@ -17,8 +17,8 @@ function saveFile(output, filename) {
 
 async function saveHeaderItems() {
   try {
-    log.info('Building header nunjucks...');
-    const response = await getHeader(headerApiUrl);
+    log.info(`Building '${headerFileName}'`);
+    const response = await getHeader(config.headerApiUrl);
     const headerItems = buildHeaderItems(response);
     saveFile(headerItems, headerFileName);
     log.info('Build complete.');

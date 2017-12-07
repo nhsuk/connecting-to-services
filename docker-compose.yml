@@ -7,7 +7,6 @@ services:
       context: .
       args:
         NODE_ENV: development
-        HEADER_API_URL: '${HEADER_API_URL}'
     command: yarn run start-watch
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'

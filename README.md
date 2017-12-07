@@ -54,7 +54,6 @@ environment.
 | Variable                           | Description                                                                                   | Default                   | Required   |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------- | :------------------------ | ---------- |
 | `API_BASE_URL`                     | The fully qualified domain the api exists on e.g. `http://web.site`                           |                           | Yes        |
-| `HEADER_API_URL`                   | The fully qualified domain and path the header api exists on e.g. `http://web.site/path/route`|                           | Yes        |
 | `NODE_ENV`                         | Node environment                                                                              | development               |            |
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                             | Depends on `NODE_ENV`     |            |
 | `PORT`                             | Server port                                                                                   | 3000                      |            |

@@ -12,4 +12,5 @@ module.exports = {
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   webtrendsId: process.env.WEBTRENDS_ANALYTICS_TRACKING_ID,
   hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,
+  headerApiUrl: 'https://refdata-api.azurewebsites.net/api/fullheadermenu',
 };
