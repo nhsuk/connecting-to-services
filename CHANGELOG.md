@@ -1,3 +1,7 @@
+0.21.1 / 2017-12-12
+===================
+- Refactor headerItems, build in Dockerfile
+
 0.21.0 / 2017-12-07
 ===================
 - Improve non-English search experience
