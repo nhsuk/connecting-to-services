@@ -9,8 +9,7 @@ services:
     command: yarn test-watch
     volumes:
       - c2s-test-node_modules:/code/node_modules
-    environment:
-      HEADER_API_URL: ${HEADER_API_URL}
+      - .:/code
     links:
       - nearby-services-api:nearby-services-api
 
@@ -21,12 +20,10 @@ services:
     command: yarn run test-ci
     user: root
     volumes:
-      - .:/code
       - c2s-test-ci-node_modules:/code/node_modules
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
-      HEADER_API_URL: ${HEADER_API_URL}
       TRAVIS: ${TRAVIS}
       TRAVIS_BRANCH: ${TRAVIS_BRANCH}
       TRAVIS_COMMIT: ${TRAVIS_COMMIT}

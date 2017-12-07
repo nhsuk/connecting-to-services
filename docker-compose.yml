@@ -8,12 +8,8 @@ services:
       args:
         NODE_ENV: development
     command: yarn run start-watch
-    volumes:
-      - .:/code
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
-      HEADER_API_URL: ${HEADER_API_URL}
-
   frontend:
     extends:
       service: base-app
@@ -23,6 +19,7 @@ services:
       - 3000:3000
     volumes:
       - c2s-node_modules:/code/node_modules
+      - .:/code
 
   nearby-services-api:
     image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.5.2}"

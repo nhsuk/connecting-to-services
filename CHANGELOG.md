@@ -1,3 +1,7 @@
+0.22.0 / 2017-12-12
+===================
+- Build `header-items.nunjucks` in Dockerfile
+
 0.21.0 / 2017-12-07
 ===================
 - Improve non-English search experience
