@@ -1,13 +1,12 @@
 0.21.1 / 2017-12-12
 ===================
-- Refactor headerItems, build in Dockerfile
+- Build `header-items.nunjucks` in Dockerfile
 
 0.21.0 / 2017-12-07
 ===================
 - Improve non-English search experience
 - Make telephone numbers clickable, using 'tel:'
 - Use hosted images
-- Refactor headerItems
 
 0.20.2 / 2017-11-30
 ===================
