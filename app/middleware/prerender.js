@@ -1,5 +1,6 @@
-const mapLink = require('../lib/mapLink');
+const addBankHolidayMessage = require('../lib/addBankHolidayMessage');
 const choicesOverview = require('../lib/choicesOverview');
+const mapLink = require('../lib/mapLink');
 
 function results(req, res, next) {
   const searchCriteria = {
@@ -13,6 +14,9 @@ function results(req, res, next) {
 
   res.locals.nearbyServices = choicesOverview.addUrl(res.locals.nearbyServices);
   res.locals.openServices = choicesOverview.addUrl(res.locals.openServices);
+
+  res.locals.nearbyServices = addBankHolidayMessage(res.locals.nearbyServices);
+  res.locals.openServices = addBankHolidayMessage(res.locals.openServices);
 
   next();
 }

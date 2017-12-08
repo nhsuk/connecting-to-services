@@ -26,4 +26,26 @@ describe('messages', () => {
 
     expect(message).to.equal('Sorry, we are experiencing technical problems');
   });
+
+  it('should have a message for today being a bank holiday', () => {
+    const message = messages.bankHolidayToday();
+
+    expect(message).to.equal('Today is a bank holiday. Please call to check opening times.');
+  });
+
+  it('should have a message for bank holidays in the future - tomorrow', () => {
+    const nowDateString = '2017-12-01';
+    const nextOpenDateString = '2017-12-02';
+    const message = messages.bankHolidayFuture(nowDateString, nextOpenDateString);
+
+    expect(message).to.equal('Tomorrow is a bank holiday. Please call to check opening times.');
+  });
+
+  it('should have a message for bank holidays in the future - 3 days time', () => {
+    const nowDateString = '2017-12-01';
+    const nextOpenDateString = '2017-12-04';
+    const message = messages.bankHolidayFuture(nowDateString, nextOpenDateString);
+
+    expect(message).to.equal('Monday is a bank holiday. Please call to check opening times.');
+  });
 });

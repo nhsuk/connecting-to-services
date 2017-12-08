@@ -10,6 +10,7 @@ services:
     command: yarn run start-watch
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
+      DATE: ${DATE}
   frontend:
     extends:
       service: base-app

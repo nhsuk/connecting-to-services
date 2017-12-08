@@ -10,4 +10,5 @@ module.exports = {
   postcodeSearch: 'postcode',
   yourLocationSearch: 'location',
   dayInMilliseconds: 24 * 60 * 60 * 1000,
+  dayOfWeekPrefixes: ['Sun', 'Mon', 'Tues', 'Wednes', 'Thurs', 'Fri', 'Satur'],
 };
