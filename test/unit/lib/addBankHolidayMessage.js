@@ -57,4 +57,13 @@ describe('addBankHolidayMessage', () => {
 
     expect(alteredOrgs[0].bankHolidayMessage).to.be.equal('Monday is a bank holiday. Please call to check opening times.');
   });
+
+  it('should not add a message to orgs currently closed and have no next open time', () => {
+    const todaysDateOverride = '2017-12-22';
+    const orgs = [{ isOpen: false, nextOpen: undefined }];
+
+    const alteredOrgs = addBankHolidayMessage(orgs, todaysDateOverride);
+
+    expect(alteredOrgs[0].bankHolidayMessage).to.be.undefined;
+  });
 });

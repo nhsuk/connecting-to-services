@@ -14,6 +14,14 @@ meet their time, location and accessibility needs.
 Clone the repo: `git clone https://github.com/nhsuk/connecting-to-services.git`
 and review the [`scripts`](scripts) to get up and running.
 
+## Changing the time
+
+The application will display a message for each open pharmacy on a bank holiday.
+In order to test this functionality the date can be set when the application
+starts. In order to do this an environment variable `DATE` needs to be set. For
+example, if the date wanted to be to set to Christmas day 2017 the following
+can be run on the command line `DATE=2017-12-25 ./scrtipts/start`.
+
 ## Testing
 
 The application uses [Docker](https://www.docker.com/) to run in containers.

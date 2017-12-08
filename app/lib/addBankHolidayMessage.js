@@ -1,10 +1,6 @@
 const bankHolidayDates = require('../../data/bankHolidayDates');
+const getDateString = require('../lib/dateUtils').getDateString;
 const messages = require('../lib/messages');
-
-function getDateString(dateString = null) {
-  // need to take into account the time zone as the containers are running GMT
-  return new Date(dateString).toISOString().slice(0, 10);
-}
 
 function addBankHolidayMessage(orgs, dateStringOverride = process.env.DATE) {
   const nowDateString = getDateString(dateStringOverride);
