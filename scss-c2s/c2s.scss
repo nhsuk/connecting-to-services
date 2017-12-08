@@ -1,11 +1,5 @@
 @import "nhsuk";
 
-/*
-   Colours.
-*/
-
-$blue: #0072c6;
-
 .sr-only,
 .hidden {
   position: absolute;
@@ -21,10 +15,7 @@ $blue: #0072c6;
   @include reading-width;
 }
 h1 {
-  margin: 10px 0 58px;
-  @include media(tablet) {
-    margin: 10px 0 86px;
-  }
+  font-size:48px;
 }
 
 .local-header,
@@ -146,8 +137,8 @@ form {
     }
   }
   .form-label-bold {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
     line-height: 32px;
     text-transform: none;
   }
@@ -274,7 +265,7 @@ form {
       }
       &-block {
         &--none {
-          background-color: #0072c6;
+          background-color: $blue;
           color: #fff;
           margin-bottom: 32px;
           padding: 16px;
@@ -421,7 +412,7 @@ form {
 }
 
 .results-block {
-    background-color: #0072c6;
+    background-color: $blue;
     color: #fff;
     margin-bottom: 32px;
     padding: 16px;
