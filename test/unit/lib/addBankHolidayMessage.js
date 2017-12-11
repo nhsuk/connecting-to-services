@@ -40,6 +40,15 @@ describe('addBankHolidayMessage', () => {
     expect(alteredOrgs[0].bankHolidayMessage).to.be.undefined;
   });
 
+  it('should add a message to orgs currently closed and are next open on a bank holiday that is today', () => {
+    const todaysDateOverride = '2017-12-25';
+    const orgs = [{ isOpen: false, nextOpen: '2017-12-25T09:00:00.000Z' }];
+
+    const alteredOrgs = addBankHolidayMessage(orgs, todaysDateOverride);
+
+    expect(alteredOrgs[0].bankHolidayMessage).to.be.equal('Today is a bank holiday. Please call to check opening times.');
+  });
+
   it('should add a message to orgs currently closed and are next open on a bank holiday that is tomorrow', () => {
     const todaysDateOverride = '2017-12-24';
     const orgs = [{ isOpen: false, nextOpen: '2017-12-25T09:00:00.000Z' }];
