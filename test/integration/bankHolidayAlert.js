@@ -31,7 +31,7 @@ describe('The bank holiday alert messaging', () => {
       process.env.DATE = '2017-12-25';
     });
 
-    it('should show a message about the bank holiday for each open result', (done) => {
+    it('should show a message about the bank holiday for each result that is open', (done) => {
       const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeEngland.json');
       const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
       const latitude = 52.75;
@@ -57,8 +57,10 @@ describe('The bank holiday alert messaging', () => {
           iExpect.htmlWith200Status(err, res);
           const $ = cheerio.load(res.text);
 
-          expect($('.callout--warning').first().text()).to.equal('Today is a bank holiday. Please call to check opening times.');
           expect($('.callout--warning').length).to.equal(4);
+          $('callout--warning').toArray().forEach((item) => {
+            expect(item.text()).to.equal('Today is a bank holiday. Please call to check opening times.');
+          });
 
           done();
         });
