@@ -76,6 +76,7 @@
     @include media(desktop) {
       &__user-links {
         display: block;
+        overflow: hidden;
       }
       .nhs-choices-logo {
         margin-top: 2em;
@@ -96,7 +97,7 @@
         vertical-align: baseline;
         color: $color-orange;
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 600;
         padding-left: 0.5em;
         padding-bottom: 1px;
 
