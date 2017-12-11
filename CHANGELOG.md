@@ -1,6 +1,7 @@
 0.22.0 / 2017-12-12
 ===================
 - Build `header-items.nunjucks` in Dockerfile
+- Display message for upcoming bank holidays
 
 0.21.0 / 2017-12-07
 ===================

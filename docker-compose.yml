@@ -10,6 +10,7 @@ services:
     command: yarn run start-watch
     environment:
       API_BASE_URL: 'http://nearby-services-api:3001'
+      DATE: ${DATE}
   frontend:
     extends:
       service: base-app
@@ -22,12 +23,12 @@ services:
       - .:/code
 
   nearby-services-api:
-    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.5.2}"
+    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.13.0}"
     links:
-      - pharmacy-db:mongo
+      - pharmacy-db-elastic:es
 
-  pharmacy-db:
-    image: "nhsuk/pharmacy-db:${PHARMACY_DB_DOCKER_IMAGE_TAG-0.1.0}"
+  pharmacy-db-elastic:
+    image: "nhsuk/elasticsearch-updater-snapshot:20170921"
 
 volumes:
   c2s-node_modules:

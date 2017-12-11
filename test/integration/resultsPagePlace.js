@@ -51,6 +51,10 @@ function expectMidsomerNortonResults($, location) {
 }
 
 describe('The place results page', () => {
+  after('clean nock', () => {
+    nock.cleanAll();
+  });
+
   it('should return list of pharmacies for unique place search', (done) => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');

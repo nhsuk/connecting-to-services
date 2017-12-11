@@ -7,6 +7,10 @@ const messages = require('../../../app/lib/messages');
 const expect = chai.expect;
 
 describe('Postcodes', () => {
+  after('clean nock', () => {
+    nock.cleanAll();
+  });
+
   describe('lookup', () => {
     const postcode = 'AB12 3CD';
     const postcodeForRequest = encodeURIComponent(postcode);
