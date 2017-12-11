@@ -1,7 +1,11 @@
 const constants = require('./constants');
 
-function getDateString(dateString = null) {
-  return new Date(dateString).toISOString().slice(0, 10);
+function getDateString(dateString) {
+  // eslint-disable-next-line no-restricted-globals
+  const date = (isNaN(Date.parse(dateString)))
+    ? new Date()
+    : new Date(dateString);
+  return date.toISOString().slice(0, 10);
 }
 
 function isNextOpenTomorrow(now, nextOpen) {
