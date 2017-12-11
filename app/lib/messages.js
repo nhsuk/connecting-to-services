@@ -1,5 +1,4 @@
-const constants = require('./constants');
-const isNextOpenTomorrow = require('./dateUtils').isNextOpenTomorrow;
+const dateUtils = require('./dateUtils');
 
 function invalidPostcodeMessage(location) {
   return `We can't find the postcode '${location}'. Check the postcode is correct and try again.`;
@@ -18,9 +17,9 @@ function bankHolidayToday() {
 }
 
 function bankHolidayFuture(now, nextOpen) {
-  return isNextOpenTomorrow(now, nextOpen)
+  return dateUtils.isNextOpenTomorrow(now, nextOpen)
     ? 'Tomorrow is a bank holiday. Please call to check opening times.'
-    : `${constants.dayOfWeekPrefixes[new Date(nextOpen).getDay()]}day is a bank holiday. Please call to check opening times.`;
+    : `${dateUtils.getDay(nextOpen)} is a bank holiday. Please call to check opening times.`;
 }
 
 module.exports = {

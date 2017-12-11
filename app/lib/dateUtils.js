@@ -8,13 +8,18 @@ function getDateString(dateString) {
   return date.toISOString().slice(0, 10);
 }
 
-function isNextOpenTomorrow(now, nextOpen) {
-  const nowDate = new Date(now);
-  const nextOpenDate = new Date(nextOpen);
+function getDay(dateString) {
+  return constants.daysOfWeek[new Date(dateString).getDay()];
+}
+
+function isNextOpenTomorrow(nowDateString, nextOpenDateString) {
+  const nowDate = new Date(nowDateString);
+  const nextOpenDate = new Date(nextOpenDateString);
   return ((nextOpenDate - nowDate) === constants.dayInMilliseconds);
 }
 
 module.exports = {
-  isNextOpenTomorrow,
   getDateString,
+  getDay,
+  isNextOpenTomorrow,
 };
