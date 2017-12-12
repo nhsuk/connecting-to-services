@@ -1,584 +1,1536 @@
 {
     "nearby": [
         {
-            "address": {
-                "city": "Monks Cross Shopping Park",
-                "county": "",
-                "line1": "Asda Superstore",
-                "line2": "Jockey Lane",
-                "line3": "",
-                "postcode": "YO32 9LF"
-            },
-            "contacts": {
-                "additionalContacts": [],
-                "email": null,
-                "fax": null,
-                "isNonGeographicPhoneNumber": false,
-                "phoneChargeAmount": null,
-                "phoneChargeMethod": "unknown method",
-                "telephoneExtension": null,
-                "telephoneNumber": "01904 628107        ",
-                "website": null
-            },
-            "directionsInformation": "",
-            "distanceInMiles": 2.0031075201988813,
-            "externalProfileUrl": null,
-            "g": 2163456662128803,
-            "hasEps": true,
-            "identifier": "FCM91",
             "identifierType": "Pharmacy Contract",
-            "isOpen": true,
-            "latitude": 53.98647689819336,
-            "links": [
-                {
-                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFCM91&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
-                    "name": "Tracking pixel",
-                    "rel": "NoFollow"
-                },
-                {
-                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FCM91",
-                    "name": "Link to self",
-                    "rel": "Self"
-                },
-                {
-                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FCM91",
-                    "name": "NHS Choices profile",
-                    "rel": "Alternate"
-                }
-            ],
-            "location": {
-                "coordinates": [
-                    -1.0434553623199463,
-                    53.98647689819336
-                ],
-                "type": "Point"
-            },
-            "longitude": -1.0434553623199463,
-            "name": "Asda Stores Ltd",
             "openingTimes": {
-                "alterations": {},
                 "general": {
-                    "friday": [
-                        {
-                            "closes": "21:00",
-                            "opens": "09:00"
-                        }
-                    ],
                     "monday": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "saturday": [
-                        {
-                            "closes": "21:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "sunday": [
-                        {
-                            "closes": "16:00",
-                            "opens": "11:00"
-                        }
-                    ],
-                    "thursday": [
-                        {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "20:00"
                         }
                     ],
                     "tuesday": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "20:00"
                         }
                     ],
                     "wednesday": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "20:00"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "20:00"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "20:00"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "19:00"
+                        }
+                    ],
+                    "sunday": [
+                        {
+                            "opens": "11:00",
+                            "closes": "17:00"
                         }
                     ]
-                }
+                },
+                "alterations": {}
             },
-            "openingTimesMessage": "Open until 9:00 pm today",
-            "organisationType": "Pharmacy",
             "outOfHours": "",
-            "parkingInformation": null,
-            "provider": "North Yorkshire And Humber Area Team",
-            "summary": ""
-        },
-        {
+            "hasEps": true,
             "address": {
-                "city": "York",
-                "county": "North Yorkshire",
                 "line1": "7 Monks Cross Shopping Park",
                 "line2": "Monks Cross Drive",
                 "line3": null,
+                "city": "York",
+                "county": "North Yorkshire",
                 "postcode": "YO32 9LF"
             },
             "contacts": {
+                "website": "",
                 "additionalContacts": [],
-                "email": "store.manager.6435@boots.co.uk",
-                "fax": "01904656389",
+                "telephoneNumber": "01904 656360",
                 "isNonGeographicPhoneNumber": false,
-                "phoneChargeAmount": null,
                 "phoneChargeMethod": "unknown method",
+                "phoneChargeAmount": null,
                 "telephoneExtension": null,
-                "telephoneNumber": "01904656360",
-                "website": ""
+                "fax": "01904 656389",
+                "email": "store.manager.6435@boots.co.uk"
             },
             "directionsInformation": null,
-            "distanceInMiles": 2.0031075201988813,
             "externalProfileUrl": null,
-            "g": 2163456662128803,
-            "hasEps": true,
             "identifier": "FLX35",
-            "identifierType": "Pharmacy Contract",
-            "isOpen": true,
-            "latitude": 53.98647689819336,
+            "name": "Boots",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>",
             "links": [
                 {
+                    "rel": "NoFollow",
                     "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFLX35&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
-                    "name": "Tracking pixel",
-                    "rel": "NoFollow"
+                    "name": "Tracking pixel"
                 },
                 {
+                    "rel": "Self",
                     "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FLX35",
-                    "name": "Link to self",
-                    "rel": "Self"
+                    "name": "Link to self"
                 },
                 {
+                    "rel": "Alternate",
                     "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FLX35",
-                    "name": "NHS Choices profile",
-                    "rel": "Alternate"
+                    "name": "NHS Choices profile"
                 }
             ],
             "location": {
+                "type": "Point",
                 "coordinates": [
                     -1.0434553623199463,
                     53.98647689819336
-                ],
-                "type": "Point"
+                ]
             },
-            "longitude": -1.0434553623199463,
-            "name": "Boots",
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1200
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2640
+                },
+                {
+                    "opens": 3420,
+                    "closes": 4080
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5520
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6960
+                },
+                {
+                    "opens": 7740,
+                    "closes": 8340
+                },
+                {
+                    "opens": 9300,
+                    "closes": 9660
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 0,
+            "openingTimesMessage": "Open until 8pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
             "openingTimes": {
+                "general": {
+                    "monday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "sunday": [
+                        {
+                            "opens": "10:00",
+                            "closes": "16:00"
+                        }
+                    ]
+                },
                 "alterations": {
-                    "2016-12-05": [
+                    "2017-12-26": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "2016-12-06": [
+                    "2017-04-14": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "2016-12-07": [
+                    "2017-04-17": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "2016-12-08": [
+                    "2017-05-01": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "2016-12-09": [
+                    "2017-05-29": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "2016-12-10": [
+                    "2017-08-28": [
                         {
-                            "closes": "19:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "2016-12-11": [
+                    "2018-01-01": [
                         {
-                            "closes": "17:00",
-                            "opens": "11:00"
-                        }
-                    ]
-                },
-                "general": {
-                    "friday": [
-                        {
-                            "closes": "20:00",
-                            "opens": "09:00"
+                            "opens": "10:00",
+                            "closes": "18:00"
                         }
                     ],
-                    "monday": [
-                        {
-                            "closes": "20:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "saturday": [
-                        {
-                            "closes": "19:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "sunday": [
-                        {
-                            "closes": "17:00",
-                            "opens": "11:00"
-                        }
-                    ],
-                    "thursday": [
-                        {
-                            "closes": "20:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "tuesday": [
-                        {
-                            "closes": "20:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "wednesday": [
-                        {
-                            "closes": "20:00",
-                            "opens": "09:00"
-                        }
-                    ]
+                    "2017-12-25": []
                 }
             },
-            "openingTimesMessage": "Open until 8:00 pm today",
-            "organisationType": "Pharmacy",
             "outOfHours": "",
-            "parkingInformation": null,
-            "provider": "North Yorkshire And Humber Area Team",
-            "summary": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>"
-        },
-        {
+            "hasEps": true,
             "address": {
-                "city": "York",
-                "county": "North Yorkshire",
-                "line1": "Huntington Surgery",
-                "line2": "1-3 North Lane",
-                "line3": "Huntington",
-                "postcode": "YO32 9RU"
+                "line1": "Asda Superstore",
+                "line2": "Jockey Lane",
+                "line3": null,
+                "city": "Monks Cross Shopping Park",
+                "county": "",
+                "postcode": "YO32 9LF"
             },
             "contacts": {
+                "website": null,
                 "additionalContacts": [],
-                "email": null,
-                "fax": null,
+                "telephoneNumber": "01904 689410",
                 "isNonGeographicPhoneNumber": false,
-                "phoneChargeAmount": null,
-                "phoneChargeMethod": "unknown method",
+                "phoneChargeMethod": "flat-rate",
+                "phoneChargeAmount": 0,
                 "telephoneExtension": null,
-                "telephoneNumber": "01904 721724",
-                "website": "http://huntingtonpharmacy.co.uk"
+                "fax": null,
+                "email": null
             },
-            "directionsInformation": null,
-            "distanceInMiles": 2.249844623990056,
+            "directionsInformation": "",
             "externalProfileUrl": null,
-            "g": 2163450988698666,
-            "hasEps": true,
-            "identifier": "FWL29",
-            "identifierType": "Pharmacy Contract",
-            "isOpen": true,
-            "latitude": 53.998748779296875,
+            "identifier": "FCM91",
+            "name": "Asda Stores Ltd",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p>Asda pharmacies provide a variety of healthcare services to help you make the most of your health and wellbeing.</p><br /><p>We're here when you need us; we're open 7 days a week, including late evenings and bank holidays.</p><br /><p>Appointments aren&rsquo;t necessary, so you can visit an Asda pharmacy when its convenient for you.</p><br /><p>Our trained pharmacists are happy to help and can discuss the services we have to offer.&nbsp;</p><br /><p>All Asda pharmacies have a private room available where you can talk to the pharmacist confidentially, please ask a member of our pharmacy team for more information.</p><br /><p>&nbsp;</p>",
             "links": [
                 {
-                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFWL29&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
-                    "name": "Tracking pixel",
-                    "rel": "NoFollow"
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFCM91&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
                 },
                 {
-                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FWL29",
-                    "name": "Link to self",
-                    "rel": "Self"
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FCM91",
+                    "name": "Link to self"
                 },
                 {
-                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FWL29",
-                    "name": "NHS Choices profile",
-                    "rel": "Alternate"
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FCM91",
+                    "name": "NHS Choices profile"
                 }
             ],
             "location": {
+                "type": "Point",
                 "coordinates": [
-                    -1.0551648139953613,
-                    53.998748779296875
-                ],
-                "type": "Point"
+                    -1.0434553623199463,
+                    53.98647689819336
+                ]
             },
-            "longitude": -1.0551648139953613,
-            "name": "Huntington Pharmacy",
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1260
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2700
+                },
+                {
+                    "opens": 3420,
+                    "closes": 4140
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5580
+                },
+                {
+                    "opens": 6300,
+                    "closes": 7020
+                },
+                {
+                    "opens": 7740,
+                    "closes": 8460
+                },
+                {
+                    "opens": 9240,
+                    "closes": 9600
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [
+                {
+                    "date": "2017-12-26",
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "date": "2017-04-14",
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "date": "2017-04-17",
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "date": "2017-05-01",
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "date": "2017-05-29",
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "date": "2017-08-28",
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "date": "2018-01-01",
+                    "opens": 600,
+                    "closes": 1080
+                }
+            ],
+            "distanceInMiles": 0,
+            "openingTimesMessage": "Open until 9pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
             "openingTimes": {
-                "alterations": {},
                 "general": {
-                    "friday": [
-                        {
-                            "closes": "23:00",
-                            "opens": "07:00"
-                        }
-                    ],
                     "monday": [
                         {
-                            "closes": "23:00",
-                            "opens": "07:00"
-                        }
-                    ],
-                    "saturday": [
-                        {
-                            "closes": "19:00",
-                            "opens": "07:00"
-                        }
-                    ],
-                    "sunday": [
-                        {
-                            "closes": "17:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "thursday": [
-                        {
-                            "closes": "23:00",
-                            "opens": "07:00"
+                            "opens": "08:00",
+                            "closes": "21:00"
                         }
                     ],
                     "tuesday": [
                         {
-                            "closes": "23:00",
-                            "opens": "07:00"
+                            "opens": "08:00",
+                            "closes": "21:00"
                         }
                     ],
                     "wednesday": [
                         {
-                            "closes": "23:00",
-                            "opens": "07:00"
+                            "opens": "08:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "08:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "08:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "08:00",
+                            "closes": "21:00"
+                        }
+                    ],
+                    "sunday": [
+                        {
+                            "opens": "10:00",
+                            "closes": "16:00"
                         }
                     ]
-                }
+                },
+                "alterations": {}
             },
-            "openingTimesMessage": "Open until 11:00 pm today",
-            "organisationType": "Pharmacy",
-            "outOfHours": "<p>Open til 11pm during the week and til 7pm on Saturday and 5pm on Sunday</p>",
-            "parkingInformation": null,
-            "provider": "North Yorkshire And Humber Area Team",
-            "summary": "<div class=\"grid_12 alpha\">Huntington Pharmacy is a local independent pharmacy open 7 days a week.<br /><p class=\"description\">Huntington Pharmacy is a  new independent pharmacy for the residents of Huntington and surrounding  areas. It is located on the corner of North Lane and Huntington Road  and open late at night and 7 days a week.</p><br /></div>"
-        },
-        {
+            "outOfHours": "",
+            "hasEps": true,
             "address": {
-                "city": "York",
+                "line1": "Monks Cross",
+                "line2": "Huntingdon",
+                "line3": "",
+                "city": "",
                 "county": "",
-                "line1": "61 North Moor Road",
-                "line2": "Huntington",
-                "line3": "York",
-                "postcode": "YO32 9QN"
+                "postcode": "YO32 9LG"
             },
             "contacts": {
+                "website": "http://www.lloydspharmacy.com",
                 "additionalContacts": [],
-                "email": "mail@parkerspharmacy.co.uk",
-                "fax": "01904768778",
+                "telephoneNumber": "01904 613779",
                 "isNonGeographicPhoneNumber": false,
-                "phoneChargeAmount": 0,
                 "phoneChargeMethod": "flat-rate",
+                "phoneChargeAmount": 0,
                 "telephoneExtension": null,
-                "telephoneNumber": "01904 762566",
-                "website": "http://www.parkerspharmacy.co.uk/"
+                "fax": null,
+                "email": "lp5167@lloydspharmacy.co.uk"
             },
             "directionsInformation": null,
-            "distanceInMiles": 2.3548788067122435,
             "externalProfileUrl": null,
-            "g": 2163450976920502,
-            "hasEps": true,
-            "identifier": "FGH82",
-            "identifierType": "Pharmacy Contract",
-            "isOpen": true,
-            "latitude": 53.997520446777344,
+            "identifier": "FQF07",
+            "name": "LloydsPharmacy Inside Sainsbury's",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": null,
             "links": [
                 {
-                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFGH82&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
-                    "name": "Tracking pixel",
-                    "rel": "NoFollow"
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFQF07&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
                 },
                 {
-                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FGH82",
-                    "name": "Link to self",
-                    "rel": "Self"
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FQF07",
+                    "name": "Link to self"
                 },
                 {
-                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FGH82",
-                    "name": "NHS Choices profile",
-                    "rel": "Alternate"
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FQF07",
+                    "name": "NHS Choices profile"
                 }
             ],
             "location": {
+                "type": "Point",
                 "coordinates": [
-                    -1.057618260383606,
-                    53.997520446777344
-                ],
-                "type": "Point"
+                    -1.0534718036651611,
+                    53.98595428466797
+                ]
             },
-            "longitude": -1.057618260383606,
-            "name": "Parkers Pharmacy",
+            "openingTimesAsOffset": [
+                {
+                    "opens": 480,
+                    "closes": 1260
+                },
+                {
+                    "opens": 1920,
+                    "closes": 2700
+                },
+                {
+                    "opens": 3360,
+                    "closes": 4140
+                },
+                {
+                    "opens": 4800,
+                    "closes": 5580
+                },
+                {
+                    "opens": 6240,
+                    "closes": 7020
+                },
+                {
+                    "opens": 7680,
+                    "closes": 8460
+                },
+                {
+                    "opens": 9240,
+                    "closes": 9600
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 0.40852534328607887,
+            "openingTimesMessage": "Open until 9pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
             "openingTimes": {
-                "alterations": {},
                 "general": {
-                    "friday": [
-                        {
-                            "closes": "17:30",
-                            "opens": "08:30"
-                        }
-                    ],
                     "monday": [
                         {
-                            "closes": "17:30",
-                            "opens": "08:30"
+                            "opens": "08:30",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "08:30",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "08:30",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "08:30",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "08:30",
+                            "closes": "17:30"
                         }
                     ],
                     "saturday": [],
-                    "sunday": [],
-                    "thursday": [
+                    "sunday": []
+                },
+                "alterations": {}
+            },
+            "outOfHours": null,
+            "hasEps": true,
+            "address": {
+                "line1": "61 North Moor Road",
+                "line2": "Huntington",
+                "line3": "York",
+                "city": "",
+                "county": "",
+                "postcode": "YO32 9QN"
+            },
+            "contacts": {
+                "website": "http://www.parkerspharmacy.co.uk/",
+                "additionalContacts": [],
+                "telephoneNumber": "01904 762566",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "flat-rate",
+                "phoneChargeAmount": 0,
+                "telephoneExtension": null,
+                "fax": "01904 768778",
+                "email": "mail@parkerspharmacy.co.uk"
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FGH82",
+            "name": "Parkers Pharmacy",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p><strong>Established for many year, we pride ourselves on a high standard personal service and catering for the needs of our local community.</strong><br /><br />Our reputation has been built on our commitment to personal service and attention to detail, which is reflected in the services we offer and the time we take to get to know everyone who comes through our door.<br /><br />Our dispensing service includes both our while-you-wait and collection and&nbsp;<a href=\"http://weebly-link/\">delivery options</a>, where we pick the prescription up from your GP surgery and can&nbsp;<a href=\"http://weebly-link/\">deliver it direct to your door, free of charge.<br /></a><br /><strong>Choosing a&nbsp;pharmacy is one of the most important decisions you can make. You want someone who is caring, knowledgeable, and accessible. Someone willing to take the time to go over all of your options and treat you as a person, not just a patient.&nbsp;</strong><br /><br />At our pharmacy, we pride ourselves on our patient service. We offer knowledgeable staff, safe and proven procedures, and the latest in&nbsp;pharmacy technology.<br /><br />We've created this web site for both new and current customers. It includes specific information on our&nbsp;pharmacy and&nbsp;the&nbsp;<a href=\"http://weebly-link/\">wide range of services we offer</a>.<br /><br />Other services available include<a href=\"http://weebly-link/\">&nbsp;Lipotrim Weight Loss Programme</a>, Stop Smoking Clinic and Blood Pressure Monitoring - see our Services page for full details.<br /><br />We have our own private consultation room and also offer advice on your medicines free of charge.<br /><br />We look forward to meeting you soon and looking after you in the years to come.<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br /><br />Best Regards .... &nbsp;<br /><br /><br /><span style=\"font-size: xx-large;\"><em>Esther</em></span><br />Pharmacist</p>",
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFGH82&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FGH82",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FGH82",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.057618260383606,
+                    53.997520446777344
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 510,
+                    "closes": 1050
+                },
+                {
+                    "opens": 1950,
+                    "closes": 2490
+                },
+                {
+                    "opens": 3390,
+                    "closes": 3930
+                },
+                {
+                    "opens": 4830,
+                    "closes": 5370
+                },
+                {
+                    "opens": 6270,
+                    "closes": 6810
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 0.9556101060560219,
+            "openingTimesMessage": "Open until 5:30pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
+            "openingTimes": {
+                "general": {
+                    "monday": [
                         {
-                            "closes": "17:30",
-                            "opens": "08:30"
+                            "opens": "07:00",
+                            "closes": "23:00"
                         }
                     ],
                     "tuesday": [
                         {
-                            "closes": "17:30",
-                            "opens": "08:30"
+                            "opens": "07:00",
+                            "closes": "23:00"
                         }
                     ],
                     "wednesday": [
                         {
-                            "closes": "17:30",
-                            "opens": "08:30"
+                            "opens": "07:00",
+                            "closes": "23:00"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "07:00",
+                            "closes": "23:00"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "07:00",
+                            "closes": "23:00"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "07:00",
+                            "closes": "19:00"
+                        }
+                    ],
+                    "sunday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:00"
                         }
                     ]
+                },
+                "alterations": {
+                    "2017-05-01": [],
+                    "2017-05-29": [],
+                    "2017-08-28": []
                 }
             },
-            "openingTimesMessage": "Open until 5:30 pm today",
+            "outOfHours": "<p>Open til 11pm during the week and til 7pm on Saturday and 5pm on Sunday</p>",
+            "hasEps": true,
+            "address": {
+                "line1": "Huntington Surgery",
+                "line2": "1-3 North Lane",
+                "line3": "Huntington",
+                "city": "York",
+                "county": "North Yorkshire",
+                "postcode": "YO32 9RU"
+            },
+            "contacts": {
+                "website": "http://huntingtonpharmacy.co.uk",
+                "additionalContacts": [],
+                "telephoneNumber": "01904 721724",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "unknown method",
+                "phoneChargeAmount": null,
+                "telephoneExtension": null,
+                "fax": null,
+                "email": null
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FWL29",
+            "name": "Huntington Pharmacy",
             "organisationType": "Pharmacy",
-            "outOfHours": null,
             "parkingInformation": null,
             "provider": "North Yorkshire And Humber Area Team",
-            "summary": "<p><strong>Established for many year, we pride ourselves on a high standard personal service and catering for the needs of our local community.</strong><br /><br />Our reputation has been built on our commitment to personal service and attention to detail, which is reflected in the services we offer and the time we take to get to know everyone who comes through our door.<br /><br />Our dispensing service includes both our while-you-wait and collection and&nbsp;<a href=\"http://weebly-link/\">delivery options</a>, where we pick the prescription up from your GP surgery and can&nbsp;<a href=\"http://weebly-link/\">deliver it direct to your door, free of charge.<br /></a><br /><strong>Choosing a&nbsp;pharmacy is one of the most important decisions you can make. You want someone who is caring, knowledgeable, and accessible. Someone willing to take the time to go over all of your options and treat you as a person, not just a patient.&nbsp;</strong><br /><br />At our pharmacy, we pride ourselves on our patient service. We offer knowledgeable staff, safe and proven procedures, and the latest in&nbsp;pharmacy technology.<br /><br />We've created this web site for both new and current customers. It includes specific information on our&nbsp;pharmacy and&nbsp;the&nbsp;<a href=\"http://weebly-link/\">wide range of services we offer</a>.<br /><br />Other services available include<a href=\"http://weebly-link/\">&nbsp;Lipotrim Weight Loss Programme</a>, Stop Smoking Clinic and Blood Pressure Monitoring - see our Services page for full details.<br /><br />We have our own private consultation room and also offer advice on your medicines free of charge.<br /><br />We look forward to meeting you soon and looking after you in the years to come.<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br /><br />Best Regards .... &nbsp;<br /><br /><br /><span style=\"font-size: xx-large;\"><em>Esther</em></span><br />Pharmacist</p>"
+            "summary": "<div class=\"grid_12 alpha\"><br /><p>Huntington Pharmacy is a patient-focused, late-night opening pharmacy located at the Huntington Surgery. We are a dedicated and committed team, lead by our experienced pharmacists Richard, Sonisya, Wye Bing and Katie. We aim to provide a friendly and efficient service to the local community, ensuring we go the extra mile to meet all your healthcare needs.&nbsp;</p><br /></div>",
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFWL29&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FWL29",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FWL29",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0551648139953613,
+                    53.998748779296875
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 420,
+                    "closes": 1380
+                },
+                {
+                    "opens": 1860,
+                    "closes": 2820
+                },
+                {
+                    "opens": 3300,
+                    "closes": 4260
+                },
+                {
+                    "opens": 4740,
+                    "closes": 5700
+                },
+                {
+                    "opens": 6180,
+                    "closes": 7140
+                },
+                {
+                    "opens": 7620,
+                    "closes": 8340
+                },
+                {
+                    "opens": 9180,
+                    "closes": 9660
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 0.9721972299326549,
+            "openingTimesMessage": "Open until 11pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
+            "openingTimes": {
+                "general": {
+                    "monday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "saturday": [],
+                    "sunday": []
+                },
+                "alterations": {}
+            },
+            "outOfHours": "<p><strong><em>Our other York&nbsp;</em><em>Living Care</em><em> </em><em>Pharmacy branches:</em></strong></p><br /><p><strong><em>57 Blossom Street, York, YO24 1AZ</em></strong></p><br /><p><strong><em>Tel:- 01904 622761</em></strong></p><br /><p><strong><em>Mon - Fri</em></strong></p><br /><p><strong><em>9am - 5:30pm</em></strong></p><br /><p><strong><em>Sat:</em></strong></p><br /><p><strong><em>9am - 1.00pm.</em></strong></p><br /><p><strong><em>101-103 Green Lane, Acomb</em></strong></p><br /><p><strong><em>Tel:- 01904 791 997</em></strong></p><br /><p><strong><em>Mon - Fri</em></strong></p><br /><p><strong><em>9am - 5:30pm</em></strong></p><br /><p>&nbsp;</p><br /><p><strong><em><br /></em></strong></p><br /><p><strong><em>&nbsp;</em></strong></p>",
+            "hasEps": true,
+            "address": {
+                "line1": "71 Monkton Road",
+                "line2": "York",
+                "line3": null,
+                "city": "North Yorkshire",
+                "county": "",
+                "postcode": "YO31 9AL"
+            },
+            "contacts": {
+                "website": "http://www.livingcarepharmacy.co.uk",
+                "additionalContacts": [],
+                "telephoneNumber": "01904 430805",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "unknown method",
+                "phoneChargeAmount": null,
+                "telephoneExtension": null,
+                "fax": "01904 430769",
+                "email": null
+            },
+            "directionsInformation": "",
+            "externalProfileUrl": null,
+            "identifier": "FL558",
+            "name": "Living Care Pharmacy",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p>Welcome to <strong>Living Care Pharmacy Monkton Road</strong>, a branch of a family owned pharmacy group with branches located in Leeds, York and Wakefield</p><br /><p>&nbsp;</p><br /><p>Our other branch locations in York are:</p><br /><p><strong>Living Care Pharmacy, 57 Blossom Street, York, YO24 1AZ</strong></p><br /><p>Tel: 01904 622761</p><br /><p>Opening Times: Monday - Friday 9.00am - 5.30pm Saturday - 9.00am - 1.00pm</p><br /><p><strong>Living Care Pharmacy, 101-103 Green Lane, Acomb, YO24 4PS</strong></p><br /><p>Tel: 01904 791997</p><br /><p>Opening Times: Monday - Friday 8:45am - 5.30pm&nbsp;</p><br /><p>&nbsp;</p>",
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFL558&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FL558",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FL558",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0628376007080078,
+                    53.97771453857422
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1050
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2490
+                },
+                {
+                    "opens": 3420,
+                    "closes": 3930
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5370
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6810
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 0.9933199515575412,
+            "openingTimesMessage": "Open until 5:30pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
+            "openingTimes": {
+                "general": {
+                    "monday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "18:00"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "18:00"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "18:00"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "18:00"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "18:00"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "14:00"
+                        }
+                    ],
+                    "sunday": []
+                },
+                "alterations": {}
+            },
+            "outOfHours": "",
+            "hasEps": true,
+            "address": {
+                "line1": "412 Huntington Road",
+                "line2": "Huntington",
+                "line3": "York",
+                "city": "",
+                "county": "",
+                "postcode": "YO31 9HU"
+            },
+            "contacts": {
+                "website": "http://www.lloydspharmacy.com",
+                "additionalContacts": [],
+                "telephoneNumber": "01904 623415",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "flat-rate",
+                "phoneChargeAmount": 0,
+                "telephoneExtension": null,
+                "fax": null,
+                "email": "lp6953@lloydspharmacy.co.uk"
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FL466",
+            "name": "LloydsPharmacy",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": null,
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFL466&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FL466",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FL466",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0687041282653809,
+                    53.98677444458008
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1080
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2520
+                },
+                {
+                    "opens": 3420,
+                    "closes": 3960
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5400
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6840
+                },
+                {
+                    "opens": 7740,
+                    "closes": 8040
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 1.0259409787629363,
+            "openingTimesMessage": "Open until 6pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
+            "openingTimes": {
+                "general": {
+                    "monday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:00"
+                        }
+                    ],
+                    "sunday": []
+                },
+                "alterations": {}
+            },
+            "outOfHours": "",
+            "hasEps": true,
+            "address": {
+                "line1": "5 Heworth Village",
+                "line2": null,
+                "line3": "",
+                "city": "York",
+                "county": "North Yorkshire",
+                "postcode": "YO31 1AE"
+            },
+            "contacts": {
+                "website": null,
+                "additionalContacts": [],
+                "telephoneNumber": "01904 423760",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "unknown method",
+                "phoneChargeAmount": null,
+                "telephoneExtension": null,
+                "fax": "01904 438371",
+                "email": null
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FGQ69",
+            "name": "Boots",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>",
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFGQ69&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FGQ69",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FGQ69",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0576447248458862,
+                    53.966609954833984
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1050
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2490
+                },
+                {
+                    "opens": 3420,
+                    "closes": 3930
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5370
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6810
+                },
+                {
+                    "opens": 7740,
+                    "closes": 8220
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 1.4888560251165108,
+            "openingTimesMessage": "Open until 5:30pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
+            "openingTimes": {
+                "general": {
+                    "monday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "13:00"
+                        }
+                    ],
+                    "sunday": []
+                },
+                "alterations": {}
+            },
+            "outOfHours": "",
+            "hasEps": true,
+            "address": {
+                "line1": "10 East Pde",
+                "line2": null,
+                "line3": "",
+                "city": "York",
+                "county": "North Yorkshire",
+                "postcode": "YO31 7YJ"
+            },
+            "contacts": {
+                "website": null,
+                "additionalContacts": [],
+                "telephoneNumber": "01904 424375",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "unknown method",
+                "phoneChargeAmount": null,
+                "telephoneExtension": null,
+                "fax": null,
+                "email": null
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FMJ79",
+            "name": "Boots",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>",
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFMJ79&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FMJ79",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FMJ79",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0664033889770508,
+                    53.96485137939453
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1050
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2490
+                },
+                {
+                    "opens": 3420,
+                    "closes": 3930
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5370
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6810
+                },
+                {
+                    "opens": 7740,
+                    "closes": 7980
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 1.7612938906357156,
+            "openingTimesMessage": "Open until 5:30pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
+        },
+        {
+            "identifierType": "Pharmacy Contract",
+            "openingTimes": {
+                "general": {
+                    "monday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "tuesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "wednesday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "17:30"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "13:00"
+                        }
+                    ],
+                    "sunday": []
+                },
+                "alterations": {}
+            },
+            "outOfHours": "",
+            "hasEps": true,
+            "address": {
+                "line1": "3 Intake Avenue",
+                "line2": "York",
+                "line3": "",
+                "city": "",
+                "county": "",
+                "postcode": "YO30 6HB"
+            },
+            "contacts": {
+                "website": "http://www.lloydspharmacy.com",
+                "additionalContacts": [],
+                "telephoneNumber": "01904 623472",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "flat-rate",
+                "phoneChargeAmount": 0,
+                "telephoneExtension": null,
+                "fax": null,
+                "email": "lp6937@lloydspharmacy.co.uk"
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FA242",
+            "name": "LloydsPharmacy",
+            "organisationType": "Pharmacy",
+            "parkingInformation": null,
+            "provider": "North Yorkshire And Humber Area Team",
+            "summary": null,
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFA242&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FA242",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FA242",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0851573944091797,
+                    53.974361419677734
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1050
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2490
+                },
+                {
+                    "opens": 3420,
+                    "closes": 3930
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5370
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6810
+                },
+                {
+                    "opens": 7740,
+                    "closes": 7980
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 1.8899049736859888,
+            "openingTimesMessage": "Open until 5:30pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
         }
     ],
     "open": [
         {
-            "address": {
-                "city": "Monks Cross Shopping Park",
-                "county": "",
-                "line1": "Asda Superstore",
-                "line2": "Jockey Lane",
-                "line3": "",
-                "postcode": "YO32 9LF"
-            },
-            "contacts": {
-                "additionalContacts": [],
-                "email": null,
-                "fax": null,
-                "isNonGeographicPhoneNumber": false,
-                "phoneChargeAmount": null,
-                "phoneChargeMethod": "unknown method",
-                "telephoneExtension": null,
-                "telephoneNumber": "01904 628107        ",
-                "website": null
-            },
-            "directionsInformation": "",
-            "distanceInMiles": 2.0031075201988813,
-            "externalProfileUrl": null,
-            "g": 2163456662128803,
-            "hasEps": true,
-            "identifier": "FCM91",
             "identifierType": "Pharmacy Contract",
-            "isOpen": true,
-            "latitude": 53.98647689819336,
-            "links": [
-                {
-                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFCM91&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
-                    "name": "Tracking pixel",
-                    "rel": "NoFollow"
-                },
-                {
-                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FCM91",
-                    "name": "Link to self",
-                    "rel": "Self"
-                },
-                {
-                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FCM91",
-                    "name": "NHS Choices profile",
-                    "rel": "Alternate"
-                }
-            ],
-            "location": {
-                "coordinates": [
-                    -1.0434553623199463,
-                    53.98647689819336
-                ],
-                "type": "Point"
-            },
-            "longitude": -1.0434553623199463,
-            "name": "Asda Stores Ltd",
             "openingTimes": {
-                "alterations": {},
                 "general": {
-                    "friday": [
-                        {
-                            "closes": "21:00",
-                            "opens": "09:00"
-                        }
-                    ],
                     "monday": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "saturday": [
-                        {
-                            "closes": "21:00",
-                            "opens": "09:00"
-                        }
-                    ],
-                    "sunday": [
-                        {
-                            "closes": "16:00",
-                            "opens": "11:00"
-                        }
-                    ],
-                    "thursday": [
-                        {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "20:00"
                         }
                     ],
                     "tuesday": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "20:00"
                         }
                     ],
                     "wednesday": [
                         {
-                            "closes": "21:00",
-                            "opens": "09:00"
+                            "opens": "09:00",
+                            "closes": "20:00"
+                        }
+                    ],
+                    "thursday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "20:00"
+                        }
+                    ],
+                    "friday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "20:00"
+                        }
+                    ],
+                    "saturday": [
+                        {
+                            "opens": "09:00",
+                            "closes": "19:00"
+                        }
+                    ],
+                    "sunday": [
+                        {
+                            "opens": "11:00",
+                            "closes": "17:00"
                         }
                     ]
-                }
+                },
+                "alterations": {}
             },
-            "openingTimesMessage": "Open until 9:00 pm today",
-            "organisationType": "Pharmacy",
             "outOfHours": "",
+            "hasEps": true,
+            "address": {
+                "line1": "7 Monks Cross Shopping Park",
+                "line2": "Monks Cross Drive",
+                "line3": null,
+                "city": "York",
+                "county": "North Yorkshire",
+                "postcode": "YO32 9LF"
+            },
+            "contacts": {
+                "website": "",
+                "additionalContacts": [],
+                "telephoneNumber": "01904 656360",
+                "isNonGeographicPhoneNumber": false,
+                "phoneChargeMethod": "unknown method",
+                "phoneChargeAmount": null,
+                "telephoneExtension": null,
+                "fax": "01904 656389",
+                "email": "store.manager.6435@boots.co.uk"
+            },
+            "directionsInformation": null,
+            "externalProfileUrl": null,
+            "identifier": "FLX35",
+            "name": "Boots",
+            "organisationType": "Pharmacy",
             "parkingInformation": null,
             "provider": "North Yorkshire And Humber Area Team",
-            "summary": ""
+            "summary": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>",
+            "links": [
+                {
+                    "rel": "NoFollow",
+                    "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFLX35&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+                    "name": "Tracking pixel"
+                },
+                {
+                    "rel": "Self",
+                    "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FLX35",
+                    "name": "Link to self"
+                },
+                {
+                    "rel": "Alternate",
+                    "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FLX35",
+                    "name": "NHS Choices profile"
+                }
+            ],
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0434553623199463,
+                    53.98647689819336
+                ]
+            },
+            "openingTimesAsOffset": [
+                {
+                    "opens": 540,
+                    "closes": 1200
+                },
+                {
+                    "opens": 1980,
+                    "closes": 2640
+                },
+                {
+                    "opens": 3420,
+                    "closes": 4080
+                },
+                {
+                    "opens": 4860,
+                    "closes": 5520
+                },
+                {
+                    "opens": 6300,
+                    "closes": 6960
+                },
+                {
+                    "opens": 7740,
+                    "closes": 8340
+                },
+                {
+                    "opens": 9300,
+                    "closes": 9660
+                }
+            ],
+            "openingTimesAlterationsAsOffset": [],
+            "distanceInMiles": 0,
+            "openingTimesMessage": "Open until 8pm today",
+            "isOpen": true,
+            "nextOpen": "2017-12-12T15:52:04.309Z"
         }
     ]
 }
