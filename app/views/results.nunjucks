@@ -55,8 +55,7 @@
         </li>
       </ol>
       <div class="callout callout--muted">
-          <h2>Call 111</h2>
-          <p>If you can’t speak to your GP or don’t know what to do next.</p>
+          <p><a href="tel:111">Call 111</a> if you need urgent treatment and you can’t find an open pharmacy.</p>
         </div>
       {% endif %}
   </div>
@@ -83,8 +82,7 @@
     </div>
   </div>
   <div class="callout callout--muted">
-      <h2>Call 111</h2>
-      <p>If you can’t speak to your GP or don’t know what to do next.</p>
+      <p><a href="tel:111">Call 111</a> if you need urgent treatment and you can’t find an open pharmacy.</p>
     </div>
   {% endif %}
 
