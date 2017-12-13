@@ -38,7 +38,7 @@
         <div class="results">
           <h2 class="results__header results-none-nearby">There are no other pharmacies within 20 miles of {{ location }}</h2>
         </div>
-
+        {% include "includes/call-111.nunjucks" %}
       {% else %}
         <li class="results__item results__nearby">
           <h2 class="results__header results__header--nearby">Other pharmacies nearby</h2>
@@ -54,9 +54,7 @@
           </ol>
         </li>
       </ol>
-      <div class="callout callout--muted">
-          <p><a href="tel:111">Call 111</a> if you need urgent treatment and you can’t find an open pharmacy.</p>
-        </div>
+      {% include "includes/call-111.nunjucks" %}
       {% endif %}
   </div>
 
@@ -67,7 +65,6 @@
       <div class="results-block">
         <h2 class="results__header results__header--none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
       </div>
-
       <h2 class="results__header">Other pharmacies nearby</h2>
       <ol class="results__nearby-list">
       {% for service in nearbyServices %}
@@ -78,12 +75,9 @@
         </li>
       {% endfor %}
       </ol>
-
     </div>
   </div>
-  <div class="callout callout--muted">
-      <p><a href="tel:111">Call 111</a> if you need urgent treatment and you can’t find an open pharmacy.</p>
-    </div>
+  {% include "includes/call-111.nunjucks" %}
   {% endif %}
 
 {% endblock %}
