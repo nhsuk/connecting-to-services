@@ -66,6 +66,7 @@ describe('The results page', () => {
         expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
         expect($('.breadcrumb li').length).to.equal(4);
         expect($('.breadcrumb__last').text()).to.equal('Results');
+        expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         done();
       });
   });
@@ -95,6 +96,7 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
+        expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BA1 - NHS.UK');
         expect($('.breadcrumb li').length).to.equal(4);
@@ -193,6 +195,7 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results-none-nearby').text()).to.be.equal(`There are no other pharmacies within 20 miles of ${outcode}`);
+        expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         expect($('.results-none').length).to.be.equal(0);
         expect($('.breadcrumb li').length).to.equal(4);
         expect($('.breadcrumb__last').text()).to.equal('Results');
