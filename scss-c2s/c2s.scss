@@ -297,6 +297,15 @@ form {
           }
         }
       }
+      &-none-nearby {
+        margin:20px 16px;
+      }
+    }
+    + .callout--muted {
+      margin: 46px 0 10px;
+      @include media(desktop) {
+        margin-top:46px 32px 0;
+      }
     }
   }
   .places {
@@ -307,6 +316,11 @@ form {
       > ol,
         p {
         margin:20px 0;
+      }
+    }
+    .callout {
+      &--muted {
+        margin:0 32px;
       }
     }
   }

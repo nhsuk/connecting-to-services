@@ -3,6 +3,7 @@
 - Build `header-items.nunjucks` in Dockerfile
 - Display message for upcoming bank holidays
 - Return more nearby results
+- Display 'call 111' message
 
 0.21.0 / 2017-12-07
 ===================
