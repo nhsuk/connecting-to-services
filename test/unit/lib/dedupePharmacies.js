@@ -17,7 +17,7 @@ describe('dedupePharmacies', () => {
     { identifier: 'AAA10' },
   ];
 
-  describe('when the open item is one of the 9 nearby items', () => {
+  describe('when the open item is one of the 10 nearby items', () => {
     it('should remove the duplicate item from the nearby items', () => {
       const duplicateItem = nearbyServices[0];
       const services = {
