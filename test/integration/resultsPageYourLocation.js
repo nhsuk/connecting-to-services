@@ -46,8 +46,11 @@ describe(`The ${yourLocation} results page`, () => {
         const nearbyResults = $('.results__item--nearby');
         const openResults = $('.results__details-nearest');
 
+        expect($('.grid-row__results > h1').text())
+          .to.equal(`Search results for ${yourLocation}`);
+
         expect($('.results__header--nearest').text())
-          .to.equal(`Nearest open pharmacy to ${yourLocation}`);
+          .to.equal('Nearest open pharmacy');
         expect(openResults.length).to.equal(constants.numberOfOpenResults);
         expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
 
