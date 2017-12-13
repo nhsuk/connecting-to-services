@@ -1,6 +1,7 @@
 language: node_js
 node_js: node
 services: docker
+group: deprecated-2017Q4
 
 before_install:
   - yarn global add greenkeeper-lockfile@1
