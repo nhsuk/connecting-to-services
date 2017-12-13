@@ -302,7 +302,10 @@ form {
       }
     }
     + .callout--muted {
-      margin-top:46px;
+      margin: 46px 0 10px;
+      @include media(desktop) {
+        margin-top:46px 32px 0;
+      }
     }
   }
   .places {
