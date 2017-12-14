@@ -1,3 +1,7 @@
+0.23.1 / TBD
+===================
+- Install `greenkeeper-lockfile` with `npm` rather than `yarn` as latest version of `yarn` isn't working see https://github.com/greenkeeperio/greenkeeper-lockfile/issues/98
+
 0.23.0 / 2017-12-14
 ===================
 - Build `header-items.nunjucks` in Dockerfile
