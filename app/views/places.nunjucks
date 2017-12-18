@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Places disambiguation{% endblock %}
+{% block pageTitle %}{% if places.length === 0 %}Find a pharmacy - We can't find '{{location}}'{% else %}Find a pharmacy - Places that match '{{location}}'{% endif %}{% endblock %}
 
 {% block breadcrumbItems %}
   {% if places.length === 0 %}

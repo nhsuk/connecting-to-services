@@ -3,6 +3,7 @@
 - Update styles to fall in line with live styles
 - Update npm dependencies
 - Correct reference to `GOOGLE_ANALYTICS_TRACKING_ID`
+- Add better page titles
 
 0.23.0 / 2017-12-14
 ===================

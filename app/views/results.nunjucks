@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Pharmacies near {{ getDisplayLocation() }}{% endblock %}
+{% block pageTitle %}{% if openServices.length === 0 and nearbyServices.length === 0 %}Find a pharmacy - We can't find any pharmacies near {{ getDisplayLocation() }}{% else %}Find a pharmacy - Pharmacies near {{ getDisplayLocation() }}{% endif %}{% endblock %}
 
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />
@@ -21,7 +21,7 @@
   {% elif openServices.length > 0 %}
 
 <div class="grid-row">
-  <h1 class="sr-only">Search results</h1>
+  <h1 class="sr-only">Pharmacies near {{ getDisplayLocation() }}</h1>
     <ol class="results">
       <li class="results__item results__item--nearest">
         <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ getDisplayLocation() }}</h2>
