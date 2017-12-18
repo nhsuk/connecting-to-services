@@ -6,13 +6,12 @@
       <div class="results__none-content">
         {% block reasonForMessage %}
         {% if searchType === 'place' and hasNoCountries()%}
-        <p>If the place you searched for is in England, you could:
+        <p>If the place you searched for is in England, you could:</p>
         <ul>
           <li>check your spelling and try again</li>
           <li>try a different place name</li>
         </ul>
         <p><a href="{{ SITE_ROOT }}/">Back to find a pharmacy</a></p>
-      </p>
       {% else %}
         <p>This service only provides information about pharmacies in England.</p>
       {% endif %}

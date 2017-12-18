@@ -282,6 +282,9 @@ form {
             @include media(desktop) {
               padding: 32px;
             }
+            p {
+              padding:0;
+            }
           }
         }
       }
@@ -377,8 +380,7 @@ form {
   background-color: #fff;
   @include media(tablet) {
     border: 5px solid #338ed1;
-    margin-top: 0;
-    margin-bottom: 45px;
+    margin: 45px 0;
     padding: 20px 15px 15px;
   }
   &:focus {
@@ -405,6 +407,9 @@ form {
   }
   p {
     margin-bottom: 10px;
+  }
+  h2 {
+    padding:0;
   }
 }
 
