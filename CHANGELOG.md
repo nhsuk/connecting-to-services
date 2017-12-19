@@ -1,5 +1,7 @@
 0.23.1 / TBD
 ===================
+- Install `greenkeeper-lockfile` with `npm` rather than `yarn` as latest version of `yarn` isn't working see https://github.com/greenkeeperio/greenkeeper-lockfile/issues/98
+- Update styles to fall in line with live styles
 
 0.23.0 / 2017-12-14
 ===================

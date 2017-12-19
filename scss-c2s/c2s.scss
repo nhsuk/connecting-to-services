@@ -89,7 +89,7 @@
 .skiplinks {
   background-color: #a6ceeb;
   &--link {
-    color: #fff;
+    color: $white;
     display: inline-block;
     left: -999em;
     padding: 8px;
@@ -121,7 +121,7 @@ form {
     text-transform: none;
     width: 100%;
     padding: 4px;
-    background-color: #fff;
+    background-color: $white;
     border: 2px solid #000;
     @include media(tablet) {
       font-size: 24px;
@@ -210,7 +210,7 @@ form {
         padding:0 8px;
         &--nearest {
           background-color: $blue;
-          color: #fff;
+          color: $white;
           padding:8px 8px 24px 8px;
         }
         @include media(tablet) {
@@ -263,7 +263,7 @@ form {
       &-block {
         &--none {
           background-color: $blue;
-          color: #fff;
+          color: $white;
           margin-bottom: 32px;
           padding: 16px;
           @include media(desktop) {
@@ -276,7 +276,7 @@ form {
             }
           }
           .results__none-content {
-            background: #fff;
+            background: $white;
             color: #000;
             padding: 16px;
             @include media(desktop) {
@@ -377,7 +377,7 @@ form {
   border: 4px solid #338ed1;
   margin-bottom: 45px;
   padding: 15px 10px;
-  background-color: #fff;
+  background-color: $white;
   @include media(tablet) {
     border: 5px solid #338ed1;
     margin: 45px 0;
@@ -415,7 +415,7 @@ form {
 
 .results-block {
     background-color: $blue;
-    color: #fff;
+    color: $white;
     margin-bottom: 32px;
     padding: 16px;
 }
