@@ -20,11 +20,11 @@
     {% include "includes/no-pharmacy-results.nunjucks" %}
   {% elif openServices.length > 0 %}
 
-<div class="grid-row">
-  <h1 class="sr-only">Search results</h1>
+<div class="grid-row grid-row__results">
+  <h1>Search results for {{ getDisplayLocation() }}</h1>
     <ol class="results">
       <li class="results__item results__item--nearest">
-        <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ getDisplayLocation() }}</h2>
+        <h2 class="results__header results__header--nearest">Nearest open pharmacy</h2>
         <div class="results__details results__details-nearest column--two-thirds results__details--column">
           {% set service = openServices[0] %}
           {% include "includes/result-item.nunjucks" %}
