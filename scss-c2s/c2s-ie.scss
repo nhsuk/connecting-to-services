@@ -1,7 +1,7 @@
 $hiviz: #ffca55;
 
 .skiplinks--link {
-  color: #fff;
+  color: $white;
   display: inline-block;
   left: -999em;
   padding: 8px;
@@ -98,7 +98,7 @@ a.link-back {
 
 .page-section .grid-row .results__header--nearest {
   background-color: #0072c6;
-  color: #fff;
+  color: $white;
   padding: 16px 16px 32px 16px;
 }
 .page-section .results__item {
