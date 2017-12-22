@@ -1,11 +1,5 @@
 @import "nhsuk";
 
-/*
-   Colours.
-*/
-
-$blue: #0072c6;
-
 .sr-only,
 .hidden {
   position: absolute;
@@ -19,12 +13,6 @@ $blue: #0072c6;
 }
 .reading-width {
   @include reading-width;
-}
-h1 {
-  margin: 10px 0 58px;
-  @include media(tablet) {
-    margin: 10px 0 86px;
-  }
 }
 
 .local-header,
@@ -101,7 +89,7 @@ h1 {
 .skiplinks {
   background-color: #a6ceeb;
   &--link {
-    color: #fff;
+    color: $white;
     display: inline-block;
     left: -999em;
     padding: 8px;
@@ -133,7 +121,7 @@ form {
     text-transform: none;
     width: 100%;
     padding: 4px;
-    background-color: #fff;
+    background-color: $white;
     border: 2px solid #000;
     @include media(tablet) {
       font-size: 24px;
@@ -146,8 +134,8 @@ form {
     }
   }
   .form-label-bold {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
     line-height: 32px;
     text-transform: none;
   }
@@ -222,7 +210,7 @@ form {
         padding:0 8px;
         &--nearest {
           background-color: $blue;
-          color: #fff;
+          color: $white;
           padding:8px 8px 24px 8px;
         }
         @include media(tablet) {
@@ -274,8 +262,8 @@ form {
       }
       &-block {
         &--none {
-          background-color: #0072c6;
-          color: #fff;
+          background-color: $blue;
+          color: $white;
           margin-bottom: 32px;
           padding: 16px;
           @include media(desktop) {
@@ -288,11 +276,14 @@ form {
             }
           }
           .results__none-content {
-            background: #fff;
+            background: $white;
             color: #000;
             padding: 16px;
             @include media(desktop) {
               padding: 32px;
+            }
+            p {
+              padding:0;
             }
           }
         }
@@ -386,11 +377,10 @@ form {
   border: 4px solid #338ed1;
   margin-bottom: 45px;
   padding: 15px 10px;
-  background-color: #fff;
+  background-color: $white;
   @include media(tablet) {
     border: 5px solid #338ed1;
-    margin-top: 0;
-    margin-bottom: 45px;
+    margin: 45px 0;
     padding: 20px 15px 15px;
   }
   &:focus {
@@ -418,11 +408,14 @@ form {
   p {
     margin-bottom: 10px;
   }
+  h2 {
+    padding:0;
+  }
 }
 
 .results-block {
-    background-color: #0072c6;
-    color: #fff;
+    background-color: $blue;
+    color: $white;
     margin-bottom: 32px;
     padding: 16px;
 }

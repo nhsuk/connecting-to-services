@@ -1,5 +1,6 @@
 0.23.1 / TBD
 ===================
+- Update styles to fall in line with live styles
 
 0.23.0 / 2017-12-14
 ===================

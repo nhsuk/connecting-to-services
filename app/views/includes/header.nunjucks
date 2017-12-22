@@ -23,7 +23,7 @@
       </div>
       <div id="search" class="site-header__search search">
         <form id="gs" method="get" action="https://www.nhs.uk/Search/">
-          <input name="q" class="search__input" type="text" placeholder="Search" />
+          <input name="q" class="search__input" type="text" placeholder="Enter a search term" />
           <div class="search__button icon-Search">
             <input type="submit" value=""/>
           </div>
