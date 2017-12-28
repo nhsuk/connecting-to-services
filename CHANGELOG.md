@@ -1,6 +1,7 @@
-0.23.1 / TBD
+0.24.0 / 2018-01-02
 ===================
 - Update styles to fall in line with live styles
+- Update npm dependencies
 
 0.23.0 / 2017-12-14
 ===================
