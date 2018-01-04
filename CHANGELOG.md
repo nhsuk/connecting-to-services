@@ -1,7 +1,8 @@
-0.24.0 / 2018-01-02
+0.24.0 / 2018-01-09
 ===================
 - Update styles to fall in line with live styles
 - Update npm dependencies
+- Correct reference to `GOOGLE_ANALYTICS_TRACKING_ID`
 
 0.23.0 / 2017-12-14
 ===================
