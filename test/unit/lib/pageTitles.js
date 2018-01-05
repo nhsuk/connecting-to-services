@@ -59,5 +59,21 @@ describe('displayTitles', () => {
       const result = pageTitles.results(location, openServices, nearbyServices);
       expect(result).to.equal('Find a pharmacy - Pharmacies near City');
     });
+
+    it('should return \'Find a pharmacy - Pharmacies near ...\' with friendly location when open services available, but no nearby services', () => {
+      const location = 'City, County, Postcode';
+      const openServices = [{ name: 'one' }];
+      const nearbyServices = [];
+      const result = pageTitles.results(location, openServices, nearbyServices);
+      expect(result).to.equal('Find a pharmacy - Pharmacies near City');
+    });
+
+    it('should return \'Find a pharmacy - Pharmacies near ...\' with friendly location when no open services, but nearby services are available', () => {
+      const location = 'City, County, Postcode';
+      const openServices = [];
+      const nearbyServices = [{ name: 'nearby' }];
+      const result = pageTitles.results(location, openServices, nearbyServices);
+      expect(result).to.equal('Find a pharmacy - Pharmacies near City');
+    });
   });
 });
