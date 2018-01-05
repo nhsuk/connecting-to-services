@@ -47,7 +47,7 @@ function expectMidsomerNortonResults($, location) {
   const numberOfResults = constants.numberOfNearbyResultsToDisplay + numberOfOpenResults;
   expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
 
-  expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
+  expect($('title').text()).to.equal('Find a pharmacy - Pharmacies near Midsomer Norton - NHS.UK');
 }
 
 describe('The place results page', () => {
@@ -102,10 +102,10 @@ describe('The place results page', () => {
 
         expect($('.results__item').length).to.equal(3);
         expect($('.results__none').length).to.equal(1);
-        expect($('.results__header').text())
+        expect($('.places > h1').text())
           .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
-        expect($('title').text()).to.equal('Places disambiguation - NHS.UK');
+        expect($('title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS.UK');
 
         done();
       });
@@ -140,7 +140,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'\' - NHS.UK');
+        expect($('title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS.UK');
         done();
       });
   });

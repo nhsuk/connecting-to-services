@@ -208,6 +208,7 @@ form {
         font-size: 32px;
         line-height:40px;
         padding:0 8px;
+        margin:0;
         &--nearest {
           background-color: $blue;
           color: $white;
@@ -300,21 +301,25 @@ form {
     }
   }
   .places {
-      > ol {
-        padding:0;
-        list-style: none;
-      }
-      > ol,
-        p {
-        margin:20px 0;
-      }
+    > h1 {
+      @include bold-font(36);
+      margin: 32px 0 0;
     }
-    .callout {
-      &--muted {
-        margin:0 32px;
-      }
+    > ol {
+      padding:0;
+      list-style: none;
+    }
+    > ol,
+      p {
+      margin:20px 0;
     }
   }
+  .callout {
+    &--muted {
+      margin:0 32px;
+    }
+  }
+}
 
 /*
   Links

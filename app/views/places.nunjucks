@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Places disambiguation{% endblock %}
+{% block pageTitle %}{{getPlacesPageTitle()}}{% endblock %}
 
 {% block breadcrumbItems %}
   {% if places.length === 0 %}
