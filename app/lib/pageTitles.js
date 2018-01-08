@@ -21,7 +21,7 @@ function disambiguation(location, places) {
 function results(location, openServices, nearbyServices) {
   return openServices.length === 0 && nearbyServices.length === 0 ?
     `${titlePrefix} - We can't find any pharmacies near ${getDisplayLocation(location)}` :
-    `${titlePrefix} - Pharmacies near ${getDisplayLocation(location)}`;
+    `Pharmacies near ${getDisplayLocation(location)}`;
 }
 
 module.exports = {

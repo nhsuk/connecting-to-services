@@ -63,7 +63,7 @@ describe('The results page', () => {
           expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
         });
 
-        expect($('title').text()).to.equal('Find a pharmacy - Pharmacies near LS2 7UE - NHS.UK');
+        expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
         expect($('.breadcrumb li').length).to.equal(4);
         expect($('.breadcrumb__last').text()).to.equal('Results');
         expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
@@ -98,7 +98,7 @@ describe('The results page', () => {
         expect($('.results__header--none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
         expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         expect($('.results-none-nearby').length).to.be.equal(0);
-        expect($('title').text()).to.equal('Find a pharmacy - Pharmacies near BA1 - NHS.UK');
+        expect($('title').text()).to.equal('Pharmacies near BA1 - NHS.UK');
         expect($('.breadcrumb li').length).to.equal(4);
         expect($('.breadcrumb__last').text()).to.equal('Results');
         done();

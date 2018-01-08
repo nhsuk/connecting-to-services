@@ -47,7 +47,7 @@ function expectMidsomerNortonResults($, location) {
   const numberOfResults = constants.numberOfNearbyResultsToDisplay + numberOfOpenResults;
   expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
 
-  expect($('title').text()).to.equal('Find a pharmacy - Pharmacies near Midsomer Norton - NHS.UK');
+  expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
 }
 
 describe('The place results page', () => {
