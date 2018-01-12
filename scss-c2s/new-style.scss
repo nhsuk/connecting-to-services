@@ -51,31 +51,18 @@ body {
     main {
       .results__title{
         h1 {
-          color:$nhs-blue;
+          color:$black;
           padding:0 16px;
           position: relative;
-          font-size:20px;
+          font-size:32px;
           border-top:24px solid $grey;
-          padding:24px 16px 16px;
+          padding:12px 16px 32px;
           line-height:20px;
-          font-weight:400;
-          &:before {
-            content:"";
-            display: inline-block;
-            position: absolute;
-            left:16px;
-            top:0;
-            width: -webkit-calc(100% - 32px);
-            width:    -moz-calc(100% - 32px);
-            width:         calc(100% - 32px);
-            height:2px;
-            background-color: $blue;
-          }
+          font-weight:600;
           @include media(tablet) {
             max-width: 960px;
             margin:auto;
             font-size:36px;
-            padding-bottom: 32px;
           }
         }
       }
