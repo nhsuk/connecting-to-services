@@ -44,7 +44,7 @@ module.exports = {
   plugins: {
     sass: {
       options: {
-        includePaths: ['scss-live']
+        includePaths: ['scss-new-layout']
       }
     },
     fingerprint: {

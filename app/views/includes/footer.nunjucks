@@ -1,16 +1,6 @@
 <div class="footer__main-links">
     <div class="footer__content">
       <ul>
-        <li>
-          <a href="/">
-            <img class="footer__logo" src="{{ ASSETS_URL }}/images/nhs-logo.png" srcset="
-                {{ ASSETS_URL }}/images/nhs-logo.png 1x,
-                {{ ASSETS_URL }}/images/nhs-logo@2x.png 2x,
-                {{ ASSETS_URL }}/images/nhs-logo@3x.png 3x"
-                alt=""
-            />
-          </a>
-        </li>
         <li><a href="http://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
         <li><a href="http://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
         <li><a href="http://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
@@ -24,6 +14,21 @@
         <li><a href="http://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
         <li><a href="http://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx">Accessibility</a></li>
         <li><a href="http://www.nhs.uk/Pages/site-policies.aspx">Our policies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__logo-copy">
+    <div class="footer__content">
+      <ul>
+        <li>
+          <img
+            src="{{ SITE_ROOT }}/images/nhs-logo.png" srcset="
+                {{ SITE_ROOT }}/images/nhs-logo.png 1x,
+                {{ SITE_ROOT }}/images/nhs-logo@2x.png 2x"
+            class="nhs-logo"
+            alt=""
+          />
+        </li>
         <li>&copy; Crown Copyright</li>
       </ul>
     </div>

@@ -1,0 +1,300 @@
+$nhs-blue: #0D60B5;
+$blue: #669ed4;
+$grey: #E8EDEE;
+$grey-2: #bac4c8;
+$grey-3: #425563;
+$grey-4: #768692;
+$white: #fff;
+$black: #000;
+$callout: #425563;
+
+body {
+  &.newlayout {
+    background-color:$grey;
+    header {
+      background-color: $nhs-blue;
+      margin-bottom:-1px;
+      img {
+        &.nhs-logo {
+          width: 120px;
+          padding:16px 16px 0;
+        }
+      }
+    }
+    main {
+      h1 {
+        background-color: $nhs-blue;
+        color:white;
+        padding:0 16px;
+        position: relative;
+        font-size:20px;
+        border-top:24px solid $nhs-blue;
+        padding:24px 16px 32px;
+        line-height:20px;
+        font-weight:400;
+        &:before {
+          content:"";
+          display: inline-block;
+          position: absolute;
+          left:16px;
+          top:0;
+          width: -webkit-calc(100% - 32px);
+          width:    -moz-calc(100% - 32px);
+          width:         calc(100% - 32px);
+          height:2px;
+          background-color: $blue;
+        }
+      }
+      .viewToggle {
+        margin: 16px 24px;
+        a {
+          text-decoration: none;
+          position: relative;
+          color: $black;
+          margin-left:50px;
+          display: inline-block;
+          &:before {
+            display: inline-block;
+            height:40px;
+            width:40px;
+            border:4px solid $nhs-blue;
+            content: "";
+            left:-50px;
+            position: absolute;
+          }
+          &:hover {
+            &:after {
+              content: "";
+              display: inline-block;
+              left:-36px;
+              position: absolute;
+              height:25px;
+              width:12px;
+              top:5px;
+              border:4px solid $black;
+              border-width: 0px 4px 4px 0px;
+              transform:         rotate(45deg);
+              -ms-transform:     rotate(45deg); /* IE 9 */
+              -webkit-transform: rotate(45deg); /* Safari 3-8 */
+            }
+          }
+        }
+      }
+      .page-section {
+        padding:0;
+        .results {
+          margin-bottom:32px;
+          li {
+            padding:0;
+            border: none;
+            border-top:2px solid $grey-2;
+            &.results__nearby {
+              border-top:none;
+            }
+            .results {
+              &__item {
+                &--nearby {
+                  margin-top:32px;
+                }
+              }
+              &__details {
+                padding:30px 0 0;
+                > p {
+                  &:first-of-type {
+                    font-size: 16px;
+                    color:$grey-3;
+                  }
+                }
+                .callout {
+                  &--info {
+                    background-color: $white;
+                    border-left:0;
+                    border-top:2px solid $nhs-blue;
+                  }
+                }
+                &--nearby{
+                  &::after {
+                    display: none;
+                  }
+                  &:first-child{
+                    padding:10px 0 0;
+                  }
+                }
+              }
+            }
+          }
+          > li {
+            &:last-child {
+              border-bottom:2px solid $grey-2;
+              padding-bottom:30px;
+            }
+          }
+        }
+        .searchAgain {
+          margin:0 16px 32px;
+          a {
+            margin-left:32px;
+            position: relative;
+            &:before {
+              content: "\2190";
+              position: absolute;
+              left:-32px;
+            }
+          }
+        }
+      }
+      details {
+        summary {
+          list-style: none;
+          padding-left:50px;
+          &:before {
+            content:"\203A";
+            display: inline-block;
+            color:white;
+            background: $nhs-blue;
+            border-radius: 18px;
+            height: 36px;
+            width: 36px;
+            position: absolute;
+            left:0;
+            padding-left:14px;
+            font-size: 36px;
+            font-weight: 300;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-3);
+          }
+          &::-webkit-details-marker {
+            display: none;
+          }
+          span {
+            line-height: 36px;
+          }
+        }
+        .details__content {
+          .openingTimes {
+            margin: 16px 0 16px;
+            tr {
+              &:first-child {
+                display:none;
+              }
+              td, th {
+                font-size:20px;
+                line-height: 20px;
+                padding:5px;
+                font-weight: 400;
+                border:none;
+                &:first-child {
+                  padding-left:0;
+                }
+              }
+              td {
+                width:20px;
+                &:nth-child(3) {
+                  &:before {
+                    content: "-";
+                    margin:0px 10px 0 5px;
+                  }
+                }
+                &:last-child {
+                  text-transform: uppercase;
+                }
+              }
+            }
+          }
+          p {
+            &:first-of-type {
+              font-size: 16px;
+              color:$grey-3;
+            }
+          }
+        }
+        &[open]{
+          summary {
+            &:before {
+              content:"\203A";
+              -webkit-transform: rotate(-90deg);
+              -moz-transform: rotate(-90deg);
+              -ms-transform: rotate(-90deg);
+              -o-transform: rotate(-90deg);
+              filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            }
+          }
+        }
+      }
+    }
+    footer {
+      margin-top:64px;
+      padding-top:32px;
+      border-top:2px solid $grey-3;
+      background: white;
+      ul {
+        padding-left:16px;
+        li {
+          list-style: none;
+          line-height:36px;
+        }
+      }
+      img {
+        &.nhs-logo {
+          width: 88px;
+          padding:16px 0;
+        }
+      }
+      .footer {
+        &__logo-copy {
+          background:$nhs-blue;
+          color:$white;
+          border-top:32px solid white;
+          ul {
+            font-weight: 300;
+            li {
+              width:25%;
+              float:left;
+              line-height: 100px;
+              &:last-child {
+                width:75%;
+                text-align: right;
+                padding-right:16px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .callout {
+      &--111 {
+        background: white;
+        border-top:42px solid $callout;
+        position: relative;
+        padding-top:28px;
+        margin: 0 16px;
+        span {
+          position: absolute;
+          top:-36px;
+          left:16px;
+          color:$white;
+          a {
+            color:$white;
+            text-decoration: none;
+            position: relative;
+          }
+          &:before {
+            content:"";
+            display: inline-block;
+            position: absolute;
+            height:36px;
+            width:36px;
+            background: $callout;
+            top:10px;
+            transform:         rotate(45deg);
+            -ms-transform:     rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Safari 3-8 */
+          }
+        }
+      }
+    }
+  }
+}

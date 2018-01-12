@@ -22,12 +22,6 @@ function expectSearchAgainPage($) {
 }
 
 function expectMidsomerNortonResults($, location) {
-  expect($('.results__header--nearest').text())
-    .to.equal('Nearest open pharmacy to Midsomer Norton');
-
-  expect($('.results__header--nearby').text())
-    .to.equal('Other pharmacies nearby');
-
   const openResults = $('.results__details-nearest .results__maplink');
   expect(openResults.length).to.equal(1);
 
