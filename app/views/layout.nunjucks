@@ -43,7 +43,7 @@
     {% block meta %}{% endblock %}
   </head>
 
-  <body>
+  <body class="newlayout">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
     <div class="skiplinks">
@@ -66,6 +66,7 @@
     {% include "includes/header.nunjucks" %}
 
     <main id="content" class="util-nofocus">
+      <!-- *** Removed as part of new layout work ***
       <div class="breadcrumb">
         <ol>
           <li><a href="http://www.nhs.uk">Home</a></li>
@@ -75,10 +76,12 @@
           {% endblock %}
         </ol>
       </div>
+      -->
       {% block article %}
+      {% block header %}{% endblock %}
       <div class="page-section">
         {% block pageSection %}
-          {% block header %}{% endblock %}
+
           {% block content %}{% endblock %}
         {% endblock %}
       </div>

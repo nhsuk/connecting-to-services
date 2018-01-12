@@ -4,17 +4,19 @@
       <!-- noindex -->
       <a href="/">
         <img
-          src="{{ ASSETS_URL }}/images/choices-logo.png" srcset="
-              {{ ASSETS_URL }}/images/choices-logo.png 1x,
-              {{ ASSETS_URL }}/images/choices-logo@2x.png 2x,
-              {{ ASSETS_URL }}/images/choices-logo@3x.png 3x"
-          class="nhs-choices-logo"
+          src="{{ SITE_ROOT }}/images/nhs-logo.png" srcset="
+              {{ SITE_ROOT }}/images/nhs-logo.png 1x,
+              {{ SITE_ROOT }}/images/nhs-logo@2x.png 2x"
+          class="nhs-logo"
           alt=""
         />
       </a>
+      <!-- *** Removed as part of new layout work ***
       <span class="site-header__tagline">Your health, your choices</span>
+      -->
     </div>
 
+    <!-- *** Removed as part of new layout work ***
     <div class="site-header__controls">
       <div class="site-header__user-links user-links">
         <span class="user-links__right-align">
@@ -33,9 +35,11 @@
           <a id="main-nav-toggle" class="menu-icon__link" href="#">Menu</a>
       </div>
     </div>
+    -->
     <div class="clearfix"></div>
   </div>
 
+  <!-- *** Removed as part of new layout work ***
   <nav id="main-nav" class="site-header__nav main-nav main-nav">
     <div id="main-nav-items" class="main-nav__items">
       <ul class="main-nav__page-menu">
@@ -47,5 +51,6 @@
       </ul>
     </div>
   </nav>
+  -->
   <!-- endnoindex -->
 </header>

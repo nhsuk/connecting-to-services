@@ -46,12 +46,6 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--nearest').text())
-          .to.equal(`Nearest open pharmacy to ${ls27ue}`);
-
-        expect($('.results__header--nearby').text())
-          .to.equal('Other pharmacies nearby');
-
         const openResults = $('.results__details-nearest .results__maplink');
         expect(openResults.length).to.equal(1);
 
@@ -64,8 +58,6 @@ describe('The results page', () => {
         });
 
         expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('Results');
         expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         done();
       });
@@ -99,8 +91,6 @@ describe('The results page', () => {
         expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Pharmacies near BA1 - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('Results');
         done();
       });
   });
@@ -132,8 +122,6 @@ describe('The results page', () => {
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('No results');
         done();
       });
   });
@@ -164,8 +152,6 @@ describe('The results page', () => {
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('No results');
         done();
       });
   });
@@ -197,8 +183,6 @@ describe('The results page', () => {
         expect($('.results-none-nearby').text()).to.be.equal(`There are no other pharmacies within 20 miles of ${outcode}`);
         expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
         expect($('.results-none').length).to.be.equal(0);
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('Results');
         done();
       });
   });
@@ -234,8 +218,6 @@ describe('The results page', () => {
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('No results');
         done();
       });
   });
