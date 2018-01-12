@@ -1,0 +1,379 @@
+//@include media(tablet) {}
+//@include media(desktop) {}
+
+@mixin media($size: false, $max-width: false, $min-width: false, $ignore-for-ie: false) {
+  @if $size == desktop {
+      @media (min-width: 925px) {
+        @content;
+      }
+    } @else if $size == tablet {
+      @media (min-width: 641px) {
+        @content;
+      }
+    } @else if $size == mobile {
+      @media (max-width: 640px) {
+        @content;
+      }
+    } @else if $max-width != false {
+      @media (max-width: $max-width) {
+        @content;
+      }
+    } @else if $min-width != false {
+      @media (min-width: $min-width) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $size) {
+        @content;
+      }
+    }
+}
+
+$nhs-blue: #0D60B5;
+$blue: #669ed4;
+$grey: #E8EDEE;
+$grey-2: #bac4c8;
+$grey-3: #425563;
+$grey-4: #768692;
+$white: #fff;
+$black: #000;
+$callout: #425563;
+
+body {
+  &.newlayout {
+    background-color:$grey;
+    header {
+      background-color: $white;
+    }
+    .breadcrumb {
+      background-color: $white;
+    }
+    main {
+      .results__title{
+        h1 {
+          color:$nhs-blue;
+          padding:0 16px;
+          position: relative;
+          font-size:20px;
+          border-top:24px solid $grey;
+          padding:24px 16px 16px;
+          line-height:20px;
+          font-weight:400;
+          &:before {
+            content:"";
+            display: inline-block;
+            position: absolute;
+            left:16px;
+            top:0;
+            width: -webkit-calc(100% - 32px);
+            width:    -moz-calc(100% - 32px);
+            width:         calc(100% - 32px);
+            height:2px;
+            background-color: $blue;
+          }
+          @include media(tablet) {
+            max-width: 960px;
+            margin:auto;
+            font-size:36px;
+            padding-bottom: 32px;
+          }
+        }
+      }
+      .viewToggle {
+        margin: 16px 24px;
+        a {
+          text-decoration: none;
+          position: relative;
+          color: $black;
+          margin-left:50px;
+          display: inline-block;
+          &:before {
+            display: inline-block;
+            height:40px;
+            width:40px;
+            border:4px solid $nhs-blue;
+            content: "";
+            left:-50px;
+            position: absolute;
+          }
+          &:hover {
+            &:after {
+              content: "";
+              display: inline-block;
+              left:-36px;
+              position: absolute;
+              height:25px;
+              width:12px;
+              top:5px;
+              border:4px solid $black;
+              border-width: 0px 4px 4px 0px;
+              transform:         rotate(45deg);
+              -ms-transform:     rotate(45deg); /* IE 9 */
+              -webkit-transform: rotate(45deg); /* Safari 3-8 */
+            }
+          }
+          @include media(tablet) {
+            line-height:40px;
+          }
+        }
+      }
+      .page-section {
+        padding:0;
+        margin:0;
+        max-width: 100%;
+        .grid-row {
+          max-width:960px;
+          margin:0 auto;
+        }
+        .results {
+          margin-bottom:32px;
+          li {
+            padding:0;
+            border: none;
+            border-top:2px solid $grey-2;
+            &.results__nearby {
+              border-top:none;
+            }
+            &.results__item{
+              &--nearest{
+                @include media(tablet) {
+                  height: 455px;
+                }
+              }
+            }
+            .results {
+              &__item {
+                &--nearby {
+                  margin-top:32px;
+                }
+                @include media(tablet) {
+                  height: 455px;
+                }
+              }
+              &__details {
+                padding:30px 0 0;
+                @include media(tablet) {
+                  width:100%;
+                  > p {
+                    max-width: calc( 100% * 1/2);
+                  }
+                }
+                @include media(desktop) {
+                  width:100%;
+                  > p {
+                    max-width: calc( 100% * 3/5);
+                  }
+                }
+                > p {
+                  &:first-of-type {
+                    font-size: 16px;
+                    color:$grey-3;
+                  }
+                }
+                .callout {
+                  &--info {
+                    background-color: $white;
+                    border-left:0;
+                    border-top:2px solid $nhs-blue;
+                  }
+                }
+                &--nearby{
+                  &::after {
+                    display: none;
+                  }
+                  &:first-child{
+                    padding:10px 0 0;
+                  }
+                }
+              }
+            }
+          }
+          > li {
+            &:last-child {
+              border-bottom:2px solid $grey-2;
+              padding-bottom:30px;
+            }
+          }
+          .device {
+            &--tablet {
+              display:none;
+              position: absolute;
+              right:0;
+              top:0;
+              @include media(tablet) {
+                display:block;
+              }
+            }
+            &--mobile {
+              @include media(tablet) {
+                display:none;
+              }
+            }
+          }
+          .openingTimes {
+            margin: 16px 0 16px;
+            tr {
+              &:first-child {
+                display:none;
+              }
+              td, th {
+                font-size:20px;
+                line-height: 20px;
+                padding:5px;
+                font-weight: 400;
+                border:none;
+                &:first-child {
+                  padding-left:0;
+                }
+              }
+              td {
+                width:20px;
+                &:nth-child(3) {
+                  &:before {
+                    content: "-";
+                    margin:0px 10px 0 5px;
+                  }
+                }
+                &:last-child {
+                  text-transform: uppercase;
+                }
+              }
+            }
+          }
+          p {
+            &:first-of-type {
+              font-size: 16px;
+              color:$grey-3;
+            }
+          }
+        }
+        .searchAgain {
+          margin:0 16px 32px;
+          a {
+            margin-left:32px;
+            position: relative;
+            &:before {
+              content: "\2190";
+              position: absolute;
+              left:-32px;
+            }
+          }
+        }
+      }
+      details {
+        summary {
+          list-style: none;
+          padding-left:50px;
+          &:before {
+            content:"\203A";
+            display: inline-block;
+            color:white;
+            background: $nhs-blue;
+            border-radius: 18px;
+            height: 36px;
+            width: 36px;
+            position: absolute;
+            left:0;
+            padding-left:14px;
+            font-size: 36px;
+            font-weight: 300;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-3);
+          }
+          &::-webkit-details-marker {
+            display: none;
+          }
+          span {
+            line-height: 36px;
+          }
+        }
+        &[open]{
+          summary {
+            &:before {
+              content:"\203A";
+              -webkit-transform: rotate(-90deg);
+              -moz-transform: rotate(-90deg);
+              -ms-transform: rotate(-90deg);
+              -o-transform: rotate(-90deg);
+              filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            }
+          }
+        }
+      }
+    }
+    footer {
+      margin-top:64px;
+      padding-top:32px;
+      border-top:2px solid $grey-3;
+      background: white;
+      ul {
+        padding-left:16px;
+        li {
+          list-style: none;
+          line-height:36px;
+        }
+      }
+      img {
+        &.nhs-logo {
+          width: 88px;
+          padding:16px 0;
+        }
+      }
+      .footer {
+        &__logo-copy {
+          background:$nhs-blue;
+          color:$white;
+          border-top:32px solid white;
+          ul {
+            font-weight: 300;
+            li {
+              width:25%;
+              float:left;
+              line-height: 100px;
+              &:last-child {
+                width:75%;
+                text-align: right;
+                padding-right:16px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .callout {
+      &--111 {
+        background: white;
+        border-top:42px solid $callout;
+        position: relative;
+        padding-top:28px;
+        margin: 0 16px;
+        span {
+          position: absolute;
+          top:-36px;
+          left:16px;
+          color:$white;
+          a {
+            color:$white;
+            text-decoration: none;
+            position: relative;
+          }
+          &:before {
+            content:"";
+            display: inline-block;
+            position: absolute;
+            height:36px;
+            width:36px;
+            background: $callout;
+            top:10px;
+            transform:         rotate(45deg);
+            -ms-transform:     rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Safari 3-8 */
+          }
+        }
+      }
+    }
+  }
+}

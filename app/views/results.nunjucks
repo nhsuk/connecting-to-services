@@ -6,6 +6,8 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
+{% block bodyClass %}newlayout{% endblock %}
+
 {% block breadcrumbItems %}
   <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
   {% if openServices.length === 0 and nearbyServices.length === 0 %}
@@ -20,11 +22,13 @@
     {% include "includes/no-pharmacy-results.nunjucks" %}
   {% elif openServices.length > 0 %}
 
+<div class="results__title">
+  <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
+</div>
 <div class="grid-row">
-  <h1 class="sr-only">Pharmacies near {{ getDisplayLocation() }}</h1>
+  <p class="viewToggle"><a href="">Only show pharmacies open now</a></p>
     <ol class="results">
       <li class="results__item results__item--nearest">
-        <h2 class="results__header results__header--nearest">Nearest open pharmacy to {{ getDisplayLocation() }}</h2>
         <div class="results__details results__details-nearest column--two-thirds results__details--column">
           {% set service = openServices[0] %}
           {% include "includes/result-item.nunjucks" %}
@@ -41,7 +45,6 @@
         {% include "includes/call-111.nunjucks" %}
       {% else %}
         <li class="results__item results__nearby">
-          <h2 class="results__header results__header--nearby">Other pharmacies nearby</h2>
           <ol class="results__nearby-list">
           {% for service in nearbyServices %}
             <li class="results__item results__item--nearby">
@@ -54,6 +57,7 @@
           </ol>
         </li>
       </ol>
+      <p class="searchAgain"><a href="{{ SITE_ROOT }}/">Search again</a></p>
       {% include "includes/call-111.nunjucks" %}
       {% endif %}
   </div>
@@ -61,6 +65,7 @@
     {% else %}
 <div class="grid-row">
   <h1 class="sr-only">Search results</h1>
+  <p><a href="">Only show pharmacies open now</a></p>
     <div class="results">
       <div class="results-block">
         <h2 class="results__header results__header--none-open">There are no pharmacies open now within 20 miles of {{ location }}</h2>
@@ -76,6 +81,7 @@
       {% endfor %}
       </ol>
     </div>
+    <p class="searchAgain"><a href="{{ SITE_ROOT }}/">Search again</a></p>
   </div>
   {% include "includes/call-111.nunjucks" %}
   {% endif %}
