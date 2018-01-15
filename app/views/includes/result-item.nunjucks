@@ -13,42 +13,44 @@
 <section class="callout callout--info callout--compact device--mobile">
   <p class="callout--info__mesg">
     {{ service.openingTimesMessage }}
-    <details class="" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-        <span class="details__summary">See full opening times</span>
-      </summary>
-      <div class="details__content" id="details-content-0" aria-hidden="true">
-        <table class="openingTimes">
-          <tr><th>Day of the week</th><th>First opening time</th><th>Last closing time</th></tr>
-          <tr><th>Monday</th><td>07:45</td><td>18:00</td></tr>
-          <tr><th>Tuesday</th><td>07:45</td><td>18:00</td></tr>
-          <tr><th>Wednesday</th><td>07:45</td><td>18:00</td></tr>
-          <tr><th>Thursday</th><td>07:45</td><td>18:00</td></tr>
-          <tr><th>Friday</th><td>07:45</td><td>18:00</td></tr>
-          <tr><th>Saturday</th><td>07:45</td><td>18:00</td></tr>
-          <tr><th>Sunday</th><td colspan="2">Closed</td></tr>
-        </table>
-        <p>May close during these hours</p>
-        <p><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
-      </div>
-    </details>
   </p>
+  {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
+  <details class="" role="group">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+      <span class="details__summary">See full opening times</span>
+    </summary>
+    <div class="details__content" id="details-content-0" aria-hidden="true">
+      <table class="openingTimes">
+        <tr><th>Day of the week</th><th>First opening time</th><th>Last closing time</th></tr>
+        <tr><th>Monday</th><td>07:45</td><td>18:00</td></tr>
+        <tr><th>Tuesday</th><td>07:45</td><td>18:00</td></tr>
+        <tr><th>Wednesday</th><td>07:45</td><td>18:00</td></tr>
+        <tr><th>Thursday</th><td>07:45</td><td>18:00</td></tr>
+        <tr><th>Friday</th><td>07:45</td><td>18:00</td></tr>
+        <tr><th>Saturday</th><td>07:45</td><td>18:00</td></tr>
+        <tr><th>Sunday</th><td colspan="2">Closed</td></tr>
+      </table>
+      <p>May close during these hours</p>
+      <p><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
+    </div>
+  </details>
 </section>
 <section class="callout callout--info callout--compact device--tablet">
-  <p class="callout--info__mesg"></p>
+  <p class="callout--info__mesg">
     {{ service.openingTimesMessage }}
-    <table class="openingTimes">
-      <tr><th>Day of the week</th><th>First opening time</th><th>Last closing time</th></tr>
-      <tr><th>Monday</th><td>07:45</td><td>18:00</td></tr>
-      <tr><th>Tuesday</th><td>07:45</td><td>18:00</td></tr>
-      <tr><th>Wednesday</th><td>07:45</td><td>18:00</td></tr>
-      <tr><th>Thursday</th><td>07:45</td><td>18:00</td></tr>
-      <tr><th>Friday</th><td>07:45</td><td>18:00</td></tr>
-      <tr><th>Saturday</th><td>07:45</td><td>18:00</td></tr>
-      <tr><th>Sunday</th><td colspan="2">Closed</td></tr>
-    </table>
-    <p>May close during these hours</p>
-    <p><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
+  </p>
+  {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
+  <table class="openingTimes">
+    <tr><th>Day of the week</th><th>First opening time</th><th>Last closing time</th></tr>
+    <tr><th>Monday</th><td>07:45</td><td>18:00</td></tr>
+    <tr><th>Tuesday</th><td>07:45</td><td>18:00</td></tr>
+    <tr><th>Wednesday</th><td>07:45</td><td>18:00</td></tr>
+    <tr><th>Thursday</th><td>07:45</td><td>18:00</td></tr>
+    <tr><th>Friday</th><td>07:45</td><td>18:00</td></tr>
+    <tr><th>Saturday</th><td>07:45</td><td>18:00</td></tr>
+    <tr><th>Sunday</th><td colspan="2">Closed</td></tr>
+  </table>
+  <p>May close during these hours</p>
+  <p><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
 </section>
-{% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact">{{ service.bankHolidayMessage }}</p>{% endif %}
 <p class="overview"><a href="{{ service.choicesOverviewUrl }}">See this pharmacy's services</a></p>

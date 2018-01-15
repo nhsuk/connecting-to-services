@@ -1,6 +1,3 @@
-//@include media(tablet) {}
-//@include media(desktop) {}
-
 @mixin media($size: false, $max-width: false, $min-width: false, $ignore-for-ie: false) {
   @if $size == desktop {
       @media (min-width: 925px) {
@@ -34,13 +31,12 @@ $blue: #669ed4;
 $grey: #E8EDEE;
 $grey-2: #bac4c8;
 $grey-3: #425563;
-$grey-4: #768692;
+$grey-4: #425563;
 $white: #fff;
 $black: #000;
-$callout: #425563;
 
 body {
-  &.newlayout {
+  &.resultsPage {
     background-color:$grey;
     header {
       background-color: $white;
@@ -141,7 +137,8 @@ body {
                 padding:30px 0 0;
                 @include media(tablet) {
                   width:100%;
-                  > p {
+                  > p,
+                  section {
                     max-width: calc( 100% * 1/2);
                   }
                 }
@@ -150,10 +147,14 @@ body {
                   > p {
                     max-width: calc( 100% * 3/5);
                   }
+                  > section {
+                    max-width: calc( 100% * 1/3);
+                  }
                 }
                 > p {
                   &:first-of-type {
                     font-size: 16px;
+                    line-height: 16px;
                     color:$grey-3;
                   }
                 }
@@ -170,6 +171,36 @@ body {
                   }
                   &:first-child{
                     padding:10px 0 0;
+                  }
+                }
+              }
+            }
+            p {
+              &.callout {
+                &--bh {
+                  background:transparent;
+                  border-width: 2px 0;
+                  border-color:$nhs-blue;
+                  padding:10px 0;
+                  position:relative;
+                  margin-top:42px;
+                  font-size:16px;
+                  line-height: 24px;
+                  &:after {
+                    content:"i";
+                    color:$white;
+                    font-family: serif;
+                    font-size: 24px;
+                    line-height: 30px;
+                    //text-indent: -9999px;
+                    background: #0D60B5; //url(images/info_icon.png) center center no-repeat;
+                    height: 30px;
+                    width: 20px;
+                    display: inline-block;
+                    text-align: center;
+                    position: absolute;
+                    top: -30px;
+                    left: 0;
                   }
                 }
               }
@@ -198,7 +229,7 @@ body {
             }
           }
           .openingTimes {
-            margin: 16px 0 16px;
+            margin: 32px 0 0;
             tr {
               &:first-child {
                 display:none;
@@ -226,9 +257,7 @@ body {
                 }
               }
             }
-          }
-          p {
-            &:first-of-type {
+            + p {
               font-size: 16px;
               color:$grey-3;
             }
@@ -243,6 +272,26 @@ body {
               content: "\2190";
               position: absolute;
               left:-32px;
+            }
+          }
+        }
+        .bankHoliday {
+          .results {
+            li {
+              &.results__item{
+                &--nearest{
+                  @include media(tablet) {
+                    min-height: 630px;
+                  }
+                }
+              }
+              .results {
+                &__item {
+                  @include media(tablet) {
+                    min-height: 630px;
+                  }
+                }
+              }
             }
           }
         }
@@ -293,47 +342,11 @@ body {
     }
     footer {
       margin-top:64px;
-      padding-top:32px;
-      border-top:2px solid $grey-3;
-      background: white;
-      ul {
-        padding-left:16px;
-        li {
-          list-style: none;
-          line-height:36px;
-        }
-      }
-      img {
-        &.nhs-logo {
-          width: 88px;
-          padding:16px 0;
-        }
-      }
-      .footer {
-        &__logo-copy {
-          background:$nhs-blue;
-          color:$white;
-          border-top:32px solid white;
-          ul {
-            font-weight: 300;
-            li {
-              width:25%;
-              float:left;
-              line-height: 100px;
-              &:last-child {
-                width:75%;
-                text-align: right;
-                padding-right:16px;
-              }
-            }
-          }
-        }
-      }
     }
     .callout {
       &--111 {
         background: white;
-        border-top:42px solid $callout;
+        border-top:42px solid $grey-4;
         position: relative;
         padding-top:28px;
         margin: 0 16px;
@@ -353,7 +366,7 @@ body {
             position: absolute;
             height:36px;
             width:36px;
-            background: $callout;
+            background: $grey-4;
             top:10px;
             transform:         rotate(45deg);
             -ms-transform:     rotate(45deg); /* IE 9 */

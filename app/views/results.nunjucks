@@ -6,7 +6,7 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
-{% block bodyClass %}newlayout{% endblock %}
+{% block bodyClass %}resultsPage{% endblock %}
 
 {% block breadcrumbItems %}
   <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
@@ -25,7 +25,7 @@
 <div class="results__title">
   <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
 </div>
-<div class="grid-row">
+<div class="grid-row bankHoliday">
   <p class="viewToggle"><a href="">Only show pharmacies open now</a></p>
     <ol class="results">
       <li class="results__item results__item--nearest">
@@ -63,7 +63,7 @@
   </div>
 
     {% else %}
-<div class="grid-row">
+<div class="grid-row {% if service.bankHolidayMessage %}bankHoliday{% endif %}>
   <h1 class="sr-only">Search results</h1>
   <p><a href="">Only show pharmacies open now</a></p>
     <div class="results">
