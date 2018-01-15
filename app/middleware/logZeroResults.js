@@ -4,7 +4,7 @@ const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsVie
 function logZeroResults(req, res, next) {
   const location = res.locals.location;
 
-  if (res.locals.nearbyServices.length === 0 && res.locals.openServices.length === 0) {
+  if (res.locals.services.length === 0) {
     log.warn({ location }, `No results were found for ${location}`);
     zeroPlaceResultsViews.inc(1);
   }

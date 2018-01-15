@@ -44,35 +44,17 @@ describe('displayTitles', () => {
   });
 
   describe('results', () => {
-    it('should return \'Find a pharmacy - We can\'t find any pharmacies near ...\' when no open or nearby services', () => {
+    it('should return \'Find a pharmacy - We can\'t find any pharmacies near ...\' when no services', () => {
       const location = 'Remote location';
-      const openServices = [];
-      const nearbyServices = [];
-      const result = pageTitles.results(location, openServices, nearbyServices);
+      const services = [];
+      const result = pageTitles.results(location, services);
       expect(result).to.equal('Find a pharmacy - We can\'t find any pharmacies near Remote location');
     });
 
     it('should return \'Find a pharmacy - Pharmacies near ...\' with friendly location when services are available', () => {
       const location = 'City, County, Postcode';
-      const openServices = [{ name: 'one' }];
-      const nearbyServices = [{ name: 'nearby' }];
-      const result = pageTitles.results(location, openServices, nearbyServices);
-      expect(result).to.equal('Pharmacies near City');
-    });
-
-    it('should return \'Find a pharmacy - Pharmacies near ...\' with friendly location when open services available, but no nearby services', () => {
-      const location = 'City, County, Postcode';
-      const openServices = [{ name: 'one' }];
-      const nearbyServices = [];
-      const result = pageTitles.results(location, openServices, nearbyServices);
-      expect(result).to.equal('Pharmacies near City');
-    });
-
-    it('should return \'Find a pharmacy - Pharmacies near ...\' with friendly location when no open services, but nearby services are available', () => {
-      const location = 'City, County, Postcode';
-      const openServices = [];
-      const nearbyServices = [{ name: 'nearby' }];
-      const result = pageTitles.results(location, openServices, nearbyServices);
+      const services = [{ name: 'one' }];
+      const result = pageTitles.results(location, services);
       expect(result).to.equal('Pharmacies near City');
     });
   });
