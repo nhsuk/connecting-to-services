@@ -9,14 +9,9 @@ function results(req, res, next) {
     searchType: res.locals.searchType,
   };
 
-  res.locals.nearbyServices = mapLink.addUrl(searchCriteria, res.locals.nearbyServices);
-  res.locals.openServices = mapLink.addUrl(searchCriteria, res.locals.openServices);
-
-  res.locals.nearbyServices = choicesOverview.addUrl(res.locals.nearbyServices);
-  res.locals.openServices = choicesOverview.addUrl(res.locals.openServices);
-
-  res.locals.nearbyServices = addBankHolidayMessage(res.locals.nearbyServices);
-  res.locals.openServices = addBankHolidayMessage(res.locals.openServices);
+  res.locals.services = mapLink.addUrl(searchCriteria, res.locals.services);
+  res.locals.services = choicesOverview.addUrl(res.locals.services);
+  res.locals.services = addBankHolidayMessage(res.locals.services);
 
   next();
 }

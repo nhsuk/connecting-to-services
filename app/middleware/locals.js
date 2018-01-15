@@ -19,8 +19,7 @@ module.exports = config =>
     res.locals.getResultsPageTitle =
       () => pageTitles.results(
         res.locals.location,
-        res.locals.openServices,
-        res.locals.nearbyServices
+        res.locals.services
       );
 
     next();

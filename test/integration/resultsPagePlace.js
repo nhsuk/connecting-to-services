@@ -12,8 +12,6 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.SITE_ROOT}/results`;
-const numberOfOpenResults = constants.numberOfOpenResults;
-const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 
 function expectSearchAgainPage($) {
   expect($('.error-summary-heading').text())
@@ -21,12 +19,11 @@ function expectSearchAgainPage($) {
   expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
 }
 
-function expectMidsomerNortonResults($, location) {
-  const openResults = $('.results__details-nearest .results__maplink');
-  expect(openResults.length).to.equal(1);
+function expectMidsomerNortonResults($, location, numberOfResults) {
+  expect($('h1').text()).to.equal('Pharmacies near Midsomer Norton');
 
-  const nearbyResults = $('.results__item--nearby');
-  expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
+  const results = $('.results__item');
+  expect(results.length).to.equal(numberOfResults);
 
   const mapLinks = $('.results__maplink');
   mapLinks.toArray().forEach((link) => {
@@ -37,10 +34,7 @@ function expectMidsomerNortonResults($, location) {
   ChoicesOverviewLinks.toArray().forEach((link) => {
     expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
   });
-
-  const numberOfResults = constants.numberOfNearbyResultsToDisplay + numberOfOpenResults;
   expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
-
   expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
 }
 
@@ -49,7 +43,7 @@ describe('The place results page', () => {
     nock.cleanAll();
   });
 
-  it('should return list of pharmacies for unique place search', (done) => {
+  it('should return list of nearby pharmacies for unique place search', (done) => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const singleResult = JSON.parse(singlePlaceResponse).result[0];
@@ -57,6 +51,7 @@ describe('The place results page', () => {
     const longitude = singleResult.longitude;
     const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
     const searchTerm = 'oneresult';
+    const numberOfResults = constants.api.nearbyResultsCount;
 
     nock('https://api.postcodes.io')
       .get(`/places?q=${searchTerm}&limit=100`)
@@ -64,7 +59,7 @@ describe('The place results page', () => {
       .reply(200, singlePlaceResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
       .times(1)
       .reply(200, serviceApiResponse);
 
@@ -74,7 +69,38 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expectMidsomerNortonResults($, saddr);
+        expectMidsomerNortonResults($, saddr, numberOfResults);
+        done();
+      });
+  });
+
+  it('should return list of open pharmacies for unique place search', (done) => {
+    const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
+    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+    const singleResult = JSON.parse(singlePlaceResponse).result[0];
+    const latitude = singleResult.latitude;
+    const longitude = singleResult.longitude;
+    const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
+    const searchTerm = 'oneresult';
+    const numberOfResults = constants.api.openResultsCount;
+
+    nock('https://api.postcodes.io')
+      .get(`/places?q=${searchTerm}&limit=100`)
+      .times(1)
+      .reply(200, singlePlaceResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
+      .times(1)
+      .reply(200, serviceApiResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: searchTerm, open: true })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+        expectMidsomerNortonResults($, saddr, numberOfResults);
         done();
       });
   });
@@ -105,13 +131,15 @@ describe('The place results page', () => {
       });
   });
 
-  it('should return results page for link clicked from disambiguation page', (done) => {
+  it('should return nearby results page for link clicked from disambiguation page', (done) => {
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const location = 'Midsomer Norton, Bath and North East Somerset, BA3';
     const latitude = 54;
     const longitude = -1;
+    const numberOfResults = constants.api.nearbyResultsCount;
+
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
       .times(1)
       .reply(200, serviceApiResponse);
 
@@ -121,7 +149,7 @@ describe('The place results page', () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        expectMidsomerNortonResults($, location);
+        expectMidsomerNortonResults($, location, numberOfResults);
         done();
       });
   });

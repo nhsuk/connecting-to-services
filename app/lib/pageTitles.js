@@ -18,8 +18,8 @@ function disambiguation(location, places) {
     `${titlePrefix} - Places that match '${location}'`;
 }
 
-function results(location, openServices, nearbyServices) {
-  return openServices.length === 0 && nearbyServices.length === 0 ?
+function results(location, services) {
+  return services.length === 0 ?
     `${titlePrefix} - We can't find any pharmacies near ${getDisplayLocation(location)}` :
     `Pharmacies near ${getDisplayLocation(location)}`;
 }
