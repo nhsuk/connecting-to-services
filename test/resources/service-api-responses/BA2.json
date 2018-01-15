@@ -1,5 +1,5 @@
 {
-  "open": [
+  "results": [
     {
       "address": {
         "city": "Monks Cross Shopping Park",
@@ -90,6 +90,5 @@
       "provider": "North Yorkshire And Humber Area Team",
       "summary": ""
     }
-  ],
-  "nearby": []
+  ]
 }

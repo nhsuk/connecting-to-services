@@ -1,5 +1,5 @@
 {
-  "nearby": [
+  "results": [
     {
       "address": {
         "city": "Monks Cross Shopping Park",
@@ -262,6 +262,5 @@
       "openingTimesMessage": "Open until 11:00 pm today",
       "organisationType": "Pharmacy"
     }
-  ],
-  "open": []
+  ]
 }

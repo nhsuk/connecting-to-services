@@ -1,6 +1,5 @@
 const request = require('request');
 const log = require('../lib/logger');
-const dedupe = require('../lib/dedupePharmacies');
 const constants = require('../lib/constants');
 const getNearbyServicesHistogram = require('../lib/promHistorgrams').getNearbyServices;
 
@@ -10,12 +9,14 @@ function isEnglish(countries) {
 
 function getPharmacies(req, res, next) {
   if (isEnglish(res.locals.countries)) {
+    const displayOpenResults = res.locals.displayOpenResults;
     const searchPoint = res.locals.coordinates;
-    const numberOfOpenResults = constants.numberOfOpenResults;
-    const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
+    const numberOfResults =
+      (displayOpenResults ? constants.api.openResultsCount : constants.api.nearbyResultsCount);
 
     const baseUrl = process.env.API_BASE_URL;
-    const url = `${baseUrl}/nearby?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`;
+    const path = displayOpenResults ? constants.api.paths.open : constants.api.paths.nearby;
+    const url = `${baseUrl}/${path}?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results=${numberOfResults}`;
 
     log.info({ pharmacyLookupRequest: { url } }, 'get-pharmacies-request');
     const endTimer = getNearbyServicesHistogram.startTimer();
@@ -28,10 +29,7 @@ function getPharmacies(req, res, next) {
         next('get-pharmacies-error');
       } else if (response.statusCode === 200) {
         log.info('get-pharmacies-success');
-        const nearbyRes = JSON.parse(body);
-        const dedupedServices = dedupe(nearbyRes);
-        res.locals.nearbyServices = dedupedServices.nearby;
-        res.locals.openServices = dedupedServices.open;
+        res.locals.services = JSON.parse(body).results;
         next();
       } else {
         log.warn({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-warning');
@@ -39,8 +37,7 @@ function getPharmacies(req, res, next) {
       }
     });
   } else {
-    res.locals.nearbyServices = [];
-    res.locals.openServices = [];
+    res.locals.services = [];
     next();
   }
 }

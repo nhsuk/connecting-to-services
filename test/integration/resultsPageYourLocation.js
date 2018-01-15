@@ -13,16 +13,15 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.SITE_ROOT}/results`;
-const numberOfOpenResults = constants.numberOfOpenResults;
-const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
 const yourLocation = constants.yourLocation;
 
 describe(`The ${yourLocation} results page`, () => {
-  it('should return a list of pharmacies for an English location', (done) => {
+  it('should return a list of nearby pharmacies (by default) for an English location', (done) => {
     const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeEngland.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const latitude = 52.75;
     const longitude = -1.25;
+    const numberOfResults = constants.api.nearbyResultsCount;
 
     nock('https://api.postcodes.io')
       .get('/postcodes')
@@ -33,7 +32,7 @@ describe(`The ${yourLocation} results page`, () => {
       .reply(200, reverseGeocodeResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
       .times(1)
       .reply(200, serviceApiResponse);
 
@@ -43,13 +42,53 @@ describe(`The ${yourLocation} results page`, () => {
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
-        const nearbyResults = $('.results__item--nearby');
-        const openResults = $('.results__details-nearest');
+        const results = $('.results__item');
 
-        expect($('.results__header--nearest').text())
-          .to.equal(`Nearest open pharmacy to ${yourLocation}`);
-        expect(openResults.length).to.equal(constants.numberOfOpenResults);
-        expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
+        expect($('h1').text())
+          .to.equal(`Pharmacies near ${yourLocation}`);
+        expect(results.length).to.equal(numberOfResults);
+
+        const mapLinks = $('.results__maplink');
+        mapLinks.toArray().forEach((link) => {
+          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
+        });
+
+        done();
+      });
+  });
+
+  it('should return a list of open pharmacies for an English location', (done) => {
+    const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeEngland.json');
+    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+    const latitude = 52.75;
+    const longitude = -1.25;
+    const numberOfResults = constants.api.openResultsCount;
+
+    nock('https://api.postcodes.io')
+      .get('/postcodes')
+      .query({
+        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+      })
+      .times(1)
+      .reply(200, reverseGeocodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
+      .times(1)
+      .reply(200, serviceApiResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({
+        location: yourLocation, latitude, longitude, open: true
+      })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+        const results = $('.results__item');
+
+        expect($('h1').text()).to.equal(`Pharmacies near ${yourLocation}`);
+        expect(results.length).to.equal(numberOfResults);
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
