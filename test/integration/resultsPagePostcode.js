@@ -46,12 +46,6 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--nearest').text())
-          .to.equal(`Nearest open pharmacy to ${ls27ue}`);
-
-        expect($('.results__header--nearby').text())
-          .to.equal('Other pharmacies nearby');
-
         const openResults = $('.results__details-nearest .results__maplink');
         expect(openResults.length).to.equal(1);
 

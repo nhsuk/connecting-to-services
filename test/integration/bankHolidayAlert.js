@@ -57,7 +57,8 @@ describe('The bank holiday alert messaging', () => {
           iExpect.htmlWith200Status(err, res);
           const $ = cheerio.load(res.text);
 
-          expect($('.callout--warning').length).to.equal(10);
+          expect($('.device--tablet .callout--warning').length).to.equal(10);
+          expect($('.device--mobile .callout--warning').length).to.equal(10);
           $('callout--warning').toArray().forEach((item) => {
             expect(item.text()).to.equal('Today is a bank holiday. Please call to check opening times.');
           });
