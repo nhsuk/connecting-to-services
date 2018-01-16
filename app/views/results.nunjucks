@@ -29,18 +29,14 @@
 <div class="grid-row">
   <p class="viewToggle"><a href="">Only show pharmacies open now</a></p>
   <ol class="results">
-      <li class="results__item results__nearby">
-        <ol class="results__nearby-list">
-        {% for service in services %}
-          <li class="results__item results__item--nearby">
-            <div class="results__details results__details--nearby column--two-thirds">
-            {% include "includes/result-item.nunjucks" %}
-            </div>
-            <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-          </li>
-        {% endfor %}
-        </ol>
+    {% for service in services %}
+      <li class="results__item results__item--nearby results__item--nearest">
+        <div class="results__details results__details--nearby column--two-thirds">
+        {% include "includes/result-item.nunjucks" %}
+        </div>
+        <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
       </li>
+    {% endfor %}
   </ol>
   <p class="searchAgain"><a href="{{ SITE_ROOT }}/">Search again</a></p>
   {% include "includes/call-111.nunjucks" %}
