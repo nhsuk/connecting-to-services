@@ -25,7 +25,7 @@
 <div class="results__title">
   <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
 </div>
-<div class="grid-row bankHoliday">
+<div class="grid-row {% if service.bankHolidayMessage %}bankHoliday{% endif %}">
   <p class="viewToggle"><a href="">Only show pharmacies open now</a></p>
     <ol class="results">
       <li class="results__item results__item--nearest">

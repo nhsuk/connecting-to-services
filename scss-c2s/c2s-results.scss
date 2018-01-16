@@ -1,39 +1,10 @@
-@mixin media($size: false, $max-width: false, $min-width: false, $ignore-for-ie: false) {
-  @if $size == desktop {
-      @media (min-width: 925px) {
-        @content;
-      }
-    } @else if $size == tablet {
-      @media (min-width: 641px) {
-        @content;
-      }
-    } @else if $size == mobile {
-      @media (max-width: 640px) {
-        @content;
-      }
-    } @else if $max-width != false {
-      @media (max-width: $max-width) {
-        @content;
-      }
-    } @else if $min-width != false {
-      @media (min-width: $min-width) {
-        @content;
-      }
-    } @else {
-      @media (min-width: $size) {
-        @content;
-      }
-    }
-}
+@import "environment/settings/colours";
+@import "environment/tools/mixins/conditionals";
 
-$nhs-blue: #0D60B5;
-$blue: #669ed4;
+$blue-1: #669ed4;
 $grey: #E8EDEE;
 $grey-2: #bac4c8;
-$grey-3: #425563;
 $grey-4: #425563;
-$white: #fff;
-$black: #000;
 
 body {
   &.resultsPage {
@@ -74,7 +45,7 @@ body {
             display: inline-block;
             height:40px;
             width:40px;
-            border:4px solid $nhs-blue;
+            border:4px solid $blue;
             content: "";
             left:-50px;
             position: absolute;
@@ -155,14 +126,14 @@ body {
                   &:first-of-type {
                     font-size: 16px;
                     line-height: 16px;
-                    color:$grey-3;
+                    color:$grey-1;
                   }
                 }
                 .callout {
                   &--info {
                     background-color: $white;
                     border-left:0;
-                    border-top:2px solid $nhs-blue;
+                    border-top:2px solid $blue-1;
                   }
                 }
                 &--nearby{
@@ -180,7 +151,7 @@ body {
                 &--bh {
                   background:transparent;
                   border-width: 2px 0;
-                  border-color:$nhs-blue;
+                  border-color:$blue;
                   padding:10px 0;
                   position:relative;
                   margin-top:42px;
@@ -188,14 +159,14 @@ body {
                   line-height: 24px;
                   &:after {
                     content:"i";
-                    color:$white;
-                    font-family: serif;
-                    font-size: 24px;
-                    line-height: 30px;
-                    //text-indent: -9999px;
-                    background: #0D60B5; //url(images/info_icon.png) center center no-repeat;
+                    //color:$white;
+                    //font-family: serif;
+                    //font-size: 24px;
+                    //line-height: 30px;
+                    text-indent: -9999px;
+                    background: $blue url(images/info_icon.png) center center no-repeat;
                     height: 30px;
-                    width: 20px;
+                    width: 30px;
                     display: inline-block;
                     text-align: center;
                     position: absolute;
@@ -259,7 +230,7 @@ body {
             }
             + p {
               font-size: 16px;
-              color:$grey-3;
+              color:$grey-1;
             }
           }
         }
@@ -304,7 +275,7 @@ body {
             content:"\203A";
             display: inline-block;
             color:white;
-            background: $nhs-blue;
+            background: $blue;
             border-radius: 18px;
             height: 36px;
             width: 36px;
