@@ -106,9 +106,10 @@ body {
                   width:100%;
                   > h2,
                   > p {
-                    max-width: calc( 100% * 3/5);
+                    max-width: calc( 100% * 4/7);
                   }
                   > section {
+                    min-width: calc( 100% * 2/5);
                     max-width: calc( 100% * 2/5);
                   }
                 }
