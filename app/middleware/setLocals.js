@@ -3,9 +3,7 @@ const backLinkUtils = require('../lib/backLinkUtils');
 
 function fromRequest(req, res, next) {
   let displayOpenResults = false;
-  if (req.query.open) {
-    displayOpenResults = req.query.open.toLowerCase() === 'true';
-  }
+  displayOpenResults = req.query.open ? req.query.open.toLowerCase() === 'true' : false;
 
   res.locals.displayOpenResults = displayOpenResults;
   res.locals.req_location = req.query.location;

@@ -1,7 +1,7 @@
 const request = require('request');
-const log = require('../lib/logger');
-const constants = require('../lib/constants');
 const getNearbyServicesHistogram = require('../lib/promHistorgrams').getNearbyServices;
+const getRequestUrl = require('../lib/getRequestUrl');
+const log = require('../lib/logger');
 
 function isEnglish(countries) {
   return countries && countries.filter(c => c === 'England').length > 0;
@@ -9,14 +9,7 @@ function isEnglish(countries) {
 
 function getPharmacies(req, res, next) {
   if (isEnglish(res.locals.countries)) {
-    const displayOpenResults = res.locals.displayOpenResults;
-    const searchPoint = res.locals.coordinates;
-    const numberOfResults =
-      (displayOpenResults ? constants.api.openResultsCount : constants.api.nearbyResultsCount);
-
-    const baseUrl = process.env.API_BASE_URL;
-    const path = displayOpenResults ? constants.api.paths.open : constants.api.paths.nearby;
-    const url = `${baseUrl}/${path}?latitude=${searchPoint.latitude}&longitude=${searchPoint.longitude}&limits:results=${numberOfResults}`;
+    const url = getRequestUrl(res.locals.coordinates, res.locals.displayOpenResults);
 
     log.info({ pharmacyLookupRequest: { url } }, 'get-pharmacies-request');
     const endTimer = getNearbyServicesHistogram.startTimer();
