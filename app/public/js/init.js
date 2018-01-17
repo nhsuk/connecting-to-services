@@ -2,4 +2,3 @@
 require('./cookieMessage');
 require('./geoLocation');
 require('./menuToggle');
-require('./toggleResults');
