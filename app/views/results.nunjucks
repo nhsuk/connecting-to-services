@@ -27,11 +27,12 @@
   <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
 </div>
 <div class="grid-row">
-  <p class="viewToggle"><a href="">Only show pharmacies open now</a></p>
+  <p class="viewToggle">
+    <a class="{% if displayOpenResults %}checked{% endif %}" href="">Only show pharmacies open now</a></p>
   <ol class="results">
     {% for service in services %}
-      <li class="results__item results__item--nearby results__item--nearest">
-        <div class="results__details results__details--nearby column--two-thirds">
+      <li class="results__item{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}">
+        <div class="results__details column--two-thirds">
         {% include "includes/result-item.nunjucks" %}
         </div>
         <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
