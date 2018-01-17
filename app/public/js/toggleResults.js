@@ -1,5 +1,7 @@
 (function (global) {
   'use strict';
+  var $ = global.jQuery;
+  var window = global;
   $('.viewToggle a').not('.checked').attr('href', function() {
     return this.href + '&open=true';
   });
