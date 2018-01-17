@@ -16,21 +16,19 @@ body {
       background-color: $white;
     }
     main {
-      .results__title{
-        h1 {
-          color:$black;
-          padding:0 16px;
-          position: relative;
-          font-size:32px;
-          border-top:24px solid $grey;
-          padding:12px 16px 32px;
-          line-height:20px;
-          font-weight:600;
-          @include media(tablet) {
-            max-width: 960px;
-            margin:auto;
-            font-size:36px;
-          }
+      h1 {
+        color:$black;
+        padding:0 16px;
+        position: relative;
+        font-size:32px;
+        border-top:24px solid $grey;
+        padding:12px 16px 32px;
+        line-height:20px;
+        font-weight:600;
+        @include media(tablet) {
+          max-width: 960px;
+          margin:auto;
+          font-size:36px;
         }
       }
       .viewToggle {
@@ -50,7 +48,7 @@ body {
             left:-50px;
             position: absolute;
           }
-          &:hover {
+          &.checked{
             &:after {
               content: "";
               display: inline-block;
@@ -85,29 +83,20 @@ body {
             padding:0;
             border: none;
             border-top:2px solid $grey-2;
-            &.results__nearby {
-              border-top:none;
+            @include media(tablet) {
+              min-height: 495px;
             }
-            &.results__item{
-              &--nearest{
-                @include media(tablet) {
-                  height: 455px;
-                }
+            &.results__item--bankHoliday {
+              @include media(tablet) {
+                min-height: 630px;
               }
             }
             .results {
-              &__item {
-                &--nearby {
-                  margin-top:32px;
-                }
-                @include media(tablet) {
-                  height: 455px;
-                }
-              }
               &__details {
                 padding:30px 0 0;
                 @include media(tablet) {
                   width:100%;
+                  > h2,
                   > p,
                   section {
                     max-width: calc( 100% * 1/2);
@@ -115,6 +104,7 @@ body {
                 }
                 @include media(desktop) {
                   width:100%;
+                  > h2,
                   > p {
                     max-width: calc( 100% * 3/5);
                   }
@@ -136,14 +126,6 @@ body {
                     border-top:2px solid $blue-1;
                   }
                 }
-                &--nearby{
-                  &::after {
-                    display: none;
-                  }
-                  &:first-child{
-                    padding:10px 0 0;
-                  }
-                }
               }
             }
             p {
@@ -159,10 +141,6 @@ body {
                   line-height: 24px;
                   &:after {
                     content:"i";
-                    //color:$white;
-                    //font-family: serif;
-                    //font-size: 24px;
-                    //line-height: 30px;
                     text-indent: -9999px;
                     background: $blue url(images/info_icon.png) center center no-repeat;
                     height: 30px;
@@ -243,26 +221,6 @@ body {
               content: "\2190";
               position: absolute;
               left:-32px;
-            }
-          }
-        }
-        .bankHoliday {
-          .results {
-            li {
-              &.results__item{
-                &--nearest{
-                  @include media(tablet) {
-                    min-height: 630px;
-                  }
-                }
-              }
-              .results {
-                &__item {
-                  @include media(tablet) {
-                    min-height: 630px;
-                  }
-                }
-              }
             }
           }
         }
