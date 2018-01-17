@@ -19,7 +19,6 @@
 
 {% block content %}
   {% if services.length === 0 %}
-  <!-- Does this include work for no open & no nearby results? -->
     {% include "includes/no-pharmacy-results.nunjucks" %}
   {% else %}
 
@@ -27,8 +26,7 @@
   <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
 </div>
 <div class="grid-row">
-  <p class="viewToggle">
-    <a class="{% if displayOpenResults %}checked{% endif %}" href="">Only show pharmacies open now</a></p>
+  <p class="viewToggle"><a class="{% if displayOpenResults %}checked{% endif %}" href="{{ resultsPageAltUrl }}">Only show pharmacies open now</a></p>
   <ol class="results">
     {% for service in services %}
       <li class="results__item{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}">
