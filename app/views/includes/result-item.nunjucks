@@ -1,4 +1,5 @@
-<p>{{ service.distanceInMiles | round(1) }} miles away</p>
+{% set distance = service.distanceInMiles | round(1) %}
+<p>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
 <h2 class="results__name">{{ service.name }}</h2>
 <p>
 {% if service.address.line1 %} {{ service.address.line1 }}, {% endif %}
