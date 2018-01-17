@@ -1,5 +1,5 @@
 const request = require('request');
-const getNearbyServicesHistogram = require('../lib/promHistorgrams').getNearbyServices;
+const getNearbyServicesHistogram = require('../lib/promHistograms').getNearbyServices;
 const getRequestUrl = require('../lib/getRequestUrl');
 const log = require('../lib/logger');
 
