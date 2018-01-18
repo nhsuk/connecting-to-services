@@ -1,34 +1,40 @@
-<p>{{ service.distanceInMiles | round(1) }} miles away</p>
-<h2 class="results__name">{{ service.name }}</h2>
-<p>
-{% if service.address.line1 %} {{ service.address.line1 }}, {% endif %}
-{% if service.address.line2 %} {{ service.address.line2 }}, {% endif %}
-{% if service.address.line3 %} {{ service.address.line3 }}, {% endif %}
-{% if service.address.city %} {{ service.address.city }}, {% endif %}
-{% if service.address.county %} {{ service.address.county }}, {% endif %}
-{% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
-{% if service.contacts.telephoneNumber %}{{ service.contacts.telephoneNumber }}{% endif %}
-</p>
-<p><a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
-<section class="callout callout--info callout--compact device--mobile">
-  <p class="callout--info__mesg">
-    {{ service.openingTimesMessage }}
-  </p>
-  {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
-  <details class="" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-      <span class="details__summary">See full opening times</span>
-    </summary>
-    <div class="details__content" id="details-content-0" aria-hidden="true">
-      {% include "includes/openingTimes.nunjucks" %}
-    </div>
-  </details>
-</section>
-<section class="callout callout--info callout--compact device--tablet">
-  <p class="callout--info__mesg">
-    {{ service.openingTimesMessage }}
-  </p>
-  {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
-    {% include "includes/openingTimes.nunjucks" %}
-</section>
-<p class="overview"><a href="{{ service.choicesOverviewUrl }}">See this pharmacy's services</a></p>
+<li class="results__item{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}">
+  <div class="results__details column--two-thirds">
+    {% set distance = service.distanceInMiles | round(1) %}
+    <p class="distance">{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
+    <h2 class="results__name">{{ service.name }}</h2>
+    <p>
+    {% if service.address.line1 %} {{ service.address.line1 }}, {% endif %}
+    {% if service.address.line2 %} {{ service.address.line2 }}, {% endif %}
+    {% if service.address.line3 %} {{ service.address.line3 }}, {% endif %}
+    {% if service.address.city %} {{ service.address.city }}, {% endif %}
+    {% if service.address.county %} {{ service.address.county }}, {% endif %}
+    {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
+    {% if service.contacts.telephoneNumber %}{{ service.contacts.telephoneNumber }}{% endif %}
+    </p>
+    <p><a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
+    <section class="callout callout--info callout--compact device--mobile">
+      <p class="callout--info__mesg">
+        {{ service.openingTimesMessage }}
+      </p>
+      {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
+      <details class="" role="group">
+        <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+          <span class="details__summary">See full opening times</span>
+        </summary>
+        <div class="details__content" id="details-content-0" aria-hidden="true">
+          {% include "includes/openingTimes.nunjucks" %}
+        </div>
+      </details>
+    </section>
+    <section class="callout callout--info callout--compact device--tablet">
+      <p class="callout--info__mesg">
+        {{ service.openingTimesMessage }}
+      </p>
+      {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
+        {% include "includes/openingTimes.nunjucks" %}
+    </section>
+    <p class="overview"><a href="{{ service.choicesOverviewUrl }}">See this pharmacy's services</a></p>
+  </div>
+  <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+</li>
