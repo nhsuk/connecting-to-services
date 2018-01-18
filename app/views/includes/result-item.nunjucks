@@ -34,7 +34,7 @@
       {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
         {% include "includes/openingTimes.nunjucks" %}
     </section>
-    <p class="overview"><a href="{{ service.choicesOverviewUrl }}">See this pharmacy's services</a></p>
+    <p class="overview"><a href="{{ service.choicesServicesUrl }}">See this pharmacy's services</a></p>
   </div>
   <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
 </li>

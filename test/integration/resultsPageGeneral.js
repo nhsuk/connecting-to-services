@@ -38,7 +38,7 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expect($('.distance').eq(0).text()).to.equal('0 miles away');
-        expect($('.distance').eq(4).text()).to.equal('1 mile away');
+        expect($('.distance').eq(1).text()).to.equal('1 mile away');
         done();
       });
   });
