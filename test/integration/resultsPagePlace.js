@@ -30,11 +30,18 @@ function expectMidsomerNortonResults($, location, numberOfResults) {
     expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(location)}`);
   });
 
-  const ChoicesOverviewLinks = $('.overview a');
-  ChoicesOverviewLinks.toArray().forEach((link) => {
+  const choicesOverviewLinks = $('.overviewHours a');
+  choicesOverviewLinks.toArray().forEach((link) => {
     expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
   });
-  expect(ChoicesOverviewLinks.length).to.equal(numberOfResults);
+  // There are 2 opening times tables, 1 for narrow views and 1 for wider views
+  expect(choicesOverviewLinks.length).to.equal(numberOfResults * 2);
+
+  const choicesServicesLinks = $('.overview a');
+  choicesServicesLinks.toArray().forEach((link) => {
+    expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx');
+  });
+  expect(choicesServicesLinks.length).to.equal(numberOfResults);
   expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
 }
 

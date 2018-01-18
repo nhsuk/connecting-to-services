@@ -14,4 +14,4 @@
   {% endfor %}
 </table>
 <p>May close during these hours</p>
-<p><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
+<p class="overviewHours"><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
