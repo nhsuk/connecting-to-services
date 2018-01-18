@@ -1,6 +1,6 @@
 const chai = require('chai');
 const proxyquire = require('proxyquire');
-// eslint-disable-next-line import/newline-after-import
+
 const loggerStub = {};
 const logZeroResults = proxyquire('../../../app/middleware/logZeroResults', { '../lib/logger': loggerStub });
 
@@ -21,7 +21,7 @@ describe('logZeroResults', () => {
   });
 
   it('should log a warning when there are no results', () => {
-    const res = { locals: { nearbyServices: [], openServices: [], location } };
+    const res = { locals: { services: [], location } };
 
     logZeroResults(reqStub, res, nextStub);
 
@@ -32,15 +32,7 @@ describe('logZeroResults', () => {
 
   describe('does not log when there are some results', () => {
     it('should not log when there are open results', () => {
-      const res = { locals: { nearbyServices: [], openServices: [{}], location } };
-
-      logZeroResults(reqStub, res, nextStub);
-
-      expect(loggerStubDoneFlag).to.be.equal(false);
-    });
-
-    it('should not log when there are nearby results', () => {
-      const res = { locals: { nearbyServices: [{}], openServices: [], location } };
+      const res = { locals: { services: [{}], location } };
 
       logZeroResults(reqStub, res, nextStub);
 

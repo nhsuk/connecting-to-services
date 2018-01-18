@@ -9,8 +9,7 @@ function renderFindHelpPage(req, res, message, errorMessage) {
 }
 
 function renderNoResultsPage(req, res) {
-  res.locals.nearbyServices = [];
-  res.locals.openServices = [];
+  res.locals.services = [];
   renderer.results(req, res);
 }
 

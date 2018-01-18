@@ -13,8 +13,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.SITE_ROOT}/results`;
-const numberOfOpenResults = constants.numberOfOpenResults;
-const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
+const resultsCount = constants.api.nearbyResultsCount;
 const yourLocation = constants.yourLocation;
 
 describe('The bank holiday alert messaging', () => {
@@ -46,7 +45,7 @@ describe('The bank holiday alert messaging', () => {
         .reply(200, reverseGeocodeResponse);
 
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${resultsCount}`)
         .times(1)
         .reply(200, serviceApiResponse);
 
@@ -57,7 +56,8 @@ describe('The bank holiday alert messaging', () => {
           iExpect.htmlWith200Status(err, res);
           const $ = cheerio.load(res.text);
 
-          expect($('.callout--warning').length).to.equal(10);
+          expect($('.device--tablet .callout--warning').length).to.equal(10);
+          expect($('.device--mobile .callout--warning').length).to.equal(10);
           $('callout--warning').toArray().forEach((item) => {
             expect(item.text()).to.equal('Today is a bank holiday. Please call to check opening times.');
           });

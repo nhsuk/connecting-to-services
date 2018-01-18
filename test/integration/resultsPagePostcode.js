@@ -13,19 +13,19 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.SITE_ROOT}/results`;
-const numberOfOpenResults = constants.numberOfOpenResults;
-const numberOfNearbyResults = constants.numberOfNearbyResultsToRequest;
+const nearbyResultsCount = constants.api.nearbyResultsCount;
 
 describe('The results page', () => {
   after('clean nock', () => {
     nock.cleanAll();
   });
 
-  it('should return 1 open result and 3 nearby results, by default', (done) => {
-    const ls27ue = 'LS2 7UE';
-    const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
-    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
-    const ls27ueResult = JSON.parse(ls27ueResponse).result;
+  const ls27ue = 'LS2 7UE';
+  const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
+  const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
+  const ls27ueResult = JSON.parse(ls27ueResponse).result;
+
+  it('should return 10 nearby results, by default', (done) => {
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
 
@@ -35,7 +35,7 @@ describe('The results page', () => {
       .reply(200, ls27ueResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .times(1)
       .reply(200, serviceApiResponse);
 
@@ -46,17 +46,10 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--nearest').text())
-          .to.equal(`Nearest open pharmacy to ${ls27ue}`);
+        expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
 
-        expect($('.results__header--nearby').text())
-          .to.equal('Other pharmacies nearby');
-
-        const openResults = $('.results__details-nearest .results__maplink');
-        expect(openResults.length).to.equal(1);
-
-        const nearbyResults = $('.results__item--nearby');
-        expect(nearbyResults.length).to.equal(constants.numberOfNearbyResultsToDisplay);
+        const results = $('.results__item');
+        expect(results.length).to.equal(nearbyResultsCount);
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
@@ -64,43 +57,47 @@ describe('The results page', () => {
         });
 
         expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('Results');
-        expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
+        iExpect.resultsPageBreadcrumb($);
+        iExpect.call111Callout($);
         done();
       });
   });
 
-  it('should display a message when there are no open pharmacies', (done) => {
-    const outcode = 'BA1';
-    const postcodeResponse = getSampleResponse('postcodesio-responses/BA1.json');
-    const noOpenResponse = getSampleResponse('service-api-responses/BA1.json');
-    const latitude = JSON.parse(postcodeResponse).result.latitude;
-    const longitude = JSON.parse(postcodeResponse).result.longitude;
+  it('should return 10 open results', (done) => {
+    const numberOfResults = constants.api.nearbyResultsCount;
+    const latitude = ls27ueResult.latitude;
+    const longitude = ls27ueResult.longitude;
 
     nock('https://api.postcodes.io')
-      .get(`/outcodes/${outcode}`)
+      .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
-      .reply(200, postcodeResponse);
+      .reply(200, ls27ueResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
       .times(1)
-      .reply(200, noOpenResponse);
+      .reply(200, serviceApiResponse);
 
     chai.request(server)
       .get(resultsRoute)
-      .query({ location: outcode })
+      .query({ location: ls27ue, open: true })
       .end((err, res) => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none-open').text()).to.be.equal(`There are no pharmacies open now within 20 miles of ${outcode}`);
-        expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
-        expect($('.results-none-nearby').length).to.be.equal(0);
-        expect($('title').text()).to.equal('Pharmacies near BA1 - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('Results');
+        expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
+
+        const results = $('.results__item');
+        expect(results.length).to.equal(numberOfResults);
+
+        const mapLinks = $('.results__maplink');
+        mapLinks.toArray().forEach((link) => {
+          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
+        });
+
+        expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+        iExpect.resultsPageBreadcrumb($);
+        iExpect.call111Callout($);
         done();
       });
   });
@@ -132,8 +129,7 @@ describe('The results page', () => {
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('No results');
+        iExpect.noResultsPageBreadcrumb($);
         done();
       });
   });
@@ -164,46 +160,12 @@ describe('The results page', () => {
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('No results');
+        iExpect.noResultsPageBreadcrumb($);
         done();
       });
   });
 
-  it('should display a message when there is an open pharmacy but no additional nearby pharmacies', (done) => {
-    const outcode = 'BA2';
-    const postcodeResponse = getSampleResponse('postcodesio-responses/BA2.json');
-    const noNearbyResponse = getSampleResponse('service-api-responses/BA2.json');
-    const latitude = JSON.parse(postcodeResponse).result.latitude;
-    const longitude = JSON.parse(postcodeResponse).result.longitude;
-
-    nock('https://api.postcodes.io')
-      .get(`/outcodes/${outcode}`)
-      .times(1)
-      .reply(200, postcodeResponse);
-
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
-      .times(1)
-      .reply(200, noNearbyResponse);
-
-    chai.request(server)
-      .get(resultsRoute)
-      .query({ location: outcode })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
-        const $ = cheerio.load(res.text);
-
-        expect($('.results-none-nearby').text()).to.be.equal(`There are no other pharmacies within 20 miles of ${outcode}`);
-        expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
-        expect($('.results-none').length).to.be.equal(0);
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('Results');
-        done();
-      });
-  });
-
-  it('should display a message when there are no nearby and no open pharmacies', (done) => {
+  it('should display a message when there are no open pharmacies', (done) => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
     const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
@@ -216,7 +178,43 @@ describe('The results page', () => {
       .reply(200, postcodeResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
+      .times(1)
+      .reply(200, noResultsResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location: outcode, open: true })
+      .end((err, res) => {
+        iExpect.htmlWith200Status(err, res);
+        const $ = cheerio.load(res.text);
+
+        expect($('.results__header--none').text()).to
+          .be.equal(`We can't find any pharmacies near ${outcode}`);
+        expect($('.results__none-content').text()).to
+          .contain('This service only provides information about pharmacies in England.');
+        expect($('.results__none-content').text()).to.not
+          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+        expect($('.results-none-nearby').length).to.be.equal(0);
+        iExpect.noResultsPageBreadcrumb($);
+        done();
+      });
+  });
+
+  it('should display a message when there are no nearby pharmacies', (done) => {
+    const outcode = 'BA3';
+    const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
+    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
+    const latitude = JSON.parse(postcodeResponse).result.latitude;
+    const longitude = JSON.parse(postcodeResponse).result.longitude;
+
+    nock('https://api.postcodes.io')
+      .get(`/outcodes/${outcode}`)
+      .times(1)
+      .reply(200, postcodeResponse);
+
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .times(1)
       .reply(200, noResultsResponse);
 
@@ -234,8 +232,7 @@ describe('The results page', () => {
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results-none-nearby').length).to.be.equal(0);
-        expect($('.breadcrumb li').length).to.equal(4);
-        expect($('.breadcrumb__last').text()).to.equal('No results');
+        iExpect.noResultsPageBreadcrumb($);
         done();
       });
   });
@@ -314,7 +311,7 @@ describe('The results page error handling', () => {
       .reply(200, fakeResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .reply(500);
 
     chai.request(server)
@@ -347,7 +344,7 @@ describe('The results page error handling', () => {
       .reply(200, badResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .reply(400, badPharmacyResponse);
 
     chai.request(server)
@@ -379,7 +376,7 @@ describe('The results page error handling', () => {
       .reply(200, postcodesResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results:open=${numberOfOpenResults}&limits:results:nearby=${numberOfNearbyResults}`)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
 
     chai.request(server)

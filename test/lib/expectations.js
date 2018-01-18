@@ -23,8 +23,25 @@ function htmlWith200Status(err, res) {
   expect(res).to.be.html;
 }
 
+function noResultsPageBreadcrumb($) {
+  expect($('.breadcrumb li').length).to.equal(4);
+  expect($('.breadcrumb__last').text()).to.equal('No results');
+}
+
+function resultsPageBreadcrumb($) {
+  expect($('.breadcrumb li').length).to.equal(4);
+  expect($('.breadcrumb__last').text()).to.equal('Results');
+}
+
+function call111Callout($) {
+  expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
+}
+
 module.exports = {
+  call111Callout,
   findHelpPage,
   findHelpPageInvalidEntry,
   htmlWith200Status,
+  noResultsPageBreadcrumb,
+  resultsPageBreadcrumb,
 };

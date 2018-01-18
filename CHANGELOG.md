@@ -1,3 +1,10 @@
+0.25.0 / 2018-01-18
+===================
+- Split the display of open and nearby results so they each have a view, toggled via query string parameter `open`
+- Revamped results page visuals for open and nearby only views
+- Update npm dependencies
+- Fixed bug with always pluralised distance message, it will now be singular for 1 mile
+
 0.24.0 / 2018-01-09
 ===================
 - Update styles to fall in line with live styles
