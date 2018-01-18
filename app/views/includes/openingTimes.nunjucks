@@ -1,6 +1,8 @@
+{% set times = service.openingTimesOverview %}
+{% if times !== null %}
 <table class="openingTimes">
   <tr><th>Day of the week</th><th>First opening time</th><th>Last closing time</th></tr>
-  {% for openingTime in service.openingTimesOverview %}
+  {% for openingTime in times %}
   <tr><th>{{ openingTime.day }}</th>
     {% if openingTime.openingTimes === null %}
     <td colspan="2">Unavailable</td>
@@ -15,3 +17,4 @@
 </table>
 <p>May close during these hours</p>
 <p class="overviewHours"><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
+{% endif %}
