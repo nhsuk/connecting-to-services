@@ -7,7 +7,8 @@
     {% elif openingTime.openingTimes.opens === null%}
     <td colspan="2">Closed</td>
     {% else %}
-    <td>{{ openingTime.openingTimes.opens }}</td><td>{{ openingTime.openingTimes.closes }}</td>
+    {% set closes = openingTime.openingTimes.closes %}
+    <td>{{ openingTime.openingTimes.opens }}</td><td>{% if closes === "11:59pm" %}midnight{% else %}{{ closes }}{% endif %}</td>
     {% endif %}
   </tr>
   {% endfor %}
