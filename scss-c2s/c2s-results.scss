@@ -33,6 +33,9 @@ body {
       }
       .results-block{
           &--none {
+            @include media(tablet) {
+              margin-top: 32px;
+            }
             h1 {
               color:$white;
               border-top:none;
