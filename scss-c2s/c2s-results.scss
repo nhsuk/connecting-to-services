@@ -31,6 +31,14 @@ body {
           font-size:36px;
         }
       }
+      .results-block{
+          &--none {
+            h1 {
+              color:$white;
+              border-top:none;
+            }
+          }
+      }
       .viewToggle {
         margin: 16px 24px;
         a {
