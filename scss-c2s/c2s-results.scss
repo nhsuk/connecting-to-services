@@ -31,6 +31,17 @@ body {
           font-size:36px;
         }
       }
+      .results-block{
+          &--none {
+            @include media(tablet) {
+              margin-top: 32px;
+            }
+            h1 {
+              color:$white;
+              border-top:none;
+            }
+          }
+      }
       .viewToggle {
         margin: 16px 24px;
         a {
