@@ -23,7 +23,7 @@ services:
       - .:/code
 
   nearby-services-api:
-    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.13.0}"
+    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.14.1}"
     links:
       - pharmacy-db-elastic:es
 
