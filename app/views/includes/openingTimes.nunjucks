@@ -15,6 +15,4 @@
   </tr>
   {% endfor %}
 </table>
-<p>May close during these hours</p>
-<p class="overviewHours"><a href="{{ service.choicesOverviewUrl }}">See exact hours</a></p>
 {% endif %}
