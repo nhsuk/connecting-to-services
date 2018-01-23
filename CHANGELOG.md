@@ -4,6 +4,7 @@
 - Fix no results layout
 - Fix breadcrumb for no results page
 - Update docker images for `nearby-services-api` used locally and for tests
+- Improve browser support for IE6 - 8
 
 0.25.0 / 2018-01-18
 ===================
