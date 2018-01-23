@@ -42,8 +42,6 @@
       </script>
     {% endif %}
 
-    <script></script>
-
     {% block meta %}{% endblock %}
   </head>
 

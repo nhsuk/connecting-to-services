@@ -1,10 +1,13 @@
+0.27.0 / 2018-01-25
+===================
+- Improve browser support for IE6 - 8
+
 0.26.0 / 2018-01-23
 ===================
 - Fix elongated icon in iOS
 - Fix no results layout
 - Fix breadcrumb for no results page
 - Update docker images for `nearby-services-api` used locally and for tests
-- Improve browser support for IE6 - 8
 
 0.25.0 / 2018-01-18
 ===================
