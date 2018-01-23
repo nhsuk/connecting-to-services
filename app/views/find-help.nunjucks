@@ -53,4 +53,5 @@
     </div>
 </form>
 
+{% include "includes/google-search.nunjucks" %}
 {% endblock %}
