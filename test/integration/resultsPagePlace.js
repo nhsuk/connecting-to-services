@@ -77,6 +77,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectMidsomerNortonResults($, saddr, numberOfResults);
+        iExpect.resultsPageBreadcrumb($);
         done();
       });
   });
@@ -108,6 +109,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectMidsomerNortonResults($, saddr, numberOfResults);
+        iExpect.resultsPageBreadcrumb($);
         done();
       });
   });
@@ -133,6 +135,7 @@ describe('The place results page', () => {
           .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
         expect($('title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS.UK');
+        iExpect.disambiguationPageBreadcrumb($, multiPlaceTerm);
 
         done();
       });
@@ -157,6 +160,7 @@ describe('The place results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
         expectMidsomerNortonResults($, location, numberOfResults);
+        iExpect.resultsPageBreadcrumb($);
         done();
       });
   });
@@ -197,6 +201,7 @@ describe('The place results page', () => {
         expect($('.results__none-content p').text()).to.contain('Find pharmacies in Wales on the NHS Direct Wales website');
         expect($('.results__none-content p').text()).to.contain('Find pharmacies in Northern Ireland on the Health and Social Care website');
         expect($('.results-none-nearby').length).to.be.equal(0);
+        iExpect.noResultsPageBreadcrumb($);
         done();
       });
   });

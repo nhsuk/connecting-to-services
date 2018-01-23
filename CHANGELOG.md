@@ -1,3 +1,10 @@
+0.26.0 / 2018-01-23
+===================
+- Fix elongated icon in iOS
+- Fix no results layout
+- Fix breadcrumb for no results page
+- Update docker images for `nearby-services-api` used locally and for tests
+
 0.25.0 / 2018-01-18
 ===================
 - Split the display of open and nearby results so they each have a view, toggled via query string parameter `open`

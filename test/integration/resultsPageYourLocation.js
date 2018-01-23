@@ -47,6 +47,7 @@ describe(`The ${yourLocation} results page`, () => {
         expect($('h1').text())
           .to.equal(`Pharmacies near ${yourLocation}`);
         expect(results.length).to.equal(numberOfResults);
+        iExpect.resultsPageBreadcrumb($);
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
@@ -89,6 +90,7 @@ describe(`The ${yourLocation} results page`, () => {
 
         expect($('h1').text()).to.equal(`Pharmacies near ${yourLocation}`);
         expect(results.length).to.equal(numberOfResults);
+        iExpect.resultsPageBreadcrumb($);
 
         const mapLinks = $('.results__maplink');
         mapLinks.toArray().forEach((link) => {
@@ -122,6 +124,7 @@ describe(`The ${yourLocation} results page`, () => {
         expect($('.results__header--none').text()).to.be.equal('We can\'t find any pharmacies near your location');
         expect($('.results__none-content p').length).to.be.equal(2);
         expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Scotland on the NHS 24 website');
+        iExpect.noResultsPageBreadcrumb($);
         done();
       });
   });
@@ -152,6 +155,7 @@ describe(`The ${yourLocation} results page`, () => {
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
         expect($('.results__none-content p').length).to.be.equal(4);
+        iExpect.noResultsPageBreadcrumb($);
         done();
       });
   });
