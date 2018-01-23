@@ -94,22 +94,45 @@ body {
             padding:0;
             border: none;
             border-top:2px solid $grey-2;
-            @include media(tablet) {
-              min-height: 495px;
-            }
-            &.results__item--bankHoliday {
-              @include media(tablet) {
-                min-height: 630px;
-              }
-            }
             .results {
               &__details {
                 padding:30px 0 0;
                 @include media(tablet) {
-                  width:100%;
-                  > h2,
-                  > p,
-                  section {
+                  clear:both;
+                  float: left;
+                  width: 100%;
+                  > div {
+                    max-width: calc( 100% * 1/2);
+                    min-width: calc( 100% * 1/2);
+                    width:100%;
+                    float:left;
+                    > p {
+                      &:first-of-type {
+                        font-size: 16px;
+                        line-height: 16px;
+                        color:$grey-1;
+                      }
+                    }
+                  }
+                  > p {
+                    position: absolute;
+                    z-index: 1;
+                    margin-top:0;
+                    bottom:16px;
+                    @include media(tablet) {
+                      left:calc( 100% * 1/2);
+                      padding-left:16px;
+                    }
+                    @include media(desktop) {
+                      left:calc(100% - ((100% - 48px) * 2/5));
+                      padding-left:8px;
+                    }
+                    &:nth-of-type(1) {
+                      bottom:50px;
+                    }
+                  }
+                  > section {
+                    min-width: calc( 100% * 1/2);
                     max-width: calc( 100% * 1/2);
                   }
                 }
@@ -124,18 +147,21 @@ body {
                     max-width: calc( 100% * 2/5);
                   }
                 }
-                > p {
-                  &:first-of-type {
-                    font-size: 16px;
-                    line-height: 16px;
-                    color:$grey-1;
-                  }
-                }
                 .callout {
                   &--info {
                     background-color: $white;
                     border-left:0;
                     border-top:2px solid $blue-1;
+                    @include media(tablet) {
+                      float:right;
+                      padding-bottom:100px;
+                      margin-top:0px;
+                    }
+                    @include media(desktop) {
+                      details {
+                        margin-top:0;
+                      }
+                    }
                   }
                 }
               }
@@ -168,29 +194,16 @@ body {
             }
           }
           > li {
+            @include media(tablet) {
+              margin-top:32px;
+            }
             &:last-child {
               border-bottom:2px solid $grey-2;
               padding-bottom:30px;
             }
           }
-          .device {
-            &--tablet {
-              display:none;
-              position: absolute;
-              right:0;
-              top:0;
-              @include media(tablet) {
-                display:block;
-              }
-            }
-            &--mobile {
-              @include media(tablet) {
-                display:none;
-              }
-            }
-          }
           .openingTimes {
-            margin: 32px 0 0;
+            margin: 32px 0 8px;
             tr {
               &:first-child {
                 display:none;
