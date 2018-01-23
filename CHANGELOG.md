@@ -1,3 +1,7 @@
+0.27.1 / TBA
+===================
+- Add metadata to enable Google Sitelinks Searchbox
+
 0.27.0 / 2018-01-25
 ===================
 - Improve browser support for IE6 - 8
