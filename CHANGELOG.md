@@ -1,3 +1,7 @@
+0.27.0 / 2018-01-25
+===================
+- Improve browser support for IE6 - 8
+
 0.26.0 / 2018-01-23
 ===================
 - Fix elongated icon in iOS

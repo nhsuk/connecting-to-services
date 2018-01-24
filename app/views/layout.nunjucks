@@ -26,6 +26,8 @@
 
     <link rel="stylesheet" href="{{ SITE_ROOT }}/print.css" media="print" type="text/css">
 
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+
     {% if HOTJAR_ANALYTICS_TRACKING_ID %}
        <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
       <script>

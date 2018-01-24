@@ -7,6 +7,7 @@ $hiviz: #ffca55;
   padding: 8px;
   position: absolute;
 }
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -16,6 +17,28 @@ $hiviz: #ffca55;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+body {
+  font-family: "Frutiger W01", arial !important;
+  .site-header {
+    &__brand {
+      width:450px;
+      float:left;
+    }
+    &__controls {
+      width:300px;
+      float:right;
+    }
+  }
+  .viewToggle {
+    padding-left:30px;
+  }
+  .device{
+    &--mobile {
+      display:none;
+    }
+  }
 }
 
 .notification-banner__js-hidden {
@@ -132,4 +155,9 @@ a.link-back {
     bottom: -2px;
     width: 130px;
     clear:both;
+}
+
+.geo-locate,
+.geo-locate--denied {
+  display:none;
 }
