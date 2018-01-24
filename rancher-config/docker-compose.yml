@@ -10,6 +10,7 @@ services:
       HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
       NODE_ENV: production
       WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}
+      DISABLE_GOOGLE_SEARCH: ${DISABLE_GOOGLE_SEARCH}
     labels:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true

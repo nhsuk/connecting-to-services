@@ -52,6 +52,7 @@
       </div>
     </div>
 </form>
-
-{% include "includes/google-search.nunjucks" %}
+{% if not DISABLE_GOOGLE_SEARCH%}
+  {% include "includes/google-search.nunjucks" %}
+{% endif %}
 {% endblock %}
