@@ -69,7 +69,7 @@ environment.
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                           |                           |            |
 | `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                 |                           |            |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html) | test:test                 |            |
-| `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox)  |                           |            |
+| `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox)  | false |            |
 
 ## FAQ
 

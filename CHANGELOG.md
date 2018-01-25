@@ -1,4 +1,4 @@
-0.27.1 / TBA
+0.28.0 / 2018-01-30
 ===================
 - Add metadata to enable Google Sitelinks Searchbox
 

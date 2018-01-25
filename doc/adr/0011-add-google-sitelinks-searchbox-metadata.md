@@ -17,4 +17,4 @@ An additional term will be added to the query string to allow analytic metrics t
 
 ## Consequences
 
-Additional searches will come from Google rather than the Pharmacy Finder homepage.
+Some searches will originate from Google, reducing the number of searches originating from the Pharmacy Finder's search page.
