@@ -2,10 +2,12 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
-const server = require('../../server');
+
 const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
+const messages = require('../../app/lib/messages');
+const server = require('../../server');
 
 const expect = chai.expect;
 
@@ -79,6 +81,29 @@ describe('The results page', () => {
         const toggle = $('.viewToggle a');
         expect(toggle.attr('class')).to.equal('checked');
         expect(toggle.attr('href')).to.have.string('&open=false');
+        done();
+      });
+  });
+
+  it('should handle an error from the api', (done) => {
+    const apiErrorResponse = getSampleResponse('service-api-responses/err.json');
+    nock(process.env.API_BASE_URL)
+      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
+      .times(1)
+      .reply(500, apiErrorResponse);
+
+    chai.request(server)
+      .get(resultsRoute)
+      .query({ location, latitude, longitude })
+      .end((err, res) => {
+        expect(err).to.not.be.null;
+        expect(res).to.have.status(500);
+        expect(res).to.be.html;
+
+        const $ = cheerio.load(res.text);
+        expect($('.local-header--title--question').text())
+          .to.contain(messages.technicalProblems());
+
         done();
       });
   });

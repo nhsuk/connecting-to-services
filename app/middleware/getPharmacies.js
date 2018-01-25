@@ -17,7 +17,7 @@ function getPharmacies(req, res, next) {
       endTimer();
       log.debug({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-response');
 
-      if (error) {
+      if (error || response.statusCode === 500) {
         log.error({ pharmacyLookupResponse: { error, response, body } }, 'get-pharmacies-error');
         next('get-pharmacies-error');
       } else if (response.statusCode === 200) {
