@@ -1,0 +1,12 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://beta.nhs.uk/find-a-pharmacy/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://beta.nhs.uk/find-a-pharmacy/results?source=google&location={location}",
+    "query-input": "required name=location"
+  }
+}
+</script>
