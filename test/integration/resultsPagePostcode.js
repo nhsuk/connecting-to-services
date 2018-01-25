@@ -119,15 +119,15 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
-        expect($('.results__none-content p').length).to.be.equal(2);
+        expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+        expect($('.results__none-content p').length).to.equal(2);
         expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Northern Ireland on the Health and Social Care website');
 
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('.results-none-nearby').length).to.equal(0);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
         iExpect.noResultsPageBreadcrumb($);
         done();
@@ -151,14 +151,14 @@ describe('The results page', () => {
         iExpect.htmlWith200Status(err, res);
         const $ = cheerio.load(res.text);
 
-        expect($('.results__header--none').text()).to.be.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
-        expect($('.results__none-content p').length).to.be.equal(1);
+        expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+        expect($('.results__none-content p').length).to.equal(1);
 
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('.results-none-nearby').length).to.equal(0);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
         iExpect.noResultsPageBreadcrumb($);
         done();
@@ -190,12 +190,12 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to
-          .be.equal(`We can't find any pharmacies near ${outcode}`);
+          .equal(`We can't find any pharmacies near ${outcode}`);
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('.results-none-nearby').length).to.equal(0);
         iExpect.noResultsPageBreadcrumb($);
         done();
       });
@@ -226,12 +226,12 @@ describe('The results page', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.results__header--none').text()).to
-          .be.equal(`We can't find any pharmacies near ${outcode}`);
+          .equal(`We can't find any pharmacies near ${outcode}`);
         expect($('.results__none-content').text()).to
           .contain('This service only provides information about pharmacies in England.');
         expect($('.results__none-content').text()).to.not
           .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.be.equal(0);
+        expect($('.results-none-nearby').length).to.equal(0);
         iExpect.noResultsPageBreadcrumb($);
         done();
       });
@@ -284,7 +284,7 @@ describe('The results page error handling', () => {
       .get(resultsRoute)
       .query({ location: postcode })
       .end((err, res) => {
-        expect(err).to.not.be.equal(null);
+        expect(err).to.not.be.null;
         expect(res).to.have.status(500);
         expect(res).to.be.html;
 
@@ -318,7 +318,7 @@ describe('The results page error handling', () => {
       .get(resultsRoute)
       .query({ location: fakePostcode })
       .end((err, res) => {
-        expect(err).to.not.be.equal(null);
+        expect(err).to.not.be.null;
         expect(res).to.have.status(500);
         expect(res).to.be.html;
 
@@ -351,7 +351,7 @@ describe('The results page error handling', () => {
       .get(resultsRoute)
       .query({ location: badPostcode })
       .end((err, res) => {
-        expect(err).to.not.be.equal(null);
+        expect(err).to.not.be.null;
         expect(res).to.have.status(500);
         expect(res).to.be.html;
 
@@ -383,7 +383,7 @@ describe('The results page error handling', () => {
       .get(resultsRoute)
       .query({ location: outcode })
       .end((err, res) => {
-        expect(err).to.not.be.equal(null);
+        expect(err).to.not.be.null;
         expect(res).to.have.status(500);
         expect(res).to.be.html;
 

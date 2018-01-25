@@ -28,7 +28,7 @@ describe('An unknown page', () => {
     chai.request(server)
       .get(`${constants.SITE_ROOT}/not-known`)
       .end((err, res) => {
-        expect(err).to.not.be.equal(null);
+        expect(err).to.not.be.null;
         expect(res).to.have.status(404);
         expect(res).to.be.html;
 
