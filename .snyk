@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.10.1
+version: v1.7.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:debug:20170905':
@@ -32,9 +32,20 @@ ignore:
   'npm:growl:20160721':
     - brunch > deppack > loggy > growl:
         reason: Not user facing
-        expires: '2018-01-26T10:53:30.593Z'
+        expires: '2018-02-28T12:19:21.305Z'
   'npm:tunnel-agent:20170305':
     - node-sass > request > tunnel-agent:
         reason: Not user facing
-        expires: '2018-01-26T10:53:30.593Z'
-patch: {}
+        expires: '2018-02-28T12:19:21.305Z'
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - brunch > since-app-start > debug:
+        patched: '2018-01-29T12:18:11.023Z'
+    - brunch > debug:
+        patched: '2018-01-29T12:18:11.023Z'
+  'npm:ms:20170412':
+    - brunch > since-app-start > debug > ms:
+        patched: '2018-01-29T12:18:11.023Z'
+    - brunch > debug > ms:
+        patched: '2018-01-29T12:18:11.023Z'
