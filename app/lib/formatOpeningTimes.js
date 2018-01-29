@@ -35,11 +35,11 @@ function isOpen(times) {
   });
 }
 
-function mapOpeningTimes(openingTimes) {
+function formatOpeningTimes(openingTimes) {
   if (openingTimes && openingTimes.general && isOpen(openingTimes.general)) {
     return daysOfWeekOrderedForUi.map(day => toDayObject(day, openingTimes.general));
   }
   return undefined;
 }
 
-module.exports = mapOpeningTimes;
+module.exports = formatOpeningTimes;

@@ -1,5 +1,5 @@
 const chai = require('chai');
-const mapOpeningTimes = require('../../../app/lib/mapOpeningTimes');
+const formatOpeningTimes = require('../../../app/lib/formatOpeningTimes');
 
 const expect = chai.expect;
 const openingTimes = {
@@ -24,9 +24,9 @@ function assertDay(result, day, opens1, closes1, opens2, closes2) {
   expect(result.openingTimes[1].closes).to.equal(closes2);
 }
 
-describe('mapOpeningTimes', () => {
+describe('formatOpeningTimes', () => {
   it('should restrucure opening times as array, and format time', () => {
-    const result = mapOpeningTimes(openingTimes);
+    const result = formatOpeningTimes(openingTimes);
     expect(result).to.be.an('array');
     assertDay(result[0], 'Monday', '8am', '3pm', '4pm', '5pm');
     assertDay(result[1], 'Tuesday', '9am', '3pm', '4pm', '6pm');
@@ -50,7 +50,7 @@ describe('mapOpeningTimes', () => {
       }
     };
 
-    const result = mapOpeningTimes(closedTimes);
+    const result = formatOpeningTimes(closedTimes);
     expect(result).to.not.exist;
   });
 
@@ -61,7 +61,7 @@ describe('mapOpeningTimes', () => {
         tuesday: [{ opens: '08:00', closes: '17:00' }],
       }
     };
-    const result = mapOpeningTimes(openingTimesWithMissing);
+    const result = formatOpeningTimes(openingTimesWithMissing);
     expect(result).to.exist;
     expect(result[0].day).to.equal('Monday');
     expect(result[0].openingTimes).to.not.exist;
@@ -74,7 +74,7 @@ describe('mapOpeningTimes', () => {
         tuesday: [],
       }
     };
-    const result = mapOpeningTimes(openingTimesClosedTuesday);
+    const result = formatOpeningTimes(openingTimesClosedTuesday);
     expect(result).to.exist;
     expect(result[1].day).to.equal('Tuesday');
     expect(result[1].openingTimes).to.exist;
