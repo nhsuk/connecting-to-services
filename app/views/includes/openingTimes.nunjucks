@@ -1,18 +1,31 @@
-{% set times = service.openingTimesOverview %}
+{% set times = service.openingTimes %}
 {% if times !== null %}
 <table class="openingTimes">
-  <tr><th>Day of the week</th><th>First opening time</th><th>Last closing time</th></tr>
+  <tr><th>Day of the week</th><th>Opening hours</th></tr>
   {% for openingTime in times %}
-  <tr><th>{{ openingTime.day }}</th>
-    {% if openingTime.openingTimes === null %}
-    <td colspan="2">Unavailable</td>
-    {% elif openingTime.openingTimes.opens === null%}
-    <td colspan="2">Closed</td>
+    {% if openingTime.openingTimes != "" %}
+      {% for sessions in openingTime.openingTimes %}
+        {% if loop.first %}
+          <tr>
+          {% if loop.length !== 1 %}
+            <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
+          {% else %}
+            <th>{{ openingTime.day }}</th>
+          {% endif %}
+            <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+          </tr>
+        {% else %}
+          <tr class="{{ "hasSessions" if loop.length !== 1 }}">
+            <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
     {% else %}
-    {% set closes = openingTime.openingTimes.closes %}
-    <td>{{ openingTime.openingTimes.opens }}</td><td>{% if closes === "11:59pm" %}midnight{% else %}{{ closes }}{% endif %}</td>
+      <tr>
+        <th>{{ openingTime.day }}</th>
+        <td>Closed</td>
+      </tr>
     {% endif %}
-  </tr>
   {% endfor %}
 </table>
 {% endif %}
