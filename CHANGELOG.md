@@ -1,3 +1,7 @@
+0.28.1 / 2018-02-01
+===================
+- Add desc metadata to improve description in search engines
+
 0.28.0 / 2018-01-30
 ===================
 - Add metadata to enable Google Sitelinks Searchbox
