@@ -1,6 +1,6 @@
-# 9. search by place
+# 10. Count the number of checks made by bots and other automated checks
 
-Date: 2017-11-03
+Date: 2018-02-01
 
 ## Status
 
@@ -8,12 +8,17 @@ Accepted
 
 ## Context
 
-There is a need to provide the ability for users to search by place name.
+There are a lot of automated checks performed against the application. These
+checks are being counted as part of the normal traffic and there is no way to
+currently filter them out. There is a need to remove the bot traffic so real
+user behaviour can be identified.
 
 ## Decision
 
-The postcodes.io places API will be used to search for places in England.
+The decision is to count any request that includes a query string parameter `check`.
 
 ## Consequences
 
-Invalid postcodes will be treated as a place - there will no longer be an 'invalid postcode' warning.
+The number of search and result page views as a result of bot traffic will be
+able to be removed from charts showing overall activity. This will allow the
+real user behaviour to be identified.
