@@ -62,6 +62,14 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP out_of_area_my_location_searches The number of my location searches in an unsupported area\n# TYPE out_of_area_my_location_searches counter');
   });
 
+  it('should return a results_check counter', () => {
+    expect(responseText).to.have.string('# HELP results_check The number of checks against the results page\n# TYPE results_check counter');
+  });
+
+  it('should return a search_check counter', () => {
+    expect(responseText).to.have.string('# HELP search_check The number of checks against the search page\n# TYPE search_check counter');
+  });
+
   it('should return a histogram for get_nearby_services timings', () => {
     expect(responseText).to.have.string('# HELP get_nearby_services Duration histogram of request to nearby-services-api\n# TYPE get_nearby_services histogram');
   });

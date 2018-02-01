@@ -6,8 +6,10 @@ module.exports = {
   errorPageViews: new promClient.Counter({ name: 'error_page_views', help: 'The number of error page views' }),
   knownButNotEnglishMyLocationSearches: new promClient.Counter({ name: 'known_but_not_english_my_location_searches', help: 'The number of my location searches in an area that is known but is not in England' }),
   outOfAreaMyLocationSearches: new promClient.Counter({ name: 'out_of_area_my_location_searches', help: 'The number of my location searches in an unsupported area' }),
-  zeroPharmacyResultsViews: new promClient.Counter({ name: 'zero_pharmacy_results_views', help: 'The number of zero pharmacy results page views' }),
   placeDisambiguationViews: new promClient.Counter({ name: 'place_disambiguation_views', help: 'The number of place disambiguation page views' }),
+  resultsCheck: new promClient.Counter({ name: 'results_check', help: 'The number of checks against the results page' }),
+  searchCheck: new promClient.Counter({ name: 'search_check', help: 'The number of checks against the search page' }),
+  zeroPharmacyResultsViews: new promClient.Counter({ name: 'zero_pharmacy_results_views', help: 'The number of zero pharmacy results page views' }),
   zeroPlaceResultsViews: new promClient.Counter({ name: 'zero_place_results_views', help: 'The number of zero place results page views' }),
   zeroPostcodeResultsViews: new promClient.Counter({ name: 'zero_postcode_results_views', help: 'The number of zero postcode results page views' }),
 };
