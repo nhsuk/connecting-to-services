@@ -13,5 +13,5 @@ services:
       initializing_timeout: 60000
       interval: 5000
       strategy: recreate
-      request_line: GET "/find-a-pharmacy/" "HTTP/1.0"
+      request_line: GET "/find-a-pharmacy/?check" "HTTP/1.0"
       reinitializing_timeout: 60000
