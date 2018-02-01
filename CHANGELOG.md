@@ -1,6 +1,9 @@
-0.28.1 / 2018-02-01
+0.29.0 / 2018-02-01
 ===================
 - Add desc metadata to improve description in search engines
+- Improve application instrumentation:
+  - Add postcodes.io response time monitoring
+  - Record bot traffic via `check` query string parameter
 
 0.28.0 / 2018-01-30
 ===================

@@ -30,14 +30,6 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP app_starts The number of times the application has been started\n# TYPE app_starts counter');
   });
 
-  it('should return a place searches counter', () => {
-    expect(responseText).to.have.string('# HELP place_searches The number of place searches\n# TYPE place_searches counter');
-  });
-
-  it('should return a postcode searches counter', () => {
-    expect(responseText).to.have.string('# HELP postcode_searches The number of postcode searches\n# TYPE postcode_searches counter');
-  });
-
   it('should return a The number of zero pharmacy results views counter', () => {
     expect(responseText).to.have.string('# HELP zero_pharmacy_results_views The number of zero pharmacy results page views\n# TYPE zero_pharmacy_results_views counter');
   });
@@ -58,10 +50,6 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP error_page_views The number of error page views\n# TYPE error_page_views counter');
   });
 
-  it('should return an error_page_views counter', () => {
-    expect(responseText).to.have.string('# HELP error_page_views The number of error page views\n# TYPE error_page_views counter');
-  });
-
   it('should return an english_my_location_searches counter', () => {
     expect(responseText).to.have.string('# HELP english_my_location_searches The number of my location searches in England\n# TYPE english_my_location_searches counter');
   });
@@ -74,12 +62,28 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP out_of_area_my_location_searches The number of my location searches in an unsupported area\n# TYPE out_of_area_my_location_searches counter');
   });
 
-  it('should return an my_location_searches counter', () => {
-    expect(responseText).to.have.string('# HELP my_location_searches The number of my location searches\n# TYPE my_location_searches counter');
+  it('should return a results_check counter', () => {
+    expect(responseText).to.have.string('# HELP results_check The number of checks against the results page\n# TYPE results_check counter');
   });
 
-  it('should return an histogram for get_nearby_services timings', () => {
+  it('should return a search_check counter', () => {
+    expect(responseText).to.have.string('# HELP search_check The number of checks against the search page\n# TYPE search_check counter');
+  });
+
+  it('should return a histogram for get_nearby_services timings', () => {
     expect(responseText).to.have.string('# HELP get_nearby_services Duration histogram of request to nearby-services-api\n# TYPE get_nearby_services histogram');
+  });
+
+  it('should return a histogram for get_postcodes_io_postcode timings', () => {
+    expect(responseText).to.have.string('# HELP get_postcodes_io_postcode Duration histogram of request to postcodes.io for postcode lookup\n# TYPE get_postcodes_io_postcode histogram');
+  });
+
+  it('should return a histogram for get_postcodes_io_place timings', () => {
+    expect(responseText).to.have.string('# HELP get_postcodes_io_place Duration histogram of request to postcodes.io for place lookup\n# TYPE get_postcodes_io_place histogram');
+  });
+
+  it('should return a histogram for get_postcodes_io_reverse_geocode timings', () => {
+    expect(responseText).to.have.string('# HELP get_postcodes_io_reverse_geocode Duration histogram of request to postcodes.io for reverse geocode lookup\n# TYPE get_postcodes_io_reverse_geocode histogram');
   });
 
   it('should return an http_request_duration_seconds histogram', () => {
