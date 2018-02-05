@@ -8,12 +8,7 @@
       $(this).parents('li').addClass('wrapped');
     }
   });
-  $('details').on('click', function(){
-    if(!$(this).is('[open]')){
-      $(this).parents('li').addClass('open');
-    }
-    else {
-      $(this).parents('li.open').removeClass('open');
-    }
-  })
+  $('details').on('click', function() {
+    $(this).parents('li').toggleClass('open');
+  });
 })(window);
