@@ -1,3 +1,10 @@
+0.30.0 / 2018-02-06
+===================
+- Update results page layout to include all opening times
+- Include `check` parameter in health check
+- Misc refactorings
+- Update Google Sitelinks Searchbox query param name
+
 0.29.0 / 2018-02-01
 ===================
 - Add desc metadata to improve description in search engines
