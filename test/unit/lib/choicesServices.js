@@ -3,7 +3,7 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-describe('choicesOverview', () => {
+describe('choicesServices', () => {
   it('should return all items with choicesServicesUrl', () => {
     const inputItems = [
       { identifier: 'FA008' },
