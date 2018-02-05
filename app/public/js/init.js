@@ -2,4 +2,4 @@
 require('./cookieMessage');
 require('./geoLocation');
 require('./menuToggle');
-require('./isWrapped');
+require('./openToggle');
