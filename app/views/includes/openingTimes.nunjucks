@@ -3,29 +3,24 @@
 <table class="openingTimes">
   <tr><th>Day of the week</th><th>Opening hours</th></tr>
   {% for openingTime in times %}
-    {% if openingTime.openingTimes != "" %}
-      {% for sessions in openingTime.openingTimes %}
-        {% if loop.first %}
-          <tr>
-          {% if loop.length !== 1 %}
-            <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
-          {% else %}
-            <th>{{ openingTime.day }}</th>
-          {% endif %}
-            <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
-          </tr>
-        {% else %}
-          <tr class="{{ "hasSessions" if loop.length !== 1 }}">
-            <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
-          </tr>
-        {% endif %}
-      {% endfor %}
+  {{ openingTime | dump }}
+    {% for sessions in openingTime.openingTimes %}
+      {% if loop.first %}
+        <tr>
+          <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
+          <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+        </tr>
+      {% else %}
+        <tr class="hasSessions">
+          <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+        </tr>
+      {% endif %}
     {% else %}
       <tr>
         <th>{{ openingTime.day }}</th>
         <td>Closed</td>
       </tr>
-    {% endif %}
+    {% endfor %}
   {% endfor %}
 </table>
 {% endif %}
