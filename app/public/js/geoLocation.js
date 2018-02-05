@@ -41,10 +41,11 @@
   if (navigator.geolocation) {
     $geoLocate.show();
 
-    $geoLocateLocate.on('click', function() {
+    $geoLocateLocate.on('click', function(e) {
       $geoLocateError.hide();
       navigator.geolocation.getCurrentPosition(success, error);
       $geoLocateSearching.show();
+      e.preventDefault();
     });
   }
 })(window);
