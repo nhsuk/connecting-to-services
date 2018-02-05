@@ -1,31 +1,38 @@
-{% set times = service.openingTimes %}
-{% if times !== null %}
-<table class="openingTimes">
-  <tr><th>Day of the week</th><th>Opening hours</th></tr>
-  {% for openingTime in times %}
-    {% if openingTime.openingTimes != "" %}
-      {% for sessions in openingTime.openingTimes %}
-        {% if loop.first %}
-          <tr>
-          {% if loop.length !== 1 %}
-            <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
+<section class="callout callout--info callout--compact">
+  <p class="callout--info__mesg">
+    {{ service.openingTimesMessage }}
+  </p>
+  {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
+  {% set openingTimes = service.openingTimes %}
+  {% if openingTimes !== null %}
+  <details class="" role="group">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+      <span class="details__summary">See opening times</span>
+    </summary>
+    <div class="details__content" id="details-content-0" aria-hidden="true">
+    <table class="openingTimes">
+      <tr><th>Day of the week</th><th>Opening hours</th></tr>
+      {% for openingTime in openingTimes %}
+        {% for sessions in openingTime.openingTimes %}
+          {% if loop.first %}
+            <tr>
+              <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
+              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+            </tr>
           {% else %}
-            <th>{{ openingTime.day }}</th>
+            <tr class="hasSessions">
+              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+            </tr>
           {% endif %}
-            <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
-          </tr>
         {% else %}
-          <tr class="{{ "hasSessions" if loop.length !== 1 }}">
-            <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+          <tr>
+            <th>{{ openingTime.day }}</th>
+            <td>Closed</td>
           </tr>
-        {% endif %}
+        {% endfor %}
       {% endfor %}
-    {% else %}
-      <tr>
-        <th>{{ openingTime.day }}</th>
-        <td>Closed</td>
-      </tr>
-    {% endif %}
-  {% endfor %}
-</table>
-{% endif %}
+    </table>
+    </div>
+  </details>
+  {% endif %}
+</section>
