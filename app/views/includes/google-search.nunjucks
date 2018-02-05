@@ -5,8 +5,8 @@
   "url": "https://beta.nhs.uk/find-a-pharmacy/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://beta.nhs.uk/find-a-pharmacy/results?source=google&location={location}",
-    "query-input": "required name=location"
+    "target": "https://beta.nhs.uk/find-a-pharmacy/results?source=google&location={search_term_string}",
+    "query-input": "required name=search_term_string"
   }
 }
 </script>
