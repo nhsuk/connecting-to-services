@@ -3,13 +3,7 @@
 {% block pageTitle %}{{getPlacesPageTitle()}}{% endblock %}
 
 {% block breadcrumbItems %}
-  {% if places.length === 0 %}
-  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
-  <li class="breadcrumb__last">No results</li>
-  {% elif places.length > 0 %}
-  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
-  <li class="breadcrumb__last">Places that match '{{location}}'</li>
-  {% endif %}
+  {% include 'includes/breadcrumbs.nunjucks' %}
 {% endblock %}
 
 {% block meta %}

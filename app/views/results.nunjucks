@@ -9,12 +9,7 @@
 {% block bodyClass %}resultsPage{% endblock %}
 
 {% block breadcrumbItems %}
-  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
-  {% if services.length === 0 %}
-  <li class="breadcrumb__last">No results</li>
-  {% else %}
-  <li class="breadcrumb__last">Results</li>
-  {% endif %}
+  {% include 'includes/breadcrumbs.nunjucks' %}
 {% endblock %}
 
 {% block content %}
