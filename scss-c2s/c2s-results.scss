@@ -219,6 +219,34 @@ body {
                   }
                 }
               }
+              &.noTimes {
+                .results {
+                  &__details {
+                    @include media(tablet) {
+                      > p {
+                        bottom:76px;
+                        &:nth-of-type(1) {
+                          bottom:110px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            &.noTimes {
+              .results {
+                &__details {
+                  @include media(tablet) {
+                    > p {
+                      bottom:36px;
+                      &:nth-of-type(1) {
+                        bottom:70px;
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
           > li {
