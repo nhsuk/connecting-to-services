@@ -1,4 +1,4 @@
-<li class="results__item{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}">
+<li class="results__item{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}{% if service.openingTimes === null %} noTimes{% endif %}">
   <div class="results__details">
     {% set distance = service.distanceInMiles | round(1) %}
     <div>

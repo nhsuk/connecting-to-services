@@ -3,3 +3,4 @@ require('./cookieMessage');
 require('./geoLocation');
 require('./menuToggle');
 require('./openToggle');
+require('./isWrapped');
