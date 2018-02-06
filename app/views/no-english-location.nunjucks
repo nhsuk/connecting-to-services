@@ -1,8 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block breadcrumbItems %}
-  <li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
-  <li class="breadcrumb__last">No results</li>
+  {% include 'includes/breadcrumbs.nunjucks' %}
 {% endblock %}
 
 {% block content %}

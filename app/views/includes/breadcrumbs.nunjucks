@@ -1,0 +1,8 @@
+<li><a href="{{ SITE_ROOT }}/">Find a pharmacy</a></li>
+{% if places.length > 0 %}
+  <li class="breadcrumb__last">Places that match '{{location}}'</li>
+{% elif services.length > 0 %}
+  <li class="breadcrumb__last">Results</li>
+{% else %}
+  <li class="breadcrumb__last">No results</li>
+{% endif %}
