@@ -4,4 +4,3 @@ require('./geoLocation');
 require('./menuToggle');
 require('./openToggle');
 require('./isWrapped');
-require('./noTimes');
