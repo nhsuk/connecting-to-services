@@ -28,7 +28,9 @@ describe('The results page', () => {
   });
 
   describe('generally', () => {
-    it('should have a link back to the Choices pharmacy finder', () => {
+    let $;
+
+    before('run request', () => {
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
         .times(1)
@@ -38,51 +40,26 @@ describe('The results page', () => {
         .get(resultsRoute)
         .query({ location, latitude, longitude })
         .then((res) => {
-          const $ = cheerio.load(res.text);
-
-          expect($('.back-to-choices').attr('href'))
-            .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
+          iExpect.htmlWith200Status(res);
+          $ = cheerio.load(res.text);
         })
         .catch((err) => { throw err; });
+    });
+
+    it('should have a link back to the Choices pharmacy finder', () => {
+      expect($('.back-to-choices').attr('href'))
+        .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
     });
 
     it('should return distance away singularly for 1 mile and pluraly for other distances', () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
-        .times(1)
-        .reply(200, serviceApiResponse);
-
-      return chai.request(server)
-        .get(resultsRoute)
-        .query({ location, latitude, longitude })
-        .then((res) => {
-          iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
-          expect($('.distance').eq(0).text()).to.equal('0 miles away');
-          expect($('.distance').eq(1).text()).to.equal('1 mile away');
-          expect($('.back-to-choices').attr('href'))
-            .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
-        })
-        .catch((err) => { throw err; });
+      expect($('.distance').eq(0).text()).to.equal('0 miles away');
+      expect($('.distance').eq(1).text()).to.equal('1 mile away');
     });
 
     it('should provide a link to see open pharmacies by default', () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
-        .times(1)
-        .reply(200, serviceApiResponse);
-
-      return chai.request(server)
-        .get(resultsRoute)
-        .query({ location, latitude, longitude })
-        .then((res) => {
-          iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
-          const toggle = $('.viewToggle a');
-          expect(toggle.attr('class')).to.equal('');
-          expect(toggle.attr('href')).to.have.string('&open=true');
-        })
-        .catch((err) => { throw err; });
+      const toggle = $('.viewToggle a');
+      expect(toggle.attr('class')).to.equal('');
+      expect(toggle.attr('href')).to.have.string('&open=true');
     });
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', () => {
@@ -98,7 +75,7 @@ describe('The results page', () => {
         })
         .then((res) => {
           iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
+          $ = cheerio.load(res.text);
           const toggle = $('.viewToggle a');
           expect(toggle.attr('class')).to.equal('checked');
           expect(toggle.attr('href')).to.have.string('&open=false');
@@ -120,7 +97,7 @@ describe('The results page', () => {
           expect(res).to.have.status(500);
           expect(res).to.be.html;
 
-          const $ = cheerio.load(res.text);
+          $ = cheerio.load(res.text);
           expect($('.local-header--title--question').text())
             .to.contain(messages.technicalProblems());
         })
@@ -131,12 +108,14 @@ describe('The results page', () => {
   });
 
   describe('opening times display', () => {
+    const daysOfWeek = constants.daysOfWeekOrderedForUi;
     const timesResponse = getSampleResponse('service-api-responses/OX201TF.json');
     const timesLocation = 'OX201TF';
     const timesLatitude = 51.8470068238121;
     const timesLongitude = -1.35519245281661;
+    let $;
 
-    it('should remove opening times block when there are no opening times', () => {
+    before('run request', () => {
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${timesLatitude}&longitude=${timesLongitude}&limits:results=${numberOfOpenResults}`)
         .times(1)
@@ -151,77 +130,64 @@ describe('The results page', () => {
         })
         .then((res) => {
           iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
-          const resultsWithTimes = $('section:has(details)');
-          const resultsWithOutTimes = $('section:not(:has(details))');
-
-          expect(resultsWithTimes.length).to.equal(9);
-          expect(resultsWithOutTimes.length).to.equal(1);
+          $ = cheerio.load(res.text);
         })
         .catch((err) => { throw err; });
     });
 
-    it('should display a row for each day of the week and a row for each session', () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${timesLatitude}&longitude=${timesLongitude}&limits:results=${numberOfOpenResults}`)
-        .times(1)
-        .reply(200, timesResponse);
+    it('should remove opening times block when there are no opening times', () => {
+      const resultsWithTimes = $('section:has(details)');
+      const resultsWithOutTimes = $('section:not(:has(details))');
 
+      expect(resultsWithTimes.length).to.equal(9);
+      expect(resultsWithOutTimes.length).to.equal(1);
+    });
+
+    it('should display a row for each day of the week', () => {
       const numberOfResultsWithTimes = 9;
       const daysInWeek = 7;
       const headerRow = 1;
       const expectedDayAndHeaderRows = (headerRow + daysInWeek) * numberOfResultsWithTimes;
-      const daysOfWeek = constants.daysOfWeekOrderedForUi;
 
-      return chai.request(server)
-        .get(resultsRoute)
-        .query({
-          location: timesLocation,
-          latitude: timesLatitude,
-          longitude: timesLongitude,
-        })
-        .then((res) => {
-          iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
-          const dayAndHeaderRows = $('tr:not(.hasSessions)');
-          expect(dayAndHeaderRows.length).to.equal(expectedDayAndHeaderRows);
-          dayAndHeaderRows.each((i) => {
-            const dayName = dayAndHeaderRows.eq(i).children('th').text();
-            switch (i % 8) {
-              case 1:
-                expect(dayName).to.equal(daysOfWeek[0]);
-                break;
-              case 2:
-                expect(dayName).to.equal(daysOfWeek[1]);
-                break;
-              case 3:
-                expect(dayName).to.equal(daysOfWeek[2]);
-                break;
-              case 4:
-                expect(dayName).to.equal(daysOfWeek[3]);
-                break;
-              case 5:
-                expect(dayName).to.equal(daysOfWeek[4]);
-                break;
-              case 6:
-                expect(dayName).to.equal(daysOfWeek[5]);
-                break;
-              case 7:
-                expect(dayName).to.equal(daysOfWeek[6]);
-                break;
-              default:
-                break;
-            }
-          });
-          // Check result with sessions
-          const resultWithSessions = $('section:has(details)').eq(1).find('tr');
-          expect(resultWithSessions.length).to.equal(13);
-          expect(resultWithSessions.eq(11).find('th').text()).to.equal(daysOfWeek[5]);
-          expect(resultWithSessions.eq(11).find('td').text()).to.equal('Closed');
-          expect(resultWithSessions.eq(12).find('th').text()).to.equal(daysOfWeek[6]);
-          expect(resultWithSessions.eq(12).find('td').text()).to.equal('Closed');
-        })
-        .catch((err) => { throw err; });
+      const dayAndHeaderRows = $('tr:not(.hasSessions)');
+      expect(dayAndHeaderRows.length).to.equal(expectedDayAndHeaderRows);
+      dayAndHeaderRows.each((i) => {
+        const dayName = dayAndHeaderRows.eq(i).children('th').text();
+        switch (i % 8) {
+          case 1:
+            expect(dayName).to.equal(daysOfWeek[0]);
+            break;
+          case 2:
+            expect(dayName).to.equal(daysOfWeek[1]);
+            break;
+          case 3:
+            expect(dayName).to.equal(daysOfWeek[2]);
+            break;
+          case 4:
+            expect(dayName).to.equal(daysOfWeek[3]);
+            break;
+          case 5:
+            expect(dayName).to.equal(daysOfWeek[4]);
+            break;
+          case 6:
+            expect(dayName).to.equal(daysOfWeek[5]);
+            break;
+          case 7:
+            expect(dayName).to.equal(daysOfWeek[6]);
+            break;
+          default:
+            break;
+        }
+      });
+    });
+
+    it('should display a row for each session', () => {
+      const resultWithSessions = $('section:has(details)').eq(1).find('tr');
+      expect(resultWithSessions.length).to.equal(13);
+      expect(resultWithSessions.eq(11).find('th').text()).to.equal(daysOfWeek[5]);
+      expect(resultWithSessions.eq(11).find('td').text()).to.equal('Closed');
+      expect(resultWithSessions.eq(12).find('th').text()).to.equal(daysOfWeek[6]);
+      expect(resultWithSessions.eq(12).find('td').text()).to.equal('Closed');
     });
   });
 });
