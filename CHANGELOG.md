@@ -1,3 +1,7 @@
+0.31.0 / 2018-02-08
+===================
+- Additional tests for opening times
+
 0.30.0 / 2018-02-06
 ===================
 - Update results page layout to include all opening times
