@@ -10,25 +10,24 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('redirection', () => {
-  it('should redirect root requests to /find-a-pharmacy/', (done) => {
+  it('should redirect root requests to /find-a-pharmacy/', () => {
     chai.request(server)
       .get('/')
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
 
         expect(res).to.redirect;
         expect(res.req.path).to.equal(`${constants.SITE_ROOT}/`);
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 });
 
 describe('An unknown page', () => {
-  it('should return a 404', (done) => {
+  it('should return a 404', () => {
     chai.request(server)
       .get(`${constants.SITE_ROOT}/not-known`)
-      .end((err, res) => {
-        expect(err).to.not.be.null;
+      .then((res) => {
         expect(res).to.have.status(404);
         expect(res).to.be.html;
 
@@ -37,7 +36,7 @@ describe('An unknown page', () => {
         expect($('.local-header--title--question').text().trim())
           .to.equal('Page not found');
         expect($('title').text()).to.equal('Page not found - NHS.UK');
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 });

@@ -43,7 +43,7 @@ describe('The place results page', () => {
     nock.cleanAll();
   });
 
-  it('should return list of nearby pharmacies for unique place search', (done) => {
+  it('should return list of nearby pharmacies for unique place search', () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const singleResult = JSON.parse(singlePlaceResponse).result[0];
@@ -63,19 +63,19 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, serviceApiResponse);
 
-    chai.request(server)
+    return chai.request(server)
       .get(resultsRoute)
       .query({ location: searchTerm })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
         expectMidsomerNortonResults($, saddr, numberOfResults);
         iExpect.resultsPageBreadcrumb($);
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 
-  it('should return list of open pharmacies for unique place search', (done) => {
+  it('should return list of open pharmacies for unique place search', () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const singleResult = JSON.parse(singlePlaceResponse).result[0];
@@ -95,19 +95,19 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, serviceApiResponse);
 
-    chai.request(server)
+    return chai.request(server)
       .get(resultsRoute)
       .query({ location: searchTerm, open: true })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
         expectMidsomerNortonResults($, saddr, numberOfResults);
         iExpect.resultsPageBreadcrumb($);
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 
-  it('should return disambiguation page for non unique place search', (done) => {
+  it('should return disambiguation page for non unique place search', () => {
     const multiPlaceResponse = getSampleResponse('postcodesio-responses/multiplePlaceResult.json');
     const multiPlaceTerm = 'multiresult';
     nock('https://api.postcodes.io')
@@ -115,11 +115,11 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, multiPlaceResponse);
 
-    chai.request(server)
+    return chai.request(server)
       .get(resultsRoute)
       .query({ location: multiPlaceTerm })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
 
         expect($('.results__item').length).to.equal(3);
@@ -129,12 +129,11 @@ describe('The place results page', () => {
 
         expect($('title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS.UK');
         iExpect.disambiguationPageBreadcrumb($, multiPlaceTerm);
-
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 
-  it('should return nearby results page for link clicked from disambiguation page', (done) => {
+  it('should return nearby results page for link clicked from disambiguation page', () => {
     const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const location = 'Midsomer Norton, Bath and North East Somerset, BA3';
     const latitude = 54;
@@ -146,32 +145,31 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, serviceApiResponse);
 
-    chai.request(server)
+    return chai.request(server)
       .get(resultsRoute)
       .query({ location, latitude, longitude })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
         expectMidsomerNortonResults($, location, numberOfResults);
         iExpect.resultsPageBreadcrumb($);
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 
-  it('should return search page for empty search', (done) => {
+  it('should return search page for empty search', () =>
     chai.request(server)
       .get(resultsRoute)
       .query({ location: '' })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS.UK');
-        done();
-      });
-  });
+      })
+      .catch((err) => { throw err; }));
 
-  it('should return no results page with exact term displayed, and links for Scotland, Wales and NI for unknown place search', (done) => {
+  it('should return no results page with exact term displayed, and links for Scotland, Wales and NI for unknown place search', () => {
     const noResultsTerm = '@noresults@';
     const noResultsTermClean = 'noresults';
     nock('https://api.postcodes.io')
@@ -179,11 +177,11 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, { status: 200, result: [] });
 
-    chai.request(server)
+    return chai.request(server)
       .get(resultsRoute)
       .query({ location: noResultsTerm })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
         expect($('.results__header--none').text()).to.equal(`We can't find '${noResultsTerm}'`);
         expect($('.results__none-content').text()).to
@@ -195,20 +193,19 @@ describe('The place results page', () => {
         expect($('.results__none-content p').text()).to.contain('Find pharmacies in Northern Ireland on the Health and Social Care website');
         expect($('.results-none-nearby').length).to.equal(0);
         iExpect.noResultsPageBreadcrumb($);
-        done();
-      });
+      })
+      .catch((err) => { throw err; });
   });
 
-  it('should return search page for non-alphanumeric search', (done) => {
+  it('should return search page for non-alphanumeric search', () =>
     chai.request(server)
       .get(resultsRoute)
       .query({ location: '!@£$%' })
-      .end((err, res) => {
-        iExpect.htmlWith200Status(err, res);
+      .then((res) => {
+        iExpect.htmlWith200Status(res);
         const $ = cheerio.load(res.text);
         expectSearchAgainPage($);
         expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
-        done();
-      });
-  });
+      })
+      .catch((err) => { throw err; }));
 });

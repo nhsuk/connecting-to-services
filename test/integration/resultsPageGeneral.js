@@ -28,84 +28,104 @@ describe('The results page', () => {
   });
 
   describe('generally', () => {
-    it('should return distance away singularly for 1 mile and pluraly for other distances', (done) => {
+    it('should have a link back to the Choices pharmacy finder', () => {
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
         .times(1)
         .reply(200, serviceApiResponse);
 
-      chai.request(server)
+      return chai.request(server)
         .get(resultsRoute)
         .query({ location, latitude, longitude })
-        .end((err, res) => {
-          iExpect.htmlWith200Status(err, res);
+        .then((res) => {
+          const $ = cheerio.load(res.text);
+
+          expect($('.back-to-choices').attr('href'))
+            .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
+        })
+        .catch((err) => { throw err; });
+    });
+
+    it('should return distance away singularly for 1 mile and pluraly for other distances', () => {
+      nock(process.env.API_BASE_URL)
+        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
+        .times(1)
+        .reply(200, serviceApiResponse);
+
+      return chai.request(server)
+        .get(resultsRoute)
+        .query({ location, latitude, longitude })
+        .then((res) => {
+          iExpect.htmlWith200Status(res);
           const $ = cheerio.load(res.text);
           expect($('.distance').eq(0).text()).to.equal('0 miles away');
           expect($('.distance').eq(1).text()).to.equal('1 mile away');
-          done();
-        });
+          expect($('.back-to-choices').attr('href'))
+            .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
+        })
+        .catch((err) => { throw err; });
     });
 
-    it('should provide a link to see open pharmacies by default', (done) => {
+    it('should provide a link to see open pharmacies by default', () => {
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
         .times(1)
         .reply(200, serviceApiResponse);
 
-      chai.request(server)
+      return chai.request(server)
         .get(resultsRoute)
         .query({ location, latitude, longitude })
-        .end((err, res) => {
-          iExpect.htmlWith200Status(err, res);
+        .then((res) => {
+          iExpect.htmlWith200Status(res);
           const $ = cheerio.load(res.text);
           const toggle = $('.viewToggle a');
           expect(toggle.attr('class')).to.equal('');
           expect(toggle.attr('href')).to.have.string('&open=true');
-          done();
-        });
+        })
+        .catch((err) => { throw err; });
     });
 
-    it('should provide a link to see nearby only pharmacies when viewing open pharmacies', (done) => {
+    it('should provide a link to see nearby only pharmacies when viewing open pharmacies', () => {
       nock(process.env.API_BASE_URL)
         .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfOpenResults}`)
         .times(1)
         .reply(200, serviceApiResponse);
 
-      chai.request(server)
+      return chai.request(server)
         .get(resultsRoute)
         .query({
           location, latitude, longitude, open: true
         })
-        .end((err, res) => {
-          iExpect.htmlWith200Status(err, res);
+        .then((res) => {
+          iExpect.htmlWith200Status(res);
           const $ = cheerio.load(res.text);
           const toggle = $('.viewToggle a');
           expect(toggle.attr('class')).to.equal('checked');
           expect(toggle.attr('href')).to.have.string('&open=false');
-          done();
-        });
+        })
+        .catch((err) => { throw err; });
     });
 
-    it('should handle an error from the api', (done) => {
+    it('should handle an error from the api', () => {
       const apiErrorResponse = getSampleResponse('service-api-responses/err.json');
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
         .times(1)
         .reply(500, apiErrorResponse);
 
-      chai.request(server)
+      return chai.request(server)
         .get(resultsRoute)
         .query({ location, latitude, longitude })
-        .end((err, res) => {
-          expect(err).to.not.be.null;
+        .then((res) => {
           expect(res).to.have.status(500);
           expect(res).to.be.html;
 
           const $ = cheerio.load(res.text);
           expect($('.local-header--title--question').text())
             .to.contain(messages.technicalProblems());
-
-          done();
+        })
+        .catch((err) => {
+          expect(err).to.not.be.null;
         });
     });
   });
@@ -116,32 +136,32 @@ describe('The results page', () => {
     const timesLatitude = 51.8470068238121;
     const timesLongitude = -1.35519245281661;
 
-    it('should remove opening times block when there are no opening times', (done) => {
+    it('should remove opening times block when there are no opening times', () => {
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${timesLatitude}&longitude=${timesLongitude}&limits:results=${numberOfOpenResults}`)
         .times(1)
         .reply(200, timesResponse);
 
-      chai.request(server)
+      return chai.request(server)
         .get(resultsRoute)
         .query({
           location: timesLocation,
           latitude: timesLatitude,
           longitude: timesLongitude,
         })
-        .end((err, res) => {
-          iExpect.htmlWith200Status(err, res);
+        .then((res) => {
+          iExpect.htmlWith200Status(res);
           const $ = cheerio.load(res.text);
           const resultsWithTimes = $('section:has(details)');
           const resultsWithOutTimes = $('section:not(:has(details))');
 
           expect(resultsWithTimes.length).to.equal(9);
           expect(resultsWithOutTimes.length).to.equal(1);
-          done();
-        });
+        })
+        .catch((err) => { throw err; });
     });
 
-    it('should display a row for each day of the week and a row for each session', (done) => {
+    it('should display a row for each day of the week and a row for each session', () => {
       nock(process.env.API_BASE_URL)
         .get(`/nearby?latitude=${timesLatitude}&longitude=${timesLongitude}&limits:results=${numberOfOpenResults}`)
         .times(1)
@@ -153,15 +173,15 @@ describe('The results page', () => {
       const expectedDayAndHeaderRows = (headerRow + daysInWeek) * numberOfResultsWithTimes;
       const daysOfWeek = constants.daysOfWeekOrderedForUi;
 
-      chai.request(server)
+      return chai.request(server)
         .get(resultsRoute)
         .query({
           location: timesLocation,
           latitude: timesLatitude,
           longitude: timesLongitude,
         })
-        .end((err, res) => {
-          iExpect.htmlWith200Status(err, res);
+        .then((res) => {
+          iExpect.htmlWith200Status(res);
           const $ = cheerio.load(res.text);
           const dayAndHeaderRows = $('tr:not(.hasSessions)');
           expect(dayAndHeaderRows.length).to.equal(expectedDayAndHeaderRows);
@@ -200,8 +220,8 @@ describe('The results page', () => {
           expect(resultWithSessions.eq(11).find('td').text()).to.equal('Closed');
           expect(resultWithSessions.eq(12).find('th').text()).to.equal(daysOfWeek[6]);
           expect(resultWithSessions.eq(12).find('td').text()).to.equal('Closed');
-          done();
-        });
+        })
+        .catch((err) => { throw err; });
     });
   });
 });
