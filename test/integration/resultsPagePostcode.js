@@ -25,7 +25,7 @@ describe('The results page', () => {
   const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
   const ls27ueResult = JSON.parse(ls27ueResponse).result;
 
-  it('should return 10 nearby results, by default', () => {
+  it('should return 10 nearby results, by default', async () => {
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
 
@@ -39,31 +39,29 @@ describe('The results page', () => {
       .times(1)
       .reply(200, serviceApiResponse);
 
-    return chai.request(server)
+    const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: ls27ue })
-      .then((res) => {
-        iExpect.htmlWith200Status(res);
-        const $ = cheerio.load(res.text);
+      .query({ location: ls27ue });
 
-        expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
 
-        const results = $('.results__item');
-        expect(results.length).to.equal(nearbyResultsCount);
+    expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
 
-        const mapLinks = $('.results__maplink');
-        mapLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
-        });
+    const results = $('.results__item');
+    expect(results.length).to.equal(nearbyResultsCount);
 
-        expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
-        iExpect.resultsPageBreadcrumb($);
-        iExpect.call111Callout($);
-      })
-      .catch((err) => { throw err; });
+    const mapLinks = $('.results__maplink');
+    mapLinks.toArray().forEach((link) => {
+      expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
+    });
+
+    expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+    iExpect.resultsPageBreadcrumb($);
+    iExpect.call111Callout($);
   });
 
-  it('should return 10 open results', () => {
+  it('should return 10 open results', async () => {
     const numberOfResults = constants.api.nearbyResultsCount;
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
@@ -78,31 +76,29 @@ describe('The results page', () => {
       .times(1)
       .reply(200, serviceApiResponse);
 
-    return chai.request(server)
+    const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: ls27ue, open: true })
-      .then((res) => {
-        iExpect.htmlWith200Status(res);
-        const $ = cheerio.load(res.text);
+      .query({ location: ls27ue, open: true });
 
-        expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
 
-        const results = $('.results__item');
-        expect(results.length).to.equal(numberOfResults);
+    expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
 
-        const mapLinks = $('.results__maplink');
-        mapLinks.toArray().forEach((link) => {
-          expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
-        });
+    const results = $('.results__item');
+    expect(results.length).to.equal(numberOfResults);
 
-        expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
-        iExpect.resultsPageBreadcrumb($);
-        iExpect.call111Callout($);
-      })
-      .catch((err) => { throw err; });
+    const mapLinks = $('.results__maplink');
+    mapLinks.toArray().forEach((link) => {
+      expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
+    });
+
+    expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+    iExpect.resultsPageBreadcrumb($);
+    iExpect.call111Callout($);
   });
 
-  it('should display no pharmacies, formatted postcode, and country specific message for known non-english postcodes', () => {
+  it('should display no pharmacies, formatted postcode, and country specific message for known non-english postcodes', async () => {
     const outcode = 'bt1';
     const outcodeFormatted = 'BT1';
 
@@ -112,29 +108,27 @@ describe('The results page', () => {
       .times(1)
       .reply(200, postcodeResponse);
 
-    return chai.request(server)
+    const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: outcode })
-      .then((res) => {
-        iExpect.htmlWith200Status(res);
-        const $ = cheerio.load(res.text);
+      .query({ location: outcode });
 
-        expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
-        expect($('.results__none-content p').length).to.equal(2);
-        expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Northern Ireland on the Health and Social Care website');
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
 
-        expect($('.results__none-content').text()).to
-          .contain('This service only provides information about pharmacies in England.');
-        expect($('.results__none-content').text()).to.not
-          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.equal(0);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
-        iExpect.noResultsPageBreadcrumb($);
-      })
-      .catch((err) => { throw err; });
+    expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+    expect($('.results__none-content p').length).to.equal(2);
+    expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Northern Ireland on the Health and Social Care website');
+
+    expect($('.results__none-content').text()).to
+      .contain('This service only provides information about pharmacies in England.');
+    expect($('.results__none-content').text()).to.not
+      .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+    expect($('.results-none-nearby').length).to.equal(0);
+    expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
+    iExpect.noResultsPageBreadcrumb($);
   });
 
-  it('should display no pharmacies, and no onward journey for postcode not in England, Scotland, Wales or Northern Ireland', () => {
+  it('should display no pharmacies, and no onward journey for postcode not in England, Scotland, Wales or Northern Ireland', async () => {
     const outcode = 'im1';
     const outcodeFormatted = 'IM1';
 
@@ -144,28 +138,26 @@ describe('The results page', () => {
       .times(1)
       .reply(200, postcodeResponse);
 
-    return chai.request(server)
+    const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: outcode })
-      .then((res) => {
-        iExpect.htmlWith200Status(res);
-        const $ = cheerio.load(res.text);
+      .query({ location: outcode });
 
-        expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
-        expect($('.results__none-content p').length).to.equal(1);
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
 
-        expect($('.results__none-content').text()).to
-          .contain('This service only provides information about pharmacies in England.');
-        expect($('.results__none-content').text()).to.not
-          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.equal(0);
-        expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
-        iExpect.noResultsPageBreadcrumb($);
-      })
-      .catch((err) => { throw err; });
+    expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+    expect($('.results__none-content p').length).to.equal(1);
+
+    expect($('.results__none-content').text()).to
+      .contain('This service only provides information about pharmacies in England.');
+    expect($('.results__none-content').text()).to.not
+      .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+    expect($('.results-none-nearby').length).to.equal(0);
+    expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
+    iExpect.noResultsPageBreadcrumb($);
   });
 
-  it('should display a message when there are no open pharmacies', () => {
+  it('should display a message when there are no open pharmacies', async () => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
     const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
@@ -182,26 +174,24 @@ describe('The results page', () => {
       .times(1)
       .reply(200, noResultsResponse);
 
-    return chai.request(server)
+    const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: outcode, open: true })
-      .then((res) => {
-        iExpect.htmlWith200Status(res);
-        const $ = cheerio.load(res.text);
+      .query({ location: outcode, open: true });
 
-        expect($('.results__header--none').text()).to
-          .equal(`We can't find any pharmacies near ${outcode}`);
-        expect($('.results__none-content').text()).to
-          .contain('This service only provides information about pharmacies in England.');
-        expect($('.results__none-content').text()).to.not
-          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.equal(0);
-        iExpect.noResultsPageBreadcrumb($);
-      })
-      .catch((err) => { throw err; });
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($('.results__header--none').text()).to
+      .equal(`We can't find any pharmacies near ${outcode}`);
+    expect($('.results__none-content').text()).to
+      .contain('This service only provides information about pharmacies in England.');
+    expect($('.results__none-content').text()).to.not
+      .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+    expect($('.results-none-nearby').length).to.equal(0);
+    iExpect.noResultsPageBreadcrumb($);
   });
 
-  it('should display a message when there are no nearby pharmacies', () => {
+  it('should display a message when there are no nearby pharmacies', async () => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
     const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
@@ -218,23 +208,21 @@ describe('The results page', () => {
       .times(1)
       .reply(200, noResultsResponse);
 
-    return chai.request(server)
+    const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: outcode })
-      .then((res) => {
-        iExpect.htmlWith200Status(res);
-        const $ = cheerio.load(res.text);
+      .query({ location: outcode });
 
-        expect($('.results__header--none').text()).to
-          .equal(`We can't find any pharmacies near ${outcode}`);
-        expect($('.results__none-content').text()).to
-          .contain('This service only provides information about pharmacies in England.');
-        expect($('.results__none-content').text()).to.not
-          .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-        expect($('.results-none-nearby').length).to.equal(0);
-        iExpect.noResultsPageBreadcrumb($);
-      })
-      .catch((err) => { throw err; });
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($('.results__header--none').text()).to
+      .equal(`We can't find any pharmacies near ${outcode}`);
+    expect($('.results__none-content').text()).to
+      .contain('This service only provides information about pharmacies in England.');
+    expect($('.results__none-content').text()).to.not
+      .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
+    expect($('.results-none-nearby').length).to.equal(0);
+    iExpect.noResultsPageBreadcrumb($);
   });
 });
 
@@ -247,7 +235,7 @@ describe('The results page error handling', () => {
 
   it(
     'should lookup a valid but unknown postcode and return an error message with postcode in uppercase',
-    () => {
+    async () => {
       const unknownPostcode = 'ls0';
       const unknownPostcodeUppercase = 'LS0';
 
@@ -256,23 +244,21 @@ describe('The results page error handling', () => {
         .times(1)
         .reply(404, notFoundResponse);
 
-      return chai.request(server)
+      const res = await chai.request(server)
         .get(resultsRoute)
-        .query({ location: unknownPostcode })
-        .then((res) => {
-          iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
+        .query({ location: unknownPostcode });
 
-          expect($('.error-summary-heading').text()).to
-            .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
-          expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS.UK`);
-          expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
-        })
-        .catch((err) => { throw err; });
+      iExpect.htmlWith200Status(res);
+      const $ = cheerio.load(res.text);
+
+      expect($('.error-summary-heading').text()).to
+        .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
+      expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS.UK`);
+      expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
     }
   );
 
-  it('should handle an error produced by the postcode lookup and return an error message', () => {
+  it('should handle an error produced by the postcode lookup and return an error message', async () => {
     const postcode = 'AB12 3CD';
 
     nock('https://api.postcodes.io')
@@ -280,27 +266,25 @@ describe('The results page error handling', () => {
       .times(1)
       .reply(500);
 
-    return chai.request(server)
-      .get(resultsRoute)
-      .query({ location: postcode })
-      .then((res) => {
-        expect(res).to.have.status(500);
-        expect(res).to.be.html;
+    try {
+      await chai.request(server)
+        .get(resultsRoute)
+        .query({ location: postcode });
+    } catch (err) {
+      expect(err).to.have.status(500);
+      expect(err.response).to.be.html;
 
-        const $ = cheerio.load(res.text);
+      const $ = cheerio.load(err.response.text);
 
-        expect($('.page-section').text()).to.not.contain('For help with');
-        expect($('.local-header--title--question').text())
-          .to.contain(messages.technicalProblems());
-        expect($('title').text())
-          .to.equal('Sorry, we are experiencing technical problems - NHS.UK');
-      })
-      .catch((err) => {
-        expect(err).to.not.be.null;
-      });
+      expect($('.page-section').text()).to.not.contain('For help with');
+      expect($('.local-header--title--question').text())
+        .to.contain(messages.technicalProblems());
+      expect($('title').text())
+        .to.equal('Sorry, we are experiencing technical problems - NHS.UK');
+    }
   });
 
-  it('should handle the pharmacy service when it responds with a 500 response with an error message', () => {
+  it('should handle the pharmacy service when it responds with a 500 response with an error message', async () => {
     const fakePostcode = 'FA12 3KE';
     const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
     const latitude = JSON.parse(fakeResponse).result.latitude;
@@ -315,25 +299,23 @@ describe('The results page error handling', () => {
       .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .reply(500);
 
-    return chai.request(server)
-      .get(resultsRoute)
-      .query({ location: fakePostcode })
-      .then((res) => {
-        expect(res).to.have.status(500);
-        expect(res).to.be.html;
+    try {
+      await chai.request(server)
+        .get(resultsRoute)
+        .query({ location: fakePostcode });
+    } catch (err) {
+      expect(err).to.have.status(500);
+      expect(err.response).to.be.html;
 
-        const $ = cheerio.load(res.text);
+      const $ = cheerio.load(err.response.text);
 
-        expect($('.page-section').text()).to.not.contain('For help with');
-        expect($('.local-header--title--question').text())
-          .to.contain(messages.technicalProblems());
-      })
-      .catch((err) => {
-        expect(err).to.not.be.null;
-      });
+      expect($('.page-section').text()).to.not.contain('For help with');
+      expect($('.local-header--title--question').text())
+        .to.contain(messages.technicalProblems());
+    }
   });
 
-  it('should handle a response from the pharmacy service when there has been an error based on the input', () => {
+  it('should handle a response from the pharmacy service when there has been an error based on the input', async () => {
     const badPostcode = 'BA40 0AD';
     const badResponse = getSampleResponse('postcodesio-responses/bad.json');
     const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
@@ -349,25 +331,23 @@ describe('The results page error handling', () => {
       .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .reply(400, badPharmacyResponse);
 
-    return chai.request(server)
-      .get(resultsRoute)
-      .query({ location: badPostcode })
-      .then((res) => {
-        expect(res).to.have.status(500);
-        expect(res).to.be.html;
+    try {
+      await chai.request(server)
+        .get(resultsRoute)
+        .query({ location: badPostcode });
+    } catch (err) {
+      expect(err).to.have.status(500);
+      expect(err.response).to.be.html;
 
-        const $ = cheerio.load(res.text);
+      const $ = cheerio.load(err.response.text);
 
-        expect($('.page-section').text()).to.not.contain('For help with');
-        expect($('.local-header--title--question').text())
-          .to.contain(messages.technicalProblems());
-      })
-      .catch((err) => {
-        expect(err).to.not.be.null;
-      });
+      expect($('.page-section').text()).to.not.contain('For help with');
+      expect($('.local-header--title--question').text())
+        .to.contain(messages.technicalProblems());
+    }
   });
 
-  it('it should handle the pharmacy service being unavailable with an error message', () => {
+  it('it should handle the pharmacy service being unavailable with an error message', async () => {
     const outcode = 'BH1';
     const postcodesResponse = getSampleResponse('postcodesio-responses/bh1.json');
     const latitude = JSON.parse(postcodesResponse).result.latitude;
@@ -382,21 +362,19 @@ describe('The results page error handling', () => {
       .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
       .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
 
-    return chai.request(server)
-      .get(resultsRoute)
-      .query({ location: outcode })
-      .then((res) => {
-        expect(res).to.have.status(500);
-        expect(res).to.be.html;
+    try {
+      await chai.request(server)
+        .get(resultsRoute)
+        .query({ location: outcode });
+    } catch (err) {
+      expect(err).to.have.status(500);
+      expect(err.response).to.be.html;
 
-        const $ = cheerio.load(res.text);
+      const $ = cheerio.load(err.response.text);
 
-        expect($('.page-section').text()).to.not.contain('For help with');
-        expect($('.local-header--title--question').text())
-          .to.contain(messages.technicalProblems());
-      })
-      .catch((err) => {
-        expect(err).to.not.be.null;
-      });
+      expect($('.page-section').text()).to.not.contain('For help with');
+      expect($('.local-header--title--question').text())
+        .to.contain(messages.technicalProblems());
+    }
   });
 });

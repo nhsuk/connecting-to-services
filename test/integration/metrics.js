@@ -11,14 +11,11 @@ chai.use(chaiHttp);
 describe('metrics end point', () => {
   let responseText;
 
-  before('make request to /metrics endpoint', () =>
-    chai.request(app)
-      .get('/metrics')
-      .then((res) => {
-        expect(res).to.have.status(200);
-        responseText = res.text;
-      })
-      .catch((err) => { throw err; }));
+  before('make request to /metrics endpoint', async () => {
+    const res = await chai.request(app).get('/metrics');
+    expect(res).to.have.status(200);
+    responseText = res.text;
+  });
 
   it('should return an up gauge', () => {
     expect(responseText).to.have.string('# HELP up 1 = up, 0 = not up\n# TYPE up gauge');

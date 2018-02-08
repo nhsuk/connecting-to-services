@@ -30,7 +30,7 @@ describe('The bank holiday alert messaging', () => {
       process.env.DATE = '2017-12-25';
     });
 
-    it('should show a message about the bank holiday for each result that is open', () => {
+    it('should show a message about the bank holiday for each result that is open', async () => {
       const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeEngland.json');
       const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
       const latitude = 52.75;
@@ -49,19 +49,17 @@ describe('The bank holiday alert messaging', () => {
         .times(1)
         .reply(200, serviceApiResponse);
 
-      return chai.request(server)
+      const res = await chai.request(server)
         .get(resultsRoute)
-        .query({ location: yourLocation, latitude, longitude })
-        .then((res) => {
-          iExpect.htmlWith200Status(res);
-          const $ = cheerio.load(res.text);
+        .query({ location: yourLocation, latitude, longitude });
 
-          expect($('.callout--warning').length).to.equal(10);
-          $('callout--warning').toArray().forEach((item) => {
-            expect(item.text()).to.equal('Today is a bank holiday. Please call to check opening times.');
-          });
-        })
-        .catch((err) => { throw err; });
+      iExpect.htmlWith200Status(res);
+      const $ = cheerio.load(res.text);
+
+      expect($('.callout--warning').length).to.equal(10);
+      $('callout--warning').toArray().forEach((item) => {
+        expect(item.text()).to.equal('Today is a bank holiday. Please call to check opening times.');
+      });
     });
   });
 });
