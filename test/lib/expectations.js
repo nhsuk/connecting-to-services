@@ -17,8 +17,7 @@ function findHelpPage($) {
   expect($('label[for=location]').text()).to.contain('Enter a town, city or postcode');
 }
 
-function htmlWith200Status(err, res) {
-  expect(err).to.equal(null);
+function htmlWith200Status(res) {
   expect(res).to.have.status(200);
   expect(res).to.be.html;
 }
