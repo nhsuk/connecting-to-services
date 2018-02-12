@@ -18,7 +18,7 @@ function addUrl(searchCriteria, inputList) {
 
     if (searchCriteria.searchType === constants.yourLocationSearch) {
       saddr = `${searchCriteria.coordinates.latitude},${searchCriteria.coordinates.longitude}`;
-    } else {
+    } else if (searchCriteria.searchType === constants.postcodeSearch) {
       saddr = searchCriteria.searchTerm;
     }
 

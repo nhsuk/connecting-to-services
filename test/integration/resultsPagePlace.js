@@ -27,7 +27,7 @@ function expectMidsomerNortonResults($, location, numberOfResults) {
 
   const mapLinks = $('.results__maplink');
   mapLinks.toArray().forEach((link) => {
-    expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(location)}`);
+    expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?saddr=&');
   });
 
   const choicesServicesLinks = $('.overview a');
