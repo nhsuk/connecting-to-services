@@ -1,7 +1,8 @@
-0.31.0 / 2018-02-08
+0.31.0 / 2018-02-15
 ===================
 - Additional tests for opening times
 - Update npm dependencies
+- Prevent start address from appearing in map link for place searches
 
 0.30.0 / 2018-02-06
 ===================

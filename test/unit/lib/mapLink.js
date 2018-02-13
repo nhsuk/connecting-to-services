@@ -9,9 +9,9 @@ const expect = chai.expect;
 
 describe('mapLink', () => {
   describe('addUrl', () => {
-    const searchTerm = 'some place';
+    const searchTerm = 'po5t cod3';
     const coordinates = { latitude: 52.4, longitude: -1.9 };
-    const searchCriteria = { searchTerm, coordinates };
+    const searchCriteria = { searchTerm, coordinates, searchType: constants.postcodeSearch };
 
     it(
       'should add an additional property to all items in the input list with the google maps Url',
@@ -85,7 +85,58 @@ describe('mapLink', () => {
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
 
-    it('should use coordinates for \'your location\' searches', () => {
+    it('should leave start address empty for place searches', () => {
+      const yourLocationSearchCriteria = {
+        coordinates,
+        searchTerm,
+        searchType: constants.placeSearch,
+      };
+      const inputList = [{
+        name: 'name',
+        address: {
+          line1: 'line1',
+        },
+      }];
+      const destination = 'name,line1';
+      const params = {
+        saddr: '',
+        daddr: destination,
+        near: destination,
+      };
+      const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
+
+      const results = mapLink.addUrl(yourLocationSearchCriteria, inputList);
+
+      expect(results.length).to.be.equal(1);
+      expect(results[0].mapUrl).to.be.equal(expectedMapLink);
+    });
+
+    it('should populate start address for postcode searches', () => {
+      const yourLocationSearchCriteria = {
+        searchTerm,
+        searchType: constants.postcodeSearch,
+      };
+      const inputList = [{
+        name: 'name',
+        address: {
+          line1: 'line1',
+        },
+      }];
+      const destination = 'name,line1';
+      const params = {
+        saddr: searchTerm,
+        daddr: destination,
+        near: destination,
+      };
+      const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
+
+      const results = mapLink.addUrl(yourLocationSearchCriteria, inputList);
+
+      expect(results.length).to.be.equal(1);
+      expect(results[0].mapUrl).to.be.equal(expectedMapLink);
+    });
+
+    it('should use coordinates as start address for \'your location\' searches', () => {
       const yourLocationSearchCriteria = {
         coordinates,
         searchTerm,
@@ -100,8 +151,8 @@ describe('mapLink', () => {
       const destination = 'name,line1';
       const params = {
         saddr: `${coordinates.latitude},${coordinates.longitude}`,
-        daddr: `${destination}`,
-        near: `${destination}`,
+        daddr: destination,
+        near: destination,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
