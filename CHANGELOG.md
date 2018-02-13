@@ -1,4 +1,4 @@
-0.31.0 / 2018-02-08
+0.31.0 / 2018-02-15
 ===================
 - Additional tests for opening times
 - Update npm dependencies

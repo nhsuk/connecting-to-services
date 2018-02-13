@@ -100,8 +100,8 @@ describe('mapLink', () => {
       const destination = 'name,line1';
       const params = {
         saddr: '',
-        daddr: `${destination}`,
-        near: `${destination}`,
+        daddr: destination,
+        near: destination,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
@@ -111,7 +111,7 @@ describe('mapLink', () => {
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
 
-    it('should populate start address for place searches', () => {
+    it('should populate start address for postcode searches', () => {
       const yourLocationSearchCriteria = {
         searchTerm,
         searchType: constants.postcodeSearch,
@@ -125,8 +125,8 @@ describe('mapLink', () => {
       const destination = 'name,line1';
       const params = {
         saddr: searchTerm,
-        daddr: `${destination}`,
-        near: `${destination}`,
+        daddr: destination,
+        near: destination,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
@@ -136,7 +136,7 @@ describe('mapLink', () => {
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
 
-    it('should use coordinates for \'your location\' searches', () => {
+    it('should use coordinates as start address for \'your location\' searches', () => {
       const yourLocationSearchCriteria = {
         coordinates,
         searchTerm,
@@ -151,8 +151,8 @@ describe('mapLink', () => {
       const destination = 'name,line1';
       const params = {
         saddr: `${coordinates.latitude},${coordinates.longitude}`,
-        daddr: `${destination}`,
-        near: `${destination}`,
+        daddr: destination,
+        near: destination,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
