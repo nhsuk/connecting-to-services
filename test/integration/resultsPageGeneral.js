@@ -56,7 +56,7 @@ describe('The results page', () => {
     it('should provide a link to see open pharmacies by default', () => {
       const toggle = $('.viewToggle a');
       expect(toggle.attr('class')).to.equal('');
-      expect(toggle.attr('href')).to.have.string('&open=true');
+      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?location=${location}&latitude=${latitude}&longitude=${longitude}&open=true`);
     });
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', async () => {
@@ -76,7 +76,7 @@ describe('The results page', () => {
 
       const toggle = $('.viewToggle a');
       expect(toggle.attr('class')).to.equal('checked');
-      expect(toggle.attr('href')).to.have.string('&open=false');
+      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?location=${location}&latitude=${latitude}&longitude=${longitude}&open=false`);
     });
 
     it('should handle an error from the api', async () => {
@@ -180,6 +180,15 @@ describe('The results page', () => {
       expect(resultWithSessions.eq(11).find('td').text()).to.equal('Closed');
       expect(resultWithSessions.eq(12).find('th').text()).to.equal(daysOfWeek[6]);
       expect(resultWithSessions.eq(12).find('td').text()).to.equal('Closed');
+    });
+
+    it('should have a link to the open results page when the pharmacy is closed', () => {
+      const linksToOpenResultsPage = $('.openingTimes__openResults');
+
+      expect(linksToOpenResultsPage.length).to.equal(3);
+      linksToOpenResultsPage.each((index, element) => {
+        expect($(element).attr('href')).to.equal(`/find-a-pharmacy/results?location=${timesLocation}&latitude=${timesLatitude}&longitude=${timesLongitude}&open=true`);
+      });
     });
   });
 });

@@ -1,7 +1,6 @@
 const chai = require('chai');
 
 const resultsPageAltUrl = require('../../../app/lib/resultsPageAltUrl');
-const siteRoot = require('../../../app/lib/constants').SITE_ROOT;
 
 const expect = chai.expect;
 
@@ -9,7 +8,7 @@ describe('resultsPageAltUrl', () => {
   const latitude = 53;
   const longitude = 1;
   const path = '/results';
-  const baseUrl = `${siteRoot}${path}?latitude=${latitude}&longitude=${longitude}`;
+  const baseUrl = `${path}?latitude=${latitude}&longitude=${longitude}`;
 
   it('should return a URL with the open param as true when the original request does not include open', () => {
     const url = resultsPageAltUrl({ query: { latitude, longitude }, path });
