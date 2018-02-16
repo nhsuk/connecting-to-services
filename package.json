@@ -47,7 +47,7 @@
     "map-replace": "^1.0.2",
     "moment": "^2.20.1",
     "nhsuk-bunyan-logger": "^1.4.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.7.2",
     "nunjucks": "^3.0.1",
     "object.values": "^1.0.3",
     "on-headers": "^1.0.1",

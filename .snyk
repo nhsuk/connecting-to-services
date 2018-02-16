@@ -1,40 +1,173 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.10.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:debug:20170905':
     - brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
-        reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        reason: Build time dependency
+        expires: '2018-03-18T08:15:46.054Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: No upgrade path
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
     - brunch > debug:
         reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
     - brunch > since-app-start > debug:
         reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
   'npm:tough-cookie:20170905':
     - brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
-        reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        reason: Build time dependency
+        expires: '2018-03-18T08:15:46.055Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: No upgrade path
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
   'npm:ms:20170412':
     - brunch > debug > ms:
         reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
     - brunch > since-app-start > debug > ms:
         reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
   'npm:growl:20160721':
     - brunch > deppack > loggy > growl:
         reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.055Z'
   'npm:tunnel-agent:20170305':
     - node-sass > request > tunnel-agent:
         reason: Not user facing
-        expires: '2018-03-02T15:19:53.306Z'
+        expires: '2018-03-18T08:15:46.059Z'
+  'npm:hoek:20180212':
+    - request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - node-sass > node-gyp > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - node-sass > node-gyp > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - node-sass > node-gyp > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > node-gyp > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > node-gyp > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.056Z'
+    - sass-brunch > node-sass > node-gyp > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - sass-brunch > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-sass > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-sass > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-sass > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-sass > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.057Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.058Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: Not user facing
+        expires: '2018-03-18T08:15:46.059Z'
 patch: {}

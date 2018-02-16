@@ -1,6 +1,7 @@
 0.32.0 / 2018-02-20
 ===================
 - Add link to open results page for closed pharmacies
+- Update npm dependencies
 
 0.31.0 / 2018-02-15
 ===================
