@@ -1,6 +1,8 @@
 0.32.0 / 2018-02-20
 ===================
 - Add link to open results page for closed pharmacies
+- Move map and services links from below opening times to below address
+- Remove unused styles from nearest open results view
 - Update npm dependencies
 - Misc refactorings
 
