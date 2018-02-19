@@ -123,7 +123,6 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('.results-none-nearby').length).to.equal(0);
     expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
     iExpect.noResultsPageBreadcrumb($);
   });
@@ -152,7 +151,6 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('.results-none-nearby').length).to.equal(0);
     expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
     iExpect.noResultsPageBreadcrumb($);
   });
@@ -187,7 +185,6 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('.results-none-nearby').length).to.equal(0);
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -221,7 +218,6 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('.results-none-nearby').length).to.equal(0);
     iExpect.noResultsPageBreadcrumb($);
   });
 });

@@ -109,52 +109,22 @@ a.link-back {
     color: #000000;
   }
 }
+
 .page-section .grid-row .results {
   list-style: none;
   margin: 0;
   padding: 0 16px;
 }
-.page-section .grid-row .results__item--nearest {
-  border: 16px solid #0072c6;
-  padding: 0;
-}
-
-.page-section .grid-row .results__header--nearest {
-  background-color: #0072c6;
-  color: $white;
-  padding: 16px 16px 32px 16px;
-}
 .page-section .results__item {
   list-style: none;
 }
-
 .page-section .grid-row .results__details {
   padding: 0 32px 32px 32px;
   position: relative;
   margin-top:32px;
 }
-
 .page-section .grid-row .results__details .callout {
   margin-top:32px;
-}
-
-.page-section .grid-row .results__item--nearby{
-  padding-left: .2em;
-}
-
-.page-section .grid-row .results__item--nearby div{
-  padding:0;
-  margin-bottom:32px;
-}
-.page-section .grid-row .results__item--nearby .clear-both {
-    background-color: #d9e1e2;
-    content: "";
-    display: block;
-    height: 4px;
-    left: 0;
-    bottom: -2px;
-    width: 130px;
-    clear:both;
 }
 
 .geo-locate,
