@@ -192,12 +192,9 @@ form {
         }
         p {
           padding:0;
-          &.servicesLink {
-            margin-top:8px;
-          }
-          &.mapLink {
-            margin-top:8px;
-          }
+        }
+        &__link {
+          margin-top:8px;
         }
         &:first-child {
           margin-top: 0;

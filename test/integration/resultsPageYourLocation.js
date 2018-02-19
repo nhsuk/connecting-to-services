@@ -49,7 +49,7 @@ describe(`The ${yourLocation} results page`, () => {
     expect(results.length).to.equal(numberOfResults);
     iExpect.resultsPageBreadcrumb($);
 
-    const mapLinks = $('.results__maplink');
+    const mapLinks = $('.results__maplink a');
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
     });
@@ -89,7 +89,7 @@ describe(`The ${yourLocation} results page`, () => {
     expect(results.length).to.equal(numberOfResults);
     iExpect.resultsPageBreadcrumb($);
 
-    const mapLinks = $('.results__maplink');
+    const mapLinks = $('.results__maplink a');
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
     });
