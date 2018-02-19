@@ -13,10 +13,10 @@
       {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
       {% if service.contacts.telephoneNumber %}{{ service.contacts.telephoneNumber }}{% endif %}
       </p>
+    <p class="mapLink"><a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
+    <p class="servicesLink"><a href="{{ service.choicesServicesUrl }}">See this pharmacy's services</a></p>
     </div>
-    <p><a href="{{service.mapUrl}}" class="results__maplink">See map and directions</a></p>
     {% include "includes/openingTimes.nunjucks" %}
-    <p class="overview"><a href="{{ service.choicesServicesUrl }}">See this pharmacy's services</a></p>
   </div>
   <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
 </li>

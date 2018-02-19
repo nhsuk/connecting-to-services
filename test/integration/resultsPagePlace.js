@@ -30,7 +30,7 @@ function expectMidsomerNortonResults($, location, numberOfResults) {
     expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?saddr=&');
   });
 
-  const choicesServicesLinks = $('.overview a');
+  const choicesServicesLinks = $('.servicesLink a');
   choicesServicesLinks.toArray().forEach((link) => {
     expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx');
   });

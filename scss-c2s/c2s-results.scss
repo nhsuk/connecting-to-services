@@ -154,7 +154,6 @@ body {
                     border-top:2px solid $blue-1;
                     @include media(tablet) {
                       float:right;
-                      padding-bottom:100px;
                       margin-top:0px;
                     }
                     @include media(desktop) {
