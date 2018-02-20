@@ -6,8 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/nhsuk/connecting-to-services/badge.svg?branch=master)](https://coveralls.io/github/nhsuk/connecting-to-services?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/nhsuk/connecting-to-services/badge.svg)](https://snyk.io/test/github/nhsuk/connecting-to-services)
 
-> A service to help people connect to appropriate NHS services that
-meet their time, location and accessibility needs.
+> A service to help people connect to pharmacy services.
 
 ## Installation
 
