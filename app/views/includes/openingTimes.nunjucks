@@ -3,7 +3,7 @@
   {% if not service.isOpen %}<a class="openingTimes__openResults" href="{{ resultsPageAltUrl }}">Looking for pharmacies open now?</a>{% endif %}
   {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
   {% set openingTimes = service.openingTimes %}
-  {% if openingTimes !== null %}
+  {% if openingTimes %}
   <details class="" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
       <span class="details__summary">See opening times</span>
