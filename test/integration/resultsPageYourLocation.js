@@ -50,6 +50,7 @@ describe(`The ${yourLocation} results page`, () => {
     iExpect.resultsPageBreadcrumb($);
 
     const mapLinks = $('.maplink');
+    expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
     });
@@ -90,6 +91,7 @@ describe(`The ${yourLocation} results page`, () => {
     iExpect.resultsPageBreadcrumb($);
 
     const mapLinks = $('.maplink');
+    expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
     });

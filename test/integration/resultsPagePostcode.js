@@ -52,6 +52,7 @@ describe('The results page', () => {
     expect(results.length).to.equal(nearbyResultsCount);
 
     const mapLinks = $('.maplink');
+    expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
     });
@@ -89,6 +90,7 @@ describe('The results page', () => {
     expect(results.length).to.equal(numberOfResults);
 
     const mapLinks = $('.maplink');
+    expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
     });
