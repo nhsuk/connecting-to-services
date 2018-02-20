@@ -161,6 +161,16 @@ body {
                         margin-top:0;
                       }
                     }
+                    details {
+                      .details__content {
+                        display: none;
+                      }
+                      &.open {
+                        .details__content {
+                          display: block;
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -342,7 +352,7 @@ body {
             line-height: 36px;
           }
         }
-        &[open]{
+        &.open{
           summary {
             &:before {
               content:"\203A";

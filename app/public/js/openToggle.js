@@ -2,6 +2,6 @@
   'use strict';
   var $ = global.jQuery;
   $('details').on('click', function() {
-    $(this).parents('li').toggleClass('open');
+    $(this).toggleClass('open');
   });
 })(window);

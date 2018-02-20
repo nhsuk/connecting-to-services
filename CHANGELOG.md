@@ -1,3 +1,8 @@
+0.32.1 / 2018-02-22
+===================
+
+- IE bug fix for opening times menu toggle
+
 0.32.0 / 2018-02-20
 ===================
 - Add link to open results page for closed pharmacies
