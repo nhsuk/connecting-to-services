@@ -1,6 +1,6 @@
-0.32.1 / 2018-02-22
+0.33.0 / 2018-02-22
 ===================
-
+- Adding hidden assistive text to meet accessibility standards
 - IE bug fix for opening times menu toggle
 
 0.32.0 / 2018-02-20
