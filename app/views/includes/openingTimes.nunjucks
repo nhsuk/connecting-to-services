@@ -6,7 +6,7 @@
   {% if openingTimes %}
   <details class="" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-      <span class="details__summary">See opening times</span>
+      <span class="details__summary">Opening times<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></span>
     </summary>
     <div class="details__content" id="details-content-0" aria-hidden="true">
     <table class="openingTimes">
