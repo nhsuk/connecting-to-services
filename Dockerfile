@@ -23,10 +23,13 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /code
 
+COPY --chown=nodeuser:nodeuser yarn.lock package.json /code/ 
+
+RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile; else yarn install --pure-lockfile; fi
+
 # .dockerignore prevents unneeded files from being copied
 COPY --chown=nodeuser:nodeuser . . 
 
-RUN if [ "$NODE_ENV" == "production" ]; then yarn install --production --pure-lockfile; else yarn install --pure-lockfile; fi
 RUN [ "yarn", "header-build" ]
 RUN [ "yarn", "brunch-build" ]
 
