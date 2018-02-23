@@ -1,6 +1,6 @@
 FROM node:8.9.1-alpine
 
-RUN apk add --no-cache python=2.7.13-r1 git-perl bash make gcc g++
+RUN apk add --no-cache python=2.7.14-r0 git-perl bash make gcc g++
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 ENV USERNAME nodeuser
 
