@@ -43,36 +43,67 @@ body {
           }
       }
       .viewToggle {
-        margin: 16px 24px;
+        margin: 16px 18px 50px;
+        @include media(tablet) {
+          margin: 16px 18px;
+        }
         a {
           text-decoration: none;
           position: relative;
           color: $black;
-          margin-left:50px;
           display: inline-block;
           &:before {
             display: inline-block;
             height:40px;
-            width:40px;
-            border:4px solid $blue;
-            content: "";
-            left:-50px;
+            width:80px;
+            content: "No";
             position: absolute;
+            background: $grey-1;
+            border-radius: 20px;
+            color: #fff;
+            border-left: 40px solid $grey-1;
+            white-space: pre;
+            top: 65px;
+            line-height: 40px;
+            @include media(371px) {
+              top: 35px;
+            }
+            @include media(tablet) {
+              right:-90px;
+              top: 1px;
+            }
+          }
+          &:after {
+            display: inline-block;
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: $white;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            left: 7px;
+            top: 72px;
+            @include media(371px) {
+              top: 42px;
+            }
+            @include media(tablet) {
+              left: 335px;
+              top: 8px;
+            }
           }
           &.checked{
+            &:before {
+              content: "Yes";
+              background: $blue;
+              border-left: 11px solid $blue;
+            }
             &:after {
-              content: "";
-              display: inline-block;
-              left:-36px;
-              position: absolute;
-              height:25px;
-              width:12px;
-              top:5px;
-              border:4px solid $black;
-              border-width: 0px 4px 4px 0px;
-              transform:         rotate(45deg);
-              -ms-transform:     rotate(45deg); /* IE 9 */
-              -webkit-transform: rotate(45deg); /* Safari 3-8 */
+              left: 50px;
+              @include media(tablet) {
+                left: 377px;
+              }
             }
           }
           @include media(tablet) {
@@ -90,6 +121,15 @@ body {
         }
         .results {
           margin-bottom:32px;
+          @keyframes fadeIn {
+            to {
+              opacity: 1;
+            }
+          }
+          &.fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in 1 forwards;
+          }
           li {
             padding:0;
             border: none;
