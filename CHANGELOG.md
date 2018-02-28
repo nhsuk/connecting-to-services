@@ -6,6 +6,7 @@
 0.34.0 / TBA
 ===================
 - Upgrade python in Alpine to 2.7.14-r0
+- Add on/off toggle for showing open/closed pharmacies
 
 0.33.0 / 2018-02-22
 ===================
