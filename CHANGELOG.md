@@ -1,6 +1,7 @@
 0.35.0 / TBA
 ===================
 - Add on/off toggle for showing open/closed pharmacies
+- Responsive design and spacing fixes
 
 0.34.0 / TBA
 ===================
