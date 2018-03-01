@@ -1,5 +1,9 @@
-0.35.0 / 2018-03-02
+0.35.1 / 2018-03-02
 ===================
+- Revert version of performance test script
+
+0.35.0 / N/A
+============
 - Run performance test with basic auth
 
 0.34.1 / N/A
