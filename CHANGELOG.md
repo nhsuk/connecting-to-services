@@ -1,9 +1,13 @@
-0.34.1 / 2018-03-02
+0.35.0 / 2018-03-02
 ===================
+- Run performance test with basic auth
+
+0.34.1 / N/A
+============
 - Responsive design and spacing fixes
 
 0.34.0 / N/A
-===================
+============
 - Upgrade python in Alpine to 2.7.14-r0
 - Add on/off toggle for showing open/closed pharmacies
 
