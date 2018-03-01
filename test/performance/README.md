@@ -19,15 +19,18 @@
 | `duration`   | Time in seconds to run test                              | 120                         |
 | `throughput` | target throughput in samples per minute                  | 120                         |
 | `postcodes`  | CSV file containing postcodes for use in postcode search | outcodes.csv                |
+| `basicauth`  | Base64 encoded user:password                             | aGVsbG86Z29vZGJ5ZQ==        |
 
 ## Threshold
 
 The `threshold` file specifies the maximum average response time.
 The test will fail if the total average time exceeds the threshold. This is set to 500ms.
 
-To enable use of the threshold file in TeamCity, `Performance Metrics Calculation` in `Build Features`
-must have the `file` checkbox selected, and `threshold` entered into the text box within the `Get reference values from` section.
-Unchecking the box will revert to using the build history to determine performance drops.
+To enable use of the threshold file in TeamCity, `Performance Metrics
+Calculation` in `Build Features` must have the `file` checkbox selected, and
+`threshold` entered into the text box within the `Get reference values from`
+section.  Unchecking the box will revert to using the build history to
+determine performance drops.
 
 ## Running Tests
 
@@ -50,4 +53,5 @@ Note: only parameters wishing to be overridden need to be supplied.
 `jmeter -n -t ./<path-to-test>/<test-name>.jmx
 -Jhostname=localhost -Jprotocol=http -Jport=3000 -Jusers=10 -Jrampup=10
 -Jduration=500 -Jthroughput=60 -Jgpnames=search-terms.csv
--Jpostcodes=london-postcodes.csv -l pharmacy-finder.jtl`
+-Jbasicauth=aGVsbG86Z29vZGJ5ZQ== -Jpostcodes=london-postcodes.csv
+-l pharmacy-finder.jtl`
