@@ -19,3 +19,6 @@ yarn-error.log
 
 *.jtl
 jmeter.log
+
+# newrelic log file
+newrelic_agent.log
