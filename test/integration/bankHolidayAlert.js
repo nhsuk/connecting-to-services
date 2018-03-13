@@ -6,6 +6,7 @@ const nock = require('nock');
 const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
+const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
 
 const expect = chai.expect;
@@ -36,7 +37,7 @@ describe('The bank holiday alert messaging', () => {
       const latitude = 52.75;
       const longitude = -1.55;
 
-      nock('https://api.postcodes.io')
+      nock(postcodesIOURL)
         .get('/postcodes')
         .query({
           limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude

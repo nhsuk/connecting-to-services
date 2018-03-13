@@ -2,11 +2,13 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
-const server = require('../../server');
+
 const constants = require('../../app/lib/constants');
-const messages = require('../../app/lib/messages');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
+const messages = require('../../app/lib/messages');
+const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const server = require('../../server');
 
 const expect = chai.expect;
 
@@ -29,7 +31,7 @@ describe('The results page', () => {
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
       .reply(200, ls27ueResponse);
@@ -67,7 +69,7 @@ describe('The results page', () => {
     const latitude = ls27ueResult.latitude;
     const longitude = ls27ueResult.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
       .reply(200, ls27ueResponse);
@@ -105,7 +107,7 @@ describe('The results page', () => {
     const outcodeFormatted = 'BT1';
 
     const postcodeResponse = getSampleResponse('postcodesio-responses/bt1.json');
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/outcodes/${outcodeFormatted}`)
       .times(1)
       .reply(200, postcodeResponse);
@@ -134,7 +136,7 @@ describe('The results page', () => {
     const outcodeFormatted = 'IM1';
 
     const postcodeResponse = getSampleResponse('postcodesio-responses/im1.json');
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/outcodes/${outcodeFormatted}`)
       .times(1)
       .reply(200, postcodeResponse);
@@ -164,7 +166,7 @@ describe('The results page', () => {
     const latitude = JSON.parse(postcodeResponse).result.latitude;
     const longitude = JSON.parse(postcodeResponse).result.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/outcodes/${outcode}`)
       .times(1)
       .reply(200, postcodeResponse);
@@ -197,7 +199,7 @@ describe('The results page', () => {
     const latitude = JSON.parse(postcodeResponse).result.latitude;
     const longitude = JSON.parse(postcodeResponse).result.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/outcodes/${outcode}`)
       .times(1)
       .reply(200, postcodeResponse);
@@ -237,7 +239,7 @@ describe('The results page error handling', () => {
       const unknownPostcode = 'ls0';
       const unknownPostcodeUppercase = 'LS0';
 
-      nock('https://api.postcodes.io')
+      nock(postcodesIOURL)
         .get(`/outcodes/${unknownPostcodeUppercase}`)
         .times(1)
         .reply(404, notFoundResponse);
@@ -259,7 +261,7 @@ describe('The results page error handling', () => {
   it('should handle an error produced by the postcode lookup and return an error message', async () => {
     const postcode = 'AB12 3CD';
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(postcode)}`)
       .times(1)
       .reply(500);
@@ -288,7 +290,7 @@ describe('The results page error handling', () => {
     const latitude = JSON.parse(fakeResponse).result.latitude;
     const longitude = JSON.parse(fakeResponse).result.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(fakePostcode)}`)
       .times(1)
       .reply(200, fakeResponse);
@@ -320,7 +322,7 @@ describe('The results page error handling', () => {
     const latitude = JSON.parse(badResponse).result.latitude;
     const longitude = JSON.parse(badResponse).result.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(badPostcode)}`)
       .times(1)
       .reply(200, badResponse);
@@ -351,7 +353,7 @@ describe('The results page error handling', () => {
     const latitude = JSON.parse(postcodesResponse).result.latitude;
     const longitude = JSON.parse(postcodesResponse).result.longitude;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/outcodes/${outcode}`)
       .times(1)
       .reply(200, postcodesResponse);

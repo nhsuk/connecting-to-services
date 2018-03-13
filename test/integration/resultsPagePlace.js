@@ -2,10 +2,12 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
-const server = require('../../server');
+
 const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
+const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const server = require('../../server');
 
 const expect = chai.expect;
 
@@ -55,7 +57,7 @@ describe('The place results page', () => {
     const searchTerm = 'oneresult';
     const numberOfResults = constants.api.nearbyResultsCount;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/places?q=${searchTerm}&limit=100`)
       .times(1)
       .reply(200, singlePlaceResponse);
@@ -85,7 +87,7 @@ describe('The place results page', () => {
     const searchTerm = 'oneresult';
     const numberOfResults = constants.api.openResultsCount;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/places?q=${searchTerm}&limit=100`)
       .times(1)
       .reply(200, singlePlaceResponse);
@@ -108,7 +110,7 @@ describe('The place results page', () => {
   it('should return disambiguation page for non unique place search', async () => {
     const multiPlaceResponse = getSampleResponse('postcodesio-responses/multiplePlaceResult.json');
     const multiPlaceTerm = 'multiresult';
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/places?q=${multiPlaceTerm}&limit=100`)
       .times(1)
       .reply(200, multiPlaceResponse);
@@ -165,7 +167,7 @@ describe('The place results page', () => {
   it('should return no results page with exact term displayed, and links for Scotland, Wales and NI for unknown place search', async () => {
     const noResultsTerm = '@noresults@';
     const noResultsTermClean = 'noresults';
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get(`/places?q=${noResultsTermClean}&limit=100`)
       .times(1)
       .reply(200, { status: 200, result: [] });

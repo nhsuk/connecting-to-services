@@ -1,6 +1,6 @@
 {
   "name": "connecting-to-services",
-  "version": "0.36.0",
+  "version": "0.37.0",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
@@ -53,7 +53,7 @@
     "object.values": "^1.0.3",
     "on-headers": "^1.0.1",
     "postcode": "^0.2.5",
-    "postcodesio-client": "^0.2.0",
+    "postcodesio-client": "^0.3.3",
     "request": "^2.81.0",
     "require-environment-variables": "^1.1.2",
     "sass-brunch": "^2.10.4",

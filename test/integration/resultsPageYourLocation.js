@@ -6,6 +6,7 @@ const nock = require('nock');
 const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
+const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
 
 const expect = chai.expect;
@@ -23,7 +24,7 @@ describe(`The ${yourLocation} results page`, () => {
     const longitude = -1.25;
     const numberOfResults = constants.api.nearbyResultsCount;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get('/postcodes')
       .query({
         limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
@@ -63,7 +64,7 @@ describe(`The ${yourLocation} results page`, () => {
     const longitude = -1.25;
     const numberOfResults = constants.api.openResultsCount;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get('/postcodes')
       .query({
         limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
@@ -102,7 +103,7 @@ describe(`The ${yourLocation} results page`, () => {
     const latitude = 55;
     const longitude = -4;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get('/postcodes')
       .query({
         limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
@@ -128,7 +129,7 @@ describe(`The ${yourLocation} results page`, () => {
     const latitude = 1;
     const longitude = 1;
 
-    nock('https://api.postcodes.io')
+    nock(postcodesIOURL)
       .get('/postcodes')
       .query({
         limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude

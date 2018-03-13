@@ -1,3 +1,7 @@
+0.37.0 / 2018-03-14
+===================
+- Upgrade to `postcodesio-client@0.3.3`
+
 0.36.0 / 2018-03-14
 ===================
 - Add newrelic application monitoring
