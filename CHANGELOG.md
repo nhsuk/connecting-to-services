@@ -1,6 +1,7 @@
 0.36.0 / 2018-03-14
 ===================
 - Add newrelic application monitoring
+- Update npm dependencies
 
 0.35.1 / 2018-03-02
 ===================
