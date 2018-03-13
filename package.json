@@ -1,6 +1,6 @@
 {
   "name": "connecting-to-services",
-  "version": "0.35.1",
+  "version": "0.36.0",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
@@ -46,6 +46,7 @@
     "helmet": "^3.8.1",
     "map-replace": "^1.0.2",
     "moment": "^2.20.1",
+    "newrelic": "^3.0.0",
     "nhsuk-bunyan-logger": "^1.4.1",
     "node-sass": "^4.7.2",
     "nunjucks": "^3.0.1",

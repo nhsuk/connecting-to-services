@@ -12,6 +12,8 @@ services:
       API_BASE_URL: '${API_BASE_URL-http://nearby-services-api:3001}'
       DISABLE_GOOGLE_SEARCH: ${DISABLE_GOOGLE_SEARCH}
       DATE: ${DATE}
+      NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY}
+      NEW_RELIC_LOG_LEVEL: ${NEW_RELIC_LOG_LEVEL}
   frontend:
     extends:
       service: base-app
