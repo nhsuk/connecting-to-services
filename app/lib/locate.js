@@ -2,10 +2,9 @@ const PostcodesIO = require('postcodesio-client');
 const histograms = require('./promHistograms');
 
 // monkey patch postcodesIO to add places method
-PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit, callback) {
+PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit) {
   // eslint-disable-next-line no-underscore-dangle
-  return this._request('get', 'places', { q: place, limit })
-    .nodeify(callback);
+  return this._request('places', { q: place, limit });
 };
 
 const postcodes = new PostcodesIO();
