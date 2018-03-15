@@ -72,7 +72,7 @@ module.exports = (app, config) => {
           '*.hotjar.com:*',
         ],
       },
-    }
+    },
   }));
 
   app.use(locals(config));

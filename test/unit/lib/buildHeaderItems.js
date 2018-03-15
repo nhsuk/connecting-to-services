@@ -13,7 +13,7 @@ function createMenuItem(title, partUrl, submenus) {
   return {
     Title: title,
     URL: `http://site/${partUrl},${title}`,
-    Submenus: submenus
+    Submenus: submenus,
   };
 }
 
@@ -25,7 +25,7 @@ describe('buildHeaderItems', () => {
       {
         Title: title,
         URL: `http://site/${partUrl},${title}`,
-      }
+      },
     ];
     const output = buildHeaderItems(singleMenuItem);
     expect(output).to.equal(`<li><a href="https://www.nhs.uk/${partUrl}">${title}</a></li>`);
@@ -45,7 +45,7 @@ describe('buildHeaderItems', () => {
     ];
 
     const singleMenuItem = [
-      createMenuItem(title, partUrl, submenus)
+      createMenuItem(title, partUrl, submenus),
     ];
     const output = buildHeaderItems(singleMenuItem);
     const expectedHtml =

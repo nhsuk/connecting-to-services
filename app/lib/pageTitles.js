@@ -27,5 +27,5 @@ function results(location, services) {
 module.exports = {
   search,
   disambiguation,
-  results
+  results,
 };

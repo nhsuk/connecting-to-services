@@ -29,7 +29,7 @@ function incrementDisambiguationViews(places) {
 function getCoordinates(place) {
   return {
     latitude: place.latitude,
-    longitude: place.longitude
+    longitude: place.longitude,
   };
 }
 

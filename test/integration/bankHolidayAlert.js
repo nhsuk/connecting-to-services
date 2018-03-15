@@ -40,7 +40,7 @@ describe('The bank holiday alert messaging', () => {
       nock(postcodesIOURL)
         .get('/postcodes')
         .query({
-          limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+          limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
         })
         .times(1)
         .reply(200, reverseGeocodeResponse);

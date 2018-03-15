@@ -68,7 +68,7 @@ describe('The results page', () => {
       const res = await chai.request(server)
         .get(resultsRoute)
         .query({
-          location, latitude, longitude, open: true
+          location, latitude, longitude, open: true,
         });
 
       iExpect.htmlWith200Status(res);

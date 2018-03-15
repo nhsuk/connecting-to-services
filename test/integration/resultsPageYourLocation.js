@@ -27,7 +27,7 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
@@ -67,7 +67,7 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
@@ -80,7 +80,7 @@ describe(`The ${yourLocation} results page`, () => {
     const res = await chai.request(server)
       .get(resultsRoute)
       .query({
-        location: yourLocation, latitude, longitude, open: true
+        location: yourLocation, latitude, longitude, open: true,
       });
 
     iExpect.htmlWith200Status(res);
@@ -106,7 +106,7 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
@@ -132,7 +132,7 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);

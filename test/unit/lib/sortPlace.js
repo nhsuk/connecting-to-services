@@ -8,7 +8,7 @@ function createSuburb(name) {
 
 function createCity(name, region, outcode) {
   return {
-    name_1: name, local_type: 'City', region, outcode
+    name_1: name, local_type: 'City', region, outcode,
   };
 }
 

@@ -25,7 +25,7 @@ function addUrl(searchCriteria, inputList) {
     const params = {
       saddr,
       daddr: fullNameAndAddress,
-      near: fullNameAndAddress
+      near: fullNameAndAddress,
     };
 
     // eslint-disable-next-line no-param-reassign
