@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 const chai = require('chai');
 const formatOpeningTimes = require('../../../app/lib/formatOpeningTimes');
 
@@ -82,3 +83,4 @@ describe('formatOpeningTimes', () => {
     expect(result[1].openingTimes.closes).to.not.exist;
   });
 });
+/* eslint-enable sort-keys */

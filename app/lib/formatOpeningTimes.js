@@ -13,8 +13,8 @@ function formatTimeString(timeString) {
 
 function formatTimes(session) {
   return {
-    opens: formatTimeString(session.opens),
     closes: formatTimeString(session.closes),
+    opens: formatTimeString(session.opens),
   };
 }
 

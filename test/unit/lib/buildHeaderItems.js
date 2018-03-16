@@ -11,9 +11,9 @@ function getExpectedHtml() {
 
 function createMenuItem(title, partUrl, submenus) {
   return {
+    Submenus: submenus,
     Title: title,
     URL: `http://site/${partUrl},${title}`,
-    Submenus: submenus,
   };
 }
 

@@ -15,8 +15,8 @@ function findHelp(req, res) {
 }
 
 module.exports = {
-  results,
-  places,
   findHelp,
   notEnglishLocation,
+  places,
+  results,
 };

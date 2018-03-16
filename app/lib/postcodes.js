@@ -19,11 +19,11 @@ async function lookup(res, next) {
     } else {
       log.info(`Postcode lookup 404 for ${location}`);
       zeroPostcodeResults.inc(1);
-      next({ type: 'invalid-postcode', message: messages.invalidPostcodeMessage(location) });
+      next({ message: messages.invalidPostcodeMessage(location), type: 'invalid-postcode' });
     }
   } catch (e) {
     log.error({ postcodeLookupResponse: { error: e } }, 'Postcode lookup error');
-    next({ type: 'postcode-lookup-error', message: e.message });
+    next({ message: e.message, type: 'postcode-lookup-error' });
   }
 }
 

@@ -4,7 +4,7 @@ const histograms = require('./promHistograms');
 // monkey patch postcodesIO to add places method
 PostcodesIO.prototype.lookupPlaces = function lookupPlaces(place, limit) {
   // eslint-disable-next-line no-underscore-dangle
-  return this._request('places', { q: place, limit });
+  return this._request('places', { limit, q: place });
 };
 
 const postcodes = new PostcodesIO();
@@ -48,7 +48,7 @@ async function byLatLon(lat, lon) {
 }
 
 module.exports = {
-  byPostcode,
-  byPlace,
   byLatLon,
+  byPlace,
+  byPostcode,
 };

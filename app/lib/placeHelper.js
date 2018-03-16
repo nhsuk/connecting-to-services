@@ -2,11 +2,11 @@ const log = require('./logger');
 
 const localOrder = {
   City: 5,
-  Town: 4,
-  Village: 3,
   Hamlet: 2,
   'Other Settlement': 1,
   'Suburban Area': 0,
+  Town: 4,
+  Village: 3,
 };
 
 function getOrder(type) {
@@ -44,6 +44,6 @@ function getCountries(places) {
 }
 
 module.exports = {
-  sortPlace,
   getCountries,
+  sortPlace,
 };

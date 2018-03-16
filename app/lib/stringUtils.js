@@ -11,7 +11,7 @@ function removeNonAlphanumericAndWhitespace(string) {
 }
 
 module.exports = {
-  removeNonAlphanumericAndDoubleSpaces,
   removeNonAddressCharacters,
+  removeNonAlphanumericAndDoubleSpaces,
   removeNonAlphanumericAndWhitespace,
 };

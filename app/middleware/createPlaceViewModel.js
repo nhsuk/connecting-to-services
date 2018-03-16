@@ -3,16 +3,16 @@ const getAddress = require('../lib/getAddress');
 
 function getParams(place) {
   return {
-    location: getAddress(place),
     latitude: place.latitude,
+    location: getAddress(place),
     longitude: place.longitude,
   };
 }
 
 function createPlaceViewModel(place) {
   return {
-    name: place.name_1,
     description: getAddress(place),
+    name: place.name_1,
     queryString: qs.stringify(getParams(place)),
   };
 }

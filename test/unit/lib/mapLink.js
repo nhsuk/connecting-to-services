@@ -11,7 +11,7 @@ describe('mapLink', () => {
   describe('addUrl', () => {
     const searchTerm = 'po5t cod3';
     const coordinates = { latitude: 52.4, longitude: -1.9 };
-    const searchCriteria = { searchTerm, coordinates, searchType: constants.postcodeSearch };
+    const searchCriteria = { coordinates, searchTerm, searchType: constants.postcodeSearch };
 
     it(
       'should add an additional property to all items in the input list with the google maps Url',
@@ -19,20 +19,20 @@ describe('mapLink', () => {
         const nameOne = 'place name one';
         const nameTwo = 'place name two';
         const address = {
+          city: 'city',
+          county: 'county',
           line1: 'line1',
           line2: 'line2',
           line3: 'line3',
-          city: 'city',
-          county: 'county',
           postcode: 'AB12 3CD',
         };
         const inputList = [{
-          name: nameOne,
           address,
+          name: nameOne,
         },
         {
-          name: nameTwo,
           address,
+          name: nameTwo,
         }];
 
         const start = `saddr=${qs.escape(searchTerm)}`;
@@ -44,8 +44,8 @@ describe('mapLink', () => {
         const nameAndAddressTwoEncoded = qs.escape(nameAndAddressTwo);
         const destinationTwo = `daddr=${nameAndAddressTwoEncoded}`;
         const nearTwo = `near=${nameAndAddressTwoEncoded}`;
-        const encodedQueryOne = `${start}&${destinationOne}&${nearOne}`;
-        const encodedQueryTwo = `${start}&${destinationTwo}&${nearTwo}`;
+        const encodedQueryOne = `${destinationOne}&${nearOne}&${start}`;
+        const encodedQueryTwo = `${destinationTwo}&${nearTwo}&${start}`;
         const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQueryOne}`;
         const expectedMapLinkTwo = `https://maps.google.com/maps?${encodedQueryTwo}`;
 
@@ -61,19 +61,19 @@ describe('mapLink', () => {
 
     it('should remove any empty, null or undefined address properties', () => {
       const inputList = [{
-        name: 'name',
         address: {
+          city: '',
+          county: undefined,
           line1: 'line1',
           line2: '',
           line3: null,
-          city: '',
-          county: undefined,
           postcode: 'AB12 3CD',
         },
+        name: 'name',
       }];
 
       const destination = 'name,line1,AB12 3CD';
-      const encodedQuery = `saddr=${qs.escape(searchTerm)}&daddr=${qs.escape(destination)}&near=${qs.escape(destination)}`;
+      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${qs.escape(searchTerm)}`;
       const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
 
       const results = mapLink.addUrl(searchCriteria, inputList);
@@ -92,16 +92,16 @@ describe('mapLink', () => {
         searchType: constants.placeSearch,
       };
       const inputList = [{
-        name: 'name',
         address: {
           line1: 'line1',
         },
+        name: 'name',
       }];
       const destination = 'name,line1';
       const params = {
-        saddr: '',
         daddr: destination,
         near: destination,
+        saddr: '',
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
@@ -117,16 +117,16 @@ describe('mapLink', () => {
         searchType: constants.postcodeSearch,
       };
       const inputList = [{
-        name: 'name',
         address: {
           line1: 'line1',
         },
+        name: 'name',
       }];
       const destination = 'name,line1';
       const params = {
-        saddr: searchTerm,
         daddr: destination,
         near: destination,
+        saddr: searchTerm,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
@@ -143,16 +143,16 @@ describe('mapLink', () => {
         searchType: constants.yourLocationSearch,
       };
       const inputList = [{
-        name: 'name',
         address: {
           line1: 'line1',
         },
+        name: 'name',
       }];
       const destination = 'name,line1';
       const params = {
-        saddr: `${coordinates.latitude},${coordinates.longitude}`,
         daddr: destination,
         near: destination,
+        saddr: `${coordinates.latitude},${coordinates.longitude}`,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 

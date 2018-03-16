@@ -11,31 +11,31 @@ describe('resultsPageAltUrl', () => {
   const baseUrl = `${path}?latitude=${latitude}&longitude=${longitude}`;
 
   it('should return a URL with the open param as true when the original request does not include open', () => {
-    const url = resultsPageAltUrl({ query: { latitude, longitude }, path });
+    const url = resultsPageAltUrl({ path, query: { latitude, longitude } });
 
     expect(url).to.equal(`${baseUrl}&open=true`);
   });
 
   it('should return a URL with the open param as true when the original request includes open as false', () => {
-    const url = resultsPageAltUrl({ query: { latitude, longitude, open: 'false' }, path });
+    const url = resultsPageAltUrl({ path, query: { latitude, longitude, open: 'false' } });
 
     expect(url).to.equal(`${baseUrl}&open=true`);
   });
 
   it('should return a URL with the open param as true when the original request includes open with no value', () => {
-    const url = resultsPageAltUrl({ query: { latitude, longitude, open: '' }, path });
+    const url = resultsPageAltUrl({ path, query: { latitude, longitude, open: '' } });
 
     expect(url).to.equal(`${baseUrl}&open=true`);
   });
 
   it('should return a URL with the open param as false when the original request included open as true', () => {
-    const url = resultsPageAltUrl({ query: { latitude, longitude, open: 'true' }, path });
+    const url = resultsPageAltUrl({ path, query: { latitude, longitude, open: 'true' } });
 
     expect(url).to.equal(`${baseUrl}&open=false`);
   });
 
   it('should return a URL with the open param as false when the original request included open as TRUE', () => {
-    const url = resultsPageAltUrl({ query: { latitude, longitude, open: 'TRUE' }, path });
+    const url = resultsPageAltUrl({ path, query: { latitude, longitude, open: 'TRUE' } });
 
     expect(url).to.equal(`${baseUrl}&open=false`);
   });

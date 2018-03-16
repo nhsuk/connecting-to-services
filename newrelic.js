@@ -1,10 +1,6 @@
 exports.config = {
-  app_name: ['connecting-to-services'],
-  license_key: process.env.NEW_RELIC_LICENSE_KEY,
-  logging: {
-    level: process.env.NEW_RELIC_LOG_LEVEL || 'info',
-  },
   allow_all_headers: true,
+  app_name: ['connecting-to-services'],
   attributes: {
     exclude: [
       'request.headers.cookie',
@@ -18,5 +14,9 @@ exports.config = {
       'response.headers.setCookie*',
       'response.headers.x*',
     ],
+  },
+  license_key: process.env.NEW_RELIC_LICENSE_KEY,
+  logging: {
+    level: process.env.NEW_RELIC_LOG_LEVEL || 'info',
   },
 };

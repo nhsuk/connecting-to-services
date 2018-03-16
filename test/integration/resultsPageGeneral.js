@@ -38,7 +38,7 @@ describe('The results page', () => {
 
       const res = await chai.request(server)
         .get(resultsRoute)
-        .query({ location, latitude, longitude });
+        .query({ latitude, location, longitude });
       iExpect.htmlWith200Status(res);
       $ = cheerio.load(res.text);
     });
@@ -56,7 +56,7 @@ describe('The results page', () => {
     it('should provide a link to see open pharmacies by default', () => {
       const toggle = $('.viewToggle a');
       expect(toggle.attr('class')).to.equal('');
-      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?location=${location}&latitude=${latitude}&longitude=${longitude}&open=true`);
+      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
     });
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', async () => {
@@ -68,7 +68,7 @@ describe('The results page', () => {
       const res = await chai.request(server)
         .get(resultsRoute)
         .query({
-          location, latitude, longitude, open: true,
+          latitude, location, longitude, open: true,
         });
 
       iExpect.htmlWith200Status(res);
@@ -76,7 +76,7 @@ describe('The results page', () => {
 
       const toggle = $('.viewToggle a');
       expect(toggle.attr('class')).to.equal('checked');
-      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?location=${location}&latitude=${latitude}&longitude=${longitude}&open=false`);
+      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=false`);
     });
 
     it('should handle an error from the api', async () => {
@@ -89,7 +89,7 @@ describe('The results page', () => {
       try {
         await chai.request(server)
           .get(resultsRoute)
-          .query({ location, latitude, longitude });
+          .query({ latitude, location, longitude });
       } catch (err) {
         expect(err).to.have.status(500);
         expect(err.response).to.be.html;
@@ -118,8 +118,8 @@ describe('The results page', () => {
       const res = await chai.request(server)
         .get(resultsRoute)
         .query({
-          location: timesLocation,
           latitude: timesLatitude,
+          location: timesLocation,
           longitude: timesLongitude,
         });
 
@@ -187,7 +187,7 @@ describe('The results page', () => {
 
       expect(linksToOpenResultsPage.length).to.equal(3);
       linksToOpenResultsPage.each((index, element) => {
-        expect($(element).attr('href')).to.equal(`/find-a-pharmacy/results?location=${timesLocation}&latitude=${timesLatitude}&longitude=${timesLongitude}&open=true`);
+        expect($(element).attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${timesLatitude}&location=${timesLocation}&longitude=${timesLongitude}&open=true`);
       });
     });
   });

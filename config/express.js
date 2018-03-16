@@ -30,15 +30,29 @@ module.exports = (app, config) => {
   log.info({ config: { nunjucksEnvironment } }, 'nunjucks environment configuration');
 
   app.use(helmet({
-    frameguard: { action: 'deny' },
-    hsts: { includeSubDomains: false },
     contentSecurityPolicy: {
       directives: {
+        childSrc: [
+          '*.hotjar.com',
+        ],
+        connectSrc: [
+          '\'self\'',
+          '*.hotjar.com:*',
+        ],
         defaultSrc: [
           '\'self\'',
         ],
-        childSrc: [
+        fontSrc: [
+          '*.nhs.uk',
+        ],
+        imgSrc: [
+          '\'self\'',
+          'data:',
+          '*.google-analytics.com',
           '*.hotjar.com',
+          '*.webtrends.com',
+          '*.webtrendslive.com',
+          '*.nhs.uk',
         ],
         scriptSrc: [
           '\'self\'',
@@ -50,29 +64,15 @@ module.exports = (app, config) => {
           '*.webtrends.com',
           '*.webtrendslive.com',
         ],
-        imgSrc: [
-          '\'self\'',
-          'data:',
-          '*.google-analytics.com',
-          '*.hotjar.com',
-          '*.webtrends.com',
-          '*.webtrendslive.com',
-          '*.nhs.uk',
-        ],
         styleSrc: [
           '\'self\'',
           '\'unsafe-inline\'',
           '*.nhs.uk',
         ],
-        fontSrc: [
-          '*.nhs.uk',
-        ],
-        connectSrc: [
-          '\'self\'',
-          '*.hotjar.com:*',
-        ],
       },
     },
+    frameguard: { action: 'deny' },
+    hsts: { includeSubDomains: false },
   }));
 
   app.use(locals(config));
@@ -110,8 +110,8 @@ module.exports = (app, config) => {
     log.error({ error: { err, req, res } }, 'Error');
     res.status(statusCode);
     res.render('error', {
-      message: err,
       error: app.get('env') === 'development' ? err : {},
+      message: err,
       title: 'error',
     });
   });

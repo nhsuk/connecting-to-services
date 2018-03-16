@@ -27,7 +27,7 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
+        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
@@ -39,7 +39,7 @@ describe(`The ${yourLocation} results page`, () => {
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: yourLocation, latitude, longitude });
+      .query({ latitude, location: yourLocation, longitude });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -53,7 +53,8 @@ describe(`The ${yourLocation} results page`, () => {
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
-      expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
+      expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
+      expect($(link).attr('href')).to.have.string(`&saddr=${latitude}%2C${longitude}`);
     });
   });
 
@@ -67,7 +68,7 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
+        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
@@ -80,7 +81,7 @@ describe(`The ${yourLocation} results page`, () => {
     const res = await chai.request(server)
       .get(resultsRoute)
       .query({
-        location: yourLocation, latitude, longitude, open: true,
+        latitude, location: yourLocation, longitude, open: true,
       });
 
     iExpect.htmlWith200Status(res);
@@ -94,7 +95,8 @@ describe(`The ${yourLocation} results page`, () => {
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
-      expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${latitude}%2C${longitude}`);
+      expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
+      expect($(link).attr('href')).to.have.string(`&saddr=${latitude}%2C${longitude}`);
     });
   });
 
@@ -106,14 +108,14 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
+        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: yourLocation, latitude, longitude });
+      .query({ latitude, location: yourLocation, longitude });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -132,14 +134,14 @@ describe(`The ${yourLocation} results page`, () => {
     nock(postcodesIOURL)
       .get('/postcodes')
       .query({
-        limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude,
+        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
       })
       .times(1)
       .reply(200, reverseGeocodeResponse);
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location: yourLocation, latitude, longitude });
+      .query({ latitude, location: yourLocation, longitude });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
