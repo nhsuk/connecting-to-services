@@ -1,13 +1,15 @@
 const log = require('./logger');
 
+/* eslint-disable sort-keys */
 const localOrder = {
   City: 5,
+  Town: 4,
+  Village: 3,
   Hamlet: 2,
   'Other Settlement': 1,
   'Suburban Area': 0,
-  Town: 4,
-  Village: 3,
 };
+/* eslint-enable sort-keys */
 
 function getOrder(type) {
   const order = localOrder[type];
