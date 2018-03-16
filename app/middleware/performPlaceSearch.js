@@ -29,7 +29,7 @@ function incrementDisambiguationViews(places) {
 function getCoordinates(place) {
   return {
     latitude: place.latitude,
-    longitude: place.longitude
+    longitude: place.longitude,
   };
 }
 
@@ -51,7 +51,7 @@ async function getPlaces(req, res, next) {
     }
   } catch (e) {
     log.error({ placeLookupResponse: { error: e } }, 'Place lookup error');
-    next({ type: 'place-lookup-error', message: e.message });
+    next({ message: e.message, type: 'place-lookup-error' });
   }
 }
 

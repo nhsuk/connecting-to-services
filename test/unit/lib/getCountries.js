@@ -10,12 +10,12 @@ describe('getCountries', () => {
     const scotland = 'Scotland';
     const wales = 'Wales';
     const places = [
-      { name, country: scotland },
-      { name, country: england },
-      { name, country: scotland },
-      { name, country: wales },
-      { name, country: england },
-      { name, country: wales },
+      { country: scotland, name },
+      { country: england, name },
+      { country: scotland, name },
+      { country: wales, name },
+      { country: england, name },
+      { country: wales, name },
     ];
     const result = getCountries(places);
     expect(result.length).to.equal(3);

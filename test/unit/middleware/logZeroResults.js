@@ -21,7 +21,7 @@ describe('logZeroResults', () => {
   });
 
   it('should log a warning when there are no results', () => {
-    const res = { locals: { services: [], location } };
+    const res = { locals: { location, services: [] } };
 
     logZeroResults(reqStub, res, nextStub);
 
@@ -32,7 +32,7 @@ describe('logZeroResults', () => {
 
   describe('does not log when there are some results', () => {
     it('should not log when there are open results', () => {
-      const res = { locals: { services: [{}], location } };
+      const res = { locals: { location, services: [{}] } };
 
       logZeroResults(reqStub, res, nextStub);
 

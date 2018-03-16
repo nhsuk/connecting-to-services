@@ -17,6 +17,6 @@ function results(req, res, next) {
 }
 
 module.exports = {
-  search,
   results,
+  search,
 };

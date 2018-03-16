@@ -30,7 +30,8 @@ function expectMidsomerNortonResults($, location, numberOfResults) {
   const mapLinks = $('.maplink');
   expect(mapLinks.length).to.equal(10);
   mapLinks.toArray().forEach((link) => {
-    expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?saddr=&');
+    expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
+    expect($(link).attr('href')).to.have.string('&saddr=');
   });
 
   const choicesServicesLinks = $('.serviceslink');
@@ -58,12 +59,14 @@ describe('The place results page', () => {
     const numberOfResults = constants.api.nearbyResultsCount;
 
     nock(postcodesIOURL)
-      .get(`/places?q=${searchTerm}&limit=100`)
+      .get('/places')
+      .query({ limit: 100, q: searchTerm })
       .times(1)
       .reply(200, singlePlaceResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
+      .get('/nearby')
+      .query({ latitude, 'limits:results': numberOfResults, longitude })
       .times(1)
       .reply(200, serviceApiResponse);
 
@@ -88,12 +91,14 @@ describe('The place results page', () => {
     const numberOfResults = constants.api.openResultsCount;
 
     nock(postcodesIOURL)
-      .get(`/places?q=${searchTerm}&limit=100`)
+      .get('/places')
+      .query({ limit: 100, q: searchTerm })
       .times(1)
       .reply(200, singlePlaceResponse);
 
     nock(process.env.API_BASE_URL)
-      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
+      .get('/open')
+      .query({ latitude, 'limits:results': numberOfResults, longitude })
       .times(1)
       .reply(200, serviceApiResponse);
 
@@ -111,7 +116,7 @@ describe('The place results page', () => {
     const multiPlaceResponse = getSampleResponse('postcodesio-responses/multiplePlaceResult.json');
     const multiPlaceTerm = 'multiresult';
     nock(postcodesIOURL)
-      .get(`/places?q=${multiPlaceTerm}&limit=100`)
+      .get(`/places?limit=100&q=${multiPlaceTerm}`)
       .times(1)
       .reply(200, multiPlaceResponse);
 
@@ -145,7 +150,7 @@ describe('The place results page', () => {
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ location, latitude, longitude });
+      .query({ latitude, location, longitude });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -168,9 +173,10 @@ describe('The place results page', () => {
     const noResultsTerm = '@noresults@';
     const noResultsTermClean = 'noresults';
     nock(postcodesIOURL)
-      .get(`/places?q=${noResultsTermClean}&limit=100`)
+      .get('/places')
+      .query({ limit: 100, q: noResultsTermClean })
       .times(1)
-      .reply(200, { status: 200, result: [] });
+      .reply(200, { result: [], status: 200 });
 
     const res = await chai.request(server)
       .get(resultsRoute)

@@ -56,7 +56,8 @@ describe('The results page', () => {
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
-      expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
+      expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
+      expect($(link).attr('href')).to.have.string(`&saddr=${encodeURIComponent(ls27ue)}`);
     });
 
     expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
@@ -94,7 +95,8 @@ describe('The results page', () => {
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
-      expect($(link).attr('href')).to.have.string(`https://maps.google.com/maps?saddr=${encodeURIComponent(ls27ue)}`);
+      expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
+      expect($(link).attr('href')).to.have.string(`&saddr=${encodeURIComponent(ls27ue)}`);
     });
 
     expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');

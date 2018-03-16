@@ -13,8 +13,8 @@ function formatTimeString(timeString) {
 
 function formatTimes(session) {
   return {
+    closes: formatTimeString(session.closes),
     opens: formatTimeString(session.opens),
-    closes: formatTimeString(session.closes)
   };
 }
 
@@ -25,7 +25,7 @@ function mapDay(sessions) {
 function toDayObject(day, times) {
   return {
     day,
-    openingTimes: mapDay(times[day.toLowerCase()])
+    openingTimes: mapDay(times[day.toLowerCase()]),
   };
 }
 function isOpen(times) {

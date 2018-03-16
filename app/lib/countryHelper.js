@@ -7,6 +7,6 @@ function hasNoCountries(countries) {
 }
 
 module.exports = {
-  showCountry,
   hasNoCountries,
+  showCountry,
 };

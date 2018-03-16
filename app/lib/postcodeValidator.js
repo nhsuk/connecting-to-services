@@ -18,8 +18,8 @@ function postcodeValidator(location) {
   }
 
   return {
-    errorMessage,
     alteredLocation: locationToReturn,
+    errorMessage,
   };
 }
 

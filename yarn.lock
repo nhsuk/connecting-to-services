@@ -61,10 +61,6 @@ ajv-keywords@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-2.1.1.tgz#617997fc5f60576894c435f940d819e135b80762"
 
-ajv-keywords@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.1.0.tgz#ac2b27939c543e95d2c06e7f7f5c27be4aa543be"
-
 ajv@^4.9.1:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.8.tgz#82ffb02b29e662ae53bdc20af15947706739c536"
@@ -77,14 +73,6 @@ ajv@^5.1.0, ajv@^5.2.3, ajv@^5.3.0:
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.2.tgz#73b5eeca3fab653e3d3f9422b341ad42205dc965"
   dependencies:
     co "^4.6.0"
-    fast-deep-equal "^1.0.0"
-    fast-json-stable-stringify "^2.0.0"
-    json-schema-traverse "^0.3.0"
-
-ajv@^6.0.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.2.1.tgz#28a6abc493a2abe0fb4c8507acaedb43fa550671"
-  dependencies:
     fast-deep-equal "^1.0.0"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
@@ -1706,9 +1694,9 @@ eslint-config-airbnb-base@^12.0.0:
   dependencies:
     eslint-restricted-globals "^0.1.1"
 
-eslint-config-nhsuk@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-nhsuk/-/eslint-config-nhsuk-0.10.0.tgz#4c8f3148ef2c833c70af97010dab6eb4b47d0df0"
+eslint-config-nhsuk@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-nhsuk/-/eslint-config-nhsuk-0.13.0.tgz#da948de422fd015608adbeafe1340b5b6b308153"
   dependencies:
     eslint "^4.0.0"
     eslint-config-airbnb-base "^12.0.0"
@@ -1730,22 +1718,7 @@ eslint-module-utils@^2.1.1:
     debug "^2.6.8"
     pkg-dir "^1.0.0"
 
-eslint-plugin-import@^2.0.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.8.0.tgz#fa1b6ef31fcb3c501c09859c1b86f1fc5b986894"
-  dependencies:
-    builtin-modules "^1.1.1"
-    contains-path "^0.1.0"
-    debug "^2.6.8"
-    doctrine "1.5.0"
-    eslint-import-resolver-node "^0.3.1"
-    eslint-module-utils "^2.1.1"
-    has "^1.0.1"
-    lodash.cond "^4.3.0"
-    minimatch "^3.0.3"
-    read-pkg-up "^2.0.0"
-
-eslint-plugin-import@^2.7.0:
+eslint-plugin-import@^2.0.0, eslint-plugin-import@^2.7.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.9.0.tgz#26002efbfca5989b7288ac047508bd24f217b169"
   dependencies:
@@ -1766,13 +1739,7 @@ eslint-plugin-json@^1.0.0, eslint-plugin-json@^1.2.0:
   dependencies:
     jshint "^2.8.0"
 
-eslint-plugin-mocha@^4.0.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-4.11.0.tgz#91193a2f55e20a5e35974054a0089d30198ee578"
-  dependencies:
-    ramda "^0.24.1"
-
-eslint-plugin-mocha@^4.11.0:
+eslint-plugin-mocha@^4.0.0, eslint-plugin-mocha@^4.11.0:
   version "4.12.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-4.12.1.tgz#dbacc543b178b4536ec5b19d7f8e8864d85404bf"
   dependencies:
@@ -1810,49 +1777,7 @@ eslint-watch@^3.1.2:
     text-table "^0.2.0"
     unicons "0.0.3"
 
-eslint@^4.0.0:
-  version "4.18.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.18.0.tgz#ebd0ba795af6dc59aa5cee17938160af5950e051"
-  dependencies:
-    ajv "^5.3.0"
-    babel-code-frame "^6.22.0"
-    chalk "^2.1.0"
-    concat-stream "^1.6.0"
-    cross-spawn "^5.1.0"
-    debug "^3.1.0"
-    doctrine "^2.1.0"
-    eslint-scope "^3.7.1"
-    eslint-visitor-keys "^1.0.0"
-    espree "^3.5.2"
-    esquery "^1.0.0"
-    esutils "^2.0.2"
-    file-entry-cache "^2.0.0"
-    functional-red-black-tree "^1.0.1"
-    glob "^7.1.2"
-    globals "^11.0.1"
-    ignore "^3.3.3"
-    imurmurhash "^0.1.4"
-    inquirer "^3.0.6"
-    is-resolvable "^1.0.0"
-    js-yaml "^3.9.1"
-    json-stable-stringify-without-jsonify "^1.0.1"
-    levn "^0.3.0"
-    lodash "^4.17.4"
-    minimatch "^3.0.2"
-    mkdirp "^0.5.1"
-    natural-compare "^1.4.0"
-    optionator "^0.8.2"
-    path-is-inside "^1.0.2"
-    pluralize "^7.0.0"
-    progress "^2.0.0"
-    require-uncached "^1.0.3"
-    semver "^5.3.0"
-    strip-ansi "^4.0.0"
-    strip-json-comments "~2.0.1"
-    table "^4.0.1"
-    text-table "~0.2.0"
-
-eslint@^4.6.1:
+eslint@^4.0.0, eslint@^4.6.1:
   version "4.18.2"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.18.2.tgz#0f81267ad1012e7d2051e186a9004cc2267b8d45"
   dependencies:
@@ -3669,10 +3594,6 @@ lodash.clonedeep@^4.3.0, lodash.clonedeep@^4.3.1, lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
-lodash.cond@^4.3.0:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
-
 lodash.defaults@^4.0.1:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
@@ -4871,10 +4792,6 @@ querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
-ramda@^0.24.1:
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
-
 ramda@^0.25.0:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
@@ -5982,17 +5899,6 @@ table@4.0.2:
   dependencies:
     ajv "^5.2.3"
     ajv-keywords "^2.1.0"
-    chalk "^2.1.0"
-    lodash "^4.17.4"
-    slice-ansi "1.0.0"
-    string-width "^2.1.1"
-
-table@^4.0.1:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/table/-/table-4.0.3.tgz#00b5e2b602f1794b9acaf9ca908a76386a7813bc"
-  dependencies:
-    ajv "^6.0.1"
-    ajv-keywords "^3.0.0"
     chalk "^2.1.0"
     lodash "^4.17.4"
     slice-ansi "1.0.0"

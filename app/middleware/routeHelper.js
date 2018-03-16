@@ -19,6 +19,6 @@ function renderNoLocationResultsPage(res) {
 
 module.exports = {
   renderFindHelpPage,
-  renderNoResultsPage,
   renderNoLocationResultsPage,
+  renderNoResultsPage,
 };

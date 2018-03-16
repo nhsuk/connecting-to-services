@@ -40,7 +40,7 @@ describe('The bank holiday alert messaging', () => {
       nock(postcodesIOURL)
         .get('/postcodes')
         .query({
-          limit: 1, radius: 20000, wideSearch: true, lon: longitude, lat: latitude
+          lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
         })
         .times(1)
         .reply(200, reverseGeocodeResponse);
@@ -52,7 +52,7 @@ describe('The bank holiday alert messaging', () => {
 
       const res = await chai.request(server)
         .get(resultsRoute)
-        .query({ location: yourLocation, latitude, longitude });
+        .query({ latitude, location: yourLocation, longitude });
 
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);

@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 const chai = require('chai');
 const formatOpeningTimes = require('../../../app/lib/formatOpeningTimes');
 
@@ -10,8 +11,8 @@ const openingTimes = {
     thursday: [{ opens: '11:00', closes: '15:00' }, { opens: '16:00', closes: '20:00' }],
     friday: [{ opens: '12:00', closes: '15:00' }, { opens: '16:00', closes: '21:00' }],
     saturday: [{ opens: '13:00', closes: '15:00' }, { opens: '16:00', closes: '22:00' }],
-    sunday: [{ opens: '14:00', closes: '15:00' }, { opens: '16:00', closes: '23:00' }]
-  }
+    sunday: [{ opens: '14:00', closes: '15:00' }, { opens: '16:00', closes: '23:00' }],
+  },
 };
 
 function assertDay(result, day, opens1, closes1, opens2, closes2) {
@@ -47,7 +48,7 @@ describe('formatOpeningTimes', () => {
         friday: [],
         saturday: [],
         sunday: [],
-      }
+      },
     };
 
     const result = formatOpeningTimes(closedTimes);
@@ -59,7 +60,7 @@ describe('formatOpeningTimes', () => {
       general: {
         monday: undefined,
         tuesday: [{ opens: '08:00', closes: '17:00' }],
-      }
+      },
     };
     const result = formatOpeningTimes(openingTimesWithMissing);
     expect(result).to.exist;
@@ -72,7 +73,7 @@ describe('formatOpeningTimes', () => {
       general: {
         monday: [{ opens: '08:00', closes: '17:00' }],
         tuesday: [],
-      }
+      },
     };
     const result = formatOpeningTimes(openingTimesClosedTuesday);
     expect(result).to.exist;
@@ -82,3 +83,4 @@ describe('formatOpeningTimes', () => {
     expect(result[1].openingTimes.closes).to.not.exist;
   });
 });
+/* eslint-enable sort-keys */

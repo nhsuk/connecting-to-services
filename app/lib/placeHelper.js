@@ -1,5 +1,6 @@
 const log = require('./logger');
 
+/* eslint-disable sort-keys */
 const localOrder = {
   City: 5,
   Town: 4,
@@ -8,6 +9,7 @@ const localOrder = {
   'Other Settlement': 1,
   'Suburban Area': 0,
 };
+/* eslint-enable sort-keys */
 
 function getOrder(type) {
   const order = localOrder[type];
@@ -44,6 +46,6 @@ function getCountries(places) {
 }
 
 module.exports = {
-  sortPlace,
   getCountries,
+  sortPlace,
 };

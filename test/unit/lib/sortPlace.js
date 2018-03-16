@@ -3,33 +3,33 @@ const sortPlace = require('../../../app/lib/placeHelper').sortPlace;
 
 const expect = chai.expect;
 function createSuburb(name) {
-  return { name_1: name, local_type: 'Suburban Area' };
+  return { local_type: 'Suburban Area', name_1: name };
 }
 
 function createCity(name, region, outcode) {
   return {
-    name_1: name, local_type: 'City', region, outcode
+    local_type: 'City', name_1: name, outcode, region,
   };
 }
 
 function createTown(name) {
-  return { name_1: name, local_type: 'Town' };
+  return { local_type: 'Town', name_1: name };
 }
 
 function createVillage(name) {
-  return { name_1: name, local_type: 'Village' };
+  return { local_type: 'Village', name_1: name };
 }
 
 function createHamlet(name) {
-  return { name_1: name, local_type: 'Hamlet' };
+  return { local_type: 'Hamlet', name_1: name };
 }
 
 function createOtherSettlement(name) {
-  return { name_1: name, local_type: 'Other Settlement' };
+  return { local_type: 'Other Settlement', name_1: name };
 }
 
 function createUnknown(name) {
-  return { name_1: name, local_type: 'Unknown' };
+  return { local_type: 'Unknown', name_1: name };
 }
 
 describe('sortPlace', () => {
