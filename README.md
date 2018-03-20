@@ -13,13 +13,14 @@
 Clone the repo: `git clone https://github.com/nhsuk/connecting-to-services.git`
 and review the [`scripts`](scripts) to get up and running.
 
-## Changing the time
+## Changing the date and time
 
 The application will display a message for each open pharmacy on a bank holiday.
 In order to test this functionality the date can be set when the application
-starts. In order to do this an environment variable `DATE` needs to be set. For
-example, if the date wanted to be to set to Christmas day 2017 the following
-can be run on the command line `DATE=2017-12-25 ./scripts/start`.
+starts. In order to do this the environment variable, `DATETIME` needs to be
+set. For example, if the date wanted to be to set to Christmas day 2017 the
+following can be run on the command line
+`DATETIME=2017-12-25T12:00:00 ./scripts/start`.
 
 ## Testing
 
@@ -69,7 +70,7 @@ environment.
 | `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
 | `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox) | false                     |            |
-| `DATE`                             | Set the date used to determine if a bank holiday message should be displayed                                                                               |                           | No         |
+| `DATETIME`                         | Set the datetime used to determine if a bank holiday message should be displayed or the behaviour of the results page                                                                  |                           | No         |
 | `NEW_RELIC_LICENSE_KEY`            | [New Relic license key](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#license)                  |                           | No         |
 | `NEW_RELIC_LOG_LEVEL`              | [New Relic log level](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#log_level)                  | info                      | No         |
 

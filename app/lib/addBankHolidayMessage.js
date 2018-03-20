@@ -2,7 +2,7 @@ const bankHolidayDates = require('../../data/bankHolidayDates');
 const getDateString = require('../lib/dateUtils').getDateString;
 const messages = require('../lib/messages');
 
-function addBankHolidayMessage(orgs, dateStringOverride = process.env.DATE) {
+function addBankHolidayMessage(orgs, dateStringOverride = process.env.DATETIME) {
   const nowDateString = getDateString(dateStringOverride);
 
   return orgs.map((org) => {

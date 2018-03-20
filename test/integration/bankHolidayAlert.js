@@ -22,13 +22,13 @@ describe('The bank holiday alert messaging', () => {
     nock.cleanAll();
   });
 
-  afterEach('reset DATE', () => {
-    process.env.DATE = '2017-12-12';
+  afterEach('reset DATETIME', () => {
+    process.env.DATETIME = '2017-12-12T12:00:00';
   });
 
   describe('on the day of the bank holiday', () => {
-    before('set DATE', () => {
-      process.env.DATE = '2017-12-25';
+    before('set DATETIME', () => {
+      process.env.DATETIME = '2017-12-25T12:00:00';
     });
 
     it('should show a message about the bank holiday for each result that is open', async () => {
