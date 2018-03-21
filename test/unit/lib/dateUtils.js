@@ -1,6 +1,7 @@
 const chai = require('chai');
 const moment = require('moment');
 
+const bankHolidayDates = require('../../../data/bankHolidayDates');
 const businessHours = require('../../../app/lib/constants').businessHours;
 const dateUtils = require('../../../app/lib/dateUtils');
 
@@ -98,6 +99,24 @@ describe('dateUtils', () => {
       const day = dateUtils.getDay(saturdayDate);
 
       expect(day).to.be.equal('Saturday');
+    });
+  });
+
+  describe('isBankHoliday', () => {
+    it('should return true when date is contained in bank holiday list', () => {
+      const bankHolidayDateString = bankHolidayDates[0];
+
+      const result = dateUtils.isBankHoliday(bankHolidayDateString);
+
+      expect(result).to.be.true;
+    });
+
+    it('should return false when date is contained in bank holiday list', () => {
+      const bankHolidayDateString = '2015-01-01';
+
+      const result = dateUtils.isBankHoliday(bankHolidayDateString);
+
+      expect(result).to.be.false;
     });
   });
 

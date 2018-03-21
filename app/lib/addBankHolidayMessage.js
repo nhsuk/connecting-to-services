@@ -1,4 +1,4 @@
-const bankHolidayDates = require('../../data/bankHolidayDates');
+const isBankHoliday = require('../lib/dateUtils').isBankHoliday;
 const getDateString = require('../lib/dateUtils').getDateString;
 const messages = require('../lib/messages');
 
@@ -9,18 +9,13 @@ function addBankHolidayMessage(orgs, dateStringOverride = process.env.DATETIME) 
     const nextOpenDateString = getDateString(org.nextOpen);
 
     if (org.isOpen || nextOpenDateString === nowDateString) {
-      if (bankHolidayDates.some(date => nowDateString === date)) {
+      if (isBankHoliday(nowDateString)) {
         // eslint-disable-next-line no-param-reassign
         org.bankHolidayMessage = messages.bankHolidayToday();
       }
-    } else {
-      const nextOpenIsBankHoliday =
-        bankHolidayDates.some(bankHolidayDate => nextOpenDateString === bankHolidayDate);
-
-      if (nextOpenIsBankHoliday) {
-        // eslint-disable-next-line no-param-reassign
-        org.bankHolidayMessage = messages.bankHolidayFuture(nowDateString, nextOpenDateString);
-      }
+    } else if (isBankHoliday(nextOpenDateString)) {
+      // eslint-disable-next-line no-param-reassign
+      org.bankHolidayMessage = messages.bankHolidayFuture(nowDateString, nextOpenDateString);
     }
     return org;
   });

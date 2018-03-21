@@ -1,3 +1,4 @@
+const bankHolidayDates = require('../../data/bankHolidayDates');
 const constants = require('./constants');
 
 function cloneMoment(datetimeMoment, hour, minute) {
@@ -17,6 +18,10 @@ function getDateString(dateString) {
 
 function getDay(dateString) {
   return constants.daysOfWeek[new Date(dateString).getDay()];
+}
+
+function isBankHoliday(dateString) {
+  return bankHolidayDates.some(date => dateString === date);
 }
 
 function isNextOpenTomorrow(nowDateString, nextOpenDateString) {
@@ -47,6 +52,7 @@ function isWeekday(datetimeMoment) {
 module.exports = {
   getDateString,
   getDay,
+  isBankHoliday,
   isNextOpenTomorrow,
   isTimeOutsideBusinessHours,
   isWeekday,
