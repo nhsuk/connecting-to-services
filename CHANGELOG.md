@@ -1,4 +1,4 @@
-0.37.0 / TBD
+0.37.0 / 2018-03-23
 ===================
 - Upgrade to `postcodesio-client@0.3.3`
 - Upgrade to `eslint-config-nhsuk@0.13.0` and apply fixes
