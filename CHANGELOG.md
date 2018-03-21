@@ -2,7 +2,8 @@
 ===================
 - Upgrade to `postcodesio-client@0.3.3`
 - Upgrade to `eslint-config-nhsuk@0.13.0` and apply fixes
-- Downgrade Docker container to `node:8.9.4-alpine`
+- Display open results by default for times deemed out of business hours
+- Update npm dependencies
 
 0.36.0 / 2018-03-14
 ===================

@@ -13,13 +13,14 @@
 Clone the repo: `git clone https://github.com/nhsuk/connecting-to-services.git`
 and review the [`scripts`](scripts) to get up and running.
 
-## Changing the time
+## Changing the date and time
 
 The application will display a message for each open pharmacy on a bank holiday.
 In order to test this functionality the date can be set when the application
-starts. In order to do this an environment variable `DATE` needs to be set. For
-example, if the date wanted to be to set to Christmas day 2017 the following
-can be run on the command line `DATE=2017-12-25 ./scripts/start`.
+starts. In order to do this the environment variable, `DATETIME` needs to be
+set. For example, if the date wanted to be to set to Christmas day 2017 the
+following can be run on the command line
+`DATETIME=2017-12-25T12:00:00 ./scripts/start`.
 
 ## Testing
 
@@ -60,18 +61,22 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
-| `API_BASE_URL`                     | The fully qualified domain the api exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
-| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
-| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
-| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
-| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
-| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
+| `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
+| `BUSINESS_HOURS_START_HOUR`        | Business hours start hour                                                                                                                                  | 8                         | No         |
+| `BUSINESS_HOURS_START_MINUTE`      | Business hours start minute                                                                                                                                | 0                         | No         |
+| `BUSINESS_HOURS_END_HOUR`          | Business hours end hour                                                                                                                                    | 18                        | No         |
+| `BUSINESS_HOURS_END_MINUTE`        | Business hours end minute                                                                                                                                  | 0                         | No         |
+| `DATETIME`                         | The initial display of results is determined by the time of the search. Bank holiday messaging is determined by the date of the search                     |                           | No         |
 | `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox) | false                     |            |
-| `DATE`                             | Set the date used to determine if a bank holiday message should be displayed                                                                               |                           | No         |
+| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
+| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
+| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
+| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
 | `NEW_RELIC_LICENSE_KEY`            | [New Relic license key](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#license)                  |                           | No         |
 | `NEW_RELIC_LOG_LEVEL`              | [New Relic log level](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#log_level)                  | info                      | No         |
+| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
+| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ
 
