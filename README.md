@@ -71,6 +71,10 @@ environment.
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
 | `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox) | false                     |            |
 | `DATETIME`                         | The initial display of results is determined by the time of the search. Bank holiday messaging is determined by the date of the search                     |                           | No         |
+| `BUSINESS_HOURS_START_HOUR`        | Business hours start hour                                                                                                                                  | 8                         | No         |
+| `BUSINESS_HOURS_START_MINUTE`      | Business hours start minute                                                                                                                                | 0                         | No         |
+| `BUSINESS_HOURS_END_HOUR`          | Business hours end hour                                                                                                                                    | 18                        | No         |
+| `BUSINESS_HOURS_END_MINUTE`        | Business hours end minute                                                                                                                                  | 0                         | No         |
 | `NEW_RELIC_LICENSE_KEY`            | [New Relic license key](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#license)                  |                           | No         |
 | `NEW_RELIC_LOG_LEVEL`              | [New Relic log level](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#log_level)                  | info                      | No         |
 

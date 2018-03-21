@@ -9,16 +9,6 @@ module.exports = {
       open: 'open',
     },
   },
-  businessHours: {
-    end: {
-      hour: 18,
-      minute: 0,
-    },
-    start: {
-      hour: 8,
-      minute: 0,
-    },
-  },
   dayInMilliseconds: 24 * 60 * 60 * 1000,
   daysOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   daysOfWeekOrderedForUi: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],

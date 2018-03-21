@@ -2,7 +2,7 @@ const chai = require('chai');
 const moment = require('moment');
 
 const bankHolidayDates = require('../../../data/bankHolidayDates');
-const businessHours = require('../../../app/lib/constants').businessHours;
+const businessHours = require('../../../config/config').businessHours;
 const dateUtils = require('../../../app/lib/dateUtils');
 
 const expect = chai.expect;

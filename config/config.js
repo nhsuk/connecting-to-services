@@ -6,6 +6,16 @@ module.exports = {
   app: {
     name: 'connecting-to-services',
   },
+  businessHours: {
+    end: {
+      hour: process.env.BUSINESS_HOURS_END_HOUR || 18,
+      minute: process.env.BUSINESS_HOURS_END_MINUTE || 0,
+    },
+    start: {
+      hour: process.env.BUSINESS_HOURS_START_HOUR || 8,
+      minute: process.env.BUSINESS_HOURS_START_MINUTE || 0,
+    },
+  },
   disableGoogleSearch: process.env.DISABLE_GOOGLE_SEARCH === 'true',
   env: process.env.NODE_ENV || 'development',
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,

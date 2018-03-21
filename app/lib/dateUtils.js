@@ -1,5 +1,6 @@
 const bankHolidayDates = require('../../data/bankHolidayDates');
 const constants = require('./constants');
+const config = require('../../config/config');
 
 function cloneMoment(datetimeMoment, hour, minute) {
   return datetimeMoment.clone()
@@ -33,13 +34,13 @@ function isNextOpenTomorrow(nowDateString, nextOpenDateString) {
 function isTimeOutsideBusinessHours(datetimeMoment) {
   const businessHoursStart = cloneMoment(
     datetimeMoment,
-    constants.businessHours.start.hour,
-    constants.businessHours.start.minute
+    config.businessHours.start.hour,
+    config.businessHours.start.minute
   );
   const businessHoursEnd = cloneMoment(
     datetimeMoment,
-    constants.businessHours.end.hour,
-    constants.businessHours.end.minute
+    config.businessHours.end.hour,
+    config.businessHours.end.minute
   );
   return !datetimeMoment.isBetween(businessHoursStart, businessHoursEnd, null, '[)');
 }
