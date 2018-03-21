@@ -61,7 +61,7 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
-| `API_BASE_URL`                     | The fully qualified domain the api exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
+| `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
 | `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
 | `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
@@ -70,7 +70,7 @@ environment.
 | `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
 | `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox) | false                     |            |
-| `DATETIME`                         | Set the datetime used to determine if a bank holiday message should be displayed or the behaviour of the results page                                                                  |                           | No         |
+| `DATETIME`                         | The initial display of results is determined by the time of the search. Bank holiday messaging is determined by the date of the search                     |                           | No         |
 | `NEW_RELIC_LICENSE_KEY`            | [New Relic license key](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#license)                  |                           | No         |
 | `NEW_RELIC_LOG_LEVEL`              | [New Relic log level](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#log_level)                  | info                      | No         |
 
