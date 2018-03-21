@@ -8,18 +8,25 @@ function isRequestInitial(req) {
 }
 
 function isRequestInitialAndWeekdayOutsideBusinessHours(req, datetimeMoment) {
-  return dateUtils.isWeekday(datetimeMoment)
-    && dateUtils.isTimeOutsideBusinessHours(datetimeMoment)
-    && isRequestInitial(req);
+  return isRequestInitial(req)
+    && dateUtils.isWeekday(datetimeMoment)
+    && dateUtils.isTimeOutsideBusinessHours(datetimeMoment);
 }
 
 function isRequestInitialAndWeekend(req, datetimeMoment) {
-  return !dateUtils.isWeekday(datetimeMoment) && isRequestInitial(req);
+  return isRequestInitial(req)
+    && !dateUtils.isWeekday(datetimeMoment);
+}
+
+function isRequestInitialAndBankHoliday(req, datetimeMoment) {
+  return isRequestInitial(req)
+    && dateUtils.isBankHoliday(datetimeMoment.format('YYYY-MM-DD'));
 }
 
 function isRequestInitialAndOutsideBusinessHours(req, datetimeMoment) {
   return isRequestInitialAndWeekdayOutsideBusinessHours(req, datetimeMoment)
-    || isRequestInitialAndWeekend(req, datetimeMoment);
+    || isRequestInitialAndWeekend(req, datetimeMoment)
+    || isRequestInitialAndBankHoliday(req, datetimeMoment);
 }
 
 function displayOpenResults(req, datetimeOverride = process.env.DATETIME) {

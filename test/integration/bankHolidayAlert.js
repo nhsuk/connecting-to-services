@@ -46,7 +46,7 @@ describe('The bank holiday alert messaging', () => {
         .reply(200, reverseGeocodeResponse);
 
       nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${resultsCount}`)
+        .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${resultsCount}`)
         .times(1)
         .reply(200, serviceApiResponse);
 

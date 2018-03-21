@@ -1,6 +1,7 @@
 const chai = require('chai');
 const moment = require('moment');
 
+const bankHolidayDates = require('../../../data/bankHolidayDates');
 const displayOpenResults = require('../../../app/lib/displayOpenResults');
 
 const expect = chai.expect;
@@ -129,6 +130,28 @@ describe('displayOpenResults', () => {
 
     it('should return false when query contains open and it is not equal to true', () => {
       const result = displayOpenResults({ query: { open: 'NOT true' } }, weekendDay);
+
+      expect(result).to.equal(false);
+    });
+  });
+
+  describe('on a bank holiday', () => {
+    const bankHoliday = moment(bankHolidayDates[0]).hour(12);
+
+    it('should return true when query contains open and it is true', () => {
+      const result = displayOpenResults({ query: { open: 'true' } }, bankHoliday);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return true when query does not contain open', () => {
+      const result = displayOpenResults({ query: { } }, bankHoliday);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return false when query contains open and it is not equal to true', () => {
+      const result = displayOpenResults({ query: { open: 'NOT true' } }, bankHoliday);
 
       expect(result).to.equal(false);
     });
