@@ -1,3 +1,7 @@
+0.37.1 / 2018-03-26
+===================
+- Remove snyk hooks, upgrade packages
+
 0.37.0 / 2018-03-23
 ===================
 - Upgrade to `postcodesio-client@0.3.3`

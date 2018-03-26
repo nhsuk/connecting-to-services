@@ -1,6 +1,6 @@
 {
   "name": "connecting-to-services",
-  "version": "0.37.0",
+  "version": "0.37.1",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
@@ -20,7 +20,7 @@
     "lint-watch": "esw --watch .",
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
-    "prepush": "yarn git-hook && yarn snyk test",
+    "prepush": "yarn git-hook",
     "start-watch": "yarn header-build && yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "yarn header-build && NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
@@ -79,7 +79,6 @@
     "mocha": "^5.0.0",
     "nock": "^9.0.14",
     "nodemon": "^1.12.0",
-    "proxyquire": "^2.0.0",
-    "snyk": "^1.40.2"
+    "proxyquire": "^2.0.0"
   }
 }
