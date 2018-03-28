@@ -62,8 +62,6 @@
       </p>
     </div>
 
-    {% include "includes/back-to-choices.nunjucks" %}
-
     {% block banner %}{% endblock %}
 
     {% include "includes/header.nunjucks" %}

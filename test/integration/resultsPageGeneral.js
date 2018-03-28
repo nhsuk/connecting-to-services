@@ -43,11 +43,6 @@ describe('The results page', () => {
       $ = cheerio.load(res.text);
     });
 
-    it('should have a link back to the Choices pharmacy finder', () => {
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/Service-Search/Pharmacy/LocationSearch/10?nobeta=true');
-    });
-
     it('should return distance away singularly for 1 mile and plurally for other distances', () => {
       expect($('.distance').eq(0).text()).to.equal('0 miles away');
       expect($('.distance').eq(1).text()).to.equal('1 mile away');
