@@ -294,10 +294,11 @@ body {
           }
         }
       }
-      details {
-        summary {
-          list-style: none;
-          padding-left:50px;
+      
+      .openingTimes-panel {
+        position: relative;
+        .openingTimes-panel__toggle {
+          margin-left: 50px;
           &:before {
             content:"\203A";
             display: inline-block;
@@ -319,15 +320,12 @@ body {
             -o-transform: rotate(90deg);
             filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-3);
           }
-          &::-webkit-details-marker {
-            display: none;
-          }
-          span {
-            line-height: 36px;
-          }
         }
-        &.open{
-          summary {
+        .openingTimes-panel__content {
+          display: none;
+        }
+        &.open {
+          .openingTimes-panel__toggle {
             &:before {
               content:"\203A";
               -webkit-transform: rotate(-90deg);
@@ -336,6 +334,9 @@ body {
               -o-transform: rotate(-90deg);
               filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
             }
+          }
+          .openingTimes-panel__content {
+            display: block;
           }
         }
       }
