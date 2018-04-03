@@ -4,6 +4,7 @@
 - Remove `This is new banner`
 - Update npm dependencies
 - Changed open on/off toggle to text and link only
+- Skip to page content links & accessibility help pages
 - Accessibility improvements
 
 0.37.0 / 2018-03-23

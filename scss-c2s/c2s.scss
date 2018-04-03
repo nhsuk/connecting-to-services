@@ -87,21 +87,35 @@
    Skip Links
 */
 .skiplinks {
-  background-color: #a6ceeb;
-  &--link {
-    color: $white;
-    display: inline-block;
-    left: -999em;
-    padding: 8px;
-    position: absolute;
-    &:focus {
-      background-color: #f2f8fc;
-      border: 3px solid #ffb81c;
-      outline: none;
-      position: static;
-      @include media(mobile) {
-        left:0;
-        position:absolute;
+  background-color: $white;
+  ul {
+    padding-top: 0;
+    li {
+      &.skip-link {
+      list-style-type: none;
+      display: inline;
+        a {
+          position: absolute;
+          left: -999%;
+          top: 0;
+          overflow: hidden;
+          color: #d32620;
+          padding: .3em;
+          font-size: 1em;
+          height: 0;
+          &:active, &:focus {
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: auto;
+            height: auto;
+            position: absolute;
+            color: #fff;
+            background: $nhs-blue;
+            padding: .5em 2em .8em 2em;
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

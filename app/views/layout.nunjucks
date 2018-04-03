@@ -50,9 +50,11 @@
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
     <div class="skiplinks">
-      <div class="skiplinks--inner">
-        <a href="#content" class="skiplinks--link">Skip to main content</a>
-      </div>
+      <ul>
+          <li class="skip-link"><a href="#main-content" ><span>Skip to main content</span></a></li>
+          <li class="skip-link"><a href="#main-nav" ><span>Skip to main navigation</span></a></li>
+          <li class="skip-link"><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx"><span>Help with accessibility</span></a></li>
+      </ul>
     </div>
 
     <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
@@ -77,7 +79,7 @@
         </ol>
       </div>
       {% block article %}
-      <div class="page-section">
+      <div id="main-content" class="page-section">
         {% block pageSection %}
           {% block header %}{% endblock %}
           {% block content %}{% endblock %}
