@@ -421,4 +421,32 @@ form {
     display: none;
   }
 }
+
+/* global header */
+
+@include media(desktop) {
+  .main-nav {
+    &__page-menu {
+      .nodrop {
+        &:hover, &:focus-within {
+          background-color: inherit;
+          color: inherit;
+          text-decoration: underline;
+        }
+      }
+      li:hover, li:focus-within {
+        background-color: $white;
+        color: $blue;
+        ul {
+          display: block;
+        }
+        a {
+          background-color: inherit;
+          position: relative;
+          z-index: 200;
+        }
+      }
+    }
+  }
+}
 @import "c2s-results";
