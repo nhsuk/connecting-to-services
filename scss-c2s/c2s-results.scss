@@ -43,73 +43,7 @@ body {
           }
       }
       .viewToggle {
-        margin: 0px 18px 70px 18px;
-        @include media(tablet) {
-          margin: 0px 18px 30px 18px;
-        }
-        a {
-          text-decoration: none;
-          position: relative;
-          color: $black;
-          display: inline-block;
-          &:before {
-            display: inline-block;
-            height:40px;
-            width:80px;
-            content: "No";
-            position: absolute;
-            background: $grey-1;
-            border-radius: 20px;
-            color: #fff;
-            border-left: 40px solid $grey-1;
-            white-space: pre;
-            top: 65px;
-            line-height: 40px;
-            @include media(355px) {
-              top: 35px;
-            }
-            @include media(tablet) {
-              right:-90px;
-              top: 1px;
-            }
-          }
-          &:after {
-            display: inline-block;
-            content: "";
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background: $white;
-            -moz-border-radius: 50px;
-            -webkit-border-radius: 50px;
-            border-radius: 50px;
-            left: 7px;
-            top: 72px;
-            @include media(355px) {
-              top: 42px;
-            }
-            @include media(tablet) {
-              left: 335px;
-              top: 8px;
-            }
-          }
-          &.checked{
-            &:before {
-              content: "Yes";
-              background: $blue;
-              border-left: 11px solid $blue;
-            }
-            &:after {
-              left: 50px;
-              @include media(tablet) {
-                left: 377px;
-              }
-            }
-          }
-          @include media(tablet) {
-            line-height:40px;
-          }
-        }
+        margin: 0px 18px 20px 18px;
       }
       .page-section {
         padding:0;

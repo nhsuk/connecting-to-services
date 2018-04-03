@@ -44,13 +44,14 @@ describe('The results page', () => {
     });
 
     it('should return distance away singularly for 1 mile and plurally for other distances', () => {
-      expect($('.distance').eq(0).text()).to.equal('0 miles away');
-      expect($('.distance').eq(1).text()).to.equal('1 mile away');
+      const firtResultTitle = $('.results__name').eq(0).text();
+      const secondResultTitle = $('.results__name').eq(1).text();
+      expect($('.distance').eq(0).text()).to.equal(`${firtResultTitle} is 0 miles away`);
+      expect($('.distance').eq(1).text()).to.equal(`${secondResultTitle} is 1 mile away`);
     });
 
     it('should provide a link to see open pharmacies by default', () => {
       const toggle = $('.viewToggle a');
-      expect(toggle.attr('class')).to.equal('');
       expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
     });
 
@@ -70,7 +71,6 @@ describe('The results page', () => {
       $ = cheerio.load(res.text);
 
       const toggle = $('.viewToggle a');
-      expect(toggle.attr('class')).to.equal('checked');
       expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=false`);
     });
 

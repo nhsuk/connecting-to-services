@@ -3,6 +3,8 @@
 - Remove snyk hooks
 - Remove `This is new banner`
 - Update npm dependencies
+- Changed open on/off toggle to text and link only
+- Accessibility improvements
 
 0.37.0 / 2018-03-23
 ===================
