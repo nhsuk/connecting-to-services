@@ -4,12 +4,10 @@
   {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
   {% set openingTimes = service.openingTimes %}
   {% if openingTimes %}
-  <details class="" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-      <span class="details__summary">Opening times<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></span>
-    </summary>
-    <div class="details__content" id="details-content-0" aria-hidden="true">
-    <table class="openingTimes">
+  <div class="openingTimes-panel">
+    <a href="javascript:void(0)" class="openingTimes-panel__toggle" data-toggle="collapse" role="button" aria-expanded="false">Opening times<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></a>
+    <div class="openingTimes-panel__content">
+     <table class="openingTimes">
       <tr><th>Day of the week</th><th>Opening hours</th></tr>
       {% for openingTime in openingTimes %}
         {% for sessions in openingTime.openingTimes %}
@@ -32,6 +30,6 @@
       {% endfor %}
     </table>
     </div>
-  </details>
+  </div>
   {% endif %}
 </section>

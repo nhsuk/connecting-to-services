@@ -2,7 +2,7 @@
   <div class="results__details">
     {% set distance = service.distanceInMiles | round(1) %}
     <div>
-      <p class="distance">{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
+      <p class="distance"><span class="sr-only">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
       <h2 class="results__name">{{ service.name }}</h2>
       <p>
       {% if service.address.line1 %} {{ service.address.line1 }}, {% endif %}
