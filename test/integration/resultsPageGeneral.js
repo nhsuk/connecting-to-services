@@ -52,6 +52,8 @@ describe('The results page', () => {
 
     it('should provide a link to see open pharmacies by default', () => {
       const toggle = $('.viewToggle a');
+      const toggleText = $('.viewToggle');
+      expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
       expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
     });
 
@@ -71,6 +73,8 @@ describe('The results page', () => {
       $ = cheerio.load(res.text);
 
       const toggle = $('.viewToggle a');
+      const toggleText = $('.viewToggle');
+      expect(toggleText.text()).to.equal('Only showing pharmacies open now. Show all pharmacies.');
       expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=false`);
     });
 
