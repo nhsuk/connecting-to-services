@@ -434,16 +434,18 @@ form {
           text-decoration: underline;
         }
       }
-      li:hover, li:focus-within {
-        background-color: $white;
-        color: $blue;
-        ul {
-          display: block;
-        }
-        a {
-          background-color: inherit;
-          position: relative;
-          z-index: 200;
+      li {
+        &:hover, &:focus-within {
+          background-color: $white;
+          color: $blue;
+          ul {
+            display: block;
+          }
+          a {
+            background-color: inherit;
+            position: relative;
+            z-index: 200;
+          }         
         }
       }
     }
