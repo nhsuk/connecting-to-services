@@ -1,6 +1,7 @@
 1.1.0 / TBD
 ===================
 - Update npm dependencies
+- Links to internet services & appliance contractors.
 
 1.0.0 / 2018-04-04
 ===================

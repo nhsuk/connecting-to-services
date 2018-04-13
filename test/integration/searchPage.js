@@ -18,4 +18,17 @@ describe('Search page', () => {
       expect($('title').text()).to.equal('Find a pharmacy - NHS.UK');
     });
   });
+  it('should have links to internet services & appliance contractors', async () => {
+    const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+
+    const $ = cheerio.load(res.text);
+
+    const additionalLinksText = $('.additional-links p');
+    const additionalLinks = $('.additional-links p a');
+
+    expect($(additionalLinksText[0]).text()).to.equal('See all internet pharmacies');
+    expect($(additionalLinks[0]).attr('href')).to.equal('https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies');
+    expect($(additionalLinksText[1]).text()).to.equal('See all dispensing appliance contractors');
+    expect($(additionalLinks[1]).attr('href')).to.equal('https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies');
+  });
 });
