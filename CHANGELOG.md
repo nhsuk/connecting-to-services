@@ -1,4 +1,8 @@
-1.0.0 / TBA
+1.1.0 / TBD
+===================
+- Update npm dependencies
+
+1.0.0 / 2018-04-04
 ===================
 - Remove snyk hooks
 - Remove `This is new banner`
