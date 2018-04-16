@@ -1,7 +1,8 @@
-1.1.0 / TBD
+1.1.0 / 2018-04-17
 ===================
 - Update npm dependencies
-- Links to internet services & appliance contractors.
+- Add links to internet services & appliance contractors
+- Upgrade Docker container to `node:8.11.1-alpine`
 
 1.0.0 / 2018-04-04
 ===================
