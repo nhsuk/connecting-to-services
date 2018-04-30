@@ -13,8 +13,8 @@
       {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
       {% if service.contacts.telephoneNumber %}{{ service.contacts.telephoneNumber }}{% endif %}
       </p>
-    <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></a></p>
-    <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="sr-only"> in {{ service.name }} at {{ service.address.line1 }}</span></a></p>
+    <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="sr-only"> for {{ service.name }} at {{ service.addressLine }}</span></a></p>
+    <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="sr-only"> in {{ service.name }} at {{ service.addressLine }}</span></a></p>
     </div>
     {% include "includes/openingTimes.nunjucks" %}
   </div>

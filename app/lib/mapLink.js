@@ -1,4 +1,3 @@
-require('object.values').shim();
 const qs = require('querystring');
 
 const constants = require('./constants');
