@@ -43,6 +43,7 @@ module.exports = (app, config) => {
           '\'self\'',
         ],
         fontSrc: [
+          '*.hotjar.com',
           '*.nhs.uk',
         ],
         imgSrc: [
