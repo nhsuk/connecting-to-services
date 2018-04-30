@@ -1,4 +1,3 @@
-require('object.values').shim();
 const qs = require('querystring');
 const chai = require('chai');
 

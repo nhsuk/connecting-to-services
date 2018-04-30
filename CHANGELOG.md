@@ -1,3 +1,8 @@
+1.2.0 / 2018-05-03
+===================
+- Use first non-empty address line in screen reader only text for Map and Direction and Services Available links
+- Allow fonts from hotjar.com in Content Security Policy
+
 1.1.0 / 2018-04-17
 ===================
 - Update npm dependencies
