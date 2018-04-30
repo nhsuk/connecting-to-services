@@ -1,15 +1,16 @@
 const log = require('../app/lib/logger');
 const express = require('express');
-const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const nunjucks = require('nunjucks');
-const router = require('./routes');
-const locals = require('../app/middleware/locals');
+
 const constants = require('../app/lib/constants');
-const promBundle = require('../app/lib/promBundle').middleware;
 const errorCounter = require('../app/lib/promCounters').errorPageViews;
+const helmet = require('./helmet');
+const locals = require('../app/middleware/locals');
+const promBundle = require('../app/lib/promBundle').middleware;
+const router = require('./routes');
 
 module.exports = (app, config) => {
   // eslint-disable-next-line no-param-reassign
@@ -29,52 +30,7 @@ module.exports = (app, config) => {
     });
   log.info({ config: { nunjucksEnvironment } }, 'nunjucks environment configuration');
 
-  app.use(helmet({
-    contentSecurityPolicy: {
-      directives: {
-        childSrc: [
-          '*.hotjar.com',
-        ],
-        connectSrc: [
-          '\'self\'',
-          '*.hotjar.com:*',
-        ],
-        defaultSrc: [
-          '\'self\'',
-        ],
-        fontSrc: [
-          '*.hotjar.com',
-          '*.nhs.uk',
-        ],
-        imgSrc: [
-          '\'self\'',
-          'data:',
-          '*.google-analytics.com',
-          '*.hotjar.com',
-          '*.webtrends.com',
-          '*.webtrendslive.com',
-          '*.nhs.uk',
-        ],
-        scriptSrc: [
-          '\'self\'',
-          '\'unsafe-eval\'',
-          '\'unsafe-inline\'',
-          'data:',
-          '*.google-analytics.com',
-          '*.hotjar.com',
-          '*.webtrends.com',
-          '*.webtrendslive.com',
-        ],
-        styleSrc: [
-          '\'self\'',
-          '\'unsafe-inline\'',
-          '*.nhs.uk',
-        ],
-      },
-    },
-    frameguard: { action: 'deny' },
-    hsts: { includeSubDomains: false },
-  }));
+  helmet(app);
 
   app.use(locals(config));
 
