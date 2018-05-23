@@ -1,4 +1,3 @@
-
 <!-- Moved from head otherwise we cannot disable via Cookiebot -->
 <script>
   function enableHotjar() {
