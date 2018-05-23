@@ -1,3 +1,7 @@
+1.2.0 / 2018-05-24
+===================
+Update Webtrends and GA configuration for GDPR compliance
+
 1.2.0 / 2018-05-03
 ===================
 - Use first non-empty address line in screen reader only text for Map and Direction and Services Available links

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
+    <meta name="DCS.dcsipa" content="1" />
     <meta name="description" content="Find an open pharmacy near you on NHS.UK. Check your local pharmacy's opening times, and find your nearest late night, 24-hour or out-of-hours chemist."/>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ SITE_ROOT }}/assets/images/favicon.ico"><![endif]-->
