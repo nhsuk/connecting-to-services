@@ -1,6 +1,7 @@
 1.2.0 / 2018-05-24
 ===================
 Update Webtrends and GA configuration for GDPR compliance
+Replace bespoke cookie banner with Cookiebot
 
 1.2.0 / 2018-05-03
 ===================

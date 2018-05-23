@@ -43,7 +43,7 @@
         })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
       </script>
     {% endif %}
-
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c725d869-003e-4784-a8b8-a19cd45299ce" type="text/javascript" async></script> 
     {% block meta %}{% endblock %}
   </head>
 
@@ -56,13 +56,6 @@
           <li class="skip-link"><a href="#main-nav" ><span>Skip to main navigation</span></a></li>
           <li class="skip-link"><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx"><span>Help with accessibility</span></a></li>
       </ul>
-    </div>
-
-    <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
-      <p class="notification-banner--inner">
-      NHS.UK uses cookies to make the site simpler.
-      <a href="https://beta.nhs.uk/help/cookies">Find out more about cookies</a>
-      </p>
     </div>
 
     {% block banner %}{% endblock %}

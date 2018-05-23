@@ -13,6 +13,7 @@ module.exports = {
     fontSrc: [
       '*.hotjar.com',
       '*.nhs.uk',
+      '*.cookiebot.com',
     ],
     imgSrc: [
       '\'self\'',
@@ -21,6 +22,7 @@ module.exports = {
       '*.hotjar.com',
       '*.webtrends.com',
       '*.webtrendslive.com',
+      '*.cookiebot.com',
       '*.nhs.uk',
     ],
     scriptSrc: [
@@ -32,10 +34,12 @@ module.exports = {
       '*.hotjar.com',
       '*.webtrends.com',
       '*.webtrendslive.com',
+      '*.cookiebot.com',
     ],
     styleSrc: [
       '\'self\'',
       '\'unsafe-inline\'',
+      '*.cookiebot.com',
       '*.nhs.uk',
     ],
   },
