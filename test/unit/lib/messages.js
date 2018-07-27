@@ -1,13 +1,13 @@
-const messages = require('../../../app/lib/messages');
 const chai = require('chai');
+
+const messages = require('../../../app/lib/messages');
 
 const expect = chai.expect;
 
 describe('messages', () => {
   it('should have a message for an invalid postcode where the location is as entered', () => {
     const location = 'something';
-    const expectedMessage =
-      `We can't find the postcode '${location}'. Check the postcode is correct and try again.`;
+    const expectedMessage = `We can't find the postcode '${location}'. Check the postcode is correct and try again.`;
 
     const message = messages.invalidPostcodeMessage(location);
 

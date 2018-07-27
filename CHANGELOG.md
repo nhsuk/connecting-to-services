@@ -1,8 +1,9 @@
 1.4.0 / TBD
 ===================
 - Update npm dependencies
+- Update code for latest `eslint-config-airbnb-base` rules
 
-1.3.0 / Changes reverted - not release
+1.3.0 / Changes reverted - not released
 ======================================
 - Update Webtrends and GA configuration for GDPR compliance
 - Replace bespoke cookie banner with Cookiebot

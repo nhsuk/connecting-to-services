@@ -48,11 +48,10 @@ describe('buildHeaderItems', () => {
       createMenuItem(title, partUrl, submenus),
     ];
     const output = buildHeaderItems(singleMenuItem);
-    const expectedHtml =
-      `<li><a href="https://www.nhs.uk/${partUrl}">${title}</a><ul>` +
-      `<li><a href="https://www.nhs.uk/${subMenu1PartUrl}">${subMenu1Title}</a></li>` +
-      `<li><a href="https://www.nhs.uk/${subMenu2PartUrl}">${subMenu2Title}</a></li>` +
-      '</ul></li>';
+    const expectedHtml = `<li><a href="https://www.nhs.uk/${partUrl}">${title}</a><ul>`
+      + `<li><a href="https://www.nhs.uk/${subMenu1PartUrl}">${subMenu1Title}</a></li>`
+      + `<li><a href="https://www.nhs.uk/${subMenu2PartUrl}">${subMenu2Title}</a></li>`
+      + '</ul></li>';
     expect(output).to.equal(expectedHtml);
   });
 

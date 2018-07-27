@@ -1,4 +1,3 @@
-const log = require('../app/lib/logger');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -9,6 +8,7 @@ const constants = require('../app/lib/constants');
 const errorCounter = require('../app/lib/promCounters').errorPageViews;
 const helmet = require('./helmet');
 const locals = require('../app/middleware/locals');
+const log = require('../app/lib/logger');
 const promBundle = require('../app/lib/promBundle').middleware;
 const router = require('./routes');
 
@@ -22,12 +22,11 @@ module.exports = (app, config) => {
 
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'nunjucks');
-  const nunjucksEnvironment =
-    nunjucks.configure(`${config.root}/app/views`, {
-      autoescape: true,
-      express: app,
-      watch: true,
-    });
+  const nunjucksEnvironment = nunjucks.configure(`${config.root}/app/views`, {
+    autoescape: true,
+    express: app,
+    watch: true,
+  });
   log.info({ config: { nunjucksEnvironment } }, 'nunjucks environment configuration');
 
   helmet(app);
