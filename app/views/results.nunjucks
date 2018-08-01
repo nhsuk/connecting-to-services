@@ -12,15 +12,16 @@
   {% include 'includes/last-breadcrumb.nunjucks' %}
 {% endblock %}
 
+{% block header %}
+<h1>Pharmacies near {{ getDisplayLocation() }}</h1>
+{% endblock %}
+
 {% block content %}
   {% if services.length === 0 %}
     {% include "includes/no-pharmacy-results.nunjucks" %}
   {% else %}
 
-<div class="results__title">
-  <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
-</div>
-<div class="grid-row">
+<div class="nhsuk-o-grid">
   {% if displayOpenResults %}
     <p class="viewToggle">Only showing pharmacies open now. <a href="{{ resultsPageAltUrl }}">Show all pharmacies.</a></p>
   {% else %}

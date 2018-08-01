@@ -12,25 +12,7 @@ body {
     header {
       background-color: $white;
     }
-    .breadcrumb {
-      background-color: $white;
-    }
     main {
-      h1 {
-        color:$black;
-        padding:0 16px;
-        position: relative;
-        font-size:32px;
-        border-top:24px solid $grey;
-        padding:12px 16px 32px;
-        line-height:42px;
-        font-weight:600;
-        @include media(tablet) {
-          max-width: 960px;
-          margin:auto;
-          font-size:36px;
-        }
-      }
       .results-block{
           &--none {
             @include media(tablet) {
@@ -45,14 +27,10 @@ body {
       .viewToggle {
         margin: 0px 18px 20px 18px;
       }
-      .page-section {
+      .nhsuk-page-content {
         padding:0;
         margin:0;
         max-width: 100%;
-        .grid-row {
-          max-width:960px;
-          margin:0 auto;
-        }
         .results {
           margin-bottom:32px;
           @keyframes fadeIn {
@@ -70,7 +48,7 @@ body {
             border-top:2px solid $grey-2;
             .results {
               &__details {
-                padding:30px 0 0;
+                padding: 0;
                 @include media(tablet) {
                   clear:both;
                   float: left;
@@ -126,13 +104,14 @@ body {
                     background-color: $white;
                     border-left:0;
                     border-top:2px solid $blue-1;
+                    margin-top:10px;
                     @include media(tablet) {
                       float:right;
-                      margin-top:0px;
+                      margin-top: 20px;
                     }
                     @include media(desktop) {
                       details {
-                        margin-top:0;
+                        margin-top: 10px;
                       }
                     }
                     details {
@@ -234,7 +213,7 @@ body {
           }
           > li {
             @include media(tablet) {
-              margin-top:32px;
+              margin-top:20px;
             }
             &:last-child {
               border-bottom:2px solid $grey-2;
@@ -294,9 +273,10 @@ body {
           }
         }
       }
-      
+
       .openingTimes-panel {
         position: relative;
+        margin-top: 20px;
         .openingTimes-panel__toggle {
           margin-left: 50px;
           &:before {
@@ -313,7 +293,6 @@ body {
             position: absolute;
             left:0;
             font-size: 36px;
-            font-weight: 300;
             -webkit-transform: rotate(90deg);
             -moz-transform: rotate(90deg);
             -ms-transform: rotate(90deg);

@@ -41,47 +41,6 @@
     background-color: $yellow-50;
   }
 }
-.global-header {
-  &--inner {
-    padding-bottom: 16px;
-    padding-top: 16px;
-    @include media(tablet) {
-      padding-bottom: 24px;
-      padding-top: 24px;
-    }
-  }
-  &--link {
-    background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
-    background-size: contain;
-    display: block;
-    height: 32px;
-    text-indent: -999em;
-    width: 79px;
-  }
-}
-.global-footer {
-  &--inner {
-    padding-bottom: 96px;
-    padding-top: 32px;
-    &::before {
-      background: url(../images/logotype-nhs-colour.png) no-repeat;
-      background-size: contain;
-      content: "";
-      display: block;
-      height: 32px;
-      margin-bottom: 32px;
-      text-indent: -999em;
-      width: 79px;
-      @include media(desktop) {
-        margin-bottom: 48px;
-      }
-    }
-    @include media(desktop) {
-      padding-bottom: 128px;
-      padding-top: 48px;
-    }
-  }
-}
 
 /*
    Skip Links
@@ -121,6 +80,7 @@
   }
 }
 
+
 /*
    Form elements
 */
@@ -135,8 +95,9 @@ form {
     text-transform: none;
     width: 100%;
     padding: 4px;
-    background-color: $white;
+    background-color: $white !important;
     border: 2px solid #000;
+    margin: 20px 0;
     @include media(tablet) {
       font-size: 24px;
       line-height: 32px;
@@ -158,15 +119,32 @@ form {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
+    .c-search-menu {
+      position: relative !important; // sass-lint:disable-line no-important
+      top: -20px !important; // sass-lint:disable-line no-important
+    @include mq($until: tablet) {
+        left: 0 !important;
+        margin: -20px 0 20px 0;
+        top: 0 !important; // sass-lint:disable-line no-important
+      }
+    }
+  }
+
+  label {
+    span {
+      display: block;
+      margin-top: 25px;
+    }
   }
 }
+
 /*
   Results page
 */
 
-.page-section{
+.nhsuk-page-content {
   padding: 32px 0 48px 0;
-  .grid-row {
+  .nhsuk-o-grid {
     margin: 0 -16px;
     &:after {
       clear: both;
@@ -288,6 +266,7 @@ form {
   .additional-links {
     p {
       margin-top: 0;
+      margin-bottom: 20px;
       font-size: 16px;
       line-height: normal;
     }
