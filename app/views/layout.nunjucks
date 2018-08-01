@@ -50,12 +50,8 @@
   <body class="{% block bodyClass %}{% endblock %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
-    <div class="skiplinks">
-      <ul>
-          <li class="skip-link"><a href="#main-content" ><span>Skip to main content</span></a></li>
-          <li class="skip-link"><a href="#main-nav" ><span>Skip to main navigation</span></a></li>
-          <li class="skip-link"><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx"><span>Help with accessibility</span></a></li>
-      </ul>
+    <div class="nhsuk-c-skiplink">
+      <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
     </div>
 
     <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
@@ -76,11 +72,13 @@
       {% block article %}
       <div class="nhsuk-o-grid">
         {% block pageSection %}
+        {% block header %}
         <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
           <div class="nhsuk-page-heading">
-            {% block header %}{% endblock %}
+            <h1>{% block headerContent %}{% endblock %}</h1>
           </div>
         </div>
+        {% endblock %}
         <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
           <div class="nhsuk-reading-width">
             <div class="nhsuk-page-content">

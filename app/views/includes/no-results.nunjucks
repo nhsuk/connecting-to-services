@@ -2,7 +2,7 @@
   <!--<h1 class="sr-only">Search results</h1>-->
   <div class="results">
     <div class="results-block results-block--none">
-      <h1 class="results__header results__header--none">{% block resultsHeader %}{% endblock %}</h1>
+      <h1 class="nhsuk-heading-l results__header results__header--none">{% block resultsHeader %}{% endblock %}</h1>
       <div class="results__none-content">
         {% block reasonForMessage %}
         {% if searchType === 'place' and hasNoCountries()%}

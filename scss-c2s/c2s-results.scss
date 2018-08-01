@@ -21,6 +21,7 @@ body {
             h1 {
               color:$white;
               border-top:none;
+              margin-top:0;
             }
           }
       }
@@ -321,7 +322,7 @@ body {
       }
     }
     footer {
-      margin-top:64px;
+      margin-top:32px;
     }
     .callout {
       &--111 {
