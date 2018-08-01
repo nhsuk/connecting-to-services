@@ -8,8 +8,8 @@
 
 {% block bodyClass %}resultsPage{% endblock %}
 
-{% block breadcrumbItems %}
-  {% include 'includes/breadcrumbs.nunjucks' %}
+{% block lastBreadcrumb %}
+  {% include 'includes/last-breadcrumb.nunjucks' %}
 {% endblock %}
 
 {% block content %}

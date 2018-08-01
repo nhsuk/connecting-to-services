@@ -69,16 +69,9 @@
 
     {% include "includes/header.nunjucks" %}
 
+    {% include "includes/breadcrumbs.nunjucks" %}
+
     <main id="content" class="util-nofocus">
-      <div class="breadcrumb">
-        <ol>
-          <li><a href="http://www.nhs.uk">Home</a></li>
-          <li><a href="https://www.nhs.uk/service-search">Services near you</a></li>
-          {% block breadcrumbItems %}
-            <li class="breadcrumb__last">Find a pharmacy</li>
-          {% endblock %}
-        </ol>
-      </div>
       {% block article %}
       <div id="main-content" class="page-section">
         {% block pageSection %}

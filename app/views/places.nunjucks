@@ -2,10 +2,6 @@
 
 {% block pageTitle %}{{getPlacesPageTitle()}}{% endblock %}
 
-{% block breadcrumbItems %}
-  {% include 'includes/breadcrumbs.nunjucks' %}
-{% endblock %}
-
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
