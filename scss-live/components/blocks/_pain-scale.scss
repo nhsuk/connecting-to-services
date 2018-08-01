@@ -1,0 +1,135 @@
+
+
+.pain-scale-link {
+    color: #0072ce;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+
+    .pain-info-icon {
+        margin-right: 10px;
+        top: 0px;
+        position: relative;
+    }
+
+}
+
+
+.pain-scale-table {
+
+//    overflow: hidden;
+//    height: 0px;
+
+
+    img {
+        top: -2px;
+        position: relative;
+        margin-right: 16px;
+    }
+
+
+
+    .pain-scale-table_inner {
+        padding-left: 0px;
+        margin-top: 20px;
+    }
+
+    .pain-type {
+        border-top: 1px solid #ccc;
+        list-style: none;
+        padding: 24px;
+    }
+
+    .severe-pain {
+        border-top: none;
+    }
+
+    .pain-left {
+        width: 30%;
+        float: left;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .pain-right {
+        width: 60%;
+        float: left;
+        margin-top: 0;
+        margin-left: 40px;
+
+
+            ul {
+                font-size: 16px;
+
+                top: 0px;
+                position: relative;
+            }
+
+    }
+
+    .severe-pain-point {
+        height: 0px;
+        border-radius: 50%;
+        border: 6px solid red;
+    }
+
+    .moderate-pain-point {
+        height: 0px;
+        border-radius: 50%;
+        border: 6px solid #ffb81c;
+    }
+
+    .mild-pain-point {
+        height: 0px;
+        border-radius: 50%;
+        border: 6px solid green;
+    }
+
+    @media (max-width: 641px) {
+        .pain-right {
+            width: inherit;
+            margin-left: 5px;
+            margin-top: 16px;
+
+            ul {
+                font-size: 16px;
+
+                top: -7px;
+                position: relative;
+            }
+        }
+
+        .pain-left {
+            width: 100%;
+        }
+    }
+}
+
+.callout--emergency, .callout--urgent {
+    .pain-scale-table_inner {
+        color: black;
+        background: white;
+    }
+
+    .pain-scale-link {
+        //margin-bottom: 20px;
+    }
+
+    .severe-pain {
+        padding-top: 15px;
+    }
+
+    .mild-pain {
+        padding-bottom: 16px;
+    }
+}
+
+.callout--emergency {
+    .pain-scale-link {
+        color: white;
+    }
+
+    .pain-info-icon {
+        content: url("./images/icons/icon-info-white.svg");
+    }
+}

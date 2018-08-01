@@ -1,0 +1,16 @@
+$is-ie: true;
+$ie-version: 9;
+
+@import "nhsuk.scss";
+
+// IE9 has limited support for media queries. This format is required
+@media screen and (min-width: 480px) {
+  ol.twocolumns {
+    top: 0;
+    margin-top: 0;
+    list-style: none;
+    li {
+      font-weight: bold;
+    }
+  }
+}

@@ -12,7 +12,6 @@
     "coverage-generate-no-metrics": "yarn istanbul -- cover _mocha -- --exit \"./test/**/!(metrics).js\"",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
     "git-hook": "yarn lint && yarn coverage-generate-no-metrics && yarn coverage-check",
-    "header-build": "node headerItems.js",
     "istanbul": "NODE_ENV=test istanbul",
     "lint": "yarn lint-backend && yarn lint-frontend",
     "lint-backend": "eslint --ext .js,.json .",
@@ -21,8 +20,8 @@
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
     "prepush": "yarn git-hook",
-    "start-watch": "yarn header-build && yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "yarn header-build && NODE_ENV=test mocha --exit --recursive test",
+    "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
+    "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
     "test-watch": "yarn test -- --watch --reporter min"
   },

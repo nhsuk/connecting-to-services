@@ -1,0 +1,286 @@
+/* defence.scss; the purpose of this file is to have all 
+  our dirty hacks and code to allow us to run the new 
+  frontend library and old frontend library in parallel. 
+
+  !important and high specificity will be used alot in here.
+
+  This file will be phased out and deleted over time.
+*/
+
+.nhsuk-skip-links {
+  margin: 0;
+}
+
+
+.site-header__brand {
+  a {
+    &:hover {
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+.main-nav {
+  ul {
+    margin-top: 0;
+  }
+  a {
+    &:hover,
+    &:active {
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+.menu-icon {
+  a {
+    &:hover, 
+    &:active {
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+.user-links {
+  a {
+    font-size: 16px;
+  }
+}
+
+.breadcrumb {
+  ul, 
+  ol {
+    margin-top: 0;
+  }
+}
+
+.local-header {
+  color: $nhsuk-white;
+  margin-bottom: 32px;
+  h1 {
+    margin-top: 0;
+    padding-top: 16px;
+    color: $nhsuk-white;
+  }
+  li {
+    margin-top: 16px !important;
+    a {
+      &:hover,
+      &:focus {
+        color: $nhsuk-link-hover-colour;
+      }
+      &:active {
+        color: $nhsuk-link-active-colour;
+      }
+      &:visited {
+        
+      }
+    }
+  }
+}
+
+.callout, 
+.panel {
+  margin-top: 32px;
+  > div:first-of-type > *:first-child {
+    margin-top: 0;
+  }
+  > *:first-child {
+    margin-top: 0;
+  }
+}
+
+.panel {
+  .panel__content {
+    h3:first-of-type {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.related-links {
+  margin-top: 32px;
+  > div:first-of-type > *:first-child {
+    margin-top: 0;
+  }
+}
+
+.footer {
+  ul {
+    margin: 0;
+  }
+}
+
+.footer, .breadcrumb {
+  a {
+    &:hover, &:focus {
+      color: $nhsuk-link-hover-colour !important;
+    }
+    &:active {
+      color: $nhsuk-link-active-colour !important;
+    }
+  }
+}
+
+@media (min-width: 925px) {
+  .footer ul li {
+    margin: 0;
+  }
+}
+
+.survey-banner-wrap {
+  padding: 25px;
+  .survey-invite {
+    width: 40% !important;
+    p {
+      margin-top: 0;
+    }
+  }
+  .survey-banner-content {
+    width: 100%;
+    ul {
+      margin-right: 20px;
+      padding-left: 0;
+    }
+    ul > li {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: 924px) {
+  .survey-banner-wrap {
+    .survey-banner-content {
+      ul {
+        width: 100% !important;
+      }
+      .survey-invite {
+        padding-left: 0 !important;
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .survey-banner-wrap {
+    .survey-banner-content {
+      ul > li {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.list--check,
+.list--cross {
+  $_list-padding: 16px * 2;
+
+  list-style: none;
+  padding-left: $_list-padding;
+
+  @include ie-lte(8) {
+    list-style: disc;
+    padding-left: 1em;
+  }
+
+  li {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      left: -$_list-padding;
+      position: absolute;
+      zoom: 1;
+    }
+  }
+}
+
+.list--check li::before {
+  background: transparent;
+  border: solid;
+  border-color: $green;
+  border-width: 0 0 5px 5px;
+  height: 8px;
+  top: 5px;
+  transform: rotate(-45deg);
+  width: 18px;
+}
+
+.list--cross li {
+  &::before,
+  &::after {
+    background: $red;
+    height: 5px;
+    top: 12px;
+    transform: rotate(45deg);
+    width: 24px;
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.template-livewell-page {
+  .local-header {
+    margin-bottom: 0 !important;
+  }
+  .livewell-nav {
+    margin-bottom: 32px !important;
+    a {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        color: #fff !important;
+        text-decoration: underline !important;
+      }
+    }
+    .livewell-nav__item--selected {
+      a {
+        &:hover,
+        &:active,
+        &:focus {
+          color: #000 !important;
+        }
+      }
+    }
+  }
+}
+
+
+.local-header {
+  ul li:first-child, ol li:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+.healthunlocked_wrapper {
+  margin-top: 16px !important;
+  > div:first-of-type > *:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+.nhsuk-page-content {
+  details {
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 925px) {
+  .healthunlocked_wrapper {
+    margin-top: 32px !important;
+  }
+  .nhsuk-page-content {
+    details {
+      margin-top: 32px;
+    }
+  }
+}

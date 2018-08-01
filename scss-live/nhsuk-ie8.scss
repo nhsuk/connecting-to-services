@@ -1,4 +1,13 @@
 $is-ie: true;
 $ie-version: 8;
 
-@import "nhsuk";
+@import "nhsuk.scss";
+@import "ie-78.scss";
+
+.main-nav__items {
+  background-color: #005eb8;
+}
+
+.footer__main-links {
+  background-color: #005eb8;
+}

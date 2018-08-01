@@ -1,51 +1,77 @@
-<header class="site-header">
-  <div class="site-header__top">
-    <div class="site-header__brand">
-      <!-- noindex -->
-      <a href="/">
-        <img
-          src="{{ ASSETS_URL }}/images/choices-logo.png" srcset="
-              {{ ASSETS_URL }}/images/choices-logo.png 1x,
-              {{ ASSETS_URL }}/images/choices-logo@2x.png 2x,
-              {{ ASSETS_URL }}/images/choices-logo@3x.png 3x"
-          class="nhs-choices-logo"
-          alt=""
-        />
-      </a>
-      <span class="site-header__tagline">Your health, your choices</span>
-    </div>
-
-    <div class="site-header__controls">
-      <div class="site-header__user-links user-links">
-        <span class="user-links__right-align">
-          <a class="user-links__account" href="https://www.nhs.uk/Personalisation/MyNHSChoices.aspx">User Accounts</a>
-        </span>
+<header id="header" role="banner">
+  <div class="nhsuk-global-header">
+    <div class="nhsuk-o-width-container nhsuk-o-width-container--global-header">
+      <div class="nhsuk-global-header__logo">
+        <a href="/" class="global-header__link">
+          {{ nhsLogo('nhsuk-header__logo-title') }}
+        </a>
       </div>
-      <div id="search" class="site-header__search search">
-        <form id="gs" method="get" action="https://www.nhs.uk/Search/">
-          <input name="q" class="search__input" type="text" placeholder="Enter a search term" />
-          <div class="search__button icon-Search">
-            <input type="submit" value=""/>
+      <div class="nhsuk-global-header__menusearch ui-front">
+        <div class="nhsuk-global-header__menu"><button class="menu-toggle__button" aria-controls="c-nav-primary" aria-label="Open menu">Menu</button></div>
+        <div class="nhsuk-global-header__search">
+          <div class="search-toggle">
+            <button class="search-toggle__button" aria-controls="search-container" aria-label="Open search">
+              {% include "./icon-search-blue.svg" %}
+            </button>
           </div>
-        </form>
-      </div>
-      <div id="menu-icon" class="site-header__menu-icon menu-icon">
-          <a id="main-nav-toggle" class="menu-icon__link" href="#">Menu</a>
+          <div class="search-container" id="search-container">
+            <form class="c-search" action="https://www.nhs.uk/search/" method="get" role="search">
+              <div class="c-search__container">
+                <label class="c-search__label visually-hidden" for="q">Search NHS.UK</label>
+                <input aria-labelledby="q" class="c-search__input" id="q" placeholder="Search" autocomplete="off" name="q" type="search">
+                <button type="submit" class="c-search__submit">
+                  {% include "./icon-search-blue.svg" %}
+                </button>
+              </div>
+            </form>
+            <div class="search-close">
+              <button class="search-close__link">
+                {% include "./icon-close.svg" %}
+                <span class="visually-hidden">Close search</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="clearfix"></div>
   </div>
+</header>
 
-  <nav id="main-nav" class="site-header__nav main-nav main-nav">
-    <div id="main-nav-items" class="main-nav__items">
-      <ul class="main-nav__page-menu">
-        {% include "includes/header-items.nunjucks" %}
-      </ul>
-      <ul class="main-nav__account-menu account-menu">
-        <li><a href="https://www.nhs.uk/Personalisation/Login.aspx">Log in</a></li>
-        <li><a href="https://www.nhs.uk/Personalisation/Registration.aspx?ReturnUrl={{completeOriginalUrl}}">Create an account</a></li>
+<nav class="c-nav-primary" id="c-nav-primary" role="navigation" aria-label="Primary navigation" aria-labelledby="mainmenulabel">
+  <div class="nhsuk-global-nav">
+    <div class="nhsuk-o-width-container">
+      <p class="c-nav-primary__title"><span id="mainmenulabel">Menu</span>
+      <button class="c-nav-primary__close-link">
+        {% include "./icon-close.svg" %}
+        <span class="visually-hidden">Close menu</span>
+      </button>
+      </p>
+      <ul class="c-nav-primary__list">
+        <li class="c-nav-primary__item c-nav-primary__item--mobile">
+          <a href="https://www.nhs.uk" class="c-nav-primary__link">Home</a>
+          {% include "./icon-chevron-right.svg" %}
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/conditions/" class="c-nav-primary__link">Health A-Z</a>
+          {% include "./icon-chevron-right.svg" %}
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/livewell/" class="c-nav-primary__link">Live Well</a>
+          {% include "./icon-chevron-right.svg" %}
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/conditions/social-care-and-support/" class="c-nav-primary__link">Care and support</a>
+          {% include "./icon-chevron-right.svg" %}
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/news/" class="c-nav-primary__link">Health news</a>
+          {% include "./icon-chevron-right.svg" %}
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/service-search/" class="c-nav-primary__link">Services near you</a>
+          {% include "./icon-chevron-right.svg" %}
+        </li>
       </ul>
     </div>
-  </nav>
-  <!-- endnoindex -->
-</header>
+  </div>
+</nav>

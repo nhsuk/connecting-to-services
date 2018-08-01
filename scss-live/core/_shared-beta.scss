@@ -1,0 +1,30 @@
+@import '../settings/colours-beta';
+@import '../settings/typography-beta';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+html * {
+  font-family: $nhsuk-font-stack;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  background-color: $nhsuk-white;
+  color: $nhsuk-text-colour;
+  min-height: 100%;
+}
+
+body {
+  background-color: $nhsuk-white;
+  font-size: $nhsuk-base-font-size-mobile;
+  line-height: $nhsuk-base-line-height-mobile;
+  margin: 0;
+  @include mq($from: tablet) {
+    font-size: $nhsuk-base-font-size;
+    line-height: $nhsuk-base-line-height;
+  }
+}

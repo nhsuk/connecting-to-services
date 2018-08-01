@@ -1,0 +1,10 @@
+
+.content-divider {
+    height: 4px;
+    background-color: $black;
+    margin: 45px 0px 0px 0px;
+
+    &--short {
+      width: 130px;
+    }
+}
