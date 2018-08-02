@@ -42,6 +42,9 @@ module.exports = {
     watched: ['scss-c2s', 'app/public/js'],
   },
   plugins: {
+    babel: {
+      presets: ['env'],
+    },
     fingerprint: {
       autoClearOldFiles: true,
       destBasePath: 'public/',

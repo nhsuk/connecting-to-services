@@ -1,5 +1,4 @@
 coverage/
-app/public/js/*
 public/js/*
 data/*
 test/resources/*
