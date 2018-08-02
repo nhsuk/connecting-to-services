@@ -2,6 +2,7 @@
 ===================
 - Update npm dependencies
 - Update code for latest `eslint-config-airbnb-base` rules
+- Update for site redesign
 
 1.3.0 / Changes reverted - not released
 ======================================

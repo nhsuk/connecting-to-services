@@ -5,3 +5,6 @@ require('./menuToggle');
 require('./openToggle');
 require('./isWrapped');
 require('./analytics');
+require('./headerMobileMenuToggle');
+require('./headerMobileSearchToggle');
+require('./headerSearchTypeahead');
