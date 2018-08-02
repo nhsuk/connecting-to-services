@@ -10,7 +10,14 @@
         {% include "./icon-chevron-right.svg" %}
       </li>
       {% if places is not defined and services is not defined %}
+      {% if coordinates.latitude and coordinates.longitude %}
+        <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
+        {% include "./icon-chevron-right.svg" %}
+        </li>
+        <li class="nhsuk-c-breadcrumb__item">No results</li>
+      {% else %}
         <li class="nhsuk-c-breadcrumb__item">Find a pharmacy</li>
+        {% endif %}
       {% else %}
         <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
         {% include "./icon-chevron-right.svg" %}

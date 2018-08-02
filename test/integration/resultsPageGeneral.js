@@ -94,7 +94,7 @@ describe('The results page', () => {
         expect(err.response).to.be.html;
 
         $ = cheerio.load(err.response.text);
-        expect($('.local-header--title--question').text())
+        expect($('.nhsuk-page-heading').text())
           .to.contain(messages.technicalProblems());
       }
     });

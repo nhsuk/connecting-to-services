@@ -8,10 +8,6 @@
 
 {% block bodyClass %}resultsPage{% endblock %}
 
-{% block lastBreadcrumb %}
-{% include 'includes/last-breadcrumb.nunjucks' %}
-{% endblock %}
-
 {% block header %}
 {% if services.length > 0 %}
 <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">

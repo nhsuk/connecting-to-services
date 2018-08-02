@@ -28,9 +28,9 @@ describe('An unknown page', () => {
       expect(err).to.have.status(404);
       expect(err.response).to.be.html;
       const $ = cheerio.load(err.response.text);
-      expect($('.local-header--title--question').text().trim())
+      expect($('.nhsuk-page-heading').text().trim())
         .to.equal('Page not found');
-      expect($('title').text()).to.equal('Page not found - NHS.UK');
+      expect($('head title').text()).to.equal('Page not found - NHS.UK');
     }
   });
 });
