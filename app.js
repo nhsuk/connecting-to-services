@@ -1,9 +1,9 @@
 require('newrelic');
-
-const log = require('./app/lib/logger');
-const app = require('./server');
 const requireEnv = require('require-environment-variables');
+
+const app = require('./server');
 const applicationStarts = require('./app/lib/promCounters').applicationStarts;
+const log = require('./app/lib/logger');
 
 requireEnv(['API_BASE_URL']);
 

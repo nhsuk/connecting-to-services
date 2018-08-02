@@ -1,7 +1,8 @@
 const chai = require('chai');
-const postcodeValidator = require('../../../app/lib/postcodeValidator');
-const messages = require('../../../app/lib/messages');
 const Postcode = require('postcode');
+
+const messages = require('../../../app/lib/messages');
+const postcodeValidator = require('../../../app/lib/postcodeValidator');
 
 const expect = chai.expect;
 

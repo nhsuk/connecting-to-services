@@ -1,9 +1,9 @@
 node_modules/
-public/js
 *.css
 *.css.map
 assets.json
 app/views/includes/header-items.nunjucks
+public/js/app.js
 
 coverage/
 .sass-cache

@@ -1,0 +1,33 @@
+
+.pager {
+  @include core-font(18);
+  ul, a {
+    font-size: 20px;
+    line-height: inherit;
+  }
+
+  @include media(desktop) {
+    &__summary {
+      font-size: 20px;
+      float: left;
+    }
+
+    &__controls {
+      margin-top: 0px;
+      float: right;
+    }
+  }
+
+  &__items {
+    list-style: none;
+    display: inline;
+    padding: 0px;
+    li {
+      display: inline;
+    }
+  }
+
+  &__items li, &__next, &__prev {
+    margin-right: 5px;
+  }
+}

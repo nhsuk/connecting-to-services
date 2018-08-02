@@ -2,14 +2,12 @@
 
 {% block pageTitle %}{{getPlacesPageTitle()}}{% endblock %}
 
-{% block breadcrumbItems %}
-  {% include 'includes/breadcrumbs.nunjucks' %}
-{% endblock %}
-
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
+{% block header %}
+{% endblock %}
 {% block content %}
 {% if places.length === 0 %}
   {% include "includes/no-place-results.nunjucks" %}

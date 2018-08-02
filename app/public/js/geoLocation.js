@@ -1,29 +1,14 @@
-(function (global) {
-  'use strict';
-  var $ = global.jQuery;
-  var $geoLocate = $('.geo-locate');
-  var $geoLocateDenied = $('.geo-locate--denied');
-  var $geoLocateError = $('.geo-locate--error');
-  var $geoLocateLocate = $('.geo-locate--locate');
-  var $geoLocateSearching = $('.geo-locate--searching');
-  var window = global;
-
-  function success(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    if (latitude && longitude) {
-      var locationDescription = 'your location';
-      var location = './results?location=' + encodeURIComponent(locationDescription) + '&latitude=' + latitude + '&longitude=' + longitude;
-      // load the results page
-      window.location = location;
-    } else {
-      error();
-    }
-  }
+((global) => {
+  const $ = global.jQuery;
+  const $geoLocate = $('.geo-locate');
+  const $geoLocateDenied = $('.geo-locate--denied');
+  const $geoLocateError = $('.geo-locate--error');
+  const $geoLocateLocate = $('.geo-locate--locate');
+  const $geoLocateSearching = $('.geo-locate--searching');
+  const window = global;
 
   function error(e) {
-    switch(e.code) {
+    switch (e.code) {
       case e.PERMISSION_DENIED:
         $geoLocate.hide();
         $geoLocateDenied.show();
@@ -34,14 +19,30 @@
       case e.TIMEOUT:
         $geoLocateError.show();
         break;
+      default:
+        $geoLocateError.show();
     }
     $geoLocateSearching.hide();
+  }
+
+  function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    if (latitude && longitude) {
+      const locationDescription = 'your location';
+      const location = `./results?location=${encodeURIComponent(locationDescription)}&latitude=${latitude}&longitude=${longitude}`;
+      // load the results page
+      window.location = location;
+    } else {
+      error();
+    }
   }
 
   if (navigator.geolocation) {
     $geoLocate.show();
 
-    $geoLocateLocate.on('click', function(e) {
+    $geoLocateLocate.on('click', (e) => {
       $geoLocateError.hide();
       navigator.geolocation.getCurrentPosition(success, error);
       $geoLocateSearching.show();

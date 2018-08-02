@@ -1,27 +1,39 @@
-@import "normalize/variables";
-@import "normalize/vertical-rhythm";
-@import "normalize/normalize-mixin";
+$images-path: "../img";
+
+//@import "normalize/variables";
+//@import "normalize/vertical-rhythm";
+//@import "normalize/normalize-mixin";
 
 @import "environment/tools/mixins/addons";
 
-@import "environment/generic/border-box";
-@import "environment/generic/reset";
-@import "environment/generic/shared";
+//@import "environment/generic/border-box";
+//@import "environment/generic/reset";
+//@import "environment/generic/shared";
 @import "environment/generic/utilities";
 
 @import "environment/settings/colours";
-@import "environment/settings/fonts";
+//@import "environment/settings/fonts";
 @import "environment/settings/globals";
 @import "environment/settings/layout";
-@import "environment/settings/typography";
+//@import "environment/settings/typography";
 
 @import "environment/tools/functions/colour";
-@import "environment/tools/functions/typography";
+@import 'settings/colours-beta';
+//@import "environment/tools/functions/typography";
 
 @import "environment/tools/mixins/button";
 @import "environment/tools/mixins/conditionals";
 @import "environment/tools/mixins/layout";
 @import "environment/tools/mixins/typography";
+@import "environment/tools/mixins/top-and-bottom";
+
+// Redesign
+// Helpers
+@import 'helpers/visually-hidden-beta';
+@import 'helpers/clearfix-beta';
+@import 'helpers/media-queries-beta';
+@import 'helpers/spacing-beta';
+@import 'helpers/reading-width-beta';
 
 @import "objects/grid";
 @import "objects/page-section";
@@ -29,25 +41,35 @@
 @import "units/details";
 @import "units/figure";
 @import "units/form";
-@import "units/heading";
+//@import "units/heading";
 @import "units/hr";
 @import "units/image";
 @import "units/inline";
-@import "units/link";
-@import "units/list";
-@import "units/paragraph";
+//@import "units/link";
+//@import "units/list";
+//@import "units/paragraph";
 @import "units/quote";
 @import "units/table";
 
-@import "components/clear";
-@import "components/global-header";
 @import "components/global-footer";
 @import "components/notification-banner";
 @import "components/skiplinks";
 @import "components/local-header";
-@import "components/breadcrumb";
 @import "components/button";
 @import "components/link-list";
+
+// Tools
+@import 'tools/exports-beta';
+@import 'tools/legacy-ie-beta';
+@import 'tools/px-to-em-beta';
+
+// Settings
+@import 'settings/measurements-beta';
+@import 'settings/media-queries-beta';
+@import 'settings/variables-beta';
+@import 'settings/fonts-beta';
+@import 'settings/typography-beta';
+@import 'settings/icons-beta';
 
 // NHS.UK components
 @import "components/article-pagination";
@@ -63,3 +85,25 @@
 @import "components/step-list";
 @import "components/tabs";
 @import "components/error";
+
+// Objects
+@import 'objects/grid-beta';
+@import 'objects/main-wrapper-beta';
+@import 'objects/width-container-beta';
+
+// Components
+@import "components/global-footer-beta";
+@import "components/care-card";
+@import "components/navigation";
+
+// Hacks & Refactoring
+@import "overrides/defence-beta";
+
+
+// Core
+@import 'core/shared-beta';
+
+// Common elements such as header, footer
+@import "common/breadcrumb.scss";
+@import "common/header.scss";
+@import "common/index.scss";

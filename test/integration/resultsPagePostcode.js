@@ -60,7 +60,7 @@ describe('The results page', () => {
       expect($(link).attr('href')).to.have.string(`&saddr=${encodeURIComponent(ls27ue)}`);
     });
 
-    expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+    expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
     iExpect.resultsPageBreadcrumb($);
     iExpect.call111Callout($);
   });
@@ -99,7 +99,7 @@ describe('The results page', () => {
       expect($(link).attr('href')).to.have.string(`&saddr=${encodeURIComponent(ls27ue)}`);
     });
 
-    expect($('title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+    expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
     iExpect.resultsPageBreadcrumb($);
     iExpect.call111Callout($);
   });
@@ -129,7 +129,7 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -157,7 +157,7 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -255,8 +255,8 @@ describe('The results page error handling', () => {
 
       expect($('.error-summary-heading').text()).to
         .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
-      expect($('title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS.UK`);
-      expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
+      expect($('head title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS.UK`);
+      expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
     }
   );
 
@@ -279,9 +279,9 @@ describe('The results page error handling', () => {
       const $ = cheerio.load(err.response.text);
 
       expect($('.page-section').text()).to.not.contain('For help with');
-      expect($('.local-header--title--question').text())
+      expect($('.nhsuk-page-heading').text())
         .to.contain(messages.technicalProblems());
-      expect($('title').text())
+      expect($('head title').text())
         .to.equal('Sorry, we are experiencing technical problems - NHS.UK');
     }
   });
@@ -312,7 +312,7 @@ describe('The results page error handling', () => {
       const $ = cheerio.load(err.response.text);
 
       expect($('.page-section').text()).to.not.contain('For help with');
-      expect($('.local-header--title--question').text())
+      expect($('.nhsuk-page-heading').text())
         .to.contain(messages.technicalProblems());
     }
   });
@@ -344,7 +344,7 @@ describe('The results page error handling', () => {
       const $ = cheerio.load(err.response.text);
 
       expect($('.page-section').text()).to.not.contain('For help with');
-      expect($('.local-header--title--question').text())
+      expect($('.nhsuk-page-heading').text())
         .to.contain(messages.technicalProblems());
     }
   });
@@ -375,7 +375,7 @@ describe('The results page error handling', () => {
       const $ = cheerio.load(err.response.text);
 
       expect($('.page-section').text()).to.not.contain('For help with');
-      expect($('.local-header--title--question').text())
+      expect($('.nhsuk-page-heading').text())
         .to.contain(messages.technicalProblems());
     }
   });

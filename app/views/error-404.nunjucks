@@ -2,9 +2,7 @@
 
 {% block pageTitle %}Page not found{% endblock %}
 
-{% block header %}
-<h1 class="local-header--title--question">Page not found</h1>
-{% endblock %}
+{% block headerContent %}Page not found{% endblock %}
 
 {% block content %}
   <div class="reading-width">

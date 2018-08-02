@@ -5,8 +5,7 @@ const routeHelper = require('../middleware/routeHelper');
 
 async function reverseGeocode(req, res, next) {
   try {
-    const result =
-      await locate.byLatLon(req.query.latitude, req.query.longitude);
+    const result = await locate.byLatLon(req.query.latitude, req.query.longitude);
     if (!result) {
       promCounters.outOfAreaMyLocationSearches.inc(1);
       routeHelper.renderNoLocationResultsPage(res);

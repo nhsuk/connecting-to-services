@@ -160,14 +160,12 @@ describe('dateUtils', () => {
 
   describe('isTimeOutsideBusinessHours', () => {
     const dayOfWeekDateString = '2018-03-14';
-    const businessHoursStartMoment =
-      moment(dayOfWeekDateString)
-        .hour(businessHours.start.hour)
-        .minute(businessHours.start.minute);
-    const businessHoursEndMoment =
-      moment(dayOfWeekDateString)
-        .hour(businessHours.end.hour)
-        .minute(businessHours.end.minute);
+    const businessHoursStartMoment = moment(dayOfWeekDateString)
+      .hour(businessHours.start.hour)
+      .minute(businessHours.start.minute);
+    const businessHoursEndMoment = moment(dayOfWeekDateString)
+      .hour(businessHours.end.hour)
+      .minute(businessHours.end.minute);
 
     it('should return true when time is before ths start of business hours', () => {
       const secondBeforeBusinessHoursStartMoment = businessHoursStartMoment.clone().second(-1);

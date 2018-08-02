@@ -1,30 +1,23 @@
-<div class="footer__main-links">
-    <div class="footer__content">
+<footer role="contentinfo">
+  <div class="nhsuk-global-footer">
+    <div class="nhsuk-o-width-container">
       <ul>
-        <li>
-          <a href="/">
-            <img class="footer__logo" src="{{ ASSETS_URL }}/images/nhs-logo.png" srcset="
-                {{ ASSETS_URL }}/images/nhs-logo.png 1x,
-                {{ ASSETS_URL }}/images/nhs-logo@2x.png 2x,
-                {{ ASSETS_URL }}/images/nhs-logo@3x.png 3x"
-                alt=""
-            />
+        <li class="nhsuk-global-footer__logo">
+          <a href="/" class="global-footer__link">
+            {{ nhsLogo('nhsuk-footer__logo-title') }}
           </a>
         </li>
-        <li><a href="http://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
-        <li><a href="http://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
-        <li><a href="http://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
+        <li><a href="https://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
+        <li><a href="https://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
+        <li><a href="https://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
+        <li><a href="https://www.nhs.uk/Personalisation/Login.aspx">Profile editor login</a></li>
       </ul>
-    </div>
-  </div>
-
-  <div class="footer__utility-links">
-    <div class="footer__content">
       <ul>
-        <li><a href="http://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
-        <li><a href="http://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx">Accessibility</a></li>
-        <li><a href="http://www.nhs.uk/Pages/site-policies.aspx">Our policies</a></li>
+        <li><a href="https://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
+        <li><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx">Accessibility</a></li>
+        <li><a href="https://www.nhs.uk/Pages/site-policies.aspx">Our policies</a></li>
         <li>&copy; Crown Copyright</li>
       </ul>
     </div>
   </div>
+</footer>

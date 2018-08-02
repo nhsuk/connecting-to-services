@@ -8,7 +8,8 @@ function noCoordinates(coordinates) {
 function getSearchType(location, coordinates) {
   if (location === constants.yourLocation) {
     return constants.yourLocationSearch;
-  } else if (isPostcode(location) && noCoordinates(coordinates)) {
+  }
+  if (isPostcode(location) && noCoordinates(coordinates)) {
     return constants.postcodeSearch;
   }
   return constants.placeSearch;

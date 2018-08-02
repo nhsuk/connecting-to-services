@@ -1,8 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block header %}
-<h1 class="local-header--title--question">Find a pharmacy</h1>
-{% endblock %}
+{% block headerContent %}Find a pharmacy{% endblock %}
 
 {% block pageTitle %}{{getFindHelpPageTitle()}}{% endblock %}
 
@@ -16,48 +14,42 @@
 </div>
 {% endif %}
 
-<form method="get" class="form" action="{{ SITE_ROOT }}/results">
-  <div class="reading-width">
-    <div class="form-item-wrapper">
+<div class="nhsuk-app__search">
+  <div class="search-container">
+    <form method="get" class="form" action="{{ SITE_ROOT }}/results">
+      <div>
+        <div class="form-group {% if errorMessage %}error{% endif %}">
+          <label class="nhsuk-heading-m" for="location">{{ locationLabel }}</label>
+        </div>
+        <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+      </div>
 
-      {% if errorMessage %}
-      <div class="form-group error">
-        {% else %}
+      <div class="form-item-wrapper">
         <div class="form-group">
-          {% endif %}
-          <label class="form-label-bold" for="location">{{ locationLabel }}</label>
-
-          <div class="form-group">
-            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-          </div>
-        </div>
-
-        <div class="form-item-wrapper">
-          <div class="form-group">
-            <input type="submit" class="button" value="Search">
-          </div>
-        </div>
-        <div class="geo-locate">
-          <div class="geo-locate--error error">
-            <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
-          </div>
-          <div class="geo-locate--searching">
-            <p>We are searching for your location <img src="images/loading.gif" alt="" /></p>
-          </div>
-          <p><a class="button button--secondary geo-locate--locate" href="#">Use your location</a></p>
-        </div>
-        <div class="geo-locate--denied error">
-          <p>You have not allowed us to use your location. You can change this in your browser settings.</p>
+          <input type="submit" class="button" value="Search">
         </div>
       </div>
-    </div>
-</form>
+      <div class="geo-locate">
+        <div class="geo-locate--error error">
+          <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
+        </div>
+        <div class="geo-locate--searching">
+          <p>We are searching for your location <img src="images/loading.gif" alt="" /></p>
+        </div>
+        <p><a class="button button--secondary geo-locate--locate" href="#">Use your location</a></p>
+      </div>
+      <div class="geo-locate--denied error">
+        <p>You have not allowed us to use your location. You can change this in your browser settings.</p>
+      </div>
+    </form>
+  </div>
+</div>
 
 <div class="additional-links">
   <p><a href="https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies" target="_blank">See all internet pharmacies</a></p>
   <p><a href="https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies" target="_blank">See all dispensing appliance contractors</a></p>
 </div>
 {% if not DISABLE_GOOGLE_SEARCH %}
-  {% include "includes/google-search.nunjucks" %}
+{% include "includes/google-search.nunjucks" %}
 {% endif %}
 {% endblock %}

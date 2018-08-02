@@ -1,0 +1,29 @@
+@import "../util/colors.scss";
+
+html {
+  background-color: white;
+}
+/*
+body {
+    font-family: "Frutiger W01", Arial, sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    color: $color-anchor;
+    &:visited {
+        color: $color-anchor-visited;
+    }
+}
+*/
+
+.clearfix {
+    @include clearfix;
+}
+
+.article div.clearfix {
+    // Fix for _very_ generic css library (beta frontend) rules
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

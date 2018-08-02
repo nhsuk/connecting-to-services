@@ -1,3 +1,4 @@
+{% from "includes/macros/nhs-logo.svg" import nhsLogo %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -6,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
-    <meta name="DCS.dcsipa" content="1" />
     <meta name="description" content="Find an open pharmacy near you on NHS.UK. Check your local pharmacy's opening times, and find your nearest late night, 24-hour or out-of-hours chemist."/>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ SITE_ROOT }}/assets/images/favicon.ico"><![endif]-->
@@ -29,44 +29,68 @@
     <link rel="stylesheet" href="{{ SITE_ROOT }}/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c725d869-003e-4784-a8b8-a19cd45299ce" type="text/javascript" async></script> 
+
+    {% if HOTJAR_ANALYTICS_TRACKING_ID %}
+       <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
+      <script>
+        (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:{{ HOTJAR_ANALYTICS_TRACKING_ID }},hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
+    {% endif %}
+
     {% block meta %}{% endblock %}
   </head>
 
   <body class="{% block bodyClass %}{% endblock %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
-    <div class="skiplinks">
-      <ul>
-          <li class="skip-link"><a href="#main-content" ><span>Skip to main content</span></a></li>
-          <li class="skip-link"><a href="#main-nav" ><span>Skip to main navigation</span></a></li>
-          <li class="skip-link"><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx"><span>Help with accessibility</span></a></li>
-      </ul>
+    <div class="nhsuk-c-skiplink">
+      <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
+    </div>
+
+    <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
+      <p class="notification-banner--inner">
+      NHS.UK uses cookies to make the site simpler.
+      <a href="https://beta.nhs.uk/help/cookies">Find out more about cookies</a>
+      </p>
     </div>
 
     {% block banner %}{% endblock %}
 
     {% include "includes/header.nunjucks" %}
 
-    <main id="content" class="util-nofocus">
-      <div class="breadcrumb">
-        <ol>
-          <li><a href="http://www.nhs.uk">Home</a></li>
-          <li><a href="https://www.nhs.uk/service-search">Services near you</a></li>
-          {% block breadcrumbItems %}
-            <li class="breadcrumb__last">Find a pharmacy</li>
-          {% endblock %}
-        </ol>
-      </div>
+    {% include "includes/breadcrumbs.nunjucks" %}
+
+  <div class="nhsuk-o-width-container">
+    <main id="main-content" class="nhsuk-o-width-wrapper util-nofocus">
       {% block article %}
-      <div id="main-content" class="page-section">
+      <div class="nhsuk-o-grid">
         {% block pageSection %}
-          {% block header %}{% endblock %}
-          {% block content %}{% endblock %}
+        {% block header %}
+        <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
+          <div class="nhsuk-page-heading">
+            <h1>{% block headerContent %}{% endblock %}</h1>
+          </div>
+        </div>
         {% endblock %}
-      </div>
-      {% endblock %}
-    </main>
+        <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
+          <div class="nhsuk-reading-width">
+            <div class="nhsuk-page-content">
+              {% block content %}{% endblock %}
+              </div>
+            </div>
+          </div>
+          {% endblock %}
+        </div>
+        {% endblock %}
+      </main>
+    </div>
 
     <footer class="footer">
       {% include "includes/footer.nunjucks" %}

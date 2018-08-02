@@ -1,5 +1,6 @@
-const choicesServices = require('../../../app/lib/choicesServices');
 const chai = require('chai');
+
+const choicesServices = require('../../../app/lib/choicesServices');
 
 const expect = chai.expect;
 

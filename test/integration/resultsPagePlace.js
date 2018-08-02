@@ -18,7 +18,7 @@ const resultsRoute = `${constants.SITE_ROOT}/results`;
 function expectSearchAgainPage($) {
   expect($('.error-summary-heading').text())
     .to.contain('You must enter a town, city or postcode to find a pharmacy.');
-  expect($('.form-label-bold').text()).to.equal('Enter a town, city or postcode in England');
+  expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
 }
 
 function expectMidsomerNortonResults($, location, numberOfResults) {
@@ -40,7 +40,7 @@ function expectMidsomerNortonResults($, location, numberOfResults) {
     expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx');
   });
   expect(choicesServicesLinks.length).to.equal(numberOfResults);
-  expect($('title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
+  expect($('head title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
 }
 
 describe('The place results page', () => {
@@ -132,7 +132,7 @@ describe('The place results page', () => {
     expect($('.places > h1').text())
       .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
-    expect($('title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS.UK');
     iExpect.disambiguationPageBreadcrumb($, multiPlaceTerm);
   });
 
@@ -166,7 +166,7 @@ describe('The place results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expectSearchAgainPage($);
-    expect($('title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS.UK');
   });
 
   it('should return no results page with exact term displayed, and links for Scotland, Wales and NI for unknown place search', async () => {
@@ -204,6 +204,6 @@ describe('The place results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expectSearchAgainPage($);
-    expect($('title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
   });
 });

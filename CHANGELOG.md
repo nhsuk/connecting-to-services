@@ -1,8 +1,14 @@
-1.3.0 / 2018-05-24
+1.4.0 / TBD
 ===================
-Update Webtrends and GA configuration for GDPR compliance
-Replace bespoke cookie banner with Cookiebot
-Only enable GA, Webtrends and Hotjar if consented from Cookiebot
+- Update npm dependencies
+- Update code for latest `eslint-config-airbnb-base` rules
+- Update for site redesign
+
+1.3.0 / Changes reverted - not released
+======================================
+- Update Webtrends and GA configuration for GDPR compliance
+- Replace bespoke cookie banner with Cookiebot
+- Only enable GA, Webtrends and Hotjar if consented from Cookiebot
 
 1.2.0 / 2018-05-03
 ===================

@@ -23,18 +23,18 @@ function htmlWith200Status(res) {
 }
 
 function noResultsPageBreadcrumb($) {
-  expect($('.breadcrumb li').length).to.equal(4);
-  expect($('.breadcrumb__last').text()).to.equal('No results');
+  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
+  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal('No results');
 }
 
 function resultsPageBreadcrumb($) {
-  expect($('.breadcrumb li').length).to.equal(4);
-  expect($('.breadcrumb__last').text()).to.equal('Results');
+  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
+  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal('Results');
 }
 
 function disambiguationPageBreadcrumb($, searchTerm) {
-  expect($('.breadcrumb li').length).to.equal(4);
-  expect($('.breadcrumb__last').text()).to.equal(`Places that match '${searchTerm}'`);
+  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
+  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal(`Places that match '${searchTerm}'`);
 }
 
 function call111Callout($) {

@@ -15,7 +15,7 @@ describe('Search page', () => {
 
       const $ = cheerio.load(res.text);
 
-      expect($('title').text()).to.equal('Find a pharmacy - NHS.UK');
+      expect($('head title').text()).to.equal('Find a pharmacy - NHS.UK');
     });
   });
   it('should have links to internet services & appliance contractors', async () => {
