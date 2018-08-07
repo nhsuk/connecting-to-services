@@ -1,5 +1,12 @@
 @import "nhsuk";
 
+body {
+  background-color:$nhsuk-grey-5;
+  .padding {
+    padding: 32px 0 48px 0;
+  }
+}
+
 .sr-only,
 .hidden {
   position: absolute;
@@ -394,7 +401,6 @@ form {
     padding: 0;
 }
 
-
 .geo-locate {
   display:none;
   > div {
@@ -432,7 +438,7 @@ form {
             background-color: inherit;
             position: relative;
             z-index: 200;
-          }         
+          }
         }
       }
     }

@@ -1,25 +1,14 @@
 $images-path: "../img";
 
-//@import "normalize/variables";
-//@import "normalize/vertical-rhythm";
-//@import "normalize/normalize-mixin";
-
 @import "environment/tools/mixins/addons";
 
-//@import "environment/generic/border-box";
-//@import "environment/generic/reset";
-//@import "environment/generic/shared";
 @import "environment/generic/utilities";
 
-@import "environment/settings/colours";
-//@import "environment/settings/fonts";
 @import "environment/settings/globals";
 @import "environment/settings/layout";
-//@import "environment/settings/typography";
 
 @import "environment/tools/functions/colour";
 @import 'settings/colours-beta';
-//@import "environment/tools/functions/typography";
 
 @import "environment/tools/mixins/button";
 @import "environment/tools/mixins/conditionals";
@@ -41,13 +30,9 @@ $images-path: "../img";
 @import "units/details";
 @import "units/figure";
 @import "units/form";
-//@import "units/heading";
 @import "units/hr";
 @import "units/image";
 @import "units/inline";
-//@import "units/link";
-//@import "units/list";
-//@import "units/paragraph";
 @import "units/quote";
 @import "units/table";
 
@@ -99,6 +84,9 @@ $images-path: "../img";
 // Hacks & Refactoring
 @import "overrides/defence-beta";
 
+// IE
+@import "nhsuk-ie9";
+@import "shame";
 
 // Core
 @import 'core/shared-beta';

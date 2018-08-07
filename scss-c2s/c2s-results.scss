@@ -1,3 +1,4 @@
+@import "settings/colours-beta";
 @import "environment/settings/colours";
 @import "environment/tools/mixins/conditionals";
 
@@ -8,9 +9,8 @@ $grey-4: #425563;
 
 body {
   &.resultsPage {
-    background-color:$grey;
     header {
-      background-color: $white;
+      background-color: $nhsuk-white;
     }
     main {
       .results-block{
@@ -19,7 +19,7 @@ body {
               margin-top: 32px;
             }
             h1 {
-              color:$white;
+              color:$nhsuk-white;
               border-top:none;
               margin-top:0;
             }
@@ -63,7 +63,7 @@ body {
                       &:first-of-type {
                         font-size: 16px;
                         line-height: 16px;
-                        color:$grey-1;
+                        color:$nhsuk-grey-1;
                       }
                     }
                   }
@@ -102,7 +102,7 @@ body {
                 }
                 .callout {
                   &--info {
-                    background-color: $white;
+                    background-color: $nhsuk-white;
                     border-left:0;
                     border-top:2px solid $blue-1;
                     margin-top:10px;
@@ -254,7 +254,7 @@ body {
             }
             + p {
               font-size: 16px;
-              color:$grey-1;
+              color:$nhsuk-grey-1;
             }
             &__openResults {
               font-size:16px;

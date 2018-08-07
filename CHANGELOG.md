@@ -1,8 +1,10 @@
-1.4.0 / TBD
+1.4.0 / 2018-08-09
 ===================
 - Update npm dependencies
 - Update code for latest `eslint-config-airbnb-base` rules
 - Update for site redesign
+- Update IE css to new design
+- Update print css to new design
 
 1.3.0 / Changes reverted - not released
 ======================================
