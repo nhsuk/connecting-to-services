@@ -2,6 +2,8 @@
 
 {% block pageTitle %}{{getPlacesPageTitle()}}{% endblock %}
 
+{% block bodyClass %}padding{% endblock %}
+
 {% block meta %}
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}

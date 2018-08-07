@@ -1,4 +1,4 @@
-<div class="grid-row">
+<div class="grid-row padding">
   <!--<h1 class="sr-only">Search results</h1>-->
   <div class="results">
     <div class="results-block results-block--none">

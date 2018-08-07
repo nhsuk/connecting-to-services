@@ -1,5 +1,12 @@
 @import "nhsuk";
 
+body {
+  background-color:$nhsuk-grey-5;
+  .padding {
+    padding: 32px 0 48px 0;
+  }
+}
+
 .sr-only,
 .hidden {
   position: absolute;
