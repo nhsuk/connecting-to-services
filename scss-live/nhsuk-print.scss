@@ -1,115 +1,82 @@
-$is-print: true;
+/* Temporary print stylesheet
+   Refactor into individual components
+*/
+@import 'helpers/media-queries-beta';
+@import 'settings/media-queries-beta';
+@import 'settings/colours-beta';
 
-// units
-@import "./units/image";
-@import "./units/heading";
-@import "./units/list";
-@import "./units/link";
-@import "./units/quote";
-
-body {
-  @include core-font(16);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-a {
-  color: $black !important;
-  font-weight: 700;
-  text-decoration: none;
-
-  &::after {
-    font-weight: 400;
+@include mq() {
+  .nhsuk-global-header__menusearch,
+  .c-nav-primary,
+  .nhsuk-c-breadcrumb,
+  .nhsuk-page-nav,
+  .nhsuk-global-footer {
+    display: none;
   }
 
-  &:visited {
-    word-wrap: break-word;
+  .nhsuk-page-heading {
+    padding: 0;
   }
 
-  &[href^="/"]:after {
-    content: " (https://www.nhs.uk" attr(href) ")";
-    font-size: 90%;
+
+  .nhsuk-c-care-card__heading,
+  .nhsuk-c-care-card__content,
+  .nhsuk-c-panel h3 {
+    color: $nhsuk-black !important;
   }
 
-  &[href^="http://"]:after,
-  &[href^="https://"]:after {
-    content: " (" attr(href) ")";
-    font-size: 90%;
+  .nhsuk-c-care-card__heading,
+  .nhsuk-c-care-card__content {
+    padding: 10px !important;
   }
 
-  &[href^="javascript:"]:after,
-  &[href^="#"]:after {
-    content: "";
-  }
-}
-
-img {
-  max-width: 15cm;
-}
-
-.media__caption {
-  font-size: .9em;
-  font-style: italic;
-  margin-top: 0;
-}
-
-select {
-  background: $white;
-}
-
-hr {
-  border: 1mm solid $grey-3;
-  margin: .8cm 0;
-  width: 15%;
-}
-
-.global-header__link::after {
-  content: none !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 1cm 0 .5cm;
-  page-break-after: avoid;
-}
-
-p,
-figure {
-  margin: .5cm 0;
-}
-
-details {
-  margin: 1cm 0;
-
-  summary {
-    @include bold-font(24);
-    margin-bottom: .5cm;
-
-    &::-webkit-details-marker {
-      display: none;
+  .nhsuk-c-care-card__heading {
+    padding-bottom: 0 !important;
+    &:after {
+      display: none !important;
     }
   }
-}
 
-.tabs-panel,
-.callout {
-  page-break-inside: avoid;
-}
+  .nhsuk-c-panel {
+    border: 1px solid $nhsuk-black;
+    margin: 40px 0 !important;
+    padding: 10px !important;
+    .list--check,
+    .list--cross {
+      padding-left: 0 !important;
+    }
+  }
 
-.callout--compact {
-  display: inline-block;
-}
+  .nhsuk-c-care-card {
+    border: 6px solid $nhsuk-black;
+    margin: 40px 0 !important;
+    .nhsuk-c-care-card__content {
+      padding-top: 0;
+    }
+  }
 
-// hide the unnecessary page elements
-// sass-lint:disable class-name-format
-body footer,
-.visuallyhidden,
-.skiplinks,
-.local-header .link-list {
-  display: none;
+  .nhsuk-o-grid__item--one-half {
+    width: percentage(1 / 2) !important;
+    float: left;
+  }
+
+  .nhsuk-o-grid__item--one-third {
+    width: percentage(1 / 3) !important;
+    float: left;
+  }
+
+  .nhsuk-o-grid__item--two-thirds {
+    width: percentage(2 / 3) !important;
+    float: left;
+  }
+
+  .nhsuk-o-grid__item--one-quarter {
+    width: percentage(1 / 4) !important;
+    float: left;
+  }
+
+  .nhsuk-o-grid__item--three-quarters {
+    width: percentage(3 / 4) !important;
+    float: left;
+  }
 }
