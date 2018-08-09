@@ -1,22 +1,8 @@
-@import "../util/colors.scss";
+@import "../settings/colours-beta.scss";
 
 html {
-  background-color: white;
+  background-color: $nhsuk-blue;
 }
-/*
-body {
-    font-family: "Frutiger W01", Arial, sans-serif;
-    padding: 0px;
-    margin: 0px;
-}
-
-a {
-    color: $color-anchor;
-    &:visited {
-        color: $color-anchor-visited;
-    }
-}
-*/
 
 .clearfix {
     @include clearfix;
