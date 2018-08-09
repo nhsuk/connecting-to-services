@@ -60,7 +60,7 @@ describe('The results page', () => {
       expect($(link).attr('href')).to.have.string(`&saddr=${encodeURIComponent(ls27ue)}`);
     });
 
-    expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+    expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS');
     iExpect.resultsPageBreadcrumb($);
     iExpect.call111Callout($);
   });
@@ -99,7 +99,7 @@ describe('The results page', () => {
       expect($(link).attr('href')).to.have.string(`&saddr=${encodeURIComponent(ls27ue)}`);
     });
 
-    expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS.UK');
+    expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS');
     iExpect.resultsPageBreadcrumb($);
     iExpect.call111Callout($);
   });
@@ -129,7 +129,7 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS');
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -157,7 +157,7 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS');
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -255,7 +255,7 @@ describe('The results page error handling', () => {
 
       expect($('.error-summary-heading').text()).to
         .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
-      expect($('head title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS.UK`);
+      expect($('head title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS`);
       expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
     }
   );
@@ -282,7 +282,7 @@ describe('The results page error handling', () => {
       expect($('.nhsuk-page-heading').text())
         .to.contain(messages.technicalProblems());
       expect($('head title').text())
-        .to.equal('Sorry, we are experiencing technical problems - NHS.UK');
+        .to.equal('Sorry, we are experiencing technical problems - NHS');
     }
   });
 

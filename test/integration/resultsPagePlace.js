@@ -40,7 +40,7 @@ function expectMidsomerNortonResults($, location, numberOfResults) {
     expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx');
   });
   expect(choicesServicesLinks.length).to.equal(numberOfResults);
-  expect($('head title').text()).to.equal('Pharmacies near Midsomer Norton - NHS.UK');
+  expect($('head title').text()).to.equal('Pharmacies near Midsomer Norton - NHS');
 }
 
 describe('The place results page', () => {
@@ -132,7 +132,7 @@ describe('The place results page', () => {
     expect($('.places > h1').text())
       .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
-    expect($('head title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS');
     iExpect.disambiguationPageBreadcrumb($, multiPlaceTerm);
   });
 
@@ -166,7 +166,7 @@ describe('The place results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expectSearchAgainPage($);
-    expect($('head title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS');
   });
 
   it('should return no results page with exact term displayed, and links for Scotland, Wales and NI for unknown place search', async () => {
@@ -204,6 +204,6 @@ describe('The place results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expectSearchAgainPage($);
-    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS.UK');
+    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS');
   });
 });

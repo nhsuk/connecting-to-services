@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-We welcome patches to the NHS.UK Beta products, as long as you follow these guidelines:
+We welcome patches to the NHS Beta products, as long as you follow these guidelines:
 
 ## Git workflow
 
@@ -35,7 +35,7 @@ on master only. Please don't submit your own proposed version numbers.
 
 Your code should be tested in the browsers listed below.
 
-The lists are based on usage statistics for NHS Choices (current NHS.UK) and
+The lists are based on usage statistics for the NHS website and
 represent approximately 95% of the most popular browsers.
 
 Each browser is assigned a ‘level of support’ that your service should meet.
