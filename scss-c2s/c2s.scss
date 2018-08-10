@@ -100,19 +100,13 @@ form {
     font-weight: 400;
     line-height: 32px;
     text-transform: none;
-    width: 100%;
+    width: 50%;
     padding: 4px;
     background-color: $white !important;
     border: 2px solid #000;
     margin: 20px 0;
-    @include media(tablet) {
-      font-size: 24px;
-      line-height: 32px;
-      width: 50%;
-    }
-    @include media(desktop) {
-      font-size: 24px;
-      line-height: 32px;
+    @include mq($until: tablet) {
+      width: 100%;
     }
   }
   .form-label-bold {

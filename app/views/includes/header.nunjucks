@@ -2,7 +2,7 @@
   <div class="nhsuk-global-header">
     <div class="nhsuk-o-width-container nhsuk-o-width-container--global-header">
       <div class="nhsuk-global-header__logo">
-        <a href="/" class="global-header__link">
+        <a href="/" class="global-header__link" title="Homepage">
           {{ nhsLogo('nhsuk-header__logo-title') }}
         </a>
       </div>
@@ -17,7 +17,7 @@
           <div class="search-container" id="search-container">
             <form class="c-search" action="https://www.nhs.uk/search/" method="get" role="search">
               <div class="c-search__container">
-                <label class="c-search__label visually-hidden" for="q">Search NHS.UK</label>
+                <label class="c-search__label visually-hidden" for="q">Search the NHS website</label>
                 <input aria-labelledby="q" class="c-search__input" id="q" placeholder="Search" autocomplete="off" name="q" type="search">
                 <button type="submit" class="c-search__submit">
                   {% include "./icon-search-blue.svg" %}

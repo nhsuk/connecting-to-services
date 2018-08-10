@@ -1,16 +1,27 @@
 # Contribution Guidelines
 
-We welcome patches to the NHS.UK Beta products, as long as you follow these guidelines:
+We welcome patches to the NHS Beta products, as long as you follow these guidelines:
 
 ## Git workflow
 
-- Pull requests must contain a succinct, clear summary of what the user need is driving this feature change
-- Follow our [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
-- Make a feature branch, ideally in the format `feature/summary-of-change` e.g. `feature/add-login`
-- Ensure your branch contains logical atomic commits before sending a pull request - follow our [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
-- Pull requests are automatically tested, where applicable using [Travis CI](https://travis-ci.org/), which will report back on whether the tests still pass on your branch
-- You *may* rebase your branch after feedback if it's to include relevant updates from the master branch. We prefer a rebase here to a merge commit as we prefer a clean and straight history on master with discrete merge commits for features
-- Using a single emoji to start the commit message is encouraged. See the other commits in the repo for examples
+- Pull requests must contain a succinct, clear summary of what the user need is
+  driving this feature change
+- Follow our
+  [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
+- Make a feature branch, ideally in the format `feature/summary-of-change` e.g.
+  `feature/add-login`
+- Ensure your branch contains logical atomic commits before sending a pull
+  request - follow our
+  [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
+- Pull requests are automatically tested, where applicable using
+  [Travis CI](https://travis-ci.org/), which will report back on whether the
+  tests still pass on your branch
+- You *may* rebase your branch after feedback if it's to include relevant
+  updates from the master branch. We prefer a rebase here to a merge commit as
+  we prefer a clean and straight history on master with discrete merge commits
+  for features
+- Using a single emoji to start the commit message is encouraged. See the other
+  commits in the repo for examples
 
 ## Copy
 
@@ -18,9 +29,11 @@ We welcome patches to the NHS.UK Beta products, as long as you follow these guid
 
 ## Code
 
-- Must be readable with meaningful naming, eg no short hand single character variable names
+- Must be readable with meaningful naming, e.g. no short hand single character
+  variable names
 - Follow our [styleguides](https://github.com/nhsuk/styleguides)
-- Must pass linting with the ruleset from `.eslint.json` (`yarn run lint`). Lint will run on all commits, rebases and as part of CI
+- Must pass linting with the ruleset from `.eslint.json` (`yarn run lint`).
+  Lint will run on all commits, rebases and as part of CI
 
 ## Testing
 
@@ -35,7 +48,7 @@ on master only. Please don't submit your own proposed version numbers.
 
 Your code should be tested in the browsers listed below.
 
-The lists are based on usage statistics for NHS Choices (current NHS.UK) and
+The lists are based on usage statistics for the NHS website and
 represent approximately 95% of the most popular browsers.
 
 Each browser is assigned a ‘level of support’ that your service should meet.
@@ -50,22 +63,22 @@ before that.
 
 ### Desktop
 
-| Operating system | Browser | Support |
-| ---------------- | ------- | ------- |
-| Windows | Internet Explorer 8+ | Compliant |
-| | Edge (latest version) | Compliant |
-| | Google Chrome (latest version) | Compliant |
-| | Mozilla Firefox (latest version) | Compliant |
-| Mac OS X | Safari 8+ | Compliant |
-| | Google Chrome (latest version) | Compliant |
-| | Mozilla Firefox (latest version) | Compliant |
+| Operating system | Browser                          | Support   |
+| ---------------- | -------                          | -------   |
+| Windows          | Internet Explorer 8+             | Compliant |
+|                  | Edge (latest version)            | Compliant |
+|                  | Google Chrome (latest version)   | Compliant |
+|                  | Mozilla Firefox (latest version) | Compliant |
+| Mac OS X         | Safari 8+                        | Compliant |
+|                  | Google Chrome (latest version)   | Compliant |
+|                  | Mozilla Firefox (latest version) | Compliant |
 
 ### Small screen devices
 
-| Operating system | Version | Browser | Support |
-| ---------------- | ------- | ------- | ------- |
-| iOS | 7+ | Mobile Safari | Compliant |
-| | | Google Chrome | Compliant |
-| Android | 4.x | Google Chrome | Compliant |
-| | | Android Browser | Compliant |
-| Windows Phone | 8.1 | Internet Explorer | Compliant |
+| Operating system | Version | Browser           | Support   |
+| ---------------- | ------- | -------           | -------   |
+| iOS              | 7+      | Mobile Safari     | Compliant |
+|                  |         | Google Chrome     | Compliant |
+| Android          | 4.x     | Google Chrome     | Compliant |
+|                  |         | Android Browser   | Compliant |
+| Windows Phone    | 8.1     | Internet Explorer | Compliant |

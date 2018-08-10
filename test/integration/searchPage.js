@@ -10,12 +10,12 @@ chai.use(chaiHttp);
 
 describe('Search page', () => {
   describe('page title', () => {
-    it('should be \'Find a pharmarcy - NHS.UK\'', async () => {
+    it('should be \'Find a pharmarcy - NHS\'', async () => {
       const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
 
       const $ = cheerio.load(res.text);
 
-      expect($('head title').text()).to.equal('Find a pharmacy - NHS.UK');
+      expect($('head title').text()).to.equal('Find a pharmacy - NHS');
     });
   });
   it('should have links to internet services & appliance contractors', async () => {

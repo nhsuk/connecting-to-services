@@ -7,5 +7,5 @@
   </g>
   <image class="nhsuk-logo nhsuk-logo__fallback" src="/images/nhs-logo.png" xlink:href="" />
 </svg>
-<span class="visually-hidden">NHS.UK homepage</span>
+<span class="visually-hidden">NHS homepage</span>
 {% endmacro %}
