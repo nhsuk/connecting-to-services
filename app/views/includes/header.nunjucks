@@ -2,7 +2,7 @@
   <div class="nhsuk-global-header">
     <div class="nhsuk-o-width-container nhsuk-o-width-container--global-header">
       <div class="nhsuk-global-header__logo">
-        <a href="/" class="global-header__link">
+        <a href="/" class="global-header__link" title="Homepage">
           {{ nhsLogo('nhsuk-header__logo-title') }}
         </a>
       </div>
