@@ -5,6 +5,7 @@
 - Set background to blue
 - Fix input width
 - Add title to header and footer home page link
+- Update header search placeholder text
 
 1.4.0 / 2018-08-09
 ===================
