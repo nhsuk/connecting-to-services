@@ -4,7 +4,8 @@
 - Remove references to `NHS.UK` in favour of `NHS`
 - Set background to blue
 - Fix input width
-- Add title to header and footer home page link
+- Update header search placeholder text
+- Remove aria-labelledby on the aria-hidden NHS logo
 
 1.4.0 / 2018-08-09
 ===================
