@@ -1,3 +1,7 @@
+1.6.0 / TBD
+===================
+- Upgrade Docker container to `node:8.11.4-alpine`
+
 1.5.0 / 2018-08-15
 ===================
 - Update npm dependencies
