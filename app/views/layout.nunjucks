@@ -20,6 +20,7 @@
     <meta property="og:image" content="{{ SITE_ROOT }}/images/opengraph-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
+    <meta name="DCS.dcsipa" content="1">
 
     <link href="{{ SITE_ROOT }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]><link href="{{ SITE_ROOT }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->

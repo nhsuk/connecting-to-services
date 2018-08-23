@@ -18,6 +18,7 @@ describe('Search page', () => {
       expect($('head title').text()).to.equal('Find a pharmacy - NHS');
     });
   });
+
   it('should have links to internet services & appliance contractors', async () => {
     const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
 
