@@ -1,5 +1,6 @@
 1.6.0 / TBD
 ===================
+- Remove Heatmaps from Webtrends (the feature has been discontinued)
 - Upgrade Docker container to `node:8.11.4-alpine`
 - Update python used in container
 - Update npm dependencies
