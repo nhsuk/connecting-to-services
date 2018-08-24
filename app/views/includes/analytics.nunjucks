@@ -28,10 +28,7 @@
         download:true,
         downloadtypes:'xls,doc,pdf,txt,csv,zip,docx,xlsx,rar,gzip',
         onsitedoms:'nhs.uk',
-        fpcdom:'.nhs.uk',
-        plugins:{
-          hm:{src:'//s.webtrends.com/js/webtrends.hm.js'}
-        }
+        fpcdom:'.nhs.uk'
       }).track();
     };
     (function(){
