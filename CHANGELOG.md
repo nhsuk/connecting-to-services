@@ -1,5 +1,6 @@
 1.6.0 / TBD
 ===================
+- Update cookie banner link to cookie policy
 - Update favicon with latest design
 - Remove Heatmaps from Webtrends (the feature has been discontinued)
 - Upgrade Docker container to `node:8.11.4-alpine`

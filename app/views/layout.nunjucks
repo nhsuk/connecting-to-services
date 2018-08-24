@@ -55,7 +55,7 @@
     <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
       <p class="notification-banner--inner">
       The NHS website uses cookies to make the site simpler.
-      <a href="https://beta.nhs.uk/help/cookies">Find out more about cookies</a>
+      <a href="https://www.nhs.uk/our-policies/cookies-policy/">Find out more about cookies</a>
       </p>
     </div>
 
