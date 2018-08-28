@@ -1,4 +1,4 @@
-1.6.0 / TBD
+1.6.0 / 2018-08-30
 ===================
 - Update footer links to new pages
 - Update cookie banner link to cookie policy
