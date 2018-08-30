@@ -1,3 +1,7 @@
+1.7.0 / 2018-09-07
+===================
+- Remove unnecessary npm dependencies
+
 1.6.0 / 2018-08-30
 ===================
 - Update footer links to new pages
