@@ -3,7 +3,7 @@
     <div class="nhsuk-o-width-container">
       <ul>
         <li class="nhsuk-global-footer__logo">
-          <a href="/" class="global-footer__link">
+          <a href="https://www.nhs.uk" class="global-footer__link">
             {{ nhsLogo('nhsuk-footer__logo-title') }}
           </a>
         </li>
@@ -13,7 +13,7 @@
         <li><a href="https://www.nhs.uk/Personalisation/Login.aspx">Profile editor login</a></li>
       </ul>
       <ul>
-        <li><a href="https://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
+        <li><a href="https://www.nhs.uk/about-us/sitemap/">Sitemap</a></li>
         <li><a href="https://www.nhs.uk/accessibility/">Accessibility</a></li>
         <li><a href="https://www.nhs.uk/our-policies/">Our policies</a></li>
         <li>&copy; Crown Copyright</li>
