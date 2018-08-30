@@ -3,7 +3,7 @@
     <div class="nhsuk-o-width-container">
       <ul>
         <li class="nhsuk-global-footer__logo">
-          <a href="/" class="global-footer__link">
+          <a href="https://www.nhs.uk" class="global-footer__link">
             {{ nhsLogo('nhsuk-footer__logo-title') }}
           </a>
         </li>
