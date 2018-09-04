@@ -2,6 +2,7 @@
 ===================
 - Remove unnecessary npm dependencies
 - Do not link to beta home page
+- Update npm dependencies
 
 1.6.0 / 2018-08-30
 ===================
