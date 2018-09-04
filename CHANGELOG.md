@@ -2,6 +2,9 @@
 ===================
 - Remove unnecessary npm dependencies
 - Do not link to beta home page
+- Update npm dependencies
+- Update 'contact-us' footer link
+- Update 'care and support' header link
 
 1.6.0 / 2018-08-30
 ===================

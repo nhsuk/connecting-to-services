@@ -57,7 +57,7 @@
           <a href="https://www.nhs.uk/livewell/" class="c-nav-primary__link">Live Well{% include "./icon-chevron-right.svg" %}</a>
         </li>
         <li class="c-nav-primary__item">
-          <a href="https://www.nhs.uk/conditions/social-care-and-support/" class="c-nav-primary__link">Care and support{% include "./icon-chevron-right.svg" %}</a>
+          <a href="https://www.nhs.uk/conditions/social-care-and-support-guide/" class="c-nav-primary__link">Care and support{% include "./icon-chevron-right.svg" %}</a>
         </li>
         <li class="c-nav-primary__item">
           <a href="https://www.nhs.uk/news/" class="c-nav-primary__link">Health news{% include "./icon-chevron-right.svg" %}</a>
