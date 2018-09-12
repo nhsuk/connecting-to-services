@@ -5,6 +5,7 @@ module.exports = {
     ],
     connectSrc: [
       '\'self\'',
+      'assets.adobedtm.com',
       '*.google-analytics.com',
       '*.hotjar.com:*',
       'nhs.funnelback.co.uk',
@@ -19,8 +20,10 @@ module.exports = {
     imgSrc: [
       '\'self\'',
       'data:',
+      '*.2o7.net',
       '*.google-analytics.com',
       '*.hotjar.com',
+      '*.omtrdc.net',
       '*.webtrends.com',
       '*.webtrendslive.com',
       '*.nhs.uk',
@@ -30,6 +33,7 @@ module.exports = {
       '\'unsafe-eval\'',
       '\'unsafe-inline\'',
       'data:',
+      'assets.adobedtm.com',
       '*.google-analytics.com',
       '*.hotjar.com',
       '*.webtrends.com',

@@ -60,6 +60,7 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
+| `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                                         |                           | No         |
 | `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
 | `BUSINESS_HOURS_START_HOUR`        | Business hours start hour                                                                                                                                  | 8                         | No         |
