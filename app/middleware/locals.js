@@ -6,13 +6,15 @@ const pageTitles = require('../lib/pageTitles');
 const resultsPageAltUrl = require('../lib/resultsPageAltUrl');
 
 module.exports = config => (req, res, next) => {
-  // Vars
-  res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.googleAnalyticsId;
-  res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.webtrendsId;
-  res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.hotjarId;
-  res.locals.DISABLE_GOOGLE_SEARCH = config.disableGoogleSearch;
-  res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
   res.locals.ASSETS_URL = req.app.locals.ASSETS_URL;
+  res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
+
+  res.locals.DISABLE_GOOGLE_SEARCH = config.disableGoogleSearch;
+
+  res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
+  res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
+  res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
+  res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.analytics.webtrendsId;
 
   res.locals.completeOriginalUrl = completeOriginalUrl(req);
   res.locals.coordinates = {
@@ -25,7 +27,6 @@ module.exports = config => (req, res, next) => {
   res.locals.req_location = req.query.location;
   res.locals.resultsPageAltUrl = resultsPageAltUrl(req);
 
-  // Functions
   res.locals.getDisplayLocation = () => getDisplayLocation(res.locals.location);
   res.locals.getFindHelpPageTitle = () => pageTitles
     .search(res.locals.req_location, res.locals.errorMessage);

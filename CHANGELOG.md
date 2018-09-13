@@ -1,3 +1,8 @@
+1.8.0 / 2018-09-14
+===================
+- Update npm dependencies
+- Add Adobe Analytics
+
 1.7.0 / 2018-09-07
 ===================
 - Remove unnecessary npm dependencies

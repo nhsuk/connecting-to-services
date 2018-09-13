@@ -43,7 +43,11 @@
     {% endif %}
 
     {% block meta %}{% endblock %}
-  </head>
+
+    {% if ADOBE_TRACKING_URL %}
+      <script src="{{ ADOBE_TRACKING_URL }}" async></script>
+    {% endif %}
+</head>
 
   <body class="{% block bodyClass %}{% endblock %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
@@ -58,8 +62,6 @@
       <a href="https://www.nhs.uk/our-policies/cookies-policy/">Find out more about cookies</a>
       </p>
     </div>
-
-    {% block banner %}{% endblock %}
 
     {% include "includes/header.nunjucks" %}
 
