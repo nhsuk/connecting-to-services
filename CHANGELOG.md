@@ -2,6 +2,7 @@
 ===================
 - Update npm dependencies
 - Accessibility improvements
+- Upgrade to `node:8.12.0-alpine`
 
 1.8.0 / 2018-09-14
 ===================
