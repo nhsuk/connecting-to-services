@@ -4,7 +4,7 @@
 <!--[if !IE]><!-->
   <script src="{{ SITE_ROOT }}/js/vendor/jquery-3.3.1.min.js"></script>
 <!--<![endif]-->
-<script src="{{ SITE_ROOT }}/js/vendor/typeahead.bundle-1.2.0.min.js"></script>
+<script src="{{ SITE_ROOT }}/js/vendor/typeahead.bundle-1.2.1.min.js"></script>
 <script src="{{ SITE_ROOT }}/js/app.js"></script>
 
 {% include 'includes/analytics.nunjucks' %}
