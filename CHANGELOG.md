@@ -1,3 +1,11 @@
+1.9.0 / 2018-10-09
+===================
+- Update npm dependencies
+- Accessibility improvements
+- Upgrade to `node:8.12.0-alpine`
+- Prevent IE 11 from focusing on SVGs
+- Fix skip to content for voice over
+
 1.8.0 / 2018-09-14
 ===================
 - Update npm dependencies
