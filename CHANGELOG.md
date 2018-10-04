@@ -1,8 +1,9 @@
-1.9.0 / 2018-10-04
+1.9.0 / 2018-10-09
 ===================
 - Update npm dependencies
 - Accessibility improvements
 - Upgrade to `node:8.12.0-alpine`
+- Prevent IE 11 from focusing on SVGs
 
 1.8.0 / 2018-09-14
 ===================
