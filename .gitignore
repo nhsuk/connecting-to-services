@@ -3,7 +3,10 @@ node_modules/
 *.css.map
 assets.json
 app/views/includes/header-items.nunjucks
-public/js/app.js
+
+# Ignore everything in public/js/* but include public/js/vendor
+public/js/*
+!public/js/vendor
 
 coverage/
 .sass-cache
