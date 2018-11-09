@@ -15,10 +15,14 @@ module.exports = {
       '*.hotjar.com',
       '*.nhs.uk',
     ],
+    frameSrc: [
+      '*.hotjar.com',
+    ],
     imgSrc: [
       '\'self\'',
       'data:',
       '*.2o7.net',
+      '*.everesttech.net',
       '*.google-analytics.com',
       '*.hotjar.com',
       '*.omtrdc.net',
@@ -42,9 +46,6 @@ module.exports = {
       '\'self\'',
       '\'unsafe-inline\'',
       '*.nhs.uk',
-    ],
-    workerSrc: [
-      '*.hotjar.com',
     ],
   },
 };
