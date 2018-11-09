@@ -1,11 +1,9 @@
 module.exports = {
   directives: {
-    childSrc: [
-      '*.hotjar.com',
-    ],
     connectSrc: [
       '\'self\'',
       'assets.adobedtm.com',
+      '*.demdex.net',
       '*.google-analytics.com',
       '*.hotjar.com:*',
       'nhs.funnelback.co.uk',
@@ -34,6 +32,7 @@ module.exports = {
       '\'unsafe-inline\'',
       'data:',
       'assets.adobedtm.com',
+      '*.demdex.net',
       '*.google-analytics.com',
       '*.hotjar.com',
       '*.webtrends.com',
@@ -43,6 +42,9 @@ module.exports = {
       '\'self\'',
       '\'unsafe-inline\'',
       '*.nhs.uk',
+    ],
+    workerSrc: [
+      '*.hotjar.com',
     ],
   },
 };

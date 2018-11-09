@@ -1,7 +1,8 @@
-1.10.0 / TBC
+1.10.0 / 2018-11-TBA
 ===================
 - Use new frontend styles for opening times expander
 - Make the opening times expander full width on screens below tablet
+- Add `*.demdex.net` domain to CSP for Adobe Analytics
 
 1.9.0 / 2018-10-09
 ===================
