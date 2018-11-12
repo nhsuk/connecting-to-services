@@ -5,6 +5,7 @@ services:
   c2s-frontend:
     image: "nhsuk/connecting-to-services:${DOCKER_IMAGE_TAG}"
     environment:
+      ADOBE_DATALAYER_URL: ${ADOBE_DATALAYER_URL}
       ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
       API_BASE_URL: 'http://nearby-services-api.nearby-services-api:3001'
       BUSINESS_HOURS_END_HOUR: ${BUSINESS_HOURS_END_HOUR}

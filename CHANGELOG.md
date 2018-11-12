@@ -4,6 +4,7 @@
 - Make the opening times expander full width on screens below tablet
 - Add `*.demdex.net` domain to CSP for Adobe Analytics
 - Update npm dependencies
+- Add `datalayer.js` for use by Adobe Analytics
 
 1.9.0 / 2018-10-09
 ===================

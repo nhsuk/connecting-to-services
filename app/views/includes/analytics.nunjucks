@@ -41,3 +41,7 @@
     <img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/{{ WEBTRENDS_ANALYTICS_TRACKING_ID }}/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.23&amp;dcssip=.nhs.uk"/>
   </noscript>
 {% endif %}
+
+{% if ADOBE_DATALAYER_URL %}
+  <script src="{{ ADOBE_DATALAYER_URL }}" async></script>
+{% endif %}

@@ -16,12 +16,14 @@ module.exports = {
       '*.nhs.uk',
     ],
     frameSrc: [
+      '*.demdex.net',
       '*.hotjar.com',
     ],
     imgSrc: [
       '\'self\'',
       'data:',
       '*.2o7.net',
+      '*.demdex.net',
       '*.everesttech.net',
       '*.google-analytics.com',
       '*.hotjar.com',
@@ -39,6 +41,7 @@ module.exports = {
       '*.demdex.net',
       '*.google-analytics.com',
       '*.hotjar.com',
+      '*.nhs.uk',
       '*.webtrends.com',
       '*.webtrendslive.com',
     ],
