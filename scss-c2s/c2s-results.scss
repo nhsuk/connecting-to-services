@@ -50,14 +50,14 @@ body {
             .results {
               &__details {
                 padding: 0;
+                > div {
+                  width: 100%;
+                }
                 @include media(tablet) {
                   clear:both;
                   float: left;
                   width: 100%;
                   > div {
-                    max-width: calc( 100% * 1/2);
-                    min-width: calc( 100% * 1/2);
-                    width:100%;
                     float:left;
                     > p {
                       &:first-of-type {
@@ -85,15 +85,14 @@ body {
                     }
                   }
                   > section {
-                    min-width: calc( 100% * 1/2);
-                    max-width: calc( 100% * 1/2);
+                    min-width: 100%;
+                    max-width: 100%;
                   }
                 }
-                @include media(desktop) {
-                  width:100%;
-                  > h2,
-                  > p {
-                    max-width: calc( 100% * 4/7);
+                @media (min-width: 768px) {
+                  > div {
+                    max-width: calc( 100% * 1/2);
+                    min-width: calc( 100% * 1/2);
                   }
                   > section {
                     min-width: calc( 100% * 2/5);
@@ -279,41 +278,20 @@ body {
         position: relative;
         margin-top: 20px;
         .openingTimes-panel__toggle {
-          margin-left: 50px;
-          &:before {
-            content:"\203A";
-            display: inline-block;
-            color:white;
-            background: $blue;
-            border-radius: 18px;
-            height: 36px;
-            width: 36px;
-            max-height: 36px;
-            max-width: 36px;
-            text-align: center;
-            position: absolute;
-            left:0;
-            font-size: 36px;
-            -webkit-transform: rotate(90deg);
-            -moz-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-            -o-transform: rotate(90deg);
-            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-3);
-          }
+          background: url(images/icons/icon-plus.svg) left no-repeat;
+          color: #0058ad;
+          cursor: pointer;          
+          line-height: 1.4em;
+          margin-top: 0;
+          padding: 12px 8px 12px 38px;
+          text-decoration: underline;
         }
         .openingTimes-panel__content {
           display: none;
         }
         &.open {
           .openingTimes-panel__toggle {
-            &:before {
-              content:"\203A";
-              -webkit-transform: rotate(-90deg);
-              -moz-transform: rotate(-90deg);
-              -ms-transform: rotate(-90deg);
-              -o-transform: rotate(-90deg);
-              filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-            }
+            background: url(images/icons/icon-minus.svg) left no-repeat;
           }
           .openingTimes-panel__content {
             display: block;

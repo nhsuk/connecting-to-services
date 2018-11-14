@@ -1,3 +1,8 @@
+1.10.0 / TBC
+===================
+- Use new frontend styles for opening times expander
+- Make the opening times expander full width on screens below tablet
+
 1.9.0 / 2018-10-09
 ===================
 - Update npm dependencies

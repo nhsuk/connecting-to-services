@@ -80,13 +80,11 @@
         </div>
         {% endblock %}
         <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-          <div class="nhsuk-reading-width">
-            <div class="nhsuk-page-content">
-              {% block content %}{% endblock %}
-              </div>
-            </div>
+          <div class="nhsuk-page-content">
+            {% block content %}{% endblock %}
           </div>
-          {% endblock %}
+        </div>
+        {% endblock %}
         </div>
         {% endblock %}
       </main>
