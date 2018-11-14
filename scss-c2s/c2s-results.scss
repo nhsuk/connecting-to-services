@@ -50,14 +50,14 @@ body {
             .results {
               &__details {
                 padding: 0;
+                > div {
+                  width: 100%;
+                }
                 @include media(tablet) {
                   clear:both;
                   float: left;
                   width: 100%;
                   > div {
-                    max-width: calc( 100% * 1/2);
-                    min-width: calc( 100% * 1/2);
-                    width:100%;
                     float:left;
                     > p {
                       &:first-of-type {
@@ -90,6 +90,10 @@ body {
                   }
                 }
                 @media (min-width: 768px) {
+                  > div {
+                    max-width: calc( 100% * 1/2);
+                    min-width: calc( 100% * 1/2);
+                  }
                   > section {
                     min-width: calc( 100% * 2/5);
                     max-width: calc( 100% * 2/5);
