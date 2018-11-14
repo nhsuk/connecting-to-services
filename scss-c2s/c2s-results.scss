@@ -100,6 +100,12 @@ body {
                     max-width: calc( 100% * 2/5);
                   }
                 }
+                @include media(tablet) {
+                  > section {
+                    min-width: 100%;
+                    max-width: 100%;
+                  }
+                }
                 .callout {
                   &--info {
                     background-color: $nhsuk-white;
