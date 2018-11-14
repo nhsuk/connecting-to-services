@@ -60,7 +60,6 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
-| `ADOBE_DATALAYER_URL`              | [Adobe Analytics](https://marketing.adobe.com/resources/help/en_US/sc/implement/ref-data-layer.html) Data Layer                                            |                           | No         |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                                         |                           | No         |
 | `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
