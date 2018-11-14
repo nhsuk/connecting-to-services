@@ -1,10 +1,10 @@
-1.10.0 / 2018-11-TBA
+1.10.0 / 2018-11-20
 ===================
 - Use new frontend styles for opening times expander
 - Make the opening times expander full width on screens below tablet
-- Add `*.demdex.net` domain to CSP for Adobe Analytics
-- Update npm dependencies
+- Update CSP to allow Adobe Analytics resources to run
 - Create `digitalData` object for use by Adobe Analytics
+- Update npm dependencies
 
 1.9.0 / 2018-10-09
 ===================
