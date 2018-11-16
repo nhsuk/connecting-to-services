@@ -6,7 +6,7 @@ function getCategories(path) {
   return path.split('/').filter(Boolean);
 }
 
-function digitaldata(req) {
+function digitalData(req) {
   const path = req.path;
   const categories = getCategories(path);
 
@@ -25,4 +25,4 @@ function digitaldata(req) {
   };
 }
 
-module.exports = digitaldata;
+module.exports = digitalData;

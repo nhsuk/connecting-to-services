@@ -1,11 +1,11 @@
 const chai = require('chai');
 
 const siteRoot = require('../../../app/lib/constants').SITE_ROOT;
-const digitaldata = require('../../../app/lib/digitaldata');
+const digitalData = require('../../../app/lib/digitalData');
 
 const expect = chai.expect;
 
-describe('digitaldata', () => {
+describe('digitalData', () => {
   const siteRootPath = siteRoot.substring(1);
   const secondLevelPath = 'second';
   const thirdLevelPath = 'third';
@@ -14,7 +14,7 @@ describe('digitaldata', () => {
   it('should contain primaryCategory only for site root', () => {
     const req = { path: `${siteRoot}/` };
 
-    const dd = digitaldata(req);
+    const dd = digitalData(req);
 
     expect(dd).to.not.be.null;
     expect(dd).to.have.property('page');
@@ -35,7 +35,7 @@ describe('digitaldata', () => {
   it('should contain 2 categories for second level pages', () => {
     const req = { path: `${siteRoot}/${secondLevelPath}` };
 
-    const dd = digitaldata(req);
+    const dd = digitalData(req);
 
     expect(dd).to.not.be.null;
     expect(dd).to.have.property('page');
@@ -56,7 +56,7 @@ describe('digitaldata', () => {
   it('should contain 3 categories for third level pages', () => {
     const req = { path: `${siteRoot}/${secondLevelPath}/${thirdLevelPath}` };
 
-    const dd = digitaldata(req);
+    const dd = digitalData(req);
 
     expect(dd).to.not.be.null;
     expect(dd).to.have.property('page');
@@ -77,7 +77,7 @@ describe('digitaldata', () => {
   it('should contain 4 categories for fourth level pages', () => {
     const req = { path: `${siteRoot}/${secondLevelPath}/${thirdLevelPath}/${fourthLevelPath}` };
 
-    const dd = digitaldata(req);
+    const dd = digitalData(req);
 
     expect(dd).to.not.be.null;
     expect(dd).to.have.property('page');
