@@ -1,3 +1,7 @@
+1.11.0 / TBA
+===================
+- Use multi-stage build
+
 1.10.0 / 2018-11-20
 ===================
 - Use new frontend styles for opening times expander
