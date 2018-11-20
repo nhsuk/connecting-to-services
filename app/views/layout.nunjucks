@@ -47,6 +47,8 @@
     {% if ADOBE_TRACKING_URL %}
       <script src="{{ ADOBE_TRACKING_URL }}" async></script>
     {% endif %}
+
+    {% include "includes/digitalData.nunjucks" %}
 </head>
 
   <body class="{% block bodyClass %}{% endblock %}">

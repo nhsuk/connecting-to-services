@@ -1,6 +1,7 @@
 const completeOriginalUrl = require('../lib/completeOriginalUrl');
 const countryHelper = require('../lib/countryHelper');
 const displayOpenResults = require('../lib/displayOpenResults');
+const digitalData = require('../lib/digitalData');
 const getDisplayLocation = require('../lib/getDisplayLocation');
 const pageTitles = require('../lib/pageTitles');
 const resultsPageAltUrl = require('../lib/resultsPageAltUrl');
@@ -16,6 +17,7 @@ module.exports = config => (req, res, next) => {
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
   res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.analytics.webtrendsId;
 
+  res.locals.digitalData = digitalData(req);
   res.locals.completeOriginalUrl = completeOriginalUrl(req);
   res.locals.coordinates = {
     latitude: req.query.latitude,
