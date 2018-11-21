@@ -1,3 +1,7 @@
+1.11.0 / TBC
+===================
+- Upgrade Docker container to `node:10.13.0-alpine`
+
 1.10.0 / 2018-11-20
 ===================
 - Use new frontend styles for opening times expander
