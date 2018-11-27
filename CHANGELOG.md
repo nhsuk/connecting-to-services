@@ -1,4 +1,4 @@
-1.11.0 / TBC
+1.11.0 / 2018-11-29
 ===================
 - Upgrade Docker container to `node:10.13.0-alpine`
 - Update npm dependencies
