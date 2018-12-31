@@ -1,6 +1,8 @@
 1.12.0 / TBD
 ===================
 - Update npm dependencies
+- Upgrade Docker container to `node:10.15.2-alpine`
+- Remove newrelic application monitoring
 
 1.11.0 / 2018-11-29
 ===================
