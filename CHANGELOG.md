@@ -1,3 +1,7 @@
+1.12.0 / TBD
+===================
+- Update npm dependencies
+
 1.11.0 / 2018-11-29
 ===================
 - Upgrade Docker container to `node:10.14.0-alpine`
