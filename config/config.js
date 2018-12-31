@@ -24,7 +24,6 @@ module.exports = {
   },
   disableGoogleSearch: process.env.DISABLE_GOOGLE_SEARCH === 'true',
   env: process.env.NODE_ENV || 'development',
-  headerApiUrl: 'https://refdata-api.azurewebsites.net/api/fullheadermenu',
   port: process.env.PORT || 3000,
   root: rootPath,
 };
