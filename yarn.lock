@@ -4587,6 +4587,11 @@ postcode@^0.2.5:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/postcode/-/postcode-0.2.5.tgz#1c1893a7b6da2ea5c8f19bff158593ac81502c78"
 
+postcode@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/postcode/-/postcode-1.0.0.tgz#18061c766cf1a120e2b38a96ee1dcf2376e1103e"
+  integrity sha512-B7ErJHfcC25ReTa3OI3nVlO0gbLDn+BF21j7PGD/rubFetVUhjTmbngD9afvjLzsZCzg+Xc/lsvT5j9q4nmbhQ==
+
 postcodesio-client@^0.3.3:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/postcodesio-client/-/postcodesio-client-0.3.4.tgz#a9d1da55c88f4c79c1a9662249389e4f31885fa5"
@@ -5131,6 +5136,8 @@ run-node@^1.0.0:
 rxjs@^6.1.0:
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
+  dependencies:
+    tslib "^1.9.0"
 
 safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
@@ -5686,10 +5693,6 @@ trim-right@^1.0.1:
   resolved "https://registry.yarnpkg.com/true-case-path/-/true-case-path-1.0.3.tgz#f813b5a8c86b40da59606722b144e3225799f47d"
   dependencies:
     glob "^7.1.2"
-
-tslib@^1.9.0:
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
 tty-browserify@~0.0.0:
   version "0.0.1"
