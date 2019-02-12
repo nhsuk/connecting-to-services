@@ -53,7 +53,7 @@
     "nunjucks": "^3.0.1",
     "object.values": "^1.0.3",
     "on-headers": "^1.0.1",
-    "postcode": "^0.2.5",
+    "postcode": "^1.0.0",
     "postcodesio-client": "^0.3.3",
     "request": "^2.81.0",
     "require-environment-variables": "^1.1.2",
