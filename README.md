@@ -73,8 +73,6 @@ environment.
 | `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
 | `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
-| `NEW_RELIC_LICENSE_KEY`            | [New Relic license key](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#license)                  |                           | No         |
-| `NEW_RELIC_LOG_LEVEL`              | [New Relic log level](https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#log_level)                  | info                      | No         |
 | `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
