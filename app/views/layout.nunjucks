@@ -58,13 +58,6 @@
       <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
     </div>
 
-    <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
-      <p class="notification-banner--inner">
-      The NHS website uses cookies to make the site simpler.
-      <a href="https://www.nhs.uk/our-policies/cookies-policy/">Find out more about cookies</a>
-      </p>
-    </div>
-
     {% include "includes/header.nunjucks" %}
 
     {% include "includes/breadcrumbs.nunjucks" %}

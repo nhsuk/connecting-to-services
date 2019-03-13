@@ -3,6 +3,7 @@
 - Update npm dependencies
 - Upgrade Docker container to `node:10.15.3-alpine`
 - Remove newrelic application monitoring
+- Remove simple cookie banner
 
 1.11.0 / 2018-11-29
 ===================
