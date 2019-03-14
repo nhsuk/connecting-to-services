@@ -20,7 +20,6 @@
     <meta property="og:image" content="{{ SITE_ROOT }}/images/opengraph-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    <meta name="DCS.dcsipa" content="1">
 
     <link href="{{ SITE_ROOT }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]><link href="{{ SITE_ROOT }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
@@ -56,13 +55,6 @@
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
     <div class="nhsuk-c-skiplink">
       <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
-    </div>
-
-    <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
-      <p class="notification-banner--inner">
-      The NHS website uses cookies to make the site simpler.
-      <a href="https://www.nhs.uk/our-policies/cookies-policy/">Find out more about cookies</a>
-      </p>
     </div>
 
     {% include "includes/header.nunjucks" %}

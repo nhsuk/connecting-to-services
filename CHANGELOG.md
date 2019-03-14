@@ -1,8 +1,10 @@
 1.12.0 / TBD
 ===================
 - Update npm dependencies
-- Upgrade Docker container to `node:10.15.2-alpine`
+- Upgrade Docker container to `node:10.15.3-alpine`
 - Remove newrelic application monitoring
+- Remove simple cookie banner
+- Remove Webtrends (no longer used)
 
 1.11.0 / 2018-11-29
 ===================
