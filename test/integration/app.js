@@ -34,12 +34,3 @@ describe('An unknown page', () => {
     }
   });
 });
-
-describe('meta tags', () => {
-  it('should instruct Webtrends to anonymise IP Addresses', async () => {
-    const res = await chai.request(server).get('/');
-    const $ = cheerio.load(res.text);
-
-    expect($('meta[name="DCS.dcsipa"]').prop('content')).to.equal('1');
-  });
-});

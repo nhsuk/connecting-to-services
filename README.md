@@ -74,7 +74,6 @@ environment.
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
 | `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
 | `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ
 
