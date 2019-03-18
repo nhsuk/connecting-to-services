@@ -5,7 +5,6 @@ const rootPath = path.normalize(`${__dirname}/..`);
 module.exports = {
   analytics: {
     adobeTrackingUrl: process.env.ADOBE_TRACKING_URL,
-    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
     hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,
   },
   app: {

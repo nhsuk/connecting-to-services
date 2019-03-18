@@ -5,6 +5,7 @@
 - Remove newrelic application monitoring
 - Remove simple cookie banner
 - Remove Webtrends (no longer used)
+- Remove Google Analytics (no longer used)
 
 1.11.0 / 2018-11-29
 ===================

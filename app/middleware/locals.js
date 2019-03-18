@@ -15,7 +15,6 @@ module.exports = config => (req, res, next) => {
   res.locals.DISABLE_GOOGLE_SEARCH = config.disableGoogleSearch;
 
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
-  res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
 
   res.locals.digitalData = digitalData(req);
