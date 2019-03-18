@@ -23,7 +23,6 @@ module.exports = {
   cookiebot: {
     scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
   },
-  disableGoogleSearch: process.env.DISABLE_GOOGLE_SEARCH === 'true',
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   root: rootPath,

@@ -1,10 +1,10 @@
-# 11. Add Google Sitelinks Searchbox metadata
+# 11. Add Google Sitelinks Searchbox Metadata
 
 Date: 2018-01-23
 
 ## Status
 
-Accepted
+Superceded by [13. Remove Google Sitelinks Searchbox Metadata](0013-remove-google-sitelinks-searchbox-metadata.md)
 
 ## Context
 

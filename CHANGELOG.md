@@ -6,6 +6,7 @@
 - Remove simple cookie banner
 - Remove Webtrends (no longer used)
 - Remove Google Analytics (no longer used)
+- Remove Google Sitelinks Search Metadata
 
 1.11.0 / 2018-11-29
 ===================
