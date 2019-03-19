@@ -1,10 +1,12 @@
-1.12.0 / TBD
+1.12.0 / 2019-03-20
 ===================
 - Update npm dependencies
 - Upgrade Docker container to `node:10.15.3-alpine`
 - Remove newrelic application monitoring
 - Remove simple cookie banner
 - Remove Webtrends (no longer used)
+- Remove Google Analytics (no longer used)
+- Remove Google Sitelinks Search Metadata
 
 1.11.0 / 2018-11-29
 ===================

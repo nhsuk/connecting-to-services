@@ -58,22 +58,21 @@ application will fail to start and an appropriate message will be displayed.
 Environment variables are used to set application level settings for each
 environment.
 
-| Variable                           | Description                                                                                                                                                | Default                   | Required   |
-| :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
-| `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                                         |                           | No         |
-| `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                                        |                           | Yes        |
-| `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
-| `BUSINESS_HOURS_START_HOUR`        | Business hours start hour                                                                                                                                  | 8                         | No         |
-| `BUSINESS_HOURS_START_MINUTE`      | Business hours start minute                                                                                                                                | 0                         | No         |
-| `BUSINESS_HOURS_END_HOUR`          | Business hours end hour                                                                                                                                    | 18                        | No         |
-| `BUSINESS_HOURS_END_MINUTE`        | Business hours end minute                                                                                                                                  | 0                         | No         |
-| `DATETIME`                         | The initial display of results is determined by the time of the search. Bank holiday messaging is determined by the date of the search                     |                           | No         |
-| `DISABLE_GOOGLE_SEARCH`            | Set to 'true' to disable the metadata which enables [Google Sitelinks searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox) | false                     |            |
-| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
-| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
-| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
-| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
-| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
+| Variable                           | Description                                                                                                                            | Default                                   | Required  |
+| :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- | :-------- |
+| `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                     |                                           | No        |
+| `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                    |                                           | Yes       |
+| `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                          | test:test                                 |           |
+| `BUSINESS_HOURS_START_HOUR`        | Business hours start hour                                                                                                              | 8                                         | No        |
+| `BUSINESS_HOURS_START_MINUTE`      | Business hours start minute                                                                                                            | 0                                         | No        |
+| `BUSINESS_HOURS_END_HOUR`          | Business hours end hour                                                                                                                | 18                                        | No        |
+| `BUSINESS_HOURS_END_MINUTE`        | Business hours end minute                                                                                                              | 0                                         | No        |
+| `COOKIEBOT_SCRIPT_URL`             | The URL for the in-house implementation of Cookiebot                                                                                   | //assets.nhs.uk/scripts/cookie-consent.js |           |
+| `DATETIME`                         | The initial display of results is determined by the time of the search. Bank holiday messaging is determined by the date of the search |                                           | No        |
+| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                          |                                           | No        |
+| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                      | Depends on `NODE_ENV`                     |           |
+| `NODE_ENV`                         | Node environment                                                                                                                       | development                               |           |
+| `PORT`                             | Server port                                                                                                                            | 3000                                      |           |
 
 ## FAQ
 

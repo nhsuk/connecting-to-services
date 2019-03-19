@@ -5,7 +5,6 @@ const rootPath = path.normalize(`${__dirname}/..`);
 module.exports = {
   analytics: {
     adobeTrackingUrl: process.env.ADOBE_TRACKING_URL,
-    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
     hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,
   },
   app: {
@@ -21,7 +20,9 @@ module.exports = {
       minute: process.env.BUSINESS_HOURS_START_MINUTE || 0,
     },
   },
-  disableGoogleSearch: process.env.DISABLE_GOOGLE_SEARCH === 'true',
+  cookiebot: {
+    scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
+  },
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   root: rootPath,

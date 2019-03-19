@@ -10,10 +10,9 @@ module.exports = config => (req, res, next) => {
   res.locals.ASSETS_URL = req.app.locals.ASSETS_URL;
   res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
 
-  res.locals.DISABLE_GOOGLE_SEARCH = config.disableGoogleSearch;
+  res.locals.COOKIEBOT_SCRIPT_URL = config.cookiebot.scriptUrl;
 
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
-  res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
 
   res.locals.digitalData = digitalData(req);

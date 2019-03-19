@@ -6,5 +6,3 @@
 <!--<![endif]-->
 <script src="{{ SITE_ROOT }}/js/vendor/typeahead.bundle-1.2.1.min.js"></script>
 <script src="{{ SITE_ROOT }}/js/app.js"></script>
-
-{% include 'includes/analytics.nunjucks' %}
