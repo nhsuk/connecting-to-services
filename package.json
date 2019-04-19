@@ -56,7 +56,7 @@
     "nunjucks": "^3.0.1",
     "object.values": "^1.0.3",
     "on-headers": "^1.0.1",
-    "postcode": "^1.0.1",
+    "postcode": "^2.0.0",
     "postcodesio-client": "^0.3.3",
     "prom-client": "^11.2.1",
     "request": "^2.81.0",
