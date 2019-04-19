@@ -5384,10 +5384,10 @@ postcode@^0.2.5:
   resolved "https://registry.yarnpkg.com/postcode/-/postcode-0.2.5.tgz#1c1893a7b6da2ea5c8f19bff158593ac81502c78"
   integrity sha1-HBiTp7baLqXI8Zv/FYWTrIFQLHg=
 
-postcode@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/postcode/-/postcode-1.0.1.tgz#61a55003987fab845ec9ab4a7a07e0daa31372c8"
-  integrity sha512-aENNSfjVsK0WQMiaqWt6wgbc+eq63p6xhZA2UtNlCwoPCWXqvZStEvk0vKsSImawCCrSkQTDstj+snGltn6Tkg==
+postcode@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postcode/-/postcode-2.0.0.tgz#4a9d8682712550d6d392d019c1d0cd42f332b926"
+  integrity sha512-XgTZ69nDP/dChN/kOe4BiZKJHj6oJb5heBXlik11Y37nVyYXJbPjKrQrVpt8Ioxl6BXQiULl2hvGmmxnQ7+lRw==
 
 postcodesio-client@^0.3.3:
   version "0.3.4"
