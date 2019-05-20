@@ -16,9 +16,9 @@ chai.use(chaiHttp);
 const resultsRoute = `${constants.SITE_ROOT}/results`;
 
 function expectSearchAgainPage($) {
-  expect($('.error-summary-heading').text())
+  expect($('.nhsuk-error-message').text())
     .to.contain('You must enter a town, city or postcode to find a pharmacy.');
-  expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
+  expect($('label.nhsuk-body-l').text()).to.equal('Enter a town, city or postcode in England');
 }
 
 function expectMidsomerNortonResults($, location, numberOfResults) {

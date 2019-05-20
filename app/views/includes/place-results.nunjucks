@@ -1,9 +1,9 @@
-<div class="reading-width places">
+<div class="nhsuk-u-reading-width places">
   <h1>We found {{places.length}} places that match '{{location}}'</h1>
   <p>
     Choose one of the following:
   </p>
-  <ol class="results">
+  <ol class="nhsuk-list">
   {% for place in places %}
     <li class="results__item">
       <a href="{{ SITE_ROOT }}/results?{{place.queryString}}" class="link">{{place.description}}</a>

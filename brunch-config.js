@@ -11,8 +11,6 @@ module.exports = {
     stylesheets: {
       joinTo: {
         'nhsuk.css': /c2s.scss/,
-        'nhsukie78.css': /c2s-ie78.scss/,
-        'print.css': /c2s-print.scss/,
       },
     },
   },

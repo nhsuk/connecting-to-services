@@ -1,5 +1,13 @@
+1.13.0 / TBC
+============
+- Added NHS.UK frontend dependency
+- Remove existing Sass
+- Updated page templates
+- Updated components (Header, footer, breadcrumb etc)
+- Updated tests
+
 1.12.1 / TBC
-===================
+============
 - Remove the specific version of python from the Dockerfile
 - Update npm dependencies
 - Use node LTS version for travis

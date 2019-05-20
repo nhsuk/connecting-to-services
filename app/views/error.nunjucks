@@ -7,7 +7,7 @@
 {% block headerContent %}{{ message }}{% endblock %}
 
 {% block content %}
-  <div class="reading-width">
+  <div class="nhsuk-u-reading-width">
     <p>Please try again later.</p>
   <div>
 {% endblock %}

@@ -1,35 +1,39 @@
-<section class="callout callout--info callout--compact">
-  <p class="callout--info__mesg">{{ service.openingTimesMessage }}</p>
+<div class="nhsuk-panel nhsuk-u-margin-0 nhsuk-u-padding-bottom-2 nhsuk-u-padding-right-4 nhsuk-u-padding-left-4 nhsuk-u-padding-top-4">
+  <p class="nhsuk-u-margin-bottom-1 nhsuk-u-font-weight-bold">{{ service.openingTimesMessage }}</p>
   {% if not service.isOpen %}<a class="openingTimes__openResults" href="{{ resultsPageAltUrl }}">Looking for pharmacies open now?</a>{% endif %}
-  {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
+  {% if service.bankHolidayMessage %}<div class="nhsuk-inset-text nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-3"><p>{{ service.bankHolidayMessage }}</p></div>{% endif %}
   {% set openingTimes = service.openingTimes %}
   {% if openingTimes %}
-  <div class="openingTimes-panel">
-    <a href="javascript:void(0)" class="openingTimes-panel__toggle" data-toggle="collapse" role="button" aria-expanded="false">Opening times<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></a>
-    <div class="openingTimes-panel__content">
-     <table class="openingTimes">
-      <tr><th>Day of the week</th><th>Opening hours</th></tr>
-      {% for openingTime in openingTimes %}
-        {% for sessions in openingTime.openingTimes %}
-          {% if loop.first %}
-            <tr>
-              <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
-              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
-            </tr>
+  <details class="openingTimes-panel nhsuk-details nhsuk-expander">
+    <summary class="nhsuk-details__summary nhsuk-u-padding-top-2 nhsuk-u-padding-bottom-2 nhsuk-u-padding-left-0 nhsuk-u-padding-right-0">
+      <span class="nhsuk-details__summary-text">
+        Opening times<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.address.line1 }}
+      </span>
+    </summary>
+    <div class="nhsuk-details__text nhsuk-u-padding-0">
+      <table class="openingTimes">
+        <tr><th>Day of the week</th><th>Opening hours</th></tr>
+        {% for openingTime in openingTimes %}
+          {% for sessions in openingTime.openingTimes %}
+            {% if loop.first %}
+              <tr>
+                <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
+                <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+              </tr>
+            {% else %}
+              <tr class="hasSessions">
+                <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+              </tr>
+            {% endif %}
           {% else %}
-            <tr class="hasSessions">
-              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+            <tr>
+              <th>{{ openingTime.day }}</th>
+              <td>Closed</td>
             </tr>
-          {% endif %}
-        {% else %}
-          <tr>
-            <th>{{ openingTime.day }}</th>
-            <td>Closed</td>
-          </tr>
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
-    </table>
+      </table>
     </div>
-  </div>
+  </details>
   {% endif %}
-</section>
+</div>

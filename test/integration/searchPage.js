@@ -24,8 +24,8 @@ describe('Search page', () => {
 
     const $ = cheerio.load(res.text);
 
-    const additionalLinksText = $('.additional-links p');
-    const additionalLinks = $('.additional-links p a');
+    const additionalLinksText = $('.additional-links li');
+    const additionalLinks = $('.additional-links li a');
 
     expect($(additionalLinksText[0]).text()).to.equal('See all internet pharmacies');
     expect($(additionalLinks[0]).attr('href')).to.equal('https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies');

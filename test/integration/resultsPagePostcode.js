@@ -62,7 +62,6 @@ describe('The results page', () => {
 
     expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS');
     iExpect.resultsPageBreadcrumb($);
-    iExpect.call111Callout($);
   });
 
   it('should return 10 open results', async () => {
@@ -101,7 +100,6 @@ describe('The results page', () => {
 
     expect($('head title').text()).to.equal('Pharmacies near LS2 7UE - NHS');
     iExpect.resultsPageBreadcrumb($);
-    iExpect.call111Callout($);
   });
 
   it('should display no pharmacies, formatted postcode, and country specific message for known non-english postcodes', async () => {
@@ -253,10 +251,10 @@ describe('The results page error handling', () => {
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 
-      expect($('.error-summary-heading').text()).to
+      expect($('.nhsuk-error-message').text()).to
         .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
       expect($('head title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS`);
-      expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
+      expect($('label.nhsuk-body-l').text()).to.equal('Enter a town, city or postcode in England');
     }
   );
 

@@ -53,7 +53,7 @@ describe('The results page', () => {
     it('should provide a link to see open pharmacies by default', () => {
       const toggle = $('.viewToggle a');
       const toggleText = $('.viewToggle');
-      expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
+      expect(toggleText.text()).to.equal('Only show pharmacies open now');
       expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
     });
 
@@ -74,7 +74,7 @@ describe('The results page', () => {
 
       const toggle = $('.viewToggle a');
       const toggleText = $('.viewToggle');
-      expect(toggleText.text()).to.equal('Only showing pharmacies open now. Show all pharmacies.');
+      expect(toggleText.text()).to.equal('Show all pharmacies');
       expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=false`);
     });
 
@@ -127,8 +127,8 @@ describe('The results page', () => {
     });
 
     it('should remove opening times block when there are no opening times', () => {
-      const resultsWithTimes = $('section:has(.openingTimes-panel)');
-      const resultsWithOutTimes = $('section:not(:has(.openingTimes-panel))');
+      const resultsWithTimes = $('.nhsuk-panel:has(.openingTimes-panel)');
+      const resultsWithOutTimes = $('.nhsuk-panel:not(:has(.openingTimes-panel))');
 
       expect(resultsWithTimes.length).to.equal(9);
       expect(resultsWithOutTimes.length).to.equal(1);
@@ -173,7 +173,7 @@ describe('The results page', () => {
     });
 
     it('should display a row for each session', () => {
-      const resultWithSessions = $('section:has(.openingTimes-panel)').eq(1).find('tr');
+      const resultWithSessions = $('.nhsuk-panel:has(.openingTimes-panel)').eq(1).find('tr');
       expect(resultWithSessions.length).to.equal(13);
       expect(resultWithSessions.eq(11).find('th').text()).to.equal(daysOfWeek[5]);
       expect(resultWithSessions.eq(11).find('td').text()).to.equal('Closed');

@@ -1,43 +1,38 @@
-<nav class="nhsuk-c-breadcrumb" aria-label="Breadcrumb">
-  <div class="nhsuk-o-width-container">
-    <ol class="nhsuk-c-breadcrumb__list">
-      <li class="nhsuk-c-breadcrumb__item">
-        <a href="https://www.nhs.uk" class="nhsuk-c-breadcrumb__link">Home</a>
-        {% include "./icon-chevron-right.svg" %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item">
+        <a href="https://www.nhs.uk" class="nhsuk-breadcrumb__link">Home</a>
       </li>
-      <li class="nhsuk-c-breadcrumb__item">
-        <a href="https://www.nhs.uk/service-search" class="nhsuk-c-breadcrumb__link">Services near you</a>
-        {% include "./icon-chevron-right.svg" %}
+      <li class="nhsuk-breadcrumb__item">
+        <a href="https://www.nhs.uk/service-search" class="nhsuk-breadcrumb__link">Services near you</a>
       </li>
       {% if places is not defined and services is not defined %}
       {% if coordinates.latitude and coordinates.longitude %}
-        <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
-        {% include "./icon-chevron-right.svg" %}
+        <li class="nhsuk-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
         </li>
-        <li class="nhsuk-c-breadcrumb__item">No results</li>
+        <li class="nhsuk-breadcrumb__item">No results</li>
       {% else %}
-        <li class="nhsuk-c-breadcrumb__item">Find a pharmacy</li>
+        <li class="nhsuk-breadcrumb__item">Find a pharmacy</li>
         {% endif %}
       {% else %}
-        <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
-        {% include "./icon-chevron-right.svg" %}
+        <li class="nhsuk-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
         </li>
         {% if places.length > 0 %}
-        <li class="nhsuk-c-breadcrumb__item">Places that match '{{location}}'</li>
+        <li class="nhsuk-breadcrumb__item">Places that match '{{location}}'</li>
         {% elif services.length > 0 %}
-        <li class="nhsuk-c-breadcrumb__item">Results</li>
+        <li class="nhsuk-breadcrumb__item">Results</li>
         {% else %}
-        <li class="nhsuk-c-breadcrumb__item">No results</li>
+        <li class="nhsuk-breadcrumb__item">No results</li>
         {% endif %}
       {% endif %}
     </ol>
-    <p class="nhsuk-c-breadcrumb__back">
+    <p class="nhsuk-breadcrumb__back">
     {% if places is not defined and services is not defined %}
-    <a href="https://www.nhs.uk/service-search" class="nhsuk-c-breadcrumb__backlink">Back to Services near you</a>
+    <a href="https://www.nhs.uk/service-search" class="nhsuk-breadcrumb__backlink">Back to Services near you</a>
     {% else %}
-    <a href="{{ SITE_ROOT }}" class="nhsuk-c-breadcrumb__backlink">Find a pharmacy</a>
+    <a href="{{ SITE_ROOT }}" class="nhsuk-breadcrumb__backlink">Find a pharmacy</a>
     {% endif %}
-    {% include "./icon-chevron-left.svg" %}
     </p>
   </div>
 </nav>

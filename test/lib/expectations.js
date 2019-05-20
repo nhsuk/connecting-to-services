@@ -23,26 +23,21 @@ function htmlWith200Status(res) {
 }
 
 function noResultsPageBreadcrumb($) {
-  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
-  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal('No results');
+  expect($('.nhsuk-breadcrumb__item').length).to.equal(4);
+  expect($('.nhsuk-breadcrumb__item').last().text()).to.equal('No results');
 }
 
 function resultsPageBreadcrumb($) {
-  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
-  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal('Results');
+  expect($('.nhsuk-breadcrumb__item').length).to.equal(4);
+  expect($('.nhsuk-breadcrumb__item').last().text()).to.equal('Results');
 }
 
 function disambiguationPageBreadcrumb($, searchTerm) {
-  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
-  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal(`Places that match '${searchTerm}'`);
-}
-
-function call111Callout($) {
-  expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
+  expect($('.nhsuk-breadcrumb__item').length).to.equal(4);
+  expect($('.nhsuk-breadcrumb__item').last().text()).to.equal(`Places that match '${searchTerm}'`);
 }
 
 module.exports = {
-  call111Callout,
   disambiguationPageBreadcrumb,
   findHelpPage,
   findHelpPageInvalidEntry,

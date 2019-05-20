@@ -10,12 +10,18 @@
 
 {% block header %}
 {% if services.length > 0 %}
-<div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-  <div class="nhsuk-page-heading">
-    <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
-  </div>
-</div>
+<div class="nhsuk-grid-column-full">
+  
+
+  {% if displayOpenResults %}
+  <span class="nhsuk-caption-l">Only showing open</span>
+  <h1>Pharmacies near {{ getDisplayLocation() }}</span></h1>
+  {% else %}
+  <span class="nhsuk-caption-l">Showing all</span>
+  <h1>Pharmacies near {{ getDisplayLocation() }}</span></h1>
+  {% endif %}
 {% endif %}
+</div>
 {% endblock %}
 
 {% block content %}
@@ -23,20 +29,23 @@
 {% include "includes/no-pharmacy-results.nunjucks" %}
 {% else %}
 
-<div class="nhsuk-o-grid">
   {% if displayOpenResults %}
-  <p class="viewToggle">Only showing pharmacies open now. <a href="{{ resultsPageAltUrl }}">Show all pharmacies.</a></p>
+  <p class="viewToggle nhsuk-u-margin-bottom-5 c2s-open-toggle"><a href="{{ resultsPageAltUrl }}">Show all pharmacies</a></p>
   {% else %}
-  <p class="viewToggle">Showing all pharmacies. <a href="{{ resultsPageAltUrl }}">Only show pharmacies open now.</a></p>
+  <p class="viewToggle nhsuk-u-margin-bottom-5 c2s-open-toggle"><a href="{{ resultsPageAltUrl }}">Only show pharmacies open now</a></p>
   {% endif %}
-  <ol class="results fade-in">
+  <ol class="nhsuk-list nhsuk-list--border">
     {% for service in services %}
     {% include "includes/result-item.nunjucks" %}
     {% endfor %}
   </ol>
-  <p class="searchAgain"><a href="{{ SITE_ROOT }}/">Search again</a></p>
-  {% include "includes/call-111.nunjucks" %}
+  <div class="nhsuk-back-link">
+    <a class="nhsuk-back-link__link" href="{{ SITE_ROOT }}/">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Search again</a>
+  </div>
   {% endif %}
-</div>
 
 {% endblock %}

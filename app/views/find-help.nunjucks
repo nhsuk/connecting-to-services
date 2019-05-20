@@ -6,47 +6,41 @@
 
 {% block content %}
 
-{% if errorMessage %}
-<div class="error-summary">
-  <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage }}
-  </h2>
-</div>
-{% endif %}
-
 <div class="nhsuk-app__search">
   <div class="search-container">
     <form method="get" class="form" action="{{ SITE_ROOT }}/results">
-      <div>
-        <div class="form-group {% if errorMessage %}error{% endif %}">
-          <label class="nhsuk-heading-m" for="location">{{ locationLabel }}</label>
+      <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
+        <label class="nhsuk-body-l nhsuk-u-margin-bottom-4" for="location">{{ locationLabel }}</label>
+        {% if errorMessage %}
+        <span class="nhsuk-error-message" id="error-message">
+          <span class="nhsuk-u-visually-hidden">Error:</span> {{ errorMessage }}
+        </span>
+        {% endif %}
+        <input autocomplete="off" type="text" class="nhsuk-input nhsuk-input--width-10 {% if errorMessage %}nhsuk-input--error{% endif %}" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+        <button class="nhsuk-button--link geo-locate--locate" type="button">Use my current location</button>
+        <div class="geo-locate--searching nhsuk-loader">
+          <span class="nhsuk-loader__spinner nhsuk-loader__spinner--mobile"></span>
+          <p class="nhsuk-loader__text">Searching for your current location</p>
         </div>
-        <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
       </div>
-
-      <div class="form-item-wrapper">
-        <div class="form-group">
-          <input type="submit" class="button" value="Search">
-        </div>
+      <div class="nhsuk-form-group">
+        <input type="submit" class="nhsuk-button nhsuk-u-margin-bottom-0" value="Search">
       </div>
       <div class="geo-locate">
-        <div class="geo-locate--error error">
+        <div class="geo-locate--error nhsuk-form-group--error">
           <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
         </div>
-        <div class="geo-locate--searching">
-          <p>We are searching for your location <img src="images/loading.gif" alt="" /></p>
-        </div>
-        <p><a class="button button--secondary geo-locate--locate" href="#">Use your location</a></p>
       </div>
-      <div class="geo-locate--denied error">
-        <p>You have not allowed us to use your location. You can change this in your browser settings.</p>
+      <div class="geo-locate--denied nhsuk-form-group--error">
+        <p>You have not allowed us to use your location.</br> You can change this in your browser settings.</p>
       </div>
     </form>
   </div>
 </div>
 
-<div class="additional-links">
-  <p><a href="https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies" target="_blank">See all internet pharmacies</a></p>
-  <p><a href="https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies" target="_blank">See all dispensing appliance contractors</a></p>
-</div>
+<ul class="additional-links nhsuk-list nhsuk-u-margin-top-6">
+  <li><a href="https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies" target="_blank">See all internet pharmacies</a></li>
+  <li><a href="https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies" target="_blank">See all dispensing appliance contractors</a></li>
+</ul>
+
 {% endblock %}
