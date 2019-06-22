@@ -71,7 +71,7 @@
     "cheerio": "^1.0.0-rc.2",
     "coveralls": "^3.0.1",
     "destroy": "^1.0.4",
-    "eslint": "^5.0.0",
+    "eslint": "^6.0.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-nhsuk": "^0.16.0",
     "eslint-plugin-import": "^2.7.0",
