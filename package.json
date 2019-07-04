@@ -20,7 +20,9 @@
     "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
-    "test-watch": "yarn test -- --watch --reporter min"
+    "test-watch": "yarn test -- --watch --reporter min",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -62,7 +64,8 @@
     "request": "^2.81.0",
     "require-environment-variables": "^1.1.2",
     "sass-brunch": "^2.10.4",
-    "uglify-es": "^3.1.8"
+    "uglify-es": "^3.1.8",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "bower": "^1.8.0",
@@ -84,5 +87,6 @@
     "nock": "^10.0.2",
     "nodemon": "^1.12.0",
     "proxyquire": "^2.0.0"
-  }
+  },
+  "snyk": true
 }
