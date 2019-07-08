@@ -1,8 +1,9 @@
-1.12.1 / TBC
+1.13.0 / TBC
 ===================
 - Remove the specific version of python from the Dockerfile
 - Update npm dependencies
 - Use node LTS version for travis
+- Upgrade Docker container to use latest node LTS version
 
 1.12.0 / 2019-03-20
 ===================
