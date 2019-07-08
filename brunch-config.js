@@ -41,7 +41,7 @@ module.exports = {
   },
   plugins: {
     babel: {
-      presets: ['env'],
+      presets: ['@babel/preset-env'],
     },
     fingerprint: {
       autoClearOldFiles: true,
