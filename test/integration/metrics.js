@@ -96,8 +96,8 @@ describe('metrics end point', () => {
     expect(responseText).to.have.string('# HELP process_open_fds Number of open file descriptors.\n# TYPE process_open_fds gauge');
     expect(responseText).to.have.string('# HELP process_max_fds Maximum number of open file descriptors.\n# TYPE process_max_fds gauge');
     expect(responseText).to.have.string('# HELP nodejs_eventloop_lag_seconds Lag of event loop in seconds.\n# TYPE nodejs_eventloop_lag_seconds gauge');
-    expect(responseText).to.have.string('# HELP nodejs_active_handles_total Number of active handles.\n# TYPE nodejs_active_handles_total gauge');
-    expect(responseText).to.have.string('# HELP nodejs_active_requests_total Number of active requests.\n# TYPE nodejs_active_requests_total gauge');
+    expect(responseText).to.have.string('# HELP nodejs_active_handles_total Total number of active handles.\n# TYPE nodejs_active_handles_total gauge');
+    expect(responseText).to.have.string('# HELP nodejs_active_requests_total Total number of active requests.\n# TYPE nodejs_active_requests_total gauge');
     expect(responseText).to.have.string('# HELP nodejs_heap_size_total_bytes Process heap size from node.js in bytes.\n# TYPE nodejs_heap_size_total_bytes gauge');
     expect(responseText).to.have.string('# HELP nodejs_heap_size_used_bytes Process heap size used from node.js in bytes.\n# TYPE nodejs_heap_size_used_bytes gauge');
     expect(responseText).to.have.string('# HELP nodejs_external_memory_bytes Nodejs external memory size in bytes.\n# TYPE nodejs_external_memory_bytes gauge');
