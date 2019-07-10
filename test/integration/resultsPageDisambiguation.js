@@ -40,7 +40,7 @@ describe('The place results page', () => {
     expect($('.places > h1').text())
       .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
-    expect($('head title').text()).to.equal('Find a pharmacy - Places that match \'multiresult\' - NHS');
+    expect($('head title').text()).to.equal(`${constants.app.title} - Places that match 'multiresult' - NHS`);
     iExpect.disambiguationPageBreadcrumb($, multiPlaceTerm);
   });
 

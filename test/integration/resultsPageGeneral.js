@@ -57,12 +57,6 @@ describe('The results page', () => {
         expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
         expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
       });
-
-      it('should include the minimum level of meta data', () => {
-        expect($('meta[property="og:image"]').attr('content')).to.equal(`${constants.SITE_ROOT}/images/opengraph-image.png`);
-        expect($('meta[property="og:image:width"]').attr('content')).to.equal('1200');
-        expect($('meta[property="og:image:height"]').attr('content')).to.equal('1200');
-      });
     });
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', async () => {

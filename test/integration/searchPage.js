@@ -10,6 +10,8 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Search page', () => {
+  const appTitle = constants.app.title;
+
   describe('happy path', () => {
     let $;
 
@@ -21,15 +23,7 @@ describe('Search page', () => {
 
     describe('page title', () => {
       it('should be \'Find a pharmarcy - NHS\'', async () => {
-        expect($('head title').text()).to.equal('Find a pharmacy - NHS');
-      });
-    });
-
-    describe('meta data', () => {
-      it('should include the minimum level of meta data', () => {
-        expect($('meta[property="og:image"]').attr('content')).to.equal(`${constants.SITE_ROOT}/images/opengraph-image.png`);
-        expect($('meta[property="og:image:width"]').attr('content')).to.equal('1200');
-        expect($('meta[property="og:image:height"]').attr('content')).to.equal('1200');
+        expect($('head title').text()).to.equal(`${appTitle} - NHS`);
       });
     });
 
@@ -56,7 +50,7 @@ describe('Search page', () => {
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
       iExpect.searchAgainPage($);
-      expect($('head title').text()).to.equal('Find a pharmacy - Enter a town, city or postcode, or use your location - NHS');
+      expect($('head title').text()).to.equal(`${appTitle} - Enter a town, city or postcode, or use your location - NHS`);
     });
 
     it('should return search page for non-alphanumeric search', async () => {
@@ -67,7 +61,7 @@ describe('Search page', () => {
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
       iExpect.searchAgainPage($);
-      expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find the postcode \'!@£$%\' - NHS');
+      expect($('head title').text()).to.equal(`${appTitle} - We can't find the postcode '!@£$%' - NHS`);
     });
   });
 });

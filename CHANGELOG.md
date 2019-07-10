@@ -4,6 +4,7 @@
 - Update npm dependencies
 - Use node LTS version for travis
 - Upgrade Docker container to use latest node LTS version
+- Add additional (and update existing) metadata properties to meet minimum set
 
 1.12.0 / 2019-03-20
 ===================

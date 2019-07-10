@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block headerContent %}Find a pharmacy{% endblock %}
+{% block headerContent %}{{ app.title }}{% endblock %}
 
 {% block pageTitle %}{{getFindHelpPageTitle()}}{% endblock %}
 

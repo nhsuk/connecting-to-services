@@ -16,6 +16,7 @@ chai.use(chaiHttp);
 
 const resultsRoute = `${constants.SITE_ROOT}/results`;
 const nearbyResultsCount = constants.api.nearbyResultsCount;
+const appTitle = constants.app.title;
 
 describe('The results page', () => {
   after('clean nock', () => {
@@ -129,7 +130,7 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near BT1 - NHS');
+    expect($('head title').text()).to.equal(`${appTitle} - We can't find any pharmacies near BT1 - NHS`);
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -157,7 +158,7 @@ describe('The results page', () => {
       .contain('This service only provides information about pharmacies in England.');
     expect($('.results__none-content').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('head title').text()).to.equal('Find a pharmacy - We can\'t find any pharmacies near IM1 - NHS');
+    expect($('head title').text()).to.equal(`${appTitle} - We can't find any pharmacies near IM1 - NHS`);
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -255,7 +256,7 @@ describe('The results page error handling', () => {
 
       expect($('.error-summary-heading').text()).to
         .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
-      expect($('head title').text()).to.equal(`Find a pharmacy - We can't find the postcode '${unknownPostcodeUppercase}' - NHS`);
+      expect($('head title').text()).to.equal(`${appTitle} - We can't find the postcode '${unknownPostcodeUppercase}' - NHS`);
       expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
     }
   );

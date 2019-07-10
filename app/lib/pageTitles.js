@@ -1,23 +1,22 @@
+const appTitle = require('./constants').app.title;
 const getDisplayLocation = require('./getDisplayLocation');
-
-const titlePrefix = 'Find a pharmacy';
 
 function search(location, errorMessage) {
   if (!errorMessage) {
-    return titlePrefix;
+    return appTitle;
   }
 
-  return location ? `${titlePrefix} - We can't find the postcode '${location.toUpperCase()}'`
-    : `${titlePrefix} - Enter a town, city or postcode, or use your location`;
+  return location ? `${appTitle} - We can't find the postcode '${location.toUpperCase()}'`
+    : `${appTitle} - Enter a town, city or postcode, or use your location`;
 }
 
 function disambiguation(location, places) {
-  return places.length === 0 ? `${titlePrefix} - We can't find '${location}'`
-    : `${titlePrefix} - Places that match '${location}'`;
+  return places.length === 0 ? `${appTitle} - We can't find '${location}'`
+    : `${appTitle} - Places that match '${location}'`;
 }
 
 function results(location, services) {
-  return services.length === 0 ? `${titlePrefix} - We can't find any pharmacies near ${getDisplayLocation(location)}`
+  return services.length === 0 ? `${appTitle} - We can't find any pharmacies near ${getDisplayLocation(location)}`
     : `Pharmacies near ${getDisplayLocation(location)}`;
 }
 

@@ -1,3 +1,5 @@
+const app = require('../lib/constants').app;
+const canonicalUrl = require('../lib/canonicalUrl');
 const completeOriginalUrl = require('../lib/completeOriginalUrl');
 const countryHelper = require('../lib/countryHelper');
 const displayOpenResults = require('../lib/displayOpenResults');
@@ -15,12 +17,14 @@ module.exports = config => (req, res, next) => {
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
 
-  res.locals.digitalData = digitalData(req);
+  res.locals.app = app;
+  res.locals.canonicalUrl = canonicalUrl(req);
   res.locals.completeOriginalUrl = completeOriginalUrl(req);
   res.locals.coordinates = {
     latitude: req.query.latitude,
     longitude: req.query.longitude,
   };
+  res.locals.digitalData = digitalData(req);
   res.locals.displayOpenResults = displayOpenResults(req);
   res.locals.location = req.query.location;
   res.locals.locationLabel = 'Enter a town, city or postcode in England';
