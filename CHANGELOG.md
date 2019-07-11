@@ -5,6 +5,7 @@
 - Use node LTS version for travis
 - Upgrade Docker container to use latest node LTS version
 - Add additional (and update existing) metadata properties to meet minimum set
+- Allow Adobe and Hotjar to connect from additional domains
 
 1.12.0 / 2019-03-20
 ===================
