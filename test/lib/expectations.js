@@ -2,21 +2,6 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-function findHelpPageBase($) {
-  expect($('.local-header--title--question').text().trim()).to.match(/^Find a pharmacy/);
-  expect($('#location').is('input')).is.equal(true);
-}
-
-function findHelpPageInvalidEntry($) {
-  findHelpPageBase($);
-  expect($('label[for=location]').text()).to.contain('Enter a valid postcode');
-}
-
-function findHelpPage($) {
-  findHelpPageBase($);
-  expect($('label[for=location]').text()).to.contain('Enter a town, city or postcode');
-}
-
 function htmlWith200Status(res) {
   expect(res).to.have.status(200);
   expect(res).to.be.html;
@@ -41,12 +26,40 @@ function call111Callout($) {
   expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
 }
 
+function midsomerNortonResults($, location, numberOfResults) {
+  expect($('h1').text()).to.equal('Pharmacies near Midsomer Norton');
+
+  const results = $('.results__item');
+  expect(results.length).to.equal(numberOfResults);
+
+  const mapLinks = $('.maplink');
+  expect(mapLinks.length).to.equal(10);
+  mapLinks.toArray().forEach((link) => {
+    expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
+    expect($(link).attr('href')).to.have.string('&saddr=');
+  });
+
+  const choicesServicesLinks = $('.serviceslink');
+  expect(choicesServicesLinks.length).to.equal(10);
+  choicesServicesLinks.toArray().forEach((link) => {
+    expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx');
+  });
+  expect(choicesServicesLinks.length).to.equal(numberOfResults);
+  expect($('head title').text()).to.equal('Pharmacies near Midsomer Norton - NHS');
+}
+
+function searchAgainPage($) {
+  expect($('.error-summary-heading').text())
+    .to.contain('You must enter a town, city or postcode to find a pharmacy.');
+  expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
+}
+
 module.exports = {
   call111Callout,
   disambiguationPageBreadcrumb,
-  findHelpPage,
-  findHelpPageInvalidEntry,
   htmlWith200Status,
+  midsomerNortonResults,
   noResultsPageBreadcrumb,
   resultsPageBreadcrumb,
+  searchAgainPage,
 };

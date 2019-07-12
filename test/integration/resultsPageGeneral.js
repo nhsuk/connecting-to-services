@@ -28,33 +28,35 @@ describe('The results page', () => {
   });
 
   describe('generally', () => {
-    let $;
+    describe('for default results view', () => {
+      let $;
 
-    before('run request', async () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
-        .times(1)
-        .reply(200, serviceApiResponse);
+      before('run request', async () => {
+        nock(process.env.API_BASE_URL)
+          .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
+          .times(1)
+          .reply(200, serviceApiResponse);
 
-      const res = await chai.request(server)
-        .get(resultsRoute)
-        .query({ latitude, location, longitude });
-      iExpect.htmlWith200Status(res);
-      $ = cheerio.load(res.text);
-    });
+        const res = await chai.request(server)
+          .get(resultsRoute)
+          .query({ latitude, location, longitude });
+        iExpect.htmlWith200Status(res);
+        $ = cheerio.load(res.text);
+      });
 
-    it('should return distance away singularly for 1 mile and plurally for other distances', () => {
-      const firtResultTitle = $('.results__name').eq(0).text();
-      const secondResultTitle = $('.results__name').eq(1).text();
-      expect($('.distance').eq(0).text()).to.equal(`${firtResultTitle} is 0 miles away`);
-      expect($('.distance').eq(1).text()).to.equal(`${secondResultTitle} is 1 mile away`);
-    });
+      it('should return distance away singularly for 1 mile and plurally for other distances', () => {
+        const firtResultTitle = $('.results__name').eq(0).text();
+        const secondResultTitle = $('.results__name').eq(1).text();
+        expect($('.distance').eq(0).text()).to.equal(`${firtResultTitle} is 0 miles away`);
+        expect($('.distance').eq(1).text()).to.equal(`${secondResultTitle} is 1 mile away`);
+      });
 
-    it('should provide a link to see open pharmacies by default', () => {
-      const toggle = $('.viewToggle a');
-      const toggleText = $('.viewToggle');
-      expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
-      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
+      it('should provide a link to see open pharmacies by default', () => {
+        const toggle = $('.viewToggle a');
+        const toggleText = $('.viewToggle');
+        expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
+        expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
+      });
     });
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', async () => {
@@ -70,7 +72,7 @@ describe('The results page', () => {
         });
 
       iExpect.htmlWith200Status(res);
-      $ = cheerio.load(res.text);
+      const $ = cheerio.load(res.text);
 
       const toggle = $('.viewToggle a');
       const toggleText = $('.viewToggle');
@@ -93,7 +95,7 @@ describe('The results page', () => {
         expect(err).to.have.status(500);
         expect(err.response).to.be.html;
 
-        $ = cheerio.load(err.response.text);
+        const $ = cheerio.load(err.response.text);
         expect($('.nhsuk-page-heading').text())
           .to.contain(messages.technicalProblems());
       }

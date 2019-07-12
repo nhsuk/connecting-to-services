@@ -5,6 +5,8 @@ module.exports = {
       'assets.adobedtm.com',
       '*.demdex.net',
       '*.hotjar.com:*',
+      '*.hotjar.io',
+      '*.omtrdc.net',
       'nhs.funnelback.co.uk',
     ],
     defaultSrc: [

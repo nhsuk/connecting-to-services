@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="Find an open pharmacy near you on the NHS website. Check your local pharmacy's opening times, and find your nearest late night, 24-hour or out-of-hours chemist."/>
+    <meta name="description" content="{{ app.description | safe }}"/>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ SITE_ROOT }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
@@ -15,11 +15,23 @@
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ SITE_ROOT }}/images/favicon.png">
 
-    <title>{% block pageTitle %}Find a pharmacy{% endblock %} - NHS</title>
+    <title>{% block pageTitle %}{{ app.title }}{% endblock %} - NHS</title>
 
+    <link rel="canonical" href="{{ canonicalUrl }}">
+    <meta property="og:description" content="{{ app.description | safe }}"/>
     <meta property="og:image" content="{{ SITE_ROOT }}/images/opengraph-image.png">
+    <meta property="og:image:alt" content="nhs.uk">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="1200">
+    <meta property="og:locale" content="{{ app.locale }}">
+    <meta property="og:site_name" content="{{ app.siteName }}">
+    <meta property="og:title" content="{{ app.title }} - NHS">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonicalUrl }}">
+
+    <meta property="twitter:card" content="{{ app.twitter.card }}">
+    <meta property="twitter:creator" content="{{ app.twitter.creator }}">
+    <meta property="twitter:site" content="{{ app.twitter.site }}">
 
     <link href="{{ SITE_ROOT }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]><link href="{{ SITE_ROOT }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->

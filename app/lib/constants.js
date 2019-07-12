@@ -9,6 +9,17 @@ module.exports = {
       open: 'open',
     },
   },
+  app: {
+    description: 'Find an open pharmacy near you on the NHS website. Check your local pharmacy\'s opening times, and find your nearest late night, 24-hour or out-of-hours chemist.',
+    locale: 'en_GB',
+    siteName: 'nhs.uk',
+    title: 'Find a pharmacy',
+    twitter: {
+      card: 'summary_large_image',
+      creator: '@nhsuk',
+      site: '@nhsuk',
+    },
+  },
   dayInMilliseconds: 24 * 60 * 60 * 1000,
   daysOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   daysOfWeekOrderedForUi: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],

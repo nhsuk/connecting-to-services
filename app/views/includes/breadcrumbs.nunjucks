@@ -11,31 +11,31 @@
       </li>
       {% if places is not defined and services is not defined %}
       {% if coordinates.latitude and coordinates.longitude %}
-        <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
+      <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">{{ app.title }}</a>
         {% include "./icon-chevron-right.svg" %}
-        </li>
-        <li class="nhsuk-c-breadcrumb__item">No results</li>
+      </li>
+      <li class="nhsuk-c-breadcrumb__item">No results</li>
       {% else %}
-        <li class="nhsuk-c-breadcrumb__item">Find a pharmacy</li>
-        {% endif %}
+      <li class="nhsuk-c-breadcrumb__item">{{ app.title }}</li>
+      {% endif %}
       {% else %}
-        <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">Find a pharmacy</a>
+      <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">{{ app.title }}</a>
         {% include "./icon-chevron-right.svg" %}
-        </li>
-        {% if places.length > 0 %}
-        <li class="nhsuk-c-breadcrumb__item">Places that match '{{location}}'</li>
-        {% elif services.length > 0 %}
-        <li class="nhsuk-c-breadcrumb__item">Results</li>
-        {% else %}
-        <li class="nhsuk-c-breadcrumb__item">No results</li>
-        {% endif %}
+      </li>
+      {% if places.length > 0 %}
+      <li class="nhsuk-c-breadcrumb__item">Places that match '{{location}}'</li>
+      {% elif services.length > 0 %}
+      <li class="nhsuk-c-breadcrumb__item">Results</li>
+      {% else %}
+      <li class="nhsuk-c-breadcrumb__item">No results</li>
+      {% endif %}
       {% endif %}
     </ol>
     <p class="nhsuk-c-breadcrumb__back">
     {% if places is not defined and services is not defined %}
     <a href="https://www.nhs.uk/service-search" class="nhsuk-c-breadcrumb__backlink">Back to Services near you</a>
     {% else %}
-    <a href="{{ SITE_ROOT }}" class="nhsuk-c-breadcrumb__backlink">Find a pharmacy</a>
+    <a href="{{ SITE_ROOT }}" class="nhsuk-c-breadcrumb__backlink">{{ app.title }}</a>
     {% endif %}
     {% include "./icon-chevron-left.svg" %}
     </p>
