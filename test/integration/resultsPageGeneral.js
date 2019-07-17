@@ -13,7 +13,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.SITE_ROOT}/results`;
+const resultsRoute = `${constants.siteRoot}/results`;
 
 describe('The results page', () => {
   const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');

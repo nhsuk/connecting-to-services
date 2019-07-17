@@ -14,7 +14,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.SITE_ROOT}/results`;
+const resultsRoute = `${constants.siteRoot}/results`;
 const nearbyResultsCount = constants.api.nearbyResultsCount;
 const appTitle = constants.app.title;
 

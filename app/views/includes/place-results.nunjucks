@@ -6,10 +6,10 @@
   <ol class="results">
   {% for place in places %}
     <li class="results__item">
-      <a href="{{ SITE_ROOT }}/results?{{place.queryString}}" class="link">{{place.description}}</a>
+      <a href="{{ siteRoot }}/results?{{place.queryString}}" class="link">{{place.description}}</a>
       <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
     </li>
   {% endfor %}
   </ol>
-  <p class="results__none"><a href="{{ SITE_ROOT }}/">None of these - try another town, city or postcode</a></p>
+  <p class="results__none"><a href="{{ siteRoot }}/">None of these - try another town, city or postcode</a></p>
   </div>

@@ -9,13 +9,13 @@ const pageTitles = require('../lib/pageTitles');
 const resultsPageAltUrl = require('../lib/resultsPageAltUrl');
 
 module.exports = config => (req, res, next) => {
-  res.locals.ASSETS_URL = req.app.locals.ASSETS_URL;
-  res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
+  res.locals.assetsUrl = req.app.locals.assetsUrl;
+  res.locals.siteRoot = req.app.locals.siteRoot;
 
-  res.locals.COOKIEBOT_SCRIPT_URL = config.cookiebot.scriptUrl;
-
-  res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
-  res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
+  // Related to tracking
+  res.locals.adobeTrackingUrl = config.analytics.adobeTrackingUrl;
+  res.locals.cookiebotScriptUrl = config.cookiebot.scriptUrl;
+  res.locals.hotjarAnalyticsTrackingId = config.analytics.hotjarId;
 
   res.locals.app = app;
   res.locals.canonicalUrl = canonicalUrl(req);

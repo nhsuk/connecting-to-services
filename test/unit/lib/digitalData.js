@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const siteRoot = require('../../../app/lib/constants').SITE_ROOT;
+const siteRoot = require('../../../app/lib/constants').siteRoot;
 const digitalData = require('../../../app/lib/digitalData');
 
 const expect = chai.expect;

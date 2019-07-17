@@ -1,6 +1,7 @@
 1.13.1 / TBC
 ===================
 - Use full path for Open Graph image
+- Do not use capitalised convention for constant variables
 
 1.13.0 / 2019-07-18
 ===================
