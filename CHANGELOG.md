@@ -1,7 +1,8 @@
-1.13.1 / TBC
+1.14.0 / TBC
 ===================
 - Use full path for Open Graph image
 - Do not use capitalised convention for constant variables
+- Update npm dependencies
 
 1.13.0 / 2019-07-18
 ===================
