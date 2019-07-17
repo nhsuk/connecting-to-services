@@ -1,4 +1,4 @@
-1.13.0 / TBC
+1.13.0 / 2019-07-18
 ===================
 - Remove the specific version of python from the Dockerfile
 - Update npm dependencies
