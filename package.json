@@ -76,7 +76,7 @@
     "eslint-config-nhsuk": "^0.18.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-mocha": "^5.1.0",
+    "eslint-plugin-mocha": "^6.0.0",
     "eslint-watch": "^5.0.1",
     "husky": "^2.3.0",
     "istanbul": "^1.1.0-alpha.1",
