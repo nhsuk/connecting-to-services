@@ -1,3 +1,7 @@
+1.13.1 / TBC
+===================
+- Use full path for Open Graph image
+
 1.13.0 / 2019-07-18
 ===================
 - Remove the specific version of python from the Dockerfile
