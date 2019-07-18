@@ -1,6 +1,6 @@
 const chai = require('chai');
 const canonicalUrl = require('../../../app/lib/canonicalUrl');
-const SITE_ROOT = require('../../../app/lib/constants');
+const siteRoot = require('../../../app/lib/constants');
 
 const expect = chai.expect;
 
@@ -10,12 +10,12 @@ describe('canonicalUrl', () => {
   const reqMock = {
     app: {
       locals: {
-        SITE_ROOT,
+        siteRoot,
       },
     },
     hostname,
   };
-  const expectedUrl = `https://${hostname}${SITE_ROOT}/`;
+  const expectedUrl = `https://${hostname}${siteRoot}/`;
 
   it('should return the current URL via https', () => {
     const url = canonicalUrl(reqMock);

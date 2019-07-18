@@ -13,7 +13,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.SITE_ROOT}/results`;
+const resultsRoute = `${constants.siteRoot}/results`;
 
 describe('The place results page', () => {
   after('clean nock', () => {

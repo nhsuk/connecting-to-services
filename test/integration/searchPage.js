@@ -16,7 +16,7 @@ describe('Search page', () => {
     let $;
 
     before('make request', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+      const res = await chai.request(server).get(`${constants.siteRoot}`);
 
       $ = cheerio.load(res.text);
     });
@@ -41,7 +41,7 @@ describe('Search page', () => {
   });
 
   describe('bad searches', () => {
-    const resultsRoute = `${constants.SITE_ROOT}/results`;
+    const resultsRoute = `${constants.siteRoot}/results`;
     it('should return search page for empty search', async () => {
       const res = await chai.request(server)
         .get(resultsRoute)

@@ -11,7 +11,7 @@
           <li>check your spelling and try again</li>
           <li>try a different place name</li>
         </ul>
-        <p><a href="{{ SITE_ROOT }}/">Back to find a pharmacy</a></p>
+        <p><a href="{{ siteRoot }}/">Back to find a pharmacy</a></p>
       {% else %}
         <p>This service only provides information about pharmacies in England.</p>
       {% endif %}

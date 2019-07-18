@@ -11,7 +11,7 @@
       </li>
       {% if places is not defined and services is not defined %}
       {% if coordinates.latitude and coordinates.longitude %}
-      <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">{{ app.title }}</a>
+      <li class="nhsuk-c-breadcrumb__item"><a href="{{ siteRoot }}/">{{ app.title }}</a>
         {% include "./icon-chevron-right.svg" %}
       </li>
       <li class="nhsuk-c-breadcrumb__item">No results</li>
@@ -19,7 +19,7 @@
       <li class="nhsuk-c-breadcrumb__item">{{ app.title }}</li>
       {% endif %}
       {% else %}
-      <li class="nhsuk-c-breadcrumb__item"><a href="{{ SITE_ROOT }}/">{{ app.title }}</a>
+      <li class="nhsuk-c-breadcrumb__item"><a href="{{ siteRoot }}/">{{ app.title }}</a>
         {% include "./icon-chevron-right.svg" %}
       </li>
       {% if places.length > 0 %}
@@ -35,7 +35,7 @@
     {% if places is not defined and services is not defined %}
     <a href="https://www.nhs.uk/service-search" class="nhsuk-c-breadcrumb__backlink">Back to Services near you</a>
     {% else %}
-    <a href="{{ SITE_ROOT }}" class="nhsuk-c-breadcrumb__backlink">{{ app.title }}</a>
+    <a href="{{ siteRoot }}" class="nhsuk-c-breadcrumb__backlink">{{ app.title }}</a>
     {% endif %}
     {% include "./icon-chevron-left.svg" %}
     </p>

@@ -13,10 +13,11 @@ const promBundle = require('../app/lib/promBundle').middleware;
 const router = require('./routes');
 
 module.exports = (app, config) => {
+  const siteRoot = constants.siteRoot;
   // eslint-disable-next-line no-param-reassign
-  app.locals.SITE_ROOT = constants.SITE_ROOT;
+  app.locals.siteRoot = siteRoot;
   // eslint-disable-next-line no-param-reassign
-  app.locals.ASSETS_URL = constants.ASSETS_URL;
+  app.locals.assetsUrl = constants.assetsUrl;
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 
@@ -46,20 +47,20 @@ module.exports = (app, config) => {
   app.use(cookieParser());
   app.use(compression());
 
-  app.use(constants.SITE_ROOT, express.static(`${config.root}/public`));
+  app.use(siteRoot, express.static(`${config.root}/public`));
 
   // metrics needs to be registered before routes wishing to have metrics generated
   // see https://github.com/jochen-schweizer/express-prom-bundle#sample-uusage
   app.use(promBundle);
-  app.use(constants.SITE_ROOT, router);
-  app.use(constants.SITE_ROOT, (req, res) => {
+  app.use(siteRoot, router);
+  app.use(siteRoot, (req, res) => {
     log.warn({ req }, 404);
     res.status(404);
     res.render('error-404');
   });
 
   // eslint-disable-next-line no-unused-vars
-  app.use(constants.SITE_ROOT, (err, req, res, next) => {
+  app.use(siteRoot, (err, req, res, next) => {
     const statusCode = err.statusCode || 500;
 
     errorCounter.inc(1);
@@ -73,6 +74,6 @@ module.exports = (app, config) => {
   });
 
   app.get('/', (req, res) => {
-    res.redirect(constants.SITE_ROOT);
+    res.redirect(siteRoot);
   });
 };

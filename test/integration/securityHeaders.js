@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('app', () => {
   it('should include required security headers', (done) => {
     chai.request(server)
-      .get(`${constants.SITE_ROOT}`)
+      .get(`${constants.siteRoot}`)
       .end((err, res) => {
         expect(res).to.have.header('Content-Security-Policy', 'connect-src \'self\' assets.adobedtm.com *.demdex.net *.hotjar.com:* *.hotjar.io *.omtrdc.net nhs.funnelback.co.uk; default-src \'self\'; font-src *.hotjar.com *.nhs.uk; frame-src *.demdex.net *.hotjar.com; img-src \'self\' data: *.2o7.net *.demdex.net *.everesttech.net *.hotjar.com *.omtrdc.net *.nhs.uk; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data: assets.adobedtm.com *.demdex.net *.hotjar.com *.nhs.uk; style-src \'self\' \'unsafe-inline\' *.nhs.uk');
         expect(res).to.have.header('X-Xss-Protection', '1; mode=block');

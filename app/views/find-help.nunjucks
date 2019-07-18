@@ -16,7 +16,7 @@
 
 <div class="nhsuk-app__search">
   <div class="search-container">
-    <form method="get" class="form" action="{{ SITE_ROOT }}/results">
+    <form method="get" class="form" action="{{ siteRoot }}/results">
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
           <label class="nhsuk-heading-m" for="location">{{ locationLabel }}</label>

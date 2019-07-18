@@ -34,7 +34,7 @@
     {% include "includes/result-item.nunjucks" %}
     {% endfor %}
   </ol>
-  <p class="searchAgain"><a href="{{ SITE_ROOT }}/">Search again</a></p>
+  <p class="searchAgain"><a href="{{ siteRoot }}/">Search again</a></p>
   {% include "includes/call-111.nunjucks" %}
   {% endif %}
 </div>

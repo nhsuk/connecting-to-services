@@ -9,17 +9,17 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="{{ app.description | safe }}"/>
 
-    <!--[if IE]><link rel="shortcut icon" href="{{ SITE_ROOT }}/assets/images/favicon.ico"><![endif]-->
+    <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
-    <link rel="apple-touch-icon" href="{{ SITE_ROOT }}/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{ siteRoot }}/images/apple-touch-icon.png">
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
-    <link rel="icon" href="{{ SITE_ROOT }}/images/favicon.png">
+    <link rel="icon" href="{{ siteRoot }}/images/favicon.png">
 
     <title>{% block pageTitle %}{{ app.title }}{% endblock %} - NHS</title>
 
     <link rel="canonical" href="{{ canonicalUrl }}">
     <meta property="og:description" content="{{ app.description | safe }}"/>
-    <meta property="og:image" content="{{ SITE_ROOT }}/images/opengraph-image.png">
+    <meta property="og:image" content="{{ canonicalUrl }}images/opengraph-image.png">
     <meta property="og:image:alt" content="nhs.uk">
     <meta property="og:image:height" content="630">
     <meta property="og:image:width" content="1200">
@@ -33,20 +33,20 @@
     <meta property="twitter:creator" content="{{ app.twitter.creator }}">
     <meta property="twitter:site" content="{{ app.twitter.site }}">
 
-    <link href="{{ SITE_ROOT }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]><link href="{{ SITE_ROOT }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <link rel="stylesheet" href="{{ SITE_ROOT }}/print.css" media="print" type="text/css">
+    <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><link href="{{ siteRoot }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link rel="stylesheet" href="{{ siteRoot }}/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
 
-    <script src="{{ COOKIEBOT_SCRIPT_URL }}" type="text/javascript" data-cookieconsent="necessary" async></script>
+    <script src="{{ cookiebotScriptUrl }}" type="text/javascript" data-cookieconsent="necessary" async></script>
 
-    {% if HOTJAR_ANALYTICS_TRACKING_ID %}
+    {% if hotjarAnalyticsTrackingId %}
        <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
       <script type="text/plain" data-cookieconsent="statistics">
         (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:{{ HOTJAR_ANALYTICS_TRACKING_ID }},hjsv:5};
+        h._hjSettings={hjid:{{ hotjarAnalyticsTrackingId }},hjsv:5};
         a=o.getElementsByTagName('head')[0];
         r=o.createElement('script');r.async=1;
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
@@ -57,8 +57,8 @@
 
     {% block meta %}{% endblock %}
 
-    {% if ADOBE_TRACKING_URL %}
-      <script src="{{ ADOBE_TRACKING_URL }}" type="text/plain" data-cookieconsent="statistics" async></script>
+    {% if adobeTrackingUrl %}
+      <script src="{{ adobeTrackingUrl }}" type="text/plain" data-cookieconsent="statistics" async></script>
     {% endif %}
 
     {% include "includes/digitalData.nunjucks" %}

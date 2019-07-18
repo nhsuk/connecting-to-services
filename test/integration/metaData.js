@@ -13,13 +13,14 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.SITE_ROOT}/results`;
+const siteRoot = constants.siteRoot;
+const resultsRoute = `${siteRoot}/results`;
 
 function expectStandardMetadata($) {
-  const canonicalUrl = `https://127.0.0.1${constants.SITE_ROOT}/`;
+  const canonicalUrl = `https://127.0.0.1${siteRoot}/`;
   expect($('link[rel="canonical"]').attr('href')).to.equal(canonicalUrl);
   expect($('meta[property="og:description"]').attr('content')).to.equal(constants.app.description);
-  expect($('meta[property="og:image"]').attr('content')).to.equal(`${constants.SITE_ROOT}/images/opengraph-image.png`);
+  expect($('meta[property="og:image"]').attr('content')).to.equal(`${canonicalUrl}images/opengraph-image.png`);
   expect($('meta[property="og:image:alt"]').attr('content')).to.equal('nhs.uk');
   expect($('meta[property="og:image:height"]').attr('content')).to.equal('630');
   expect($('meta[property="og:image:width"]').attr('content')).to.equal('1200');
@@ -27,7 +28,7 @@ function expectStandardMetadata($) {
   expect($('meta[property="og:site_name"]').attr('content')).to.equal(constants.app.siteName);
   expect($('meta[property="og:title"]').attr('content')).to.equal(`${constants.app.title} - NHS`);
   expect($('meta[property="og:type"]').attr('content')).to.equal('website');
-  expect($('meta[property="og:url"]').attr('content')).to.equal(`https://127.0.0.1${constants.SITE_ROOT}/`);
+  expect($('meta[property="og:url"]').attr('content')).to.equal(`https://127.0.0.1${siteRoot}/`);
   expect($('meta[property="twitter:card"]').attr('content')).to.equal('summary_large_image');
   expect($('meta[property="twitter:creator"]').attr('content')).to.equal('@nhsuk');
   expect($('meta[property="twitter:site"]').attr('content')).to.equal('@nhsuk');
@@ -46,7 +47,7 @@ describe('Metadata', () => {
 
   describe('the search page', () => {
     it('should include the standard properties', async () => {
-      const res = await chai.request(server).get(constants.SITE_ROOT);
+      const res = await chai.request(server).get(siteRoot);
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 
