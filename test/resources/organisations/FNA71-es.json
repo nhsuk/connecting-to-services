@@ -1,0 +1,193 @@
+{
+  "identifierType": "Pharmacy Contract",
+  "openingTimes": {
+    "general": {
+      "monday": [
+        {
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "tuesday": [
+        {
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "wednesday": [
+        {
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "thursday": [
+        {
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "friday": [
+        {
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "saturday": [
+        {
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
+      "sunday": [
+        {
+          "opens": "10:00",
+          "closes": "13:00"
+        }
+      ]
+    },
+    "alterations": {
+      "2019-01-01": [],
+      "2019-04-19": [],
+      "2019-04-22": [],
+      "2019-05-06": [],
+      "2019-05-27": [],
+      "2019-08-26": [],
+      "2019-12-25": [],
+      "2019-12-26": [],
+      "2020-01-01": []
+    }
+  },
+  "outOfHours": "",
+  "hasEps": true,
+  "address": {
+    "line1": "84/86 Lincoln Green Road",
+    "line2": "Leeds",
+    "line3": null,
+    "city": "West Yorkshire",
+    "county": "",
+    "postcode": "LS9 7SU"
+  },
+  "contacts": {
+    "website": "http://www.well.co.uk",
+    "additionalContacts": [
+      {
+        "name": "Customer Care Team",
+        "description": "If you would like to let us know about your customer service experience in this store then please e-mail or call us (Mon - Fri 9:00-18:00) using the details below. ",
+        "telephoneNumber": "0333 010 2222",
+        "telephoneExtension": null,
+        "fax": null,
+        "email": "YourExperience@well.co.uk"
+      },
+      {
+        "name": "General Business Queries",
+        "description": "For all general or business queries, please contact our head office switchboard using the details below:",
+        "telephoneNumber": "0161 259 9100",
+        "telephoneExtension": null,
+        "fax": null,
+        "email": "MerchantsFrontofHouse@well.co.uk"
+      }
+    ],
+    "telephoneNumber": "0113 248 2400",
+    "isNonGeographicPhoneNumber": false,
+    "phoneChargeMethod": "flat-rate",
+    "phoneChargeAmount": 0,
+    "telephoneExtension": null,
+    "fax": null,
+    "email": "nhspharmacy.leeds.wellpharmacyFNA71@nhs.net"
+  },
+  "directionsInformation": null,
+  "externalProfileUrl": null,
+  "identifier": "FNA71",
+  "name": "Well Leeds - Lincoln Green Road",
+  "organisationType": "Pharmacy",
+  "parkingInformation": null,
+  "provider": "West Yorkshire Area Team",
+  "summary": "<p>We are Well. We&rsquo;re one of the UK&rsquo;s leading pharmacy chains with 780 branches across the country. We aim to be the preferred local pharmacy at the heart of the communities we serve.</p><br /><p>As well as dispensing prescriptions and over-the-counter medicines, our trained pharmacists can provide personalised advice, products and services so that every customer can make the most of their health and wellbeing.</p><br /><p>Drop into store to see how we can help or alternatively click on the &lsquo;Departments and services&rsquo; tab to view the list of services available at this particular store.</p><br /><p><strong>&nbsp;</strong><em>&nbsp;</em></p><br /><p>&nbsp;</p>",
+  "links": [
+    {
+      "rel": "NoFollow",
+      "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFNA71&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+      "name": "Tracking pixel"
+    },
+    {
+      "rel": "Self",
+      "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FNA71",
+      "name": "Link to self"
+    },
+    {
+      "rel": "Alternate",
+      "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FNA71",
+      "name": "NHS Choices profile"
+    }
+  ],
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -1.526137351989746,
+      53.8021125793457
+    ]
+  },
+  "openingTimesAsOffset": [
+    {
+      "closes": 1080,
+      "opens": 540
+    },
+    {
+      "closes": 2520,
+      "opens": 1980
+    },
+    {
+      "closes": 3960,
+      "opens": 3420
+    },
+    {
+      "closes": 5400,
+      "opens": 4860
+    },
+    {
+      "closes": 6840,
+      "opens": 6300
+    },
+    {
+      "closes": 8040,
+      "opens": 7740
+    },
+    {
+      "closes": 9420,
+      "opens": 9240
+    }
+  ],
+  "openingTimesAlterationsAsOffset": [
+    {
+      "date": "2019-01-01"
+    },
+    {
+      "date": "2019-04-19"
+    },
+    {
+      "date": "2019-04-22"
+    },
+    {
+      "date": "2019-05-06"
+    },
+    {
+      "date": "2019-05-27"
+    },
+    {
+      "date": "2019-08-26"
+    },
+    {
+      "date": "2019-12-25"
+    },
+    {
+      "date": "2019-12-26"
+    },
+    {
+      "date": "2020-01-01"
+    }
+  ],
+  "distanceInMiles": 0.0006230132467252607,
+  "openingTimesMessage": "Closed until 9am today",
+  "isOpen": false,
+  "nextOpen": "2019-08-01T08:00:00.000Z"
+}
