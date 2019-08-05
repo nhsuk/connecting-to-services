@@ -1,12 +1,13 @@
-const moment = require('moment');
 const distanceCalculation = require('./displayUtils/calculateDistance');
+const phoneNumberParser = require('./displayUtils/phoneNumberParser');
 const getMessages = require('./getMessages');
+const getOpeningTimes = require('./azOpeningTimesMapper');
 
 function getPrimaryContactByType(contacts, type) {
   const contactDetails = contacts.find(
     c => c.OrganisationContactType === 'Primary' && c.OrganisationContactMethodType === type
   );
-  return contactDetails ? contactDetails.OrganisationContactValue : null;
+  return contactDetails ? contactDetails.OrganisationContactValue : '';
 }
 
 function getContacts(asContacts) {
@@ -14,41 +15,10 @@ function getContacts(asContacts) {
 
   return {
     email: getPrimaryContactByType(contacts, 'Email'),
-    fax: getPrimaryContactByType(contacts, 'Fax'),
-    telephoneNumber: getPrimaryContactByType(contacts, 'Telephone'),
+    fax: phoneNumberParser(getPrimaryContactByType(contacts, 'Fax')),
+    telephoneNumber: phoneNumberParser(getPrimaryContactByType(contacts, 'Telephone')),
     website: getPrimaryContactByType(contacts, 'Website'),
   };
-}
-
-function getOpeningTimes(asOpeningTimes) {
-  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const openingTimes = {
-    alterations: {},
-    general: {},
-  };
-
-  weekdays.forEach((weekday) => {
-    const sessions = asOpeningTimes
-      .filter(ot => ot.OpeningTimeType === 'General' && ot.Weekday === weekday)
-      .map((dot) => {
-        const splitTimes = dot.Times.split('-');
-        const opens = splitTimes[0];
-        const closes = splitTimes[1];
-        return { closes, opens };
-      });
-    openingTimes.general[weekday.toLowerCase()] = sessions;
-  });
-
-  asOpeningTimes
-    .filter(ot => ot.OpeningTimeType === 'General' && ot.AdditionalOpeningDate)
-    .forEach((aot) => {
-      const aMoment = moment(aot.AdditionalOpeningDate, 'MMM DD YYYY');
-      if (!aot.isOpen) {
-        openingTimes.alterations[aMoment.format('YYYY-MM-DD')] = [];
-      }
-    });
-
-  return openingTimes;
 }
 
 function getDistanceInMiles(origin, destination) {
@@ -72,12 +42,12 @@ module.exports = (org, origin, datetime) => {
     /* eslint-disable sort-keys */
     name: org.OrganisationName,
     address: {
-      line1: org.Address1,
-      line2: org.Address2,
-      line3: org.Address3,
-      city: org.City,
-      county: org.County,
-      postcode: org.Postcode,
+      line1: org.Address1 || '',
+      line2: org.Address2 || '',
+      line3: org.Address3 || '',
+      city: org.City || '',
+      county: org.County || '',
+      postcode: org.Postcode || '',
     },
     contacts,
     openingTimes,

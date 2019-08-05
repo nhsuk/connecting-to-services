@@ -3875,6 +3875,11 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
+google-libphonenumber@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.3.tgz#5e5c138c81b8734ebbe5ed354f6cdd22e1b53e95"
+  integrity sha512-8n4JyRptifaIRlHANKRlfqLR8fANm7+Q+1qvDuUsUeStSLtLGTVsZWe1llWDfgWTm1y07cEUyiRuNIv6cs2ovg==
+
 got@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"

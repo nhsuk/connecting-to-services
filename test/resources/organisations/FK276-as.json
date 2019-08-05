@@ -1,0 +1,204 @@
+{
+	"@search.score": 1.2852767,
+	"OrganisationID": "30038",
+	"OrganisationName": "Boots",
+	"OrganisationAliases": [],
+	"OrganisationTypeID": "PHA",
+	"OrganisationType": "Pharmacy",
+	"OrganisationStatus": "Visible",
+	"IsPimsManaged": true,
+	"PIMSCode": "8171",
+	"NACSCode": "FK276",
+	"LocalAuthorityCode": null,
+	"SummaryText": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>",
+	"URL": "",
+	"Address1": "12-14 Vicar La",
+	"Address2": null,
+	"Address3": null,
+	"City": "Leeds",
+	"County": "West Yorkshire",
+	"Latitude": 53.798427581787109,
+	"Longitude": -1.539584755897522,
+	"OrganisationSubType": "Community Pharmacy",
+	"LastUpdatedDate": "2016-10-19T09:47:12.503Z",
+	"Postcode": "LS1 7JH",
+	"Geocode": {
+		"type": "Point",
+		"coordinates": [
+			-1.53958,
+			53.7984
+		],
+		"crs": {
+			"type": "name",
+			"properties": {
+				"name": "EPSG:4326"
+			}
+		}
+	},
+	"CCG": [],
+	"RelatedIAPTCCGs": [],
+	"Trusts": [],
+	"CCGLocalAuthority": [],
+	"ServicesOffered": [
+		"Pharmacy Service: Medicines use review (MUR) service",
+		"Pharmacy Service: New medicine service",
+		"Pharmacy Service (NHS): Supervised consumption of medicines",
+		"Pharmacy Service: Prescription collection from local General Practices",
+		"Pharmacy Service (NHS): Medication review service",
+		"Pharmacy Service (NHS): Needle and syringe exchange",
+		"Pharmacy Service (NHS): Stop smoking voucher service",
+		"Pharmacy Service (Non-NHS): Seasonal flu vaccination service (not at risk groups)",
+		"Pharmacy Service: Appointment booking available for consultations",
+		"Pharmacy Service: Appointment booking for consultations not required",
+		"Pharmacy Service: Prescription delivery service",
+		"Pharmacy Service: Multi-lingual staff",
+		"Pharmacy Service: Private consultation room",
+		"Pharmacy Service: Seasonal flu vaccination service (at risk groups)",
+		"Pharmacy Service: Public Health"
+					],
+					"ServicesProvided": [
+						"Pharmacy Service (NHS): Medication review service",
+						"Pharmacy Service: Medicines use review (MUR) service",
+						"Pharmacy Service (NHS): Needle and syringe exchange",
+						"Pharmacy Service: New medicine service",
+						"Pharmacy Service: Seasonal flu vaccination service (at risk groups)",
+						"Pharmacy Service (NHS): Supervised consumption of medicines",
+						"Pharmacy Service (NHS): Stop smoking voucher service",
+						"Pharmacy Service (Non-NHS): Seasonal flu vaccination service (not at risk groups)",
+						"Pharmacy Service: Prescription collection from local General Practices",
+						"Pharmacy Service: Appointment booking available for consultations",
+						"Pharmacy Service: Appointment booking for consultations not required",
+						"Pharmacy Service: Prescription delivery service",
+						"Pharmacy Service: Multi-lingual staff",
+						"Pharmacy Service: Private consultation room",
+						"Pharmacy Service: Public Health"
+					],
+					"ServiceCodesProvided": [
+						"SRV0261",
+						"SRV0197",
+						"SRV0274",
+						"SRV0257",
+						"SRV0277",
+						"SRV0258",
+						"SRV0507",
+						"SRV0514",
+						"SRV0519",
+						"SRV0520",
+						"SRV0521",
+						"SRV0522",
+						"SRV0524",
+						"SRV0526",
+						"SRV0527"
+					],
+					"ServicesProvidedConditions": [],
+					"OrgTypeConditions": [
+						"Allergy",
+						"Headache and migraine"
+					],
+					"OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:30-16:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"07:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"07:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"07:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"07:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"07:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"07:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2020\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"10:30-16:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:30-16:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":true}]",
+					"Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132455097\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132347785\"}]",
+					"VenueType": null,
+					"Metrics": "[{\"MetricID\":43,\"MetricName\":\"Has Car Parking\",\"DisplayName\":\"Car parking\",\"Description\":\"Is there car parking at this organisation?\",\"Value\":\"no\",\"Text\":\"Parking not available\",\"MetricDisplayTypeID\":4,\"MetricDisplayTypeName\":\"BooleanImage\",\"IsMetaMetric\":true},{\"MetricID\":44,\"MetricName\":\"Has Disabled Car Parking\",\"DisplayName\":\"Disabled parking\",\"Description\":\"Is disabled car parking available at this organisation?\",\"Value\":\"no\",\"Text\":\"Disabled parking not available\",\"MetricDisplayTypeID\":4,\"MetricDisplayTypeName\":\"BooleanImage\",\"IsMetaMetric\":true},{\"MetricID\":45,\"MetricName\":\"Has Disabled Access\",\"DisplayName\":\"Disabled access\",\"Description\":\"Disabled access\",\"Value\":\"yes\",\"Text\":\"Disabled access available\",\"MetricDisplayTypeID\":4,\"MetricDisplayTypeName\":\"BooleanImage\",\"IsMetaMetric\":true},{\"MetricID\":47,\"MetricName\":\"Has Induction Loop\",\"DisplayName\":\"Induction loop\",\"Description\":\"Induction loop in place\",\"Value\":\"yes\",\"Text\":\"Has induction loop\",\"MetricDisplayTypeID\":4,\"MetricDisplayTypeName\":\"BooleanImage\",\"IsMetaMetric\":true},{\"MetricID\":48,\"MetricName\":\"Has Signing Service\",\"DisplayName\":\"Signing services\",\"Description\":\"Signing services\",\"Value\":\"no\",\"Text\":\"Signing service not available\",\"MetricDisplayTypeID\":4,\"MetricDisplayTypeName\":\"BooleanImage\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"NHS Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"NHS Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"NHS Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":10051,\"MetricName\":\"Electronic prescription service\",\"DisplayName\":\"Electronic prescription service\",\"Description\":\"Electronic prescription service\",\"Value\":\"Yes\",\"Text\":\"\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"NHS Sector\",\"MetricText\":\"[BandingName]\",\"IsMetaMetric\":true},{\"MetricID\":99002,\"MetricName\":\"Business Card: Has Car Parking\",\"DisplayName\":\"Car parking\",\"Description\":\"Is there car parking at this organisation?\",\"Value\":\"no\",\"Text\":\"Parking not available\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"IsMetaMetric\":true}]",
+					"GSD": null,
+					"OpeningTimesV2": [
+						{
+							"Weekday": "Sunday",
+							"Times": "10:30-16:30",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "Monday",
+							"Times": "07:45-18:00",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "Tuesday",
+							"Times": "07:45-18:00",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "Wednesday",
+							"Times": "07:45-18:00",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "Thursday",
+							"Times": "07:45-18:00",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "Friday",
+							"Times": "07:45-18:00",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "Saturday",
+							"Times": "07:45-18:00",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "",
+							"Times": "",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "Dec 25 2019",
+							"IsOpen": false
+						},
+						{
+							"Weekday": "",
+							"Times": "",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "Jan  1 2020",
+							"IsOpen": false
+						},
+						{
+							"Weekday": "",
+							"Times": "10:30-16:30",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "Aug 26 2019",
+							"IsOpen": true
+						},
+						{
+							"Weekday": "",
+							"Times": "10:30-16:30",
+							"OffsetOpeningTime": null,
+							"OffsetClosingTime": null,
+							"OpeningTimeType": "General",
+							"AdditionalOpeningDate": "Dec 26 2019",
+							"IsOpen": true
+						}
+					]
+}
