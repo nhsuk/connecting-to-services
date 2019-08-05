@@ -49,6 +49,7 @@ describe('azureMapper', () => {
   });
   it('should map top level properties corrrectly from AS format to ES format', async () => {
     const expectedProperties = [
+      'identifier',
       'name',
       'address',
     ];

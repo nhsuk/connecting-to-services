@@ -40,6 +40,7 @@ module.exports = (org, origin, datetime) => {
   } = getOpeningTimesMessage(openingTimes, hasPhoneNumber, datetime);
   const mappedOrg = {
     /* eslint-disable sort-keys */
+    identifier: org.NACSCode,
     name: org.OrganisationName,
     address: {
       line1: org.Address1 || '',
