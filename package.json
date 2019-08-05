@@ -65,6 +65,7 @@
     "postcodesio-client": "^0.3.3",
     "prom-client": "^11.2.1",
     "request": "^2.81.0",
+    "request-promise-native": "^1.0.7",
     "require-environment-variables": "^1.1.2",
     "sass-brunch": "^2.10.4",
     "uglify-es": "^3.1.8"
