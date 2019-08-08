@@ -4,11 +4,14 @@ const cheerio = require('cheerio');
 const nock = require('nock');
 
 const constants = require('../../app/lib/constants');
-const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const messages = require('../../app/lib/messages');
 const server = require('../../server');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/queryBuilder');
+const postcodeCoordinates = require('../resources/postcode-coordinates');
 
+const queryTypes = constants.queryTypes;
 const expect = chai.expect;
 
 chai.use(chaiHttp);
@@ -16,13 +19,6 @@ chai.use(chaiHttp);
 const resultsRoute = `${constants.siteRoot}/results`;
 
 describe('The results page', () => {
-  const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
-  const location = 'Midsomer';
-  const latitude = 54;
-  const longitude = -1;
-  const numberOfNearbyResults = constants.api.nearbyResultsCount;
-  const numberOfOpenResults = constants.api.openResultsCount;
-
   afterEach('clean nock', () => {
     nock.cleanAll();
   });
@@ -30,67 +26,76 @@ describe('The results page', () => {
   describe('generally', () => {
     describe('for default results view', () => {
       let $;
+      const location = 'Middlesbrough';
+      const searchOrigin = postcodeCoordinates.TS55NP;
 
       before('run request', async () => {
-        nock(process.env.API_BASE_URL)
-          .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
-          .times(1)
-          .reply(200, serviceApiResponse);
+        const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+        nockRequests.serviceSearch(body, 200, 'organisations/TS55NP-as.json');
 
         const res = await chai.request(server)
           .get(resultsRoute)
-          .query({ latitude, location, longitude });
+          .query({
+            latitude: searchOrigin.latitude,
+            location,
+            longitude: searchOrigin.longitude,
+          });
         iExpect.htmlWith200Status(res);
         $ = cheerio.load(res.text);
       });
 
       it('should return distance away singularly for 1 mile and plurally for other distances', () => {
-        const firtResultTitle = $('.results__name').eq(0).text();
-        const secondResultTitle = $('.results__name').eq(1).text();
-        expect($('.distance').eq(0).text()).to.equal(`${firtResultTitle} is 0 miles away`);
-        expect($('.distance').eq(1).text()).to.equal(`${secondResultTitle} is 1 mile away`);
+        const resultTitle1 = $('.results__name').eq(0).text();
+        const resultTitle2 = $('.results__name').eq(8).text();
+        expect($('.distance').eq(0).text()).to.equal(`${resultTitle1} is 0.5 miles away`);
+        expect($('.distance').eq(8).text()).to.equal(`${resultTitle2} is 1 mile away`);
       });
 
       it('should provide a link to see open pharmacies by default', () => {
         const toggle = $('.viewToggle a');
         const toggleText = $('.viewToggle');
         expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
-        expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=true`);
+        expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=true`);
       });
     });
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', async () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfOpenResults}`)
-        .times(1)
-        .reply(200, serviceApiResponse);
+      const location = 'Leeds';
+      const searchOrigin = postcodeCoordinates.LS1;
+      const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
+      nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)
         .query({
-          latitude, location, longitude, open: true,
+          latitude: searchOrigin.latitude,
+          location,
+          longitude: searchOrigin.longitude,
+          open: true,
         });
-
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 
       const toggle = $('.viewToggle a');
       const toggleText = $('.viewToggle');
       expect(toggleText.text()).to.equal('Only showing pharmacies open now. Show all pharmacies.');
-      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${latitude}&location=${location}&longitude=${longitude}&open=false`);
+      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=false`);
     });
 
     it('should handle an error from the api', async () => {
-      const apiErrorResponse = getSampleResponse('service-api-responses/err.json');
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
-        .times(1)
-        .reply(500, apiErrorResponse);
+      const location = 'Leeds';
+      const searchOrigin = postcodeCoordinates.LS1;
+      const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
+      nockRequests.serviceSearch(body, 500, 'organisations/err-as.json');
 
       try {
         await chai.request(server)
           .get(resultsRoute)
-          .query({ latitude, location, longitude });
+          .query({
+            latitude: searchOrigin.latitude,
+            location,
+            longitude: searchOrigin.longitude,
+          });
       } catch (err) {
         expect(err).to.have.status(500);
         expect(err.response).to.be.html;
@@ -104,24 +109,20 @@ describe('The results page', () => {
 
   describe('opening times display', () => {
     const daysOfWeek = constants.daysOfWeekOrderedForUi;
-    const timesResponse = getSampleResponse('service-api-responses/OX201TF.json');
-    const timesLocation = 'OX201TF';
-    const timesLatitude = 51.8470068238121;
-    const timesLongitude = -1.35519245281661;
+    const searchOrigin = postcodeCoordinates.LS1;
+    const location = 'Leeds';
     let $;
 
     before('run request', async () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${timesLatitude}&longitude=${timesLongitude}&limits:results=${numberOfOpenResults}`)
-        .times(1)
-        .reply(200, timesResponse);
+      const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+      nockRequests.serviceSearch(body, 200, 'organisations/LS1-openingtimes-removed-for-result-0-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)
         .query({
-          latitude: timesLatitude,
-          location: timesLocation,
-          longitude: timesLongitude,
+          latitude: searchOrigin.latitude,
+          location,
+          longitude: searchOrigin.longitude,
         });
 
       iExpect.htmlWith200Status(res);
@@ -175,20 +176,20 @@ describe('The results page', () => {
     });
 
     it('should display a row for each session', () => {
-      const resultWithSessions = $('section:has(.openingTimes-panel)').eq(1).find('tr');
-      expect(resultWithSessions.length).to.equal(13);
-      expect(resultWithSessions.eq(11).find('th').text()).to.equal(daysOfWeek[5]);
-      expect(resultWithSessions.eq(11).find('td').text()).to.equal('Closed');
-      expect(resultWithSessions.eq(12).find('th').text()).to.equal(daysOfWeek[6]);
-      expect(resultWithSessions.eq(12).find('td').text()).to.equal('Closed');
+      const resultWithSessions = $('section:has(.openingTimes-panel)').eq(2).find('tr');
+      expect(resultWithSessions.length).to.equal(8);
+      expect(resultWithSessions.eq(6).find('th').text()).to.equal(daysOfWeek[5]);
+      expect(resultWithSessions.eq(6).find('td').text()).to.equal('8am to 6pm');
+      expect(resultWithSessions.eq(7).find('th').text()).to.equal(daysOfWeek[6]);
+      expect(resultWithSessions.eq(7).find('td').text()).to.equal('Closed');
     });
 
     it('should have a link to the open results page when the pharmacy is closed', () => {
       const linksToOpenResultsPage = $('.openingTimes__openResults');
 
-      expect(linksToOpenResultsPage.length).to.equal(3);
+      expect(linksToOpenResultsPage.length).to.equal(1);
       linksToOpenResultsPage.each((index, element) => {
-        expect($(element).attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${timesLatitude}&location=${timesLocation}&longitude=${timesLongitude}&open=true`);
+        expect($(element).attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=true`);
       });
     });
   });

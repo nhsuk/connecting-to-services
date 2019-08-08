@@ -36,8 +36,8 @@ describe('azureMapper', () => {
   let result;
   beforeEach('setup', async () => {
     const origin = {
-      lat: 53.7975673878326,
-      lon: -1.55183371292776,
+      latitude: 53.7975673878326,
+      longitude: -1.55183371292776,
     };
     /* eslint-disable sort-keys */
     const datetime = moment.tz('2019-08-02 07:30', 'Europe/London');

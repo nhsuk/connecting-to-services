@@ -9,8 +9,11 @@ const iExpect = require('../lib/expectations');
 const messages = require('../../app/lib/messages');
 const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/queryBuilder');
 
 const expect = chai.expect;
+const queryTypes = constants.queryTypes;
 
 chai.use(chaiHttp);
 
@@ -25,22 +28,22 @@ describe('The results page', () => {
 
   const ls27ue = 'LS2 7UE';
   const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
-  const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
   const ls27ueResult = JSON.parse(ls27ueResponse).result;
 
   it('should return 10 nearby results, by default', async () => {
-    const latitude = ls27ueResult.latitude;
-    const longitude = ls27ueResult.longitude;
+    // const searchOrigin = postcodeCoordinates.LS27UE;
+    const searchOrigin = {
+      latitude: ls27ueResult.latitude,
+      longitude: ls27ueResult.longitude,
+    };
 
     nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
       .reply(200, ls27ueResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/LS27UE-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -68,18 +71,18 @@ describe('The results page', () => {
 
   it('should return 10 open results', async () => {
     const numberOfResults = constants.api.nearbyResultsCount;
-    const latitude = ls27ueResult.latitude;
-    const longitude = ls27ueResult.longitude;
+    const searchOrigin = {
+      latitude: ls27ueResult.latitude,
+      longitude: ls27ueResult.longitude,
+    };
 
     nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(ls27ue)}`)
       .times(1)
       .reply(200, ls27ueResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/LS27UE-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -165,19 +168,18 @@ describe('The results page', () => {
   it('should display a message when there are no open pharmacies', async () => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
-    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
-    const latitude = JSON.parse(postcodeResponse).result.latitude;
-    const longitude = JSON.parse(postcodeResponse).result.longitude;
+    const searchOrigin = {
+      latitude: JSON.parse(postcodeResponse).result.latitude,
+      longitude: JSON.parse(postcodeResponse).result.longitude,
+    };
 
     nock(postcodesIOURL)
       .get(`/outcodes/${outcode}`)
       .times(1)
       .reply(200, postcodeResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
-      .times(1)
-      .reply(200, noResultsResponse);
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/empty-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -198,19 +200,18 @@ describe('The results page', () => {
   it('should display a message when there are no nearby pharmacies', async () => {
     const outcode = 'BA3';
     const postcodeResponse = getSampleResponse('postcodesio-responses/BA3.json');
-    const noResultsResponse = getSampleResponse('service-api-responses/BA3.json');
-    const latitude = JSON.parse(postcodeResponse).result.latitude;
-    const longitude = JSON.parse(postcodeResponse).result.longitude;
+    const searchOrigin = {
+      latitude: JSON.parse(postcodeResponse).result.latitude,
+      longitude: JSON.parse(postcodeResponse).result.longitude,
+    };
 
     nock(postcodesIOURL)
       .get(`/outcodes/${outcode}`)
       .times(1)
       .reply(200, postcodeResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
-      .times(1)
-      .reply(200, noResultsResponse);
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/empty-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -290,17 +291,13 @@ describe('The results page error handling', () => {
   it('should handle the pharmacy service when it responds with a 500 response with an error message', async () => {
     const fakePostcode = 'FA12 3KE';
     const fakeResponse = getSampleResponse('postcodesio-responses/fake.json');
-    const latitude = JSON.parse(fakeResponse).result.latitude;
-    const longitude = JSON.parse(fakeResponse).result.longitude;
 
     nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(fakePostcode)}`)
       .times(1)
       .reply(200, fakeResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
-      .reply(500);
+    nockRequests.serviceSearch({}, 500, 'organisations/err-as.json');
 
     try {
       await chai.request(server)
@@ -321,18 +318,13 @@ describe('The results page error handling', () => {
   it('should handle a response from the pharmacy service when there has been an error based on the input', async () => {
     const badPostcode = 'BA40 0AD';
     const badResponse = getSampleResponse('postcodesio-responses/bad.json');
-    const badPharmacyResponse = getSampleResponse('service-api-responses/bad.json');
-    const latitude = JSON.parse(badResponse).result.latitude;
-    const longitude = JSON.parse(badResponse).result.longitude;
 
     nock(postcodesIOURL)
       .get(`/postcodes/${encodeURIComponent(badPostcode)}`)
       .times(1)
       .reply(200, badResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
-      .reply(400, badPharmacyResponse);
+    nockRequests.serviceSearch({}, 400, 'organisations/err-as.json');
 
     try {
       await chai.request(server)
@@ -353,17 +345,13 @@ describe('The results page error handling', () => {
   it('it should handle the pharmacy service being unavailable with an error message', async () => {
     const outcode = 'BH1';
     const postcodesResponse = getSampleResponse('postcodesio-responses/bh1.json');
-    const latitude = JSON.parse(postcodesResponse).result.latitude;
-    const longitude = JSON.parse(postcodesResponse).result.longitude;
 
     nock(postcodesIOURL)
       .get(`/outcodes/${outcode}`)
       .times(1)
       .reply(200, postcodesResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${nearbyResultsCount}`)
-      .replyWithError({ message: `connect ECONNREFUSED ${process.env.API_BASE_URL}:3001` });
+    nockRequests.serviceSearchUnavailable('service unavailable');
 
     try {
       await chai.request(server)

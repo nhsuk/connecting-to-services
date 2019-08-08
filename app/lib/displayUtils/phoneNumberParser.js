@@ -4,7 +4,7 @@ const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance()
 const log = require('../logger');
 
 function parsePhoneNumber(number) {
-  if (number === undefined) {
+  if (!number) {
     return undefined;
   }
   try {

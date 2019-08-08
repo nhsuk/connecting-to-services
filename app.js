@@ -4,7 +4,7 @@ const app = require('./server');
 const applicationStarts = require('./app/lib/promCounters').applicationStarts;
 const log = require('./app/lib/logger');
 
-requireEnv(['API_BASE_URL']);
+requireEnv(['SEARCH_API_KEY']);
 
 app.listen(app.port, () => {
   applicationStarts.inc(1);

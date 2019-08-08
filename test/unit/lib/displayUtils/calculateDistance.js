@@ -7,8 +7,8 @@ const expect = chai.expect;
 describe('calculateDistance', () => {
   it('should return the distance between the points', () => {
     const expectedDistance = 372.2202045151598;
-    const origin = { lat: -0.118003, lon: 51.526624 };
-    const destination = { lat: -3.188458, lon: 55.953487 };
+    const origin = { latitude: -0.118003, longitude: 51.526624 };
+    const destination = { latitude: -3.188458, longitude: 55.953487 };
 
     const distance = calculateDistance(origin, destination);
 
@@ -16,8 +16,8 @@ describe('calculateDistance', () => {
   });
 
   it('should return 0 when the points are the same', () => {
-    const origin = { lat: -1.5, lon: 54 };
-    const destination = { lat: -1.5, lon: 54 };
+    const origin = { latitude: -1.5, longitude: 54 };
+    const destination = { latitude: -1.5, longitude: 54 };
 
     const distance = calculateDistance(origin, destination);
 

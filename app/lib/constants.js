@@ -25,6 +25,10 @@ module.exports = {
   placeSearch: 'place',
   postcodeSearch: 'postcode',
   promHistogramBuckets: [0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 1, 1.5, 5, 10],
+  queryTypes: {
+    nearby: 'nearby',
+    openNearby: 'openNearby',
+  },
   siteRoot: '/find-a-pharmacy',
   yourLocation: 'your location',
   yourLocationSearch: 'location',

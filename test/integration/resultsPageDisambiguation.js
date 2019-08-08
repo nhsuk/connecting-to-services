@@ -8,8 +8,12 @@ const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/queryBuilder');
+const postcodeCoordinates = require('../resources/postcode-coordinates');
 
 const expect = chai.expect;
+const queryTypes = constants.queryTypes;
 
 chai.use(chaiHttp);
 
@@ -45,20 +49,20 @@ describe('The place results page', () => {
   });
 
   it('should return nearby results page for link clicked from disambiguation page', async () => {
-    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const location = 'Midsomer Norton, Bath and North East Somerset, BA3';
-    const latitude = 54;
-    const longitude = -1;
     const numberOfResults = constants.api.nearbyResultsCount;
 
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const searchOrigin = postcodeCoordinates.BA3;
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ latitude, location, longitude });
+      .query({
+        latitude: searchOrigin.latitude,
+        location,
+        longitude: searchOrigin.longitude,
+      });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);

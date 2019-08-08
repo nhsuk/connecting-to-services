@@ -18,10 +18,12 @@
     "lint-frontend": "eslint ./app/public/js",
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
+    "start-watch-debug": "yarn brunch watch & nodemon --inspect-brk=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-unit": "NODE_ENV=test mocha --exit --recursive test/unit",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
-    "test-watch": "yarn test -- --watch --reporter min"
+    "test-watch": "yarn test -- --watch --reporter min",
+    "test-watch-debug": "NODE_ENV=test mocha --recursive --timeout 2000000 --watch --exit --inspect-brk=0.0.0.0 test"
   },
   "repository": {
     "type": "git",
@@ -68,7 +70,8 @@
     "request-promise-native": "^1.0.7",
     "require-environment-variables": "^1.1.2",
     "sass-brunch": "^2.10.4",
-    "uglify-es": "^3.1.8"
+    "uglify-es": "^3.1.8",
+    "verror": "^1.10.0"
   },
   "devDependencies": {
     "bower": "^1.8.0",

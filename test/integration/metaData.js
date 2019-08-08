@@ -8,8 +8,12 @@ const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/queryBuilder');
+const postcodeCoordinates = require('../resources/postcode-coordinates');
 
 const expect = chai.expect;
+const queryTypes = constants.queryTypes;
 
 chai.use(chaiHttp);
 
@@ -35,11 +39,7 @@ function expectStandardMetadata($) {
 }
 
 describe('Metadata', () => {
-  const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
   const location = 'Midsomer';
-  const latitude = 54;
-  const longitude = -1;
-  const numberOfNearbyResults = constants.api.nearbyResultsCount;
 
   afterEach('clean nock', () => {
     nock.cleanAll();
@@ -57,14 +57,17 @@ describe('Metadata', () => {
 
   describe('the results page, when displaying results', () => {
     it('should include the standard properties', async () => {
-      nock(process.env.API_BASE_URL)
-        .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfNearbyResults}`)
-        .times(1)
-        .reply(200, serviceApiResponse);
+      const searchOrigin = postcodeCoordinates.LS1;
+      const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+      nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)
-        .query({ latitude, location, longitude });
+        .query({
+          latitude: searchOrigin.latitude,
+          location,
+          longitude: searchOrigin.longitude,
+        });
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 

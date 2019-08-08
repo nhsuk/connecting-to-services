@@ -26,5 +26,11 @@ module.exports = {
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   root: rootPath,
+  search: {
+    apiKey: process.env.SEARCH_API_KEY,
+    host: process.env.SEARCH_API_HOST || 'api.nhs.uk',
+    maxNumberOfResults: process.env.SEARCH_MAX_RESULTS || 10,
+    version: process.env.SEARCH_API_VERSION || '1',
+  },
   timezone: 'Europe/London',
 };

@@ -5,7 +5,6 @@ const log = require('../app/lib/logger');
 const expect = chai.expect;
 
 before('global setup', () => {
-  process.env.API_BASE_URL = 'https://dummy.url';
 });
 
 after('Check all nocks have been called', () => {

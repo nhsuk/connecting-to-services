@@ -1,0 +1,5 @@
+{
+  "@odata.context": "https://nhsuksearchintuks.search.windows.net/indexes('organisation-1-1-b-dev')/$metadata#docs(*)",
+  "@odata.count": 0,
+  "value": []
+}

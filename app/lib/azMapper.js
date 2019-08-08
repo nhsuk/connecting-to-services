@@ -38,6 +38,10 @@ module.exports = (org, origin, datetime) => {
     openingTimesMessage,
     nextOpen,
   } = getOpeningTimesMessage(openingTimes, hasPhoneNumber, datetime);
+  const orgCoordinates = {
+    latitude: org.Geocode.coordinates[1],
+    longitude: org.Geocode.coordinates[0],
+  };
   const mappedOrg = {
     /* eslint-disable sort-keys */
     identifier: org.NACSCode,
@@ -52,7 +56,7 @@ module.exports = (org, origin, datetime) => {
     },
     contacts,
     openingTimes,
-    distanceInMiles: getDistanceInMiles(origin, { lat: org.Latitude, lon: org.Longitude }),
+    distanceInMiles: getDistanceInMiles(origin, orgCoordinates),
     isOpen,
     openingTimesMessage,
     nextOpen,

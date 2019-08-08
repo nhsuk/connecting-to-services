@@ -8,8 +8,11 @@ const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
+const queryBuilder = require('../../app/lib/queryBuilder');
+const nockRequests = require('../lib/nockRequests');
 
 const expect = chai.expect;
+const queryTypes = constants.queryTypes;
 
 chai.use(chaiHttp);
 
@@ -22,10 +25,7 @@ describe('The place results page', () => {
 
   it('should return list of nearby pharmacies for unique place search', async () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
-    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const singleResult = JSON.parse(singlePlaceResponse).result[0];
-    const latitude = singleResult.latitude;
-    const longitude = singleResult.longitude;
     const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
     const searchTerm = 'oneresult';
     const numberOfResults = constants.api.nearbyResultsCount;
@@ -36,11 +36,12 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, singlePlaceResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get('/nearby')
-      .query({ latitude, 'limits:results': numberOfResults, longitude })
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const searchOrigin = {
+      latitude: singleResult.latitude,
+      longitude: singleResult.longitude,
+    };
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -54,10 +55,11 @@ describe('The place results page', () => {
 
   it('should return list of open pharmacies for unique place search', async () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
-    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
     const singleResult = JSON.parse(singlePlaceResponse).result[0];
-    const latitude = singleResult.latitude;
-    const longitude = singleResult.longitude;
+    const searchOrigin = {
+      latitude: singleResult.latitude,
+      longitude: singleResult.longitude,
+    };
     const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
     const searchTerm = 'oneresult';
     const numberOfResults = constants.api.openResultsCount;
@@ -68,11 +70,8 @@ describe('The place results page', () => {
       .times(1)
       .reply(200, singlePlaceResponse);
 
-    nock(process.env.API_BASE_URL)
-      .get('/open')
-      .query({ latitude, 'limits:results': numberOfResults, longitude })
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
+    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)

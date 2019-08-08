@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 describe('required environment variables', () => {
   it('should throw an exception when env vars are missing', () => {
-    process.env.API_BASE_URL = '';
+    process.env.SEARCH_API_KEY = '';
     // eslint-disable-next-line global-require
     expect(() => { require('../../app'); })
       .to.throw(

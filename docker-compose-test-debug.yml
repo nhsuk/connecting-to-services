@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+
+  frontend:
+    command: yarn test-watch-debug
+    ports:
+      - "9229:9229"

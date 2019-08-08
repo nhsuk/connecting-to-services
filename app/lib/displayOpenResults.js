@@ -30,6 +30,7 @@ function isRequestInitialAndOutsideBusinessHours(req, datetimeMoment) {
 }
 
 function displayOpenResults(req, datetimeOverride = process.env.DATETIME) {
+  // TODO: should we use a lib method for getDateTime
   const datetimeMoment = datetimeOverride ? moment(datetimeOverride) : moment();
   return isRequestInitialAndOutsideBusinessHours(req, datetimeMoment)
     ? !isRequestForOpenResults(req)

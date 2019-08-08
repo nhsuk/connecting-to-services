@@ -5,16 +5,12 @@ function convertDegreesToRadians(degrees) {
 }
 
 function calculateDistance(origin, destination) {
-  const originLat = origin.lat;
-  const originLon = origin.lon;
-  const destLat = destination.lat;
-  const destLon = destination.lon;
-
-  const dLat = convertDegreesToRadians(destLat - originLat);
-  const dLon = convertDegreesToRadians(destLon - originLon);
+  const dLat = convertDegreesToRadians(destination.latitude - origin.latitude);
+  const dLon = convertDegreesToRadians(destination.longitude - origin.longitude);
 
   const a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-    + Math.cos(convertDegreesToRadians(originLat)) * Math.cos(convertDegreesToRadians(destLat))
+    + Math.cos(convertDegreesToRadians(origin.latitude))
+    * Math.cos(convertDegreesToRadians(destination.latitude))
     * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return radiusOfEarthInMiles * c;
