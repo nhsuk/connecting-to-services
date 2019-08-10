@@ -72,7 +72,7 @@
     "coveralls": "^3.0.1",
     "destroy": "^1.0.4",
     "eslint": "^6.0.0",
-    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-nhsuk": "^0.18.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-json": "^1.2.0",
