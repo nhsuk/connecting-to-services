@@ -1,3 +1,8 @@
+1.14.1 / 2019-08-20
+===================
+- Added acceptance folder under test folder
+- Added feature file with first draft of scenarios for UI tests
+
 1.14.0 / TBC
 ===================
 - Use full path for Open Graph image
