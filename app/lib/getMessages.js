@@ -27,17 +27,13 @@ function getDefault(msg) {
 }
 
 function addMessage(openingTimes, hasTelephoneNumber, now) {
-  let openingInfo;
-
   if (openingTimes) {
-    openingInfo = getOpeningInfo(openingTimes, now);
-  } else if (hasTelephoneNumber) {
-    openingInfo = getDefault('Call for opening times');
-  } else {
-    openingInfo = getDefault('We can\'t find any opening times');
+    return getOpeningInfo(openingTimes, now);
   }
-
-  return openingInfo;
+  if (hasTelephoneNumber) {
+    return getDefault('Call for opening times');
+  }
+  return getDefault('We can\'t find any opening times');
 }
 
 module.exports = addMessage;
