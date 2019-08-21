@@ -39,9 +39,7 @@ describe('azureMapper', () => {
       latitude: 53.7975673878326,
       longitude: -1.55183371292776,
     };
-    /* eslint-disable sort-keys */
     const datetime = moment.tz('2019-08-02 07:30', 'Europe/London');
-    /* eslint-enable sort-keys */
     result = azMapper(asSampleResponse, origin, datetime);
   });
   it('no new keys should be introduced (but some may be not added)', async () => {
@@ -77,7 +75,7 @@ describe('azureMapper', () => {
   it('should map required contact properties corrrectly from AS format to ES format', async () => {
     const expectedProperties = [
       'email',
-      'telephoneNumber',
+      'telephone',
       'website',
       'fax',
     ];

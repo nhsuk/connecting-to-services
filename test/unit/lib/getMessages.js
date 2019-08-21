@@ -143,11 +143,11 @@ describe('addMessage', () => {
 
   it('should say call for opening times when the org does not have any opening times but does have phone number', () => {
     const org = {
-      contacts: { telephoneNumber: '01234567890' },
+      contacts: { telephone: '01234567890' },
       openingTimes: undefined,
     };
 
-    const hasPhoneNumber = org.contacts && org.contacts.telephoneNumber;
+    const hasPhoneNumber = org.contacts && org.contacts.telephone;
 
     const openingInfo = addMessage(org.openingTimes, hasPhoneNumber);
 
@@ -162,7 +162,7 @@ describe('addMessage', () => {
       openingTimes: undefined,
     };
 
-    const hasPhoneNumber = org.contacts && org.contacts.telephoneNumber;
+    const hasPhoneNumber = org.contacts && org.contacts.telephone;
     const openingInfo = addMessage(org.openingTimes, hasPhoneNumber);
 
     expect(openingInfo.isOpen).to.be.equal(false);
