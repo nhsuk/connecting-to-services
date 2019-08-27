@@ -43,7 +43,7 @@ describe('The results page', () => {
       .reply(200, ls27ueResponse);
 
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS27UE-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS27UE-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -82,7 +82,7 @@ describe('The results page', () => {
       .reply(200, ls27ueResponse);
 
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS27UE-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS27UE-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -179,7 +179,7 @@ describe('The results page', () => {
       .reply(200, postcodeResponse);
 
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/empty-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/empty-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -211,7 +211,7 @@ describe('The results page', () => {
       .reply(200, postcodeResponse);
 
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/empty-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/empty-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -297,7 +297,7 @@ describe('The results page error handling', () => {
       .times(1)
       .reply(200, fakeResponse);
 
-    nockRequests.serviceSearch({}, 500, 'organisations/err-as.json');
+    await nockRequests.serviceSearch({}, 500, 'organisations/err-as.json');
 
     try {
       await chai.request(server)
@@ -324,7 +324,7 @@ describe('The results page error handling', () => {
       .times(1)
       .reply(200, badResponse);
 
-    nockRequests.serviceSearch({}, 400, 'organisations/err-as.json');
+    await nockRequests.serviceSearch({}, 400, 'organisations/err-as.json');
 
     try {
       await chai.request(server)

@@ -54,7 +54,7 @@ describe('The place results page', () => {
 
     const searchOrigin = postcodeCoordinates.BA3;
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)

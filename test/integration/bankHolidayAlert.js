@@ -48,7 +48,7 @@ describe('The bank holiday alert messaging', () => {
 
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
 
-      nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+      await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)

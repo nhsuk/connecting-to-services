@@ -59,7 +59,7 @@ describe('Metadata', () => {
     it('should include the standard properties', async () => {
       const searchOrigin = postcodeCoordinates.LS1;
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-      nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+      await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)

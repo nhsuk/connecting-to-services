@@ -31,7 +31,7 @@ describe('The results page', () => {
 
       before('run request', async () => {
         const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-        nockRequests.serviceSearch(body, 200, 'organisations/TS55NP-as.json');
+        await nockRequests.serviceSearch(body, 200, 'organisations/TS55NP-as.json');
 
         const res = await chai.request(server)
           .get(resultsRoute)
@@ -63,7 +63,7 @@ describe('The results page', () => {
       const location = 'Leeds';
       const searchOrigin = postcodeCoordinates.LS1;
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
-      nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+      await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)
@@ -86,7 +86,7 @@ describe('The results page', () => {
       const location = 'Leeds';
       const searchOrigin = postcodeCoordinates.LS1;
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
-      nockRequests.serviceSearch(body, 500, 'organisations/err-as.json');
+      await nockRequests.serviceSearch(body, 500, 'organisations/err-as.json');
 
       try {
         await chai.request(server)
@@ -115,7 +115,7 @@ describe('The results page', () => {
 
     before('run request', async () => {
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-      nockRequests.serviceSearch(body, 200, 'organisations/LS1-openingtimes-removed-for-result-0-as.json');
+      await nockRequests.serviceSearch(body, 200, 'organisations/LS1-openingtimes-removed-for-result-0-as.json');
 
       const res = await chai.request(server)
         .get(resultsRoute)
