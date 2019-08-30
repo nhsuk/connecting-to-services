@@ -25,3 +25,8 @@ jmeter.log
 
 # newrelic log file
 newrelic_agent.log
+
+# Backstop stuff
+**/backstop_data/html_report/
+**/backstop_data/bitmaps_test/
+**/backstop/.idea
