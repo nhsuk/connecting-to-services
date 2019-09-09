@@ -47,7 +47,7 @@ describe(`The ${yourLocation} results page`, () => {
     const searchOrigin = setupPostcodesIoNock('England');
 
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -77,7 +77,7 @@ describe(`The ${yourLocation} results page`, () => {
   it('should return a list of open pharmacies for an English location', async () => {
     const searchOrigin = setupPostcodesIoNock('England');
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)

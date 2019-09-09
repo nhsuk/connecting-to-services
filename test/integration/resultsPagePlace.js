@@ -41,7 +41,7 @@ describe('The place results page', () => {
       longitude: singleResult.longitude,
     };
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
@@ -71,7 +71,7 @@ describe('The place results page', () => {
       .reply(200, singlePlaceResponse);
 
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
-    nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)

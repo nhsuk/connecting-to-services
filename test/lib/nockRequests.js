@@ -1,21 +1,25 @@
+const fs = require('fs');
 const nock = require('nock');
+const path = require('path');
+const util = require('util');
+
+const readFile = util.promisify(fs.readFile);
 
 const headers = require('../../app/lib/headers');
 const search = require('../../config/config').search;
 
 const searchHost = `https://${search.host}`;
 
-function createNock(path, body, statusCode, responsePath) {
-  // eslint-disable-next-line global-require, import/no-dynamic-require
-  const response = require(`../resources/${responsePath}`);
+async function createNock(postPath, body, statusCode, responsePath) {
+  const data = await readFile(path.join(__dirname, `../resources/${responsePath}`), 'utf8');
   return nock(searchHost, { encodedQueryParams: true, reqheaders: headers })
-    .post(`/service-search${path}`, body)
+    .post(`/service-search${postPath}`, body)
     .query({ 'api-version': search.version })
-    .reply(statusCode, response);
+    .reply(statusCode, data);
 }
 
-function serviceSearch(body, statusCode, responsePath) {
-  createNock('/search', body, statusCode, responsePath);
+async function serviceSearch(body, statusCode, responsePath) {
+  await createNock('/search', body, statusCode, responsePath);
 }
 
 function serviceSearchUnavailable(message) {
@@ -25,7 +29,6 @@ function serviceSearchUnavailable(message) {
 }
 
 module.exports = {
-  // postcodeSearch,
   serviceSearch,
   serviceSearchUnavailable,
 };

@@ -11,7 +11,7 @@
       {% if service.address.city %} {{ service.address.city }}, {% endif %}
       {% if service.address.county %} {{ service.address.county }}, {% endif %}
       {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
-      {% if service.contacts.telephoneNumber %}{{ service.contacts.telephoneNumber }}{% endif %}
+      {% if service.contacts.telephone %}{{ service.contacts.telephone }}{% endif %}
       </p>
     <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="sr-only"> for {{ service.name }} at {{ service.addressLine }}</span></a></p>
     <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="sr-only"> in {{ service.name }} at {{ service.addressLine }}</span></a></p>

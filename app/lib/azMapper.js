@@ -3,22 +3,25 @@ const phoneNumberParser = require('./displayUtils/phoneNumberParser');
 const getMessages = require('./getMessages');
 const getOpeningTimes = require('./azOpeningTimesMapper');
 
-function getPrimaryContactByType(contacts, type) {
-  const contactDetails = contacts.find(
-    c => c.OrganisationContactType === 'Primary' && c.OrganisationContactMethodType === type
-  );
-  return contactDetails ? contactDetails.OrganisationContactValue : '';
-}
-
 function getContacts(asContacts) {
   const contacts = JSON.parse(asContacts);
+  const contactDetails = {};
 
-  return {
-    email: getPrimaryContactByType(contacts, 'Email'),
-    fax: phoneNumberParser(getPrimaryContactByType(contacts, 'Fax')),
-    telephoneNumber: phoneNumberParser(getPrimaryContactByType(contacts, 'Telephone')),
-    website: getPrimaryContactByType(contacts, 'Website'),
-  };
+  contacts.forEach((c) => {
+    if (c.OrganisationContactType === 'Primary') {
+      const type = c.OrganisationContactMethodType;
+      const lowerType = type ? type.toLowerCase() : '';
+      switch (lowerType) {
+        case 'fax':
+        case 'telephone':
+          contactDetails[lowerType] = phoneNumberParser(c.OrganisationContactValue);
+          break;
+        default:
+          contactDetails[lowerType] = c.OrganisationContactValue;
+      }
+    }
+  });
+  return contactDetails;
 }
 
 function getDistanceInMiles(origin, destination) {
@@ -31,7 +34,7 @@ function getOpeningTimesMessage(openingTimes, hasPhoneNumber, datetime) {
 
 module.exports = (org, origin, datetime) => {
   const contacts = getContacts(org.Contacts);
-  const hasPhoneNumber = contacts && contacts.telephoneNumber;
+  const hasPhoneNumber = contacts && contacts.telephone;
   const openingTimes = getOpeningTimes(org.OpeningTimesV2);
   const {
     isOpen,

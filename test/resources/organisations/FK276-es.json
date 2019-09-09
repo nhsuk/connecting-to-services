@@ -129,15 +129,14 @@
     "postcode": "LS1 7JH"
   },
   "contacts": {
-    "website": "",
+    "website": "some.thing.com",
     "additionalContacts": [],
-    "telephoneNumber": "0113 245 5097",
+    "telephone": "0113 245 5097",
     "isNonGeographicPhoneNumber": false,
     "phoneChargeMethod": "unknown method",
     "phoneChargeAmount": null,
     "telephoneExtension": null,
-    "fax": "0113 234 7785",
-    "email": ""
+    "fax": "0113 234 7785"
   },
   "directionsInformation": null,
   "externalProfileUrl": null,
