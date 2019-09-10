@@ -2,6 +2,7 @@ const moment = require('moment-timezone');
 const chai = require('chai');
 
 const azMapper = require('../../../app/lib/azMapper');
+const utils = require('../../../app/lib/utils');
 const asSampleResponse = require('../../resources/organisations/FK276-as');
 const esSampleResponse = require('../../resources/organisations/FK276-es');
 
@@ -10,7 +11,7 @@ const expect = chai.expect;
 function removePastAdditionalDates(esSampleResponseOriginal) {
   // this needs doing since AS does not return past additional dates whilst ES did
   // it should make no functional difference to the behaviour
-  const esSampleResponseCopy = JSON.parse(JSON.stringify(esSampleResponseOriginal));
+  const esSampleResponseCopy = utils.deepClone(esSampleResponseOriginal);
   const dates = Object.keys(esSampleResponseCopy.openingTimes.alterations);
   const pastDates = dates.filter(d => moment(d).isBefore('2019-07-31'));
   pastDates.forEach((d) => {
