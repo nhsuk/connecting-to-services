@@ -12,10 +12,11 @@ function removePastAdditionalDates(esSampleResponseOriginal) {
   // this needs doing since AS does not return past additional dates whilst ES did
   // it should make no functional difference to the behaviour
   const esSampleResponseCopy = utils.deepClone(esSampleResponseOriginal);
-  const dates = Object.keys(esSampleResponseCopy.openingTimes.alterations);
-  const pastDates = dates.filter(d => moment(d).isBefore('2019-07-31'));
-  pastDates.forEach((d) => {
-    delete esSampleResponseCopy.openingTimes.alterations[d];
+  const alterationDates = Object.keys(esSampleResponseCopy.openingTimes.alterations);
+  alterationDates.forEach((ad) => {
+    if (moment(ad).isBefore('2019-07-31')) {
+      delete esSampleResponseCopy.openingTimes.alterations[ad];
+    }
   });
   return esSampleResponseCopy;
 }
