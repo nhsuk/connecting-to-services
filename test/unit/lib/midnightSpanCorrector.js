@@ -67,8 +67,7 @@ function get24HourWorkingWeekClosedSunday() {
 }
 
 function get24HourWorkingWeek() {
-  const week = setUpAllWeek(get24HourDay);
-  return week;
+  return setUpAllWeek(get24HourDay);
 }
 
 function getNewOpeningTimes(openingTimes, tz, alterations) {
