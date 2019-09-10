@@ -26,7 +26,7 @@ function getDefault(msg) {
   };
 }
 
-function addMessage(openingTimes, hasTelephoneNumber, now) {
+module.exports = (openingTimes, hasTelephoneNumber, now) => {
   if (openingTimes) {
     return getOpeningInfo(openingTimes, now);
   }
@@ -34,6 +34,4 @@ function addMessage(openingTimes, hasTelephoneNumber, now) {
     return getDefault('Call for opening times');
   }
   return getDefault('We can\'t find any opening times');
-}
-
-module.exports = addMessage;
+};

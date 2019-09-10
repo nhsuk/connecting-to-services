@@ -1,6 +1,6 @@
-const distanceCalculation = require('./displayUtils/calculateDistance');
+const calculateDistance = require('./displayUtils/calculateDistance');
 const phoneNumberParser = require('./displayUtils/phoneNumberParser');
-const getMessages = require('./getMessages');
+const getMessage = require('./getMessage');
 const getOpeningTimes = require('./azOpeningTimesMapper');
 
 function getContacts(asContacts) {
@@ -24,14 +24,6 @@ function getContacts(asContacts) {
   return contactDetails;
 }
 
-function getDistanceInMiles(origin, destination) {
-  return distanceCalculation(origin, destination);
-}
-
-function getOpeningTimesMessage(openingTimes, hasPhoneNumber, datetime) {
-  return getMessages(openingTimes, hasPhoneNumber, datetime);
-}
-
 module.exports = (org, origin, datetime) => {
   const contacts = getContacts(org.Contacts);
   const hasPhoneNumber = contacts && contacts.telephone;
@@ -40,7 +32,7 @@ module.exports = (org, origin, datetime) => {
     isOpen,
     openingTimesMessage,
     nextOpen,
-  } = getOpeningTimesMessage(openingTimes, hasPhoneNumber, datetime);
+  } = getMessage(openingTimes, hasPhoneNumber, datetime);
   const orgCoordinates = {
     latitude: org.Geocode.coordinates[1],
     longitude: org.Geocode.coordinates[0],
@@ -59,7 +51,7 @@ module.exports = (org, origin, datetime) => {
     },
     contacts,
     openingTimes,
-    distanceInMiles: getDistanceInMiles(origin, orgCoordinates),
+    distanceInMiles: calculateDistance(origin, orgCoordinates),
     isOpen,
     openingTimesMessage,
     nextOpen,

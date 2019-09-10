@@ -2,12 +2,12 @@ const chai = require('chai');
 const moment = require('moment');
 require('moment-timezone');
 
-const addMessage = require('../../../app/lib/getMessages');
+const getMessage = require('../../../app/lib/getMessage');
 const utils = require('../../../app/lib/utils');
 
 const expect = chai.expect;
 
-describe('addMessage', () => {
+describe('getMessage', () => {
   /* eslint-disable sort-keys */
   const alwaysOpenOrg = {
     openingTimes: {
@@ -42,7 +42,7 @@ describe('addMessage', () => {
     const momentInstance = moment(momentString);
     const nextOpenDateString = momentInstance.format('ddd MMM DD YYYY');
 
-    const openingInfo = addMessage(alwaysOpenOrg.openingTimes, undefined, momentInstance);
+    const openingInfo = getMessage(alwaysOpenOrg.openingTimes, undefined, momentInstance);
 
     expect(openingInfo.isOpen).to.be.equal(true);
     expect(openingInfo.openingTimesMessage).to.be.equal('Open 24 hours');
@@ -56,7 +56,7 @@ describe('addMessage', () => {
 
     // timezone required for correct results
     const momentTime = moment(justAfterMidnightSundayBST).clone().tz('Europe/London');
-    const openingInfo = addMessage(spanningSundayMidnightOrg.openingTimes, undefined, momentTime);
+    const openingInfo = getMessage(spanningSundayMidnightOrg.openingTimes, undefined, momentTime);
     expect(openingInfo.openingTimesMessage).to.be.equal('Open until 8pm today');
     expect(openingInfo.isOpen).to.be.equal(true);
     expect(openingInfo.nextOpen).to.not.be.undefined;
@@ -69,7 +69,7 @@ describe('addMessage', () => {
 
     // timezone required for correct results
     const momentTime = moment(beforeMidnightSundayBST).clone().tz('Europe/London');
-    const openingInfo = addMessage(spanningSundayMidnightOrg.openingTimes, undefined, momentTime);
+    const openingInfo = getMessage(spanningSundayMidnightOrg.openingTimes, undefined, momentTime);
     expect(openingInfo.openingTimesMessage).to.be.equal('Open until 8pm tomorrow');
     expect(openingInfo.isOpen).to.be.equal(true);
     expect(openingInfo.nextOpen).to.not.be.undefined;
@@ -82,7 +82,7 @@ describe('addMessage', () => {
 
     // timezone required for correct results
     const momentTime = moment(justBeforeMidnightSundayBST).clone().tz('Europe/London');
-    const openingInfo = addMessage(spanningSundayMidnightOrg.openingTimes, undefined, momentTime);
+    const openingInfo = getMessage(spanningSundayMidnightOrg.openingTimes, undefined, momentTime);
     expect(openingInfo.openingTimesMessage).to.be.equal('Open until 8pm tomorrow');
     expect(openingInfo.isOpen).to.be.equal(true);
     expect(openingInfo.nextOpen).to.not.be.undefined;
@@ -114,7 +114,7 @@ describe('addMessage', () => {
     };
     /* eslint-enable sort-keys */
 
-    const openingInfo = addMessage(orgWithAlterations.openingTimes, undefined, moment(momentDate));
+    const openingInfo = getMessage(orgWithAlterations.openingTimes, undefined, moment(momentDate));
 
     expect(openingInfo.isOpen).to.be.equal(true);
     expect(openingInfo.openingTimesMessage).to.be.equal('Open until midnight');
@@ -133,7 +133,7 @@ describe('addMessage', () => {
     const orgWithAlterations = utils.deepClone(alwaysOpenOrg);
     orgWithAlterations.openingTimes.alterations = alterations;
 
-    const openingInfo = addMessage(orgWithAlterations.openingTimes, undefined, moment(momentDate));
+    const openingInfo = getMessage(orgWithAlterations.openingTimes, undefined, moment(momentDate));
 
     expect(openingInfo.isOpen).to.be.equal(false);
     expect(openingInfo.openingTimesMessage).to.be.equal('Closed until 12am tomorrow');
@@ -149,7 +149,7 @@ describe('addMessage', () => {
 
     const hasPhoneNumber = org.contacts && org.contacts.telephone;
 
-    const openingInfo = addMessage(org.openingTimes, hasPhoneNumber);
+    const openingInfo = getMessage(org.openingTimes, hasPhoneNumber);
 
     expect(openingInfo.isOpen).to.be.equal(false);
     expect(openingInfo.openingTimesMessage).to.be.equal('Call for opening times');
@@ -163,7 +163,7 @@ describe('addMessage', () => {
     };
 
     const hasPhoneNumber = org.contacts && org.contacts.telephone;
-    const openingInfo = addMessage(org.openingTimes, hasPhoneNumber);
+    const openingInfo = getMessage(org.openingTimes, hasPhoneNumber);
 
     expect(openingInfo.isOpen).to.be.equal(false);
     expect(openingInfo.openingTimesMessage).to.be.equal('We can\'t find any opening times');
