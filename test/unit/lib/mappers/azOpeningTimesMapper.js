@@ -2,7 +2,7 @@
 const chai = require('chai');
 const moment = require('moment');
 
-const azOpeningTimesMapper = require('../../../app/lib/azOpeningTimesMapper');
+const azOpeningTimesMapper = require('../../../../app/lib/mappers/azOpeningTimesMapper');
 
 const expect = chai.expect;
 

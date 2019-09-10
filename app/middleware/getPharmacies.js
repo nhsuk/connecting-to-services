@@ -5,7 +5,7 @@ const request = require('../lib/request');
 const queryBuilder = require('../lib/queryBuilder');
 const queryTypes = require('../lib/constants').queryTypes;
 const headers = require('../lib/headers');
-const mapper = require('../lib/azMapper');
+const mapper = require('../lib/mappers/azMapper');
 const getDateTime = require('../lib/getDateTime');
 
 function isEnglish(countries) {

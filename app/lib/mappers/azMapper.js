@@ -1,6 +1,6 @@
-const calculateDistance = require('./displayUtils/calculateDistance');
-const phoneNumberParser = require('./displayUtils/phoneNumberParser');
-const getMessage = require('./getMessage');
+const calculateDistance = require('../displayUtils/calculateDistance');
+const phoneNumberParser = require('../displayUtils/phoneNumberParser');
+const getMessage = require('../getMessage');
 const getOpeningTimes = require('./azOpeningTimesMapper');
 
 function getContacts(asContacts) {

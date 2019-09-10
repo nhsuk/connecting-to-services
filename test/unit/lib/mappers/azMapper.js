@@ -1,10 +1,10 @@
 const moment = require('moment-timezone');
 const chai = require('chai');
 
-const azMapper = require('../../../app/lib/azMapper');
-const utils = require('../../../app/lib/utils');
-const asSampleResponse = require('../../resources/organisations/FK276-as');
-const esSampleResponse = require('../../resources/organisations/FK276-es');
+const azMapper = require('../../../../app/lib/mappers/azMapper');
+const utils = require('../../../../app/lib/utils');
+const asSampleResponse = require('../../../resources/organisations/FK276-as');
+const esSampleResponse = require('../../../resources/organisations/FK276-es');
 
 const expect = chai.expect;
 
