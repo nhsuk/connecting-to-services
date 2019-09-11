@@ -9,8 +9,9 @@ const esSampleResponse = require('../../../resources/organisations/FK276-es');
 const expect = chai.expect;
 
 function removePastAdditionalDates(esSampleResponseOriginal) {
-  // this needs doing since AS does not return past additional dates whilst ES did
-  // it should make no functional difference to the behaviour
+  // this needs doing since Azure Search does not return past additional dates whilst
+  // Elastic Search did
+  // It should make no functional difference to the behaviour
   const esSampleResponseCopy = utils.deepClone(esSampleResponseOriginal);
   const alterationDates = Object.keys(esSampleResponseCopy.openingTimes.alterations);
   alterationDates.forEach((ad) => {
@@ -47,7 +48,7 @@ describe('azureMapper', () => {
   it('no new keys should be introduced (but some may be not added)', async () => {
     expect(esSampleResponse).to.include.all.keys(result);
   });
-  it('should map top level properties corrrectly from AS format to ES format', async () => {
+  it('should map top level properties corrrectly from Azure Search format to Elastic Search format', async () => {
     const expectedProperties = [
       'identifier',
       'name',
@@ -64,7 +65,7 @@ describe('azureMapper', () => {
     expect(result.openingTimesMessage).to.not.be.empty;
     assertPropertyMapping(result, esSampleResponse, 'openingTimesMessage');
   });
-  it('should map opening times corrrectly from AS format to ES format', async () => {
+  it('should map opening times corrrectly from Azure Search format to Elastic Search format', async () => {
     const expectedProperties = [
       'openingTimes',
     ];
@@ -74,7 +75,7 @@ describe('azureMapper', () => {
       assertPropertyMapping(result, esSampleResponseCopy, propertyName);
     });
   });
-  it('should map required contact properties corrrectly from AS format to ES format', async () => {
+  it('should map required contact properties corrrectly from Azure Search format to Elastic Search format', async () => {
     const expectedProperties = [
       'email',
       'telephone',
