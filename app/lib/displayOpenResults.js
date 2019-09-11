@@ -1,6 +1,5 @@
-const moment = require('moment');
-
 const dateUtils = require('./dateUtils');
+const getDateTime = require('./getDateTime');
 const isRequestForOpenResults = require('./isRequestForOpenResults');
 
 function isRequestInitial(req) {
@@ -29,9 +28,8 @@ function isRequestInitialAndOutsideBusinessHours(req, datetimeMoment) {
     || isRequestInitialAndBankHoliday(req, datetimeMoment);
 }
 
-function displayOpenResults(req, datetimeOverride = process.env.DATETIME) {
-  // TODO: should we use a lib method for getDateTime
-  const datetimeMoment = datetimeOverride ? moment(datetimeOverride) : moment();
+function displayOpenResults(req) {
+  const datetimeMoment = getDateTime();
   return isRequestInitialAndOutsideBusinessHours(req, datetimeMoment)
     ? !isRequestForOpenResults(req)
     : isRequestForOpenResults(req);
