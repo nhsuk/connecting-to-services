@@ -7,6 +7,10 @@ const utils = require('../../../app/lib/utils');
 
 const expect = chai.expect;
 
+function hasPhoneNumber(org) {
+  return org.contacts && org.contacts.telephone;
+}
+
 describe('getMessage', () => {
   /* eslint-disable sort-keys */
   const alwaysOpenOrg = {
@@ -147,9 +151,7 @@ describe('getMessage', () => {
       openingTimes: undefined,
     };
 
-    const hasPhoneNumber = org.contacts && org.contacts.telephone;
-
-    const openingInfo = getMessage(org.openingTimes, hasPhoneNumber);
+    const openingInfo = getMessage(org.openingTimes, hasPhoneNumber(org));
 
     expect(openingInfo.isOpen).to.be.equal(false);
     expect(openingInfo.openingTimesMessage).to.be.equal('Call for opening times');
@@ -162,8 +164,7 @@ describe('getMessage', () => {
       openingTimes: undefined,
     };
 
-    const hasPhoneNumber = org.contacts && org.contacts.telephone;
-    const openingInfo = getMessage(org.openingTimes, hasPhoneNumber);
+    const openingInfo = getMessage(org.openingTimes, hasPhoneNumber(org));
 
     expect(openingInfo.isOpen).to.be.equal(false);
     expect(openingInfo.openingTimesMessage).to.be.equal('We can\'t find any opening times');
