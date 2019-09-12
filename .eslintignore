@@ -2,4 +2,4 @@ coverage/
 public/js/*
 data/*
 test/resources/*
-test/backstop/*
+backstop-tests/
