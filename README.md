@@ -41,6 +41,13 @@ The intention with the authentication challenge is to prevent people whom may
 stumble across the site and not realise it is for testing, it also prevents
 access by search engines and other bots.
 
+## Backstop tests
+
+There are some Backstop UI tests located in the backstop-tests folder. These can be run in Docker using the following instructions:<br>
+1. Install minimist in the backstop-tests folder with the command: npm install minimist
+2. Run this Docker command in the same folder: docker run --rm -v /${PWD}:/src backstopjs/backstopjs test --config=backstop.js
+3. The HTML report is located here: backstop-tests\backstop_data\html_report\index.html
+
 ## Environment variables
 
 Environment variables are expected to be managed by the environment in which
