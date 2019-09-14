@@ -6,7 +6,7 @@ const queryBuilder = require('../lib/queryBuilder');
 const queryTypes = require('../lib/constants').queryTypes;
 const headers = require('../lib/headers');
 const mapper = require('../lib/mappers/azMapper');
-const getDateTime = require('../lib/getDateTime');
+const getDateTime = require('../lib/dateUtils').getDateTime;
 
 function isEnglish(countries) {
   return countries && countries.filter(c => c === 'England').length > 0;

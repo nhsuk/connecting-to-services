@@ -1,6 +1,7 @@
 const dateUtils = require('./dateUtils');
-const getDateTime = require('./getDateTime');
 const isRequestForOpenResults = require('./isRequestForOpenResults');
+
+const getDateTime = dateUtils.getDateTime;
 
 function isRequestInitial(req) {
   return !req.query.open;

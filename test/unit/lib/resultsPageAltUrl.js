@@ -1,13 +1,11 @@
 const chai = require('chai');
-const moment = require('moment');
-
 const resultsPageAltUrl = require('../../../app/lib/resultsPageAltUrl');
 
 const expect = chai.expect;
 
 const testDateTimes = {
-  afterBusinessHours: moment('2018-03-14T18:00:00'),
-  middayDuringWeek: moment('2018-03-14T12:00:00'),
+  afterBusinessHours: '2018-03-14 18:00',
+  middayDuringWeek: '2018-03-14 12:00',
 };
 
 describe('resultsPageAltUrl', () => {

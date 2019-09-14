@@ -1,5 +1,4 @@
 const chai = require('chai');
-const moment = require('moment');
 
 const bankHolidayDates = require('../../../data/bankHolidayDates');
 const displayOpenResults = require('../../../app/lib/displayOpenResults');
@@ -7,12 +6,13 @@ const displayOpenResults = require('../../../app/lib/displayOpenResults');
 const expect = chai.expect;
 
 const testDateTimes = {
-  afterBusinessHours: moment('2018-03-14T18:00:00'),
-  bankHoliday: moment(bankHolidayDates[0]).hour(12),
-  endOfBusinessHours: moment('2018-03-14T17:59:59'),
-  middayDuringWeek: moment('2018-03-14T12:00:00'),
-  startOfBusinessHours: moment('2018-03-14T08:00:00'),
-  weekendDay: moment('2018-03-01T22:00:00'),
+  afterBusinessHours: '2018-03-14 18:00',
+  bankHoliday: `${bankHolidayDates[0]} 12:00`,
+  beforeBusinessHours: '2018-03-14 07:59',
+  endOfBusinessHours: '2018-03-14 17:59',
+  middayDuringWeek: '2018-03-14 12:00',
+  startOfBusinessHours: '2018-03-14 08:00',
+  weekendDay: '2018-03-01 22:00',
 };
 
 describe('displayOpenResults', () => {
@@ -85,7 +85,7 @@ describe('displayOpenResults', () => {
 
     describe('before business hours', () => {
       beforeEach(() => {
-        const beforeBusinessHours = moment('2018-03-14T07:59:59');
+        const beforeBusinessHours = testDateTimes.beforeBusinessHours;
         process.env.DATETIME = beforeBusinessHours;
       });
 
