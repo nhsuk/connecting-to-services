@@ -26,7 +26,6 @@ function getDateTime() {
 }
 
 function getDay(dateString) {
-  // TODO: use moment to get day
   return moment(dateString).format('dddd');
 }
 
@@ -35,10 +34,9 @@ function isBankHoliday(dateString) {
 }
 
 function isNextOpenTomorrow(nowDateString, nextOpenDateString) {
-  // TODO - use moment functionality here
-  const nowDate = new Date(nowDateString);
-  const nextOpenDate = new Date(nextOpenDateString);
-  return ((nextOpenDate - nowDate) === constants.dayInMilliseconds);
+  const nowDate = moment(nowDateString, 'YYYY-MM-DD');
+  const nextOpenDate = moment(nextOpenDateString, 'YYYY-MM-DD');
+  return (nextOpenDate.diff(nowDate, 'days') === 1);
 }
 
 function isTimeOutsideBusinessHours(datetimeMoment) {
@@ -56,9 +54,8 @@ function isTimeOutsideBusinessHours(datetimeMoment) {
 }
 
 function isWeekday(datetimeMoment) {
-  // TODO - use moment functionality here
-  const dayOfWeek = datetimeMoment.day();
-  return dayOfWeek > 0 && dayOfWeek < 6;
+  const day = moment(datetimeMoment).format('dddd');
+  return constants.daysOfWorkingWeek.includes(day);
 }
 
 module.exports = {
