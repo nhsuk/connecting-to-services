@@ -24,6 +24,9 @@ Starts the application a Docker container. Available at:
 [`test`](test)
 Starts a Docker container specifically for continually running tests.
 
+[`test-backstop`](test-backstop)
+Runs the Backstop tests in a Backstop Docker container.
+
 [`test-ci`](test-ci)
 Runs the tests in a Docker container once so that an exit code is reported and
 can be used by the CI server.
