@@ -20,7 +20,7 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${siteUrl}`,
+    url: siteUrl,
   },
   {
     clickSelector: '',
@@ -39,7 +39,7 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${siteUrl}results?location=Liverpool`,
+    url: `${siteUrl}results?location=Liverpool&open=false`,
   },
   {
     clickSelector: '',
@@ -58,6 +58,6 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${siteUrl}results?location=Glasgow`,
+    url: `${siteUrl}results?location=Glasgow&open=false`,
   },
 ];
