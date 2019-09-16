@@ -4,15 +4,12 @@ const findAPharmacyScenarios = require('./find_a_pharmacy_scenarios');
 const product = args.product;
 
 function getScenarios() {
-  let scenarios = [];
   switch (product) {
     case 'homepage':
-      scenarios = [].concat(findAPharmacyScenarios);
-      break;
+      return findAPharmacyScenarios;
     default:
-      scenarios = [].concat(findAPharmacyScenarios);
+      return findAPharmacyScenarios;
   }
-  return scenarios;
 }
 
 module.exports = {
