@@ -58,7 +58,7 @@ function getOpeningHoursMessage(status) {
     return 'Open 24 hours';
   }
   if (status.isOpen === true) {
-    if (utils.closesAtMidnight(status.nextClosed)) {
+    if (utils.isTimeConsideredMidnight(status.nextClosed)) {
       return getOpenUntilMidnightMessage(status);
     }
     return getOpenUntilMessage(status);

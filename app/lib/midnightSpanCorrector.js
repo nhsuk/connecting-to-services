@@ -9,7 +9,7 @@ function immediatelyReopens(openingTimes, closingTime) {
 }
 
 function openingSpansMidnight(openingTimes, nextClosed) {
-  return utils.closesAtMidnight(nextClosed) && immediatelyReopens(openingTimes, nextClosed);
+  return utils.isTimeConsideredMidnight(nextClosed) && immediatelyReopens(openingTimes, nextClosed);
 }
 
 function getNextClosedIgnoringMidnightSpan(openingTimes, nextClosed) {
