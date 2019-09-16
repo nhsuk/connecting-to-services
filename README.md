@@ -43,7 +43,7 @@ access by search engines and other bots.
 
 ## Backstop tests
 
-There are some Backstop UI tests located in the backstop-tests folder. These can be run in Docker using the following instructions:<br>
+There are some Backstop UI tests located in the backstop-tests folder. These can be run in Docker using the following instructions:
 1. Install minimist in the backstop-tests folder with the command: npm install minimist
 2. Run this Docker command in the same folder: docker run --rm -v /${PWD}:/src backstopjs/backstopjs test --config=backstop.js
 3. The HTML report is located here: backstop-tests\backstop_data\html_report\index.html

@@ -1,6 +1,6 @@
 const args = require('minimist')(process.argv.slice(2));
 
-const testHost = args.testhost || 'https://beta.nhs.uk/find-a-pharmacy/';
+const siteUrl = args.siteUrl || 'https://beta.nhs.uk/find-a-pharmacy/';
 
 module.exports = [
   {
@@ -20,7 +20,7 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${testHost}/`,
+    url: `${siteUrl}`,
   },
   {
     clickSelector: '',
@@ -39,7 +39,7 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${testHost}/results?location=Liverpool`,
+    url: `${siteUrl}results?location=Liverpool`,
   },
   {
     clickSelector: '',
@@ -58,6 +58,6 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${testHost}/results?location=Glasgow`,
+    url: `${siteUrl}results?location=Glasgow`,
   },
 ];
