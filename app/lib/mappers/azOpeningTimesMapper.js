@@ -7,36 +7,40 @@ function getTimesFromString(timesString) {
   return { closes, opens };
 }
 
-function getOpeningTimes(asOpeningTimes) {
+function getGeneralOpeningTimes(asOpeningTimes) {
   const weekdays = moment.weekdays();
-  const openingTimes = {
-    alterations: {},
-    general: {},
-  };
-
-  // Get opening times for each day of week
+  const general = {};
   weekdays.forEach((weekday) => {
     const sessions = asOpeningTimes
       .filter(ot => ot.OpeningTimeType === 'General' && ot.Weekday === weekday)
       .map(wot => getTimesFromString(wot.Times));
-    openingTimes.general[weekday.toLowerCase()] = sessions;
+    general[weekday.toLowerCase()] = sessions;
   });
+  return general;
+}
 
-  // Get opening times for alterations/additional days
+function getAlterationsOpeningTimes(asOpeningTimes) {
+  const alterations = {};
   asOpeningTimes
     .filter(ot => ot.OpeningTimeType === 'General' && ot.AdditionalOpeningDate)
     .forEach((aot) => {
       const aMoment = moment(aot.AdditionalOpeningDate, 'MMM DD YYYY');
-      if (!openingTimes.alterations[aMoment.format('YYYY-MM-DD')]) {
+      if (!alterations[aMoment.format('YYYY-MM-DD')]) {
         // initialise alterations for date
-        openingTimes.alterations[aMoment.format('YYYY-MM-DD')] = [];
+        alterations[aMoment.format('YYYY-MM-DD')] = [];
       }
       if (aot.IsOpen) {
-        openingTimes.alterations[aMoment.format('YYYY-MM-DD')].push(getTimesFromString(aot.Times));
+        alterations[aMoment.format('YYYY-MM-DD')].push(getTimesFromString(aot.Times));
       }
     });
+  return alterations;
+}
 
-  return openingTimes;
+function getOpeningTimes(asOpeningTimes) {
+  return {
+    alterations: getAlterationsOpeningTimes(asOpeningTimes),
+    general: getGeneralOpeningTimes(asOpeningTimes),
+  };
 }
 
 module.exports = getOpeningTimes;
