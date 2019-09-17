@@ -7,6 +7,7 @@
 - Use full path for Open Graph image
 - Do not use capitalised convention for constant variables
 - Update npm dependencies
+- Upgrade Docker container to use latest node LTS version
 
 1.13.0 / 2019-07-16
 ===================

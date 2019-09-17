@@ -1,4 +1,4 @@
-FROM node:10.16.0-alpine
+FROM node:10.16.3-alpine
 
 RUN apk add --no-cache python git-perl bash make gcc g++
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
