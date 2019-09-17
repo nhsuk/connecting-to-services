@@ -2,4 +2,4 @@
 
 # Install mimimist for use in Backstop test scripts
 cd ./backstop-tests/ && npm init -f && npm install minimist@1.2.0
-docker run --rm -v "$(pwd)":/src backstopjs/backstopjs test --config=backstop.js
+docker run --rm -v "/$(pwd)":/src backstopjs/backstopjs test --config=backstop.js
