@@ -1,9 +1,0 @@
-{
-  "name": "backstop-tests",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Simple UI tests to check that the pages are displayed correctly",
-  "dependencies": {
-    "minimist": "^1.2.0"
-  }
-}

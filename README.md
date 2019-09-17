@@ -43,10 +43,11 @@ access by search engines and other bots.
 
 ## Backstop tests
 
-There are some Backstop UI tests located in the backstop-tests folder. These can be run in Docker using the following instructions:<br>
-1. Install minimist in the backstop-tests folder with the command: npm install minimist
-2. Run this Docker command in the same folder: docker run --rm -v /${PWD}:/src backstopjs/backstopjs test --config=backstop.js
-3. The HTML report is located here: backstop-tests\backstop_data\html_report\index.html
+There are some Backstop UI tests located in [backstop-tests](backstop-tests).
+These can be run in Docker using the following instructions:
+* From the project root directory run `./scripts/test-backstop`
+* An html report will be generated. It will be accessible at
+  `./backstop-tests/backstop_data/html_report/index.html`
 
 ## Environment variables
 
@@ -69,6 +70,7 @@ environment.
 | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- | :-------- |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                     |                                           | No        |
 | `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                    |                                           | Yes       |
+| `BACKSTOP_TEST_URL`                | The fully qualified domain against which the Backstop UI tests will be run e.g. `http://beta.nhs.uk`                                   | http://beta.nhs.uk                        | Yes       |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                          | test:test                                 |           |
 | `BUSINESS_HOURS_START_HOUR`        | Business hours start hour                                                                                                              | 8                                         | No        |
 | `BUSINESS_HOURS_START_MINUTE`      | Business hours start minute                                                                                                            | 0                                         | No        |

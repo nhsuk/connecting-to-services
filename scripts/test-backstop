@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ./backstop-tests/ || exit
+docker run --rm -v "/$(pwd)":/src backstopjs/backstopjs test --config=backstop.js
