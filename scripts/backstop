@@ -1,0 +1,12 @@
+#!/bin/bash
+
+COMMAND=$1
+
+if [ $# -gt 0 ]; then
+  echo "BackstopJS will be called with '$COMMAND'."
+else
+  echo 'No arguments detected. BackstopJS will be called with no command.'
+fi
+
+cd ./backstop-tests/ || exit
+docker run --rm -v "/$(pwd)":/src backstopjs/backstopjs "$COMMAND" --config=backstop.js
