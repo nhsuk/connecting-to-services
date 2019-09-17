@@ -8,5 +8,5 @@ else
   echo 'No arguments detected. BackstopJS will be called with no command.'
 fi
 
-cd ./backstop-tests/ || exit
+cd ./test/backstop/ || exit
 docker run --rm -v "/$(pwd)":/src backstopjs/backstopjs "$COMMAND" --config=backstop.js

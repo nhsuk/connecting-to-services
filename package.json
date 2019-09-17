@@ -19,8 +19,8 @@
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "start-watch-debug": "yarn brunch watch & nodemon --inspect-brk=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "NODE_ENV=test mocha --exit --recursive test",
-    "test-unit": "NODE_ENV=test mocha --exit --recursive test/unit",
+    "test": "NODE_ENV=test mocha --exit --recursive test/mocha",
+    "test-unit": "NODE_ENV=test mocha --exit --recursive test/mocha/unit",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls"
   },
   "repository": {
