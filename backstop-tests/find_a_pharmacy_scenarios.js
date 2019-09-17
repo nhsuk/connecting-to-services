@@ -1,6 +1,5 @@
-const args = require('minimist')(process.argv.slice(2));
-
-const siteUrl = args.siteUrl || 'https://beta.nhs.uk/find-a-pharmacy/';
+const testUrl = process.env.BACKSTOP_TEST_URL || 'https://beta.nhs.uk';
+const testSiteUrl = `${testUrl}/find-a-pharmacy/`;
 
 module.exports = [
   {
@@ -20,7 +19,7 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: siteUrl,
+    url: testSiteUrl,
   },
   {
     clickSelector: '',
@@ -39,7 +38,7 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${siteUrl}results?location=Liverpool&open=false`,
+    url: `${testSiteUrl}results?location=Liverpool&open=false`,
   },
   {
     clickSelector: '',
@@ -58,6 +57,6 @@ module.exports = [
     requireSameDimensions: true,
     selectorExpansion: true,
     selectors: [],
-    url: `${siteUrl}results?location=Glasgow&open=false`,
+    url: `${testSiteUrl}results?location=Glasgow&open=false`,
   },
 ];

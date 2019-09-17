@@ -1,16 +1,4 @@
-const args = require('minimist')(process.argv.slice(2));
 const findAPharmacyScenarios = require('./find_a_pharmacy_scenarios');
-
-const product = args.product;
-
-function getScenarios() {
-  switch (product) {
-    case 'homepage':
-      return findAPharmacyScenarios;
-    default:
-      return findAPharmacyScenarios;
-  }
-}
 
 module.exports = {
   asyncCaptureLimit: 5,
@@ -27,7 +15,7 @@ module.exports = {
     bitmaps_test: 'backstop_data/bitmaps_test',
   },
   report: ['browser'],
-  scenarios: getScenarios(),
+  scenarios: findAPharmacyScenarios,
   viewports: [
     {
       height: 1080,
