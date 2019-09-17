@@ -1,6 +1,7 @@
 1.15.0 / TBC
 ===================
 - Switch to using Azure Search for organisation queries
+- Switch from istanbul to nyc for code coverage
 
 1.14.0 / 2019-07-18
 ===================

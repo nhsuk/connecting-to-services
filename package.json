@@ -5,23 +5,18 @@
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
     "brunch-build": "yarn brunch build",
-    "ci-hook": "yarn lint && yarn coverage-generate && yarn coverage-check",
-    "coverage-check": "istanbul check-coverage --config .istanbul.yml",
-    "coverage-generate": "yarn istanbul -- cover _mocha -- --exit --recursive",
-    "coverage-generate-full": "yarn istanbul -- cover --include-all-sources _mocha -- --exit --recursive",
-    "coverage-generate-no-metrics": "yarn istanbul -- cover _mocha -- --exit \"./test/**/!(metrics).js\"",
+    "coverage-generate": "nyc --reporter=lcov --reporter=cobertura mocha --exit --recursive test/mocha --reporter mocha-junit-reporter",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
-    "git-hook": "yarn lint && yarn coverage-generate-no-metrics && yarn coverage-check",
-    "istanbul": "NODE_ENV=test istanbul",
+    "git-hook": "yarn lint && yarn test-unit",
     "lint": "yarn lint-backend && yarn lint-frontend",
     "lint-backend": "eslint --ext .js,.json .",
     "lint-frontend": "eslint ./app/public/js",
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "start-watch-debug": "yarn brunch watch & nodemon --inspect-brk=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "NODE_ENV=test mocha --exit --recursive test/mocha",
-    "test-unit": "NODE_ENV=test mocha --exit --recursive test/mocha/unit",
-    "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls"
+    "test": "nyc mocha --exit --recursive test/mocha",
+    "test-unit": "nyc mocha --exit --recursive test/mocha/unit",
+    "test-ci": "yarn lint && yarn coverage-generate && yarn coverage-upload-coveralls"
   },
   "repository": {
     "type": "git",
@@ -52,6 +47,7 @@
     "google-libphonenumber": "^3.2.3",
     "helmet": "^3.8.1",
     "map-replace": "^1.0.2",
+    "mocha-junit-reporter": "^1.23.1",
     "moment": "^2.20.1",
     "moment-opening-times": "^2.9.0",
     "moment-timezone": "^0.5.26",
@@ -86,10 +82,10 @@
     "eslint-plugin-mocha": "^6.1.1",
     "eslint-watch": "^6.0.0",
     "husky": "^3.0.5",
-    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^6.0.2",
     "nock": "^11.3.4",
     "nodemon": "^1.12.0",
+    "nyc": "^14.1.1",
     "proxyquire": "^2.0.0"
   }
 }

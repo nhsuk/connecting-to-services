@@ -15,7 +15,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-ci
+    command: yarn test-ci
     user: root
     volumes:
       - c2s-test-ci-node_modules:/code/node_modules
