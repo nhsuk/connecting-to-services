@@ -55,6 +55,7 @@ module.exports = (org, origin, datetime) => {
     isOpen,
     openingTimesMessage,
     nextOpen,
+    /* eslint-enable sort-keys */
   };
 
   return mappedOrg;
