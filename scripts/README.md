@@ -7,6 +7,10 @@ Below is a list of scripts available, along with a simple description of
 what each one does. The details of what they are doing is available within the
 script.
 
+[`approve-backstop`](approve-backstop)
+Approves changes found during the latest run of Backstop tests. Backstop runs
+in a Docker container.
+
 [`bootstrap`](bootstrap)
 Installs project's direct dependencies e.g. npm packages.
 
