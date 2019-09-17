@@ -1,12 +1,13 @@
+const moment = require('moment');
 const isBankHoliday = require('../lib/dateUtils').isBankHoliday;
-const getDateString = require('../lib/dateUtils').getDateString;
+const getDateTime = require('../lib/dateUtils').getDateTime;
 const messages = require('../lib/messages');
 
-function addBankHolidayMessage(orgs, dateStringOverride = process.env.DATETIME) {
-  const nowDateString = getDateString(dateStringOverride);
+function addBankHolidayMessage(orgs) {
+  const nowDateString = getDateTime().format('YYYY-MM-DD');
 
   return orgs.map((org) => {
-    const nextOpenDateString = getDateString(org.nextOpen);
+    const nextOpenDateString = moment(org.nextOpen).format('YYYY-MM-DD');
 
     if (org.isOpen || nextOpenDateString === nowDateString) {
       if (isBankHoliday(nowDateString)) {

@@ -6,12 +6,10 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn test-watch
+    command: yarn test
     volumes:
       - c2s-test-node_modules:/code/node_modules
       - .:/code
-    links:
-      - nearby-services-api:nearby-services-api
 
   test-ci:
     extends:
@@ -27,16 +25,6 @@ services:
       TRAVIS_BRANCH: ${TRAVIS_BRANCH}
       TRAVIS_COMMIT: ${TRAVIS_COMMIT}
       TRAVIS_JOB_ID: ${TRAVIS_JOB_ID}
-    links:
-      - nearby-services-api:nearby-services-api
-
-  nearby-services-api:
-    image: "nhsuk/nearby-services-api:${NEARBY_SERVICES_API_DOCKER_IMAGE_TAG-0.14.1}"
-    links:
-      - pharmacy-db-elastic:es
-
-  pharmacy-db-elastic:
-    image: "nhsuk/elasticsearch-updater-snapshot:20170921"
 
 volumes:
   c2s-test-node_modules:

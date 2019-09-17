@@ -1,46 +1,35 @@
 const chai = require('chai');
-const moment = require('moment');
+const moment = require('moment-timezone');
+const VError = require('verror').VError;
 
 const bankHolidayDates = require('../../../data/bankHolidayDates');
 const businessHours = require('../../../config/config').businessHours;
 const dateUtils = require('../../../app/lib/dateUtils');
+const config = require('../../../config/config');
 
 const expect = chai.expect;
+const timezone = config.timezone;
 
 describe('dateUtils', () => {
-  describe('getDateString', () => {
-    const nowDateString = new Date().toISOString().slice(0, 10);
-
-    it('should return todays date as string when no argument supplied', () => {
-      const result = dateUtils.getDateString();
-
-      expect(result).to.be.equal(nowDateString);
+  describe('getDateTime', () => {
+    afterEach('reset dateTime override', () => {
+      delete process.env.DATETIME;
     });
-
-    it('should return todays date as string when null argument supplied', () => {
-      const result = dateUtils.getDateString(null);
-
-      expect(result).to.be.equal(nowDateString);
+    it('should return todays date', () => {
+      const start = moment().tz(timezone);
+      const result = dateUtils.getDateTime();
+      expect(result.isSame(start, 'second')).to.be.true;
     });
-
-    it('should return todays date as string when empty string argument supplied', () => {
-      const result = dateUtils.getDateString('');
-
-      expect(result).to.be.equal(nowDateString);
+    it('should return overridden date', () => {
+      const dateTime = '2018-03-14 12:00';
+      process.env.DATETIME = dateTime;
+      const result = dateUtils.getDateTime();
+      expect(result.format('YYYY-MM-DD HH:mm')).to.be.equal(dateTime);
     });
-
-    it('should return todays date as string when garbage string argument supplied', () => {
-      const result = dateUtils.getDateString('garbage');
-
-      expect(result).to.be.equal(nowDateString);
-    });
-
-    it('should return the date string of the supplied argument', () => {
-      const dateString = '2020-02-02';
-      const dateTimeString = `${dateString}T09:30:00.000Z`;
-      const result = dateUtils.getDateString(dateTimeString);
-
-      expect(result).to.be.equal(dateString);
+    it('should throw exception if overriden date is invalid', () => {
+      const dateTime = '2018-99-14 12:00';
+      process.env.DATETIME = dateTime;
+      expect(() => { dateUtils.getDateTime(); }).to.throw(VError, `Invalid date: ${dateTime}`);
     });
   });
 

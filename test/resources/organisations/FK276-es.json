@@ -1,0 +1,276 @@
+{
+  "identifierType": "Pharmacy Contract",
+  "openingTimes": {
+    "general": {
+      "monday": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "tuesday": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "wednesday": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "thursday": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "friday": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "saturday": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "sunday": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ]
+    },
+    "alterations": {
+      "2019-04-19": [
+        {
+          "opens": "07:45",
+          "closes": "18:00"
+        }
+      ],
+      "2018-12-26": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2019-01-01": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2019-04-22": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2019-05-06": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2019-05-27": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2019-08-26": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2018-05-07": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2018-05-28": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2018-08-27": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2019-12-26": [
+        {
+          "opens": "10:30",
+          "closes": "16:30"
+        }
+      ],
+      "2018-12-25": [],
+      "2019-04-21": [],
+      "2019-12-25": [],
+      "2020-01-01": []
+    }
+  },
+  "outOfHours": "",
+  "hasEps": true,
+  "address": {
+    "line1": "12-14 Vicar La",
+    "line2": "",
+    "line3": "",
+    "city": "Leeds",
+    "county": "West Yorkshire",
+    "postcode": "LS1 7JH"
+  },
+  "contacts": {
+    "website": "some.thing.com",
+    "additionalContacts": [],
+    "telephone": "0113 245 5097",
+    "isNonGeographicPhoneNumber": false,
+    "phoneChargeMethod": "unknown method",
+    "phoneChargeAmount": null,
+    "telephoneExtension": null,
+    "fax": "0113 234 7785"
+  },
+  "directionsInformation": null,
+  "externalProfileUrl": null,
+  "identifier": "FK276",
+  "name": "Boots",
+  "organisationType": "Pharmacy",
+  "parkingInformation": null,
+  "provider": "West Yorkshire Area Team",
+  "summary": "<p><strong>For Boots stores special opening hours, e.g. Christmas and Bank Holidays, please click on this link to Boots.com for more detail...   <a href=\"http://www.boots.com/webapp/wcs/stores/servlet/StoreLocator?requiredAction=displayStoreLookupPage&displayView=StoreLookupView&langId=-1&storeId=10052&catalogId=11051&langId=-1&storeId=10052&catalogId=11051\">Boots store locator</a></strong></p>",
+  "links": [
+    {
+      "rel": "NoFollow",
+      "href": "http://statse.webtrendslive.com/dcss9yzisf9xjyg74mgbihg8p_8d2u/njs.gif?dcsuri=%2Fexternalservices%2Forganisationapi%2Forganisations%2FFK276&amp;wt.js=no&amp;wt.cg_n=InwardAPI&amp;wt.z_SyndicationDomain={YourDomainName}",
+      "name": "Tracking pixel"
+    },
+    {
+      "rel": "Self",
+      "href": "http://www.nhs.uk/externalservices/organisationapi/organisations/FK276",
+      "name": "Link to self"
+    },
+    {
+      "rel": "Alternate",
+      "href": "http://www.nhs.uk/services/pharmacies/overview/defaultview.aspx?id=FK276",
+      "name": "NHS Choices profile"
+    }
+  ],
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -1.539584755897522,
+      53.79842758178711
+    ]
+  },
+  "openingTimesAsOffset": [
+    {
+      "closes": 1080,
+      "opens": 465
+    },
+    {
+      "closes": 2520,
+      "opens": 1905
+    },
+    {
+      "closes": 3960,
+      "opens": 3345
+    },
+    {
+      "closes": 5400,
+      "opens": 4785
+    },
+    {
+      "closes": 6840,
+      "opens": 6225
+    },
+    {
+      "closes": 8280,
+      "opens": 7665
+    },
+    {
+      "closes": 9630,
+      "opens": 9270
+    }
+  ],
+  "openingTimesAlterationsAsOffset": [
+    {
+      "closes": 1080,
+      "date": "2019-04-19",
+      "opens": 465
+    },
+    {
+      "closes": 990,
+      "date": "2018-12-26",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2019-01-01",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2019-04-22",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2019-05-06",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2019-05-27",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2019-08-26",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2018-05-07",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2018-05-28",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2018-08-27",
+      "opens": 630
+    },
+    {
+      "closes": 990,
+      "date": "2019-12-26",
+      "opens": 630
+    },
+    {
+      "date": "2018-12-25"
+    },
+    {
+      "date": "2019-04-21"
+    },
+    {
+      "date": "2019-12-25"
+    },
+    {
+      "date": "2020-01-01"
+    }
+  ],
+  "distanceInMiles": 0.0019140587935451683,
+  "openingTimesMessage": "Open in 15 minutes",
+  "isOpen": false,
+  "nextOpen": "2019-08-02T07:45:00.000Z"
+}

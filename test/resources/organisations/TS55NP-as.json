@@ -1,0 +1,969 @@
+{
+  "@odata.context": "https://nhsuksearchintuks.search.windows.net/indexes('organisation-1-1-b-dev')/$metadata#docs(*)",
+  "@odata.count": 11394,
+  "value": [
+    {
+      "@search.score": 1,
+      "OrganisationName": "Acklam Road Pharmacy",
+      "Address1": "89 Acklam Road",
+      "Address2": "Middlesbrough",
+      "Address3": "Acklam",
+      "City": "Cleveland",
+      "County": "",
+      "Postcode": "TS5 5HR",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.26257,
+          54.5529
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642 817570\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01642 850602\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "455 Linthorpe Rd",
+      "Address2": null,
+      "Address3": null,
+      "City": "Middlesbrough",
+      "County": "North Yorkshire",
+      "Postcode": "TS5 6HX",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.24314,
+          54.5605
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642817134\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.boots.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01642852335\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "David Jarvis Ltd",
+      "Address1": "Palladium Pharmacy",
+      "Address2": "43 Eastbourne Road",
+      "Address3": null,
+      "City": "Cleveland",
+      "County": "",
+      "Postcode": "TS5 6QN",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.23423,
+          54.5571
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":780,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642 817 361\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01642 817 361\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-13:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 780,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Jhoots Pharmacy",
+      "Address1": "Next To Fulcrum Medical Centre",
+      "Address2": "Acklam Road",
+      "Address3": null,
+      "City": "Middlesbrough",
+      "County": "Durham",
+      "Postcode": "TS5 4EQ",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.25788,
+          54.5634
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-12:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":750,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"13:30-17:30\",\"OffsetOpeningTime\":810,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-12:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":750,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"13:30-17:30\",\"OffsetOpeningTime\":810,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-12:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":750,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"13:30-17:30\",\"OffsetOpeningTime\":810,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-12:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":750,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"13:30-17:30\",\"OffsetOpeningTime\":810,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-12:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":750,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"13:30-17:30\",\"OffsetOpeningTime\":810,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-12:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":720,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2020\",\"IsOpen\":false}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642 852123\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"jhootspharmacywestlane@aah-n3.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.jhootspharmacy.co.uk\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "09:00-12:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 750,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "13:30-17:30",
+          "OffsetOpeningTime": 810,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "09:00-12:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 750,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "13:30-17:30",
+          "OffsetOpeningTime": 810,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "09:00-12:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 750,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "13:30-17:30",
+          "OffsetOpeningTime": 810,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "09:00-12:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 750,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "13:30-17:30",
+          "OffsetOpeningTime": 810,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "09:00-12:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 750,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "13:30-17:30",
+          "OffsetOpeningTime": 810,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-12:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 720,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Dec 25 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Dec 26 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Jan  1 2020",
+          "IsOpen": false
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Hunters Pharmacy",
+      "Address1": "397 Linthorpe Road",
+      "Address2": null,
+      "Address3": null,
+      "City": "Middlesbrough",
+      "County": "",
+      "Postcode": "TS5 6AE",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.24214,
+          54.5634
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642 819533\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.knightspharmacy.co.uk\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": false
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Your Family Pharmacy",
+      "Address1": "378 Linthorpe Road",
+      "Address2": "Linthorpe",
+      "Address3": null,
+      "City": "Middlesbrough",
+      "County": "Cleveland",
+      "Postcode": "TS5 6HA",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.24159,
+          54.5633
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"08:00-21:30\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1290,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"07:30-22:00\",\"OffsetOpeningTime\":450,\"OffsetClosingTime\":1320,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"07:30-22:00\",\"OffsetOpeningTime\":450,\"OffsetClosingTime\":1320,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"07:30-22:00\",\"OffsetOpeningTime\":450,\"OffsetClosingTime\":1320,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"07:30-22:00\",\"OffsetOpeningTime\":450,\"OffsetClosingTime\":1320,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"07:30-22:00\",\"OffsetOpeningTime\":450,\"OffsetClosingTime\":1320,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"07:30-21:30\",\"OffsetOpeningTime\":450,\"OffsetClosingTime\":1290,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642 850811\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"linthorpe@wcl-ho.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.whitworthchemists.co.uk\\/\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01642 850036\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "08:00-21:30",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1290,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "07:30-22:00",
+          "OffsetOpeningTime": 450,
+          "OffsetClosingTime": 1320,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "07:30-22:00",
+          "OffsetOpeningTime": 450,
+          "OffsetClosingTime": 1320,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "07:30-22:00",
+          "OffsetOpeningTime": 450,
+          "OffsetClosingTime": 1320,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "07:30-22:00",
+          "OffsetOpeningTime": 450,
+          "OffsetClosingTime": 1320,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "07:30-22:00",
+          "OffsetOpeningTime": 450,
+          "OffsetClosingTime": 1320,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "07:30-21:30",
+          "OffsetOpeningTime": 450,
+          "OffsetClosingTime": 1290,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Lloydspharmacy",
+      "Address1": "386 Linthorpe Road",
+      "Address2": "Middlesbrough",
+      "Address3": "",
+      "City": "",
+      "County": "",
+      "Postcode": "TS5 6HA",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.24159,
+          54.5633
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"09:00-19:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1140,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:00-23:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1380,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-23:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1380,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-23:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1380,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-23:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1380,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-23:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1380,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:00-23:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1380,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642812993\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"lp7390@lloydspharmacy.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.lloydspharmacy.com\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "09:00-19:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1140,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "08:00-23:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1380,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:00-23:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1380,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:00-23:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1380,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:00-23:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1380,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:00-23:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1380,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "08:00-23:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1380,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "21B Goodwood Square",
+      "Address2": "Thornaby",
+      "Address3": null,
+      "City": "Stockton on Tees",
+      "County": "County Durham",
+      "Postcode": "TS17 7BW",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.27419,
+          54.5553
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:30-17:00\",\"OffsetOpeningTime\":630,\"OffsetClosingTime\":1020,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:30-23:59\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-23:59\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-23:59\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-23:59\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-23:59\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:30-23:59\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"09:00-23:59\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-16:00\",\"OffsetOpeningTime\":600,\"OffsetClosingTime\":960,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2020\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642605956\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01642 603263\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "10:30-17:00",
+          "OffsetOpeningTime": 630,
+          "OffsetClosingTime": 1020,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "08:30-23:59",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:30-23:59",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:30-23:59",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:30-23:59",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:30-23:59",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "08:30-23:59",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 25 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 26 2019",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "09:00-23:59",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "10:00-16:00",
+          "OffsetOpeningTime": 600,
+          "OffsetClosingTime": 960,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Jan  1 2020",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "Linthorpe Rd",
+      "Address2": null,
+      "Address3": null,
+      "City": "Middlesbrough",
+      "County": "North Yorkshire",
+      "Postcode": "TS1 3QY",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.24003,
+          54.5664
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-12:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":720,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642242944\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-12:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 720,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Morrisons Pharmacy",
+      "Address1": "Teesside Retail Park",
+      "Address2": "Thornaby",
+      "Address3": "",
+      "City": "Stockton-on-Tees",
+      "County": "",
+      "Postcode": "TS17 7BP",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.2758,
+          54.5579
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"11:00-17:00\",\"OffsetOpeningTime\":660,\"OffsetClosingTime\":1020,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:30-20:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-20:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-20:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-20:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-20:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:00-19:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1140,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01642 607 074\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "11:00-17:00",
+          "OffsetOpeningTime": 660,
+          "OffsetClosingTime": 1020,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "08:30-20:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:30-20:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:30-20:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:30-20:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:30-20:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "08:00-19:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1140,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    }
+  ]
+}

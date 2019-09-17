@@ -1,0 +1,1005 @@
+{
+  "@odata.context": "https://nhsuksearchintuks.search.windows.net/indexes('organisation-1-1-b-dev')/$metadata#docs(*)",
+  "@odata.count": 11394,
+  "value": [
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "1 Bond Street, Leeds Trinity",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS1 5EY",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54609,
+          53.7974
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"12:00-18:00\",\"OffsetOpeningTime\":720,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132433551 (ext. 3)\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.boots.com\\/stores\\/500-leeds-trinity-ls1-5ey\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132449226\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "12:00-18:00",
+          "OffsetOpeningTime": 720,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "City Station",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS1 4DT",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54782,
+          53.795
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"09:00-23:59\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"06:00-23:59\",\"OffsetOpeningTime\":360,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"06:00-23:59\",\"OffsetOpeningTime\":360,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"06:00-23:59\",\"OffsetOpeningTime\":360,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"06:00-23:59\",\"OffsetOpeningTime\":360,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"06:00-23:59\",\"OffsetOpeningTime\":360,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"07:00-23:59\",\"OffsetOpeningTime\":420,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132421713\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132428192\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "09:00-23:59",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "06:00-23:59",
+          "OffsetOpeningTime": 360,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "06:00-23:59",
+          "OffsetOpeningTime": 360,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "06:00-23:59",
+          "OffsetOpeningTime": 360,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "06:00-23:59",
+          "OffsetOpeningTime": 360,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "06:00-23:59",
+          "OffsetOpeningTime": 360,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "07:00-23:59",
+          "OffsetOpeningTime": 420,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Superdrug Stores Plc",
+      "Address1": null,
+      "Address2": "31-35 The Merrion Centre",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "",
+      "Postcode": "LS2 8NG",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54403,
+          53.8016
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:00-17:30\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-17:30\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-17:30\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-17:30\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-17:30\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 245 7671\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.superdrug.com\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 2457671\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "08:00-17:30",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:00-17:30",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:00-17:30",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:00-17:30",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:00-17:30",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "49-51 Merrion Ctr",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS2 8PJ",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54424,
+          53.8021
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2020\",\"IsOpen\":false}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132428194\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132428193\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 25 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 26 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Jan  1 2020",
+          "IsOpen": false
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Superdrug Stores Plc",
+      "Address1": null,
+      "Address2": "13 Kirkgate",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "",
+      "Postcode": "LS1 6BY",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54074,
+          53.7971
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:00\",\"OffsetOpeningTime\":510,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-17:30\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1050,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2431589        \"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.superdrug.com\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 2431589\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:30-18:00",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-17:30",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "12-14 Vicar La",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS1 7JH",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.53958,
+          53.7984
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:30-16:30\",\"OffsetOpeningTime\":630,\"OffsetClosingTime\":990,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"07:45-18:00\",\"OffsetOpeningTime\":465,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"07:45-18:00\",\"OffsetOpeningTime\":465,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"07:45-18:00\",\"OffsetOpeningTime\":465,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"07:45-18:00\",\"OffsetOpeningTime\":465,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"07:45-18:00\",\"OffsetOpeningTime\":465,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"07:45-18:00\",\"OffsetOpeningTime\":465,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2020\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"10:30-16:30\",\"OffsetOpeningTime\":630,\"OffsetClosingTime\":990,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:30-16:30\",\"OffsetOpeningTime\":630,\"OffsetClosingTime\":990,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132455097\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132347785\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "10:30-16:30",
+          "OffsetOpeningTime": 630,
+          "OffsetClosingTime": 990,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "07:45-18:00",
+          "OffsetOpeningTime": 465,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "07:45-18:00",
+          "OffsetOpeningTime": 465,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "07:45-18:00",
+          "OffsetOpeningTime": 465,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "07:45-18:00",
+          "OffsetOpeningTime": 465,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "07:45-18:00",
+          "OffsetOpeningTime": 465,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "07:45-18:00",
+          "OffsetOpeningTime": 465,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 25 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Jan  1 2020",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "10:30-16:30",
+          "OffsetOpeningTime": 630,
+          "OffsetClosingTime": 990,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "10:30-16:30",
+          "OffsetOpeningTime": 630,
+          "OffsetClosingTime": 990,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 26 2019",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Living Care Pharmacy",
+      "Address1": "166 Woodhouse Lane",
+      "Address2": "Leeds",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS2 9HB",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.55202,
+          53.8084
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2469988\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/www.livingcarepharmacy.co.uk\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": false
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "3A Junction St",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS10 1ET",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54051,
+          53.7888
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:30-16:30\",\"OffsetOpeningTime\":630,\"OffsetClosingTime\":990,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"09:00-20:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-20:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-20:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-20:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-20:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-19:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1140,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"08:00-18:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"09:00-17:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1020,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 24 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"09:00-17:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1020,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 31 2019\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-17:00\",\"OffsetOpeningTime\":600,\"OffsetClosingTime\":1020,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2020\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132448039\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132446223\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "10:30-16:30",
+          "OffsetOpeningTime": 630,
+          "OffsetClosingTime": 990,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "09:00-20:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "09:00-20:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "09:00-20:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "09:00-20:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "09:00-20:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-19:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1140,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 25 2019",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "Times": "08:00-18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 26 2019",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "09:00-17:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1020,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 24 2019",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "09:00-17:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1020,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Dec 31 2019",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "10:00-17:00",
+          "OffsetOpeningTime": 600,
+          "OffsetClosingTime": 1020,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "Jan  1 2020",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Hyde Park Pharmacy",
+      "Address1": "46 Woodsley Road",
+      "Address2": "46 Woodsley Road",
+      "Address3": "",
+      "City": "Leeds",
+      "County": "",
+      "Postcode": "LS3 1DT",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.56851,
+          53.8056
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:00-16:00\",\"OffsetOpeningTime\":600,\"OffsetClosingTime\":960,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Sunday\",\"Times\":\"23:00-23:59\",\"OffsetOpeningTime\":1380,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"00:00-20:00\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"23:00-23:59\",\"OffsetOpeningTime\":1380,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"00:00-20:00\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"23:00-23:59\",\"OffsetOpeningTime\":1380,\"OffsetClosingTime\":1439,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"00:00-20:00\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-20:00\",\"OffsetOpeningTime\":480,\"OffsetClosingTime\":1200,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-16:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":960,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2441551\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Sunday",
+          "Times": "10:00-16:00",
+          "OffsetOpeningTime": 600,
+          "OffsetClosingTime": 960,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Sunday",
+          "Times": "23:00-23:59",
+          "OffsetOpeningTime": 1380,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "00:00-20:00",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "Times": "23:00-23:59",
+          "OffsetOpeningTime": 1380,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "00:00-20:00",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "23:00-23:59",
+          "OffsetOpeningTime": 1380,
+          "OffsetClosingTime": 1439,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "00:00-20:00",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "08:00-20:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1200,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "Times": "09:00-16:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 960,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Living Care Pharmacy",
+      "Address1": "Unit 2 Oatlands Retail Park",
+      "Address2": "Oatland Drive",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "",
+      "Postcode": "LS7 1SH",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.53945,
+          53.808
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OffsetOpeningTime\":540,\"OffsetClosingTime\":1080,\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OffsetOpeningTime\":0,\"OffsetClosingTime\":0,\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false}]",
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 245 5296\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/www.livingcarepharmacy.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 245 7883\"}]",
+      "OpeningTimesV2": [
+        {
+          "Weekday": "Monday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "Times": "09:00-18:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "Times": "",
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Aug 26 2019",
+          "IsOpen": false
+        }
+      ]
+    }
+  ]
+}
