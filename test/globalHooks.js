@@ -4,9 +4,6 @@ const log = require('../app/lib/logger');
 
 const expect = chai.expect;
 
-before('global setup', () => {
-});
-
 after('Check all nocks have been called', () => {
   try {
     log.fatal(nock.pendingMocks());

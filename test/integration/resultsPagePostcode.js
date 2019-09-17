@@ -31,7 +31,6 @@ describe('The results page', () => {
   const ls27ueResult = JSON.parse(ls27ueResponse).result;
 
   it('should return 10 nearby results, by default', async () => {
-    // const searchOrigin = postcodeCoordinates.LS27UE;
     const searchOrigin = {
       latitude: ls27ueResult.latitude,
       longitude: ls27ueResult.longitude,
