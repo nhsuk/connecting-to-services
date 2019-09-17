@@ -1,6 +1,11 @@
+const moment = require('moment-timezone');
+const VError = require('verror').VError;
+
 const bankHolidayDates = require('../../data/bankHolidayDates');
 const constants = require('./constants');
 const config = require('../../config/config');
+
+const timezone = config.timezone;
 
 function cloneMoment(datetimeMoment, hour, minute) {
   return datetimeMoment.clone()
@@ -9,16 +14,19 @@ function cloneMoment(datetimeMoment, hour, minute) {
     .second(0);
 }
 
-function getDateString(dateString) {
-  // eslint-disable-next-line no-restricted-globals
-  const date = (isNaN(Date.parse(dateString)))
-    ? new Date()
-    : new Date(dateString);
-  return date.toISOString().slice(0, 10);
+function getDateTime() {
+  if (process.env.DATETIME) {
+    const dateTime = moment(process.env.DATETIME, 'YYYY-MM-DD HH:mm').tz(timezone);
+    if (!dateTime.isValid()) {
+      throw new VError(`Invalid date: ${process.env.DATETIME}`);
+    }
+    return dateTime;
+  }
+  return moment().tz(timezone);
 }
 
 function getDay(dateString) {
-  return constants.daysOfWeek[new Date(dateString).getDay()];
+  return moment(dateString).format('dddd');
 }
 
 function isBankHoliday(dateString) {
@@ -26,9 +34,9 @@ function isBankHoliday(dateString) {
 }
 
 function isNextOpenTomorrow(nowDateString, nextOpenDateString) {
-  const nowDate = new Date(nowDateString);
-  const nextOpenDate = new Date(nextOpenDateString);
-  return ((nextOpenDate - nowDate) === constants.dayInMilliseconds);
+  const nowDate = moment(nowDateString, 'YYYY-MM-DD');
+  const nextOpenDate = moment(nextOpenDateString, 'YYYY-MM-DD');
+  return (nextOpenDate.diff(nowDate, 'days') === 1);
 }
 
 function isTimeOutsideBusinessHours(datetimeMoment) {
@@ -46,12 +54,12 @@ function isTimeOutsideBusinessHours(datetimeMoment) {
 }
 
 function isWeekday(datetimeMoment) {
-  const dayOfWeek = datetimeMoment.day();
-  return dayOfWeek > 0 && dayOfWeek < 6;
+  const day = moment(datetimeMoment).format('dddd');
+  return constants.daysOfWorkingWeek.includes(day);
 }
 
 module.exports = {
-  getDateString,
+  getDateTime,
   getDay,
   isBankHoliday,
   isNextOpenTomorrow,

@@ -3,9 +3,9 @@ const querystring = require('querystring');
 const deepClone = require('./utils').deepClone;
 const displayOpenResults = require('./displayOpenResults');
 
-function resultsPageAltUrl(req, datetimeOverride) {
+function resultsPageAltUrl(req) {
   const query = deepClone(req.query);
-  query.open = !displayOpenResults(req, datetimeOverride);
+  query.open = !displayOpenResults(req);
   return `${req.path}?${querystring.stringify(query)}`;
 }
 

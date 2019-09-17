@@ -8,7 +8,10 @@ const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const postcodesIOURL = require('../lib/constants').postcodesIOURL;
 const server = require('../../server');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/queryBuilder');
 
+const queryTypes = constants.queryTypes;
 const expect = chai.expect;
 
 chai.use(chaiHttp);
@@ -16,30 +19,43 @@ chai.use(chaiHttp);
 const resultsRoute = `${constants.siteRoot}/results`;
 const yourLocation = constants.yourLocation;
 
+function setupPostcodesIoNock(country) {
+  const reverseGeocodeResponse = getSampleResponse(`postcodesio-responses/reverseGeocode${country}.json`);
+  const reverseGeocodeResponseResult = JSON.parse(reverseGeocodeResponse).result;
+  const searchOrigin = {
+    latitude: reverseGeocodeResponseResult ? reverseGeocodeResponseResult[0].latitude : 1,
+    longitude: reverseGeocodeResponseResult ? reverseGeocodeResponseResult[0].longitude : 1,
+  };
+
+  nock(postcodesIOURL)
+    .get('/postcodes')
+    .query({
+      lat: searchOrigin.latitude,
+      limit: 1,
+      lon: searchOrigin.longitude,
+      radius: 20000,
+      wideSearch: true,
+    })
+    .times(1)
+    .reply(200, reverseGeocodeResponse);
+
+  return searchOrigin;
+}
+
 describe(`The ${yourLocation} results page`, () => {
   it('should return a list of nearby pharmacies (by default) for an English location', async () => {
-    const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeEngland.json');
-    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
-    const latitude = 52.75;
-    const longitude = -1.25;
-    const numberOfResults = constants.api.nearbyResultsCount;
+    const searchOrigin = setupPostcodesIoNock('England');
 
-    nock(postcodesIOURL)
-      .get('/postcodes')
-      .query({
-        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
-      })
-      .times(1)
-      .reply(200, reverseGeocodeResponse);
-
-    nock(process.env.API_BASE_URL)
-      .get(`/nearby?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ latitude, location: yourLocation, longitude });
+      .query({
+        latitude: searchOrigin.latitude,
+        location: yourLocation,
+        longitude: searchOrigin.longitude,
+      });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -47,41 +63,29 @@ describe(`The ${yourLocation} results page`, () => {
 
     expect($('h1').text())
       .to.equal(`Pharmacies near ${yourLocation}`);
-    expect(results.length).to.equal(numberOfResults);
+    expect(results.length).to.equal(10);
     iExpect.resultsPageBreadcrumb($);
 
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
-      expect($(link).attr('href')).to.have.string(`&saddr=${latitude}%2C${longitude}`);
+      expect($(link).attr('href')).to.have.string(`&saddr=${searchOrigin.latitude}%2C${searchOrigin.longitude}`);
     });
   });
 
   it('should return a list of open pharmacies for an English location', async () => {
-    const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeEngland.json');
-    const serviceApiResponse = getSampleResponse('service-api-responses/-1,54.json');
-    const latitude = 52.75;
-    const longitude = -1.25;
-    const numberOfResults = constants.api.openResultsCount;
-
-    nock(postcodesIOURL)
-      .get('/postcodes')
-      .query({
-        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
-      })
-      .times(1)
-      .reply(200, reverseGeocodeResponse);
-
-    nock(process.env.API_BASE_URL)
-      .get(`/open?latitude=${latitude}&longitude=${longitude}&limits:results=${numberOfResults}`)
-      .times(1)
-      .reply(200, serviceApiResponse);
+    const searchOrigin = setupPostcodesIoNock('England');
+    const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
+    await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
     const res = await chai.request(server)
       .get(resultsRoute)
       .query({
-        latitude, location: yourLocation, longitude, open: true,
+        latitude: searchOrigin.latitude,
+        location: yourLocation,
+        longitude: searchOrigin.longitude,
+        open: true,
       });
 
     iExpect.htmlWith200Status(res);
@@ -89,34 +93,27 @@ describe(`The ${yourLocation} results page`, () => {
     const results = $('.results__item');
 
     expect($('h1').text()).to.equal(`Pharmacies near ${yourLocation}`);
-    expect(results.length).to.equal(numberOfResults);
+    expect(results.length).to.equal(10);
     iExpect.resultsPageBreadcrumb($);
 
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
     mapLinks.toArray().forEach((link) => {
       expect($(link).attr('href')).to.have.string('https://maps.google.com/maps?daddr=');
-      expect($(link).attr('href')).to.have.string(`&saddr=${latitude}%2C${longitude}`);
+      expect($(link).attr('href')).to.have.string(`&saddr=${searchOrigin.latitude}%2C${searchOrigin.longitude}`);
     });
   });
 
   it('should return the \'no results\' page for a location with a known postcode e.g. somewhere in Scotland', async () => {
-    const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeScotland.json');
-    const latitude = 55;
-    const longitude = -4;
-
-    nock(postcodesIOURL)
-      .get('/postcodes')
-      .query({
-        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
-      })
-      .times(1)
-      .reply(200, reverseGeocodeResponse);
+    const searchOrigin = setupPostcodesIoNock('Scotland');
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ latitude, location: yourLocation, longitude });
-
+      .query({
+        latitude: searchOrigin.latitude,
+        location: yourLocation,
+        longitude: searchOrigin.longitude,
+      });
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
@@ -127,21 +124,15 @@ describe(`The ${yourLocation} results page`, () => {
   });
 
   it('should return the \'no results\' page for a coordinate with no result from the reverse lookup', async () => {
-    const reverseGeocodeResponse = getSampleResponse('postcodesio-responses/reverseGeocodeUnknown.json');
-    const latitude = 1;
-    const longitude = 1;
-
-    nock(postcodesIOURL)
-      .get('/postcodes')
-      .query({
-        lat: latitude, limit: 1, lon: longitude, radius: 20000, wideSearch: true,
-      })
-      .times(1)
-      .reply(200, reverseGeocodeResponse);
+    const searchOrigin = setupPostcodesIoNock('Unknown');
 
     const res = await chai.request(server)
       .get(resultsRoute)
-      .query({ latitude, location: yourLocation, longitude });
+      .query({
+        latitude: searchOrigin.latitude,
+        location: yourLocation,
+        longitude: searchOrigin.longitude,
+      });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);

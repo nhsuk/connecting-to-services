@@ -1,10 +1,14 @@
-1.14.0 / TBC
+1.15.0 / TBC
+===================
+- Switch to using Azure Search for organisation queries
+
+1.14.0 / 2019-07-18
 ===================
 - Use full path for Open Graph image
 - Do not use capitalised convention for constant variables
 - Update npm dependencies
 
-1.13.0 / 2019-07-18
+1.13.0 / 2019-07-16
 ===================
 - Remove the specific version of python from the Dockerfile
 - Update npm dependencies

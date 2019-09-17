@@ -5,14 +5,17 @@ services:
   c2s-frontend:
     image: "nhsuk/connecting-to-services:${DOCKER_IMAGE_TAG}"
     environment:
-      ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
-      API_BASE_URL: 'http://nearby-services-api.nearby-services-api:3001'
-      BUSINESS_HOURS_END_HOUR: ${BUSINESS_HOURS_END_HOUR}
-      BUSINESS_HOURS_END_MINUTE: ${BUSINESS_HOURS_END_MINUTE}
-      BUSINESS_HOURS_START_HOUR: ${BUSINESS_HOURS_START_HOUR}
-      BUSINESS_HOURS_START_MINUTE: ${BUSINESS_HOURS_START_MINUTE}
-      COOKIEBOT_SCRIPT_URL: ${COOKIEBOT_SCRIPT_URL}
-      HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
+      ADOBE_TRACKING_URL: $ADOBE_TRACKING_URL
+      BUSINESS_HOURS_END_HOUR: $BUSINESS_HOURS_END_HOUR
+      BUSINESS_HOURS_END_MINUTE: $BUSINESS_HOURS_END_MINUTE
+      BUSINESS_HOURS_START_HOUR: $BUSINESS_HOURS_START_HOUR
+      BUSINESS_HOURS_START_MINUTE: $BUSINESS_HOURS_START_MINUTE
+      SEARCH_API_KEY: $SEARCH_API_KEY
+      SEARCH_API_HOST: $SEARCH_API_HOST
+      SEARCH_MAX_RESULTS: $SEARCH_MAX_RESULTS
+      SEARCH_API_VERSION: $SEARCH_API_VERSION
+      COOKIEBOT_SCRIPT_URL: $COOKIEBOT_SCRIPT_URL
+      HOTJAR_ANALYTICS_TRACKING_ID: $HOTJAR_ANALYTICS_TRACKING_ID
       NODE_ENV: production
     labels:
       io.rancher.container.pull_image: always
@@ -20,7 +23,7 @@ services:
       prometheus.port: 3000
       traefik.backend: ${RANCHER_STACK_NAME}-connecting-to-services
       traefik.enable: true
-      traefik.frontend.auth.basic: ${BASIC_AUTH}
+      traefik.frontend.auth.basic: $BASIC_AUTH
       traefik.frontend.rule: $TRAEFIK_RULE
       traefik.port: 3000
     logging:
@@ -30,7 +33,7 @@ services:
         splunk-insecureskipverify: "true"
         splunk-source: connecting-to-services
         splunk-sourcetype: docker
-        splunk-token: ${SPLUNK_HEC_TOKEN}
-        splunk-url: ${SPLUNK_HEC_URL}
+        splunk-token: $SPLUNK_HEC_TOKEN
+        splunk-url: $SPLUNK_HEC_URL
         splunk-verify-connection: "false"
         tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"

@@ -1,12 +1,7 @@
-const constants = require('../lib/constants');
+const { search } = require('../../config/config');
 
-function getRequestUrl(coordinates, displayOpenResults) {
-  const numberOfResults = displayOpenResults
-    ? constants.api.openResultsCount : constants.api.nearbyResultsCount;
-
-  const baseUrl = process.env.API_BASE_URL;
-  const path = displayOpenResults ? constants.api.paths.open : constants.api.paths.nearby;
-  return `${baseUrl}/${path}?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&limits:results=${numberOfResults}`;
+function getRequestUrl() {
+  return `https://${search.host}/service-search/search?api-version=${search.version}`;
 }
 
 module.exports = getRequestUrl;

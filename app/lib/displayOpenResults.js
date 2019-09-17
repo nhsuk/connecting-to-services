@@ -1,7 +1,7 @@
-const moment = require('moment');
-
 const dateUtils = require('./dateUtils');
 const isRequestForOpenResults = require('./isRequestForOpenResults');
+
+const getDateTime = dateUtils.getDateTime;
 
 function isRequestInitial(req) {
   return !req.query.open;
@@ -29,8 +29,8 @@ function isRequestInitialAndOutsideBusinessHours(req, datetimeMoment) {
     || isRequestInitialAndBankHoliday(req, datetimeMoment);
 }
 
-function displayOpenResults(req, datetimeOverride = process.env.DATETIME) {
-  const datetimeMoment = datetimeOverride ? moment(datetimeOverride) : moment();
+function displayOpenResults(req) {
+  const datetimeMoment = getDateTime();
   return isRequestInitialAndOutsideBusinessHours(req, datetimeMoment)
     ? !isRequestForOpenResults(req)
     : isRequestForOpenResults(req);
