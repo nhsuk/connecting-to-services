@@ -6,7 +6,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn test-watch
+    command: yarn test
     volumes:
       - c2s-test-node_modules:/code/node_modules
       - .:/code
