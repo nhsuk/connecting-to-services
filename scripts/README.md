@@ -7,6 +7,11 @@ Below is a list of scripts available, along with a simple description of
 what each one does. The details of what they are doing is available within the
 script.
 
+[`backstop`](backstop)
+Runs BackstopJS in the [BackstopJS Docker container](https://hub.docker.com/r/backstopjs/backstopjs/). If the script is called without passing any arguments the BackstopJS binary will be called with no arguments. This will result in the help text being returned where additional information about how to interact with the binary can be discovered.
+In order to run the tests, the `backstop` script must be run with the appropriate command e.g. running `./scripts/backstop test` runs the tests as defined in the config file `./backstop-tests/backstop.js`
+The most common commands to be run are `test` and `approve`.
+
 [`bootstrap`](bootstrap)
 Installs project's direct dependencies e.g. npm packages.
 

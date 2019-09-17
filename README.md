@@ -41,6 +41,14 @@ The intention with the authentication challenge is to prevent people whom may
 stumble across the site and not realise it is for testing, it also prevents
 access by search engines and other bots.
 
+## BackstopJS tests
+
+There are some BackstopJS UI tests located in [backstop-tests](backstop-tests).
+These can be run in Docker using the following instructions:
+* From the project root directory run `./scripts/backstop`
+* An html report will be generated. It will be accessible at
+  `./backstop-tests/backstop_data/html_report/index.html`
+
 ## Environment variables
 
 Environment variables are expected to be managed by the environment in which
@@ -61,6 +69,8 @@ environment.
 | Variable                           | Description                                                                                                                            | Default                                   | Required  |
 | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- | :-------- |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                     |                                           | No        |
+| `API_BASE_URL`                     | The fully qualified domain the API exists on e.g. `http://web.site`                                                                    |                                           | Yes       |
+| `BACKSTOP_TEST_URL`                | The fully qualified domain against which the BackstopJS UI tests will be run e.g. `http://beta.nhs.uk`                                 | http://beta.nhs.uk                        | Yes       |
 | `SEARCH_API_HOST`                  | Hostname for Organisation Search API                                                                                                   | api.nhs.uk                                | No        |
 | `SEARCH_API_KEY `                  | Access key for Organisation Search API                                                                                                 |                                           | Yes       |
 | `SEARCH_API_VERSION`               | Organisation Search API version number                                                                                                 | 1                                         | No        |
