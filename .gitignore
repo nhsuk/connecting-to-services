@@ -27,9 +27,9 @@ jmeter.log
 newrelic_agent.log
 
 # Backstop stuff
-backstop-tests/backstop_data/html_report/
-backstop-tests/backstop_data/bitmaps_test/
-backstop-tests/.idea
+test/backstop/backstop_data/html_report/
+test/backstop/backstop_data/bitmaps_test/
+test/backstop/.idea
 
 # nyc test coverage
 .nyc_output
