@@ -1,28 +1,26 @@
-((global) => {
-  const $ = global.jQuery;
-  const $geoLocate = $('.geo-locate');
-  const $geoLocateDenied = $('.geo-locate--denied');
-  const $geoLocateError = $('.geo-locate--error');
-  const $geoLocateLocate = $('.geo-locate--locate');
-  const $geoLocateSearching = $('.geo-locate--searching');
-  const window = global;
+(() => {
+  const geoLocate = document.querySelector('.geo-locate');
+  const geoLocateDenied = document.querySelector('.geo-locate--denied');
+  const geoLocateError = document.querySelector('.geo-locate--error');
+  const geoLocateLocate = document.querySelector('.geo-locate--locate');
+  const geoLocateSearching = document.querySelector('.geo-locate--searching');
 
   function error(e) {
     switch (e.code) {
       case e.PERMISSION_DENIED:
-        $geoLocate.hide();
-        $geoLocateDenied.show();
+        geoLocate.style.display = 'none';
+        geoLocateDenied.style.display = 'block';
         break;
       case e.POSITION_UNAVAILABLE:
-        $geoLocateError.show();
+        geoLocateError.style.display = 'block';
         break;
       case e.TIMEOUT:
-        $geoLocateError.show();
+        geoLocateError.style.display = 'block';
         break;
       default:
-        $geoLocateError.show();
+        geoLocateError.style.display = 'block';
     }
-    $geoLocateSearching.hide();
+    geoLocateSearching.style.display = 'none';
   }
 
   function success(position) {
@@ -39,13 +37,13 @@
     }
   }
 
-  if (navigator.geolocation) {
-    $geoLocate.show();
+  if (navigator.geolocation && geoLocate) {
+    geoLocate.style.display = 'block';
 
-    $geoLocateLocate.on('click', (e) => {
-      $geoLocateError.hide();
+    geoLocateLocate.addEventListener('click', (e) => {
+      geoLocateError.style.display = 'none';
       navigator.geolocation.getCurrentPosition(success, error);
-      $geoLocateSearching.show();
+      geoLocateSearching.style.display = 'block';
       e.preventDefault();
     });
   }
