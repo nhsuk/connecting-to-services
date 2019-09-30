@@ -1,4 +1,9 @@
-{% from "includes/macros/nhs-logo.svg" import nhsLogo %}
+{% from 'skip-link/macro.njk' import skipLink %}
+{% from 'header/macro.njk' import header %}
+{% from 'breadcrumb/macro.njk' import breadcrumb %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'button/macro.njk' import button %}
+
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" class="no-js"><!--<![endif]-->
 
@@ -9,13 +14,50 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="{{ app.description | safe }}"/>
 
+    <title>{% block pageTitle %}{{ app.title }}{% endblock %} - NHS</title>
+
+    <link href="https://assets-staging.nhs.uk/" rel="preconnect" crossorigin>
+	  <link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
+
+    {% if hotjarAnalyticsTrackingId %}
+       <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
+      <script type="text/plain" data-cookieconsent="statistics">
+        (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:{{ hotjarAnalyticsTrackingId }},hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
+    {% endif %}
+
+    {% include "includes/digitalData.nunjucks" %}
+
+    <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
+	
+	  <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2" rel="preload" as="font" crossorigin>
+    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2" rel="preload" as="font" crossorigin>
+
+     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+
+    <script src="{{ cookiebotScriptUrl }}" type="text/javascript" data-cookieconsent="necessary" async></script>
+
+    {% if adobeTrackingUrl %}
+      <script src="{{ adobeTrackingUrl }}" type="text/plain" data-cookieconsent="statistics" async></script>
+    {% endif %}
+
+    <script src="{{ siteRoot }}/nhsuk.min.js" defer></script>
+    <script src="{{ siteRoot }}/js/app.js" defer></script>
+
+    {% block meta %}{% endblock %}
+
     <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
     <link rel="apple-touch-icon" href="{{ siteRoot }}/images/apple-touch-icon.png">
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ siteRoot }}/images/favicon.png">
-
-    <title>{% block pageTitle %}{{ app.title }}{% endblock %} - NHS</title>
 
     <link rel="canonical" href="{{ canonicalUrl }}">
     <meta property="og:description" content="{{ app.description | safe }}"/>
@@ -32,76 +74,87 @@
     <meta property="twitter:card" content="{{ app.twitter.card }}">
     <meta property="twitter:creator" content="{{ app.twitter.creator }}">
     <meta property="twitter:site" content="{{ app.twitter.site }}">
-
-    <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]><link href="{{ siteRoot }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <link rel="stylesheet" href="{{ siteRoot }}/print.css" media="print" type="text/css">
-
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-
-    <script src="{{ cookiebotScriptUrl }}" type="text/javascript" data-cookieconsent="necessary" async></script>
-
-    {% if hotjarAnalyticsTrackingId %}
-       <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
-      <script type="text/plain" data-cookieconsent="statistics">
-        (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:{{ hotjarAnalyticsTrackingId }},hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-      </script>
-    {% endif %}
-
-    {% block meta %}{% endblock %}
-
-    {% if adobeTrackingUrl %}
-      <script src="{{ adobeTrackingUrl }}" type="text/plain" data-cookieconsent="statistics" async></script>
-    {% endif %}
-
-    {% include "includes/digitalData.nunjucks" %}
+    
 </head>
+  <body>
 
-  <body class="{% block bodyClass %}{% endblock %}">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-    <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
-    <div class="nhsuk-c-skiplink">
-      <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
-    </div>
+    {{ skipLink({
+      "href": "#maincontent",
+      "text": "Skip to main content"
+    }) }}
 
-    {% include "includes/header.nunjucks" %}
+    {{ header({
+      "showNav": "true",
+      "showSearch": "true",
+      "primaryLinks": [
+      {
+        "url"  : "https://www.nhs.uk/conditions",
+        "label" : "Health A-Z"
+      },
+      {
+        'url' : 'https://www.nhs.uk/live-well/',
+        'label' : 'Live Well'
+      },
+      {
+        'url'  : 'https://www.nhs.uk/conditions/social-care-and-support/',
+        'label' : 'Care and support'
+      },
+      {
+        'url'  : 'https://www.nhs.uk/news/',
+        'label' : 'Health news'
+      },
+      {
+        'url' : 'https://www.nhs.uk/service-search',
+        'label' : 'Services near you'
+      }
+      ]
+    })}}
 
-    {% include "includes/breadcrumbs.nunjucks" %}
+    {{ breadcrumb({
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        },
+        {
+          href: "/service-search",
+          text: "Services near you"
+        }
+      ],
+      text: "Find a pharmacy"
+    })}}
 
-  <div class="nhsuk-o-width-container">
-    <main id="main-content" class="nhsuk-o-width-wrapper util-nofocus">
-      {% block article %}
-      <div class="nhsuk-o-grid">
-        {% block pageSection %}
-        {% block header %}
-        <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-          <div class="nhsuk-page-heading">
-            <h1>{% block headerContent %}{% endblock %}</h1>
-          </div>
+    <div class="nhsuk-width-container">
+      <main id="main-content" class="nhsuk-main-wrapper">
+        <div class="nhsuk-u-reading-width">
+          {% block content %}{% endblock %}
         </div>
-        {% endblock %}
-        <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-          <div class="nhsuk-page-content">
-            {% block content %}{% endblock %}
-          </div>
-        </div>
-        {% endblock %}
-        </div>
-        {% endblock %}
       </main>
     </div>
 
-    <footer class="footer">
-      {% include "includes/footer.nunjucks" %}
-    </footer>
-
-    {% include "includes/foot.nunjucks" %}
+    {{ footer({
+      "links": [
+        {
+        "URL": "https://www.nhs.uk/Pages/nhs-sites.aspx",
+        "label": "NHS sites"
+        },
+        {
+        "URL": "https://www.nhs.uk/about-us",
+        "label": "About us"
+        },
+        {
+        "URL": "https://www.nhs.uk/contact-us/",
+        "label": "Contact us"
+        },
+        {
+        "URL": "https://www.nhs.uk/about-us/sitemap/",
+        "label": "Sitemap"
+        },
+        {
+        "URL": "https://www.nhs.uk/our-policies/",
+        "label": "Our policies"
+        }
+      ]
+    })}}
   </body>
 </html>

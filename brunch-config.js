@@ -10,9 +10,7 @@ module.exports = {
     },
     stylesheets: {
       joinTo: {
-        'nhsuk.css': /c2s.scss/,
-        'nhsukie78.css': /c2s-ie78.scss/,
-        'print.css': /c2s-print.scss/,
+        'nhsuk.css': /app.scss/,
       },
     },
   },
@@ -37,7 +35,7 @@ module.exports = {
     },
   },
   paths: {
-    watched: ['scss-c2s', 'app/public/js'],
+    watched: ['scss', 'app/public/js'],
   },
   plugins: {
     babel: {
