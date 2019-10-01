@@ -5,7 +5,7 @@
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
     "brunch-build": "yarn brunch build",
-    "coverage-generate": "nyc --reporter=lcov --reporter=cobertura mocha --exit --recursive test/mocha --reporter mocha-junit-reporter",
+    "coverage-generate": "nyc --reporter=lcov --reporter=cobertura mocha --exit --recursive test --reporter mocha-junit-reporter",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
     "git-hook": "yarn lint && yarn test-unit",
     "lint": "yarn lint-backend && yarn lint-frontend",
