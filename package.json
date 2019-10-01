@@ -16,7 +16,7 @@
     "start-watch-debug": "yarn brunch watch & nodemon --inspect-brk=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "nyc mocha --exit --recursive test",
     "test-unit": "nyc mocha --exit --recursive test/unit",
-    "test-ci": "yarn lint && yarn coverage-generate && yarn coverage-upload-coveralls"
+    "test-with-coverage": "yarn lint && yarn coverage-generate && yarn coverage-upload-coveralls"
   },
   "repository": {
     "type": "git",
