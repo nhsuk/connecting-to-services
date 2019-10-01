@@ -2,6 +2,7 @@
 ===================
 - Switch to using Azure Search for organisation queries
 - Update npm dependencies
+- Switch from istanbul to nyc for code coverage
 
 1.14.0 / 2019-07-18
 ===================

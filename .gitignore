@@ -30,3 +30,6 @@ newrelic_agent.log
 backstop-tests/backstop_data/html_report/
 backstop-tests/backstop_data/bitmaps_test/
 backstop-tests/.idea
+
+# nyc test coverage
+.nyc_output
