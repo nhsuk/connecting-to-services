@@ -6,7 +6,7 @@ const azOpeningTimesMapper = require('../../../../app/lib/mappers/azOpeningTimes
 
 const expect = chai.expect;
 
-const daysOfWeek = moment.weekdays().map(wd => wd.toLowerCase());
+const daysOfWeek = moment.weekdays().map((wd) => wd.toLowerCase());
 
 const generalOpeningTimes = [
   {
@@ -73,7 +73,7 @@ describe('azOpeningTimesMapper', () => {
   it('Empty opening times should return an empty opening times object', () => {
     const esOpeningTimes = azOpeningTimesMapper([]);
     expect(esOpeningTimes.general).to.have.keys(daysOfWeek);
-    daysOfWeek.forEach(dow => expect(esOpeningTimes.general[dow]).to.eql([]));
+    daysOfWeek.forEach((dow) => expect(esOpeningTimes.general[dow]).to.eql([]));
     expect(esOpeningTimes.alterations).to.eql({});
   });
   it('General opening times should map correctly', () => {
@@ -81,13 +81,13 @@ describe('azOpeningTimesMapper', () => {
     expect(esOpeningTimes.general.monday.length).to.equal(2);
     expect(esOpeningTimes.general.monday[0]).to.eql({ opens: '10:00', closes: '13:00' });
     expect(esOpeningTimes.general.monday[1]).to.eql({ opens: '13:30', closes: '16:00' });
-    daysOfWeek.filter(dow => dow !== 'monday').forEach(dow => expect(esOpeningTimes.general[dow]).to.eql([]));
+    daysOfWeek.filter((dow) => dow !== 'monday').forEach((dow) => expect(esOpeningTimes.general[dow]).to.eql([]));
   });
   it('Additional closing times should map correctly', () => {
     const esOpeningTimes = azOpeningTimesMapper(additionalClosedTimes);
     expect(esOpeningTimes.alterations).to.have.keys(['2019-08-26', '2019-12-25']);
     expect(esOpeningTimes.alterations['2019-08-26']).to.eql([]);
-    daysOfWeek.forEach(dow => expect(esOpeningTimes.general[dow]).to.eql([]));
+    daysOfWeek.forEach((dow) => expect(esOpeningTimes.general[dow]).to.eql([]));
   });
   it('Additional opening times should map correctly', () => {
     const esOpeningTimes = azOpeningTimesMapper(additionalOpeningTimes);
@@ -96,7 +96,7 @@ describe('azOpeningTimesMapper', () => {
       { opens: '10:00', closes: '13:00' },
       { opens: '13:30', closes: '16:00' },
     ]);
-    daysOfWeek.forEach(dow => expect(esOpeningTimes.general[dow]).to.eql([]));
+    daysOfWeek.forEach((dow) => expect(esOpeningTimes.general[dow]).to.eql([]));
   });
   it('opening times with both general and additional opening times should map correctly', () => {
     const combinedOpeningTimes = generalOpeningTimes.concat(additionalOpeningTimes);
@@ -109,7 +109,7 @@ describe('azOpeningTimesMapper', () => {
     expect(esOpeningTimes.general.monday.length).to.equal(2);
     expect(esOpeningTimes.general.monday[0]).to.eql({ opens: '10:00', closes: '13:00' });
     expect(esOpeningTimes.general.monday[1]).to.eql({ opens: '13:30', closes: '16:00' });
-    daysOfWeek.filter(dow => dow !== 'monday').forEach(dow => expect(esOpeningTimes.general[dow]).to.eql([]));
+    daysOfWeek.filter((dow) => dow !== 'monday').forEach((dow) => expect(esOpeningTimes.general[dow]).to.eql([]));
   });
   it('opening times with both general opening times and additional closing times should map correctly', () => {
     const combinedOpeningTimes = generalOpeningTimes.concat(additionalClosedTimes);
@@ -119,6 +119,6 @@ describe('azOpeningTimesMapper', () => {
     expect(esOpeningTimes.general.monday.length).to.equal(2);
     expect(esOpeningTimes.general.monday[0]).to.eql({ opens: '10:00', closes: '13:00' });
     expect(esOpeningTimes.general.monday[1]).to.eql({ opens: '13:30', closes: '16:00' });
-    daysOfWeek.filter(dow => dow !== 'monday').forEach(dow => expect(esOpeningTimes.general[dow]).to.eql([]));
+    daysOfWeek.filter((dow) => dow !== 'monday').forEach((dow) => expect(esOpeningTimes.general[dow]).to.eql([]));
   });
 });

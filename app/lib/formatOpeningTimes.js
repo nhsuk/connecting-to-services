@@ -37,7 +37,7 @@ function isOpen(times) {
 
 function formatOpeningTimes(openingTimes) {
   if (openingTimes && openingTimes.general && isOpen(openingTimes.general)) {
-    return daysOfWeekOrderedForUi.map(day => toDayObject(day, openingTimes.general));
+    return daysOfWeekOrderedForUi.map((day) => toDayObject(day, openingTimes.general));
   }
   return undefined;
 }

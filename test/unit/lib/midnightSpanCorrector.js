@@ -77,7 +77,7 @@ function getNewOpeningTimes(openingTimes, tz, alterations) {
 function getMoment(day, hours, minutes, tz, week) {
   const dayNumber = Moment
     .weekdays()
-    .map(d => d.toLowerCase())
+    .map((d) => d.toLowerCase())
     .indexOf(day);
   const moment = new Moment(aSunday).tz(tz);
   moment.add(dayNumber, 'days').hours(hours).minutes(minutes);

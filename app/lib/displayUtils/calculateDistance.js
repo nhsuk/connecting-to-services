@@ -1,7 +1,7 @@
 const radiusOfEarthInMiles = 3960;
 
 function convertDegreesToRadians(degrees) {
-  return degrees * Math.PI / 180;
+  return degrees * (Math.PI / 180);
 }
 
 function calculateDistance(origin, destination) {

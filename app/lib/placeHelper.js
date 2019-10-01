@@ -44,7 +44,7 @@ function sortPlace(places) {
 }
 
 function getCountries(places) {
-  return [...new Set(places.map(place => place.country))].sort(compare);
+  return [...new Set(places.map((place) => place.country))].sort(compare);
 }
 
 module.exports = {
