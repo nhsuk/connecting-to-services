@@ -9,7 +9,7 @@ const mapper = require('../lib/mappers/azMapper');
 const getDateTime = require('../lib/dateUtils').getDateTime;
 
 function isEnglish(countries) {
-  return countries && countries.filter(c => c === 'England').length > 0;
+  return countries && countries.filter((c) => c === 'England').length > 0;
 }
 
 async function getPharmacies(req, res, next) {
@@ -29,7 +29,7 @@ async function getPharmacies(req, res, next) {
       endTimer();
       res.locals.services = response
         .value
-        .map(org => mapper(org, res.locals.coordinates, currentDateTime));
+        .map((org) => mapper(org, res.locals.coordinates, currentDateTime));
       next();
     } catch (error) {
       log.error({ pharmacyLookupResponse: { error } }, 'get-pharmacies-error');

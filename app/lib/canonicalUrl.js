@@ -1,1 +1,1 @@
-module.exports = req => `https://${req.hostname}${req.app.locals.siteRoot}/`;
+module.exports = (req) => `https://${req.hostname}${req.app.locals.siteRoot}/`;

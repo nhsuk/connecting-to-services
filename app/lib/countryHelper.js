@@ -1,5 +1,5 @@
 function showCountry(countries, country) {
-  return !countries || countries.length === 0 || !!countries.find(c => c === country);
+  return !countries || countries.length === 0 || !!countries.find((c) => c === country);
 }
 
 function hasNoCountries(countries) {

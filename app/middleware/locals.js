@@ -8,7 +8,7 @@ const getDisplayLocation = require('../lib/getDisplayLocation');
 const pageTitles = require('../lib/pageTitles');
 const resultsPageAltUrl = require('../lib/resultsPageAltUrl');
 
-module.exports = config => (req, res, next) => {
+module.exports = (config) => (req, res, next) => {
   res.locals.assetsUrl = req.app.locals.assetsUrl;
   res.locals.siteRoot = req.app.locals.siteRoot;
 
@@ -39,7 +39,7 @@ module.exports = config => (req, res, next) => {
   res.locals.getResultsPageTitle = () => pageTitles
     .results(res.locals.location, res.locals.services);
   res.locals.hasNoCountries = () => countryHelper.hasNoCountries(res.locals.countries);
-  res.locals.showCountry = country => countryHelper.showCountry(res.locals.countries, country);
+  res.locals.showCountry = (country) => countryHelper.showCountry(res.locals.countries, country);
 
   next();
 };

@@ -4,7 +4,7 @@ const constants = require('./constants');
 
 function joinAllTruthyValues(obj) {
   return Object.values(obj)
-    .filter(value => value)
+    .filter((value) => value)
     .join();
 }
 

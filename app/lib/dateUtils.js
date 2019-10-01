@@ -30,7 +30,7 @@ function getDay(dateString) {
 }
 
 function isBankHoliday(dateString) {
-  return bankHolidayDates.some(date => dateString === date);
+  return bankHolidayDates.some((date) => dateString === date);
 }
 
 function isNextOpenTomorrow(nowDateString, nextOpenDateString) {

@@ -12,8 +12,8 @@ function getGeneralOpeningTimes(asOpeningTimes) {
   const general = {};
   weekdays.forEach((weekday) => {
     const sessions = asOpeningTimes
-      .filter(ot => ot.OpeningTimeType === 'General' && ot.Weekday === weekday)
-      .map(wot => getTimesFromString(wot.Times));
+      .filter((ot) => ot.OpeningTimeType === 'General' && ot.Weekday === weekday)
+      .map((wot) => getTimesFromString(wot.Times));
     general[weekday.toLowerCase()] = sessions;
   });
   return general;
@@ -22,7 +22,7 @@ function getGeneralOpeningTimes(asOpeningTimes) {
 function getAlterationsOpeningTimes(asOpeningTimes) {
   const alterations = {};
   asOpeningTimes
-    .filter(ot => ot.OpeningTimeType === 'General' && ot.AdditionalOpeningDate)
+    .filter((ot) => ot.OpeningTimeType === 'General' && ot.AdditionalOpeningDate)
     .forEach((aot) => {
       const aMoment = moment(aot.AdditionalOpeningDate, 'MMM DD YYYY');
       if (!alterations[aMoment.format('YYYY-MM-DD')]) {
