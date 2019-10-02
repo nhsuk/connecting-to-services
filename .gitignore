@@ -33,3 +33,4 @@ backstop-tests/.idea
 
 # nyc test coverage
 .nyc_output
+test-results.xml
