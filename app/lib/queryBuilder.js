@@ -32,7 +32,7 @@ function getOpenPharmacyFilter(date) {
           and time/AdditionalOpeningDate eq '${dateString}')
   ) or
   ( OpeningTimesV2/any(time:
-            and search.in(time/OpeningTimeType, 'Additional, General')
+            search.in(time/OpeningTimeType, 'Additional, General')
             and time/OffsetOpeningTime le ${offsetTime}
             and time/OffsetClosingTime ge ${offsetTime}
             and time/AdditionalOpeningDate eq '${dateString}')
