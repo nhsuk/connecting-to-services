@@ -1,4 +1,3 @@
-const moment = require('moment');
 const VError = require('verror').VError;
 const queryTypes = require('./constants').queryTypes;
 const getDateTime = require('./dateUtils').getDateTime;
@@ -6,11 +5,10 @@ const getDateTime = require('./dateUtils').getDateTime;
 const pharmacyFilter = 'OrganisationTypeID eq \'PHA\'';
 
 function getOpenPharmacyFilter(date) {
-  const aMoment = moment(date);
-  const weekday = aMoment.format('dddd');
-  const midnight = aMoment.clone().startOf('day');
-  const offsetTime = aMoment.diff(midnight, 'minutes');
-  const dateString = aMoment.format('MMM D YYYY');
+  const weekday = date.format('dddd');
+  const midnight = date.clone().startOf('day');
+  const offsetTime = date.diff(midnight, 'minutes');
+  const dateString = date.format('MMM D YYYY');
 
   // the multi-line format below is useful for legibility but not
   // needed by azure search and so is stripped out by the whitespace
@@ -23,7 +21,7 @@ function getOpenPharmacyFilter(date) {
   return `
   ${pharmacyFilter} and
   ( OpeningTimesV2/any(time:
-          and time/Weekday eq '${weekday}'
+          time/Weekday eq '${weekday}'
           and time/OpeningTimeType eq 'General'
           and time/OffsetOpeningTime le ${offsetTime}
           and time/OffsetClosingTime ge ${offsetTime})

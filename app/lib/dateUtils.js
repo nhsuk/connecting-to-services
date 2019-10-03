@@ -16,7 +16,7 @@ function cloneMoment(datetimeMoment, hour, minute) {
 
 function getDateTime() {
   if (process.env.DATETIME) {
-    const dateTime = moment(process.env.DATETIME, 'YYYY-MM-DD HH:mm').tz(timezone);
+    const dateTime = moment(process.env.DATETIME, 'YYYY-MM-DD HH:mm', timezone);
     if (!dateTime.isValid()) {
       throw new VError(`Invalid date: ${process.env.DATETIME}`);
     }

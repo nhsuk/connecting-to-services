@@ -10,15 +10,15 @@ describe('queryBuilder', () => {
   const searchOrigin = { latitude: 53.234149, longitude: 5.024449 };
   describe('nearby and open', () => {
     let query;
-    afterEach('set dateTime override', () => {
+    afterEach('reset dateTime override', () => {
       delete process.env.DATETIME;
     });
-    beforeEach('reset dateTime override', () => {
-      process.env.DATETIME = '2019-10-03';
+    beforeEach('set dateTime override', () => {
+      process.env.DATETIME = '2019-10-03 09:00';
       query = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
     });
     it('should return filter', () => {
-      const expectedFilter = " OrganisationTypeID eq 'PHA' and ( OpeningTimesV2/any(time: and time/Weekday eq 'Thursday' and time/OpeningTimeType eq 'General' and time/OffsetOpeningTime le 0 and time/OffsetClosingTime ge 0) and not OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/AdditionalOpeningDate eq 'Oct 3 2019') ) or ( OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/OffsetOpeningTime le 0 and time/OffsetClosingTime ge 0 and time/AdditionalOpeningDate eq 'Oct 3 2019') )";
+      const expectedFilter = " OrganisationTypeID eq 'PHA' and ( OpeningTimesV2/any(time: time/Weekday eq 'Thursday' and time/OpeningTimeType eq 'General' and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540) and not OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/AdditionalOpeningDate eq 'Oct 3 2019') ) or ( OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540 and time/AdditionalOpeningDate eq 'Oct 3 2019') )";
 
       expect(query.filter).to.equal(expectedFilter);
     });
