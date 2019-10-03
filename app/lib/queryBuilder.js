@@ -15,6 +15,11 @@ function getOpenPharmacyFilter(date) {
   // the multi-line format below is useful for legibility but not
   // needed by azure search and so is stripped out by the whitespace
   // replace.
+  // Note: Additional opening times can have a type of _either_ Additional or General.
+  // This is an error in the source data which seems to have been introduced in 2013
+  // and never corrected.
+  // I think that additional hours should be of type general to allow, for example,
+  // a GP surgery to have different hours on a bank holiday for reception only.
   return `
   ${pharmacyFilter} and
   ( OpeningTimesV2/any(time:
@@ -24,12 +29,12 @@ function getOpenPharmacyFilter(date) {
           and time/OffsetOpeningTime le ${offsetTime}
           and time/OffsetClosingTime ge ${offsetTime})
    and not OpeningTimesV2/any(time:
-          time/OpeningTimeType eq 'Additional'
+          search.in(time/OpeningTimeType, 'Additional, General')
           and time/AdditionalOpeningDate eq '${dateString}')
   ) or
   ( OpeningTimesV2/any(time:
             time/IsOpen
-            and time/OpeningTimeType eq 'Additional'
+            and search.in(time/OpeningTimeType, 'Additional, General')
             and time/OffsetOpeningTime le ${offsetTime}
             and time/OffsetClosingTime ge ${offsetTime}
             and time/AdditionalOpeningDate eq '${dateString}')
