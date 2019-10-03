@@ -23,7 +23,6 @@ function getOpenPharmacyFilter(date) {
   return `
   ${pharmacyFilter} and
   ( OpeningTimesV2/any(time:
-          time/IsOpen
           and time/Weekday eq '${weekday}'
           and time/OpeningTimeType eq 'General'
           and time/OffsetOpeningTime le ${offsetTime}
@@ -33,7 +32,6 @@ function getOpenPharmacyFilter(date) {
           and time/AdditionalOpeningDate eq '${dateString}')
   ) or
   ( OpeningTimesV2/any(time:
-            time/IsOpen
             and search.in(time/OpeningTimeType, 'Additional, General')
             and time/OffsetOpeningTime le ${offsetTime}
             and time/OffsetClosingTime ge ${offsetTime}
