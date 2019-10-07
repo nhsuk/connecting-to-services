@@ -50,7 +50,7 @@ async function getPlaces(req, res, next) {
       renderer.places(req, res);
     }
   } catch (e) {
-    log.error({ placeLookupResponse: { error: e } }, 'Place lookup error');
+    log.error(e, 'Place lookup error');
     next({ message: e.message, type: 'place-lookup-error' });
   }
 }
