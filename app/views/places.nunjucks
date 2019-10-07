@@ -1,4 +1,5 @@
 {% extends 'layout.nunjucks' %}
+{% from 'back-link/macro.njk' import backLink %}
 
 {% block pageTitle %}{{getPlacesPageTitle()}}{% endblock %}
 
@@ -7,7 +8,10 @@
 {% endblock %}
 
 {% block content %}
-  <h1>{{getPlacesPageTitle()}}</h1>
+  {{ backLink({
+    "href": siteRoot,
+    "text": "Go back"
+  }) }}
   {% if places.length === 0 %}
     {% include "includes/no-place-results.nunjucks" %}
   {% elif places.length > 0 %}

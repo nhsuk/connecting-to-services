@@ -1,4 +1,6 @@
 {% extends 'layout.nunjucks' %}
+{% from 'back-link/macro.njk' import backLink %}
+{% from 'care-card/macro.njk' import careCard %}
 
 {% block pageTitle %}{{getResultsPageTitle()}}{% endblock %}
 
@@ -6,37 +8,33 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
-{% block bodyClass %}resultsPage{% endblock %}
-
-{% block header %}
-{% if services.length > 0 %}
-<div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-  <div class="nhsuk-page-heading">
-    <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
-  </div>
-</div>
-{% endif %}
-{% endblock %}
-
 {% block content %}
-{% if services.length === 0 %}
-{% include "includes/no-pharmacy-results.nunjucks" %}
-{% else %}
-
-<div class="nhsuk-o-grid">
-  {% if displayOpenResults %}
-  <p class="viewToggle">Only showing pharmacies open now. <a href="{{ resultsPageAltUrl }}">Show all pharmacies.</a></p>
+  {{ backLink({
+    "href": siteRoot,
+    "text": "Go back"
+  }) }}
+  {% if services.length > 0 %}
+      <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
+  {% endif %}
+  {% if services.length === 0 %}
+  {% include "includes/no-pharmacy-results.nunjucks" %}
   {% else %}
-  <p class="viewToggle">Showing all pharmacies. <a href="{{ resultsPageAltUrl }}">Only show pharmacies open now.</a></p>
-  {% endif %}
-  <ol class="results fade-in">
-    {% for service in services %}
-    {% include "includes/result-item.nunjucks" %}
-    {% endfor %}
-  </ol>
-  <p class="searchAgain"><a href="{{ siteRoot }}/">Search again</a></p>
-  {% include "includes/call-111.nunjucks" %}
-  {% endif %}
-</div>
-
+    {% if displayOpenResults %}
+    <p class="viewToggle">Only showing pharmacies open now. <a href="{{ resultsPageAltUrl }}">Show all pharmacies.</a></p>
+    {% else %}
+    <p class="viewToggle">Showing all pharmacies. <a href="{{ resultsPageAltUrl }}">Only show pharmacies open now.</a></p>
+    {% endif %}
+    <ol class="nhsuk-list">
+      {% for service in services %}
+      {% include "includes/result-item.nunjucks" %}
+      {% endfor %}
+    </ol>
+    {{ careCard({
+      "type": "urgent",
+      "heading": "Call 111 if:",
+      "HTML": "
+       <p>you need urgent treatment and you can’t find an open pharmacy.</p>
+      "
+    }) }}
+{% endif %}
 {% endblock %}

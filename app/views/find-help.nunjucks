@@ -1,6 +1,20 @@
 {% extends 'layout.nunjucks' %}
 
-{% block headerContent %}{{ app.title }}{% endblock %}
+{% block breadcrumbs %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "/service-search",
+        text: "Services near you"
+      }
+    ],
+    text: "Find a pharmacy"
+  })}}
+{% endblock %}
 
 {% block content %}
   <h1>Find a pharmacy</h1>

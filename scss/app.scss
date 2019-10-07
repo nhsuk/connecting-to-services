@@ -23,12 +23,25 @@
 	display: none;
 	
 	img {
-		height:40px;
-		width:40px;
+		height: 40px;
+		width: 40px;
+		margin: 0 0 -13px 10px;
 	}
   }
   
   &--denied {
 	display: none;
   }
+}
+
+.result-distance {
+	margin-bottom: 0;
+}
+
+.result-panel {
+	margin-top: 0;
+
+	details {
+		margin-bottom: 0;
+	}
 }

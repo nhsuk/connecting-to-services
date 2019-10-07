@@ -2,11 +2,10 @@
 <p>
   Choose one of the following:
 </p>
-<ol class="results">
+<ul>
 {% for place in places %}
-  <li class="results__item">
+  <li>
     <a href="{{ siteRoot }}/results?{{place.queryString}}" class="link">{{place.description}}</a>
   </li>
 {% endfor %}
-</ol>
-<p class="results__none"><a href="{{ siteRoot }}/">None of these - try another town, city or postcode</a></p>
+</ul>
