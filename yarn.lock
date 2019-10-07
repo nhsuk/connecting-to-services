@@ -683,6 +683,13 @@ accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
+accessible-autocomplete@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-1.6.2.tgz#cb69d37748ba5b0351c84422468538890e25759c"
+  integrity sha512-7S+6Vi82LQFSSd5feKedu46tiY2/DShpdXiRp0NY3cLwc+DKe1ayWd66mb3JVi8LTQubRM7jco+u92e6w0bbvg==
+  dependencies:
+    preact "^8.3.1"
+
 acorn-jsx@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.0.2.tgz#84b68ea44b373c4f8686023a551f61a21b7c4a4f"
@@ -5424,6 +5431,14 @@ nhsuk-bunyan-logger@^1.4.1:
   dependencies:
     bunyan "^1.0.0"
 
+nhsuk-frontend@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/nhsuk-frontend/-/nhsuk-frontend-2.3.2.tgz#83dd3b3d05001177d1260019c7dea07fec0154ce"
+  integrity sha512-wOMFDPuck7XfAdDGXYx+5qvYur32cPs7I6rH2XrtQihljGtcJti82ODbi2afAxsTx0g6XUfaieFS7f4QhUGROw==
+  dependencies:
+    accessible-autocomplete "^1.6.2"
+    sass-mq "^4.0.2"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -6308,6 +6323,11 @@ postcss@^6.0.1, postcss@~6.0.8:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
+preact@^8.3.1:
+  version "8.5.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.5.2.tgz#2f532da485287c07369e08150cf4d23921a09789"
+  integrity sha512-37tlDJGq5IQKqGUbqPZ7qPtsTOWFyxe+ojAOFfzKo0dEPreenqrqgJuS83zGpeGAqD9h9L9Yr7QuxH2W4ZrKxg==
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -7016,6 +7036,11 @@ sass-graph@^2.2.4:
     lodash "^4.0.0"
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
+
+sass-mq@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-4.0.2.tgz#aa8f1609a074bf4f5e5e93bdff31def993cc1ee1"
+  integrity sha512-5jKlhuJvGVQpQ6Ogq9k+VWoK9HeNfaLSpDToNxHDmMS5wtaK/NWS+c3XXq8VrKTK874Hrh3m5sYij56lhZrvnw==
 
 sax@^1.2.4:
   version "1.2.4"
