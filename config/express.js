@@ -21,9 +21,15 @@ module.exports = (app, config) => {
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 
-  app.set('views', `${config.root}/app/views`);
+  // Get nunjucks templates from app views and NHS frontend library
+  const appViews = [
+    `${config.root}/app/views`,
+    'node_modules/nhsuk-frontend/packages/components',
+  ];
+
+  app.set('views', appViews);
   app.set('view engine', 'nunjucks');
-  const nunjucksEnvironment = nunjucks.configure(`${config.root}/app/views`, {
+  const nunjucksEnvironment = nunjucks.configure(appViews, {
     autoescape: true,
     express: app,
     watch: true,
@@ -48,6 +54,7 @@ module.exports = (app, config) => {
   app.use(compression());
 
   app.use(siteRoot, express.static(`${config.root}/public`));
+  app.use(siteRoot, express.static('node_modules/nhsuk-frontend/dist'));
 
   // metrics needs to be registered before routes wishing to have metrics generated
   // see https://github.com/jochen-schweizer/express-prom-bundle#sample-uusage
