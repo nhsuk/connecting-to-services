@@ -1,5 +1,4 @@
 <div class="grid-row padding">
-  <!--<h1 class="sr-only">Search results</h1>-->
   <div class="results">
     <div class="results-block results-block--none">
       <h1 class="nhsuk-heading-l results__header results__header--none">{% block resultsHeader %}{% endblock %}</h1>

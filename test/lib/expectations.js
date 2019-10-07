@@ -8,18 +8,18 @@ function htmlWith200Status(res) {
 }
 
 function noResultsPageBreadcrumb($) {
-  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
-  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal('No results');
+  expect($('.nhsuk-breadcrumb__item').length).to.equal(3);
+  expect($('.nhsuk-breadcrumb__item').last().text()).to.equal('Find a pharmacy');
 }
 
 function resultsPageBreadcrumb($) {
-  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
-  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal('Results');
+  expect($('.nhsuk-breadcrumb__item').length).to.equal(3);
+  expect($('.nhsuk-breadcrumb__item').last().text()).to.equal('Find a pharmacy');
 }
 
-function disambiguationPageBreadcrumb($, searchTerm) {
-  expect($('.nhsuk-c-breadcrumb__item').length).to.equal(4);
-  expect($('.nhsuk-c-breadcrumb__item').last().text()).to.equal(`Places that match '${searchTerm}'`);
+function disambiguationPageBreadcrumb($) {
+  expect($('.nhsuk-breadcrumb__item').length).to.equal(3);
+  expect($('.nhsuk-breadcrumb__item').last().text()).to.equal('Find a pharmacy');
 }
 
 function call111Callout($) {
@@ -49,9 +49,8 @@ function midsomerNortonResults($, location, numberOfResults) {
 }
 
 function searchAgainPage($) {
-  expect($('.error-summary-heading').text())
+  expect($('.nhsuk-error-message').text())
     .to.contain('You must enter a town, city or postcode to find a pharmacy.');
-  expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
 }
 
 module.exports = {

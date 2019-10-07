@@ -41,7 +41,7 @@ describe('The place results page', () => {
 
     expect($('.results__item').length).to.equal(3);
     expect($('.results__none').length).to.equal(1);
-    expect($('.places > h1').text())
+    expect($('h1').text())
       .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
     expect($('head title').text()).to.equal(`${constants.app.title} - Places that match 'multiresult' - NHS`);

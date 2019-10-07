@@ -254,10 +254,9 @@ describe('The results page error handling', () => {
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 
-      expect($('.error-summary-heading').text()).to
+      expect($('#error-message').text()).to
         .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
       expect($('head title').text()).to.equal(`${appTitle} - We can't find the postcode '${unknownPostcodeUppercase}' - NHS`);
-      expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
     }
   );
 

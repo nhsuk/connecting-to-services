@@ -1,4 +1,5 @@
-{% from "includes/macros/nhs-logo.svg" import nhsLogo %}
+{% from 'skip-link/macro.njk' import skipLink %}
+
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" class="no-js"><!--<![endif]-->
 
@@ -67,41 +68,23 @@
   <body class="{% block bodyClass %}{% endblock %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
-    <div class="nhsuk-c-skiplink">
-      <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
-    </div>
+   
+    {{ skipLink({
+      "href": "#maincontent",
+      "text": "Skip to main content"
+    }) }}
 
     {% include "includes/header.nunjucks" %}
-
     {% include "includes/breadcrumbs.nunjucks" %}
-
-  <div class="nhsuk-o-width-container">
-    <main id="main-content" class="nhsuk-o-width-wrapper util-nofocus">
-      {% block article %}
-      <div class="nhsuk-o-grid">
-        {% block pageSection %}
-        {% block header %}
-        <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-          <div class="nhsuk-page-heading">
-            <h1>{% block headerContent %}{% endblock %}</h1>
-          </div>
-        </div>
-        {% endblock %}
-        <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-          <div class="nhsuk-page-content">
-            {% block content %}{% endblock %}
-          </div>
-        </div>
-        {% endblock %}
-        </div>
-        {% endblock %}
+    
+    <div class="nhsuk-width-container">
+      <main id="main-content" class="nhsuk-main-wrapper">
+        {% block headerContent %}{% endblock %}
+        {% block content %}{% endblock %}
       </main>
     </div>
-
-    <footer class="footer">
-      {% include "includes/footer.nunjucks" %}
-    </footer>
-
+    
+    {% include "includes/footer.nunjucks" %}
     {% include "includes/foot.nunjucks" %}
   </body>
 </html>

@@ -8,13 +8,9 @@
 
 {% block bodyClass %}resultsPage{% endblock %}
 
-{% block header %}
+{% block headerContent %}
 {% if services.length > 0 %}
-<div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-  <div class="nhsuk-page-heading">
     <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
-  </div>
-</div>
 {% endif %}
 {% endblock %}
 
