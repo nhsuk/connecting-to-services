@@ -35,8 +35,6 @@
     <meta property="twitter:site" content="{{ app.twitter.site }}">
 
     <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]><link href="{{ siteRoot }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <link rel="stylesheet" href="{{ siteRoot }}/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
 
