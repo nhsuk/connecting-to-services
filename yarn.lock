@@ -687,16 +687,6 @@ accessible-autocomplete@^1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-1.6.2.tgz#cb69d37748ba5b0351c84422468538890e25759c"
   integrity sha512-7S+6Vi82LQFSSd5feKedu46tiY2/DShpdXiRp0NY3cLwc+DKe1ayWd66mb3JVi8LTQubRM7jco+u92e6w0bbvg==
-<<<<<<< HEAD
-=======
-  dependencies:
-    preact "^8.3.1"
-
-acorn-jsx@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
-  integrity sha1-r9+UiPsezvyDSPb7IvRk4ypYs2s=
->>>>>>> 11104417a25ecf55dfd636b3698f6b4fdbbc2411
   dependencies:
     preact "^8.3.1"
 
