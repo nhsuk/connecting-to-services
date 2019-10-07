@@ -687,6 +687,16 @@ accessible-autocomplete@^1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-1.6.2.tgz#cb69d37748ba5b0351c84422468538890e25759c"
   integrity sha512-7S+6Vi82LQFSSd5feKedu46tiY2/DShpdXiRp0NY3cLwc+DKe1ayWd66mb3JVi8LTQubRM7jco+u92e6w0bbvg==
+<<<<<<< HEAD
+=======
+  dependencies:
+    preact "^8.3.1"
+
+acorn-jsx@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
+  integrity sha1-r9+UiPsezvyDSPb7IvRk4ypYs2s=
+>>>>>>> 11104417a25ecf55dfd636b3698f6b4fdbbc2411
   dependencies:
     preact "^8.3.1"
 
@@ -5430,6 +5440,14 @@ nhsuk-bunyan-logger@^1.4.1:
   integrity sha512-qKJgrkwTE4cKjOuOJnDB/4mTvst7vtLq8LdWPf+5TzBby7a4zHev2ETRPyNQ6Ty94vX3zL+UgnRRZu/4bJWwhw==
   dependencies:
     bunyan "^1.0.0"
+
+nhsuk-frontend@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/nhsuk-frontend/-/nhsuk-frontend-2.3.1.tgz#23d62e38dcbeea166d0ef1f232a22e390d6fcadf"
+  integrity sha512-dkrtWaXrKP+f2oZO0KeeSSpaAbbIR74uTYvNDrdD2JXBH5V/jNxuTC+2x83np8Q++2Zl830RfFkETX8noDth3Q==
+  dependencies:
+    accessible-autocomplete "^1.6.2"
+    sass-mq "^4.0.2"
 
 nhsuk-frontend@^2.3.1:
   version "2.3.1"

@@ -110,11 +110,33 @@
       ]
     })}}
 
+<<<<<<< HEAD
     {% block breadcrumbs %}{% endblock %}
 
     <div class="nhsuk-width-container">
       <main id="main-content" class="nhsuk-main-wrapper">
         {% block content %}{% endblock %}
+=======
+    {{ breadcrumb({
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        },
+        {
+          href: "/service-search",
+          text: "Services near you"
+        }
+      ],
+      text: "Find a pharmacy"
+    })}}
+
+    <div class="nhsuk-width-container">
+      <main id="main-content" class="nhsuk-main-wrapper">
+        <div class="nhsuk-u-reading-width">
+          {% block content %}{% endblock %}
+        </div>
+>>>>>>> 11104417a25ecf55dfd636b3698f6b4fdbbc2411
       </main>
     </div>
 
