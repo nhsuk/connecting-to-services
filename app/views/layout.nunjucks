@@ -3,20 +3,57 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" class="no-js"><!--<![endif]-->
 
-  <head>
+<head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="{{ app.description | safe }}"/>
 
+    <title>{% block pageTitle %}{{ app.title }}{% endblock %} - NHS</title>
+
+    <link href="https://assets-staging.nhs.uk/" rel="preconnect" crossorigin>
+	  <link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
+
+    {% if hotjarAnalyticsTrackingId %}
+       <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
+      <script type="text/plain" data-cookieconsent="statistics">
+        (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:{{ hotjarAnalyticsTrackingId }},hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
+    {% endif %}
+
+    {% include "includes/digitalData.nunjucks" %}
+
+    <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
+	
+	  <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2" rel="preload" as="font" crossorigin>
+    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2" rel="preload" as="font" crossorigin>
+
+     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+
+    <script src="{{ cookiebotScriptUrl }}" type="text/javascript" data-cookieconsent="necessary" async></script>
+
+    {% if adobeTrackingUrl %}
+      <script src="{{ adobeTrackingUrl }}" type="text/plain" data-cookieconsent="statistics" async></script>
+    {% endif %}
+
+    <script src="{{ siteRoot }}/nhsuk.min.js" defer></script>
+    <script src="{{ siteRoot }}/js/app.js" defer></script>
+
+    {% block meta %}{% endblock %}
+
     <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
     <link rel="apple-touch-icon" href="{{ siteRoot }}/images/apple-touch-icon.png">
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ siteRoot }}/images/favicon.png">
-
-    <title>{% block pageTitle %}{{ app.title }}{% endblock %} - NHS</title>
 
     <link rel="canonical" href="{{ canonicalUrl }}">
     <meta property="og:description" content="{{ app.description | safe }}"/>
@@ -33,37 +70,8 @@
     <meta property="twitter:card" content="{{ app.twitter.card }}">
     <meta property="twitter:creator" content="{{ app.twitter.creator }}">
     <meta property="twitter:site" content="{{ app.twitter.site }}">
-
-    <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
-
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-
-    <script src="{{ cookiebotScriptUrl }}" type="text/javascript" data-cookieconsent="necessary" async></script>
-
-    {% if hotjarAnalyticsTrackingId %}
-       <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
-      <script type="text/plain" data-cookieconsent="statistics">
-        (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:{{ hotjarAnalyticsTrackingId }},hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-      </script>
-    {% endif %}
-
-    {% block meta %}{% endblock %}
-
-    {% if adobeTrackingUrl %}
-      <script src="{{ adobeTrackingUrl }}" type="text/plain" data-cookieconsent="statistics" async></script>
-    {% endif %}
-
-    <script src="{{ siteRoot }}/js/app.js" defer></script>
-
-    {% include "includes/digitalData.nunjucks" %}
-  </head>
+    
+</head>
 
   <body>
     {{ skipLink({
