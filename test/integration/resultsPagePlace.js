@@ -98,15 +98,14 @@ describe('The place results page', () => {
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
-    expect($('.results__header--none').text()).to.equal(`We can't find '${noResultsTerm}'`);
-    expect($('.results__none-content').text()).to
+    expect($('h1').text()).to.equal(`We can't find '${noResultsTerm}'`);
+    expect($('main').text()).to
       .contain('If the place you searched for is in England, you could:');
-    expect($('.results__none-content').text()).to.not
+    expect($('main').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('.results__none-content p').text()).to.contain('Find pharmacies in Scotland on the NHS 24 website');
-    expect($('.results__none-content p').text()).to.contain('Find pharmacies in Wales on the NHS Direct Wales website');
-    expect($('.results__none-content p').text()).to.contain('Find pharmacies in Northern Ireland on the Health and Social Care website');
-    expect($('.results-none-nearby').length).to.equal(0);
+    expect($('main').text()).to.contain('Find pharmacies in Scotland on the NHS 24 website');
+    expect($('main').text()).to.contain('Find pharmacies in Wales on the NHS Direct Wales website');
+    expect($('main').text()).to.contain('Find pharmacies in Northern Ireland on the Health and Social Care website');
     iExpect.noResultsPageBreadcrumb($);
   });
 });

@@ -17,7 +17,7 @@
     </div>
 
     {{ button({
-      "text": "Continue"
+      "text": "Search"
     }) }}
     {{ button({
       "text": "Use your location",
@@ -37,8 +37,8 @@
     </div>
   </form>
 
-  <div class="additional-links">
-    <p><a href="https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies" target="_blank">See all internet pharmacies</a></p>
-    <p><a href="https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies" target="_blank">See all dispensing appliance contractors</a></p>
+  <ul class="nhsuk-list additional-links">
+    <li><a href="https://www.nhs.uk/Service-Search/pharmacies/internetpharmacies" target="_blank">See all internet pharmacies</a></li>
+    <li><a href="https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies" target="_blank">See all dispensing appliance contractors</a></li>
   </div>
 {% endblock %}

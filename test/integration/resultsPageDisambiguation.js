@@ -40,7 +40,6 @@ describe('The place results page', () => {
     const $ = cheerio.load(res.text);
 
     expect($('.results__item').length).to.equal(3);
-    expect($('.results__none').length).to.equal(1);
     expect($('h1').text())
       .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 

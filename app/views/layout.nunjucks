@@ -63,12 +63,9 @@
     <script src="{{ siteRoot }}/js/app.js" defer></script>
 
     {% include "includes/digitalData.nunjucks" %}
-</head>
+  </head>
 
-  <body class="{% block bodyClass %}{% endblock %}">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-    <!-- <script>(function(d){d.className=d.className.replace(/\bno-js\b/,'js-enabled')})(document.documentElement);</script> -->
-   
+  <body>
     {{ skipLink({
       "href": "#maincontent",
       "text": "Skip to main content"

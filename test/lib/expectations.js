@@ -23,7 +23,7 @@ function disambiguationPageBreadcrumb($) {
 }
 
 function call111Callout($) {
-  expect($('.callout--muted p').text()).to.equal('Call 111 if you need urgent treatment and you can’t find an open pharmacy.');
+  expect($('.nhsuk-care-card__heading').text()).to.contain('Call 111 if:');
 }
 
 function midsomerNortonResults($, location, numberOfResults) {
@@ -50,7 +50,7 @@ function midsomerNortonResults($, location, numberOfResults) {
 
 function searchAgainPage($) {
   expect($('.nhsuk-error-message').text())
-    .to.contain('You must enter a town, city or postcode to find a pharmacy.');
+    .to.contain('This field is required.');
 }
 
 module.exports = {
