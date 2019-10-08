@@ -5,9 +5,7 @@
       <p class="distance"><span class="sr-only">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
       <h2 class="results__name">{{ service.name }}</h2>
       <p>
-      {% if service.address.line1 %} {{ service.address.line1 }}, {% endif %}
-      {% if service.address.line2 %} {{ service.address.line2 }}, {% endif %}
-      {% if service.address.line3 %} {{ service.address.line3 }}, {% endif %}
+      {{ service.address.lines | join(', ') }},
       {% if service.address.city %} {{ service.address.city }}, {% endif %}
       {% if service.address.county %} {{ service.address.county }}, {% endif %}
       {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}

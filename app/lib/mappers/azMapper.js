@@ -2,10 +2,7 @@ const calculateDistance = require('../displayUtils/calculateDistance');
 const getMessage = require('../getMessage');
 const getOpeningTimes = require('./azOpeningTimesMapper');
 const getContacts = require('./azContactMapper');
-
-function getValueOrDefault(value) {
-  return value || '';
-}
+const getAddress = require('./azAddressMapper');
 
 module.exports = (org, origin, datetime) => {
   const contacts = getContacts(org.Contacts);
@@ -21,17 +18,8 @@ module.exports = (org, origin, datetime) => {
     longitude: org.Geocode.coordinates[0],
   };
 
-  const address = {
-    city: getValueOrDefault(org.City),
-    county: getValueOrDefault(org.County),
-    line1: getValueOrDefault(org.Address1),
-    line2: getValueOrDefault(org.Address2),
-    line3: getValueOrDefault(org.Address3),
-    postcode: getValueOrDefault(org.Postcode),
-  };
-
   const mappedOrg = {
-    address,
+    address: getAddress(org),
     contacts,
     distanceInMiles: calculateDistance(origin, orgCoordinates),
     identifier: org.NACSCode,
