@@ -60,6 +60,8 @@
       <script src="{{ adobeTrackingUrl }}" type="text/plain" data-cookieconsent="statistics" async></script>
     {% endif %}
 
+    <script src="{{ siteRoot }}/js/app.js" defer></script>
+
     {% include "includes/digitalData.nunjucks" %}
 </head>
 
@@ -83,6 +85,5 @@
     </div>
     
     {% include "includes/footer.nunjucks" %}
-    {% include "includes/foot.nunjucks" %}
   </body>
 </html>

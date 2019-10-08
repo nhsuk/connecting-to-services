@@ -1,8 +1,0 @@
-<!--[if lte IE 9]>
-  <script src="{{ siteRoot }}/js/vendor/jquery-1.12.4.min.js"></script>
-<![endif]-->
-<!--[if !IE]><!-->
-  <script src="{{ siteRoot }}/js/vendor/jquery-3.3.1.min.js"></script>
-<!--<![endif]-->
-<script src="{{ siteRoot }}/js/vendor/typeahead.bundle-1.2.1.min.js"></script>
-<script src="{{ siteRoot }}/js/app.js"></script>
