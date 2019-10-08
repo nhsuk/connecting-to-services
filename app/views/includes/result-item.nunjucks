@@ -1,20 +1,25 @@
 <li class="results__item{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}{% if service.openingTimes === null %} noTimes{% endif %}">
-  <div class="results__details">
-    {% set distance = service.distanceInMiles | round(1) %}
-    <div>
-      <p class="distance"><span class="sr-only">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
-      <h2 class="results__name">{{ service.name }}</h2>
-      <p>
-      {{ service.address.lines | join(', ') }},
-      {% if service.address.city %} {{ service.address.city }}, {% endif %}
-      {% if service.address.county %} {{ service.address.county }}, {% endif %}
-      {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
-      {% if service.contacts.telephone %}{{ service.contacts.telephone }}{% endif %}
-      </p>
-    <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.lines[0] }}</span></a></p>
-    <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="sr-only"> in {{ service.name }} at {{ service.address.lines[0] }}</span></a></p>
+  <hr />
+  <div class="nhsuk-grid-row results__details">
+
+    <div class="nhsuk-grid-column-one-half">
+      {% set distance = service.distanceInMiles | round(1) %}
+      <div>
+        <p class="nhsuk-body-s distance"><span class="nhsuk-u-visually-hidden">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
+        <h2 class="results__name">{{ service.name }}</h2>
+        <p>
+        {{ service.address.lines | join(', ') }},
+        {% if service.address.city %} {{ service.address.city }}, {% endif %}
+        {% if service.address.county %} {{ service.address.county }}, {% endif %}
+        {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
+        {% if service.contacts.telephone %}{{ service.contacts.telephone }}{% endif %}
+        </p>
+        <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.addressLine }}</span></a></p>
+        <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="nhsuk-u-visually-hidden"> in {{ service.name }} at {{ service.addressLine }}</span></a></p>
+      </div>
     </div>
-    {% include "includes/openingTimes.nunjucks" %}
+    <div class="nhsuk-grid-column-one-half">
+      {% include "includes/openingTimes.nunjucks" %}
+    </div>
   </div>
-  <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
 </li>
