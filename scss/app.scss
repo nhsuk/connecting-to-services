@@ -17,21 +17,17 @@
 @import 'node_modules/nhsuk-frontend/packages/components/panel/panel';
 
 .geo-locate {
-  display:none;
-
-  > div {
-	display: none;
+	&--denied,
+	&--error,
+	&--searching {
+		display: none;
 	
-	img {
-		height: 40px;
-		width: 40px;
-		margin: 0 0 -13px 10px;
-	}
-  }
-  
-  &--denied {
-	display: none;
-  }
+		img {
+			height: 40px;
+			width: 40px;
+			margin: 0 0 -13px 10px;
+		}
+  	}
 }
 
 .distance {

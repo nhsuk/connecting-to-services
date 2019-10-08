@@ -1,50 +1,37 @@
-(() => {
-  const geoLocate = document.querySelector('.geo-locate');
-  const geoLocateDenied = document.querySelector('.geo-locate--denied');
-  const geoLocateError = document.querySelector('.geo-locate--error');
-  const geoLocateLocate = document.querySelector('.geo-locate--locate');
-  const geoLocateSearching = document.querySelector('.geo-locate--searching');
+const geoLocateButton = document.querySelector('.geo-locate--button');
+const geoLocateDenied = document.querySelector('.geo-locate--denied');
+const geoLocateError = document.querySelector('.geo-locate--error');
+const geoLocateSearching = document.querySelector('.geo-locate--searching');
 
-  function error(e) {
-    switch (e.code) {
-      case e.PERMISSION_DENIED:
-        geoLocate.style.display = 'none';
-        geoLocateDenied.style.display = 'block';
-        break;
-      case e.POSITION_UNAVAILABLE:
-        geoLocateError.style.display = 'block';
-        break;
-      case e.TIMEOUT:
-        geoLocateError.style.display = 'block';
-        break;
-      default:
-        geoLocateError.style.display = 'block';
-    }
-    geoLocateSearching.style.display = 'none';
+const geolocationError = (e) => {
+  geoLocateSearching.style.display = 'none';
+  if (e.code === e.PERMISSION_DENIED) {
+    geoLocateDenied.style.display = 'block';
+  } else {
+    geoLocateError.style.display = 'block';
   }
+};
 
-  function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+const geolocationSuccess = ({ coords: { latitude, longitude } }) => {
+  if (latitude && longitude) {
+    window.location = `./results?location=your%20location&latitude=${latitude}&longitude=${longitude}`;
+  } else {
+    geolocationError();
+  }
+};
 
-    if (latitude && longitude) {
-      const locationDescription = 'your location';
-      const location = `./results?location=${encodeURIComponent(locationDescription)}&latitude=${latitude}&longitude=${longitude}`;
-      // load the results page
-      window.location = location;
+document.addEventListener('DOMContentLoaded', () => {
+  if (geoLocateButton) {
+    if ('geolocation' in navigator) {
+      geoLocateButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        geoLocateError.style.display = 'none';
+        geoLocateDenied.style.display = 'none';
+        geoLocateSearching.style.display = 'block';
+        navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+      });
     } else {
-      error();
+      geoLocateButton.style.display = 'none';
     }
   }
-
-  if (navigator.geolocation && geoLocate) {
-    geoLocate.style.display = 'block';
-
-    geoLocateLocate.addEventListener('click', (e) => {
-      geoLocateError.style.display = 'none';
-      navigator.geolocation.getCurrentPosition(success, error);
-      geoLocateSearching.style.display = 'block';
-      e.preventDefault();
-    });
-  }
-})();
+});

@@ -21,20 +21,15 @@
     }) }}
     {{ button({
       "text": "Use your location",
-      "classes": "nhsuk-button--secondary geo-locate--locate"
+      "classes": "nhsuk-button--secondary geo-locate--button"
     }) }}
 
     <div class="geo-locate">
-      <div class="geo-locate--error error">
-        <p>We can't find your location. Please try again or enter a town, city or postcode.</p>
-      </div>
-      <div class="geo-locate--searching">
-        <p>We are searching for your location <img src="images/loading.gif" alt="" /></p>
-      </div>
+      <p class="geo-locate--searching">We are searching for your location <img src="images/loading.gif" alt="" /></p>
+      <p class="geo-locate--error">We can't find your location. Please try again or enter a town, city or postcode.</p>
+      <p class="geo-locate--denied">You have not allowed us to use your location. You can change this in your browser settings.</p>
     </div>
-    <div class="geo-locate--denied error">
-      <p>You have not allowed us to use your location. You can change this in your browser settings.</p>
-    </div>
+
   </form>
 
   <ul class="nhsuk-list additional-links">
