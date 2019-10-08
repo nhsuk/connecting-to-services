@@ -15,7 +15,7 @@
       "href": siteRoot,
       "text": "Go back"
     }) }}
-    <h1 class="nhsuk-u-reading-width">Pharmacies near {{ getDisplayLocation() }}</h1>
+    <h1 class="nhsuk-u-reading-width nhsuk-u-margin-bottom-4">Pharmacies near {{ getDisplayLocation() }}</h1>
 {% endif %}
 {% endblock %}
 
