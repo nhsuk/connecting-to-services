@@ -1,6 +1,6 @@
 const querystring = require('querystring');
 
-const deepClone = require('./utils').deepClone;
+const { deepClone } = require('./utils');
 const displayOpenResults = require('./displayOpenResults');
 
 function resultsPageAltUrl(req) {

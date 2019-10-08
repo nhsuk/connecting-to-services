@@ -6,7 +6,7 @@ const utils = require('../../../../app/lib/utils');
 const asSampleResponse = require('../../../resources/organisations/FK276-as');
 const esSampleResponse = require('../../../resources/organisations/FK276-es');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 function removePastAdditionalDates(esSampleResponseOriginal) {
   // this needs doing since Azure Search does not return past additional dates whilst

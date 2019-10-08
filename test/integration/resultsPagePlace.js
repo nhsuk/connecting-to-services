@@ -6,13 +6,13 @@ const nock = require('nock');
 const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const queryBuilder = require('../../app/lib/queryBuilder');
 const nockRequests = require('../lib/nockRequests');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
+const { queryTypes } = constants;
 
 chai.use(chaiHttp);
 
@@ -25,7 +25,7 @@ describe('The place results page', () => {
 
   it('should return list of nearby pharmacies for unique place search', async () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
-    const singleResult = JSON.parse(singlePlaceResponse).result[0];
+    const [singleResult] = JSON.parse(singlePlaceResponse).result;
     const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
     const searchTerm = 'oneresult';
     const numberOfResults = constants.api.nearbyResultsCount;
@@ -55,7 +55,7 @@ describe('The place results page', () => {
 
   it('should return list of open pharmacies for unique place search', async () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
-    const singleResult = JSON.parse(singlePlaceResponse).result[0];
+    const [singleResult] = JSON.parse(singlePlaceResponse).result;
     const searchOrigin = {
       latitude: singleResult.latitude,
       longitude: singleResult.longitude,

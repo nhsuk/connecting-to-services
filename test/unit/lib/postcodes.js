@@ -4,9 +4,9 @@ const nock = require('nock');
 const getSampleResponse = require('../../resources/getSampleResponse');
 const messages = require('../../../app/lib/messages');
 const postcodes = require('../../../app/lib/postcodes');
-const postcodesIOURL = require('../../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../../lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Postcodes', () => {
   after('clean nock', () => {

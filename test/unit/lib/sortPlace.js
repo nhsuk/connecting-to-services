@@ -1,7 +1,7 @@
 const chai = require('chai');
-const sortPlace = require('../../../app/lib/placeHelper').sortPlace;
+const { sortPlace } = require('../../../app/lib/placeHelper');
 
-const expect = chai.expect;
+const { expect } = chai;
 function createSuburb(name) {
   return { local_type: 'Suburban Area', name_1: name };
 }

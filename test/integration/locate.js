@@ -1,7 +1,7 @@
 const chai = require('chai');
 const lookup = require('../../app/lib/locate');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('locate', function testWithTimeout() {
   this.timeout(15000);

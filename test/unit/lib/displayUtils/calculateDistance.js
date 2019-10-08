@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const calculateDistance = require('../../../../app/lib/displayUtils/calculateDistance');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('calculateDistance', () => {
   it('should return the distance between the points', () => {

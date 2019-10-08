@@ -4,7 +4,7 @@ const chai = require('chai');
 const mapLink = require('../../../app/lib/mapLink');
 const constants = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('mapLink', () => {
   describe('addUrl', () => {

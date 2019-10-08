@@ -1,5 +1,5 @@
 ((global) => {
-  const document = global.document;
+  const { document } = global;
 
   const searchToggle = {
     doToggle: (e) => {

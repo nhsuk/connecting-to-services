@@ -2,7 +2,7 @@ const chai = require('chai');
 const moment = require('moment');
 const utils = require('../../../app/lib/utils');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('utils', () => {
   describe('isTimeConsideredMidnight', () => {

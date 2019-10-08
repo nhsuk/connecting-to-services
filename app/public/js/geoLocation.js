@@ -26,8 +26,8 @@
   }
 
   function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
 
     if (latitude && longitude) {
       const locationDescription = 'your location';

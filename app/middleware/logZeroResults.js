@@ -1,8 +1,8 @@
 const log = require('../lib/logger');
-const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsViews;
+const { zeroPlaceResultsViews } = require('../lib/promCounters');
 
 function logZeroResults(req, res, next) {
-  const location = res.locals.location;
+  const { location } = res.locals;
 
   if (res.locals.services.length === 0) {
     log.warn({ location }, `No results were found for ${location}`);

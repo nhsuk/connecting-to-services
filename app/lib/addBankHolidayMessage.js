@@ -1,6 +1,6 @@
 const moment = require('moment');
-const isBankHoliday = require('../lib/dateUtils').isBankHoliday;
-const getDateTime = require('../lib/dateUtils').getDateTime;
+const { isBankHoliday } = require('../lib/dateUtils');
+const { getDateTime } = require('../lib/dateUtils');
 const messages = require('../lib/messages');
 
 function addBankHolidayMessage(orgs) {

@@ -4,7 +4,7 @@ const messages = require('./messages');
 const zeroPostcodeResults = require('../lib/promCounters').zeroPostcodeResultsViews;
 
 async function lookup(res, next) {
-  const location = res.locals.location;
+  const { location } = res.locals;
   try {
     log.info({ postcodeLookupRequest: { location } }, 'postcode-lookup-start');
     const result = await locate.byPostcode(location);

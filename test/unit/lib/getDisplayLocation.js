@@ -1,7 +1,7 @@
 const chai = require('chai');
 const getDisplayLocation = require('../../../app/lib/getDisplayLocation');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('getDisplayLocation', () => {
   it('should gracefully handle undefined location', () => {

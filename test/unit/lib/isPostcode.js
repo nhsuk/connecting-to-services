@@ -1,7 +1,7 @@
 const chai = require('chai');
 const isPostcode = require('../../../app/lib/isPostcode');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('isPostcode', () => {
   it('should return false for an invalid postcode', () => {

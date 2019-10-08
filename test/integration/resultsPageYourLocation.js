@@ -6,18 +6,18 @@ const nock = require('nock');
 const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 
-const queryTypes = constants.queryTypes;
-const expect = chai.expect;
+const { queryTypes } = constants;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results`;
-const yourLocation = constants.yourLocation;
+const { yourLocation } = constants;
 
 function setupPostcodesIoNock(country) {
   const reverseGeocodeResponse = getSampleResponse(`postcodesio-responses/reverseGeocode${country}.json`);

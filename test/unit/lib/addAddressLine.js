@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const addAddressLine = require('../../../app/lib/addAddressLine');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 function getValidServices() {
   const nameOne = 'place name one';

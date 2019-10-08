@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-const daysOfWeekOrderedForUi = require('./constants').daysOfWeekOrderedForUi;
+const { daysOfWeekOrderedForUi } = require('./constants');
 
 function formatTimeString(timeString) {
   const time = moment();

@@ -1,6 +1,6 @@
 ((global) => {
   const $ = global.jQuery;
-  const hj = global.hj;
+  const { hj } = global;
 
   const anchors = {
     openingTimes__openResults: 'OpeningTimes-OpenResults',

@@ -1,6 +1,6 @@
-const VError = require('verror').VError;
-const queryTypes = require('./constants').queryTypes;
-const getDateTime = require('./dateUtils').getDateTime;
+const { VError } = require('verror');
+const { queryTypes } = require('./constants');
+const { getDateTime } = require('./dateUtils');
 
 const pharmacyFilter = 'OrganisationTypeID eq \'PHA\'';
 

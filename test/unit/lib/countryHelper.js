@@ -1,7 +1,7 @@
 const chai = require('chai');
 const countryHelper = require('../../../app/lib/countryHelper');
 
-const expect = chai.expect;
+const { expect } = chai;
 const countryToMatch = 'Wales';
 
 describe('countryHelper', () => {

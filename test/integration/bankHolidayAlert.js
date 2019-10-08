@@ -7,17 +7,17 @@ const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const queryBuilder = require('../../app/lib/queryBuilder');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
+const { queryTypes } = constants;
 
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results`;
-const yourLocation = constants.yourLocation;
+const { yourLocation } = constants;
 
 describe('The bank holiday alert messaging', () => {
   after('clean nock', () => {

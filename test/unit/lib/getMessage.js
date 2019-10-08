@@ -5,7 +5,7 @@ require('moment-timezone');
 const getMessage = require('../../../app/lib/getMessage');
 const utils = require('../../../app/lib/utils');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 function hasPhoneNumber(org) {
   return org.contacts && org.contacts.telephone;

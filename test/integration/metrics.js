@@ -2,9 +2,9 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 const app = require('../../server');
-const promClient = require('../../app/lib/promBundle').promClient;
+const { promClient } = require('../../app/lib/promBundle');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 

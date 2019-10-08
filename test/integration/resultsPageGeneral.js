@@ -11,8 +11,8 @@ const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 const postcodeCoordinates = require('../resources/postcode-coordinates');
 
-const queryTypes = constants.queryTypes;
-const expect = chai.expect;
+const { queryTypes } = constants;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 

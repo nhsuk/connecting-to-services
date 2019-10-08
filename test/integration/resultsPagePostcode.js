@@ -7,18 +7,18 @@ const constants = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const messages = require('../../app/lib/messages');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
+const { queryTypes } = constants;
 
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results`;
-const nearbyResultsCount = constants.api.nearbyResultsCount;
+const { nearbyResultsCount } = constants.api;
 const appTitle = constants.app.title;
 
 describe('The results page', () => {

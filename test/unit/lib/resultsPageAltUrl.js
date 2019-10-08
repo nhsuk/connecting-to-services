@@ -1,7 +1,7 @@
 const chai = require('chai');
 const resultsPageAltUrl = require('../../../app/lib/resultsPageAltUrl');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const testDateTimes = {
   afterBusinessHours: '2018-03-14 18:00',

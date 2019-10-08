@@ -13,7 +13,7 @@ const promBundle = require('../app/lib/promBundle').middleware;
 const router = require('./routes');
 
 module.exports = (app, config) => {
-  const siteRoot = constants.siteRoot;
+  const { siteRoot } = constants;
   // eslint-disable-next-line no-param-reassign
   app.locals.siteRoot = siteRoot;
   // eslint-disable-next-line no-param-reassign

@@ -2,7 +2,7 @@ const chai = require('chai');
 const canonicalUrl = require('../../../app/lib/canonicalUrl');
 const siteRoot = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('canonicalUrl', () => {
   const hostname = 'some.host.name';

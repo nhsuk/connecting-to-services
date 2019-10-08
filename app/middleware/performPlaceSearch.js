@@ -4,8 +4,8 @@ const placeHelper = require('../lib/placeHelper');
 const getAddress = require('../lib/getAddress');
 const renderer = require('./renderer');
 const createPlaceViewModel = require('./createPlaceViewModel');
-const placeDisambiguationViews = require('../lib/promCounters').placeDisambiguationViews;
-const zeroPlaceResultsViews = require('../lib/promCounters').zeroPlaceResultsViews;
+const { placeDisambiguationViews } = require('../lib/promCounters');
+const { zeroPlaceResultsViews } = require('../lib/promCounters');
 
 const maxResults = 10;
 
@@ -34,7 +34,7 @@ function getCoordinates(place) {
 }
 
 async function getPlaces(req, res, next) {
-  const location = res.locals.location;
+  const { location } = res.locals;
   try {
     const allPlaces = await locate.byPlace(location, 100);
     res.locals.countries = placeHelper.getCountries(allPlaces);

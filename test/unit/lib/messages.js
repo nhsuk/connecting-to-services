@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const messages = require('../../../app/lib/messages');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('messages', () => {
   it('should have a message for an invalid postcode where the location is as entered', () => {

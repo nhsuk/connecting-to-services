@@ -3,7 +3,7 @@ const chai = require('chai');
 const bankHolidayDates = require('../../../data/bankHolidayDates');
 const displayOpenResults = require('../../../app/lib/displayOpenResults');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const testDateTimes = {
   afterBusinessHours: '2018-03-14 18:00',
@@ -85,7 +85,7 @@ describe('displayOpenResults', () => {
 
     describe('before business hours', () => {
       beforeEach(() => {
-        const beforeBusinessHours = testDateTimes.beforeBusinessHours;
+        const { beforeBusinessHours } = testDateTimes;
         process.env.DATETIME = beforeBusinessHours;
       });
 

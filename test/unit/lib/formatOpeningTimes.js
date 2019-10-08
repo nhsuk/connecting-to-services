@@ -2,7 +2,7 @@
 const chai = require('chai');
 const formatOpeningTimes = require('../../../app/lib/formatOpeningTimes');
 
-const expect = chai.expect;
+const { expect } = chai;
 const openingTimes = {
   general: {
     monday: [{ opens: '08:00', closes: '15:00' }, { opens: '16:00', closes: '17:00' }],

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const completeOriginalUrl = require('../../../app/lib/completeOriginalUrl');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('completeOriginalUrl', () => {
   const reqMock = { hostname: 'beta.nhs.uk', originalUrl: '/find-a-pharmacy/results?location=ls' };

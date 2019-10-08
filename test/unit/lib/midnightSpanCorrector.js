@@ -7,7 +7,7 @@ const midnightSpanCorrector = require('../../../app/lib/midnightSpanCorrector');
 chai.use(chaiMoment);
 chaiMoment.setErrorFormat('LLLL');
 
-const expect = chai.expect;
+const { expect } = chai;
 const aSunday = new Moment('2016-07-24T00:00:00+00:00');
 const timeZone = 'Europe/London';
 

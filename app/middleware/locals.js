@@ -1,4 +1,4 @@
-const app = require('../lib/constants').app;
+const { app } = require('../lib/constants');
 const canonicalUrl = require('../lib/canonicalUrl');
 const completeOriginalUrl = require('../lib/completeOriginalUrl');
 const countryHelper = require('../lib/countryHelper');

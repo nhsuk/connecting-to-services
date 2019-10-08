@@ -2,7 +2,7 @@ const renderer = require('./renderer');
 const log = require('../lib/logger');
 
 function renderFindHelpPage(req, res, message, errorMessage) {
-  const location = res.locals.location;
+  const { location } = res.locals;
   log.info({ locationValidationResponse: { location } }, message);
   res.locals.errorMessage = errorMessage;
   renderer.findHelp(req, res);

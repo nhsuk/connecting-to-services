@@ -7,7 +7,7 @@ const performPlaceSearch = require('./performPlaceSearch');
 const stringUtils = require('../lib/stringUtils');
 
 function validatePostcode(req, res, next) {
-  const location = res.locals.location;
+  const { location } = res.locals;
   const validationResult = postcodeValidator(location);
   res.locals.location = validationResult.alteredLocation;
   if (validationResult.errorMessage) {

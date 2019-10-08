@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const choicesServices = require('../../../app/lib/choicesServices');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('choicesServices', () => {
   it('should return all items with choicesServicesUrl', () => {

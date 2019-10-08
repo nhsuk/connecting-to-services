@@ -4,7 +4,7 @@ const moment = require('moment');
 
 const azOpeningTimesMapper = require('../../../../app/lib/mappers/azOpeningTimesMapper');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const daysOfWeek = moment.weekdays().map((wd) => wd.toLowerCase());
 

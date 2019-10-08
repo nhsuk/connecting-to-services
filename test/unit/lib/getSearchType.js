@@ -2,7 +2,7 @@ const chai = require('chai');
 const getSearchType = require('../../../app/lib/getSearchType');
 const constants = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 const noCoordinates = {};
 const validCoordinates = { latitude: 0.1, longitude: -0.5 };
 

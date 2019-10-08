@@ -2,7 +2,7 @@ const nock = require('nock');
 const chai = require('chai');
 const log = require('../app/lib/logger');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 after('Check all nocks have been called', () => {
   try {
