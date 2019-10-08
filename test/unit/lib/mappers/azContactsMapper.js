@@ -1,5 +1,3 @@
-
-/* eslint-disable sort-keys */
 const chai = require('chai');
 
 const contactMapper = require('../../../../app/lib/mappers/azContactMapper');
@@ -13,8 +11,8 @@ describe('azContactMapper', () => {
   });
   it('should get telephone number when primary contact', () => {
     const contact = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Telephone',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877554',
     };
 
@@ -23,8 +21,8 @@ describe('azContactMapper', () => {
   });
   it('should get fax number when primary contact', () => {
     const contact = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Fax',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877554',
     };
     const contacts = contactMapper(JSON.stringify([contact]));
@@ -32,8 +30,8 @@ describe('azContactMapper', () => {
   });
   it('should get non phone contact details when primary contact', () => {
     const contact = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'email',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: 'pharmacist@pharmacy.co.uk',
     };
 
@@ -42,30 +40,30 @@ describe('azContactMapper', () => {
   });
   it('should get multiple primary contact details', () => {
     const contact1 = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Fax',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877555',
     };
     const contact2 = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Telephone',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877444',
     };
     const contacts = contactMapper(JSON.stringify([contact1, contact2]));
     expect(contacts).to.eql({
-      telephone: contact2.OrganisationContactValue,
       fax: contact1.OrganisationContactValue,
+      telephone: contact2.OrganisationContactValue,
     });
   });
   it('if multiple primary contacts of same type then last one wins', () => {
     const contact1 = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Telephone',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877555',
     };
     const contact2 = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Telephone',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877444',
     };
     const contacts = contactMapper(JSON.stringify([contact1, contact2]));
@@ -75,13 +73,13 @@ describe('azContactMapper', () => {
   });
   it('should ignore non primary contact details', () => {
     const contact1 = {
-      OrganisationContactType: 'Other',
       OrganisationContactMethodType: 'Fax',
+      OrganisationContactType: 'Other',
       OrganisationContactValue: '01904 877555',
     };
     const contact2 = {
-      OrganisationContactType: 'Primary',
       OrganisationContactMethodType: 'Telephone',
+      OrganisationContactType: 'Primary',
       OrganisationContactValue: '01904 877444',
     };
     const contacts = contactMapper(JSON.stringify([contact1, contact2]));
