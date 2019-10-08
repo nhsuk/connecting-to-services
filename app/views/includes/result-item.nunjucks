@@ -14,8 +14,10 @@
         {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
         {% if service.contacts.telephone %}{{ service.contacts.telephone }}{% endif %}
         </p>
-        <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.addressLine }}</span></a></p>
-        <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="nhsuk-u-visually-hidden"> in {{ service.name }} at {{ service.addressLine }}</span></a></p>
+        <ul class="nhsuk-list">
+          <li class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.addressLine }}</span></a></li>
+          <li class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="nhsuk-u-visually-hidden"> in {{ service.name }} at {{ service.addressLine }}</span></a></li>
+        </ul>
       </div>
     </div>
     <div class="nhsuk-grid-column-one-half">

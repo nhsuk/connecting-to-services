@@ -4,6 +4,6 @@
   "type": "urgent",
   "heading": "Call 111 if:",
   "HTML": "
-    you need urgent treatment and you can’t find an open pharmacy.
+    <p>you need urgent treatment and you can’t find an open pharmacy.</p>
   "
 }) }}

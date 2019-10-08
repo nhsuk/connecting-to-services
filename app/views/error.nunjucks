@@ -4,10 +4,10 @@
 
 {% block pageTitle %}{{ message }}{% endblock %}
 
-{% block headerContent %}<h1>{{ message }}</h1>{% endblock %}
+{% block headerContent %}<h1 class="nhsuk-u-reading-width">{{ message }}</h1>{% endblock %}
 
 {% block content %}
-  <div class="reading-width">
+  <div class="nhsuk-u-reading-width">
     <p>Please try again later.</p>
   <div>
 {% endblock %}

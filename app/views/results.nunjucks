@@ -15,14 +15,15 @@
       "href": siteRoot,
       "text": "Go back"
     }) }}
-
-    <h1>Pharmacies near {{ getDisplayLocation() }}</h1>
+    <h1 class="nhsuk-u-reading-width">Pharmacies near {{ getDisplayLocation() }}</h1>
 {% endif %}
 {% endblock %}
 
 {% block content %}
 {% if services.length === 0 %}
-{% include "includes/no-pharmacy-results.nunjucks" %}
+<div class="nhsuk-u-reading-width">
+  {% include "includes/no-pharmacy-results.nunjucks" %}
+</div>
 {% else %}
 
 {% if displayOpenResults %}
@@ -35,7 +36,6 @@
   {% include "includes/result-item.nunjucks" %}
   {% endfor %}
 </ol>
-<p class="searchAgain"><a href="{{ siteRoot }}/">Search again</a></p>
 {% include "includes/call-111.nunjucks" %}
 {% endif %}
 </div>
