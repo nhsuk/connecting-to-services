@@ -22,7 +22,7 @@ async function lookup(res, next) {
       next({ message: messages.invalidPostcodeMessage(location), type: 'invalid-postcode' });
     }
   } catch (e) {
-    log.error({ postcodeLookupResponse: { error: e } }, 'Postcode lookup error');
+    log.error(e, 'Postcode lookup error');
     next({ message: e.message, type: 'postcode-lookup-error' });
   }
 }

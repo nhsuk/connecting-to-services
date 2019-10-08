@@ -1,27 +1,10 @@
 const calculateDistance = require('../displayUtils/calculateDistance');
-const phoneNumberParser = require('../displayUtils/phoneNumberParser');
 const getMessage = require('../getMessage');
 const getOpeningTimes = require('./azOpeningTimesMapper');
+const getContacts = require('./azContactMapper');
 
-function getContacts(asContacts) {
-  const contacts = JSON.parse(asContacts);
-  const contactDetails = {};
-
-  contacts.forEach((c) => {
-    if (c.OrganisationContactType === 'Primary') {
-      const type = c.OrganisationContactMethodType;
-      const lowerType = type ? type.toLowerCase() : '';
-      switch (lowerType) {
-        case 'fax':
-        case 'telephone':
-          contactDetails[lowerType] = phoneNumberParser(c.OrganisationContactValue);
-          break;
-        default:
-          contactDetails[lowerType] = c.OrganisationContactValue;
-      }
-    }
-  });
-  return contactDetails;
+function getValueOrDefault(value) {
+  return value || '';
 }
 
 module.exports = (org, origin, datetime) => {
@@ -37,25 +20,26 @@ module.exports = (org, origin, datetime) => {
     latitude: org.Geocode.coordinates[1],
     longitude: org.Geocode.coordinates[0],
   };
+
+  const address = {
+    city: getValueOrDefault(org.City),
+    county: getValueOrDefault(org.County),
+    line1: getValueOrDefault(org.Address1),
+    line2: getValueOrDefault(org.Address2),
+    line3: getValueOrDefault(org.Address3),
+    postcode: getValueOrDefault(org.Postcode),
+  };
+
   const mappedOrg = {
-    /* eslint-disable sort-keys */
-    identifier: org.NACSCode,
-    name: org.OrganisationName,
-    address: {
-      line1: org.Address1 || '',
-      line2: org.Address2 || '',
-      line3: org.Address3 || '',
-      city: org.City || '',
-      county: org.County || '',
-      postcode: org.Postcode || '',
-    },
+    address,
     contacts,
-    openingTimes,
     distanceInMiles: calculateDistance(origin, orgCoordinates),
+    identifier: org.NACSCode,
     isOpen,
-    openingTimesMessage,
+    name: org.OrganisationName,
     nextOpen,
-    /* eslint-enable sort-keys */
+    openingTimes,
+    openingTimesMessage,
   };
 
   return mappedOrg;

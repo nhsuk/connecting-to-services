@@ -32,7 +32,7 @@ async function getPharmacies(req, res, next) {
         .map((org) => mapper(org, res.locals.coordinates, currentDateTime));
       next();
     } catch (error) {
-      log.error({ pharmacyLookupResponse: { error } }, 'get-pharmacies-error');
+      log.error(error, 'get-pharmacies-error');
       next('get-pharmacies-error');
     }
   } else {
