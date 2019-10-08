@@ -1,8 +1,9 @@
-1.15.0 / TBC
+1.15.1 / 2019-10-08
 ===================
 - Switch to using Azure Search for organisation queries
 - Update npm dependencies
 - Switch from istanbul to nyc for code coverage
+- Add guard against inconsistency in opening time data 
 
 1.14.0 / 2019-07-18
 ===================
