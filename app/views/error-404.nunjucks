@@ -1,8 +1,15 @@
 {% extends 'layout.nunjucks' %}
+{% from 'back-link/macro.njk' import backLink %}
 
 {% block pageTitle %}Page not found{% endblock %}
 
-{% block headerContent %}<h1 class="nhsuk-u-reading-width">Page not found{</h1>% endblock %}
+{% block headerContent %}
+{{ backLink({
+  "href": siteRoot,
+  "text": "Go back"
+}) }}
+<h1 class="nhsuk-u-reading-width">Page not found</h1>
+{% endblock %}
 
 {% block content %}
   <div class="nhsuk-u-reading-width">
