@@ -4,10 +4,10 @@
 {% block pageTitle %}Page not found{% endblock %}
 
 {% block headerContent %}
-{{ backLink({
+{# {{ backLink({
   "href": siteRoot,
   "text": "Go back"
-}) }}
+}) }} #}
 <h1 class="nhsuk-u-reading-width">Page not found</h1>
 {% endblock %}
 

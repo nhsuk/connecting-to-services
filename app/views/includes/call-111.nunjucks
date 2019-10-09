@@ -3,6 +3,7 @@
 {{ careCard({
   "type": "urgent",
   "heading": "Call 111 if:",
+  "classes": "nhsuk-u-reading-width",
   "HTML": "
     <p>you need urgent treatment and you can’t find an open pharmacy.</p>
   "

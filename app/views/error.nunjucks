@@ -6,10 +6,10 @@
 {% block pageTitle %}{{ message }}{% endblock %}
 
 {% block headerContent %}
-{{ backLink({
+{# {{ backLink({
   "href": siteRoot,
   "text": "Go back"
-}) }}
+}) }} #}
 <h1 class="nhsuk-u-reading-width">{{ message }}</h1>
 {% endblock %}
 

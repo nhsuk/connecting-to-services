@@ -11,10 +11,10 @@
 
 {% block headerContent %}
 {% if services.length > 0 %}
-    {{ backLink({
+    {# {{ backLink({
       "href": siteRoot,
       "text": "Go back"
-    }) }}
+    }) }} #}
     <h1 class="nhsuk-u-reading-width nhsuk-u-margin-bottom-4">Pharmacies near {{ getDisplayLocation() }}</h1>
 {% endif %}
 {% endblock %}

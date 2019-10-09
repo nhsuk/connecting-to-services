@@ -43,5 +43,14 @@
 
 	table {
 		margin: 0;
+		 
+		tr:first-child {
+			display: none;
+		}
 	}
+}
+
+.nhsuk-details__text {
+	padding: 10px 0;
+	border: 0;
 }

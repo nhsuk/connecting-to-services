@@ -15,10 +15,11 @@
       {%- endif %}
       <input type="text" class="nhsuk-input nhsuk-input--width-20" name="location" id="location" value="{{ query }}" {{ 'aria-describedby="error-message" aria-invalid="true"' if errorMessage }}>
     </div>
-
     {{ button({
-      "text": "Search"
+      "text": "Search",
+      "classes": "nhsuk-u-margin-bottom-3"
     }) }}
+    <br>
     {{ button({
       "text": "Use your location",
       "classes": "nhsuk-button--secondary geo-locate--button"

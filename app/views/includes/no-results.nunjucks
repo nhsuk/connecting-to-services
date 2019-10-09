@@ -1,10 +1,3 @@
-{% from 'back-link/macro.njk' import backLink %}
-
-{{ backLink({
-  "href": siteRoot,
-  "text": "Go back"
-}) }}
-
 <h1>{% block resultsHeader %}{% endblock %}</h1>
 {% block reasonForMessage %}
 {% if searchType === 'place' and hasNoCountries()%}
@@ -13,6 +6,7 @@
   <li>check your spelling and try again</li>
   <li>try a different place name</li>
 </ul>
+<p><a href="{{siteRoot}}">Back to find a pharmacy</a></p>
 {% else %}
 <p>This service only provides information about pharmacies in England.</p>
 {% endif %}
