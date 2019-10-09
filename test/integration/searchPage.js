@@ -1,22 +1,20 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
-const constants = require('../../app/lib/constants');
+const { app: { title: appTitle }, siteRoot } = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
 describe('Search page', () => {
-  const appTitle = constants.app.title;
-
   describe('happy path', () => {
     let $;
 
     before('make request', async () => {
-      const res = await chai.request(server).get(`${constants.siteRoot}`);
+      const res = await chai.request(server).get(`${siteRoot}`);
 
       $ = cheerio.load(res.text);
     });
@@ -41,7 +39,7 @@ describe('Search page', () => {
   });
 
   describe('bad searches', () => {
-    const resultsRoute = `${constants.siteRoot}/results`;
+    const resultsRoute = `${siteRoot}/results`;
     it('should return search page for empty search', async () => {
       const res = await chai.request(server)
         .get(resultsRoute)

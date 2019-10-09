@@ -2,9 +2,9 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 const app = require('../../server');
-const promClient = require('../../app/lib/promBundle').promClient;
+const { promClient } = require('../../app/lib/promBundle');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -14,7 +14,7 @@ describe('metrics end point', () => {
   before('make request to /metrics endpoint', async () => {
     const res = await chai.request(app).get('/metrics');
     expect(res).to.have.status(200);
-    responseText = res.text;
+    ({ text: responseText } = res);
   });
 
   it('should return an up gauge', () => {

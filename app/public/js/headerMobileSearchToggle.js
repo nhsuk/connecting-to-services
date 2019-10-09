@@ -1,5 +1,5 @@
 ((global) => {
-  const document = global.document;
+  const { document } = global;
 
   const searchToggle = {
     doToggle: (e) => {
@@ -12,7 +12,7 @@
       }
 
       function toggleClass(ele, class1) {
-        const classes = ele.className;
+        const { className: classes } = ele;
         const regex = new RegExp(`\\b ${class1}\\b`);
         const hasOne = classes.match(regex);
         // eslint-disable-next-line no-param-reassign

@@ -1,6 +1,6 @@
 {
   "name": "connecting-to-services",
-  "version": "1.15.3",
+  "version": "1.16.0",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
@@ -16,7 +16,8 @@
     "start-watch-debug": "yarn brunch watch & nodemon --inspect-brk=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "nyc mocha --exit --recursive test",
     "test-unit": "nyc mocha --exit --recursive test/unit",
-    "test-with-coverage": "yarn lint && yarn coverage-generate && yarn coverage-upload-coveralls"
+    "test-with-coverage": "yarn lint && yarn coverage-generate && yarn coverage-upload-coveralls",
+    "test-watch": "yarn test-unit -- --reporter min --watch"
   },
   "repository": {
     "type": "git",
@@ -75,7 +76,7 @@
     "eslint": "^6.0.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-nhsuk": "^0.21.1",
+    "eslint-config-nhsuk": "^0.22.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-mocha": "^6.1.1",

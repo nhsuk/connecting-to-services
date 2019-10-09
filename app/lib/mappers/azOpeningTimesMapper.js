@@ -1,9 +1,7 @@
 const moment = require('moment');
 
 function getTimesFromString(timesString) {
-  const splitTimes = timesString.split('-');
-  const opens = splitTimes[0];
-  const closes = splitTimes[1];
+  const [opens, closes] = timesString.split('-');
   return { closes, opens };
 }
 

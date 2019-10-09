@@ -1,7 +1,7 @@
 const chai = require('chai');
 const addBankHolidayMessage = require('../../../app/lib/addBankHolidayMessage');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('addBankHolidayMessage', () => {
   afterEach('reset dateTime override', () => {

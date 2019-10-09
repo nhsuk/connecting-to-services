@@ -3,23 +3,24 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
 
-const constants = require('../../app/lib/constants');
+const {
+  api: { nearbyResultsCount: numberOfResults },
+  app: { title: appTitle },
+  queryTypes, siteRoot,
+} = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
 const messages = require('../../app/lib/messages');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.siteRoot}/results`;
-const nearbyResultsCount = constants.api.nearbyResultsCount;
-const appTitle = constants.app.title;
+const resultsRoute = `${siteRoot}/results`;
 
 describe('The results page', () => {
   after('clean nock', () => {
@@ -28,7 +29,7 @@ describe('The results page', () => {
 
   const ls27ue = 'LS2 7UE';
   const ls27ueResponse = getSampleResponse('postcodesio-responses/ls27ue.json');
-  const ls27ueResult = JSON.parse(ls27ueResponse).result;
+  const { result: ls27ueResult } = JSON.parse(ls27ueResponse);
 
   it('should return 10 nearby results, by default', async () => {
     const searchOrigin = {
@@ -54,7 +55,7 @@ describe('The results page', () => {
     expect($('h1').text()).to.equal(`Pharmacies near ${ls27ue}`);
 
     const results = $('.results__item');
-    expect(results.length).to.equal(nearbyResultsCount);
+    expect(results.length).to.equal(numberOfResults);
 
     const mapLinks = $('.maplink');
     expect(mapLinks.length).to.equal(10);
@@ -69,7 +70,6 @@ describe('The results page', () => {
   });
 
   it('should return 10 open results', async () => {
-    const numberOfResults = constants.api.nearbyResultsCount;
     const searchOrigin = {
       latitude: ls27ueResult.latitude,
       longitude: ls27ueResult.longitude,

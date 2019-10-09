@@ -1,5 +1,5 @@
 ((global) => {
-  const $ = global.jQuery;
+  const { jQuery: $ } = global;
   const $search = $('#search');
   const $menuButton = $('#menu-icon');
   const $menu = $('#main-nav');

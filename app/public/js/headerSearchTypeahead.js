@@ -3,7 +3,7 @@ const NHSUK = NHSUK || {};
 
 NHSUK.headerSearchTypeahead = ((global) => {
   const headerId = '#header';
-  const $ = global.jQuery;
+  const { jQuery: $ } = global;
   const maxResultCount = 10;
   const searchField = '#q';
   const searchUrl = 'https://www.nhs.uk/search?collection=nhs-meta';
@@ -57,7 +57,7 @@ NHSUK.headerSearchTypeahead = ((global) => {
               if (data.disp.length > 36) {
                 displayitem = `${data.disp.substring(0, 36)}...`;
               } else {
-                displayitem = data.disp;
+                ({ disp: displayitem } = data);
               }
               break;
           }

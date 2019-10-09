@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-const daysOfWeekOrderedForUi = require('./constants').daysOfWeekOrderedForUi;
+const { daysOfWeekOrderedForUi } = require('./constants');
 
 function formatTimeString(timeString) {
   const time = moment();
@@ -30,6 +30,7 @@ function toDayObject(day, times) {
 }
 function isOpen(times) {
   return daysOfWeekOrderedForUi.some((day) => {
+    // eslint-disable-next-line prefer-destructuring
     const daySessions = times[day.toLowerCase()];
     return daySessions && daySessions.length > 0;
   });

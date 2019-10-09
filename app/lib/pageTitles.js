@@ -1,4 +1,4 @@
-const appTitle = require('./constants').app.title;
+const { app: { title: appTitle } } = require('./constants');
 const getDisplayLocation = require('./getDisplayLocation');
 
 function search(location, errorMessage) {

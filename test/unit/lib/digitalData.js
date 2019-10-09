@@ -1,9 +1,9 @@
 const chai = require('chai');
 
-const siteRoot = require('../../../app/lib/constants').siteRoot;
+const { siteRoot } = require('../../../app/lib/constants');
 const digitalData = require('../../../app/lib/digitalData');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('digitalData', () => {
   const siteRootPath = siteRoot.substring(1);

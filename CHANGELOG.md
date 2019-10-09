@@ -1,5 +1,7 @@
-1.15.3 / TBC
+1.16.0 / TBC
 ===================
+- Update npm dependencies
+- Update code for latest `eslint-config-nhsuk` rules
 - Remove unused env vars from README
 
 1.15.2 / 2019-10-09

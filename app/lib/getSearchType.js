@@ -1,4 +1,6 @@
-const constants = require('../lib/constants');
+const {
+  placeSearch, postcodeSearch, yourLocation, yourLocationSearch,
+} = require('../lib/constants');
 const isPostcode = require('../lib/isPostcode');
 
 function noCoordinates(coordinates) {
@@ -6,13 +8,13 @@ function noCoordinates(coordinates) {
 }
 
 function getSearchType(location, coordinates) {
-  if (location === constants.yourLocation) {
-    return constants.yourLocationSearch;
+  if (location === yourLocation) {
+    return yourLocationSearch;
   }
   if (isPostcode(location) && noCoordinates(coordinates)) {
-    return constants.postcodeSearch;
+    return postcodeSearch;
   }
-  return constants.placeSearch;
+  return placeSearch;
 }
 
 module.exports = getSearchType;

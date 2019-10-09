@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const addressMapper = require('../../../../app/lib/mappers/azAddressMapper');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('azAddressMapper', () => {
   it('should handle typical address', () => {

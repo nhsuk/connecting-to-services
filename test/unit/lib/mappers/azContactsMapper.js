@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const contactMapper = require('../../../../app/lib/mappers/azContactMapper');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('azContactMapper', () => {
   it('should handle no contacts', () => {

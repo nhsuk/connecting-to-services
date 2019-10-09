@@ -1,7 +1,7 @@
 const chai = require('chai');
-const getCountries = require('../../../app/lib/placeHelper').getCountries;
+const { getCountries } = require('../../../app/lib/placeHelper');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('getCountries', () => {
   it('should return unique list of contries ordered alphabetically', () => {

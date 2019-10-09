@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 function htmlWith200Status(res) {
   expect(res).to.have.status(200);

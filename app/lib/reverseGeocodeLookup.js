@@ -10,6 +10,7 @@ async function reverseGeocode(req, res, next) {
       promCounters.outOfAreaMyLocationSearches.inc(1);
       routeHelper.renderNoLocationResultsPage(res);
     } else {
+      // eslint-disable-next-line prefer-destructuring
       res.locals.countries = result.countries;
       if (result.country === 'England') {
         promCounters.englishMyLocationSearches.inc(1);

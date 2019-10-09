@@ -36,6 +36,7 @@ function correctClosedForOpeningSpansMidnight(status) {
   if (status.isOpen === false && status.moment.format('HH:mm') === '23:59') {
     /* eslint-disable no-param-reassign */
     status.isOpen = true;
+    // eslint-disable-next-line prefer-destructuring
     status.nextOpen = status.moment;
     /* eslint-enable */
   }

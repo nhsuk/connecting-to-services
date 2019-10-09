@@ -1,5 +1,5 @@
 const expressPromBundle = require('express-prom-bundle');
-const buckets = require('./constants').promHistogramBuckets;
+const { promHistogramBuckets: buckets } = require('./constants');
 
 const promBundle = expressPromBundle({ buckets, includePath: true });
 

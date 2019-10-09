@@ -1,14 +1,11 @@
 const chai = require('chai');
 const moment = require('moment-timezone');
-const VError = require('verror').VError;
-
+const { VError } = require('verror');
 const bankHolidayDates = require('../../../data/bankHolidayDates');
-const businessHours = require('../../../config/config').businessHours;
+const { businessHours, timezone } = require('../../../config/config');
 const dateUtils = require('../../../app/lib/dateUtils');
-const config = require('../../../config/config');
 
-const expect = chai.expect;
-const timezone = config.timezone;
+const { expect } = chai;
 
 describe('dateUtils', () => {
   describe('getDateTime', () => {
@@ -93,7 +90,7 @@ describe('dateUtils', () => {
 
   describe('isBankHoliday', () => {
     it('should return true when date is contained in bank holiday list', () => {
-      const bankHolidayDateString = bankHolidayDates[0];
+      const [bankHolidayDateString] = bankHolidayDates;
 
       const result = dateUtils.isBankHoliday(bankHolidayDateString);
 

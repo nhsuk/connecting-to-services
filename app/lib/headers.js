@@ -1,4 +1,4 @@
-const key = require('../../config/config').search.apiKey;
+const { search: { apiKey: key } } = require('../../config/config');
 
 module.exports = {
   'Content-Type': 'application/json',

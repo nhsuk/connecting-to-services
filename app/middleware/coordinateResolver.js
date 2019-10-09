@@ -1,4 +1,4 @@
-const constants = require('../lib/constants');
+const { yourLocationSearch } = require('../lib/constants');
 const postcodes = require('../lib/postcodes');
 const routeHelper = require('./routeHelper');
 const reverseGeocode = require('../lib/reverseGeocodeLookup');
@@ -9,7 +9,7 @@ function isNumber(val) {
 }
 
 function latLongPopulated(res) {
-  const coords = res.locals.coordinates;
+  const { locals: { coordinates: coords } } = res;
   return isNumber(coords.longitude) && isNumber(coords.latitude);
 }
 
@@ -33,7 +33,7 @@ function coordinateResolver(req, res, next) {
     }
   }
 
-  if (res.locals.searchType === constants.yourLocationSearch) {
+  if (res.locals.searchType === yourLocationSearch) {
     reverseGeocode(req, res, next);
   } else if (skipLatLongLookup(res)) {
     // lat long lookup is only skipped on links from the disambiguation page

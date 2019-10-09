@@ -1,5 +1,5 @@
 ((global) => {
-  const $ = global.jQuery;
+  const { jQuery: $ } = global;
 
   $('h2.results__name').each((i, e) => {
     const $this = $(e);

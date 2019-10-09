@@ -1,12 +1,12 @@
-const getNearbyServicesHistogram = require('../lib/promHistograms').getNearbyServices;
+const { getNearbyServices: getNearbyServicesHistogram } = require('../lib/promHistograms');
 const getRequestUrl = require('../lib/getRequestUrl');
 const log = require('../lib/logger');
 const request = require('../lib/request');
 const queryBuilder = require('../lib/queryBuilder');
-const queryTypes = require('../lib/constants').queryTypes;
+const { queryTypes } = require('../lib/constants');
 const headers = require('../lib/headers');
 const mapper = require('../lib/mappers/azMapper');
-const getDateTime = require('../lib/dateUtils').getDateTime;
+const { getDateTime } = require('../lib/dateUtils');
 
 function isEnglish(countries) {
   return countries && countries.filter((c) => c === 'England').length > 0;

@@ -3,21 +3,24 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
 
-const constants = require('../../app/lib/constants');
+const {
+  api: { nearbyResultsCount: numberOfResults },
+  app: { title },
+  queryTypes, siteRoot,
+} = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 const postcodeCoordinates = require('../resources/postcode-coordinates');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.siteRoot}/results`;
+const resultsRoute = `${siteRoot}/results`;
 
 describe('The place results page', () => {
   after('clean nock', () => {
@@ -44,15 +47,14 @@ describe('The place results page', () => {
     expect($('.places > h1').text())
       .to.include(`We found 3 places that match '${multiPlaceTerm}'`);
 
-    expect($('head title').text()).to.equal(`${constants.app.title} - Places that match 'multiresult' - NHS`);
+    expect($('head title').text()).to.equal(`${title} - Places that match 'multiresult' - NHS`);
     iExpect.disambiguationPageBreadcrumb($, multiPlaceTerm);
   });
 
   it('should return nearby results page for link clicked from disambiguation page', async () => {
     const location = 'Midsomer Norton, Bath and North East Somerset, BA3';
-    const numberOfResults = constants.api.nearbyResultsCount;
 
-    const searchOrigin = postcodeCoordinates.BA3;
+    const { BA3: searchOrigin } = postcodeCoordinates;
     const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
     await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 

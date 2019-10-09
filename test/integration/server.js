@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('required environment variables', () => {
   it('should throw an exception when env vars are missing', () => {

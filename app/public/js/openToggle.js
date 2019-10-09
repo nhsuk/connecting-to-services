@@ -1,5 +1,5 @@
 ((global) => {
-  const $ = global.jQuery;
+  const { jQuery: $ } = global;
   $('.openingTimes-panel__toggle').on('click', (e) => {
     const $this = $(e.target);
     $this.parent().toggleClass('open');

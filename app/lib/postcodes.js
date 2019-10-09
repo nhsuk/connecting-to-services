@@ -1,10 +1,10 @@
 const log = require('./logger');
 const locate = require('./locate');
 const messages = require('./messages');
-const zeroPostcodeResults = require('../lib/promCounters').zeroPostcodeResultsViews;
+const { zeroPostcodeResultsViews: zeroPostcodeResults } = require('../lib/promCounters');
 
 async function lookup(res, next) {
-  const location = res.locals.location;
+  const { locals: { location } } = res;
   try {
     log.info({ postcodeLookupRequest: { location } }, 'postcode-lookup-start');
     const result = await locate.byPostcode(location);
@@ -14,6 +14,7 @@ async function lookup(res, next) {
         latitude: result.latitude,
         longitude: result.longitude,
       };
+      // eslint-disable-next-line prefer-destructuring
       res.locals.countries = result.countries;
       next();
     } else {

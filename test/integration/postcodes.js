@@ -1,7 +1,7 @@
 const chai = require('chai');
-const lookup = require('../../app/lib/postcodes').lookup;
+const { lookup } = require('../../app/lib/postcodes');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Postcode to lat long', () => {
   it('should return lat long for valid England postcode', (done) => {

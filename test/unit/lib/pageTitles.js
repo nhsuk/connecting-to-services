@@ -1,8 +1,8 @@
 const chai = require('chai');
-const appTitle = require('../../../app/lib/constants').app.title;
+const { app: { title: appTitle } } = require('../../../app/lib/constants');
 const pageTitles = require('../../../app/lib/pageTitles');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('displayTitles', () => {
   describe('search', () => {

@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
 
-const constants = require('../../app/lib/constants');
+const { daysOfWeekOrderedForUi: daysOfWeek, queryTypes, siteRoot } = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
 const messages = require('../../app/lib/messages');
 const server = require('../../server');
@@ -11,12 +11,11 @@ const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 const postcodeCoordinates = require('../resources/postcode-coordinates');
 
-const queryTypes = constants.queryTypes;
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.siteRoot}/results`;
+const resultsRoute = `${siteRoot}/results`;
 
 describe('The results page', () => {
   afterEach('clean nock', () => {
@@ -27,7 +26,7 @@ describe('The results page', () => {
     describe('for default results view', () => {
       let $;
       const location = 'Middlesbrough';
-      const searchOrigin = postcodeCoordinates.TS55NP;
+      const { TS55NP: searchOrigin } = postcodeCoordinates;
 
       before('run request', async () => {
         const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
@@ -61,7 +60,7 @@ describe('The results page', () => {
 
     it('should provide a link to see nearby only pharmacies when viewing open pharmacies', async () => {
       const location = 'Leeds';
-      const searchOrigin = postcodeCoordinates.LS1;
+      const { LS1: searchOrigin } = postcodeCoordinates;
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
       await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 
@@ -84,7 +83,7 @@ describe('The results page', () => {
 
     it('should handle an error from the api', async () => {
       const location = 'Leeds';
-      const searchOrigin = postcodeCoordinates.LS1;
+      const { LS1: searchOrigin } = postcodeCoordinates;
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
       await nockRequests.serviceSearch(body, 500, 'organisations/err-as.json');
 
@@ -108,8 +107,7 @@ describe('The results page', () => {
   });
 
   describe('opening times display', () => {
-    const daysOfWeek = constants.daysOfWeekOrderedForUi;
-    const searchOrigin = postcodeCoordinates.LS1;
+    const { LS1: searchOrigin } = postcodeCoordinates;
     const location = 'Leeds';
     let $;
 

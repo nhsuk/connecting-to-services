@@ -1,7 +1,7 @@
-const dateUtils = require('./dateUtils');
+const {
+  getDateTime, isBankHoliday, isWeekday, isTimeOutsideBusinessHours,
+} = require('./dateUtils');
 const isRequestForOpenResults = require('./isRequestForOpenResults');
-
-const getDateTime = dateUtils.getDateTime;
 
 function isRequestInitial(req) {
   return !req.query.open;
@@ -9,18 +9,18 @@ function isRequestInitial(req) {
 
 function isRequestInitialAndWeekdayOutsideBusinessHours(req, datetimeMoment) {
   return isRequestInitial(req)
-    && dateUtils.isWeekday(datetimeMoment)
-    && dateUtils.isTimeOutsideBusinessHours(datetimeMoment);
+    && isWeekday(datetimeMoment)
+    && isTimeOutsideBusinessHours(datetimeMoment);
 }
 
 function isRequestInitialAndWeekend(req, datetimeMoment) {
   return isRequestInitial(req)
-    && !dateUtils.isWeekday(datetimeMoment);
+    && !isWeekday(datetimeMoment);
 }
 
 function isRequestInitialAndBankHoliday(req, datetimeMoment) {
   return isRequestInitial(req)
-    && dateUtils.isBankHoliday(datetimeMoment.format('YYYY-MM-DD'));
+    && isBankHoliday(datetimeMoment.format('YYYY-MM-DD'));
 }
 
 function isRequestInitialAndOutsideBusinessHours(req, datetimeMoment) {

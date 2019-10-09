@@ -1,11 +1,11 @@
 const moment = require('moment-timezone');
-const VError = require('verror').VError;
+const { VError } = require('verror');
 
 const bankHolidayDates = require('../../data/bankHolidayDates');
-const constants = require('./constants');
+const { daysOfWorkingWeek } = require('./constants');
 const config = require('../../config/config');
 
-const timezone = config.timezone;
+const { timezone } = config;
 
 function cloneMoment(datetimeMoment, hour, minute) {
   return datetimeMoment.clone()
@@ -55,7 +55,7 @@ function isTimeOutsideBusinessHours(datetimeMoment) {
 
 function isWeekday(datetimeMoment) {
   const day = moment(datetimeMoment).format('dddd');
-  return constants.daysOfWorkingWeek.includes(day);
+  return daysOfWorkingWeek.includes(day);
 }
 
 module.exports = {

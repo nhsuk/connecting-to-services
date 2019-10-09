@@ -7,7 +7,7 @@ function getContacts(asContacts) {
     const contacts = JSON.parse(asContacts);
     contacts.forEach((c) => {
       if (c.OrganisationContactType === 'Primary') {
-        const type = c.OrganisationContactMethodType;
+        const { OrganisationContactMethodType: type } = c;
         const lowerType = type ? type.toLowerCase() : '';
         switch (lowerType) {
           case 'fax':
@@ -15,7 +15,7 @@ function getContacts(asContacts) {
             contactDetails[lowerType] = phoneNumberParser(c.OrganisationContactValue);
             break;
           default:
-            contactDetails[lowerType] = c.OrganisationContactValue;
+            ({ OrganisationContactValue: contactDetails[lowerType] } = c);
         }
       }
     });

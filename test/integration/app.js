@@ -2,11 +2,11 @@ const cheerio = require('cheerio');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
-const constants = require('../../app/lib/constants');
+const { siteRoot } = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -16,14 +16,14 @@ describe('redirection', () => {
     iExpect.htmlWith200Status(res);
 
     expect(res).to.redirect;
-    expect(res.req.path).to.equal(`${constants.siteRoot}/`);
+    expect(res.req.path).to.equal(`${siteRoot}/`);
   });
 });
 
 describe('An unknown page', () => {
   it('should return a 404', async () => {
     try {
-      await chai.request(server).get(`${constants.siteRoot}/not-known`);
+      await chai.request(server).get(`${siteRoot}/not-known`);
     } catch (err) {
       expect(err).to.have.status(404);
       expect(err.response).to.be.html;

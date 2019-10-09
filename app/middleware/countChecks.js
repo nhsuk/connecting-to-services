@@ -1,7 +1,7 @@
 const counters = require('../lib/promCounters');
 
 function incrementCounter(req, next, counter) {
-  const check = req.query.check;
+  const { query: { check } } = req;
   if (check === '' || check) {
     counter.inc(1);
   }

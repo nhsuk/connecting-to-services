@@ -12,6 +12,7 @@ const localOrder = {
 /* eslint-enable sort-keys */
 
 function getOrder(type) {
+  // eslint-disable-next-line prefer-destructuring
   const order = localOrder[type];
   if (order === undefined) {
     log.error(`unknown local_type '${type}'`);

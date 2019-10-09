@@ -3,34 +3,36 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
 
-const constants = require('../../app/lib/constants');
+const {
+  queryTypes, siteRoot, app: {
+    description, locale, siteName, title,
+  },
+} = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 const postcodeCoordinates = require('../resources/postcode-coordinates');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const siteRoot = constants.siteRoot;
 const resultsRoute = `${siteRoot}/results`;
 
 function expectStandardMetadata($) {
   const canonicalUrl = `https://127.0.0.1${siteRoot}/`;
   expect($('link[rel="canonical"]').attr('href')).to.equal(canonicalUrl);
-  expect($('meta[property="og:description"]').attr('content')).to.equal(constants.app.description);
+  expect($('meta[property="og:description"]').attr('content')).to.equal(description);
   expect($('meta[property="og:image"]').attr('content')).to.equal(`${canonicalUrl}images/opengraph-image.png`);
   expect($('meta[property="og:image:alt"]').attr('content')).to.equal('nhs.uk');
   expect($('meta[property="og:image:height"]').attr('content')).to.equal('630');
   expect($('meta[property="og:image:width"]').attr('content')).to.equal('1200');
-  expect($('meta[property="og:locale"]').attr('content')).to.equal(constants.app.locale);
-  expect($('meta[property="og:site_name"]').attr('content')).to.equal(constants.app.siteName);
-  expect($('meta[property="og:title"]').attr('content')).to.equal(`${constants.app.title} - NHS`);
+  expect($('meta[property="og:locale"]').attr('content')).to.equal(locale);
+  expect($('meta[property="og:site_name"]').attr('content')).to.equal(siteName);
+  expect($('meta[property="og:title"]').attr('content')).to.equal(`${title} - NHS`);
   expect($('meta[property="og:type"]').attr('content')).to.equal('website');
   expect($('meta[property="og:url"]').attr('content')).to.equal(`https://127.0.0.1${siteRoot}/`);
   expect($('meta[property="twitter:card"]').attr('content')).to.equal('summary_large_image');
@@ -57,7 +59,7 @@ describe('Metadata', () => {
 
   describe('the results page, when displaying results', () => {
     it('should include the standard properties', async () => {
-      const searchOrigin = postcodeCoordinates.LS1;
+      const { LS1: searchOrigin } = postcodeCoordinates;
       const body = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
       await nockRequests.serviceSearch(body, 200, 'organisations/LS1-as.json');
 

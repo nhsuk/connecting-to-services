@@ -1,5 +1,5 @@
 ((global) => {
-  const $ = global.jQuery;
+  const { jQuery: $ } = global;
   const $geoLocate = $('.geo-locate');
   const $geoLocateDenied = $('.geo-locate--denied');
   const $geoLocateError = $('.geo-locate--error');
@@ -26,8 +26,7 @@
   }
 
   function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    const { coords: { latitude, longitude } } = position;
 
     if (latitude && longitude) {
       const locationDescription = 'your location';

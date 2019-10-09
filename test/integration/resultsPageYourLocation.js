@@ -3,29 +3,36 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
 
-const constants = require('../../app/lib/constants');
+const { queryTypes, siteRoot, yourLocation } = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/queryBuilder');
 
-const queryTypes = constants.queryTypes;
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.siteRoot}/results`;
-const yourLocation = constants.yourLocation;
+const resultsRoute = `${siteRoot}/results`;
 
 function setupPostcodesIoNock(country) {
+  let searchOrigin = {};
   const reverseGeocodeResponse = getSampleResponse(`postcodesio-responses/reverseGeocode${country}.json`);
-  const reverseGeocodeResponseResult = JSON.parse(reverseGeocodeResponse).result;
-  const searchOrigin = {
-    latitude: reverseGeocodeResponseResult ? reverseGeocodeResponseResult[0].latitude : 1,
-    longitude: reverseGeocodeResponseResult ? reverseGeocodeResponseResult[0].longitude : 1,
-  };
+
+  if (country === 'Unknown') {
+    searchOrigin = {
+      latitude: 1,
+      longitude: 1,
+    };
+  } else {
+    const { result: { reverseGeocodeResponseResult } } = JSON.parse(reverseGeocodeResponse);
+    searchOrigin = {
+      latitude: reverseGeocodeResponseResult ? reverseGeocodeResponseResult[0].latitude : 1,
+      longitude: reverseGeocodeResponseResult ? reverseGeocodeResponseResult[0].longitude : 1,
+    };
+  }
 
   nock(postcodesIOURL)
     .get('/postcodes')
@@ -123,7 +130,7 @@ describe(`The ${yourLocation} results page`, () => {
     iExpect.noResultsPageBreadcrumb($);
   });
 
-  it('should return the \'no results\' page for a coordinate with no result from the reverse lookup', async () => {
+  it.only('should return the \'no results\' page for a coordinate with no result from the reverse lookup', async () => {
     const searchOrigin = setupPostcodesIoNock('Unknown');
 
     const res = await chai.request(server)

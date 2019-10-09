@@ -1,10 +1,10 @@
 const chai = require('chai');
-const VError = require('verror').VError;
+const { VError } = require('verror');
 
 const queryBuilder = require('../../../app/lib/queryBuilder');
-const queryTypes = require('../../../app/lib/constants').queryTypes;
+const { queryTypes } = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('queryBuilder', () => {
   const searchOrigin = { latitude: 53.234149, longitude: 5.024449 };

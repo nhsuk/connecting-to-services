@@ -3,20 +3,19 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const nock = require('nock');
 
-const constants = require('../../app/lib/constants');
+const { api: { nearbyResultsCount: numberOfResults }, queryTypes, siteRoot } = require('../../app/lib/constants');
 const getSampleResponse = require('../resources/getSampleResponse');
 const iExpect = require('../lib/expectations');
-const postcodesIOURL = require('../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../lib/constants');
 const server = require('../../server');
 const queryBuilder = require('../../app/lib/queryBuilder');
 const nockRequests = require('../lib/nockRequests');
 
-const expect = chai.expect;
-const queryTypes = constants.queryTypes;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const resultsRoute = `${constants.siteRoot}/results`;
+const resultsRoute = `${siteRoot}/results`;
 
 describe('The place results page', () => {
   after('clean nock', () => {
@@ -25,10 +24,9 @@ describe('The place results page', () => {
 
   it('should return list of nearby pharmacies for unique place search', async () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
-    const singleResult = JSON.parse(singlePlaceResponse).result[0];
+    const { result: [singleResult] } = JSON.parse(singlePlaceResponse);
     const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
     const searchTerm = 'oneresult';
-    const numberOfResults = constants.api.nearbyResultsCount;
 
     nock(postcodesIOURL)
       .get('/places')
@@ -55,14 +53,13 @@ describe('The place results page', () => {
 
   it('should return list of open pharmacies for unique place search', async () => {
     const singlePlaceResponse = getSampleResponse('postcodesio-responses/singlePlaceResult.json');
-    const singleResult = JSON.parse(singlePlaceResponse).result[0];
+    const { result: [singleResult] } = JSON.parse(singlePlaceResponse);
     const searchOrigin = {
       latitude: singleResult.latitude,
       longitude: singleResult.longitude,
     };
     const saddr = `${singleResult.name_1}, ${singleResult.county_unitary}, ${singleResult.outcode}`;
     const searchTerm = 'oneresult';
-    const numberOfResults = constants.api.openResultsCount;
 
     nock(postcodesIOURL)
       .get('/places')

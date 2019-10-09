@@ -2,15 +2,15 @@ const qs = require('querystring');
 const chai = require('chai');
 
 const mapLink = require('../../../app/lib/mapLink');
-const constants = require('../../../app/lib/constants');
+const { placeSearch, postcodeSearch, yourLocationSearch } = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('mapLink', () => {
   describe('addUrl', () => {
     const searchTerm = 'po5t cod3';
     const coordinates = { latitude: 52.4, longitude: -1.9 };
-    const searchCriteria = { coordinates, searchTerm, searchType: constants.postcodeSearch };
+    const searchCriteria = { coordinates, searchTerm, searchType: postcodeSearch };
 
     it(
       'should add an additional property to all items in the input list with the google maps Url',
@@ -87,7 +87,7 @@ describe('mapLink', () => {
       const yourLocationSearchCriteria = {
         coordinates,
         searchTerm,
-        searchType: constants.placeSearch,
+        searchType: placeSearch,
       };
       const inputList = [{
         address: {
@@ -112,7 +112,7 @@ describe('mapLink', () => {
     it('should populate start address for postcode searches', () => {
       const yourLocationSearchCriteria = {
         searchTerm,
-        searchType: constants.postcodeSearch,
+        searchType: postcodeSearch,
       };
       const inputList = [{
         address: {
@@ -138,7 +138,7 @@ describe('mapLink', () => {
       const yourLocationSearchCriteria = {
         coordinates,
         searchTerm,
-        searchType: constants.yourLocationSearch,
+        searchType: yourLocationSearch,
       };
       const inputList = [{
         address: {

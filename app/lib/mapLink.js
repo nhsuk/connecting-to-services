@@ -1,6 +1,6 @@
 const qs = require('querystring');
 
-const constants = require('./constants');
+const { postcodeSearch, yourLocationSearch } = require('./constants');
 
 function flatten(arr) {
   return arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val), []);
@@ -17,10 +17,10 @@ function addUrl(searchCriteria, inputList) {
 
     let saddr;
 
-    if (searchCriteria.searchType === constants.yourLocationSearch) {
+    if (searchCriteria.searchType === yourLocationSearch) {
       saddr = `${searchCriteria.coordinates.latitude},${searchCriteria.coordinates.longitude}`;
-    } else if (searchCriteria.searchType === constants.postcodeSearch) {
-      saddr = searchCriteria.searchTerm;
+    } else if (searchCriteria.searchType === postcodeSearch) {
+      ({ searchTerm: saddr } = searchCriteria);
     }
 
     const params = {

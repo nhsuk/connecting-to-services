@@ -1,4 +1,4 @@
-const app = require('../lib/constants').app;
+const { app } = require('../lib/constants');
 const canonicalUrl = require('../lib/canonicalUrl');
 const completeOriginalUrl = require('../lib/completeOriginalUrl');
 const countryHelper = require('../lib/countryHelper');
@@ -9,6 +9,7 @@ const pageTitles = require('../lib/pageTitles');
 const resultsPageAltUrl = require('../lib/resultsPageAltUrl');
 
 module.exports = (config) => (req, res, next) => {
+  /* eslint-disable prefer-destructuring */
   res.locals.assetsUrl = req.app.locals.assetsUrl;
   res.locals.siteRoot = req.app.locals.siteRoot;
 
@@ -40,6 +41,7 @@ module.exports = (config) => (req, res, next) => {
     .results(res.locals.location, res.locals.services);
   res.locals.hasNoCountries = () => countryHelper.hasNoCountries(res.locals.countries);
   res.locals.showCountry = (country) => countryHelper.showCountry(res.locals.countries, country);
+  /* eslint-enable prefer-destructuring */
 
   next();
 };

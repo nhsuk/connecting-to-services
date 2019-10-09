@@ -6,7 +6,7 @@ const util = require('util');
 const readFile = util.promisify(fs.readFile);
 
 const headers = require('../../app/lib/headers');
-const search = require('../../config/config').search;
+const { search } = require('../../config/config');
 
 const searchHost = `https://${search.host}`;
 

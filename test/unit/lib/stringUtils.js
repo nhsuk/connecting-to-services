@@ -1,7 +1,7 @@
 const chai = require('chai');
 const stringUtils = require('../../../app/lib/stringUtils');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('stringUtils', () => {
   describe('removeNonAlphanumericAndDoubleSpaces', () => {

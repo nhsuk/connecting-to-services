@@ -1,7 +1,7 @@
 const chai = require('chai');
 const resultsPageAltUrl = require('../../../app/lib/resultsPageAltUrl');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const testDateTimes = {
   afterBusinessHours: '2018-03-14 18:00',
@@ -16,7 +16,7 @@ describe('resultsPageAltUrl', () => {
 
   describe('during business hours', () => {
     beforeEach(() => {
-      process.env.DATETIME = testDateTimes.middayDuringWeek;
+      ({ middayDuringWeek: process.env.DATETIME } = testDateTimes);
     });
 
     it('should return a URL with the open param as true when the original request does not include open', () => {
@@ -52,7 +52,7 @@ describe('resultsPageAltUrl', () => {
 
   describe('outside of business hours', () => {
     beforeEach(() => {
-      process.env.DATETIME = testDateTimes.afterBusinessHours;
+      ({ afterBusinessHours: process.env.DATETIME } = testDateTimes);
     });
 
     it('should return a URL with the open param as false when the original request does not include open', () => {

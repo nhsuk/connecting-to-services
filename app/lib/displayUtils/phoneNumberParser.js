@@ -1,4 +1,4 @@
-const PNF = require('google-libphonenumber').PhoneNumberFormat;
+const { PhoneNumberFormat: PNF } = require('google-libphonenumber');
 const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 
 const log = require('../logger');

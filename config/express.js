@@ -3,21 +3,20 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const nunjucks = require('nunjucks');
-
-const constants = require('../app/lib/constants');
-const errorCounter = require('../app/lib/promCounters').errorPageViews;
+const { assetsUrl, siteRoot } = require('../app/lib/constants');
+const { errorPageViews: errorCounter } = require('../app/lib/promCounters');
 const helmet = require('./helmet');
 const locals = require('../app/middleware/locals');
 const log = require('../app/lib/logger');
-const promBundle = require('../app/lib/promBundle').middleware;
+const { middleware: promBundle } = require('../app/lib/promBundle');
 const router = require('./routes');
 
 module.exports = (app, config) => {
-  const siteRoot = constants.siteRoot;
-  // eslint-disable-next-line no-param-reassign
+  /* eslint-disable no-param-reassign */
   app.locals.siteRoot = siteRoot;
-  // eslint-disable-next-line no-param-reassign
-  app.locals.assetsUrl = constants.assetsUrl;
+  // eslint-disable-next-line prefer-destructuring
+  app.locals.assetsUrl = assetsUrl;
+  /* eslint-enable no-param-reassign */
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 

@@ -4,7 +4,7 @@ const proxyquire = require('proxyquire');
 const loggerStub = {};
 const logZeroResults = proxyquire('../../../app/middleware/logZeroResults', { '../lib/logger': loggerStub });
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('logZeroResults', () => {
   const location = 'some place';

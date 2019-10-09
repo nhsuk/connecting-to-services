@@ -4,9 +4,9 @@ const nock = require('nock');
 const getSampleResponse = require('../../resources/getSampleResponse');
 const messages = require('../../../app/lib/messages');
 const postcodes = require('../../../app/lib/postcodes');
-const postcodesIOURL = require('../../lib/constants').postcodesIOURL;
+const { postcodesIOURL } = require('../../lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Postcodes', () => {
   after('clean nock', () => {
@@ -25,8 +25,9 @@ describe('Postcodes', () => {
 
       it('should lookup a full postcode and return the coordinates', async () => {
         const postcodeResponse = JSON.parse(getSampleResponse('postcodesio-responses/ls27ue.json'));
-        const expectedLatitude = postcodeResponse.result.latitude;
-        const expectedLongitude = postcodeResponse.result.longitude;
+        const {
+          result: { latitude: expectedLatitude, longitude: expectedLongitude },
+        } = postcodeResponse;
         let testRun = false;
 
         nock(postcodesIOURL)
@@ -35,7 +36,7 @@ describe('Postcodes', () => {
 
         await postcodes.lookup(postcodeRes, () => { testRun = true; })
           .then(() => {
-            const coords = postcodeRes.locals.coordinates;
+            const { locals: { coordinates: coords } } = postcodeRes;
 
             expect(coords).to.not.be.equal(null);
             expect(coords.latitude).to.be.equal(expectedLatitude);
@@ -47,8 +48,9 @@ describe('Postcodes', () => {
 
       it('should lookup an outcode', async () => {
         const outcodeResponse = JSON.parse(getSampleResponse('postcodesio-responses/bh1.json'));
-        const expectedLatitude = outcodeResponse.result.latitude;
-        const expectedLongitude = outcodeResponse.result.longitude;
+        const {
+          result: { latitude: expectedLatitude, longitude: expectedLongitude },
+        } = outcodeResponse;
         let testRun = false;
 
         nock(postcodesIOURL)
@@ -57,7 +59,7 @@ describe('Postcodes', () => {
 
         await postcodes.lookup(outcodeRes, () => { testRun = true; })
           .then(() => {
-            const coords = outcodeRes.locals.coordinates;
+            const { locals: { coordinates: coords } } = outcodeRes;
 
             expect(coords).to.not.be.equal(null);
             expect(coords.latitude).to.be.equal(expectedLatitude);

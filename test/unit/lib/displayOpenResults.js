@@ -3,7 +3,7 @@ const chai = require('chai');
 const bankHolidayDates = require('../../../data/bankHolidayDates');
 const displayOpenResults = require('../../../app/lib/displayOpenResults');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const testDateTimes = {
   afterBusinessHours: '2018-03-14 18:00',
@@ -19,7 +19,7 @@ describe('displayOpenResults', () => {
   describe('on a weekday', () => {
     describe('during business hours', () => {
       beforeEach(() => {
-        process.env.DATETIME = testDateTimes.middayDuringWeek;
+        ({ middayDuringWeek: process.env.DATETIME } = testDateTimes);
       });
 
       it('should return true when query contains open and it is true', () => {
@@ -49,7 +49,7 @@ describe('displayOpenResults', () => {
 
     describe('at start of business hours', () => {
       beforeEach(() => {
-        process.env.DATETIME = testDateTimes.startOfBusinessHours;
+        ({ startOfBusinessHours: process.env.DATETIME } = testDateTimes);
       });
 
       it('should return true when query contains open and it is true', () => {
@@ -67,7 +67,7 @@ describe('displayOpenResults', () => {
 
     describe('at end of business hours', () => {
       beforeEach(() => {
-        process.env.DATETIME = testDateTimes.endOfBusinessHours;
+        ({ endOfBusinessHours: process.env.DATETIME } = testDateTimes);
       });
 
       it('should return true when query contains open and it is true', () => {
@@ -85,7 +85,7 @@ describe('displayOpenResults', () => {
 
     describe('before business hours', () => {
       beforeEach(() => {
-        const beforeBusinessHours = testDateTimes.beforeBusinessHours;
+        const { beforeBusinessHours } = testDateTimes;
         process.env.DATETIME = beforeBusinessHours;
       });
 
@@ -110,7 +110,7 @@ describe('displayOpenResults', () => {
 
     describe('after business hours', () => {
       beforeEach(() => {
-        process.env.DATETIME = testDateTimes.afterBusinessHours;
+        ({ afterBusinessHours: process.env.DATETIME } = testDateTimes);
       });
 
       it('should return true when query contains open and it is true', () => {
@@ -135,7 +135,7 @@ describe('displayOpenResults', () => {
 
   describe('on a weekend day', () => {
     beforeEach(() => {
-      process.env.DATETIME = testDateTimes.weekendDay;
+      ({ weekendDay: process.env.DATETIME } = testDateTimes);
     });
 
     it('should return true when query contains open and it is true', () => {
@@ -159,7 +159,7 @@ describe('displayOpenResults', () => {
 
   describe('on a bank holiday', () => {
     beforeEach(() => {
-      process.env.DATETIME = testDateTimes.bankHoliday;
+      ({ bankHoliday: process.env.DATETIME } = testDateTimes);
     });
 
     it('should return true when query contains open and it is true', () => {

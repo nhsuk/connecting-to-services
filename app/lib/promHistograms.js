@@ -1,5 +1,5 @@
-const promClient = require('./promBundle').promClient;
-const buckets = require('./constants').promHistogramBuckets;
+const { promClient } = require('./promBundle');
+const { promHistogramBuckets: buckets } = require('./constants');
 
 module.exports = {
   getNearbyServices: new promClient.Histogram({ buckets, help: 'Duration histogram of request to nearby-services-api', name: 'get_nearby_services' }),

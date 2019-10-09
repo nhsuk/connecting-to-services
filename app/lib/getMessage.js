@@ -1,6 +1,6 @@
 const OpeningTimes = require('moment-opening-times');
 
-const timezone = require('../../config/config').timezone;
+const { timezone } = require('../../config/config');
 const getOpeningHoursMessage = require('../lib/getOpeningTimesMessage');
 const midnightSpanCorrector = require('../lib/midnightSpanCorrector');
 

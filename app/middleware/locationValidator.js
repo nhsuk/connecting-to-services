@@ -7,8 +7,9 @@ const performPlaceSearch = require('./performPlaceSearch');
 const stringUtils = require('../lib/stringUtils');
 
 function validatePostcode(req, res, next) {
-  const location = res.locals.location;
+  const { locals: { location } } = res;
   const validationResult = postcodeValidator(location);
+  // eslint-disable-next-line prefer-destructuring
   res.locals.location = validationResult.alteredLocation;
   if (validationResult.errorMessage) {
     routeHelper.renderFindHelpPage(req, res, 'Invalid postcode', validationResult.errorMessage);

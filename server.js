@@ -6,6 +6,7 @@ const app = express();
 
 module.exports = (() => {
   configExpress(app, config);
+  // eslint-disable-next-line prefer-destructuring
   app.port = config.port;
   return app;
 })();
