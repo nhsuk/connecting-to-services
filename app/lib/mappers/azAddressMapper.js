@@ -2,13 +2,16 @@ function getValueOrDefault(value) {
   return value || '';
 }
 
-function getAddressLines(org) {
-  const addressLines = [org.Address1, org.Address2, org.Address3]
-    .filter((l) => l) // empty entries
-    .filter((l) => l !== org.City); // duplicates of city
+function clean(array) {
+  return array.filter(Boolean).map((i) => i.trim());
+}
 
-  // remove duplicate address lines
-  return Array.from(new Set(addressLines));
+function getAddressLines(org) {
+  const addressFields = clean([org.City, org.County, org.Postcode]);
+  const addressLines = clean([org.Address1, org.Address2, org.Address3])
+    .filter((l) => !addressFields.includes(l));
+
+  return [...new Set(addressLines)];
 }
 
 function mapAddress(org) {
