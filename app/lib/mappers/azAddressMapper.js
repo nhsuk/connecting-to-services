@@ -15,9 +15,6 @@ function mapAddress(org) {
   return {
     city: getValueOrDefault(org.City),
     county: getValueOrDefault(org.County),
-    line1: getValueOrDefault(org.Address1),
-    line2: getValueOrDefault(org.Address2),
-    line3: getValueOrDefault(org.Address3),
     lines: getAddressLines(org),
     postcode: getValueOrDefault(org.Postcode),
   };

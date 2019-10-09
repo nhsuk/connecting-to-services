@@ -1,4 +1,3 @@
-const addAddressLine = require('../lib/addAddressLine');
 const addBankHolidayMessage = require('../lib/addBankHolidayMessage');
 const choicesServices = require('../lib/choicesServices');
 const mapLink = require('../lib/mapLink');
@@ -11,7 +10,6 @@ function updateServices(searchCriteria, services) {
     services = choicesServices.addUrl(services);
     services = addBankHolidayMessage(services);
     services = updateOpeningTimes(services);
-    services = addAddressLine(services);
     /* eslint-enable no-param-reassign */
   }
   return services;

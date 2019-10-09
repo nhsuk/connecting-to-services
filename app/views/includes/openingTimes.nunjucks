@@ -5,7 +5,7 @@
   {% set openingTimes = service.openingTimes %}
   {% if openingTimes %}
   <div class="openingTimes-panel">
-    <a href="javascript:void(0)" class="openingTimes-panel__toggle" data-toggle="collapse" role="button" aria-expanded="false">Opening times<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></a>
+    <a href="javascript:void(0)" class="openingTimes-panel__toggle" data-toggle="collapse" role="button" aria-expanded="false">Opening times<span class="sr-only"> for {{ service.name }} at {{ service.address.lines[0] }}</span></a>
     <div class="openingTimes-panel__content">
      <table class="openingTimes">
       <tr><th>Day of the week</th><th>Opening hours</th></tr>

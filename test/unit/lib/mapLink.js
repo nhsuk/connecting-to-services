@@ -20,9 +20,7 @@ describe('mapLink', () => {
         const address = {
           city: 'city',
           county: 'county',
-          line1: 'line1',
-          line2: 'line2',
-          line3: 'line3',
+          lines: ['line1', 'line2', 'line3'],
           postcode: 'AB12 3CD',
         };
         const inputList = [{
@@ -35,14 +33,17 @@ describe('mapLink', () => {
         }];
 
         const start = `saddr=${qs.escape(searchTerm)}`;
+
         const nameAndAddressOne = `${nameOne},${Object.values(address).join()}`;
         const nameAndAddressOneEncoded = qs.escape(nameAndAddressOne);
         const destinationOne = `daddr=${nameAndAddressOneEncoded}`;
         const nearOne = `near=${nameAndAddressOneEncoded}`;
+
         const nameAndAddressTwo = `${nameTwo},${Object.values(address).join()}`;
         const nameAndAddressTwoEncoded = qs.escape(nameAndAddressTwo);
         const destinationTwo = `daddr=${nameAndAddressTwoEncoded}`;
         const nearTwo = `near=${nameAndAddressTwoEncoded}`;
+
         const encodedQueryOne = `${destinationOne}&${nearOne}&${start}`;
         const encodedQueryTwo = `${destinationTwo}&${nearTwo}&${start}`;
         const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQueryOne}`;
@@ -63,9 +64,7 @@ describe('mapLink', () => {
         address: {
           city: '',
           county: undefined,
-          line1: 'line1',
-          line2: '',
-          line3: null,
+          lines: ['line1', '', null],
           postcode: 'AB12 3CD',
         },
         name: 'name',
@@ -92,7 +91,7 @@ describe('mapLink', () => {
       };
       const inputList = [{
         address: {
-          line1: 'line1',
+          lines: ['line1'],
         },
         name: 'name',
       }];
@@ -117,7 +116,7 @@ describe('mapLink', () => {
       };
       const inputList = [{
         address: {
-          line1: 'line1',
+          lines: ['line1'],
         },
         name: 'name',
       }];
@@ -143,7 +142,7 @@ describe('mapLink', () => {
       };
       const inputList = [{
         address: {
-          line1: 'line1',
+          lines: ['line1'],
         },
         name: 'name',
       }];

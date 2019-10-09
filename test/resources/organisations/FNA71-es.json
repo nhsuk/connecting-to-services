@@ -60,9 +60,7 @@
   "outOfHours": "",
   "hasEps": true,
   "address": {
-    "line1": "84/86 Lincoln Green Road",
-    "line2": "Leeds",
-    "line3": null,
+    "lines": [ "84/86 Lincoln Green Road", "Leeds" ],
     "city": "West Yorkshire",
     "county": "",
     "postcode": "LS9 7SU"

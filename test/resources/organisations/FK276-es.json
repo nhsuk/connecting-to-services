@@ -121,9 +121,6 @@
   "outOfHours": "",
   "hasEps": true,
   "address": {
-    "line1": "12-14 Vicar La",
-    "line2": "",
-    "line3": "",
     "lines": [ "12-14 Vicar La" ],
     "city": "Leeds",
     "county": "West Yorkshire",
