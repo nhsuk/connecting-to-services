@@ -1,3 +1,7 @@
+1.15.3 / TBC
+===================
+- Remove unused env vars from README
+
 1.15.2 / 2019-10-09
 ===================
 - Switch to using Azure Search for organisation queries
