@@ -5,16 +5,14 @@
       <p class="distance"><span class="sr-only">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
       <h2 class="results__name">{{ service.name }}</h2>
       <p>
-      {% if service.address.line1 %} {{ service.address.line1 }}, {% endif %}
-      {% if service.address.line2 %} {{ service.address.line2 }}, {% endif %}
-      {% if service.address.line3 %} {{ service.address.line3 }}, {% endif %}
+      {{ service.address.lines | join(', ') }},
       {% if service.address.city %} {{ service.address.city }}, {% endif %}
       {% if service.address.county %} {{ service.address.county }}, {% endif %}
       {% if service.address.postcode %} {{ service.address.postcode }}<br />{% endif %}
       {% if service.contacts.telephone %}{{ service.contacts.telephone }}{% endif %}
       </p>
-    <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="sr-only"> for {{ service.name }} at {{ service.addressLine }}</span></a></p>
-    <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="sr-only"> in {{ service.name }} at {{ service.addressLine }}</span></a></p>
+    <p class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.lines[0] }}</span></a></p>
+    <p class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="sr-only"> in {{ service.name }} at {{ service.address.lines[0] }}</span></a></p>
     </div>
     {% include "includes/openingTimes.nunjucks" %}
   </div>

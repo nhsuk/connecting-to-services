@@ -2,10 +2,12 @@ const qs = require('querystring');
 
 const constants = require('./constants');
 
+function flatten(arr) {
+  return arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val), []);
+}
+
 function joinAllTruthyValues(obj) {
-  return Object.values(obj)
-    .filter((value) => value)
-    .join();
+  return flatten(Object.values(obj)).filter((value) => value).join();
 }
 
 function addUrl(searchCriteria, inputList) {
