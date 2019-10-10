@@ -8,6 +8,7 @@ const expect = chai.expect;
 
 describe('queryBuilder', () => {
   const searchOrigin = { latitude: 53.234149, longitude: 5.024449 };
+  const expectedPharamcyFilter = "OrganisationTypeID eq 'PHA' and OrganisationSubType eq 'Community Pharmacy'";
   describe('nearby and open', () => {
     let query;
     afterEach('reset dateTime override', () => {
@@ -18,7 +19,7 @@ describe('queryBuilder', () => {
       query = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
     });
     it('should return filter', () => {
-      const expectedFilter = " OrganisationTypeID eq 'PHA' and ( OpeningTimesV2/any(time: time/Weekday eq 'Thursday' and time/OpeningTimeType eq 'General' and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540) and not OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/AdditionalOpeningDate eq 'Oct 3 2019') ) or ( OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540 and time/AdditionalOpeningDate eq 'Oct 3 2019') )";
+      const expectedFilter = ` ( ${expectedPharamcyFilter} ) and ( OpeningTimesV2/any(time: time/Weekday eq 'Thursday' and time/OpeningTimeType eq 'General' and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540) and not OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/AdditionalOpeningDate eq 'Oct 3 2019') ) or ( OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540 and time/AdditionalOpeningDate eq 'Oct 3 2019') )`;
 
       expect(query.filter).to.equal(expectedFilter);
     });
@@ -33,7 +34,7 @@ describe('queryBuilder', () => {
     it('should return filter', () => {
       const query = queryBuilder(searchOrigin, { queryType: queryTypes.nearby });
       expect(query).to.not.be.undefined;
-      expect(query.filter).to.equal('OrganisationTypeID eq \'PHA\'');
+      expect(query.filter).to.equal(expectedPharamcyFilter);
       expect(query.orderby).to.not.be.undefined;
       expect(query.top).to.equal(10);
     });

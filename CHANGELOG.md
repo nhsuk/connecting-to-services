@@ -1,6 +1,7 @@
 1.15.3 / TBC
 ===================
 - Remove unused env vars from README
+- Add subtype clause to pharmacy query
 
 1.15.2 / 2019-10-09
 ===================
