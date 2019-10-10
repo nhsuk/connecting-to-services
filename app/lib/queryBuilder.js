@@ -2,7 +2,7 @@ const VError = require('verror').VError;
 const queryTypes = require('./constants').queryTypes;
 const getDateTime = require('./dateUtils').getDateTime;
 
-const pharmacyFilter = 'OrganisationTypeID eq \'PHA\'';
+const pharmacyFilter = 'OrganisationTypeID eq \'PHA\' and OrganisationSubType eq \'Community Pharmacy\'';
 
 function getOpenPharmacyFilter(date) {
   const weekday = date.format('dddd');
@@ -19,7 +19,7 @@ function getOpenPharmacyFilter(date) {
   // I think that additional hours should be of type general to allow, for example,
   // a GP surgery to have different hours on a bank holiday for reception only.
   return `
-  ${pharmacyFilter} and
+  ( ${pharmacyFilter} ) and
   ( OpeningTimesV2/any(time:
           time/Weekday eq '${weekday}'
           and time/OpeningTimeType eq 'General'
