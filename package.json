@@ -5,7 +5,6 @@
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
     "brunch-build": "yarn brunch build",
-    "coverage-generate": "nyc --reporter=lcov --reporter=cobertura mocha --exit --recursive test --reporter mocha-junit-reporter",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
     "git-hook": "yarn lint && yarn test-unit",
     "lint": "yarn lint-backend && yarn lint-frontend",
@@ -14,9 +13,10 @@
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "start-watch-debug": "yarn brunch watch & nodemon --inspect-brk=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "nyc mocha --exit --recursive test",
-    "test-unit": "nyc mocha --exit --recursive test/unit",
-    "test-with-coverage": "yarn lint && yarn coverage-generate && yarn coverage-upload-coveralls"
+    "test": "nyc --nycrc-path=.nycrc.json mocha --exit --recursive test",
+    "test-and-upload-coverage": "yarn lint && yarn test-with-coverage && yarn coverage-upload-coveralls",
+    "test-unit": "nyc --nycrc-path=.nycrc.json mocha --exit --recursive test/unit",
+    "test-with-coverage": "nyc --nycrc-path=.nycrc.json --reporter=lcov --reporter=cobertura mocha --exit --recursive test --reporter mocha-junit-reporter"
   },
   "repository": {
     "type": "git",
