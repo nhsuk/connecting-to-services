@@ -50,7 +50,7 @@ function midsomerNortonResults($, location, numberOfResults) {
 
 function searchAgainPage($) {
   expect($('.nhsuk-error-message').text())
-    .to.contain('This field is required.');
+    .to.contain('You must enter a town, city or postcode to find a pharmacy.');
 }
 
 module.exports = {
