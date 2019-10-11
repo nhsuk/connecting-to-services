@@ -5,7 +5,7 @@ function invalidPostcodeMessage(location) {
 }
 
 function emptyPostcodeMessage() {
-  return 'This field is required.';
+  return 'You must enter a town, city or postcode to find a pharmacy.';
 }
 
 function technicalProblems() {
