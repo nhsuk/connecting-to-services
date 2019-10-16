@@ -7,7 +7,7 @@ const locationValidator = require('../app/middleware/locationValidator');
 const logZeroResults = require('../app/middleware/logZeroResults');
 const prerender = require('../app/middleware/prerender');
 const renderer = require('../app/middleware/renderer');
-const debugRenderer = require('../app/middleware/debugRenderer');
+const info = require('../app/middleware/info');
 const setSearchType = require('../app/middleware/setSearchType');
 
 router.get(
@@ -29,8 +29,8 @@ router.get(
 );
 
 router.get(
-  '/debug',
-  debugRenderer
+  '/info',
+  info
 );
 
 module.exports = router;
