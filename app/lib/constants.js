@@ -1,3 +1,5 @@
+const { version } = require('../../package');
+
 module.exports = {
   api: {
     nearbyResultsCount: 10,
@@ -17,6 +19,7 @@ module.exports = {
       creator: '@nhsuk',
       site: '@nhsuk',
     },
+    version,
   },
   assetsUrl: 'https://assets.nhs.uk',
   daysOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],

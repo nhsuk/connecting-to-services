@@ -7,8 +7,10 @@ const digitalData = require('../lib/digitalData');
 const getDisplayLocation = require('../lib/getDisplayLocation');
 const pageTitles = require('../lib/pageTitles');
 const resultsPageAltUrl = require('../lib/resultsPageAltUrl');
+const { getDateTime } = require('../lib/dateUtils');
 
 module.exports = (config) => (req, res, next) => {
+  res.locals.serverDateTime = getDateTime();
   res.locals.assetsUrl = req.app.locals.assetsUrl;
   res.locals.siteRoot = req.app.locals.siteRoot;
 

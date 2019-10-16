@@ -8,6 +8,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="{{ app.description | safe }}"/>
+    <meta name="version" content="{{ app.version | safe }}"/>
+    <meta name="server-date-time" content="{{ serverDateTime | safe }}"/>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
