@@ -20,7 +20,7 @@ function getOpenPharmacyFilter(date) {
   // a GP surgery to have different hours on a bank holiday for reception only.
   return `
   ( ${pharmacyFilter} ) and
-  ( OpeningTimesV2/any(time:
+  ( ( OpeningTimesV2/any(time:
           time/Weekday eq '${weekday}'
           and time/OpeningTimeType eq 'General'
           and time/OffsetOpeningTime le ${offsetTime}
@@ -34,7 +34,7 @@ function getOpenPharmacyFilter(date) {
             and time/OffsetOpeningTime le ${offsetTime}
             and time/OffsetClosingTime ge ${offsetTime}
             and time/AdditionalOpeningDate eq '${dateString}')
-  )`.replace(/\s+/g, ' ');
+  ) )`.replace(/\s+/g, ' ');
 }
 
 function build(searchOrigin, options) {

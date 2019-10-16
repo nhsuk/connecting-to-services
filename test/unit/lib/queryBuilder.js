@@ -19,7 +19,7 @@ describe('queryBuilder', () => {
       query = queryBuilder(searchOrigin, { queryType: queryTypes.openNearby });
     });
     it('should return filter', () => {
-      const expectedFilter = ` ( ${expectedPharamcyFilter} ) and ( OpeningTimesV2/any(time: time/Weekday eq 'Thursday' and time/OpeningTimeType eq 'General' and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540) and not OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/AdditionalOpeningDate eq 'Oct 3 2019') ) or ( OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540 and time/AdditionalOpeningDate eq 'Oct 3 2019') )`;
+      const expectedFilter = ` ( ${expectedPharamcyFilter} ) and ( ( OpeningTimesV2/any(time: time/Weekday eq 'Thursday' and time/OpeningTimeType eq 'General' and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540) and not OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/AdditionalOpeningDate eq 'Oct 3 2019') ) or ( OpeningTimesV2/any(time: search.in(time/OpeningTimeType, 'Additional, General') and time/OffsetOpeningTime le 540 and time/OffsetClosingTime ge 540 and time/AdditionalOpeningDate eq 'Oct 3 2019') ) )`;
 
       expect(query.filter).to.equal(expectedFilter);
     });
