@@ -20,7 +20,7 @@
         </ul>
       </div>
     </div>
-    <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-grid-column-one-half nhsuk-u-margin-top-4">
       {% include "includes/openingTimes.nunjucks" %}
     </div>
   </div>
