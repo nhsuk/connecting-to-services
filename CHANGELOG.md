@@ -1,4 +1,8 @@
-1.15.3 / TBC
+1.15.4 / 2019-10-20
+===================
+- Fix logic error in azure search
+
+1.15.3 / 2019-10-10
 ===================
 - Remove unused env vars from README
 - Add subtype clause to pharmacy query
