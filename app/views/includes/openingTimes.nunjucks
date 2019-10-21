@@ -4,7 +4,7 @@
   {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
   {% set openingTimes = service.openingTimes %}
   {% if openingTimes %}
-  <details class="nhsuk-details nhsuk-expander openingTimes-panel">
+  <details class="nhsuk-details openingTimes-panel">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
         Opening times
