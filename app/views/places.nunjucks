@@ -11,9 +11,11 @@
 {% block header %}
 {% endblock %}
 {% block content %}
-{% if places.length === 0 %}
-  {% include "includes/no-place-results.nunjucks" %}
-{% elif places.length > 0 %}
-  {% include "includes/place-results.nunjucks" %}
-{% endif %}
+<div class="nhsuk-u-reading-width">
+  {% if places.length === 0 %}
+    {% include "includes/no-place-results.nunjucks" %}
+  {% elif places.length > 0 %}
+    {% include "includes/place-results.nunjucks" %}
+  {% endif %}
+</div>
 {% endblock %}

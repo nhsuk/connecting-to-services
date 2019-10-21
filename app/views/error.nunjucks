@@ -1,13 +1,20 @@
 {% extends 'layout.nunjucks' %}
+{% from 'back-link/macro.njk' import backLink %}
 
 {% set message = 'Sorry, we are experiencing technical problems' %}
 
 {% block pageTitle %}{{ message }}{% endblock %}
 
-{% block headerContent %}{{ message }}{% endblock %}
+{% block headerContent %}
+{# {{ backLink({
+  "href": siteRoot,
+  "text": "Go back"
+}) }} #}
+<h1 class="nhsuk-u-reading-width">{{ message }}</h1>
+{% endblock %}
 
 {% block content %}
-  <div class="reading-width">
+  <div class="nhsuk-u-reading-width">
     <p>Please try again later.</p>
   <div>
 {% endblock %}

@@ -1,23 +1,20 @@
+{% from 'footer/macro.njk' import footer %}
+
 <footer role="contentinfo">
-  <div class="nhsuk-global-footer">
-    <div class="nhsuk-o-width-container">
-      <ul>
-        <li class="nhsuk-global-footer__logo">
-          <a href="https://www.nhs.uk" class="global-footer__link">
-            {{ nhsLogo('nhsuk-footer__logo-title') }}
-          </a>
-        </li>
-        <li><a href="https://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
-        <li><a href="https://www.nhs.uk/about-us/">About us</a></li>
-        <li><a href="https://www.nhs.uk/contact-us/">Contact us</a></li>
-        <li><a href="https://www.nhs.uk/Personalisation/Login.aspx">Profile editor login</a></li>
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container">
+      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+     <ul class="nhsuk-footer__list nhsuk-footer__list--three-columns">
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/nhs-sites/" class="nhsuk-footer__list-item-link">NHS sites</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/about-us/" class="nhsuk-footer__list-item-link">About us</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/contact-us/" class="nhsuk-footer__list-item-link">Contact us</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/personalisation/login.aspx" class="nhsuk-footer__list-item-link">Profile editor login</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/about-us/sitemap/" class="nhsuk-footer__list-item-link">Sitemap</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/accessibility/" class="nhsuk-footer__list-item-link">Accessibility</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/our-policies/" class="nhsuk-footer__list-item-link">Our policies</a></li>
+          <li class="nhsuk-footer__list-item"><a href="https://beta.nhs.uk/our-policies/cookies-policy/" class="nhsuk-footer__list-item-link">Cookies</a></li>        
       </ul>
-      <ul>
-        <li><a href="https://www.nhs.uk/about-us/sitemap/">Sitemap</a></li>
-        <li><a href="https://www.nhs.uk/accessibility/">Accessibility</a></li>
-        <li><a href="https://www.nhs.uk/our-policies/">Our policies</a></li>
-        <li>&copy; Crown Copyright</li>
-      </ul>
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
     </div>
   </div>
 </footer>

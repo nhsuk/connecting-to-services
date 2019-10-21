@@ -124,13 +124,13 @@ describe('The results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
-    expect($('.results__none-content p').length).to.equal(2);
-    expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Northern Ireland on the Health and Social Care website');
+    expect($('h1').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+    expect($('main p').length).to.equal(2);
+    expect($('main p a').text()).to.equal('Find pharmacies in Northern Ireland on the Health and Social Care website');
 
-    expect($('.results__none-content').text()).to
+    expect($('main').text()).to
       .contain('This service only provides information about pharmacies in England.');
-    expect($('.results__none-content').text()).to.not
+    expect($('main').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
     expect($('head title').text()).to.equal(`${appTitle} - We can't find any pharmacies near BT1 - NHS`);
     iExpect.noResultsPageBreadcrumb($);
@@ -153,12 +153,12 @@ describe('The results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.results__header--none').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
-    expect($('.results__none-content p').length).to.equal(1);
+    expect($('h1').text()).to.equal(`We can't find any pharmacies near ${outcodeFormatted}`);
+    expect($('main p').length).to.equal(1);
 
-    expect($('.results__none-content').text()).to
+    expect($('main').text()).to
       .contain('This service only provides information about pharmacies in England.');
-    expect($('.results__none-content').text()).to.not
+    expect($('main').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
     expect($('head title').text()).to.equal(`${appTitle} - We can't find any pharmacies near IM1 - NHS`);
     iExpect.noResultsPageBreadcrumb($);
@@ -187,11 +187,11 @@ describe('The results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.results__header--none').text()).to
+    expect($('h1').text()).to
       .equal(`We can't find any pharmacies near ${outcode}`);
-    expect($('.results__none-content').text()).to
+    expect($('main').text()).to
       .contain('This service only provides information about pharmacies in England.');
-    expect($('.results__none-content').text()).to.not
+    expect($('main').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
     iExpect.noResultsPageBreadcrumb($);
   });
@@ -219,11 +219,11 @@ describe('The results page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.results__header--none').text()).to
+    expect($('h1').text()).to
       .equal(`We can't find any pharmacies near ${outcode}`);
-    expect($('.results__none-content').text()).to
+    expect($('main').text()).to
       .contain('This service only provides information about pharmacies in England.');
-    expect($('.results__none-content').text()).to.not
+    expect($('main').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
     iExpect.noResultsPageBreadcrumb($);
   });
@@ -254,10 +254,9 @@ describe('The results page error handling', () => {
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 
-      expect($('.error-summary-heading').text()).to
+      expect($('#error-message').text()).to
         .contain(`We can't find the postcode '${unknownPostcodeUppercase}'`);
       expect($('head title').text()).to.equal(`${appTitle} - We can't find the postcode '${unknownPostcodeUppercase}' - NHS`);
-      expect($('label.nhsuk-heading-m').text()).to.equal('Enter a town, city or postcode in England');
     }
   );
 

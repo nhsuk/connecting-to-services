@@ -1,12 +1,18 @@
 {% extends 'layout.nunjucks' %}
+{% from 'back-link/macro.njk' import backLink %}
 
 {% block pageTitle %}Page not found{% endblock %}
 
-{% block headerContent %}Page not found{% endblock %}
+{% block headerContent %}
+{# {{ backLink({
+  "href": siteRoot,
+  "text": "Go back"
+}) }} #}
+<h1 class="nhsuk-u-reading-width">Page not found</h1>
+{% endblock %}
 
 {% block content %}
-  <div class="reading-width">
+  <div class="nhsuk-u-reading-width">
     <p>If you have entered a web address check it was correct. You can <a href="http://nhs.uk/">browse from the NHS home page</a>.</p>
-    <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
   </div>
 {% endblock %}

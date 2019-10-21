@@ -117,9 +117,9 @@ describe(`The ${yourLocation} results page`, () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.results__header--none').text()).to.equal('We can\'t find any pharmacies near your location');
-    expect($('.results__none-content p').length).to.equal(2);
-    expect($('.results__none-content p a').text()).to.equal('Find pharmacies in Scotland on the NHS 24 website');
+    expect($('h1').text()).to.equal('We can\'t find any pharmacies near your location');
+    expect($('main p').length).to.equal(2);
+    expect($('main p a').text()).to.equal('Find pharmacies in Scotland on the NHS 24 website');
     iExpect.noResultsPageBreadcrumb($);
   });
 
@@ -137,12 +137,12 @@ describe(`The ${yourLocation} results page`, () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.results__header--none').text()).to.equal('We can\'t find any pharmacies near your location');
-    expect($('.results__none-content').text()).to
+    expect($('h1').text()).to.equal('We can\'t find any pharmacies near your location');
+    expect($('main').text()).to
       .contain('This service only provides information about pharmacies in England.');
-    expect($('.results__none-content').text()).to.not
+    expect($('main').text()).to.not
       .contain('If you need a pharmacy in Scotland, Wales, Northern Ireland or the Isle of Man, you can use one of the following websites.');
-    expect($('.results__none-content p').length).to.equal(4);
+    expect($('main p').length).to.equal(4);
     iExpect.noResultsPageBreadcrumb($);
   });
 });

@@ -1,3 +1,6 @@
+1.16.0 / 2019-10-23
+- Update project to use nhsuk frontend library
+
 1.15.5 / 2019-10-20
 - Fix logic error in azure search
 
