@@ -1,6 +1,6 @@
 {
   "name": "connecting-to-services",
-  "version": "1.15.5",
+  "version": "1.17.0",
   "private": true,
   "description": "Helping to connect people to appropriate services, meeting their time, location and accessibility needs.",
   "scripts": {
