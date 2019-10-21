@@ -1,6 +1,6 @@
 <li class="results__item nhsuk-u-margin-bottom-0 nhsuk-u-padding-top-5{% if service.bankHolidayMessage %} results__item--bankHoliday{% endif %}{% if service.openingTimes === null %} noTimes{% endif %}">
   <div class="nhsuk-grid-row results__details">
-    <div class="nhsuk-grid-column-one-half nhsuk-body-s nhsuk-u-margin-bottom-5">
+    <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-5">
       {% set distance = service.distanceInMiles | round(1) %}
       <div>
         <p class="nhsuk-body-s nhsuk-u-margin-bottom-1"><span class="nhsuk-u-visually-hidden">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
