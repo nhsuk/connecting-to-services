@@ -31,7 +31,7 @@
 {% else %}
 <p class="viewToggle">Showing all pharmacies. <a href="{{ resultsPageAltUrl }}">Only show pharmacies open now.</a></p>
 {% endif %}
-<ol class="nhsuk-list results">
+<ol class="nhsuk-list results service-results">
   {% for service in services %}
   {% include "includes/result-item.nunjucks" %}
   {% endfor %}
