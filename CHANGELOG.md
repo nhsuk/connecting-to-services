@@ -1,3 +1,9 @@
+1.17.1 / 2019-10-23
+===================
+- Update favicons
+- Fix opening times styling bug
+- Validation accessibility enhancements
+
 1.17.0 / 2019-10-23
 ===================
 - Add info json response for diagnostics
