@@ -1,5 +1,7 @@
+const { analytics: { baseDataLayer } } = require('./constants');
+
 function getPageName(path) {
-  return `nhs:beta${path.replace(/\/$/, '').replace(/\//g, ':')}`;
+  return `${baseDataLayer}${path.replace(/\/$/, '').replace(/\//g, ':')}`;
 }
 
 function getCategories(path) {
