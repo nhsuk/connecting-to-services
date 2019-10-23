@@ -1,7 +1,7 @@
 const { analytics: { baseDataLayer } } = require('./constants');
 
-function getPageName(path) {
-  return `${baseDataLayer}${path.replace(/\/$/, '').replace(/\//g, ':')}`;
+function getPageName(categories) {
+  return `${baseDataLayer}:${categories.join(':')}`;
 }
 
 function getCategories(path) {
@@ -21,7 +21,7 @@ function digitalData(req) {
         subCategory3: categories[3],
       },
       pageInfo: {
-        pageName: getPageName(path),
+        pageName: getPageName(categories),
       },
     },
   };
