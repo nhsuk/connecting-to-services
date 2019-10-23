@@ -1,6 +1,6 @@
 <section class="result-panel callout callout--info callout--compact">
   <p class="callout--info__mesg">{{ service.openingTimesMessage }}</p>
-  {% if not service.isOpen %}<a class="openingTimes__openResults" href="{{ resultsPageAltUrl }}">Looking for pharmacies open now?</a>{% endif %}
+  {% if not service.isOpen %}<p><a class="openingTimes__openResults" href="{{ resultsPageAltUrl }}">Looking for pharmacies open now?</a></p>{% endif %}
   {% if service.bankHolidayMessage %}<p class="callout callout--warning callout--compact callout--bh">{{ service.bankHolidayMessage }}</p>{% endif %}
   {% set openingTimes = service.openingTimes %}
   {% if openingTimes %}
