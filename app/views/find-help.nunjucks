@@ -13,7 +13,7 @@
       {% if errorMessage -%}
         <div class="nhsuk-error-message" id="error-message" role="alert" tabindex="-1"><span class="nhsuk-u-visually-hidden">Error: </span>{{ errorMessage }}</div>
       {%- endif %}
-      <input type="text" class="nhsuk-input nhsuk-input--width-20" name="location" id="location" value="{{ query }}" {{ 'aria-describedby="error-message" aria-invalid="true"' if errorMessage }}>
+      <input type="text" class="nhsuk-input nhsuk-input--width-20 {{ 'nhsuk-input--error' if errorMessage }}" name="location" id="location" value="{{ query }}" {{ 'aria-describedby="error-message" aria-invalid="true"' if errorMessage }}>
     </div>
     {{ button({
       "text": "Search",
