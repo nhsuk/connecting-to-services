@@ -10,6 +10,7 @@ describe('digitalData', () => {
   const secondLevelPath = 'second';
   const thirdLevelPath = 'third';
   const fourthLevelPath = 'fourth';
+  const baseDataLayer = 'nhs:web';
 
   it('should contain primaryCategory only for site root', () => {
     const req = { path: `${siteRoot}/` };
@@ -29,7 +30,7 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.be.undefined;
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`${baseDataLayer}:${siteRootPath}`);
   });
 
   it('should contain 2 categories for second level pages', () => {
@@ -50,7 +51,7 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.be.undefined;
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}:${secondLevelPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`${baseDataLayer}:${siteRootPath}:${secondLevelPath}`);
   });
 
   it('should contain 3 categories for third level pages', () => {
@@ -71,7 +72,7 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.be.undefined;
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}:${secondLevelPath}:${thirdLevelPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`${baseDataLayer}:${siteRootPath}:${secondLevelPath}:${thirdLevelPath}`);
   });
 
   it('should contain 4 categories for fourth level pages', () => {
@@ -92,6 +93,6 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.equal(fourthLevelPath);
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}:${secondLevelPath}:${thirdLevelPath}:${fourthLevelPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`${baseDataLayer}:${siteRootPath}:${secondLevelPath}:${thirdLevelPath}:${fourthLevelPath}`);
   });
 });

@@ -1,4 +1,7 @@
 module.exports = {
+  analytics: {
+    baseDataLayer: 'nhs:web',
+  },
   api: {
     nearbyResultsCount: 10,
     openResultsCount: 10,
