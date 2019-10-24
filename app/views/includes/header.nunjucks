@@ -3,9 +3,11 @@
 {{ header({
     "showNav": "true",
     "showSearch": "true",
+    "searchAction": 'https://www.nhs.uk/search/',
+    "searchInputName": 'q',
     "primaryLinks": [
       {
-        "url"  : "https://www.nhs.uk/conditions",
+        "url"  : "https://www.nhs.uk/conditions/",
         "label" : "Health A-Z"
       },
       {
