@@ -1,3 +1,7 @@
+1.17.2 / 2019-10-24
+===================
+- Update header search to use nhs.uk
+
 1.17.1 / 2019-10-23
 ===================
 - Update favicons
