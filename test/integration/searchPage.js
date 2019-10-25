@@ -38,6 +38,15 @@ describe('Search page', () => {
         expect($(additionalLinks[1]).attr('href')).to.equal('https://www.nhs.uk/Service-Search/pharmacies/appliancepharmacies');
       });
     });
+
+    describe('footer links', () => {
+      it('should contain a relative link to a cookie-policy page', async () => {
+        const cookiePolicyLink = $('.cookie-policy');
+
+        expect($(cookiePolicyLink).text()).to.equal('Cookies');
+        expect($(cookiePolicyLink).attr('href')).to.equal('/our-policies/cookies-policy/');
+      });
+    });
   });
 
   describe('bad searches', () => {
