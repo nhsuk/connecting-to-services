@@ -12,7 +12,7 @@
           <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/about-us/sitemap/" class="nhsuk-footer__list-item-link">Sitemap</a></li>
           <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/accessibility/" class="nhsuk-footer__list-item-link">Accessibility</a></li>
           <li class="nhsuk-footer__list-item"><a href="https://www.nhs.uk/our-policies/" class="nhsuk-footer__list-item-link">Our policies</a></li>
-          <li class="nhsuk-footer__list-item"><a href="{{ siteRoot }}/our-policies/cookies-policy/" class="nhsuk-footer__list-item-link">Cookies</a></li>        
+          <li class="nhsuk-footer__list-item"><a href="/our-policies/cookies-policy/" class="nhsuk-footer__list-item-link cookie-policy">Cookies</a></li>        
       </ul>
       <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
     </div>
