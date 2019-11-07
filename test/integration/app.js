@@ -11,7 +11,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('redirection', () => {
-  it('should redirect root requests to /find-a-pharmacy/', async () => {
+  it('should redirect root requests to /service-search/find-a-pharmacy/', async () => {
     const res = await chai.request(server).get('/');
     iExpect.htmlWith200Status(res);
 

@@ -1,5 +1,5 @@
 const testUrl = process.env.BACKSTOP_TEST_URL || 'https://beta.nhs.uk';
-const testSiteUrl = `${testUrl}/find-a-pharmacy/`;
+const testSiteUrl = `${testUrl}/service-search/find-a-pharmacy/`;
 
 module.exports = [
   {
