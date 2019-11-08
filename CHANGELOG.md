@@ -1,4 +1,4 @@
-1.18.0 / 2019-11-08
+1.18.0 / TBC
 ===================
 - Update URLs to `/service-search/find-a-pharmacy/`
 
