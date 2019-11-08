@@ -1,3 +1,7 @@
+1.18.0 / 2019-11-08
+===================
+- Update URLs to `/service-search/find-a-pharmacy/`
+
 1.17.3 / 2019-10-25
 ===================
 - Update cookie link to be relative
