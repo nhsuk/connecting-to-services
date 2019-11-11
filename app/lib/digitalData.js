@@ -17,6 +17,7 @@ function digitalData(req) {
         subCategory1: categories[1],
         subCategory2: categories[2],
         subCategory3: categories[3],
+        subCategory4: categories[4],
       },
       pageInfo: {
         pageName: getPageName(path),

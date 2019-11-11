@@ -55,7 +55,7 @@ describe('The results page', () => {
         const toggle = $('.viewToggle a');
         const toggleText = $('.viewToggle');
         expect(toggleText.text()).to.equal('Showing all pharmacies. Only show pharmacies open now.');
-        expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=true`);
+        expect(toggle.attr('href')).to.equal(`/service-search/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=true`);
       });
     });
 
@@ -79,7 +79,7 @@ describe('The results page', () => {
       const toggle = $('.viewToggle a');
       const toggleText = $('.viewToggle');
       expect(toggleText.text()).to.equal('Only showing pharmacies open now. Show all pharmacies.');
-      expect(toggle.attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=false`);
+      expect(toggle.attr('href')).to.equal(`/service-search/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=false`);
     });
 
     it('should handle an error from the api', async () => {
@@ -189,7 +189,7 @@ describe('The results page', () => {
 
       expect(linksToOpenResultsPage.length).to.equal(1);
       linksToOpenResultsPage.each((index, element) => {
-        expect($(element).attr('href')).to.equal(`/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=true`);
+        expect($(element).attr('href')).to.equal(`/service-search/find-a-pharmacy/results?latitude=${searchOrigin.latitude}&location=${location}&longitude=${searchOrigin.longitude}&open=true`);
       });
     });
   });

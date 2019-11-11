@@ -29,7 +29,7 @@ module.exports = {
     nearby: 'nearby',
     openNearby: 'openNearby',
   },
-  siteRoot: '/find-a-pharmacy',
+  siteRoot: '/service-search/find-a-pharmacy',
   yourLocation: 'your location',
   yourLocationSearch: 'location',
 };
