@@ -4,7 +4,7 @@
       {% set distance = service.distanceInMiles | round(1) %}
       <div>
         <p class="nhsuk-body-s nhsuk-u-margin-bottom-1"><span class="nhsuk-u-visually-hidden">{{ service.name }} is </span>{% if distance === 1.0 %}1 mile away{% else %}{{ distance }} miles away{% endif %}</p>
-        <h2 class="results__name nhsuk-u-padding-top-1">{{ service.name }}</h2>
+        <h2 class="results__name nhsuk-u-padding-top-1"><a class="serviceslink" href="{{ service.choicesOverviewUrl }}">{{ service.name }}<span class="nhsuk-u-visually-hidden"> in {{ service.name }} at {{ service.addressLine }}</span></a></h2>
         <p class="nhsuk-list nhsuk-u-margin-bottom-2">
         {{ service.address.lines | join(', ') }},
         {% if service.address.city %} {{ service.address.city }}, {% endif %}
@@ -13,7 +13,6 @@
         {% if service.contacts.telephone %}{{ service.contacts.telephone }}{% endif %}
         <ul class="nhsuk-list nhsuk-u-margin-bottom-0">
           <li class="results__item__link"><a class="maplink" href="{{service.mapUrl}}">Map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.addressLine }}</span></a></li>
-          <li class="results__item__link"><a class="serviceslink" href="{{ service.choicesServicesUrl }}">Services available<span class="nhsuk-u-visually-hidden"> in {{ service.name }} at {{ service.addressLine }}</span></a></li>
         </ul>
       </div>
     </div>

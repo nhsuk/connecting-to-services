@@ -45,8 +45,14 @@ describe('The results page', () => {
       });
 
       it('should return distance away singularly for 1 mile and plurally for other distances', () => {
-        const resultTitle1 = $('.results__name').eq(0).text();
-        const resultTitle2 = $('.results__name').eq(8).text();
+        const resultTitle1 = $('.results__name .serviceslink').eq(0).clone().children()
+          .remove()
+          .end()
+          .text();
+        const resultTitle2 = $('.results__name .serviceslink').eq(8).clone().children()
+          .remove()
+          .end()
+          .text();
         expect($('.nhsuk-body-s').eq(0).text()).to.equal(`${resultTitle1} is 0.5 miles away`);
         expect($('.nhsuk-body-s').eq(8).text()).to.equal(`${resultTitle2} is 1 mile away`);
       });
