@@ -1,3 +1,8 @@
+1.18.1 / TBC
+===================
+- Update Org Name to be the link to PIMS overview page tab
+- Remove the services link
+
 1.18.0 / TBC
 ===================
 - Update URLs to `/service-search/find-a-pharmacy/`

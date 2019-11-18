@@ -17,8 +17,8 @@ describe('choicesServices', () => {
     expect(results).to.be.an('array');
     expect(results.length).to.be.equal(inputItems.length);
     inputItems.forEach((item, index) => {
-      expect(results[index].choicesServicesUrl)
-        .to.be.equal(`https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx?id=${inputItems[index].identifier}`);
+      expect(results[index].choicesOverviewUrl)
+        .to.be.equal(`https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx?id=${inputItems[index].identifier}`);
     });
   });
 });

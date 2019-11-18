@@ -42,7 +42,7 @@ function midsomerNortonResults($, location, numberOfResults) {
   const choicesServicesLinks = $('.serviceslink');
   expect(choicesServicesLinks.length).to.equal(10);
   choicesServicesLinks.toArray().forEach((link) => {
-    expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/PctServices/DefaultView.aspx');
+    expect($(link).attr('href')).to.have.string('https://www.nhs.uk/Services/pharmacies/Overview/DefaultView.aspx');
   });
   expect(choicesServicesLinks.length).to.equal(numberOfResults);
   expect($('head title').text()).to.equal('Pharmacies near Midsomer Norton - NHS');
