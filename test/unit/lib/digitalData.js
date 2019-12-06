@@ -31,7 +31,7 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.be.undefined;
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`nhs:web:${siteRootPath}`);
   });
 
   it('should contain 3 categories for second level pages', () => {
@@ -52,7 +52,7 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.be.undefined;
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}:${thirdLevelPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`nhs:web:${siteRootPath}:${thirdLevelPath}`);
   });
 
   it('should contain 4 categories for third level pages', () => {
@@ -73,7 +73,7 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory3).to.equal(fourthLevelPath);
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}:${thirdLevelPath}:${fourthLevelPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`nhs:web:${siteRootPath}:${thirdLevelPath}:${fourthLevelPath}`);
   });
 
   it('should contain 5 categories for fourth level pages', () => {
@@ -96,6 +96,6 @@ describe('digitalData', () => {
     expect(dd.page.category.subCategory4).to.equal(fifthLevelPath);
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
-    expect(dd.page.pageInfo.pageName).to.equal(`nhs:beta:${siteRootPath}:${thirdLevelPath}:${fourthLevelPath}:${fifthLevelPath}`);
+    expect(dd.page.pageInfo.pageName).to.equal(`nhs:web:${siteRootPath}:${thirdLevelPath}:${fourthLevelPath}:${fifthLevelPath}`);
   });
 });

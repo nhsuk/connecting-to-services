@@ -1,5 +1,5 @@
 function getPageName(path) {
-  return `nhs:beta${path.replace(/\/$/, '').replace(/\//g, ':')}`;
+  return `nhs:web${path.replace(/\/$/, '').replace(/\//g, ':')}`;
 }
 
 function getCategories(path) {
