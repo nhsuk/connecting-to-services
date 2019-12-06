@@ -1,11 +1,15 @@
 1.19.0 / TBC
 ===================
-- Update Org Name to be the link to PIMS overview page tab
-- Remove the services link
 - Update npm dependencies
 - Update basic auth creds
+- Remove redundant link from search page breadcrumb
 
-1.18.0 / TBC
+1.18.1 / 2019-12-05
+===================
+- Update Org Name to be the link to PIMS overview page tab
+- Remove the services link
+
+1.18.0 / 2019-11-14
 ===================
 - Update URLs to `/service-search/find-a-pharmacy/`
 

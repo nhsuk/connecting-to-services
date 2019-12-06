@@ -9,6 +9,10 @@
 
 {% block bodyClass %}resultsPage{% endblock %}
 
+{% block breadcrumbs %}
+{% include "includes/breadcrumbs.nunjucks" %}
+{% endblock %}
+
 {% block headerContent %}
 {% if services.length > 0 %}
     {# {{ backLink({

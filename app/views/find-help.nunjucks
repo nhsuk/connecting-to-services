@@ -3,6 +3,19 @@
 
 {% block pageTitle %}{{getFindHelpPageTitle()}}{% endblock %}
 
+{% block breadcrumbs %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "https://www.nhs.uk/",
+        text: "Home"
+      }
+    ],
+    href: "https://www.nhs.uk/service-search",
+    text: "Services near you"
+  }) }}
+{% endblock %}
+
 {% block headerContent %}<h1>{{ app.title }}</h1>{% endblock %}
 
 {% block content %}

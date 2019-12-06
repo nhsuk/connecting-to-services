@@ -4,12 +4,11 @@
 {% set message = 'Sorry, we are experiencing technical problems' %}
 
 {% block pageTitle %}{{ message }}{% endblock %}
+{% block breadcrumbs %}
+{% include "includes/breadcrumbs.nunjucks" %}
+{% endblock %}
 
 {% block headerContent %}
-{# {{ backLink({
-  "href": siteRoot,
-  "text": "Go back"
-}) }} #}
 <h1 class="nhsuk-u-reading-width">{{ message }}</h1>
 {% endblock %}
 
