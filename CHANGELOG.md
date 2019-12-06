@@ -1,7 +1,9 @@
-1.18.1 / TBC
+1.19.0 / TBC
 ===================
 - Update Org Name to be the link to PIMS overview page tab
 - Remove the services link
+- Update npm dependencies
+- Update basic auth creds
 
 1.18.0 / TBC
 ===================
