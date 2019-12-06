@@ -11,6 +11,10 @@
 <h1 class="nhsuk-u-reading-width">Page not found</h1>
 {% endblock %}
 
+{% block breadcrumbs %}
+{% include "includes/breadcrumbs.nunjucks" %}
+{% endblock %}
+
 {% block content %}
   <div class="nhsuk-u-reading-width">
     <p>If you have entered a web address check it was correct. You can <a href="http://nhs.uk/">browse from the NHS home page</a>.</p>

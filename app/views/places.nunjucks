@@ -8,6 +8,10 @@
 <meta name="DCSext.ServiceName" content="pharmacies" />
 {% endblock %}
 
+{% block breadcrumbs %}
+{% include "includes/breadcrumbs.nunjucks" %}
+{% endblock %}
+
 {% block header %}
 {% endblock %}
 {% block content %}

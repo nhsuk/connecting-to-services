@@ -1,5 +1,9 @@
 {% extends 'layout.nunjucks' %}
 
+{% block breadcrumbs %}
+{% include "includes/breadcrumbs.nunjucks" %}
+{% endblock %}
+
 {% block content %}
   {% include 'includes/no-english-location-no-results.nunjucks' %}
 {% endblock %}
