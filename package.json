@@ -52,7 +52,7 @@
     "nhsuk-frontend": "^2.3.2",
     "node-sass": "^4.7.2",
     "nunjucks": "^3.0.1",
-    "object.values": "^1.0.3",
+    "object.values": "1.1.0",
     "on-headers": "^1.0.1",
     "postcode": "^2.0.0",
     "postcodesio-client": "^0.3.3",
