@@ -3,6 +3,7 @@
 - Update npm dependencies
 - Update basic auth creds
 - Remove redundant link from search page breadcrumb
+- Add bank holiday dates for 2020 & 2021
 
 1.18.1 / 2019-12-05
 ===================
