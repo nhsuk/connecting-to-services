@@ -1,3 +1,4 @@
+require('dotenv').config();
 const requireEnv = require('require-environment-variables');
 
 const app = require('./server');

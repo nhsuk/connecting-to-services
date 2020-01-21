@@ -66,6 +66,13 @@ application will fail to start and an appropriate message will be displayed.
 Environment variables are used to set application level settings for each
 environment.
 
+Environment variables need to be available within the process the application
+is running in. This can be done by setting the env vars on the command line or
+by adding them to a `.env` file. The `.env` file is excluded from being added
+to source control, it is likely to contain sensitive data which should not be
+checked in. A sample `.env` file is available `.env-sample` with some setting
+that can be renamed to `.env` so the application will use this.
+
 | Variable                           | Description                                                                                                                            | Default                                             | Required  |
 | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------           | :-------- |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                     |                                                     | No        |
