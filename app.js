@@ -1,5 +1,7 @@
-require('dotenv').config({ path: '/vault/secrets/.env' });
 const requireEnv = require('require-environment-variables');
+
+const { dotenvPath } = require('./config/config');
+require('dotenv').config({ path: dotenvPath });
 
 const app = require('./server');
 const applicationStarts = require('./app/lib/promCounters').applicationStarts;

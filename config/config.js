@@ -23,6 +23,7 @@ module.exports = {
   cookiebot: {
     scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
   },
+  dotenvPath: process.env.DOTENV_PATH || '.env',
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   root: rootPath,
