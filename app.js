@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '/vault/secrets/.env' });
 const requireEnv = require('require-environment-variables');
 
 const app = require('./server');
