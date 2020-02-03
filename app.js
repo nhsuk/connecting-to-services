@@ -1,7 +1,6 @@
 const requireEnv = require('require-environment-variables');
 
-const { dotenvPath } = require('./config/config');
-require('dotenv').config({ path: dotenvPath });
+require('dotenv').config({ path: process.env.DOTENV_PATH || '.env' });
 
 const app = require('./server');
 const applicationStarts = require('./app/lib/promCounters').applicationStarts;
