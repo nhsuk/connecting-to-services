@@ -16,4 +16,4 @@ build:
 deploy:
   kubectl:
     manifests:
-    - c2s-tests.yml
+    - ./k8s/c2s-tests.yml

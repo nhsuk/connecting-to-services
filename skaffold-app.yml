@@ -15,4 +15,4 @@ build:
 deploy:
   kubectl:
     manifests:
-    - c2s-app.yml
+    - ./k8s/c2s-app.yml
