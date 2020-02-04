@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: c2s-service
+spec:
+  ports:
+  - port: 3000
+  type: LoadBalancer
+  selector:
+    app: c2s-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c2s-app
+spec:
+  selector:
+    matchLabels:
+      app: c2s-app
+  template:
+    metadata:
+      labels:
+        app: c2s-app
+    spec:
+      containers:
+      - name: c2s-app
+        image: c2s-app
+        command: ["yarn"]
+        args: ["start-watch"]
+        ports:
+        - containerPort: 3000

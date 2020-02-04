@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2alpha2
+kind: Config
+metadata:
+  name: connecting-to-services
+build:
+  artifacts:
+  - image: c2s-tests
+    sync:
+      infer:
+        - 'app/**/*.js'
+        - 'test/**/*.js'
+        - '**/*.nunjucks'
+    docker:
+      buildArgs:
+        NODE_ENV: development
+deploy:
+  kubectl:
+    manifests:
+    - ./k8s/c2s-tests.yml

@@ -66,6 +66,14 @@ application will fail to start and an appropriate message will be displayed.
 Environment variables are used to set application level settings for each
 environment.
 
+Environment variables need to be available within the process the application
+is running in. This can be done by setting the env vars on the command line or
+by adding them to a `.env` file. The `.env` file is excluded from being added
+to source control, it is likely to contain sensitive data which should not be
+checked in.
+A sample `.env` file is available at `.env-sample` with some default settings.
+The file can be renamed to `.env` to get started quickly.
+
 | Variable                           | Description                                                                                                                            | Default                                             | Required  |
 | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------           | :-------- |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                     |                                                     | No        |
@@ -76,6 +84,7 @@ environment.
 | `BUSINESS_HOURS_END_HOUR`          | Business hours end hour                                                                                                                | 18                                                  | No        |
 | `BUSINESS_HOURS_END_MINUTE`        | Business hours end minute                                                                                                              | 0                                                   | No        |
 | `COOKIEBOT_SCRIPT_URL`             | The URL for the in-house implementation of Cookiebot                                                                                   | //assets.nhs.uk/scripts/cookie-consent.js           |           |
+| `DOTENV_PATH`                      | The path to the `.env` file containing the environment variables for the application                                                   | `.env`                                              | No        |
 | `DATETIME`                         | The initial display of results is determined by the time of the search. Bank holiday messaging is determined by the date of the search |                                                     | No        |
 | `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                          |                                                     | No        |
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                      | Depends on `NODE_ENV`                               |           |
