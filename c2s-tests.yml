@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: c2s-tests
+spec:
+  containers:
+    - name: c2s-tests
+      image: c2s-tests
+      command: ["yarn"]
+      args: ["test-watch"]
+      env:
+      - name: SEARCH_API_KEY
+        value: "not-a-real-key"
+

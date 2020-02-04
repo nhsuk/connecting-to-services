@@ -4,10 +4,11 @@ metadata:
   name: connecting-to-services
 build:
   artifacts:
-  - image: c2s-example-app
+  - image: c2s-tests
     sync:
       infer:
         - 'app/**/*.js'
+        - 'test/**/*.js'
         - '**/*.nunjucks'
     docker:
       buildArgs:
@@ -15,4 +16,4 @@ build:
 deploy:
   kubectl:
     manifests:
-    - c2s-test-app.yml
+    - c2s-tests.yml

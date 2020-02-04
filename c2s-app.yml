@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: c2s-app
-        image: c2s-example-app
+        image: c2s-app
         command: ["yarn"]
         args: ["start-watch"]
         ports:
