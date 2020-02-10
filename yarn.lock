@@ -5535,12 +5535,11 @@ nocache@2.1.0:
   resolved "https://registry.yarnpkg.com/nocache/-/nocache-2.1.0.tgz#120c9ffec43b5729b1d5de88cd71aa75a0ba491f"
   integrity sha512-0L9FvHG3nfnnmaEQPjT9xhfN4ISk0A8/2j4M37Np4mcDesJjHgEUfgPhdCyZuFI954tjokaIj/A3NdpFNdEh4Q==
 
-nock@^11.3.4:
-  version "11.7.0"
-  resolved "https://registry.yarnpkg.com/nock/-/nock-11.7.0.tgz#5eaae8b8a55c0dfc014d05692c8cf3d31d61a342"
-  integrity sha512-7c1jhHew74C33OBeRYyQENT+YXQiejpwIrEjinh6dRurBae+Ei4QjeUaPlkptIF0ZacEiVCnw8dWaxqepkiihg==
+nock@^11.8.1:
+  version "11.8.1"
+  resolved "https://registry.yarnpkg.com/nock/-/nock-11.8.1.tgz#4e6133ff4abc881e056f03ebabfa0b78c7cfd62a"
+  integrity sha512-FB18RAQckl3zfh67QNZHkb0ODYxzMwZ4SF46+1SzzFmYM2szaAQTdpPZW3ZQEnl73dtinSVYuv3BHvd49wznkA==
   dependencies:
-    chai "^4.1.2"
     debug "^4.1.0"
     json-stringify-safe "^5.0.1"
     lodash "^4.17.13"
