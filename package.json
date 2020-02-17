@@ -49,7 +49,7 @@
     "moment-opening-times": "^2.9.0",
     "moment-timezone": "^0.5.26",
     "nhsuk-bunyan-logger": "^1.4.1",
-    "nhsuk-frontend": "^2.3.2",
+    "nhsuk-frontend": "^3.0.3",
     "node-sass": "^4.7.2",
     "nunjucks": "^3.0.1",
     "object.values": "^1.0.3",
