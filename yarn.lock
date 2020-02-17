@@ -683,10 +683,10 @@ accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
-accessible-autocomplete@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-1.6.2.tgz#cb69d37748ba5b0351c84422468538890e25759c"
-  integrity sha512-7S+6Vi82LQFSSd5feKedu46tiY2/DShpdXiRp0NY3cLwc+DKe1ayWd66mb3JVi8LTQubRM7jco+u92e6w0bbvg==
+accessible-autocomplete@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-2.0.2.tgz#869d6b3b80a31e21614076b0ce47999f6b1802c8"
+  integrity sha512-cdA4O4u1xmefZuAdtL+0VBnDivdapgIZRQjm0E1bcekHnH5h67Vt1QL79NqPtlAn+6lyrR+H+pbnYVvUOJ1ULQ==
   dependencies:
     preact "^8.3.1"
 
@@ -5517,13 +5517,13 @@ nhsuk-bunyan-logger@^1.4.1:
   dependencies:
     bunyan "^1.0.0"
 
-nhsuk-frontend@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/nhsuk-frontend/-/nhsuk-frontend-2.3.2.tgz#83dd3b3d05001177d1260019c7dea07fec0154ce"
-  integrity sha512-wOMFDPuck7XfAdDGXYx+5qvYur32cPs7I6rH2XrtQihljGtcJti82ODbi2afAxsTx0g6XUfaieFS7f4QhUGROw==
+nhsuk-frontend@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/nhsuk-frontend/-/nhsuk-frontend-3.0.3.tgz#b701e64cec8b3cf88524b7c11a9b04845174748a"
+  integrity sha512-Uf8IjRpeOJ9VBXHOkWwt1Kbln7zrKadqXasmevH9F11UWnkDm3DrokU1W0rqSq1njkXxM5Ii/ZVEn0NKDTl3qg==
   dependencies:
-    accessible-autocomplete "^1.6.2"
-    sass-mq "^4.0.2"
+    accessible-autocomplete "^2.0.2"
+    sass-mq "^5.0.1"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -7130,10 +7130,10 @@ sass-graph@^2.2.4:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sass-mq@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-4.0.2.tgz#aa8f1609a074bf4f5e5e93bdff31def993cc1ee1"
-  integrity sha512-5jKlhuJvGVQpQ6Ogq9k+VWoK9HeNfaLSpDToNxHDmMS5wtaK/NWS+c3XXq8VrKTK874Hrh3m5sYij56lhZrvnw==
+sass-mq@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-5.0.1.tgz#42c711e657d884ff6a1bb4d405dfb6f08a7dc622"
+  integrity sha512-ugSVZO5fzasSFrGfKCtY02spnkOOfo9U9sXuzCuSXoCl1CgcoqdJRdNmigZkhvRVph1GKM6o0pgI00Jjc445CA==
 
 sax@^1.2.4:
   version "1.2.4"
