@@ -56,7 +56,7 @@
     "on-headers": "^1.0.1",
     "postcode": "^2.0.0",
     "postcodesio-client": "^0.3.3",
-    "prom-client": "^11.2.1",
+    "prom-client": "^12.0.0",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.7",
     "require-environment-variables": "^1.1.2",
