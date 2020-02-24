@@ -43,7 +43,7 @@
     "express-prom-bundle": "^5.0.2",
     "fingerprint-brunch": "^2.0.2",
     "google-libphonenumber": "^3.2.3",
-    "helmet": "^3.8.1",
+    "helmet": "^3.21.3",
     "map-replace": "^1.0.2",
     "moment": "^2.20.1",
     "moment-opening-times": "^2.9.0",
