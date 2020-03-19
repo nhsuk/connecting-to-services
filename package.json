@@ -60,7 +60,7 @@
     "request": "^2.81.0",
     "request-promise-native": "^1.0.7",
     "require-environment-variables": "^1.1.2",
-    "sass-brunch": "^2.10.4",
+    "sass-brunch": "^3.0.0",
     "uglify-es": "^3.1.8",
     "verror": "^1.10.0"
   },
