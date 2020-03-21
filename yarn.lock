@@ -3228,10 +3228,10 @@ expect-ct@0.2.0:
   resolved "https://registry.yarnpkg.com/expect-ct/-/expect-ct-0.2.0.tgz#3a54741b6ed34cc7a93305c605f63cd268a54a62"
   integrity sha512-6SK3MG/Bbhm8MsgyJAylg+ucIOU71/FzyFalcfu5nY19dH8y/z0tBJU0wrNBXD4B27EoQtqPF/9wqH0iYAd04g==
 
-express-prom-bundle@^5.0.2:
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/express-prom-bundle/-/express-prom-bundle-5.1.5.tgz#f298615879299a58cf8ec1350186f4de91d91fa4"
-  integrity sha512-tUaQUBu0r9zGYcVDpKBI2AeWimuuodaC5BSBkzLPQxRTxaKQShQNnONQSYwjLxbHfPwlCKVZlzfbB9Recnj0Vg==
+express-prom-bundle@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/express-prom-bundle/-/express-prom-bundle-6.0.0.tgz#e1aff1bddcd4f01359478e150dffd4e6214b88d7"
+  integrity sha512-wRq1yIfMo7oo6lbX38A+g93h/rxSaGk4DkvzIlnF9QGQVBuKmjm/Bkkztu6R6KrMHSuMKWNIrZbZKreuZdEV6w==
   dependencies:
     on-finished "^2.3.0"
     url-value-parser "^2.0.0"
