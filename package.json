@@ -70,7 +70,7 @@
     "chai-http": "^4.1.0",
     "chai-moment": "^0.1.0",
     "cheerio": "^1.0.0-rc.2",
-    "coveralls": "^3.0.1",
+    "coveralls": "^3.0.12",
     "destroy": "^1.0.4",
     "eslint": "^6.0.0",
     "eslint-config-airbnb": "^18.0.1",
