@@ -50,7 +50,7 @@
     "moment-timezone": "^0.5.26",
     "nhsuk-bunyan-logger": "^1.4.1",
     "nhsuk-frontend": "^2.3.2",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.14.0",
     "nunjucks": "^3.0.1",
     "object.values": "^1.0.3",
     "on-headers": "^1.0.1",
