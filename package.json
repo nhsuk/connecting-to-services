@@ -47,7 +47,7 @@
     "map-replace": "^1.0.2",
     "moment": "^2.20.1",
     "moment-opening-times": "^2.9.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.30",
     "nhsuk-bunyan-logger": "^1.4.1",
     "nhsuk-frontend": "^2.3.2",
     "node-sass": "^4.7.2",
