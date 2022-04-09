@@ -45,7 +45,7 @@
     "google-libphonenumber": "^3.2.3",
     "helmet": "^3.8.1",
     "map-replace": "^1.0.2",
-    "moment": "^2.20.1",
+    "moment": "^2.29.2",
     "moment-opening-times": "^2.9.0",
     "moment-timezone": "^0.5.26",
     "nhsuk-bunyan-logger": "^1.4.1",
